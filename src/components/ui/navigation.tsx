@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { 
@@ -41,9 +42,9 @@ export function Navigation() {
                 <Rocket className="h-8 w-8 text-primary-glow opacity-50" />
               </div>
             </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
               AEROO
-            </span>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -51,14 +52,14 @@ export function Navigation() {
             {NAVIGATION_ITEMS.map((item) => {
               const Icon = item.icon;
               return (
-                <a
+                <Link
                   key={item.href}
-                  href={item.href}
+                  to={item.href}
                   className="group flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Icon className="h-4 w-4 group-hover:glow-primary transition-all" />
                   <span>{item.label}</span>
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -107,15 +108,15 @@ export function Navigation() {
             {NAVIGATION_ITEMS.map((item) => {
               const Icon = item.icon;
               return (
-                <a
+                <Link
                   key={item.href}
-                  href={item.href}
+                  to={item.href}
                   className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Icon className="h-5 w-5" />
                   <span>{item.label}</span>
-                </a>
+                </Link>
               );
             })}
             
