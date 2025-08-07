@@ -2,39 +2,68 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
+/* AEROO Design System - Aerospace Education Platform
+All colors MUST be HSL for cosmic gradients and deep space themes.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Deep space backgrounds */
+    --background: 220 25% 8%;
+    --foreground: 210 40% 98%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Surface colors */
+    --card: 220 30% 12%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 30% 12%;
+    --popover-foreground: 210 40% 98%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* AEROO Brand Colors - Deep Space Blues */
+    --primary: 220 100% 50%;
+    --primary-foreground: 220 25% 8%;
+    --primary-glow: 220 100% 65%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary cosmic tones */
+    --secondary: 240 30% 20%;
+    --secondary-foreground: 210 40% 98%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted space grays */
+    --muted: 220 20% 15%;
+    --muted-foreground: 215 15% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent colors - Orange energy */
+    --accent: 25 100% 60%;
+    --accent-foreground: 220 25% 8%;
+    --accent-glow: 25 100% 70%;
 
-    --destructive: 0 84.2% 60.2%;
+    /* Status colors */
+    --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
+    
+    --success: 120 100% 40%;
+    --success-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Interactive elements */
+    --border: 220 20% 25%;
+    --input: 220 30% 15%;
+    --ring: 220 100% 60%;
+
+    /* Cosmic gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(220 100% 50%), hsl(240 100% 60%), hsl(280 100% 50%));
+    --gradient-nebula: linear-gradient(45deg, hsl(220 100% 50%), hsl(25 100% 60%));
+    --gradient-deep-space: linear-gradient(180deg, hsl(220 25% 8%), hsl(240 30% 12%));
+    --gradient-aurora: linear-gradient(90deg, hsl(180 100% 50%), hsl(200 100% 60%), hsl(220 100% 50%));
+
+    /* Shadows and glows */
+    --shadow-cosmic: 0 25px 50px -12px hsl(220 100% 50% / 0.25);
+    --shadow-nebula: 0 0 50px hsl(220 100% 50% / 0.3);
+    --glow-primary: 0 0 30px hsl(220 100% 50% / 0.5);
+    --glow-accent: 0 0 30px hsl(25 100% 60% / 0.5);
+
+    /* Animations */
+    --transition-cosmic: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     --radius: 0.5rem;
 
@@ -100,6 +129,81 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    background: var(--gradient-deep-space);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* AEROO Button Variants */
+  .btn-cosmic {
+    @apply bg-gradient-to-r from-primary to-primary-glow text-primary-foreground;
+    @apply shadow-[var(--shadow-cosmic)] hover:shadow-[var(--glow-primary)];
+    @apply transition-[var(--transition-cosmic)] hover:scale-105;
+  }
+  
+  .btn-nebula {
+    @apply bg-gradient-to-r from-accent to-accent-glow text-accent-foreground;
+    @apply shadow-[var(--glow-accent)] hover:shadow-[var(--glow-accent)];
+    @apply transition-[var(--transition-cosmic)] hover:scale-105;
+  }
+  
+  .btn-aurora {
+    @apply text-foreground border border-primary/30;
+    background: var(--gradient-aurora);
+    @apply shadow-[var(--glow-primary)] hover:shadow-[var(--shadow-cosmic)];
+    @apply transition-[var(--transition-cosmic)] hover:scale-105;
+  }
+
+  /* Hero Section */
+  .hero-bg {
+    background: var(--gradient-cosmic);
+    @apply relative overflow-hidden;
+  }
+  
+  .hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 20%, hsl(220 100% 50% / 0.3), transparent 50%),
+                radial-gradient(circle at 70% 80%, hsl(280 100% 50% / 0.2), transparent 50%),
+                radial-gradient(circle at 90% 10%, hsl(25 100% 60% / 0.2), transparent 50%);
+    animation: cosmic-float 20s ease-in-out infinite;
+  }
+
+  /* Cosmic animations */
+  @keyframes cosmic-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(1deg); }
+  }
+  
+  @keyframes rocket-fly {
+    0% { transform: translateX(-100px) translateY(20px) rotate(-15deg); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateX(100vw) translateY(-20px) rotate(15deg); opacity: 0; }
+  }
+  
+  .rocket-animation {
+    animation: rocket-fly 15s linear infinite;
+  }
+
+  /* Glass morphism effect */
+  .glass-card {
+    @apply bg-card/10 backdrop-blur-md border border-border/50;
+    @apply shadow-[var(--shadow-cosmic)];
+  }
+  
+  /* Glow effects */
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
   }
 }
