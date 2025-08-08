@@ -190,7 +190,7 @@ const Products = () => {
             <Button size="lg" className="btn-cosmic" onClick={handleGoToChat}>
               Получить консультацию
             </Button>
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" onClick={() => toast({ title: "Каталог скоро", description: "PDF-каталог будет доступен позже" })}>
               Скачать каталог
             </Button>
           </div>

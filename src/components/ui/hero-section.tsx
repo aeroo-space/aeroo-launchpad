@@ -1,8 +1,7 @@
-import { useState } from "react";
+import React, { useState, Suspense } from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
-  Rocket, 
   Trophy, 
   GraduationCap, 
   ArrowRight,
@@ -10,6 +9,8 @@ import {
   Zap
 } from "lucide-react";
 import heroImage from "@/assets/hero-space.jpg";
+const HeroSpace = React.lazy(() => import("@/components/three/HeroSpace"));
+
 
 export function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,21 +23,11 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center hero-bg overflow-hidden">
-      {/* Background Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      />
-      
-      {/* Animated Elements */}
-      <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-pulse glow-primary" />
-      <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-accent rounded-full animate-ping" />
-      <div className="absolute bottom-1/4 left-1/3 w-3 h-3 bg-primary-glow rounded-full animate-pulse" />
-      
-      {/* Flying Rocket Animation */}
-      <div className="absolute top-1/2 rocket-animation">
-        <Rocket className="h-8 w-8 text-accent glow-accent" />
-      </div>
+      {/* 3D Space Background */}
+      <Suspense fallback={null}>
+        <HeroSpace />
+      </Suspense>
+
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">

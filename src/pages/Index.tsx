@@ -1,9 +1,13 @@
+import { useEffect } from "react";
 import { Navigation } from "@/components/ui/navigation";
 import { HeroSection } from "@/components/ui/hero-section";
 import { FeaturesSection } from "@/components/sections/features-section";
 import { Footer } from "@/components/sections/footer";
 
 const Index = () => {
+  useEffect(() => {
+    document.title = "AEROO — образовательная платформа";
+  }, []);
   return (
     <div className="min-h-screen">
       <Navigation />

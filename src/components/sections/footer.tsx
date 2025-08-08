@@ -1,11 +1,13 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { toast } from "@/components/ui/sonner";
 
 const SOCIAL_LINKS = [
-  { name: "Telegram", href: "#", icon: "📱" },
-  { name: "Instagram", href: "#", icon: "📷" },
-  { name: "YouTube", href: "#", icon: "📺" },
-  { name: "LinkedIn", href: "#", icon: "💼" }
+  { name: "Telegram", href: "https://t.me/+5nKRCrdTXT05YThi", icon: "📱" },
+  { name: "Instagram", href: "https://instagram.com/", icon: "📷" },
+  { name: "YouTube", href: "https://youtube.com/", icon: "📺" },
+  { name: "LinkedIn", href: "https://linkedin.com/", icon: "💼" }
 ];
 
 const FOOTER_LINKS = [
@@ -101,14 +103,23 @@ export function Footer() {
               <h3 className="font-semibold text-foreground">{section.title}</h3>
               <ul className="space-y-2">
                 {section.links.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.name}
-                    </a>
-                  </li>
+                    <li key={link.name}>
+                      {link.href.startsWith("http") ? (
+                        <a
+                          href={link.href}
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          {link.name}
+                        </a>
+                      ) : (
+                        <Link
+                          to={link.href}
+                          className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                        >
+                          {link.name}
+                        </Link>
+                      )}
+                    </li>
                 ))}
               </ul>
             </div>
@@ -130,7 +141,7 @@ export function Footer() {
                 placeholder="Ваш email"
                 className="flex-1 px-4 py-2 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <Button className="btn-cosmic px-6 py-2">
+              <Button className="btn-cosmic px-6 py-2" onClick={() => toast("Спасибо! Вы подписались на новости AEROO.")}> 
                 Подписаться
               </Button>
             </div>
