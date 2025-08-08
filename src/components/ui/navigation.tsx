@@ -35,15 +35,16 @@ export function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="relative">
-              <Rocket className="h-8 w-8 text-primary glow-primary" />
-              <div className="absolute inset-0 animate-pulse">
-                <Rocket className="h-8 w-8 text-primary-glow opacity-50" />
-              </div>
-            </div>
-            <Link to="/" className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              AEROO
+          <div className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center" aria-label="AEROO — образовательная платформа">
+              <img
+                src="/lovable-uploads/b69a9019-60d9-465c-8c97-374a0558b678.png"
+                alt="Логотип AEROO"
+                className="h-8 w-auto"
+                width={220}
+                height={32}
+                decoding="async"
+              />
             </Link>
           </div>
 

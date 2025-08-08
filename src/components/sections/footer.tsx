@@ -1,4 +1,4 @@
-import { Rocket, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SOCIAL_LINKS = [
@@ -46,16 +46,15 @@ export function Footer() {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
           {/* Brand Section */}
           <div className="lg:col-span-2 space-y-6">
-            <div className="flex items-center space-x-2">
-              <div className="relative">
-                <Rocket className="h-8 w-8 text-primary glow-primary" />
-                <div className="absolute inset-0 animate-pulse">
-                  <Rocket className="h-8 w-8 text-primary-glow opacity-50" />
-                </div>
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-                AEROO
-              </span>
+            <div className="flex items-center space-x-3">
+              <img
+                src="/lovable-uploads/b69a9019-60d9-465c-8c97-374a0558b678.png"
+                alt="Логотип AEROO"
+                className="h-8 w-auto"
+                width={220}
+                height={32}
+                decoding="async"
+              />
             </div>
             
             <p className="text-muted-foreground max-w-md">
