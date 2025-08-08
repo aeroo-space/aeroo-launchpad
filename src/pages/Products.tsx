@@ -1,10 +1,13 @@
+import { useEffect, useState, useRef } from "react";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Package, Rocket, Plane, Satellite, Zap, Shield, Wrench } from "lucide-react";
-
+import { ChatBotPanel } from "@/components/sections/product-chatbot";
+import { ProductRequestModal } from "@/components/sections/product-request-modal";
+import { toast } from "@/components/ui/use-toast";
 const products = [
   {
     id: "rocket-kit",
@@ -60,6 +63,21 @@ const advantages = [
 ];
 
 const Products = () => {
+  const [isRequestOpen, setIsRequestOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
+  const chatRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    document.title = "Продукты AEROO — наборы и конструкторы";
+  }, []);
+
+  const handleOpenRequest = (id: string) => {
+    setSelectedProductId(id);
+    setIsRequestOpen(true);
+  };
+
+  const handleGoToChat = () => chatRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -147,9 +165,10 @@ const Products = () => {
                       <span className="text-2xl font-bold text-primary">{product.price}</span>
                     </div>
 
-                    <Button 
+<Button 
                       className="w-full btn-cosmic" 
                       disabled={!product.inStock}
+                      onClick={() => handleOpenRequest(product.id)}
                     >
                       {product.inStock ? "Оставить заявку" : "Сообщить о поступлении"}
                     </Button>
@@ -168,7 +187,7 @@ const Products = () => {
             и образовательных целей. Свяжитесь с нами для персональной консультации.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="btn-cosmic">
+            <Button size="lg" className="btn-cosmic" onClick={handleGoToChat}>
               Получить консультацию
             </Button>
             <Button size="lg" variant="outline">
@@ -176,6 +195,25 @@ const Products = () => {
             </Button>
           </div>
         </div>
+
+        {/* Online Consultation Chat */}
+        <section className="mt-12" aria-label="Онлайн-консультация AEROO">
+          <h2 className="sr-only">Онлайн-консультация</h2>
+          <div ref={chatRef} className="max-w-3xl mx-auto">
+            <ChatBotPanel />
+          </div>
+        </section>
+
+        {/* Request Modal */}
+        <ProductRequestModal
+          open={isRequestOpen}
+          onOpenChange={setIsRequestOpen}
+          products={products.map((p) => ({ id: p.id, title: p.title }))}
+          selectedProductId={selectedProductId}
+          onSubmitted={() =>
+            toast({ title: "Заявка отправлена", description: "Мы свяжемся с вами по email" })
+          }
+        />
       </main>
 
       <Footer />
