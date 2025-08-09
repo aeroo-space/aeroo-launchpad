@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Navigation } from "@/components/ui/navigation";
-import { HeroSection } from "@/components/ui/hero-section";
+import { HeroCarousel } from "@/components/sections/hero-carousel";
 import { FeaturesSection } from "@/components/sections/features-section";
 import { Footer } from "@/components/sections/footer";
 import { useTranslation } from "react-i18next";
@@ -14,7 +14,7 @@ const Index = () => {
     <div className="min-h-screen">
       <Navigation />
       <main>
-        <HeroSection />
+        <HeroCarousel />
         <FeaturesSection />
       </main>
       <Footer />
