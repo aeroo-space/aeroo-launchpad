@@ -8,7 +8,11 @@ interface AuthContextValue {
   session: Session | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<void>;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (
+    email: string,
+    password: string,
+    metadata?: { full_name?: string; age?: number; school?: string }
+  ) => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -51,11 +55,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       }
       toast.success("Вы вошли в аккаунт");
     },
-    signUp: async (email, password) => {
+    signUp: async (email, password, metadata) => {
       const { error } = await supabase.auth.signUp({
         email,
         password,
-        options: { emailRedirectTo: `${window.location.origin}/` },
+        options: {
+          emailRedirectTo: `${window.location.origin}/`,
+          data: metadata,
+        },
       });
       if (error) {
         toast.error("Ошибка регистрации", { description: error.message });
