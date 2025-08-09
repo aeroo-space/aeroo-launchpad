@@ -185,6 +185,10 @@ const Competitions = () => {
                       <Button asChild variant="outline" className="w-full">
                         <Link to="/competitions/satellite-launch-2026">{t('competitions.details')}</Link>
                       </Button>
+                    ) : competition.id === 'space-settlement' ? (
+                      <Button asChild variant="outline" className="w-full">
+                        <Link to="/competitions/space-settlement-2025">{t('competitions.details')}</Link>
+                      </Button>
                     ) : (
                       <Button variant="outline" className="w-full">{t('competitions.details')}</Button>
                     )}

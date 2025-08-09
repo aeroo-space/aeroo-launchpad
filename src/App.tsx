@@ -18,6 +18,7 @@ import Terms from "./pages/Terms";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import CompetitionSatelliteLaunch2026 from "./pages/CompetitionSatelliteLaunch2026";
+import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement2025";
 import { AuthProvider } from "@/contexts/AuthProvider";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/competitions/satellite-launch-2026" element={<CompetitionSatelliteLaunch2026 />} />
+            <Route path="/competitions/space-settlement-2025" element={<CompetitionSpaceSettlement2025 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
