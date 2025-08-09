@@ -42,14 +42,14 @@ export const HeroCarousel: React.FC = () => {
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="eager"
                 />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/30 to-background/70" />
+                 <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <p className="text-sm md:text-base text-muted-foreground mb-3">AEROO</p>
                     <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
                       AEROO — образовательная платформа
                     </h1>
-                    <p className="text-base md:text-lg text-muted-foreground mb-8">
+                    <p className="text-base md:text-lg text-foreground/90 mb-8">
                       Учись, создавай и расти вместе с сообществом AEROO. Курсы, проекты и реальные вызовы из аэрокосмической отрасли.
                     </p>
                     <div className="flex gap-3">
@@ -71,13 +71,13 @@ export const HeroCarousel: React.FC = () => {
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/30 to-background/70" />
+                 <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
                       Соревнования AEROO
                     </h2>
-                    <p className="text-base md:text-lg text-muted-foreground mb-8">
+                    <p className="text-base md:text-lg text-foreground/90 mb-8">
                       Участвуй в инженерных и исследовательских состязаниях. Покажи свой потенциал и получи признание.
                     </p>
                     <Button asChild size="xl" variant="primary">
@@ -97,13 +97,13 @@ export const HeroCarousel: React.FC = () => {
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/30 to-background/70" />
+                 <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
                       Продукты AEROO
                     </h2>
-                    <p className="text-base md:text-lg text-muted-foreground mb-8">
+                    <p className="text-base md:text-lg text-foreground/90 mb-8">
                       Приобретай образовательные наборы AEROO для инженерного обучения и участия в соревнованиях.
                     </p>
                     <Button asChild size="xl" variant="primary">
@@ -118,21 +118,21 @@ export const HeroCarousel: React.FC = () => {
             <CarouselItem>
               <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
                 <img
-                  src={satelliteCrew}
-                  alt="AEROO Space Settlement Competition 2025"
+                  src="/lovable-uploads/dd996c85-9a8a-4c91-8a78-bd8d17208f0d.png"
+                  alt="AEROO Space Settlement Competition 2026 — фоновое изображение"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/60 via-background/30 to-background/70" />
+                <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
-                      AEROO Space Settlement Competition 2025
+                      AEROO Space Settlement Competition 2026
                     </h2>
-                    <p className="text-base md:text-lg text-muted-foreground mb-6">
+                    <p className="text-base md:text-lg text-foreground/90 mb-6">
                       Даты проведения: 28–29 октября 2025.
                     </p>
-                    <p className="text-base md:text-lg text-muted-foreground mb-8">
+                    <p className="text-base md:text-lg text-foreground/90 mb-8">
                       Старт регистрации: с 5 сентября.
                     </p>
                     <Button asChild size="xl" variant="primary">
