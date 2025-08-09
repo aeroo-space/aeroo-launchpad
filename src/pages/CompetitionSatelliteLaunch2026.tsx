@@ -102,14 +102,9 @@ const CompetitionSatelliteLaunch2026 = () => {
   const [dupName, setDupName] = useState("");
 
   const handleOpenEnroll = () => {
-    if (!user) {
-      toast(t('competitions.toastLoginTitle'), { description: t('competitions.toastLoginDesc') });
-      navigate("/auth");
-      return;
-    }
-    setOpen(true);
+    toast("Регистрация пока закрыта", { description: "Подождите до 1 ноября 2025 года" });
+    return;
   };
-
   const handleSubmitEnroll = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!user) return;
