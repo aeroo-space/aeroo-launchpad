@@ -39,6 +39,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useAuth } from "@/contexts/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import { competitions } from "@/data/competitions";
 import { useTranslation } from "react-i18next";
 const sections = ["about", "goals", "stages", "criteria", "awards", "contacts"] as const;
 
@@ -136,7 +137,17 @@ const CompetitionSatelliteLaunch2026 = () => {
     });
     setSubmitting(false);
     if (error) {
-      toast.error(t('competitions.toastEnrollError'), { description: error.message });
+      // Handle duplicate registration (unique violation)
+      // @ts-ignore Supabase PostgrestError has code field
+      if ((error as any).code === "23505") {
+        const comp = competitions.find((c) => c.id === competitionId);
+        const compName = t(`competitions.items.${competitionId}.title`, { defaultValue: comp?.title || "соревнование" });
+        toast.error("Вы уже зарегистрированы", {
+          description: `Вы уже зарегистрированы на «${compName}». Запись доступна в личном кабинете на странице «Мои регистрации».`,
+        });
+      } else {
+        toast.error(t('competitions.toastEnrollError'), { description: error.message });
+      }
       return;
     }
     toast.success(t('competitions.toastEnrollSuccessTitle'));

@@ -89,7 +89,17 @@ const Competitions = () => {
     });
     setSubmitting(false);
     if (error) {
-      toast.error(t('competitions.toastEnrollError'), { description: error.message });
+      // Handle duplicate registration (unique violation)
+      // @ts-ignore Supabase PostgrestError has code field
+      if ((error as any).code === "23505") {
+        const comp = competitions.find((c) => c.id === selectedId);
+        const compName = t(`competitions.items.${selectedId}.title`, { defaultValue: comp?.title || "соревнование" });
+        toast.error("Вы уже зарегистрированы", {
+          description: `Вы уже зарегистрированы на «${compName}». Запись доступна в личном кабинете на странице «Мои регистрации».`,
+        });
+      } else {
+        toast.error(t('competitions.toastEnrollError'), { description: error.message });
+      }
       return;
     }
     toast.success(t('competitions.toastEnrollSuccessTitle'));
