@@ -92,8 +92,8 @@ export const HeroCarousel: React.FC = () => {
             <CarouselItem>
               <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
                 <img
-                  src={heroSpace}
-                  alt="Продукты AEROO на фоне космоса"
+                  src="/lovable-uploads/91015627-7be5-493b-81fd-32419283bac5.png"
+                  alt="Образовательные наборы AEROO — фото студентов с ракетой и CubeSat"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="lazy"
                 />
@@ -104,7 +104,7 @@ export const HeroCarousel: React.FC = () => {
                       Продукты AEROO
                     </h2>
                     <p className="text-base md:text-lg text-muted-foreground mb-8">
-                      Исследуй решения и инструменты AEROO для обучения, симуляции и коллаборации.
+                      Приобретай образовательные наборы AEROO для инженерного обучения и участия в соревнованиях.
                     </p>
                     <Button asChild size="xl" variant="primary">
                       <Link to="/products">Подробнее</Link>
