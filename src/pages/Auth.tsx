@@ -103,7 +103,7 @@ useEffect(() => {
                   <Input id="age" type="number" min={1} placeholder="16" value={age} onChange={(e) => setAge(e.target.value)} required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="school">{t('auth.school', { defaultValue: 'Наименование школы' })}</Label>
+                  <Label htmlFor="school">{t('auth.school', { defaultValue: 'Наименование учебного заведения' })}</Label>
                   <Input id="school" placeholder="Гимназия №1" value={school} onChange={(e) => setSchool(e.target.value)} required />
                 </div>
               </>
