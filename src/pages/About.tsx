@@ -60,6 +60,7 @@ const About = () => {
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', t('about.metaDesc', { defaultValue: 'Образовательная экосистема AEROO: миссия, ценности, команда и партнёры' }));
   }, [t]);
+  return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
