@@ -41,6 +41,9 @@ const Dashboard = () => {
   const [newPwd, setNewPwd] = useState("");
   const [newPwd2, setNewPwd2] = useState("");
   const [pwdSubmitting, setPwdSubmitting] = useState(false);
+  const [nameOpen, setNameOpen] = useState(false);
+  const [fullNameInput, setFullNameInput] = useState("");
+  const [nameSubmitting, setNameSubmitting] = useState(false);
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -104,6 +107,26 @@ const Dashboard = () => {
     }
   };
 
+  const handleNameChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const v = fullNameInput.trim();
+    if (!v) {
+      toast.error(t('dashboard.fullNameRequired', { defaultValue: 'Укажите ФИО' }));
+      return;
+    }
+    try {
+      setNameSubmitting(true);
+      const { error } = await supabase.auth.updateUser({ data: { full_name: v } });
+      if (error) throw error;
+      toast.success(t('dashboard.fullNameUpdated', { defaultValue: 'ФИО обновлено' }));
+      setNameOpen(false);
+    } catch (err: any) {
+      toast.error(t('dashboard.fullNameUpdateError', { defaultValue: 'Не удалось обновить ФИО' }), { description: err.message });
+    } finally {
+      setNameSubmitting(false);
+    }
+  };
+
   if (!user) return null;
 
   return (
@@ -127,6 +150,15 @@ const Dashboard = () => {
                   <div className="font-medium">{(user.user_metadata as any)?.full_name || "—"}</div>
                 </div>
                 <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      setFullNameInput(((user.user_metadata as any)?.full_name as string) || "");
+                      setNameOpen(true);
+                    }}
+                  >
+                    {t('dashboard.changeFullName', { defaultValue: 'Изменить ФИО' })}
+                  </Button>
                   <Button variant="outline" onClick={() => setPwdOpen(true)}>
                     {t('dashboard.changePassword', { defaultValue: 'Сменить пароль' })}
                   </Button>
@@ -214,6 +246,27 @@ const Dashboard = () => {
             }}
           />
         )}
+
+        <Dialog open={nameOpen} onOpenChange={setNameOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{t('dashboard.changeFullName', { defaultValue: 'Изменить ФИО' })}</DialogTitle>
+              <DialogDescription>
+                {t('dashboard.fullNameDesc', { defaultValue: 'Введите ваше ФИО полностью' })}
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handleNameChange} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="fullNameInput">{t('dashboard.fullName', { defaultValue: 'ФИО' })}</Label>
+                <Input id="fullNameInput" value={fullNameInput} onChange={(e)=>setFullNameInput(e.target.value)} required />
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button type="button" variant="outline" onClick={() => setNameOpen(false)}>{t('common.cancel', { defaultValue: 'Отмена' })}</Button>
+                <Button type="submit" disabled={nameSubmitting}>{t('common.save', { defaultValue: 'Сохранить' })}</Button>
+              </div>
+            </form>
+          </DialogContent>
+        </Dialog>
 
         <Dialog open={pwdOpen} onOpenChange={setPwdOpen}>
           <DialogContent>
