@@ -27,6 +27,7 @@ import {
   Mail,
 } from "lucide-react";
 import heroSpace from "@/assets/hero-space.jpg";
+import satelliteCrew from "@/assets/satellite-crew-edited.jpg";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -242,13 +243,13 @@ const CompetitionSatelliteLaunch2026 = () => {
               <div>
                 <Card className="glass-card overflow-hidden">
                   <CardContent className="p-0">
-                    <div className="aspect-video w-full bg-muted relative">
+                    <div className="aspect-video w-full bg-muted relative animate-fade-in hover-scale">
                       <img
-                        src="/lovable-uploads/c7d720b3-94b2-4030-9cee-6d6ff7de5556.png"
+                        src={satelliteCrew}
                         alt="AEROO Satellite Launch — участники и организаторы на мероприятии"
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover object-center"
                       />
                       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                     </div>
@@ -352,15 +353,15 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Criteria */}
         <section id="criteria" ref={(el) => el && (revealRefs.current[4] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Критерии оценивания</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Преимущества участия</h2>
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
               {[
-                { icon: TrendingUp, text: "Инновационность и актуальность идеи" },
-                { icon: Cpu, text: "Техническая обоснованность" },
-                { icon: ClipboardList, text: "Полнота и детализация проекта" },
-                { icon: Wrench, text: "Реализуемость с учётом ограничений" },
-                { icon: Presentation, text: "Презентация и командная работа" },
-                { icon: Award, text: "Итоговая оценка экспертов" },
+                { icon: Award, text: "Сертификаты, призы и признание победителей" },
+                { icon: Users, text: "Нетворкинг с участниками и экспертами" },
+                { icon: Cpu, text: "Прокачка инженерных навыков и портфолио" },
+                { icon: Wrench, text: "Практика с реальным оборудованием AEROO CubeSat Kit" },
+                { icon: TrendingUp, text: "Шанс на стажировки и партнёрства" },
+                { icon: MessageCircle, text: "Медийное внимание и продвижение команды" },
               ].map((c, i) => (
                 <Card key={i} className="glass-card">
                   <CardContent className="p-6 flex items-start gap-4">
