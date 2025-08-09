@@ -209,7 +209,6 @@ const Courses = () => {
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="sm:justify-center">
-              <AlertDialogCancel>Понятно</AlertDialogCancel>
               <AlertDialogAction asChild>
                 <Link to="/">На главную</Link>
               </AlertDialogAction>
