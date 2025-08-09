@@ -17,6 +17,8 @@ const Auth = () => {
 
   useEffect(() => {
     document.title = mode === "signin" ? "Вход — AEROO" : "Регистрация — AEROO";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', 'Вход и регистрация AEROO — авторизация для участия в соревнованиях');
   }, [mode]);
 
   useEffect(() => {

@@ -11,7 +11,7 @@ import { Label } from "@/components/ui/label";
 
 import { competitions, getStatusColor } from "@/data/competitions";
 import { useAuth } from "@/contexts/AuthProvider";
-import { getSupabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 
 const Competitions = () => {
@@ -37,15 +37,7 @@ const Competitions = () => {
     e.preventDefault();
     if (!user || !selectedId) return;
     setSubmitting(true);
-    let supabase;
-    try {
-      supabase = getSupabase();
-    } catch {
-      setSubmitting(false);
-      toast.error("Supabase не настроен", { description: "Перезагрузите страницу и попробуйте снова" });
-      return;
-    }
-    const { error } = await supabase.from("enrollments").insert({
+    const { error } = await (supabase as any).from("enrollments").insert({
       user_id: user.id,
       competition_id: selectedId,
       team_name: teamName,

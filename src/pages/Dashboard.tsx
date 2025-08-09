@@ -4,7 +4,7 @@ import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthProvider";
-import { getSupabase } from "@/lib/supabase";
+import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import { competitions } from "@/data/competitions";
 import { useNavigate } from "react-router-dom";
@@ -35,15 +35,7 @@ const Dashboard = () => {
       return;
     }
     (async () => {
-      let supabase;
-      try {
-        supabase = getSupabase();
-      } catch {
-        setLoading(false);
-        toast.error("Supabase не настроен", { description: "Перезагрузите страницу и попробуйте снова" });
-        return;
-      }
-      const { data, error } = await supabase
+      const { data, error } = await (supabase as any)
         .from("enrollments")
         .select("*")
         .eq("user_id", user.id)
