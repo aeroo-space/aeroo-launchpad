@@ -86,9 +86,11 @@ export function Navigation() {
             </div>
 
             {/* Profile/Login */}
-            <Button variant="outline" size="sm" className="hidden sm:flex" onClick={() => import("@/components/ui/sonner").then(m => m.toast("Вход скоро: подключим после Supabase"))}>
-              <User className="h-4 w-4 mr-2" />
-              Войти
+            <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
+              <Link to="/auth">
+                <User className="h-4 w-4 mr-2" />
+                Войти
+              </Link>
             </Button>
 
             {/* Mobile Menu Toggle */}
@@ -142,9 +144,11 @@ export function Navigation() {
               </div>
             </div>
             
-            <Button className="w-full btn-cosmic" onClick={() => import("@/components/ui/sonner").then(m => m.toast("Вход скоро: подключим после Supabase"))}>
-              <User className="h-4 w-4 mr-2" />
-              Войти
+            <Button className="w-full btn-cosmic" asChild>
+              <Link to="/auth">
+                <User className="h-4 w-4 mr-2" />
+                Войти
+              </Link>
             </Button>
           </div>
         )}

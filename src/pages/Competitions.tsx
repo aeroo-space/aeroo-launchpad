@@ -1,83 +1,59 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Rocket, Satellite, Building, Brain, Car, Plane, Trophy } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
-const competitions = [
-  {
-    id: "aeroo-fest",
-    title: "AEROO Fest",
-    category: "Фестиваль",
-    description: "Мероприятия, шоу и мастер‑классы для продвижения аэрокосмических технологий",
-    icon: Trophy,
-    status: "Активно",
-    deadline: "15 марта 2024",
-    ages: "12-25 лет"
-  },
-  {
-    id: "satellite-launch", 
-    title: "AEROO Satellite Launch",
-    category: "Малый спутник",
-    description: "Проектирование, сборка и запуск мини‑спутников",
-    icon: Satellite,
-    status: "Регистрация",
-    deadline: "1 апреля 2024",
-    ages: "16-25 лет"
-  },
-  {
-    id: "space-settlement",
-    title: "AEROO Space Settlement", 
-    category: "Проектирование",
-    description: "Разработка концепций поселений в космосе для долгосрочной жизни",
-    icon: Building,
-    status: "Скоро",
-    deadline: "10 мая 2024",
-    ages: "14-25 лет"
-  },
-  {
-    id: "ai-challenge",
-    title: "AEROO Space AI Challenge",
-    category: "AI",
-    description: "Разработка автономных алгоритмов для навигации, управления и планирования миссий",
-    icon: Brain,
-    status: "Активно", 
-    deadline: "25 марта 2024",
-    ages: "16-25 лет"
-  },
-  {
-    id: "drive-competition",
-    title: "AEROO Drive Competition",
-    category: "Ровер",
-    description: "Создание и управление роверами для исследования поверхностей планет",
-    icon: Car,
-    status: "Регистрация",
-    deadline: "5 апреля 2024", 
-    ages: "14-25 лет"
-  },
-  {
-    id: "drone-competition",
-    title: "AEROO Drone Competition",
-    category: "Дроны",
-    description: "Конструирование и пилотирование дронов для зондирования, картографирования и гонок",
-    icon: Plane,
-    status: "Активно",
-    deadline: "20 марта 2024",
-    ages: "12-25 лет"
-  }
-];
-
-const getStatusColor = (status: string) => {
-  switch (status) {
-    case "Активно": return "bg-green-500";
-    case "Регистрация": return "bg-blue-500";
-    case "Скоро": return "bg-orange-500";
-    default: return "bg-gray-500";
-  }
-};
+import { competitions, getStatusColor } from "@/data/competitions";
+import { useAuth } from "@/contexts/AuthProvider";
+import { getSupabase } from "@/lib/supabase";
+import { toast } from "@/components/ui/sonner";
 
 const Competitions = () => {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const supabase = getSupabase();
+  const [open, setOpen] = useState(false);
+  const [teamName, setTeamName] = useState("");
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleOpenEnroll = (id: string) => {
+    if (!user) {
+      toast("Войдите, чтобы записаться", { description: "Переходим на страницу входа" });
+      navigate("/auth");
+      return;
+    }
+    setSelectedId(id);
+    setOpen(true);
+  };
+
+  const handleSubmitEnroll = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user || !selectedId) return;
+    setSubmitting(true);
+    const { error } = await supabase.from("enrollments").insert({
+      user_id: user.id,
+      competition_id: selectedId,
+      team_name: teamName,
+      status: "active",
+    });
+    setSubmitting(false);
+    if (error) {
+      toast.error("Не удалось записаться", { description: error.message });
+      return;
+    }
+    toast.success("Вы записаны!", { description: "Запись доступна в Личном кабинете" });
+    setOpen(false);
+    setTeamName("");
+    setSelectedId(null);
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -130,9 +106,12 @@ const Competitions = () => {
                     </div>
                   </div>
                   
-                  <Button className="w-full btn-cosmic">
-                    Подробнее
-                  </Button>
+<div className="grid grid-cols-1 gap-3">
+                    <Button variant="outline" className="w-full">Подробнее</Button>
+                    <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
+                      Записаться с командой
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             );
@@ -149,6 +128,27 @@ const Competitions = () => {
             Посмотреть архив
           </Button>
         </div>
+
+        {/* Enroll Dialog */}
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Запись в соревнование</DialogTitle>
+              <DialogDescription>
+                Укажите название вашей команды. Запись будет сохранена в вашем личном кабинете.
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handleSubmitEnroll} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="team">Название команды</Label>
+                <Input id="team" value={teamName} onChange={(e) => setTeamName(e.target.value)} placeholder="Например: AEROO Crew" required />
+              </div>
+              <Button type="submit" className="w-full" disabled={!teamName || submitting}>
+                {submitting ? "Отправка..." : "Подтвердить участие"}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
       </main>
 
       <Footer />
