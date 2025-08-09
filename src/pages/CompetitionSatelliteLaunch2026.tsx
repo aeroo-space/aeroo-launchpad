@@ -26,7 +26,7 @@ import {
   MessageCircle,
   Mail,
 } from "lucide-react";
-import heroSpace from "@/assets/hero-space.jpg";
+
 import satelliteCrew from "@/assets/satellite-crew-edited.jpg";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -200,7 +200,7 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Hero */}
         <section
           className="relative overflow-hidden"
-          style={{ backgroundImage: `url(${heroSpace})`, backgroundSize: "cover", backgroundPosition: "center" }}
+          style={{ backgroundImage: "url(/lovable-uploads/05126356-406f-4466-b04f-fe02aed5e6ef.png)", backgroundSize: "cover", backgroundPosition: "center" }}
         >
           <div className="absolute inset-0" style={{ background: "var(--gradient-satellite-hero)" }} />
           <div className="container mx-auto px-4 py-24 md:py-36 relative z-10">

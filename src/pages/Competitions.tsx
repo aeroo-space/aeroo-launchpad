@@ -47,7 +47,9 @@ const Competitions = () => {
 
   const handleOpenEnroll = (id: string) => {
     const comp = competitions.find((c) => c.id === id);
-    if (!comp || comp.status !== "Регистрация") {
+    if (!comp) return;
+    const isAllowed = comp.status === "Регистрация" || comp.id === "satellite-launch";
+    if (!isAllowed) {
       toast("Регистрация пока не открыта", { description: "Скоро выйдет информация — будьте в курсе событий." });
       return;
     }
@@ -66,7 +68,8 @@ const Competitions = () => {
     const enroll = params.get("enroll");
     if (enroll) {
       const comp = competitions.find((c) => c.id === enroll);
-      if (comp?.status === "Регистрация") {
+      const isAllowed = comp?.status === "Регистрация" || enroll === "satellite-launch";
+      if (isAllowed) {
         handleOpenEnroll(enroll);
       } else {
         toast("Регистрация пока не открыта", { description: "Скоро выйдет информация — будьте в курсе событий." });
