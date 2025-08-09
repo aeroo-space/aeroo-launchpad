@@ -116,11 +116,25 @@ const CompetitionSatelliteLaunch2026 = () => {
                 </span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="btn-cosmic">
-                  <a href={registerHref}>Зарегистрироваться</a>
+                <Button asChild variant="primary" size="lg">
+                  <a
+                    href={registerHref}
+                    aria-label="Принять участие — регистрация на AEROO Satellite Launch 2026"
+                    data-testid="cta-top-apply"
+                  >
+                    Принять участие
+                  </a>
                 </Button>
-                <Button asChild size="lg" variant="outline">
-                  <a href="#about">Подробнее</a>
+                <Button asChild variant="outline" size="lg">
+                  <a
+                    href="https://docs.google.com/document/d/1KclwhBPXbtUXfjepxtpxADl9rwIr1KdOHrpDbRqsp_4/edit?usp=sharing"
+                    target="_blank"
+                    rel="noopener"
+                    aria-label="Прочитать Регламент — откроется в новой вкладке"
+                    data-testid="link-regulation"
+                  >
+                    Прочитать Регламент
+                  </a>
                 </Button>
               </div>
             </div>
@@ -143,9 +157,6 @@ const CompetitionSatelliteLaunch2026 = () => {
                   запускают их в финале. Турнир развивает инженерное и критическое мышление, навыки командной работы и
                   международного взаимодействия.
                 </p>
-                <Button asChild>
-                  <a href={registerHref}>Подать заявку</a>
-                </Button>
               </div>
               <div>
                 <Card className="glass-card">
@@ -168,11 +179,6 @@ const CompetitionSatelliteLaunch2026 = () => {
               AEROO — организация, развивающая аэрокосмическое образование через инженерные соревнования и образовательные
               программы. Мы готовим новое поколение инженеров и учёных для космической отрасли.
             </p>
-            <div className="mt-6">
-              <Button asChild variant="outline">
-                <a href={registerHref}>Подать заявку</a>
-              </Button>
-            </div>
           </div>
         </section>
 
@@ -196,11 +202,6 @@ const CompetitionSatelliteLaunch2026 = () => {
                   </CardContent>
                 </Card>
               ))}
-            </div>
-            <div className="mt-8">
-              <Button asChild>
-                <a href={registerHref}>Подать заявку</a>
-              </Button>
             </div>
           </div>
         </section>
@@ -257,11 +258,6 @@ const CompetitionSatelliteLaunch2026 = () => {
                 </div>
               ))}
             </div>
-            <div className="mt-8">
-              <Button asChild>
-                <a href={registerHref}>Подать заявку</a>
-              </Button>
-            </div>
           </div>
         </section>
 
@@ -286,11 +282,6 @@ const CompetitionSatelliteLaunch2026 = () => {
                 </Card>
               ))}
             </div>
-            <div className="mt-8">
-              <Button asChild>
-                <a href={registerHref}>Подать заявку</a>
-              </Button>
-            </div>
           </div>
         </section>
 
@@ -305,8 +296,14 @@ const CompetitionSatelliteLaunch2026 = () => {
               <div>🎖 Все финалисты — памятные дипломы</div>
             </div>
             <div className="mt-8">
-              <Button asChild variant="outline">
-                <a href={registerHref}>Подать заявку</a>
+              <Button asChild variant="primary" size="xl">
+                <a
+                  href={registerHref}
+                  aria-label="Принять участие — подать заявку на участие"
+                  data-testid="cta-bottom-apply"
+                >
+                  Принять участие
+                </a>
               </Button>
             </div>
           </div>
@@ -329,11 +326,6 @@ const CompetitionSatelliteLaunch2026 = () => {
                   </div>
                 </CardContent>
               </Card>
-              <div className="flex items-center">
-                <Button asChild size="lg" className="btn-cosmic w-full md:w-auto">
-                  <a href={registerHref}>Зарегистрироваться</a>
-                </Button>
-              </div>
             </div>
           </div>
         </section>
