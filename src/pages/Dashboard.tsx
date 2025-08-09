@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import { useTranslation } from "react-i18next";
 import { competitions } from "@/data/competitions";
 import { useNavigate } from "react-router-dom";
 import type { Tables } from "@/integrations/supabase/types";
@@ -27,6 +28,7 @@ type Enrollment = Tables<"enrollments">;
 const Dashboard = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
   const [loading, setLoading] = useState(true);
@@ -34,8 +36,8 @@ const Dashboard = () => {
   const [editOpen, setEditOpen] = useState(false);
 
   useEffect(() => {
-    document.title = "Личный кабинет — AEROO";
-  }, []);
+    document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
+  }, [t]);
 
   useEffect(() => {
     if (!user) {
@@ -64,9 +66,9 @@ const Dashboard = () => {
       const { error } = await supabase.from("enrollments").delete().eq("id", id);
       if (error) throw error;
       setEnrollments((prev) => prev.filter((x) => x.id !== id));
-      toast.success("Регистрация удалена");
+      toast.success(t('dashboardExtra.toasts.deleteSuccess', { defaultValue: 'Регистрация удалена' }));
     } catch (err: any) {
-      toast.error("Не удалось удалить", { description: err.message });
+      toast.error(t('dashboardExtra.toasts.deleteError', { defaultValue: 'Не удалось удалить' }), { description: err.message });
     }
   };
 
@@ -77,20 +79,20 @@ const Dashboard = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-12">
         <header className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold">Личный кабинет</h1>
-          <Button variant="outline" onClick={signOut}>Выйти</Button>
+          <h1 className="text-3xl font-bold">{t('dashboard.title', { defaultValue: 'Личный кабинет' })}</h1>
+          <Button variant="outline" onClick={signOut}>{t('dashboard.logout', { defaultValue: 'Выйти' })}</Button>
         </header>
 
         <section className="grid gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Мои участия в соревнованиях</CardTitle>
+              <CardTitle>{t('dashboard.myEnrollments', { defaultValue: 'Мои участия в соревнованиях' })}</CardTitle>
             </CardHeader>
             <CardContent>
               {loading ? (
-                <p className="text-muted-foreground">Загрузка...</p>
+                <p className="text-muted-foreground">{t('dashboard.loading', { defaultValue: 'Загрузка...' })}</p>
               ) : enrollments.length === 0 ? (
-                <p className="text-muted-foreground">Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.</p>
+                <p className="text-muted-foreground">{t('dashboard.empty', { defaultValue: 'Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.' })}</p>
               ) : (
                 <ul className="divide-y divide-border">
                   {enrollments.map((e) => (
@@ -98,21 +100,21 @@ const Dashboard = () => {
                       <div className="flex items-start justify-between">
                         <div>
                           <div className="font-medium">{compsById[e.competition_id] ?? e.competition_id}</div>
-                          <div className="text-sm text-muted-foreground">Команда: {e.team_name || "—"}</div>
+                          <div className="text-sm text-muted-foreground">{t('dashboardExtra.labels.team', { defaultValue: 'Команда' })}: {e.team_name || "—"}</div>
                           <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
-                            <div>Email: {e.email || "—"}</div>
-                            <div>Telegram: {e.telegram || "—"}</div>
-                            <div>Капитан: {e.captain_full_name || "—"}</div>
-                            <div>Телефон капитана: {e.captain_phone || "—"}</div>
-                            <div>Возраст капитана: {e.captain_age ?? "—"}</div>
-                            <div>Город: {e.city || "—"}</div>
-                            <div>Место обучения: {e.study_place || "—"}</div>
-                            <div>Источник: {e.source || "—"}</div>
+                            <div>{t('dashboardExtra.labels.email', { defaultValue: 'Email' })}: {e.email || "—"}</div>
+                            <div>{t('dashboardExtra.labels.telegram', { defaultValue: 'Telegram' })}: {e.telegram || "—"}</div>
+                            <div>{t('dashboardExtra.labels.captain', { defaultValue: 'Капитан' })}: {e.captain_full_name || "—"}</div>
+                            <div>{t('dashboardExtra.labels.captainPhone', { defaultValue: 'Телефон капитана' })}: {e.captain_phone || "—"}</div>
+                            <div>{t('dashboardExtra.labels.captainAge', { defaultValue: 'Возраст капитана' })}: {e.captain_age ?? "—"}</div>
+                            <div>{t('dashboardExtra.labels.city', { defaultValue: 'Город' })}: {e.city || "—"}</div>
+                            <div>{t('dashboardExtra.labels.studyPlace', { defaultValue: 'Место обучения' })}: {e.study_place || "—"}</div>
+                            <div>{t('dashboardExtra.labels.source', { defaultValue: 'Источник' })}: {e.source || "—"}</div>
                           </div>
                           <div className="mt-2 text-sm">
-                            <div>2 участник: {e.participant2_info || "—"}</div>
-                            <div>3 участник: {e.participant3_info || "—"}</div>
-                            <div>4 участник: {e.participant4_info || "—"}</div>
+                            <div>{t('dashboardExtra.labels.participant2', { defaultValue: '2 участник' })}: {e.participant2_info || "—"}</div>
+                            <div>{t('dashboardExtra.labels.participant3', { defaultValue: '3 участник' })}: {e.participant3_info || "—"}</div>
+                            <div>{t('dashboardExtra.labels.participant4', { defaultValue: '4 участник' })}: {e.participant4_info || "—"}</div>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
@@ -123,22 +125,22 @@ const Dashboard = () => {
                       </div>
                       <div className="flex gap-2">
                         <Button variant="outline" size="sm" onClick={() => { setSelected(e); setEditOpen(true); }}>
-                          Редактировать
+                          {t('dashboardExtra.actions.edit', { defaultValue: 'Редактировать' })}
                         </Button>
                         <AlertDialog>
                           <AlertDialogTrigger asChild>
-                            <Button variant="destructive" size="sm">Удалить</Button>
+                            <Button variant="destructive" size="sm">{t('dashboardExtra.actions.delete', { defaultValue: 'Удалить' })}</Button>
                           </AlertDialogTrigger>
                           <AlertDialogContent>
                             <AlertDialogHeader>
-                              <AlertDialogTitle>Удалить регистрацию?</AlertDialogTitle>
+                              <AlertDialogTitle>{t('dashboardExtra.confirm.title', { defaultValue: 'Удалить регистрацию?' })}</AlertDialogTitle>
                               <AlertDialogDescription>
-                                Это действие необратимо. Ваша запись в соревнование будет удалена.
+                                {t('dashboardExtra.confirm.desc', { defaultValue: 'Это действие необратимо. Ваша запись в соревнование будет удалена.' })}
                               </AlertDialogDescription>
                             </AlertDialogHeader>
                             <AlertDialogFooter>
-                              <AlertDialogCancel>Отмена</AlertDialogCancel>
-                              <AlertDialogAction onClick={() => handleDelete(e.id)}>Удалить</AlertDialogAction>
+                              <AlertDialogCancel>{t('dashboardExtra.actions.cancel', { defaultValue: 'Отмена' })}</AlertDialogCancel>
+                              <AlertDialogAction onClick={() => handleDelete(e.id)}>{t('dashboardExtra.actions.confirmDelete', { defaultValue: 'Удалить' })}</AlertDialogAction>
                             </AlertDialogFooter>
                           </AlertDialogContent>
                         </AlertDialog>

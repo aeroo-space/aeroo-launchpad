@@ -61,6 +61,128 @@ const resources = {
         myEnrollments: 'Мои участия в соревнованиях',
         loading: 'Загрузка...',
         empty: 'Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.'
+      },
+      auth: {
+        metaTitle: { signin: 'Вход — AEROO', signup: 'Регистрация — AEROO' },
+        metaDesc: 'Вход и регистрация AEROO — авторизация для участия в соревнованиях',
+        heading: 'Аутентификация AEROO',
+        signin: 'Войти',
+        signup: 'Регистрация',
+        password: 'Пароль',
+        createAccount: 'Создать аккаунт'
+      },
+      community: {
+        metaTitle: 'Сообщество AEROO — общение и поддержка',
+        metaDesc: 'Пространство AEROO: вопросы, помощь, анонсы и нетворкинг',
+        hero: {
+          title: 'Сообщество AEROO',
+          subtitle: 'Пространство для учеников, студентов, наставников и инженеров. Делитесь опытом и участвуйте в проектах AEROO.'
+        },
+        cards: {
+          networking: { title: 'Знакомства и нетворкинг', desc: 'Находите команду для соревнований и проекты для портфолио.' },
+          help: { title: 'Вопросы и помощь', desc: 'Получайте ответы от менторов и сообщества по наборам и технике.' },
+          announcements: { title: 'Анонсы и активности', desc: 'Будьте в курсе курсов, соревнований и запусков AEROO.' }
+        },
+        cta: { button: 'Перейти в сообщество', note: 'Откроется в новом окне Telegram' }
+      },
+      support: {
+        metaTitle: 'Техподдержка AEROO',
+        metaDesc: 'Помощь с доступом, наборами, заказами и участием в соревнованиях',
+        title: 'Техподдержка',
+        subtitle: 'Поможем с доступом, наборами, заказами и участием в соревнованиях. Напишите нам и мы ответим в ближайшее время.',
+        emailLabel: 'Почта:',
+        telegramLabel: 'Telegram:'
+      },
+      terms: {
+        metaTitle: 'Пользовательское соглашение — AEROO',
+        metaDesc: 'Правила использования платформы AEROO',
+        title: 'Пользовательское соглашение',
+        subtitle: 'Правила использования платформы AEROO.',
+        body: 'Используя наш сайт, вы соглашаетесь соблюдать правила и не нарушать права других пользователей.'
+      },
+      privacy: {
+        metaTitle: 'Политика конфиденциальности — AEROO',
+        metaDesc: 'Как мы собираем и обрабатываем ваши данные',
+        title: 'Политика конфиденциальности',
+        subtitle: 'Как мы собираем и обрабатываем ваши данные.',
+        body: 'Мы относимся к безопасности данных ответственно. Данные используются исключительно для предоставления услуг AEROO.'
+      },
+      faq: {
+        metaTitle: 'FAQ — AEROO',
+        metaDesc: 'Ответы на популярные вопросы',
+        title: 'Частые вопросы',
+        subtitle: 'Ответы на популярные вопросы о платформах, наборах и соревнованиях AEROO.',
+        q1: 'Как записаться на соревнование?',
+        a1: 'Выберите соревнование на странице «Соревнования» и нажмите «Участвовать». Далее следуйте инструкции.',
+        q2: 'Как выбрать набор?',
+        a2: 'Начните с ракетного набора AEROO-R1, если вы новичок. Для продвинутых подойдёт AEROO-S3.'
+      },
+      notFound: {
+        metaTitle: 'Страница не найдена — AEROO',
+        title: '404',
+        message: 'Упс! Страница не найдена',
+        back: 'Вернуться на главную'
+      },
+      about: {
+        metaTitle: 'О AEROO — миссия и команда',
+        metaDesc: 'Образовательная экосистема AEROO: миссия, ценности, команда и партнёры',
+        heroTitle: 'О AEROO',
+        heroSubtitle: 'Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление в области аэрокосмических технологий.',
+        missionTitle: 'Наша миссия',
+        missionText: 'Создать образовательную экосистему, которая объединяет школьников, студентов и молодых инженеров вокруг передовых технологий. Мы стремимся сделать аэрокосмические знания доступными каждому талантливому человеку.',
+        valuesTitle: 'Наши ценности',
+        values: {
+          innovation: 'Инновации и технологическое превосходство',
+          openness: 'Открытость и доступность образования',
+          teamwork: 'Командная работа и взаимопомощь',
+          excellence: 'Стремление к совершенству'
+        },
+        achievementsTitle: 'Наши достижения',
+        achievements: {
+          participants: 'Участников',
+          projects: 'Проектов',
+          awards: 'Наград',
+          countries: 'Страны'
+        },
+        teamTitle: 'Наша команда',
+        partnersTitle: 'Наши партнёры',
+        becomePartner: 'Стать партнёром',
+        contactsTitle: 'Контакты',
+        contactEmail: 'Email',
+        contactPhone: 'Телефон',
+        contactAddress: 'Адрес',
+        writeUs: 'Напишите нам',
+        formName: 'Имя',
+        formEmail: 'Email',
+        formMessage: 'Сообщение',
+        sendMessage: 'Отправить сообщение'
+      },
+      home: {
+        metaTitle: 'AEROO — образовательная платформа'
+      },
+      dashboardExtra: {
+        // Дополнительные подписи для страницы кабинета
+        labels: {
+          team: 'Команда',
+          email: 'Email',
+          telegram: 'Telegram',
+          captain: 'Капитан',
+          captainPhone: 'Телефон капитана',
+          captainAge: 'Возраст капитана',
+          city: 'Город',
+          studyPlace: 'Место обучения',
+          source: 'Источник',
+          participant2: '2 участник',
+          participant3: '3 участник',
+          participant4: '4 участник',
+          status: 'Статус'
+        },
+        actions: { edit: 'Редактировать', delete: 'Удалить', cancel: 'Отмена', confirmDelete: 'Удалить' },
+        confirm: {
+          title: 'Удалить регистрацию?',
+          desc: 'Это действие необратимо. Ваша запись в соревнование будет удалена.'
+        },
+        toasts: { deleteSuccess: 'Регистрация удалена', deleteError: 'Не удалось удалить' }
       }
     }
   },
@@ -121,6 +243,124 @@ const resources = {
         myEnrollments: 'My competition enrollments',
         loading: 'Loading...',
         empty: 'No records yet. Go to the “Competitions” page to enroll.'
+      },
+      auth: {
+        metaTitle: { signin: 'Sign in — AEROO', signup: 'Sign up — AEROO' },
+        metaDesc: 'AEROO sign in and registration — authorize to join competitions',
+        heading: 'AEROO Authentication',
+        signin: 'Sign in',
+        signup: 'Sign up',
+        password: 'Password',
+        createAccount: 'Create account'
+      },
+      community: {
+        metaTitle: 'AEROO Community — chat and support',
+        metaDesc: 'AEROO space for questions, help, announcements, and networking',
+        hero: {
+          title: 'AEROO Community',
+          subtitle: 'A space for students, mentors, and engineers. Share experience and join AEROO projects.'
+        },
+        cards: {
+          networking: { title: 'Networking', desc: 'Find teammates for competitions and projects for your portfolio.' },
+          help: { title: 'Questions and help', desc: 'Get answers from mentors and the community about kits and technology.' },
+          announcements: { title: 'Announcements and activities', desc: 'Stay up to date with AEROO courses, competitions, and launches.' }
+        },
+        cta: { button: 'Go to community', note: 'Opens in a new Telegram window' }
+      },
+      support: {
+        metaTitle: 'AEROO Support',
+        metaDesc: 'Help with access, kits, orders, and competitions',
+        title: 'Support',
+        subtitle: 'We help with access, kits, orders, and competitions. Message us and we will reply shortly.',
+        emailLabel: 'Email:',
+        telegramLabel: 'Telegram:'
+      },
+      terms: {
+        metaTitle: 'Terms of Service — AEROO',
+        metaDesc: 'Rules for using the AEROO platform',
+        title: 'Terms of Service',
+        subtitle: 'Rules for using the AEROO platform.',
+        body: 'By using our site, you agree to follow the rules and not violate other users’ rights.'
+      },
+      privacy: {
+        metaTitle: 'Privacy Policy — AEROO',
+        metaDesc: 'How we collect and process your data',
+        title: 'Privacy Policy',
+        subtitle: 'How we collect and process your data.',
+        body: 'We take data security seriously. Data is used solely to provide AEROO services.'
+      },
+      faq: {
+        metaTitle: 'FAQ — AEROO',
+        metaDesc: 'Answers to popular questions',
+        title: 'Frequently Asked Questions',
+        subtitle: 'Answers to common questions about AEROO platforms, kits, and competitions.',
+        q1: 'How to enroll in a competition?',
+        a1: 'Choose a competition on the “Competitions” page and click “Participate”. Then follow the instructions.',
+        q2: 'How to choose a kit?',
+        a2: 'Start with the AEROO-R1 rocket kit if you are a beginner. For advanced users, AEROO-S3 is suitable.'
+      },
+      notFound: {
+        metaTitle: 'Page not found — AEROO',
+        title: '404',
+        message: 'Oops! Page not found',
+        back: 'Return to Home'
+      },
+      about: {
+        metaTitle: 'About AEROO — mission and team',
+        metaDesc: 'AEROO learning ecosystem: mission, values, team and partners',
+        heroTitle: 'About AEROO',
+        heroSubtitle: 'We inspire and teach the next generation of builders, developing skills, teamwork and systems thinking in aerospace technologies.',
+        missionTitle: 'Our mission',
+        missionText: 'Create an educational ecosystem that unites schoolchildren, students and young engineers around advanced technologies. We strive to make aerospace knowledge accessible to every talented person.',
+        valuesTitle: 'Our values',
+        values: {
+          innovation: 'Innovation and technological excellence',
+          openness: 'Openness and accessible education',
+          teamwork: 'Teamwork and mutual assistance',
+          excellence: 'Striving for excellence'
+        },
+        achievementsTitle: 'Our achievements',
+        achievements: {
+          participants: 'Participants',
+          projects: 'Projects',
+          awards: 'Awards',
+          countries: 'Countries'
+        },
+        teamTitle: 'Our team',
+        partnersTitle: 'Our partners',
+        becomePartner: 'Become a partner',
+        contactsTitle: 'Contacts',
+        contactEmail: 'Email',
+        contactPhone: 'Phone',
+        contactAddress: 'Address',
+        writeUs: 'Write to us',
+        formName: 'Name',
+        formEmail: 'Email',
+        formMessage: 'Message',
+        sendMessage: 'Send message'
+      },
+      home: {
+        metaTitle: 'AEROO — educational platform'
+      },
+      dashboardExtra: {
+        labels: {
+          team: 'Team',
+          email: 'Email',
+          telegram: 'Telegram',
+          captain: 'Captain',
+          captainPhone: 'Captain phone',
+          captainAge: 'Captain age',
+          city: 'City',
+          studyPlace: 'Place of study',
+          source: 'Source',
+          participant2: '2nd participant',
+          participant3: '3rd participant',
+          participant4: '4th participant',
+          status: 'Status'
+        },
+        actions: { edit: 'Edit', delete: 'Delete', cancel: 'Cancel', confirmDelete: 'Delete' },
+        confirm: { title: 'Delete registration?', desc: 'This action is irreversible. Your competition entry will be deleted.' },
+        toasts: { deleteSuccess: 'Registration deleted', deleteError: 'Failed to delete' }
       }
     }
   },
@@ -181,6 +421,124 @@ const resources = {
         myEnrollments: 'Менің сайысқа тіркелулерім',
         loading: 'Жүктелуде...',
         empty: 'Әзірге жазбалар жоқ. Тіркелу үшін «Сайыстар» бетіне өтіңіз.'
+      },
+      auth: {
+        metaTitle: { signin: 'Кіру — AEROO', signup: 'Тіркелу — AEROO' },
+        metaDesc: 'AEROO-ға кіру және тіркелу — сайыстарға қатысу үшін авторизация',
+        heading: 'AEROO аутентификациясы',
+        signin: 'Кіру',
+        signup: 'Тіркелу',
+        password: 'Құпиясөз',
+        createAccount: 'Аккаунт жасау'
+      },
+      community: {
+        metaTitle: 'AEROO қауымдастығы — байланыс және қолдау',
+        metaDesc: 'AEROO кеңістігі: сұрақтар, көмек, жаңалықтар және нетворкинг',
+        hero: {
+          title: 'AEROO қауымдастығы',
+          subtitle: 'Оқушылар, студенттер, менторлар және инженерлерге арналған кеңістік. Тәжірибе бөлісіп, AEROO жобаларына қатысыңыз.'
+        },
+        cards: {
+          networking: { title: 'Танысу және нетворкинг', desc: 'Сайыстар үшін команда және портфолиоға арналған жобалар табыңыз.' },
+          help: { title: 'Сұрақтар және көмек', desc: 'Жинақтар мен техникалар туралы жауаптарды менторлар мен қауымдастықтан алыңыз.' },
+          announcements: { title: 'Жаңалықтар және іс-шаралар', desc: 'AEROO курстары, сайыстары және ұшырылымдары туралы хабардар болыңыз.' }
+        },
+        cta: { button: 'Қауымдастыққа өту', note: 'Telegram жаңа терезеде ашылады' }
+      },
+      support: {
+        metaTitle: 'AEROO қолдау қызметі',
+        metaDesc: 'Қол жеткізу, жинақтар, тапсырыстар және сайыстар бойынша көмек',
+        title: 'Қолдау қызметі',
+        subtitle: 'Қол жеткізу, жинақтар, тапсырыстар және сайыстар бойынша көмектесеміз. Жазыңыз, жақын арада жауап береміз.',
+        emailLabel: 'Пошта:',
+        telegramLabel: 'Telegram:'
+      },
+      terms: {
+        metaTitle: 'Пайдалану шарттары — AEROO',
+        metaDesc: 'AEROO платформасын пайдалану ережелері',
+        title: 'Пайдалану шарттары',
+        subtitle: 'AEROO платформасын пайдалану ережелері.',
+        body: 'Біздің сайтты пайдалана отырып, сіз ережелерді сақтауға және басқа пайдаланушылардың құқықтарын бұзбауға келісесіз.'
+      },
+      privacy: {
+        metaTitle: 'Құпиялылық саясаты — AEROO',
+        metaDesc: 'Деректерді қалай жинаймыз және өңдейміз',
+        title: 'Құпиялылық саясаты',
+        subtitle: 'Деректерді қалай жинаймыз және өңдейміз.',
+        body: 'Біз деректер қауіпсіздігін жауапкершілікпен қараймыз. Деректер тек AEROO қызметтерін көрсету үшін қолданылады.'
+      },
+      faq: {
+        metaTitle: 'Жиі қойылатын сұрақтар — AEROO',
+        metaDesc: 'Танымал сұрақтарға жауаптар',
+        title: 'Жиі қойылатын сұрақтар',
+        subtitle: 'AEROO платформалары, жинақтар және сайыстар туралы жиі қойылатын сұрақтарға жауаптар.',
+        q1: 'Сайысқа қалай тіркелуге болады?',
+        a1: '«Сайыстар» бетінде сайысты таңдап, «Қатысу» түймесін басыңыз. Әрі қарай нұсқаулықты орындаңыз.',
+        q2: 'Жинақты қалай таңдау керек?',
+        a2: 'Бастаушыларға AEROO-R1 ракета жинағын ұсынамыз. Тәжірибелілер үшін AEROO-S3 қолайлы.'
+      },
+      notFound: {
+        metaTitle: 'Бет табылмады — AEROO',
+        title: '404',
+        message: 'Қате! Бет табылмады',
+        back: 'Басты бетке оралу'
+      },
+      about: {
+        metaTitle: 'AEROO туралы — миссия және команда',
+        metaDesc: 'AEROO білім беру экожүйесі: миссия, құндылықтар, команда және серіктестер',
+        heroTitle: 'AEROO туралы',
+        heroSubtitle: 'Біз жаңа буын жасаушыларын шабыттандырып, оқытамыз: дағдылар, командалық жұмыс және аэроғарыштық технологиялардағы жүйелік ойлау.',
+        missionTitle: 'Біздің миссия',
+        missionText: 'Мектеп оқушыларын, студенттерді және жас инженерлерді заманауи технологиялар төңірегінде біріктіретін білім беру экожүйесін құру. Аэроғарыштық білімді әрбір дарынды адамға қолжетімді еткіміз келеді.',
+        valuesTitle: 'Құндылықтарымыз',
+        values: {
+          innovation: 'Инновация және технологиялық үздіксіздік',
+          openness: 'Ашықтық және білімге қолжетімділік',
+          teamwork: 'Командалық жұмыс және өзара көмек',
+          excellence: 'Жетілдіруге ұмтылу'
+        },
+        achievementsTitle: 'Жетістіктеріміз',
+        achievements: {
+          participants: 'Қатысушылар',
+          projects: 'Жобалар',
+          awards: 'Жүлделер',
+          countries: 'Елдер'
+        },
+        teamTitle: 'Біздің команда',
+        partnersTitle: 'Серіктестеріміз',
+        becomePartner: 'Серіктес болу',
+        contactsTitle: 'Байланыс',
+        contactEmail: 'Email',
+        contactPhone: 'Телефон',
+        contactAddress: 'Мекенжай',
+        writeUs: 'Бізге жазыңыз',
+        formName: 'Аты',
+        formEmail: 'Email',
+        formMessage: 'Хабарлама',
+        sendMessage: 'Хабарлама жіберу'
+      },
+      home: {
+        metaTitle: 'AEROO — білім беру платформасы'
+      },
+      dashboardExtra: {
+        labels: {
+          team: 'Команда',
+          email: 'Email',
+          telegram: 'Telegram',
+          captain: 'Капитан',
+          captainPhone: 'Капитан телефоны',
+          captainAge: 'Капитан жасы',
+          city: 'Қала',
+          studyPlace: 'Оқу орны',
+          source: 'Дереккөз',
+          participant2: '2 қатысушы',
+          participant3: '3 қатысушы',
+          participant4: '4 қатысушы',
+          status: 'Күйі'
+        },
+        actions: { edit: 'Өңдеу', delete: 'Жою', cancel: 'Болдырмау', confirmDelete: 'Жою' },
+        confirm: { title: 'Тіркелуді жою?', desc: 'Бұл әрекет қайтымсыз. Сайысқа тіркелуіңіз жойылады.' },
+        toasts: { deleteSuccess: 'Тіркелу жойылды', deleteError: 'Жою сәтсіз аяқталды' }
       }
     }
   }

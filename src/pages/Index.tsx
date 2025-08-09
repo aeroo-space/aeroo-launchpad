@@ -3,11 +3,13 @@ import { Navigation } from "@/components/ui/navigation";
 import { HeroSection } from "@/components/ui/hero-section";
 import { FeaturesSection } from "@/components/sections/features-section";
 import { Footer } from "@/components/sections/footer";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
+  const { t } = useTranslation();
   useEffect(() => {
-    document.title = "AEROO — образовательная платформа";
-  }, []);
+    document.title = t('home.metaTitle', { defaultValue: 'AEROO — образовательная платформа' });
+  }, [t]);
   return (
     <div className="min-h-screen">
       <Navigation />

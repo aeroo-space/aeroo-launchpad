@@ -1,11 +1,15 @@
 import { useEffect } from "react";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
+import { useTranslation } from "react-i18next";
 
 const Terms = () => {
+  const { t } = useTranslation();
   useEffect(() => {
-    document.title = "Пользовательское соглашение — AEROO";
-  }, []);
+    document.title = t('terms.metaTitle', { defaultValue: 'Пользовательское соглашение — AEROO' });
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', t('terms.metaDesc', { defaultValue: 'Правила использования платформы AEROO' }));
+  }, [t]);
 
   return (
     <div className="min-h-screen bg-background">

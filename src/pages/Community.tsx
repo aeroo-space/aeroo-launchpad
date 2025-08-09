@@ -9,6 +9,8 @@ const Community = () => {
   const { t } = useTranslation();
   useEffect(() => {
     document.title = t('community.metaTitle', { defaultValue: 'Сообщество AEROO — общение и поддержка' });
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', t('community.metaDesc', { defaultValue: 'Пространство AEROO: вопросы, помощь, анонсы и нетворкинг' }));
   }, [t]);
 
   return (
@@ -37,15 +39,15 @@ const Community = () => {
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
               <MessageCircle className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-semibold mb-2">Вопросы и помощь</h3>
-            <p className="text-muted-foreground text-sm">Получайте ответы от менторов и сообщества по наборам и технике.</p>
+            <h3 className="font-semibold mb-2">{t('community.cards.help.title', { defaultValue: 'Вопросы и помощь' })}</h3>
+            <p className="text-muted-foreground text-sm">{t('community.cards.help.desc', { defaultValue: 'Получайте ответы от менторов и сообщества по наборам и технике.' })}</p>
           </div>
           <div className="glass-card rounded-xl p-6">
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
               <Rocket className="w-6 h-6 text-primary" />
             </div>
-            <h3 className="font-semibold mb-2">Анонсы и активности</h3>
-            <p className="text-muted-foreground text-sm">Будьте в курсе курсов, соревнований и запусков AEROO.</p>
+            <h3 className="font-semibold mb-2">{t('community.cards.announcements.title', { defaultValue: 'Анонсы и активности' })}</h3>
+            <p className="text-muted-foreground text-sm">{t('community.cards.announcements.desc', { defaultValue: 'Будьте в курсе курсов, соревнований и запусков AEROO.' })}</p>
           </div>
         </section>
 
@@ -57,10 +59,10 @@ const Community = () => {
               rel="noopener noreferrer"
               aria-label="Перейти в сообщество AEROO в Telegram"
             >
-              Перейти в сообщество
+              {t('community.cta.button', { defaultValue: 'Перейти в сообщество' })}
             </a>
           </Button>
-          <p className="text-xs text-muted-foreground mt-3">Откроется в новом окне Telegram</p>
+          <p className="text-xs text-muted-foreground mt-3">{t('community.cta.note', { defaultValue: 'Откроется в новом окне Telegram' })}</p>
         </div>
       </main>
 

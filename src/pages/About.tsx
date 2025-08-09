@@ -17,12 +17,14 @@ import {
   Github,
   Twitter
 } from "lucide-react";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const achievements = [
-  { number: "500+", label: "Участников", icon: Users },
-  { number: "50+", label: "Проектов", icon: Rocket },
-  { number: "15+", label: "Наград", icon: Trophy },
-  { number: "3", label: "Страны", icon: Globe }
+  { number: "500+", label: "participants", icon: Users },
+  { number: "50+", label: "projects", icon: Rocket },
+  { number: "15+", label: "awards", icon: Trophy },
+  { number: "3", label: "countries", icon: Globe }
 ];
 
 const team = [
@@ -52,7 +54,12 @@ const partners = [
 ];
 
 const About = () => {
-  return (
+  const { t } = useTranslation();
+  useEffect(() => {
+    document.title = t('about.metaTitle', { defaultValue: 'О AEROO — миссия и команда' });
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', t('about.metaDesc', { defaultValue: 'Образовательная экосистема AEROO: миссия, ценности, команда и партнёры' }));
+  }, [t]);
     <div className="min-h-screen bg-background">
       <Navigation />
       
@@ -67,11 +74,10 @@ const About = () => {
           </div>
           
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            О AEROO
+            {t('about.heroTitle', { defaultValue: 'О AEROO' })}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, 
-            командную работу и системное мышление в области аэрокосмических технологий.
+            {t('about.heroSubtitle', { defaultValue: 'Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление в области аэрокосмических технологий.' })}
           </p>
         </div>
 
@@ -80,13 +86,11 @@ const About = () => {
           <Card className="border-2 hover:border-primary/50 transition-all">
             <CardHeader>
               <Target className="h-12 w-12 text-primary mb-4" />
-              <CardTitle className="text-2xl">Наша миссия</CardTitle>
+              <CardTitle className="text-2xl">{t('about.missionTitle', { defaultValue: 'Наша миссия' })}</CardTitle>
             </CardHeader>
             <CardContent>
               <p className="text-muted-foreground leading-relaxed">
-                Создать образовательную экосистему, которая объединяет школьников, студентов 
-                и молодых инженеров вокруг передовых технологий. Мы стремимся сделать 
-                аэрокосмические знания доступными каждому талантливому человеку.
+                {t('about.missionText', { defaultValue: 'Создать образовательную экосистему, которая объединяет школьников, студентов и молодых инженеров вокруг передовых технологий. Мы стремимся сделать аэрокосмические знания доступными каждому талантливому человеку.' })}
               </p>
             </CardContent>
           </Card>
@@ -94,25 +98,25 @@ const About = () => {
           <Card className="border-2 hover:border-primary/50 transition-all">
             <CardHeader>
               <Heart className="h-12 w-12 text-primary mb-4" />
-              <CardTitle className="text-2xl">Наши ценности</CardTitle>
+              <CardTitle className="text-2xl">{t('about.valuesTitle', { defaultValue: 'Наши ценности' })}</CardTitle>
             </CardHeader>
             <CardContent>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-3" />
-                  Инновации и технологическое превосходство
+                  {t('about.values.innovation', { defaultValue: 'Инновации и технологическое превосходство' })}
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-3" />
-                  Открытость и доступность образования
+                  {t('about.values.openness', { defaultValue: 'Открытость и доступность образования' })}
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-3" />
-                  Командная работа и взаимопомощь
+                  {t('about.values.teamwork', { defaultValue: 'Командная работа и взаимопомощь' })}
                 </li>
                 <li className="flex items-center">
                   <div className="w-2 h-2 bg-primary rounded-full mr-3" />
-                  Стремление к совершенству
+                  {t('about.values.excellence', { defaultValue: 'Стремление к совершенству' })}
                 </li>
               </ul>
             </CardContent>
@@ -121,7 +125,7 @@ const About = () => {
 
         {/* Achievements */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Наши достижения</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('about.achievementsTitle', { defaultValue: 'Наши достижения' })}</h2>
           
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {achievements.map((achievement, index) => {
@@ -132,7 +136,7 @@ const About = () => {
                     <Icon className="h-10 w-10 text-primary group-hover:glow-primary transition-all" />
                   </div>
                   <div className="text-3xl font-bold text-primary mb-2">{achievement.number}</div>
-                  <div className="text-muted-foreground">{achievement.label}</div>
+                  <div className="text-muted-foreground">{t(`about.achievements.${achievement.label}`, { defaultValue: achievement.label })}</div>
                 </div>
               );
             })}
@@ -141,7 +145,7 @@ const About = () => {
 
         {/* Team */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Наша команда</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('about.teamTitle', { defaultValue: 'Наша команда' })}</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             {team.map((member, index) => (
@@ -167,7 +171,7 @@ const About = () => {
 
         {/* Partners */}
         <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">Наши партнёры</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('about.partnersTitle', { defaultValue: 'Наши партнёры' })}</h2>
           
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {partners.map((partner, index) => (
@@ -179,21 +183,21 @@ const About = () => {
           
           <div className="text-center mt-12">
             <Button variant="outline" size="lg">
-              Стать партнёром
+              {t('about.becomePartner', { defaultValue: 'Стать партнёром' })}
             </Button>
           </div>
         </div>
 
         {/* Contact */}
         <div className="bg-muted/30 rounded-2xl p-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Контакты</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('about.contactsTitle', { defaultValue: 'Контакты' })}</h2>
           
           <div className="grid md:grid-cols-2 gap-12">
             <div className="space-y-6">
               <div className="flex items-center space-x-4">
                 <Mail className="h-6 w-6 text-primary" />
                 <div>
-                  <div className="font-medium">Email</div>
+                  <div className="font-medium">{t('about.contactEmail', { defaultValue: 'Email' })}</div>
                   <div className="text-muted-foreground">info@aeroo.kz</div>
                 </div>
               </div>
@@ -201,7 +205,7 @@ const About = () => {
               <div className="flex items-center space-x-4">
                 <Phone className="h-6 w-6 text-primary" />
                 <div>
-                  <div className="font-medium">Телефон</div>
+                  <div className="font-medium">{t('about.contactPhone', { defaultValue: 'Телефон' })}</div>
                   <div className="text-muted-foreground">+7 (777) 123-45-67</div>
                 </div>
               </div>
@@ -209,7 +213,7 @@ const About = () => {
               <div className="flex items-center space-x-4">
                 <MapPin className="h-6 w-6 text-primary" />
                 <div>
-                  <div className="font-medium">Адрес</div>
+                  <div className="font-medium">{t('about.contactAddress', { defaultValue: 'Адрес' })}</div>
                   <div className="text-muted-foreground">Алматы, Казахстан</div>
                 </div>
               </div>
@@ -228,22 +232,22 @@ const About = () => {
             </div>
             
             <div>
-              <h3 className="text-xl font-semibold mb-6">Напишите нам</h3>
+              <h3 className="text-xl font-semibold mb-6">{t('about.writeUs', { defaultValue: 'Напишите нам' })}</h3>
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Имя</label>
-                  <input className="w-full p-3 rounded-lg border border-border bg-background" placeholder="Ваше имя" />
+                  <label className="block text-sm font-medium mb-2">{t('about.formName', { defaultValue: 'Имя' })}</label>
+                  <input className="w-full p-3 rounded-lg border border-border bg-background" placeholder="" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Email</label>
-                  <input type="email" className="w-full p-3 rounded-lg border border-border bg-background" placeholder="your@email.com" />
+                  <label className="block text-sm font-medium mb-2">{t('about.formEmail', { defaultValue: 'Email' })}</label>
+                  <input type="email" className="w-full p-3 rounded-lg border border-border bg-background" placeholder="" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Сообщение</label>
-                  <textarea className="w-full p-3 rounded-lg border border-border bg-background h-32" placeholder="Ваше сообщение..."></textarea>
+                  <label className="block text-sm font-medium mb-2">{t('about.formMessage', { defaultValue: 'Сообщение' })}</label>
+                  <textarea className="w-full p-3 rounded-lg border border-border bg-background h-32" placeholder=""></textarea>
                 </div>
                 <Button className="w-full btn-cosmic">
-                  Отправить сообщение
+                  {t('about.sendMessage', { defaultValue: 'Отправить сообщение' })}
                 </Button>
               </div>
             </div>
