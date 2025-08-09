@@ -8,6 +8,7 @@ import {
   ArrowRight 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const FEATURES = [
@@ -71,28 +72,30 @@ export function FeaturesSection() {
           {FEATURES.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <div 
+              <Link
+                to={index < 3 ? "/products" : "/competitions"}
                 key={index}
-                className="glass-card p-8 rounded-xl hover:glow-primary transition-all duration-300 group cursor-pointer"
+                className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-xl"
+                aria-label={`${t(`home.features.items.${index}.title`, { defaultValue: feature.title })} — подробнее`}
               >
-                <div className="flex items-center mb-4">
-                  <div className="p-3 rounded-lg bg-muted/20 mr-4 group-hover:glow-primary transition-all">
-                    <Icon className={`h-8 w-8 ${feature.color}`} />
+                <article className="glass-card p-8 rounded-xl hover:glow-primary transition-all duration-300 hover-scale animate-fade-in">
+                  <div className="flex items-center mb-4">
+                    <div className="p-3 rounded-lg bg-muted/20 mr-4 group-hover:glow-primary transition-all">
+                      <Icon className={`h-8 w-8 ${feature.color}`} />
+                    </div>
+                    <h3 className="text-xl font-semibold text-foreground">
+                      {t(`home.features.items.${index}.title`, { defaultValue: feature.title })}
+                    </h3>
                   </div>
-                  <h3 className="text-xl font-semibold text-foreground">
-                    {t(`home.features.items.${index}.title`, { defaultValue: feature.title })}
-                  </h3>
-                </div>
-                <p className="text-muted-foreground leading-relaxed">
-                  {t(`home.features.items.${index}.desc`, { defaultValue: feature.description })}
-                </p>
-                <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <Button variant="ghost" size="sm" className="p-0 h-auto text-primary hover:text-primary-glow">
-                    {t('home.features.learnMore', { defaultValue: 'Узнать больше' })}
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  </Button>
-                </div>
-              </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t(`home.features.items.${index}.desc`, { defaultValue: feature.description })}
+                  </p>
+                  <div className="mt-6 text-primary flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <span className="font-medium">{t('home.features.learnMore', { defaultValue: 'Узнать больше' })}</span>
+                    <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                </article>
+              </Link>
             );
           })}
         </div>
