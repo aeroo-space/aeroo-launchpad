@@ -25,8 +25,8 @@ import {
 } from "lucide-react";
 import heroSpace from "@/assets/hero-space.jpg";
 import { Link } from "react-router-dom";
+import { toast } from "@/components/ui/sonner";
 
-const APPLY_MAILTO = "/competitions?enroll=space-settlement";
 const TG_COMMUNITY = "https://t.me/+5nKRCrdTXT05YThi";
 
 const sections = [
@@ -84,8 +84,8 @@ export default function CompetitionSpaceSettlement2025() {
   }, []);
 
   const applyBtn = (
-    <Button asChild size="lg" variant="primary" aria-label="Принять участие — регистрация на AEROO Space Settlement 2025">
-      <Link to={APPLY_MAILTO}>Принять участие</Link>
+    <Button size="lg" variant="primary" onClick={() => toast("Регистрация пока закрыта", { description: "Подождите до 5 сентября 2025 года" })} aria-label="Принять участие — регистрация на AEROO Space Settlement 2025">
+      Принять участие
     </Button>
   );
 
