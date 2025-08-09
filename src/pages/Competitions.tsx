@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -51,6 +51,13 @@ const Competitions = () => {
     setSelectedId(id);
     setOpen(true);
   };
+
+  const location = useLocation();
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const enroll = params.get("enroll");
+    if (enroll) handleOpenEnroll(enroll);
+  }, [location.search]);
 
   const handleSubmitEnroll = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -169,7 +176,7 @@ const Competitions = () => {
                       <Button variant="outline" className="w-full">{t('competitions.details')}</Button>
                     )}
                     <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
-                      {t('competitions.enrollTeam')}
+                      Принять участие
                     </Button>
                   </div>
                 </CardContent>

@@ -65,7 +65,7 @@ const CompetitionSatelliteLaunch2026 = () => {
     return () => observer.disconnect();
   }, []);
 
-  const registerHref = "/competitions";
+  const registerHref = "/competitions?enroll=satellite-launch";
 
   return (
     <div className="min-h-screen bg-background">
