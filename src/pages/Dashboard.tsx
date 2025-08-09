@@ -10,6 +10,9 @@ import { useTranslation } from "react-i18next";
 import { competitions } from "@/data/competitions";
 import { useNavigate } from "react-router-dom";
 import type { Tables } from "@/integrations/supabase/types";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
 import { 
   AlertDialog,
@@ -34,7 +37,10 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Enrollment | null>(null);
   const [editOpen, setEditOpen] = useState(false);
-
+  const [pwdOpen, setPwdOpen] = useState(false);
+  const [newPwd, setNewPwd] = useState("");
+  const [newPwd2, setNewPwd2] = useState("");
+  const [pwdSubmitting, setPwdSubmitting] = useState(false);
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -71,6 +77,32 @@ const Dashboard = () => {
       toast.error(t('dashboardExtra.toasts.deleteError', { defaultValue: 'Не удалось удалить' }), { description: err.message });
     }
   };
+  
+  const handlePasswordChange = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPwd !== newPwd2) {
+      toast.error(t('auth.passwordsDontMatch', { defaultValue: 'Пароли не совпадают' }));
+      return;
+    }
+    const valid = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(newPwd);
+    if (!valid) {
+      toast.error(t('auth.passwordInvalid', { defaultValue: 'Пароль не соответствует требованиям' }), { description: t('auth.passwordRules', { defaultValue: 'Минимум 8 символов, одна заглавная буква и один спецсимвол' }) });
+      return;
+    }
+    try {
+      setPwdSubmitting(true);
+      const { error } = await supabase.auth.updateUser({ password: newPwd });
+      if (error) throw error;
+      toast.success(t('auth.passwordUpdated', { defaultValue: 'Пароль обновлён' }));
+      setPwdOpen(false);
+      setNewPwd("");
+      setNewPwd2("");
+    } catch (err: any) {
+      toast.error(t('auth.passwordUpdateError', { defaultValue: 'Ошибка обновления пароля' }), { description: err.message });
+    } finally {
+      setPwdSubmitting(false);
+    }
+  };
 
   if (!user) return null;
 
@@ -84,6 +116,25 @@ const Dashboard = () => {
         </header>
 
         <section className="grid gap-6">
+          <Card>
+            <CardHeader>
+              <CardTitle>{t('dashboard.profile', { defaultValue: 'Профиль' })}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div className="space-y-1">
+                  <div className="text-sm text-muted-foreground">{t('dashboard.fullName', { defaultValue: 'ФИО' })}</div>
+                  <div className="font-medium">{(user.user_metadata as any)?.full_name || "—"}</div>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="outline" onClick={() => setPwdOpen(true)}>
+                    {t('dashboard.changePassword', { defaultValue: 'Сменить пароль' })}
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader>
               <CardTitle>{t('dashboard.myEnrollments', { defaultValue: 'Мои участия в соревнованиях' })}</CardTitle>
@@ -163,6 +214,31 @@ const Dashboard = () => {
             }}
           />
         )}
+
+        <Dialog open={pwdOpen} onOpenChange={setPwdOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{t('dashboard.changePassword', { defaultValue: 'Сменить пароль' })}</DialogTitle>
+              <DialogDescription>
+                {t('auth.passwordRules', { defaultValue: 'Минимум 8 символов, одна заглавная буква и один спецсимвол' })}
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handlePasswordChange} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="newPassword">{t('auth.newPassword', { defaultValue: 'Новый пароль' })}</Label>
+                <Input id="newPassword" type="password" value={newPwd} onChange={(e)=>setNewPwd(e.target.value)} required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="newPassword2">{t('auth.confirmPassword', { defaultValue: 'Подтвердите пароль' })}</Label>
+                <Input id="newPassword2" type="password" value={newPwd2} onChange={(e)=>setNewPwd2(e.target.value)} required />
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button type="button" variant="outline" onClick={() => setPwdOpen(false)}>{t('common.cancel', { defaultValue: 'Отмена' })}</Button>
+                <Button type="submit" disabled={pwdSubmitting}>{t('common.save', { defaultValue: 'Сохранить' })}</Button>
+              </div>
+            </form>
+          </DialogContent>
+        </Dialog>
       </main>
       <Footer />
     </div>

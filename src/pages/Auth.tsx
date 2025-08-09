@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { toast } from "@/components/ui/sonner";
+import { supabase } from "@/integrations/supabase/client";
 const Auth = () => {
   const { user, loading, signIn, signUp } = useAuth();
   const navigate = useNavigate();
@@ -22,6 +23,13 @@ const Auth = () => {
   const [school, setSchool] = useState("");
   const [showEmailCheck, setShowEmailCheck] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [showForgot, setShowForgot] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [sendingReset, setSendingReset] = useState(false);
+  const [showResetPwd, setShowResetPwd] = useState(false);
+  const [newPwd, setNewPwd] = useState("");
+  const [newPwd2, setNewPwd2] = useState("");
+  const [resetSubmitting, setResetSubmitting] = useState(false);
 
 useEffect(() => {
   document.title = mode === "signin" ? t('auth.metaTitle.signin', { defaultValue: 'Вход — AEROO' }) : t('auth.metaTitle.signup', { defaultValue: 'Регистрация — AEROO' });
@@ -32,6 +40,17 @@ useEffect(() => {
   useEffect(() => {
     if (!loading && user) navigate("/dashboard", { replace: true });
   }, [user, loading, navigate]);
+
+  useEffect(() => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
+      if (event === "PASSWORD_RECOVERY") {
+        setShowResetPwd(true);
+      }
+    });
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,6 +79,55 @@ useEffect(() => {
       }
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleSendReset = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const targetEmail = (forgotEmail || email).trim();
+    if (!targetEmail) {
+      toast.error("Укажите email");
+      return;
+    }
+    setSendingReset(true);
+    try {
+      const { error } = await supabase.auth.resetPasswordForEmail(targetEmail, {
+        redirectTo: `${window.location.origin}/auth`,
+      });
+      if (error) throw error;
+      toast.success("Ссылка для восстановления отправлена");
+      setShowForgot(false);
+    } catch (err: any) {
+      toast.error("Не удалось отправить письмо", { description: err.message });
+    } finally {
+      setSendingReset(false);
+    }
+  };
+
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (newPwd !== newPwd2) {
+      toast.error("Пароли не совпадают");
+      return;
+    }
+    const valid = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(newPwd);
+    if (!valid) {
+      toast.error("Пароль не соответствует требованиям", { description: "Минимум 8 символов, одна заглавная буква и один спецсимвол" });
+      return;
+    }
+    setResetSubmitting(true);
+    try {
+      const { error } = await supabase.auth.updateUser({ password: newPwd });
+      if (error) throw error;
+      toast.success("Пароль обновлён");
+      setShowResetPwd(false);
+      setMode("signin");
+      setNewPwd("");
+      setNewPwd2("");
+    } catch (err: any) {
+      toast.error("Ошибка обновления пароля", { description: err.message });
+    } finally {
+      setResetSubmitting(false);
     }
   };
 
@@ -119,6 +187,14 @@ useEffect(() => {
               )}
             </div>
 
+            {mode === "signin" && (
+              <div className="text-right -mt-2">
+                <Button type="button" variant="link" onClick={() => { setForgotEmail(email); setShowForgot(true); }}>
+                  {t('auth.forgotPassword', { defaultValue: 'Забыли пароль?' })}
+                </Button>
+              </div>
+            )}
+
             {mode === "signup" && (
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">{t('auth.confirmPassword', { defaultValue: 'Подтвердите пароль' })}</Label>
@@ -146,6 +222,52 @@ useEffect(() => {
               {t('common.ok', { defaultValue: 'Понятно' })}
             </Button>
           </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showForgot} onOpenChange={setShowForgot}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t('auth.forgotPassword', { defaultValue: 'Восстановление пароля' })}</DialogTitle>
+            <DialogDescription>
+              {t('auth.forgotPasswordDesc', { defaultValue: 'Укажите ваш email. Мы отправим ссылку для восстановления.' })}
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleSendReset} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="forgotEmail">{t('form.emailBasic', { defaultValue: 'Email' })}</Label>
+              <Input id="forgotEmail" type="email" value={forgotEmail} onChange={(e) => setForgotEmail(e.target.value)} required />
+            </div>
+            <div className="flex justify-end gap-2">
+              <Button type="button" variant="outline" onClick={() => setShowForgot(false)}>{t('common.cancel', { defaultValue: 'Отмена' })}</Button>
+              <Button type="submit" disabled={sendingReset}>{t('auth.sendLink', { defaultValue: 'Отправить ссылку' })}</Button>
+            </div>
+          </form>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showResetPwd} onOpenChange={setShowResetPwd}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t('auth.setNewPassword', { defaultValue: 'Установка нового пароля' })}</DialogTitle>
+            <DialogDescription>
+              {t('auth.passwordRules', { defaultValue: 'Минимум 8 символов, одна заглавная буква и один спецсимвол' })}
+            </DialogDescription>
+          </DialogHeader>
+          <form onSubmit={handleResetPassword} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="rp1">{t('auth.newPassword', { defaultValue: 'Новый пароль' })}</Label>
+              <Input id="rp1" type="password" value={newPwd} onChange={(e)=>setNewPwd(e.target.value)} required />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="rp2">{t('auth.confirmPassword', { defaultValue: 'Подтвердите пароль' })}</Label>
+              <Input id="rp2" type="password" value={newPwd2} onChange={(e)=>setNewPwd2(e.target.value)} required />
+            </div>
+            <div className="flex justify-end gap-2">
+              <Button type="button" variant="outline" onClick={() => setShowResetPwd(false)}>{t('common.cancel', { defaultValue: 'Отмена' })}</Button>
+              <Button type="submit" disabled={resetSubmitting}>{t('common.save', { defaultValue: 'Сохранить' })}</Button>
+            </div>
+          </form>
         </DialogContent>
       </Dialog>
 
