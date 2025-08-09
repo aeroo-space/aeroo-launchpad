@@ -23,7 +23,7 @@ import {
   Send,
   Mail,
 } from "lucide-react";
-import heroSpace from "@/assets/hero-space.jpg";
+
 import { Link } from "react-router-dom";
 import { toast } from "@/components/ui/sonner";
 
@@ -120,7 +120,7 @@ export default function CompetitionSpaceSettlement2025() {
         {/* Hero */}
         <section
           className="relative overflow-hidden"
-          style={{ backgroundImage: `url(${heroSpace})`, backgroundSize: "cover", backgroundPosition: "center" }}
+          style={{ backgroundImage: "url(/lovable-uploads/8f3c3b0a-eb8e-4268-9777-f90603ffc009.png)", backgroundSize: "cover", backgroundPosition: "center" }}
         >
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/30 to-background/90" />
           <div className="container mx-auto px-4 py-24 md:py-36 relative z-10">
