@@ -16,29 +16,65 @@ export type Database = {
     Tables: {
       enrollments: {
         Row: {
+          captain_age: number | null
+          captain_full_name: string | null
+          captain_phone: string | null
+          city: string | null
           competition_id: string
+          consent: boolean
           created_at: string
+          email: string | null
           id: string
+          participant2_info: string | null
+          participant3_info: string | null
+          participant4_info: string | null
+          source: string | null
           status: string
+          study_place: string | null
           team_name: string | null
+          telegram: string | null
           updated_at: string
           user_id: string
         }
         Insert: {
+          captain_age?: number | null
+          captain_full_name?: string | null
+          captain_phone?: string | null
+          city?: string | null
           competition_id: string
+          consent?: boolean
           created_at?: string
+          email?: string | null
           id?: string
+          participant2_info?: string | null
+          participant3_info?: string | null
+          participant4_info?: string | null
+          source?: string | null
           status?: string
+          study_place?: string | null
           team_name?: string | null
+          telegram?: string | null
           updated_at?: string
           user_id: string
         }
         Update: {
+          captain_age?: number | null
+          captain_full_name?: string | null
+          captain_phone?: string | null
+          city?: string | null
           competition_id?: string
+          consent?: boolean
           created_at?: string
+          email?: string | null
           id?: string
+          participant2_info?: string | null
+          participant3_info?: string | null
+          participant4_info?: string | null
+          source?: string | null
           status?: string
+          study_place?: string | null
           team_name?: string | null
+          telegram?: string | null
           updated_at?: string
           user_id?: string
         }
