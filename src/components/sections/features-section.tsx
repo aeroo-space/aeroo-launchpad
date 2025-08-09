@@ -14,13 +14,13 @@ import { useTranslation } from "react-i18next";
 const FEATURES = [
   {
     icon: Rocket,
-    title: "Ракетомодельный спорт",
+    title: "Ракетостроение",
     description: "Изучение аэродинамики, конструирование и запуск моделей ракет с твердотопливными двигателями",
     color: "text-primary"
   },
   {
     icon: Plane,
-    title: "Беспилотные системы",
+    title: "БПЛА",
     description: "Программирование дронов, FPV-пилотирование, аэросъёмка и автономные полёты",
     color: "text-accent"
   },
@@ -107,8 +107,8 @@ export function FeaturesSection() {
           </h3>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild className="btn-cosmic px-8 py-3">
-                <Link to="/products" aria-label={t('home.features.cta.courses', { defaultValue: 'Посмотреть образовательные комплекты для школ' })}>
-                  {t('home.features.cta.courses', { defaultValue: 'Посмотреть образовательные комплекты для школ' })}
+                <Link to="/products" aria-label={t('home.features.cta.courses', { defaultValue: 'Образовательные комплекты для школ' })}>
+                  {t('home.features.cta.courses', { defaultValue: 'Образовательные комплекты для школ' })}
                 </Link>
               </Button>
               <Button asChild className="btn-aurora px-8 py-3">
