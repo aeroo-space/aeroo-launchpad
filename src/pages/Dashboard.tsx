@@ -8,15 +8,10 @@ import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import { competitions } from "@/data/competitions";
 import { useNavigate } from "react-router-dom";
+import type { Tables } from "@/integrations/supabase/types";
+import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
 
-interface Enrollment {
-  id: string;
-  user_id: string;
-  competition_id: string;
-  team_name: string | null;
-  status: string | null;
-  created_at: string;
-}
+type Enrollment = Tables<"enrollments">;
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
@@ -24,6 +19,8 @@ const Dashboard = () => {
   
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selected, setSelected] = useState<Enrollment | null>(null);
+  const [editOpen, setEditOpen] = useState(false);
 
   useEffect(() => {
     document.title = "Личный кабинет — AEROO";

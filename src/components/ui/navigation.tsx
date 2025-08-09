@@ -12,6 +12,7 @@ import {
   X,
   User
 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthProvider";
 
 const LANGUAGES = [
   { code: 'ru', label: 'RU' },
@@ -29,6 +30,7 @@ const NAVIGATION_ITEMS = [
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentLang, setCurrentLang] = useState('ru');
+  const { user } = useAuth();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
@@ -85,13 +87,22 @@ export function Navigation() {
               ))}
             </div>
 
-            {/* Profile/Login */}
-            <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
-              <Link to="/auth">
-                <User className="h-4 w-4 mr-2" />
-                Войти
-              </Link>
-            </Button>
+{/* Profile/Login or Dashboard */}
+{user ? (
+  <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
+    <Link to="/dashboard">
+      <User className="h-4 w-4 mr-2" />
+      Личный кабинет
+    </Link>
+  </Button>
+) : (
+  <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
+    <Link to="/auth">
+      <User className="h-4 w-4 mr-2" />
+      Войти
+    </Link>
+  </Button>
+)}
 
             {/* Mobile Menu Toggle */}
             <Button
@@ -144,12 +155,21 @@ export function Navigation() {
               </div>
             </div>
             
-            <Button className="w-full btn-cosmic" asChild>
-              <Link to="/auth">
-                <User className="h-4 w-4 mr-2" />
-                Войти
-              </Link>
-            </Button>
+{user ? (
+  <Button className="w-full btn-cosmic" asChild>
+    <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+      <User className="h-4 w-4 mr-2" />
+      Личный кабинет
+    </Link>
+  </Button>
+) : (
+  <Button className="w-full btn-cosmic" asChild>
+    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+      <User className="h-4 w-4 mr-2" />
+      Войти
+    </Link>
+  </Button>
+)}
           </div>
         )}
       </div>
