@@ -240,10 +240,17 @@ const CompetitionSatelliteLaunch2026 = () => {
                 </p>
               </div>
               <div>
-                <Card className="glass-card">
+                <Card className="glass-card overflow-hidden">
                   <CardContent className="p-0">
-                    <div className="aspect-video w-full bg-[hsl(var(--space-3)/0.2)] flex items-center justify-center">
-                      <Satellite className="w-24 h-24 text-primary" />
+                    <div className="aspect-video w-full bg-muted relative">
+                      <img
+                        src="/lovable-uploads/c7d720b3-94b2-4030-9cee-6d6ff7de5556.png"
+                        alt="AEROO Satellite Launch — участники и организаторы на мероприятии"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover"
+                      />
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
                     </div>
                   </CardContent>
                 </Card>
