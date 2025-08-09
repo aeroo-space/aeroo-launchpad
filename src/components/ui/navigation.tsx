@@ -13,6 +13,7 @@ import {
   User
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthProvider";
+import { useTranslation } from "react-i18next";
 
 const LANGUAGES = [
   { code: 'ru', label: 'RU' },
@@ -29,9 +30,9 @@ const NAVIGATION_ITEMS = [
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentLang, setCurrentLang] = useState('ru');
   const { user } = useAuth();
-
+  const { t, i18n } = useTranslation();
+  const currentLang = (i18n.language || 'ru').split('-')[0];
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
       <div className="container mx-auto px-4">
@@ -61,7 +62,7 @@ export function Navigation() {
                   className="group flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
                 >
                   <Icon className="h-4 w-4 group-hover:glow-primary transition-all" />
-                  <span>{item.label}</span>
+                  <span>{({ '/competitions': t('nav.competitions'), '/courses': t('nav.courses'), '/products': t('nav.products'), '/about': t('nav.about') } as Record<string,string>)[item.href] ?? item.label}</span>
                 </Link>
               );
             })}
@@ -74,7 +75,7 @@ export function Navigation() {
               {LANGUAGES.map((lang) => (
                 <button
                   key={lang.code}
-                  onClick={() => setCurrentLang(lang.code)}
+                  onClick={() => i18n.changeLanguage(lang.code)}
                   className={cn(
                     "px-3 py-1 text-sm rounded-md transition-colors",
                     currentLang === lang.code
@@ -92,14 +93,14 @@ export function Navigation() {
   <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
     <Link to="/dashboard">
       <User className="h-4 w-4 mr-2" />
-      Личный кабинет
+      {t('nav.dashboard')}
     </Link>
   </Button>
 ) : (
   <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
     <Link to="/auth">
       <User className="h-4 w-4 mr-2" />
-      Войти
+      {t('nav.login')}
     </Link>
   </Button>
 )}
@@ -129,7 +130,7 @@ export function Navigation() {
                   onClick={() => setIsMenuOpen(false)}
                 >
                   <Icon className="h-5 w-5" />
-                  <span>{item.label}</span>
+                  <span>{({ '/competitions': t('nav.competitions'), '/courses': t('nav.courses'), '/products': t('nav.products'), '/about': t('nav.about') } as Record<string,string>)[item.href] ?? item.label}</span>
                 </Link>
               );
             })}
@@ -141,7 +142,7 @@ export function Navigation() {
                 {LANGUAGES.map((lang) => (
                   <button
                     key={lang.code}
-                    onClick={() => setCurrentLang(lang.code)}
+                    onClick={() => i18n.changeLanguage(lang.code)}
                     className={cn(
                       "px-2 py-1 text-sm rounded transition-colors",
                       currentLang === lang.code
@@ -159,14 +160,14 @@ export function Navigation() {
   <Button className="w-full btn-cosmic" asChild>
     <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
       <User className="h-4 w-4 mr-2" />
-      Личный кабинет
+      {t('nav.dashboard')}
     </Link>
   </Button>
 ) : (
   <Button className="w-full btn-cosmic" asChild>
     <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
       <User className="h-4 w-4 mr-2" />
-      Войти
+      {t('nav.login')}
     </Link>
   </Button>
 )}

@@ -16,10 +16,12 @@ import { competitions, getStatusColor } from "@/data/competitions";
 import { useAuth } from "@/contexts/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import { useTranslation } from "react-i18next";
 
 const Competitions = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { t } = useTranslation();
   
   const [open, setOpen] = useState(false);
   const [teamName, setTeamName] = useState("");
@@ -42,7 +44,7 @@ const Competitions = () => {
 
   const handleOpenEnroll = (id: string) => {
     if (!user) {
-      toast("Войдите, чтобы записаться", { description: "Переходим на страницу входа" });
+      toast(t('competitions.toastLoginTitle'), { description: t('competitions.toastLoginDesc') });
       navigate("/auth");
       return;
     }
@@ -54,7 +56,7 @@ const Competitions = () => {
     e.preventDefault();
     if (!user || !selectedId) return;
     if (!consent) {
-      toast("Подтвердите согласие", { description: "Необходимо согласиться с положением и политикой" });
+      toast(t('competitions.toastNeedConsentTitle'), { description: t('competitions.toastNeedConsentDesc') });
       return;
     }
     setSubmitting(true);
@@ -80,10 +82,10 @@ const Competitions = () => {
     });
     setSubmitting(false);
     if (error) {
-      toast.error("Не удалось записаться", { description: error.message });
+      toast.error(t('competitions.toastEnrollError'), { description: error.message });
       return;
     }
-    toast.success("Вы записаны!", { description: "Подтверждение и материалы отправлены на почту капитана" });
+    toast.success(t('competitions.toastEnrollSuccessTitle'));
     // Reset and close
     setOpen(false);
     setTeamName("");
@@ -110,11 +112,10 @@ const Competitions = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            Соревнования AEROO
+            {t('competitions.title')}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Присоединяйтесь к инновационным соревнованиям в области аэрокосмических технологий. 
-            Проверьте свои навыки и создавайте будущее вместе с нами.
+            {t('competitions.subtitle')}
           </p>
         </div>
 
@@ -145,19 +146,19 @@ const Competitions = () => {
                   
                   <div className="space-y-2 mb-6">
                     <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Возраст:</span>
+                      <span className="text-muted-foreground">{t('competitions.age')}</span>
                       <span className="font-medium">{competition.ages}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Дедлайн:</span>
-                      <span className="font-medium">{competition.deadline}</span>
-                    </div>
+                      <div className="flex justify-between text-sm">
+                        <span className="text-muted-foreground">{t('competitions.deadline')}</span>
+                        <span className="font-medium">{competition.deadline}</span>
+                      </div>
                   </div>
                   
 <div className="grid grid-cols-1 gap-3">
-                    <Button variant="outline" className="w-full">Подробнее</Button>
+                    <Button variant="outline" className="w-full">{t('competitions.details')}</Button>
                     <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
-                      Записаться с командой
+                      {t('competitions.enrollTeam')}
                     </Button>
                   </div>
                 </CardContent>
@@ -168,12 +169,12 @@ const Competitions = () => {
 
         {/* Archive Section */}
         <div className="bg-muted/30 rounded-2xl p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Архив соревнований</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('competitions.archiveTitle')}</h2>
           <p className="text-muted-foreground mb-6">
-            Изучите результаты прошлых лет и вдохновитесь достижениями участников
+            {t('competitions.archiveDesc')}
           </p>
           <Button variant="outline" size="lg">
-            Посмотреть архив
+            {t('competitions.archiveBtn')}
           </Button>
         </div>
 
@@ -181,76 +182,76 @@ const Competitions = () => {
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogContent>
             <DialogHeader>
-              <DialogTitle>Запись в соревнование</DialogTitle>
+              <DialogTitle>{t('competitions.enrollDialogTitle')}</DialogTitle>
               <DialogDescription>
-                Заполните данные команды. После регистрации капитану придёт письмо с подтверждением и техническим заданием.
+                {t('competitions.enrollDialogDesc')}
               </DialogDescription>
             </DialogHeader>
             <form onSubmit={handleSubmitEnroll} className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email капитана *</Label>
+                  <Label htmlFor="email">{t('form.email')}</Label>
                   <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="tg">Telegram-аккаунт для связи *</Label>
+                  <Label htmlFor="tg">{t('form.telegram')}</Label>
                   <Input id="tg" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="@username" required />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="team">Название команды *</Label>
+                  <Label htmlFor="team">{t('form.teamName')}</Label>
                   <Input id="team" value={teamName} onChange={(e) => setTeamName(e.target.value)} placeholder="Например: AEROO Crew" required />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="captain">ФИО капитана команды *</Label>
+                  <Label htmlFor="captain">{t('form.captainFullName')}</Label>
                   <Input id="captain" value={captainFullName} onChange={(e) => setCaptainFullName(e.target.value)} placeholder="Иванов Иван Иванович" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Номер телефона капитана *</Label>
+                  <Label htmlFor="phone">{t('form.captainPhone')}</Label>
                   <Input id="phone" value={captainPhone} onChange={(e) => setCaptainPhone(e.target.value)} placeholder="+7 700 000 00 00" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="age">Возраст капитана *</Label>
+                  <Label htmlFor="age">{t('form.captainAge')}</Label>
                   <Input id="age" type="number" min={8} value={captainAge === "" ? "" : captainAge} onChange={(e) => setCaptainAge(e.target.value === "" ? "" : Number(e.target.value))} placeholder="18" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="city">Город *</Label>
+                  <Label htmlFor="city">{t('form.city')}</Label>
                   <Input id="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Алматы" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="study">Место обучения *</Label>
+                  <Label htmlFor="study">{t('form.studyPlace')}</Label>
                   <Input id="study" value={studyPlace} onChange={(e) => setStudyPlace(e.target.value)} placeholder="Школа/ВУЗ" required />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p2">2 участник команды (ФИО, телефон, возраст, город, место обучения, почта) *</Label>
+                  <Label htmlFor="p2">{t('form.participant2')}</Label>
                   <Textarea id="p2" value={participant2} onChange={(e) => setParticipant2(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p3">3 участник команды (ФИО, телефон, возраст, город, место обучения, почта) *</Label>
+                  <Label htmlFor="p3">{t('form.participant3')}</Label>
                   <Textarea id="p3" value={participant3} onChange={(e) => setParticipant3(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p4">4 участник команды (ФИО, телефон, возраст, город, место обучения, почта) *</Label>
+                  <Label htmlFor="p4">{t('form.participant4')}</Label>
                   <Textarea id="p4" value={participant4} onChange={(e) => setParticipant4(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <Label>Откуда узнали о соревновании? *</Label>
+                  <Label>{t('form.source')}</Label>
                   <Select value={source} onValueChange={setSource}>
                     <SelectTrigger>
                       <SelectValue placeholder="Выберите источник" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="instagram_kazrockets">Instagram (@kazrockets)</SelectItem>
-                      <SelectItem value="instagram_other">Instagram других аккаунтов</SelectItem>
-                      <SelectItem value="telegram">Telegram</SelectItem>
-                      <SelectItem value="friends">У знакомых</SelectItem>
-                      <SelectItem value="other">Другое</SelectItem>
+                      <SelectItem value="instagram_kazrockets">{t('form.sourceInstagramKaz')}</SelectItem>
+                      <SelectItem value="instagram_other">{t('form.sourceInstagramOther')}</SelectItem>
+                      <SelectItem value="telegram">{t('form.sourceTelegram')}</SelectItem>
+                      <SelectItem value="friends">{t('form.sourceFriends')}</SelectItem>
+                      <SelectItem value="other">{t('form.sourceOther')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="flex items-start gap-3 md:col-span-2">
                   <Checkbox id="consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
                   <Label htmlFor="consent" className="leading-snug">
-                    С Положением ознакомлен(-а) и согласен(-а) с политикой конфиденциальности
+                    {t('form.consent')}
                   </Label>
                 </div>
               </div>
@@ -264,7 +265,7 @@ const Competitions = () => {
                   !participant2 || !participant3 || !participant4 || !source || !consent
                 }
               >
-                {submitting ? "Отправка..." : "Подтвердить участие"}
+                {submitting ? t('form.sending') : t('form.submit')}
               </Button>
             </form>
           </DialogContent>
