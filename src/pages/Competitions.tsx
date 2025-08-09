@@ -46,6 +46,11 @@ const Competitions = () => {
   const [dupName, setDupName] = useState("");
 
   const handleOpenEnroll = (id: string) => {
+    const comp = competitions.find((c) => c.id === id);
+    if (!comp || comp.status !== "Регистрация") {
+      toast("Регистрация пока не открыта", { description: "Скоро выйдет информация — будьте в курсе событий." });
+      return;
+    }
     if (!user) {
       toast(t('competitions.toastLoginTitle'), { description: t('competitions.toastLoginDesc') });
       navigate("/auth");
@@ -59,7 +64,14 @@ const Competitions = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const enroll = params.get("enroll");
-    if (enroll) handleOpenEnroll(enroll);
+    if (enroll) {
+      const comp = competitions.find((c) => c.id === enroll);
+      if (comp?.status === "Регистрация") {
+        handleOpenEnroll(enroll);
+      } else {
+        toast("Регистрация пока не открыта", { description: "Скоро выйдет информация — будьте в курсе событий." });
+      }
+    }
   }, [location.search]);
 
   const handleSubmitEnroll = async (e: React.FormEvent) => {
@@ -190,7 +202,13 @@ const Competitions = () => {
                         <Link to="/competitions/space-settlement-2025">{t('competitions.details')}</Link>
                       </Button>
                     ) : (
-                      <Button variant="outline" className="w-full">{t('competitions.details')}</Button>
+                      <Button
+                        variant="outline"
+                        className="w-full"
+                        onClick={() => toast("Скоро выйдет информация", { description: "Будьте в курсе событий" })}
+                      >
+                        {t('competitions.details')}
+                      </Button>
                     )}
                     <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
                       Принять участие
