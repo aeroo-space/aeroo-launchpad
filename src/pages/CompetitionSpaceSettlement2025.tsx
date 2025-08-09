@@ -24,17 +24,9 @@ import {
   Mail,
 } from "lucide-react";
 import heroSpace from "@/assets/hero-space.jpg";
-import awardsPhoto from "@/assets/satellite-crew-edited.jpg";
 import { Link } from "react-router-dom";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 
-const APPLY_MAILTO =
-  "mailto:info@aeroo.space?subject=%D0%97%D0%B0%D1%8F%D0%B2%D0%BA%D0%B0:%20AEROO%20Space%20Settlement%20Competition%202025";
+const APPLY_MAILTO = "/competitions?enroll=space-settlement";
 const TG_COMMUNITY = "https://t.me/+5nKRCrdTXT05YThi";
 
 const sections = [
@@ -93,7 +85,7 @@ export default function CompetitionSpaceSettlement2025() {
 
   const applyBtn = (
     <Button asChild size="lg" variant="primary" aria-label="Принять участие — регистрация на AEROO Space Settlement 2025">
-      <a href={APPLY_MAILTO}>Принять участие</a>
+      <Link to={APPLY_MAILTO}>Принять участие</Link>
     </Button>
   );
 
@@ -168,16 +160,12 @@ export default function CompetitionSpaceSettlement2025() {
                   <p>
                     Цель — развить навыки проектирования космических поселений, научного анализа и инженерного обоснования.
                   </p>
-                  <p>
-                    Лучшие участники войдут в сборную Казахстана для участия в международном конкурсе NSS Space Settlement Contest.
-                  </p>
+                <p>
+                  Лучшие участники войдут в сборную Казахстана для участия в международном конкурсе 
+                  <a href="https://nss.org/nss-space-settlement-contest/" target="_blank" rel="noopener" className="story-link">NSS Space Settlement Contest</a>.
+                </p>
                 </div>
 
-                <div className="mt-6 space-y-2 text-sm">
-                  <p className="text-foreground"><span className="font-semibold">Организаторы:</span> AEROO и AstanaHub</p>
-                  <p className="text-foreground"><span className="font-semibold">Генеральный спонсор:</span> АУЭС им. Гумарбека Даукеева</p>
-                  <p className="text-foreground"><span className="font-semibold">Информационный партнёр:</span> Астана дарыны</p>
-                </div>
 
               </div>
               <div>
@@ -185,8 +173,8 @@ export default function CompetitionSpaceSettlement2025() {
                   <CardContent className="p-0">
                     <div className="aspect-video w-full bg-muted relative animate-fade-in hover-scale">
                       <img
-                        src={heroSpace}
-                        alt="Концепт космического поселения — фон геро-секции"
+                        src="/lovable-uploads/dfa5faf7-bfb1-4e41-b074-862c17e63ff4.png"
+                        alt="AEROO Space Settlement Competition — визуализация поселения"
                         loading="lazy"
                         decoding="async"
                         className="h-full w-full object-cover object-center"
@@ -281,37 +269,14 @@ export default function CompetitionSpaceSettlement2025() {
         </section>
 
         {/* Rules & Criteria */}
-        <section id="rules" ref={(el) => el && (revealRefs.current[5] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
-          <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Критерии и правила участия</h2>
-            <Accordion type="single" collapsible className="w-full max-w-3xl">
-              {[
-                "Соблюдать сроки и этические нормы",
-                "Выполнять работу самостоятельно",
-                "Предоставлять оригинальные материалы",
-                "Корректное взаимодействие с организаторами, менторами и жюри",
-                "Согласие на публикацию и использование материалов",
-              ].map((rule, i) => (
-                <AccordionItem key={i} value={`rule-${i}`}>
-                  <AccordionTrigger>{rule}</AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground">
-                    Подробные условия и критерии оценки будут доступны после регистрации участников.
-                  </AccordionContent>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
-        </section>
 
         {/* Awards */}
         <section
           id="awards"
           ref={(el) => el && (revealRefs.current[6] = el)}
-          className="opacity-0 translate-y-4 transition-all duration-700 relative overflow-hidden"
-          style={{ backgroundImage: `url(${awardsPhoto})`, backgroundSize: "cover", backgroundPosition: "center" }}
+          className="opacity-0 translate-y-4 transition-all duration-700"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/60 to-background/90" />
-          <div className="container mx-auto px-4 py-20 relative z-10">
+          <div className="container mx-auto px-4 py-20">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Награды</h2>
             <ul className="list-disc pl-6 space-y-2 text-foreground/90 max-w-2xl">
               <li className="flex items-center gap-2"><Award className="w-4 h-4 text-primary" /> Денежные призы</li>
@@ -333,7 +298,7 @@ export default function CompetitionSpaceSettlement2025() {
               </a>
               <a href={TG_COMMUNITY} target="_blank" rel="noopener" className="glass-card rounded-xl p-5 flex items-center gap-3 hover-scale">
                 <Send className="w-5 h-5 text-primary" />
-                <span>Telegram: aeroo.space community</span>
+                <span>AEROO Community</span>
               </a>
             </div>
           </div>
