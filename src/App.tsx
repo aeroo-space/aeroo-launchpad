@@ -20,6 +20,7 @@ import Dashboard from "./pages/Dashboard";
 import CompetitionSatelliteLaunch2026 from "./pages/CompetitionSatelliteLaunch2026";
 import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement2025";
 import { AuthProvider } from "@/contexts/AuthProvider";
+import { ScrollToTop } from "@/components/common/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +31,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToTop />
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/competitions" element={<Competitions />} />

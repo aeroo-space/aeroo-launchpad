@@ -105,14 +105,18 @@ export function FeaturesSection() {
           <h3 className="text-2xl md:text-3xl font-bold text-foreground">
             {t('home.features.cta.title', { defaultValue: 'Готовы начать свой путь в космос?' })}
           </h3>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="btn-cosmic px-8 py-3">
-              {t('home.features.cta.courses', { defaultValue: 'Посмотреть курсы' })}
-            </Button>
-            <Button className="btn-aurora px-8 py-3">
-              {t('home.features.cta.competitions', { defaultValue: 'Ближайшие соревнования' })}
-            </Button>
-          </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild className="btn-cosmic px-8 py-3">
+                <Link to="/products" aria-label={t('home.features.cta.courses', { defaultValue: 'Посмотреть образовательные комплекты для школ' })}>
+                  {t('home.features.cta.courses', { defaultValue: 'Посмотреть образовательные комплекты для школ' })}
+                </Link>
+              </Button>
+              <Button asChild className="btn-aurora px-8 py-3">
+                <Link to="/competitions/space-settlement-2025" aria-label={t('home.features.cta.competitions', { defaultValue: 'Ближайшие соревнования' })}>
+                  {t('home.features.cta.competitions', { defaultValue: 'Ближайшие соревнования' })}
+                </Link>
+              </Button>
+            </div>
         </div>
       </div>
 
