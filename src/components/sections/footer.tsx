@@ -1,14 +1,14 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin, Instagram, Send, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { toast } from "@/components/ui/sonner";
+
 import { useTranslation } from "react-i18next";
 
 const SOCIAL_LINKS = [
-  { name: "Telegram", href: "https://t.me/+5nKRCrdTXT05YThi", icon: "📱" },
-  { name: "Instagram", href: "https://instagram.com/", icon: "📷" },
-  { name: "YouTube", href: "https://youtube.com/", icon: "📺" },
-  { name: "LinkedIn", href: "https://linkedin.com/", icon: "💼" }
+  { name: "Instagram", href: "https://www.instagram.com/aeroo.space/", icon: Instagram },
+  { name: "Telegram", href: "https://t.me/+5nKRCrdTXT05YThi", icon: Send },
+  { name: "WhatsApp", href: "https://wa.me/77751639790", icon: MessageCircle },
+  { name: "Email", href: "mailto:info@aeroo.space", icon: Mail }
 ];
 
 const FOOTER_LINKS = [
@@ -24,7 +24,7 @@ const FOOTER_LINKS = [
   {
     title: "Поддержка",
     links: [
-      { name: "Контакты", href: "/contact" },
+      { name: "Контакты", href: "/contacts" },
       { name: "FAQ", href: "/faq" },
       { name: "Техподдержка", href: "/support" },
       { name: "Сообщество", href: "/community" }
@@ -69,11 +69,11 @@ export function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
-                <span>info@aeroo.kz</span>
+                <a href="mailto:info@aeroo.space" className="hover:text-primary transition-colors">info@aeroo.space</a>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
-                <span>+7 (777) 123-45-67</span>
+                <a href="tel:+77751639790" className="hover:text-primary transition-colors">+7 775 163 97 90</a>
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary" />
@@ -83,19 +83,22 @@ export function Footer() {
 
             {/* Social Links */}
             <div className="flex space-x-4">
-              {SOCIAL_LINKS.map((social) => (
-                <Button
-                  key={social.name}
-                  variant="ghost"
-                  size="sm"
-                  className="w-10 h-10 p-0 hover:glow-primary transition-all"
-                  asChild
-                >
-                  <a href={social.href} target="_blank" rel="noopener noreferrer">
-                    <span className="text-lg">{social.icon}</span>
-                  </a>
-                </Button>
-              ))}
+              {SOCIAL_LINKS.map((social) => {
+                const Icon = social.icon as any;
+                return (
+                  <Button
+                    key={social.name}
+                    variant="ghost"
+                    size="sm"
+                    className="w-10 h-10 p-0 hover:glow-primary transition-all"
+                    asChild
+                  >
+                    <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>
+                      <Icon className="h-5 w-5" />
+                    </a>
+                  </Button>
+                );
+              })}
             </div>
           </div>
 
@@ -128,27 +131,6 @@ export function Footer() {
           ))}
         </div>
 
-        {/* Newsletter Subscription */}
-        <div className="glass-card p-8 rounded-xl mb-12">
-          <div className="text-center space-y-4">
-            <h3 className="text-xl font-semibold text-foreground">
-              {t('footer.news.title', { defaultValue: 'Будьте в курсе новостей AEROO' })}
-            </h3>
-            <p className="text-muted-foreground">
-              {t('footer.news.desc', { defaultValue: 'Получайте уведомления о новых курсах, соревнованиях и мероприятиях' })}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder={t('footer.news.placeholder', { defaultValue: 'Ваш email' })}
-                className="flex-1 px-4 py-2 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-              />
-              <Button className="btn-cosmic px-6 py-2" onClick={() => toast(t('footer.news.subscribed', { defaultValue: 'Спасибо! Вы подписались на новости AEROO.' }))}> 
-                {t('footer.news.subscribe', { defaultValue: 'Подписаться' })}
-              </Button>
-            </div>
-          </div>
-        </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">

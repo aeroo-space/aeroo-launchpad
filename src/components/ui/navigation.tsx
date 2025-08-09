@@ -10,7 +10,8 @@ import {
   Globe, 
   Menu, 
   X,
-  User
+  User,
+  Mail
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthProvider";
 import { useTranslation } from "react-i18next";
@@ -26,6 +27,7 @@ const NAVIGATION_ITEMS = [
   { label: 'Курсы', href: '/courses', icon: GraduationCap },
   { label: 'Продукты', href: '/products', icon: Package },
   { label: 'О нас', href: '/about', icon: Users },
+  { label: 'Контакты', href: '/contacts', icon: Mail },
 ];
 
 export function Navigation() {
