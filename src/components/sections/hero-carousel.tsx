@@ -37,7 +37,7 @@ export const HeroCarousel: React.FC = () => {
             <CarouselItem>
               <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
                 <img
-                  src={heroSpace}
+                  src="/lovable-uploads/a50120cf-cfab-4c5a-8bd1-4ca7ef715eb1.png"
                   alt="Космический фон AEROO — образовательная платформа"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="eager"
@@ -50,7 +50,7 @@ export const HeroCarousel: React.FC = () => {
                       AEROO — образовательная платформа
                     </h1>
                     <p className="text-base md:text-lg text-foreground/90 mb-8">
-                      Учись, создавай и расти вместе с сообществом AEROO. Курсы, проекты и реальные вызовы из аэрокосмической отрасли.
+                      Курсы, проекты и реальные вызовы вместе с AEROO.
                     </p>
                     <div className="flex gap-3">
                       <Button asChild size="xl" variant="primary">
@@ -78,7 +78,7 @@ export const HeroCarousel: React.FC = () => {
                       Соревнования AEROO
                     </h2>
                     <p className="text-base md:text-lg text-foreground/90 mb-8">
-                      Участвуй в инженерных и исследовательских состязаниях. Покажи свой потенциал и получи признание.
+                      Участвуй в инженерных и исследовательских мероприятиях.
                     </p>
                     <Button asChild size="xl" variant="primary">
                       <Link to="/competitions">Подробнее</Link>
