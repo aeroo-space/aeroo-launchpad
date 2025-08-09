@@ -9,8 +9,6 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import heroSpace from "@/assets/hero-space.jpg";
-import satelliteCrew from "@/assets/satellite-crew-edited.jpg";
 
 export const HeroCarousel: React.FC = () => {
   const [api, setApi] = React.useState<CarouselApi | null>(null);
@@ -33,41 +31,13 @@ export const HeroCarousel: React.FC = () => {
       
         <Carousel className="w-full" opts={{ loop: true }} setApi={setApi}>
           <CarouselContent>
-            {/* Slide 1: Образовательная платформа */}
-            <CarouselItem>
-              <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
-                <img
-                  src="/lovable-uploads/a50120cf-cfab-4c5a-8bd1-4ca7ef715eb1.png"
-                  alt="Космический фон AEROO — образовательная платформа"
-                  className="absolute inset-0 -z-10 h-full w-full object-cover"
-                  loading="eager"
-                />
-                 <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
-                <div className="container mx-auto px-6 md:px-8">
-                  <div className="max-w-3xl py-16 md:py-24 animate-enter">
-                    <p className="text-sm md:text-base text-muted-foreground mb-3">AEROO</p>
-                    <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
-                      AEROO — образовательная платформа
-                    </h1>
-                    <p className="text-base md:text-lg text-foreground/90 mb-8">
-                      Курсы, проекты и реальные вызовы вместе с AEROO.
-                    </p>
-                    <div className="flex gap-3">
-                      <Button asChild size="xl" variant="primary">
-                        <Link to="/courses">Начать обучение</Link>
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CarouselItem>
 
             {/* Slide 2: Соревнования */}
             <CarouselItem>
               <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
                 <img
-                  src={satelliteCrew}
-                  alt="Команда AEROO на соревнованиях"
+                  src="/lovable-uploads/d178795f-04a5-480a-ad63-2cd5036b6027.png"
+                  alt="Иллюстрация соревнований AEROO — школьники, дрон, спутник и ракета"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="lazy"
                 />
