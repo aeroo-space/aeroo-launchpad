@@ -92,8 +92,8 @@ export default function CompetitionSpaceSettlement2025() {
   }, []);
 
   const applyBtn = (
-    <Button asChild size="lg" variant="primary" aria-label="Подать заявку на AEROO Space Settlement Competition 2025">
-      <a href={APPLY_MAILTO}>Подать заявку</a>
+    <Button asChild size="lg" variant="primary" aria-label="Принять участие — регистрация на AEROO Space Settlement 2025">
+      <a href={APPLY_MAILTO}>Принять участие</a>
     </Button>
   );
 
@@ -179,7 +179,6 @@ export default function CompetitionSpaceSettlement2025() {
                   <p className="text-foreground"><span className="font-semibold">Информационный партнёр:</span> Астана дарыны</p>
                 </div>
 
-                <div className="mt-6">{applyBtn}</div>
               </div>
               <div>
                 <Card className="glass-card overflow-hidden">
@@ -221,7 +220,6 @@ export default function CompetitionSpaceSettlement2025() {
                 </Card>
               ))}
             </div>
-            <div className="mt-8">{applyBtn}</div>
           </div>
         </section>
 
@@ -240,7 +238,7 @@ export default function CompetitionSpaceSettlement2025() {
                     <h3 className="text-xl font-semibold">{item.title}</h3>
                     <div className="flex items-center gap-2 text-muted-foreground"><FileText className="w-4 h-4 text-primary" /> Задание: разработка научно-инженерного проекта по теме колонизации космоса (10–15 страниц)</div>
                     <div className="flex items-center gap-2 text-muted-foreground"><CalendarDays className="w-4 h-4 text-primary" /> Формат: онлайн, 36 часов на выполнение с момента публикации задания</div>
-                    <div className="pt-2">{applyBtn}</div>
+                    
                   </CardContent>
                 </Card>
               ))}
@@ -268,7 +266,6 @@ export default function CompetitionSpaceSettlement2025() {
                 </div>
               ))}
             </div>
-            <div className="mt-8">{applyBtn}</div>
           </div>
         </section>
 
@@ -279,7 +276,7 @@ export default function CompetitionSpaceSettlement2025() {
             <p className="text-muted-foreground max-w-3xl">
               Все работы загружаются в электронном виде через платформу организаторов до установленного дедлайна. Плагиат запрещён.
             </p>
-            <div className="mt-6">{applyBtn}</div>
+            
           </div>
         </section>
 
@@ -303,7 +300,6 @@ export default function CompetitionSpaceSettlement2025() {
                 </AccordionItem>
               ))}
             </Accordion>
-            <div className="mt-8">{applyBtn}</div>
           </div>
         </section>
 
@@ -340,7 +336,6 @@ export default function CompetitionSpaceSettlement2025() {
                 <span>Telegram: aeroo.space community</span>
               </a>
             </div>
-            <div className="mt-8">{applyBtn}</div>
           </div>
         </section>
       </main>
