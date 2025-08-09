@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -5,6 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Rocket, Plane, Satellite, Brain, Clock, Users, Star } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
+import { Link } from "react-router-dom";
 
 const courses = [
   {
@@ -53,6 +56,21 @@ const getLevelColor = (level: string) => {
 
 const Courses = () => {
   const { t } = useTranslation();
+  const [comingOpen, setComingOpen] = useState(true);
+
+  useEffect(() => {
+    document.title = "Курсы AEROO — скоро";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute("content", "Курсы AEROO в разработке. Совсем скоро откроем доступ для всех!");
+    let link = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
+    if (!link) {
+      link = document.createElement("link");
+      link.setAttribute("rel", "canonical");
+      document.head.appendChild(link);
+    }
+    link.href = window.location.origin + "/courses";
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -180,6 +198,24 @@ const Courses = () => {
             {t('courses.cta.choose', { defaultValue: 'Выбрать курс' })}
           </Button>
         </div>
+        
+        {/* Coming soon notice */}
+        <AlertDialog open={comingOpen} onOpenChange={setComingOpen}>
+          <AlertDialogContent className="animate-enter">
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-center">Страница курсов в разработке</AlertDialogTitle>
+              <AlertDialogDescription className="text-center">
+                Страница /courses ещё не готова. Позже будет доступна для всех. Пока команда AEROO готовит для вас классные уроки!
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter className="sm:justify-center">
+              <AlertDialogCancel>Понятно</AlertDialogCancel>
+              <AlertDialogAction asChild>
+                <Link to="/">На главную</Link>
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
       </main>
 
       <Footer />
