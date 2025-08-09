@@ -17,7 +17,7 @@ import { toast } from "@/components/ui/sonner";
 const Competitions = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const supabase = getSupabase();
+  
   const [open, setOpen] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -37,6 +37,14 @@ const Competitions = () => {
     e.preventDefault();
     if (!user || !selectedId) return;
     setSubmitting(true);
+    let supabase;
+    try {
+      supabase = getSupabase();
+    } catch {
+      setSubmitting(false);
+      toast.error("Supabase не настроен", { description: "Перезагрузите страницу и попробуйте снова" });
+      return;
+    }
     const { error } = await supabase.from("enrollments").insert({
       user_id: user.id,
       competition_id: selectedId,

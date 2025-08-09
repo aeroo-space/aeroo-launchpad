@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthProvider";
 import { getSupabase } from "@/lib/supabase";
+import { toast } from "@/components/ui/sonner";
 import { competitions } from "@/data/competitions";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +21,7 @@ interface Enrollment {
 const Dashboard = () => {
   const { user, signOut } = useAuth();
   const navigate = useNavigate();
-  const supabase = getSupabase();
+  
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -34,6 +35,14 @@ const Dashboard = () => {
       return;
     }
     (async () => {
+      let supabase;
+      try {
+        supabase = getSupabase();
+      } catch {
+        setLoading(false);
+        toast.error("Supabase не настроен", { description: "Перезагрузите страницу и попробуйте снова" });
+        return;
+      }
       const { data, error } = await supabase
         .from("enrollments")
         .select("*")
@@ -42,7 +51,7 @@ const Dashboard = () => {
       if (!error && data) setEnrollments(data as Enrollment[]);
       setLoading(false);
     })();
-  }, [user, supabase, navigate]);
+  }, [user, navigate]);
 
   const compsById = useMemo(() => {
     const map: Record<string, string> = {};
