@@ -55,6 +55,15 @@ All colors MUST be HSL for cosmic gradients and deep space themes.
     --gradient-deep-space: linear-gradient(180deg, hsl(220 25% 8%), hsl(240 30% 12%));
     --gradient-aurora: linear-gradient(90deg, hsl(180 100% 50%), hsl(200 100% 60%), hsl(220 100% 50%));
 
+    /* Satellite Launch 2026 palette (requested) */
+    --space-1: 211 53% 11%; /* #0D1B2A */
+    --space-2: 219 37% 17%; /* #1B263B */
+    --space-3: 212 29% 36%; /* #415A77 */
+    --space-4: 214 23% 56%; /* #778DA9 */
+    --space-5: 76 6% 87%;  /* #E0E1DD */
+    --gradient-satellite-hero: linear-gradient(180deg, hsl(var(--space-1)/0.85), hsl(var(--space-2)/0.9));
+    --gradient-satellite-section: linear-gradient(180deg, hsl(var(--space-2)/0.7), hsl(var(--space-1)/0.9));
+
     /* Shadows and glows */
     --shadow-cosmic: 0 25px 50px -12px hsl(220 100% 50% / 0.25);
     --shadow-nebula: 0 0 50px hsl(220 100% 50% / 0.3);
