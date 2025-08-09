@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -117,10 +117,15 @@ const Competitions = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('competitions.subtitle')}
           </p>
+          <div className="mt-6 flex justify-center">
+            <Button asChild className="btn-cosmic">
+              <a href="#competitions-list">{t('cta.apply', { defaultValue: 'Подать заявку' })}</a>
+            </Button>
+          </div>
         </div>
 
         {/* Competitions Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div id="competitions-list" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {competitions.map((competition) => {
             const Icon = competition.icon;
             return (
@@ -155,8 +160,14 @@ const Competitions = () => {
                       </div>
                   </div>
                   
-<div className="grid grid-cols-1 gap-3">
-                    <Button variant="outline" className="w-full">{t('competitions.details')}</Button>
+                  <div className="grid grid-cols-1 gap-3">
+                    {competition.id === 'satellite-launch' ? (
+                      <Button asChild variant="outline" className="w-full">
+                        <Link to="/competitions/satellite-launch-2026">{t('competitions.details')}</Link>
+                      </Button>
+                    ) : (
+                      <Button variant="outline" className="w-full">{t('competitions.details')}</Button>
+                    )}
                     <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
                       {t('competitions.enrollTeam')}
                     </Button>
