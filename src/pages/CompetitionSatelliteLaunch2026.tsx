@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -27,8 +27,18 @@ import {
   Mail,
 } from "lucide-react";
 import heroSpace from "@/assets/hero-space.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useAuth } from "@/contexts/AuthProvider";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "@/components/ui/sonner";
+import { useTranslation } from "react-i18next";
 const sections = ["about", "goals", "stages", "criteria", "awards", "contacts"] as const;
 
 const CompetitionSatelliteLaunch2026 = () => {
@@ -65,8 +75,85 @@ const CompetitionSatelliteLaunch2026 = () => {
     return () => observer.disconnect();
   }, []);
 
-  const registerHref = "/competitions?enroll=satellite-launch";
+  const competitionId = "satellite-launch";
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { t } = useTranslation();
 
+  const [open, setOpen] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [teamName, setTeamName] = useState("");
+  const [email, setEmail] = useState("");
+  const [telegram, setTelegram] = useState("");
+  const [captainFullName, setCaptainFullName] = useState("");
+  const [captainPhone, setCaptainPhone] = useState("");
+  const [captainAge, setCaptainAge] = useState<number | "">("");
+  const [city, setCity] = useState("");
+  const [studyPlace, setStudyPlace] = useState("");
+  const [participant2, setParticipant2] = useState("");
+  const [participant3, setParticipant3] = useState("");
+  const [participant4, setParticipant4] = useState("");
+  const [source, setSource] = useState("");
+  const [consent, setConsent] = useState(false);
+
+  const handleOpenEnroll = () => {
+    if (!user) {
+      toast(t('competitions.toastLoginTitle'), { description: t('competitions.toastLoginDesc') });
+      navigate("/auth");
+      return;
+    }
+    setOpen(true);
+  };
+
+  const handleSubmitEnroll = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!user) return;
+    if (!consent) {
+      toast(t('competitions.toastNeedConsentTitle'), { description: t('competitions.toastNeedConsentDesc') });
+      return;
+    }
+    setSubmitting(true);
+    const ageNumber = typeof captainAge === "number" ? captainAge : parseInt(captainAge || "0", 10) || null;
+
+    const { error } = await (supabase as any).from("enrollments").insert({
+      user_id: user.id,
+      competition_id: competitionId,
+      team_name: teamName,
+      status: "active",
+      email,
+      telegram,
+      captain_full_name: captainFullName,
+      captain_phone: captainPhone,
+      captain_age: ageNumber,
+      city,
+      study_place: studyPlace,
+      participant2_info: participant2,
+      participant3_info: participant3,
+      participant4_info: participant4,
+      source,
+      consent,
+    });
+    setSubmitting(false);
+    if (error) {
+      toast.error(t('competitions.toastEnrollError'), { description: error.message });
+      return;
+    }
+    toast.success(t('competitions.toastEnrollSuccessTitle'));
+    setOpen(false);
+    setTeamName("");
+    setEmail("");
+    setTelegram("");
+    setCaptainFullName("");
+    setCaptainPhone("");
+    setCaptainAge("");
+    setCity("");
+    setStudyPlace("");
+    setParticipant2("");
+    setParticipant3("");
+    setParticipant4("");
+    setSource("");
+    setConsent(false);
+  };
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -116,14 +203,8 @@ const CompetitionSatelliteLaunch2026 = () => {
                 </span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button asChild variant="primary" size="lg">
-                  <Link
-                    to={registerHref}
-                    aria-label="Принять участие — регистрация на AEROO Satellite Launch 2026"
-                    data-testid="cta-top-apply"
-                  >
-                    Принять участие
-                  </Link>
+                <Button variant="primary" size="lg" onClick={handleOpenEnroll} aria-label="Принять участие — регистрация на AEROO Satellite Launch 2026" data-testid="cta-top-apply">
+                  Принять участие
                 </Button>
                 <Button asChild variant="outline" size="lg">
                   <a
@@ -296,18 +377,105 @@ const CompetitionSatelliteLaunch2026 = () => {
               <div>🎖 Все финалисты — памятные дипломы</div>
             </div>
             <div className="mt-8">
-              <Button asChild variant="primary" size="xl">
-                <Link
-                  to={registerHref}
-                  aria-label="Принять участие — подать заявку на участие"
-                  data-testid="cta-bottom-apply"
-                >
-                  Принять участие
-                </Link>
+              <Button variant="primary" size="xl" onClick={handleOpenEnroll} aria-label="Принять участие — подать заявку на участие" data-testid="cta-bottom-apply">
+                Принять участие
               </Button>
             </div>
           </div>
         </section>
+
+        {/* Enroll Dialog */}
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{t('competitions.enrollDialogTitle')}</DialogTitle>
+              <DialogDescription>
+                {t('competitions.enrollDialogDesc')}
+              </DialogDescription>
+            </DialogHeader>
+            <form onSubmit={handleSubmitEnroll} className="space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">{t('form.email')}</Label>
+                  <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="tg">{t('form.telegram')}</Label>
+                  <Input id="tg" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="@username" required />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="team">{t('form.teamName')}</Label>
+                  <Input id="team" value={teamName} onChange={(e) => setTeamName(e.target.value)} placeholder="Например: AEROO Crew" required />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="captain">{t('form.captainFullName')}</Label>
+                  <Input id="captain" value={captainFullName} onChange={(e) => setCaptainFullName(e.target.value)} placeholder="Иванов Иван Иванович" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">{t('form.captainPhone')}</Label>
+                  <Input id="phone" value={captainPhone} onChange={(e) => setCaptainPhone(e.target.value)} placeholder="+7 700 000 00 00" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="age">{t('form.captainAge')}</Label>
+                  <Input id="age" type="number" min={8} value={captainAge === '' ? '' : captainAge} onChange={(e) => setCaptainAge(e.target.value === '' ? '' : Number(e.target.value))} placeholder="18" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="city">{t('form.city')}</Label>
+                  <Input id="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Алматы" required />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="study">{t('form.studyPlace')}</Label>
+                  <Input id="study" value={studyPlace} onChange={(e) => setStudyPlace(e.target.value)} placeholder="Школа/ВУЗ" required />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="p2">{t('form.participant2')}</Label>
+                  <Textarea id="p2" value={participant2} onChange={(e) => setParticipant2(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="p3">{t('form.participant3')}</Label>
+                  <Textarea id="p3" value={participant3} onChange={(e) => setParticipant3(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label htmlFor="p4">{t('form.participant4')}</Label>
+                  <Textarea id="p4" value={participant4} onChange={(e) => setParticipant4(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
+                </div>
+                <div className="space-y-2 md:col-span-2">
+                  <Label>{t('form.source')}</Label>
+                  <Select value={source} onValueChange={setSource}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Выберите источник" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="instagram_kazrockets">{t('form.sourceInstagramKaz')}</SelectItem>
+                      <SelectItem value="instagram_other">{t('form.sourceInstagramOther')}</SelectItem>
+                      <SelectItem value="telegram">{t('form.sourceTelegram')}</SelectItem>
+                      <SelectItem value="friends">{t('form.sourceFriends')}</SelectItem>
+                      <SelectItem value="other">{t('form.sourceOther')}</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="flex items-start gap-3 md:col-span-2">
+                  <Checkbox id="consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
+                  <Label htmlFor="consent" className="leading-snug">
+                    {t('form.consent')}
+                  </Label>
+                </div>
+              </div>
+
+              <Button
+                type="submit"
+                className="w-full"
+                disabled={
+                  submitting ||
+                  !email || !telegram || !teamName || !captainFullName || !captainPhone || !captainAge || !city || !studyPlace ||
+                  !participant2 || !participant3 || !participant4 || !source || !consent
+                }
+              >
+                {submitting ? t('form.sending') : t('form.submit')}
+              </Button>
+            </form>
+          </DialogContent>
+        </Dialog>
 
         {/* Contacts */}
         <section id="contacts" ref={(el) => el && (revealRefs.current[6] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
