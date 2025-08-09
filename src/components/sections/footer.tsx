@@ -2,6 +2,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { toast } from "@/components/ui/sonner";
+import { useTranslation } from "react-i18next";
 
 const SOCIAL_LINKS = [
   { name: "Telegram", href: "https://t.me/+5nKRCrdTXT05YThi", icon: "📱" },
@@ -41,6 +42,7 @@ const FOOTER_LINKS = [
 ];
 
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="bg-muted/20 border-t border-border/50 mt-24">
       <div className="container mx-auto px-4 py-16">
@@ -60,7 +62,7 @@ export function Footer() {
             </div>
             
             <p className="text-muted-foreground max-w-md">
-              Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.
+              {t('footer.description', { defaultValue: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.' })}
             </p>
 
             {/* Contact Info */}
@@ -75,7 +77,7 @@ export function Footer() {
               </div>
               <div className="flex items-center space-x-3 text-sm text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span>Алматы, Казахстан</span>
+                <span>{t('footer.location', { defaultValue: 'Алматы, Казахстан' })}</span>
               </div>
             </div>
 
@@ -98,25 +100,25 @@ export function Footer() {
           </div>
 
           {/* Footer Links */}
-          {FOOTER_LINKS.map((section) => (
+          {FOOTER_LINKS.map((section, sIdx) => (
             <div key={section.title} className="space-y-4">
-              <h3 className="font-semibold text-foreground">{section.title}</h3>
+              <h3 className="font-semibold text-foreground">{t(`footer.sections.${sIdx}.title`, { defaultValue: section.title })}</h3>
               <ul className="space-y-2">
-                {section.links.map((link) => (
+                {section.links.map((link, lIdx) => (
                     <li key={link.name}>
                       {link.href.startsWith("http") ? (
                         <a
                           href={link.href}
                           className="text-sm text-muted-foreground hover:text-primary transition-colors"
                         >
-                          {link.name}
+                          {t(`footer.sections.${sIdx}.links.${lIdx}`, { defaultValue: link.name })}
                         </a>
                       ) : (
                         <Link
                           to={link.href}
                           className="text-sm text-muted-foreground hover:text-primary transition-colors"
                         >
-                          {link.name}
+                          {t(`footer.sections.${sIdx}.links.${lIdx}`, { defaultValue: link.name })}
                         </Link>
                       )}
                     </li>
@@ -130,19 +132,19 @@ export function Footer() {
         <div className="glass-card p-8 rounded-xl mb-12">
           <div className="text-center space-y-4">
             <h3 className="text-xl font-semibold text-foreground">
-              Будьте в курсе новостей AEROO
+              {t('footer.news.title', { defaultValue: 'Будьте в курсе новостей AEROO' })}
             </h3>
             <p className="text-muted-foreground">
-              Получайте уведомления о новых курсах, соревнованиях и мероприятиях
+              {t('footer.news.desc', { defaultValue: 'Получайте уведомления о новых курсах, соревнованиях и мероприятиях' })}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <input
                 type="email"
-                placeholder="Ваш email"
+                placeholder={t('footer.news.placeholder', { defaultValue: 'Ваш email' })}
                 className="flex-1 px-4 py-2 bg-input border border-border rounded-lg text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
               />
-              <Button className="btn-cosmic px-6 py-2" onClick={() => toast("Спасибо! Вы подписались на новости AEROO.")}> 
-                Подписаться
+              <Button className="btn-cosmic px-6 py-2" onClick={() => toast(t('footer.news.subscribed', { defaultValue: 'Спасибо! Вы подписались на новости AEROO.' }))}> 
+                {t('footer.news.subscribe', { defaultValue: 'Подписаться' })}
               </Button>
             </div>
           </div>
@@ -151,17 +153,17 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-border/50 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-sm text-muted-foreground">
-            © 2024 AEROO. Все права защищены.
+            © 2024 AEROO. {t('footer.bottom.rights', { defaultValue: 'Все права защищены.' })}
           </p>
           <div className="flex space-x-6">
             <a href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Конфиденциальность
+              {t('footer.bottom.privacy', { defaultValue: 'Конфиденциальность' })}
             </a>
             <a href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Условия использования
+              {t('footer.bottom.terms', { defaultValue: 'Условия использования' })}
             </a>
             <a href="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Cookies
+              {t('footer.bottom.cookies', { defaultValue: 'Cookies' })}
             </a>
           </div>
         </div>

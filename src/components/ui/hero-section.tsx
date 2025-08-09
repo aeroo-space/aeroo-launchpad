@@ -9,11 +9,13 @@ import {
   Zap
 } from "lucide-react";
 import heroImage from "@/assets/hero-space.jpg";
+import { useTranslation } from "react-i18next";
 const HeroSpace = React.lazy(() => import("@/components/three/HeroSpace"));
 
 
 export function HeroSection() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleRegistration = (type: 'course' | 'competition') => {
     setIsModalOpen(false);
@@ -39,11 +41,11 @@ export function HeroSection() {
                 AEROO
               </span>
               <span className="block text-3xl md:text-5xl text-foreground mt-2">
-                Образовательная платформа
+                {t('home.hero.subtitle', { defaultValue: 'Образовательная платформа' })}
               </span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto">
-              Вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление
+              {t('home.hero.tagline', { defaultValue: 'Вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление' })}
             </p>
           </div>
 
@@ -54,21 +56,21 @@ export function HeroSection() {
                 <Star className="h-6 w-6 text-accent mr-2" />
                 <span className="text-2xl font-bold text-primary">500+</span>
               </div>
-              <p className="text-sm text-muted-foreground">Участников</p>
+              <p className="text-sm text-muted-foreground">{t('home.hero.stats.participants', { defaultValue: 'Участников' })}</p>
             </div>
             <div className="glass-card p-6 rounded-xl text-center min-w-[120px]">
               <div className="flex items-center justify-center mb-2">
                 <Trophy className="h-6 w-6 text-accent mr-2" />
                 <span className="text-2xl font-bold text-primary">15+</span>
               </div>
-              <p className="text-sm text-muted-foreground">Соревнований</p>
+              <p className="text-sm text-muted-foreground">{t('home.hero.stats.competitions', { defaultValue: 'Соревнований' })}</p>
             </div>
             <div className="glass-card p-6 rounded-xl text-center min-w-[120px]">
               <div className="flex items-center justify-center mb-2">
                 <Zap className="h-6 w-6 text-accent mr-2" />
                 <span className="text-2xl font-bold text-primary">50+</span>
               </div>
-              <p className="text-sm text-muted-foreground">Проектов</p>
+              <p className="text-sm text-muted-foreground">{t('home.hero.stats.projects', { defaultValue: 'Проектов' })}</p>
             </div>
           </div>
 
@@ -79,11 +81,11 @@ export function HeroSection() {
               className="btn-cosmic text-lg px-8 py-6 group"
               onClick={() => setIsModalOpen(true)}
             >
-              Начать обучение
+              {t('home.hero.cta.startLearning', { defaultValue: 'Начать обучение' })}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             <p className="text-sm text-muted-foreground">
-              Присоединяйтесь к сообществу молодых инженеров
+              {t('home.hero.cta.join', { defaultValue: 'Присоединяйтесь к сообществу молодых инженеров' })}
             </p>
           </div>
         </div>
@@ -94,7 +96,7 @@ export function HeroSection() {
         <DialogContent className="glass-card border-border/50">
           <DialogHeader>
             <DialogTitle className="text-2xl text-center bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Выберите направление
+              {t('home.hero.modal.title', { defaultValue: 'Выберите направление' })}
             </DialogTitle>
           </DialogHeader>
           <div className="space-y-4 pt-4">
@@ -104,8 +106,8 @@ export function HeroSection() {
             >
               <GraduationCap className="h-6 w-6 mr-4" />
               <div className="text-left">
-                <div className="font-semibold">Записаться на курс</div>
-                <div className="text-sm opacity-80">Изучайте технологии в своем темпе</div>
+                <div className="font-semibold">{t('home.hero.modal.course', { defaultValue: 'Записаться на курс' })}</div>
+                <div className="text-sm opacity-80">{t('home.hero.modal.courseDesc', { defaultValue: 'Изучайте технологии в своем темпе' })}</div>
               </div>
             </Button>
             <Button 
@@ -114,8 +116,8 @@ export function HeroSection() {
             >
               <Trophy className="h-6 w-6 mr-4" />
               <div className="text-left">
-                <div className="font-semibold">Участвовать в соревновании</div>
-                <div className="text-sm opacity-80">Проверьте свои навыки в деле</div>
+                <div className="font-semibold">{t('home.hero.modal.competition', { defaultValue: 'Участвовать в соревновании' })}</div>
+                <div className="text-sm opacity-80">{t('home.hero.modal.competitionDesc', { defaultValue: 'Проверьте свои навыки в деле' })}</div>
               </div>
             </Button>
           </div>

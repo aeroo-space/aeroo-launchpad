@@ -8,6 +8,7 @@ import { Package, Rocket, Plane, Satellite, Zap, Shield, Wrench } from "lucide-r
 import { ChatBotPanel } from "@/components/sections/product-chatbot";
 import { ProductRequestModal } from "@/components/sections/product-request-modal";
 import { toast } from "@/components/ui/use-toast";
+import { useTranslation } from "react-i18next";
 const products = [
   {
     id: "rocket-kit",
@@ -66,10 +67,11 @@ const Products = () => {
   const [isRequestOpen, setIsRequestOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const chatRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    document.title = "Продукты AEROO — наборы и конструкторы";
-  }, []);
+    document.title = (t('products.metaTitle', { defaultValue: 'Продукты AEROO — наборы и конструкторы' }));
+  }, [t]);
 
   const handleOpenRequest = (id: string) => {
     setSelectedProductId(id);
@@ -86,17 +88,16 @@ const Products = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            Продукты AEROO
+            {t('products.hero.title', { defaultValue: 'Продукты AEROO' })}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Образовательные наборы и конструкторы для изучения аэрокосмических технологий. 
-            От простых моделей ракет до сложных наноспутников.
+            {t('products.hero.subtitle', { defaultValue: 'Образовательные наборы и конструкторы для изучения аэрокосмических технологий. От простых моделей ракет до сложных наноспутников.' })}
           </p>
         </div>
 
         {/* Advantages Section */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Преимущества наших наборов</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('products.advantages.title', { defaultValue: 'Преимущества наших наборов' })}</h2>
           
           <div className="grid md:grid-cols-3 gap-8">
             {advantages.map((advantage, index) => {
@@ -106,8 +107,8 @@ const Products = () => {
                   <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/30 transition-colors">
                     <Icon className="h-10 w-10 text-primary group-hover:glow-primary transition-all" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{advantage.title}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{advantage.description}</p>
+                  <h3 className="text-xl font-semibold mb-4">{t(`products.advantages.items.${index}.title`, { defaultValue: advantage.title })}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{t(`products.advantages.items.${index}.desc`, { defaultValue: advantage.description })}</p>
                 </div>
               );
             })}
@@ -116,7 +117,7 @@ const Products = () => {
 
         {/* Products Grid */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Наши продукты</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('products.grid.title', { defaultValue: 'Наши продукты' })}</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => {
@@ -127,11 +128,11 @@ const Products = () => {
                     <div className="flex items-center justify-between mb-4">
                       <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
                       <div className="flex gap-2">
-                        <Badge variant="outline">{product.category}</Badge>
+                        <Badge variant="outline">{t(`products.items.${product.id}.category`, { defaultValue: product.category })}</Badge>
                         {product.inStock ? (
-                          <Badge className="bg-green-500 text-white">В наличии</Badge>
+                          <Badge className="bg-green-500 text-white">{t('products.inStock', { defaultValue: 'В наличии' })}</Badge>
                         ) : (
-                          <Badge variant="destructive">Нет в наличии</Badge>
+                          <Badge variant="destructive">{t('products.outOfStock', { defaultValue: 'Нет в наличии' })}</Badge>
                         )}
                       </div>
                     </div>
@@ -141,21 +142,21 @@ const Products = () => {
                     </div>
                     
                     <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                      {product.title}
+                      {t(`products.items.${product.id}.title`, { defaultValue: product.title })}
                     </CardTitle>
                     <CardDescription className="leading-relaxed">
-                      {product.description}
+                      {t(`products.items.${product.id}.description`, { defaultValue: product.description })}
                     </CardDescription>
                   </CardHeader>
                   
                   <CardContent>
                     <div className="mb-6">
-                      <h4 className="font-medium mb-3">Что входит в набор:</h4>
+                      <h4 className="font-medium mb-3">{t('products.includes', { defaultValue: 'Что входит в набор:' })}</h4>
                       <ul className="space-y-1">
                         {product.features.map((feature, index) => (
                           <li key={index} className="text-sm text-muted-foreground flex items-center">
                             <div className="w-1.5 h-1.5 bg-primary rounded-full mr-2" />
-                            {feature}
+                            {t(`products.items.${product.id}.features.${index}`, { defaultValue: feature })}
                           </li>
                         ))}
                       </ul>
@@ -170,7 +171,7 @@ const Products = () => {
                       disabled={!product.inStock}
                       onClick={() => handleOpenRequest(product.id)}
                     >
-                      {product.inStock ? "Оставить заявку" : "Сообщить о поступлении"}
+                    {product.inStock ? t('products.cta.request', { defaultValue: 'Оставить заявку' }) : t('products.cta.notify', { defaultValue: 'Сообщить о поступлении' })}
                     </Button>
                   </CardContent>
                 </Card>
@@ -181,17 +182,16 @@ const Products = () => {
 
         {/* CTA Section */}
         <div className="bg-muted/30 rounded-2xl p-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">Нужна консультация?</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('products.help.title', { defaultValue: 'Нужна консультация?' })}</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Наши эксперты помогут выбрать подходящий набор для вашего уровня подготовки 
-            и образовательных целей. Свяжитесь с нами для персональной консультации.
+            {t('products.help.desc', { defaultValue: 'Наши эксперты помогут выбрать подходящий набор для вашего уровня подготовки и образовательных целей. Свяжитесь с нами для персональной консультации.' })}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="btn-cosmic" onClick={handleGoToChat}>
-              Получить консультацию
+              {t('products.help.getConsultation', { defaultValue: 'Получить консультацию' })}
             </Button>
-            <Button size="lg" variant="outline" onClick={() => toast({ title: "Каталог скоро", description: "PDF-каталог будет доступен позже" })}>
-              Скачать каталог
+            <Button size="lg" variant="outline" onClick={() => toast({ title: t('products.catalog.soon', { defaultValue: 'Каталог скоро' }), description: t('products.catalog.pdfLater', { defaultValue: 'PDF-каталог будет доступен позже' }) })}>
+              {t('products.catalog.download', { defaultValue: 'Скачать каталог' })}
             </Button>
           </div>
         </div>
@@ -208,10 +208,10 @@ const Products = () => {
         <ProductRequestModal
           open={isRequestOpen}
           onOpenChange={setIsRequestOpen}
-          products={products.map((p) => ({ id: p.id, title: p.title }))}
+          products={products.map((p) => ({ id: p.id, title: t(`products.items.${p.id}.title`, { defaultValue: p.title }) }))}
           selectedProductId={selectedProductId}
           onSubmitted={() =>
-            toast({ title: "Заявка отправлена", description: "Мы свяжемся с вами по email" })
+            toast({ title: t('products.request.sent', { defaultValue: 'Заявка отправлена' }), description: t('products.request.weWillContact', { defaultValue: 'Мы свяжемся с вами по email' }) })
           }
         />
       </main>

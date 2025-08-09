@@ -133,15 +133,15 @@ const Competitions = () => {
                     </Badge>
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    {competition.title}
+                    {t(`competitions.items.${competition.id}.title`, { defaultValue: competition.title })}
                   </CardTitle>
                   <CardDescription className="text-sm font-medium text-primary/70">
-                    {competition.category}
+                    {t(`competitions.items.${competition.id}.category`, { defaultValue: competition.category })}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {competition.description}
+                    {t(`competitions.items.${competition.id}.description`, { defaultValue: competition.description })}
                   </p>
                   
                   <div className="space-y-2 mb-6">

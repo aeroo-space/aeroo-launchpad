@@ -8,6 +8,7 @@ import {
   ArrowRight 
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 const FEATURES = [
   {
@@ -49,6 +50,7 @@ const FEATURES = [
 ];
 
 export function FeaturesSection() {
+  const { t } = useTranslation();
   return (
     <section className="py-24 relative">
       <div className="container mx-auto px-4">
@@ -56,11 +58,11 @@ export function FeaturesSection() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Направления обучения
+              {t('home.features.title', { defaultValue: 'Направления обучения' })}
             </span>
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования
+            {t('home.features.subtitle', { defaultValue: 'Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования' })}
           </p>
         </div>
 
@@ -78,15 +80,15 @@ export function FeaturesSection() {
                     <Icon className={`h-8 w-8 ${feature.color}`} />
                   </div>
                   <h3 className="text-xl font-semibold text-foreground">
-                    {feature.title}
+                    {t(`home.features.items.${index}.title`, { defaultValue: feature.title })}
                   </h3>
                 </div>
                 <p className="text-muted-foreground leading-relaxed">
-                  {feature.description}
+                  {t(`home.features.items.${index}.desc`, { defaultValue: feature.description })}
                 </p>
                 <div className="mt-6 opacity-0 group-hover:opacity-100 transition-opacity">
                   <Button variant="ghost" size="sm" className="p-0 h-auto text-primary hover:text-primary-glow">
-                    Узнать больше
+                    {t('home.features.learnMore', { defaultValue: 'Узнать больше' })}
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>
                 </div>
@@ -98,14 +100,14 @@ export function FeaturesSection() {
         {/* CTA Section */}
         <div className="text-center space-y-6">
           <h3 className="text-2xl md:text-3xl font-bold text-foreground">
-            Готовы начать свой путь в космос?
+            {t('home.features.cta.title', { defaultValue: 'Готовы начать свой путь в космос?' })}
           </h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="btn-cosmic px-8 py-3">
-              Посмотреть курсы
+              {t('home.features.cta.courses', { defaultValue: 'Посмотреть курсы' })}
             </Button>
             <Button className="btn-aurora px-8 py-3">
-              Ближайшие соревнования
+              {t('home.features.cta.competitions', { defaultValue: 'Ближайшие соревнования' })}
             </Button>
           </div>
         </div>

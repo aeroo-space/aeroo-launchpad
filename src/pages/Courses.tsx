@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Rocket, Plane, Satellite, Brain, Clock, Users, Star } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const courses = [
   {
@@ -51,6 +52,7 @@ const getLevelColor = (level: string) => {
 };
 
 const Courses = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -59,17 +61,16 @@ const Courses = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            Курсы AEROO
+            {t('courses.hero.title', { defaultValue: 'Курсы AEROO' })}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Изучайте аэрокосмические технологии с нуля. Практические курсы от экспертов индустрии 
-            с реальными проектами и персональным наставничеством.
+            {t('courses.hero.subtitle', { defaultValue: 'Изучайте аэрокосмические технологии с нуля. Практические курсы от экспертов индустрии с реальными проектами и персональным наставничеством.' })}
           </p>
         </div>
 
         {/* Course Selection */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">Выберите направление</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('courses.selectDirection', { defaultValue: 'Выберите направление' })}</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {courses.map((course) => {
@@ -84,10 +85,10 @@ const Courses = () => {
                       </Badge>
                     </div>
                     <CardTitle className="text-2xl group-hover:text-primary transition-colors">
-                      {course.title}
+                      {t(`courses.items.${course.id}.title`, { defaultValue: course.title })}
                     </CardTitle>
                     <CardDescription className="text-base leading-relaxed">
-                      {course.description}
+                      {t(`courses.items.${course.id}.description`, { defaultValue: course.description })}
                     </CardDescription>
                   </CardHeader>
                   
@@ -110,18 +111,18 @@ const Courses = () => {
 
                     {/* Topics */}
                     <div className="mb-6">
-                      <h4 className="text-sm font-medium text-muted-foreground mb-2">Темы курса:</h4>
+                      <h4 className="text-sm font-medium text-muted-foreground mb-2">{t('courses.topics', { defaultValue: 'Темы курса:' })}</h4>
                       <div className="flex flex-wrap gap-2">
                         {course.topics.map((topic, index) => (
                           <Badge key={index} variant="outline" className="text-xs">
-                            {topic}
+                            {t(`courses.items.${course.id}.topics.${index}`, { defaultValue: topic })}
                           </Badge>
                         ))}
                       </div>
                     </div>
 
                     <Button className="w-full btn-cosmic">
-                      Начать изучение
+                      {t('courses.cta.start', { defaultValue: 'Начать изучение' })}
                     </Button>
                   </CardContent>
                 </Card>
@@ -132,51 +133,51 @@ const Courses = () => {
 
         {/* Learning Process */}
         <div className="bg-muted/30 rounded-2xl p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8">Как проходит обучение</h2>
+          <h2 className="text-3xl font-bold text-center mb-8">{t('courses.how.title', { defaultValue: 'Как проходит обучение' })}</h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-primary">1</span>
               </div>
-              <h3 className="font-semibold mb-2">Теория</h3>
-              <p className="text-sm text-muted-foreground">Видеолекции и материалы от экспертов</p>
+              <h3 className="font-semibold mb-2">{t('courses.how.steps.0.title', { defaultValue: 'Теория' })}</h3>
+              <p className="text-sm text-muted-foreground">{t('courses.how.steps.0.desc', { defaultValue: 'Видеолекции и материалы от экспертов' })}</p>
             </div>
             
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-primary">2</span>
               </div>
-              <h3 className="font-semibold mb-2">Практика</h3>
-              <p className="text-sm text-muted-foreground">Работа с реальными проектами</p>
+              <h3 className="font-semibold mb-2">{t('courses.how.steps.1.title', { defaultValue: 'Практика' })}</h3>
+              <p className="text-sm text-muted-foreground">{t('courses.how.steps.1.desc', { defaultValue: 'Работа с реальными проектами' })}</p>
             </div>
             
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-primary">3</span>
               </div>
-              <h3 className="font-semibold mb-2">Наставничество</h3>
-              <p className="text-sm text-muted-foreground">Персональная поддержка менторов</p>
+              <h3 className="font-semibold mb-2">{t('courses.how.steps.2.title', { defaultValue: 'Наставничество' })}</h3>
+              <p className="text-sm text-muted-foreground">{t('courses.how.steps.2.desc', { defaultValue: 'Персональная поддержка менторов' })}</p>
             </div>
             
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-primary">4</span>
               </div>
-              <h3 className="font-semibold mb-2">Сертификат</h3>
-              <p className="text-sm text-muted-foreground">Диплом о завершении курса</p>
+              <h3 className="font-semibold mb-2">{t('courses.how.steps.3.title', { defaultValue: 'Сертификат' })}</h3>
+              <p className="text-sm text-muted-foreground">{t('courses.how.steps.3.desc', { defaultValue: 'Диплом о завершении курса' })}</p>
             </div>
           </div>
         </div>
 
         {/* CTA Section */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Готовы начать обучение?</h2>
+          <h2 className="text-3xl font-bold mb-4">{t('courses.cta.title', { defaultValue: 'Готовы начать обучение?' })}</h2>
           <p className="text-muted-foreground mb-8">
-            Присоединяйтесь к сообществу будущих инженеров и исследователей космоса
+            {t('courses.cta.desc', { defaultValue: 'Присоединяйтесь к сообществу будущих инженеров и исследователей космоса' })}
           </p>
           <Button size="lg" className="btn-cosmic">
-            Выбрать курс
+            {t('courses.cta.choose', { defaultValue: 'Выбрать курс' })}
           </Button>
         </div>
       </main>
