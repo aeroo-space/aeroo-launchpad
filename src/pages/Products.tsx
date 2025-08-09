@@ -12,10 +12,10 @@ import { useTranslation } from "react-i18next";
 const products = [
   {
     id: "rocket-kit",
-    title: "Набор ракетомоделирования AEROO-R1",
+    title: "Набор Rocket Science Kit",
     description: "Полный комплект для изучения основ ракетостроения и аэродинамики",
     image: "/placeholder.svg",
-    price: "12,990 ₸",
+    price: "812,950 ₸",
     features: ["Безопасные двигатели", "Детальные инструкции", "Система восстановления", "Видеокурс"],
     icon: Rocket,
     category: "Ракеты",
@@ -23,10 +23,10 @@ const products = [
   },
   {
     id: "drone-kit",
-    title: "Образовательный дрон AEROO-D2",
+    title: "Образовательные дроны",
     description: "Программируемый квадрокоптер для изучения основ пилотирования и программирования",
     image: "/placeholder.svg", 
-    price: "45,990 ₸",
+    price: "+ 1,120,950 ₸",
     features: ["FPV камера", "Программируемый контроллер", "Запасные пропеллеры", "Симулятор полёта"],
     icon: Plane,
     category: "Дроны",
@@ -34,14 +34,14 @@ const products = [
   },
   {
     id: "satellite-kit",
-    title: "Наноспутник AEROO-S3",
+    title: "Набор CubeSat Kit",
     description: "Конструктор для сборки функционального наноспутника с системами связи",
     image: "/placeholder.svg",
-    price: "89,990 ₸", 
+    price: "1,289,990 ₸", 
     features: ["Солнечные панели", "Радиосистема", "Бортовой компьютер", "Датчики"],
     icon: Satellite,
     category: "Спутники",
-    inStock: false
+    inStock: true
   }
 ];
 
