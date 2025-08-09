@@ -117,13 +117,13 @@ const CompetitionSatelliteLaunch2026 = () => {
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button asChild variant="primary" size="lg">
-                  <a
-                    href={registerHref}
+                  <Link
+                    to={registerHref}
                     aria-label="Принять участие — регистрация на AEROO Satellite Launch 2026"
                     data-testid="cta-top-apply"
                   >
                     Принять участие
-                  </a>
+                  </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
                   <a
@@ -297,13 +297,13 @@ const CompetitionSatelliteLaunch2026 = () => {
             </div>
             <div className="mt-8">
               <Button asChild variant="primary" size="xl">
-                <a
-                  href={registerHref}
+                <Link
+                  to={registerHref}
                   aria-label="Принять участие — подать заявку на участие"
                   data-testid="cta-bottom-apply"
                 >
                   Принять участие
-                </a>
+                </Link>
               </Button>
             </div>
           </div>
