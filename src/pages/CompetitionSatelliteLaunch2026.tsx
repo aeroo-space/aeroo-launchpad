@@ -31,6 +31,7 @@ import satelliteCrew from "@/assets/satellite-crew-edited.jpg";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -97,6 +98,8 @@ const CompetitionSatelliteLaunch2026 = () => {
   const [participant4, setParticipant4] = useState("");
   const [source, setSource] = useState("");
   const [consent, setConsent] = useState(false);
+  const [dupOpen, setDupOpen] = useState(false);
+  const [dupName, setDupName] = useState("");
 
   const handleOpenEnroll = () => {
     if (!user) {
@@ -142,9 +145,9 @@ const CompetitionSatelliteLaunch2026 = () => {
       if ((error as any).code === "23505") {
         const comp = competitions.find((c) => c.id === competitionId);
         const compName = t(`competitions.items.${competitionId}.title`, { defaultValue: comp?.title || "соревнование" });
-        toast.error("Вы уже зарегистрированы", {
-          description: `Вы уже зарегистрированы на «${compName}». Запись доступна в личном кабинете на странице «Мои регистрации».`,
-        });
+        setOpen(false);
+        setDupName(compName);
+        setDupOpen(true);
       } else {
         toast.error(t('competitions.toastEnrollError'), { description: error.message });
       }
@@ -498,6 +501,24 @@ const CompetitionSatelliteLaunch2026 = () => {
             </form>
           </DialogContent>
         </Dialog>
+
+        {/* Duplicate registration notice */}
+        <AlertDialog open={dupOpen} onOpenChange={setDupOpen}>
+          <AlertDialogContent className="animate-enter">
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-center">Вы уже зарегистрированы</AlertDialogTitle>
+              <AlertDialogDescription className="text-center">
+                Вы уже зарегистрированы на «{dupName}». Запись доступна в личном кабинете на странице «Мои регистрации».
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+            <AlertDialogFooter className="sm:justify-center">
+              <AlertDialogCancel>Закрыть</AlertDialogCancel>
+              <AlertDialogAction asChild>
+                <Link to="/dashboard">Перейти в личный кабинет</Link>
+              </AlertDialogAction>
+            </AlertDialogFooter>
+          </AlertDialogContent>
+        </AlertDialog>
 
         {/* Contacts */}
         <section id="contacts" ref={(el) => el && (revealRefs.current[6] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
