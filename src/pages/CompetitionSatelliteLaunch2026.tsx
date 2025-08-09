@@ -333,7 +333,10 @@ const CompetitionSatelliteLaunch2026 = () => {
                   </div>
                   <div className="glass-card rounded-xl p-6">
                     <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
-                    <div className="text-sm text-muted-foreground mb-4">🗓 {item.date}</div>
+                    <div className="text-sm text-muted-foreground mb-4 flex items-center gap-2">
+                      <CalendarDays className="w-4 h-4 text-primary" aria-hidden="true" />
+                      <span>{item.date}</span>
+                    </div>
                     {Array.isArray(item.details) ? (
                       <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
                         {item.details.map((d, i) => (
