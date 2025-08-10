@@ -19,7 +19,7 @@ const Support = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('support.title', { defaultValue: 'Техподдержка' })}</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {t('support.subtitle', { defaultValue: 'Поможем с доступом, наборами, заказами и участием в соревнованиях.' })}
-            {t('support.subtitle', { defaultValue: 'Напишите нам и мы ответим в ближайшее время.' })}
+            {t('support.subtitle', { defaultValue: 'Напишите нам и мы ответим в ближайшее время.'})}
           </p>
         </header>
         <section className="max-w-2xl mx-auto space-y-4">
