@@ -37,6 +37,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { useAuth } from "@/contexts/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
@@ -284,14 +285,18 @@ const CompetitionSatelliteLaunch2026 = () => {
         <section id="goals" ref={(el) => el && (revealRefs.current[2] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">Цели и задачи</h2>
+            <p className="text-muted-foreground mb-6 max-w-3xl">
+              Цель турнира — вовлечь молодёжь в практическую инженерную деятельность и повысить интерес к космическим
+              технологиям через проектную и командную работу.
+            </p>
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
               {[
-                { icon: Cpu, text: "Развитие инженерного и проектного мышления" },
-                { icon: ClipboardList, text: "Освоение навыков системного проектирования спутников" },
-                { icon: CircuitBoard, text: "Работа с CAD, 3D-моделированием, PCB и электроникой" },
-                { icon: Wrench, text: "Программирование микроконтроллеров и работа с телеметрией" },
-                { icon: Presentation, text: "Навыки презентации и защиты проектов" },
-                { icon: Users, text: "Международное взаимодействие и обмен опытом" },
+                { icon: Cpu, text: "Развитие технического мышления и прикладных инженерных навыков" },
+                { icon: ClipboardList, text: "Системное проектирование спутниковых миссий" },
+                { icon: CircuitBoard, text: "3D‑моделирование, CAD и трассировка печатных плат (PCB)" },
+                { icon: Wrench, text: "Разработка и отладка ПО для микроконтроллеров, телеметрия и датчики" },
+                { icon: Presentation, text: "Подготовка презентаций и защита инженерных решений; командная работа" },
+                { icon: Users, text: "Расширение знаний в аэрокосмике, обмен опытом и международная культура" },
               ].map((g, i) => (
                 <Card key={i} className="glass-card">
                   <CardContent className="p-6 flex items-start gap-4">
@@ -535,6 +540,146 @@ const CompetitionSatelliteLaunch2026 = () => {
             </div>
           </div>
         </section>
+        {/* FAQ */}
+        <section id="faq" ref={(el) => el && (revealRefs.current[7] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
+          <div className="container mx-auto px-4 py-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Популярные вопросы по AEROO Satellite Launch Competition</h2>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="q1">
+                <AccordionTrigger>Кто может участвовать в соревновании?</AccordionTrigger>
+                <AccordionContent>
+                  К участию допускаются команды ровно из 4 человек в возрасте от 14 до 19 лет включительно, из Казахстана или других стран. Участниками могут быть школьники, ученики на домашнем обучении или эквивалентных образовательных программ, если они соответствуют возрастным требованиям на даты проведения соревнования (с 1 ноября по 12 апреля).
+                  <br />
+                  <span className="text-muted-foreground">Пример: Команда из четырёх 16-летних учеников 10 класса может участвовать.</span>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q2">
+                <AccordionTrigger>Может ли участвовать человек младше 14 или старше 19 лет?</AccordionTrigger>
+                <AccordionContent>
+                  Нет, участники должны быть в возрасте от 14 до 19 лет по состоянию на 1 июля 2026 года. Более младшие или старшие не могут быть членами команд, но могут присутствовать как наблюдатели или наставники с одобрения Оргкомитета.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q3">
+                <AccordionTrigger>Обязательно ли быть школьником?</AccordionTrigger>
+                <AccordionContent>
+                  Нет, участниками могут быть школьники, ученики на домашнем обучении или в эквивалентных программах. Нет строгого требования по зачислению в школу — только возрастной критерий.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q4">
+                <AccordionTrigger>Могут ли участвовать международные команды?</AccordionTrigger>
+                <AccordionContent>
+                  Да, международные команды приветствуются. Пять международных команд выйдут в финал в Астане, с обеспечением проезда и проживания.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q5">
+                <AccordionTrigger>Нужен ли участникам опыт в инженерии?</AccordionTrigger>
+                <AccordionContent>
+                  Предыдущий опыт не требуется. Соревнование направлено на обучение, и участники получат ресурсы для развития навыков в проектировании наноспутников, программировании и инженерии.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q6">
+                <AccordionTrigger>Сколько человек должно быть в команде?</AccordionTrigger>
+                <AccordionContent>
+                  Ровно 4 участника. Команды с другим количеством участников (меньше или больше) не допускаются.
+                  <br />
+                  <span className="text-muted-foreground">Пример: Команда из 3 или 5 человек зарегистрироваться не сможет.</span>
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q7">
+                <AccordionTrigger>Может ли один человек быть в нескольких командах?</AccordionTrigger>
+                <AccordionContent>
+                  Нет, каждый участник может быть только в одной команде.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q8">
+                <AccordionTrigger>Кто такой капитан команды и чем он занимается?</AccordionTrigger>
+                <AccordionContent>
+                  Капитан — это выбранный член команды, который общается с Оргкомитетом, отправляет материалы и координирует работу команды. Капитаном должен быть участник в возрасте 14–19 лет.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q9">
+                <AccordionTrigger>Могут ли родители или наставники быть членами команды?</AccordionTrigger>
+                <AccordionContent>
+                  Нет, членами команды могут быть только участники 14–19 лет. Наставники и родители могут помогать и направлять, но не входят в официальный состав команды.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="q10">
+                <AccordionTrigger>Можно ли поменять участников команды после регистрации?</AccordionTrigger>
+                <AccordionContent>
+                  Изменения возможны до 1 января 2026 года. Пишите на <a href="mailto:info@aeroo.space" className="underline">info@aeroo.space</a>.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "FAQPage",
+                  "mainEntity": [
+                    { "@type": "Question", "name": "Кто может участвовать в соревновании?", "acceptedAnswer": { "@type": "Answer", "text": "К участию допускаются команды ровно из 4 человек в возрасте от 14 до 19 лет включительно, из Казахстана или других стран. Участниками могут быть школьники, ученики на домашнем обучении или эквивалентных образовательных программ, если они соответствуют возрастным требованиям на даты проведения соревнования (с 1 ноября по 12 апреля). Пример: Команда из четырёх 16-летних учеников 10 класса может участвовать." } },
+                    { "@type": "Question", "name": "Может ли участвовать человек младше 14 или старше 19 лет?", "acceptedAnswer": { "@type": "Answer", "text": "Нет, участники должны быть в возрасте от 14 до 19 лет по состоянию на 1 июля 2026 года. Более младшие или старшие не могут быть членами команд, но могут присутствовать как наблюдатели или наставники с одобрения Оргкомитета." } },
+                    { "@type": "Question", "name": "Обязательно ли быть школьником?", "acceptedAnswer": { "@type": "Answer", "text": "Нет, участниками могут быть школьники, ученики на домашнем обучении или в эквивалентных программах. Нет строгого требования по зачислению в школу — только возрастной критерий." } },
+                    { "@type": "Question", "name": "Могут ли участвовать международные команды?", "acceptedAnswer": { "@type": "Answer", "text": "Да, международные команды приветствуются. Пять международных команд выйдут в финал в Астане, с обеспечением проезда и проживания." } },
+                    { "@type": "Question", "name": "Нужен ли участникам опыт в инженерии?", "acceptedAnswer": { "@type": "Answer", "text": "Предыдущий опыт не требуется. Соревнование направлено на обучение, и участники получат ресурсы для развития навыков в проектировании наноспутников, программировании и инженерии." } },
+                    { "@type": "Question", "name": "Сколько человек должно быть в команде?", "acceptedAnswer": { "@type": "Answer", "text": "Ровно 4 участника. Команды с другим количеством участников (меньше или больше) не допускаются. Пример: Команда из 3 или 5 человек зарегистрироваться не сможет." } },
+                    { "@type": "Question", "name": "Может ли один человек быть в нескольких командах?", "acceptedAnswer": { "@type": "Answer", "text": "Нет, каждый участник может быть только в одной команде." } },
+                    { "@type": "Question", "name": "Кто такой капитан команды и чем он занимается?", "acceptedAnswer": { "@type": "Answer", "text": "Капитан — это выбранный член команды, который общается с Оргкомитетом, отправляет материалы и координирует работу команды. Капитаном должен быть участник в возрасте 14–19 лет." } },
+                    { "@type": "Question", "name": "Могут ли родители или наставники быть членами команды?", "acceptedAnswer": { "@type": "Answer", "text": "Нет, членами команды могут быть только участники 14–19 лет. Наставники и родители могут помогать и направлять, но не входят в официальный состав команды." } },
+                    { "@type": "Question", "name": "Можно ли поменять участников команды после регистрации?", "acceptedAnswer": { "@type": "Answer", "text": "Изменения возможны до 1 января 2026 года. Пишите на info@aeroo.space." } }
+                  ]
+                })
+              }}
+            />
+          </div>
+        </section>
+
+        {/* Glossary */}
+        <section id="glossary" ref={(el) => el && (revealRefs.current[8] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
+          <div className="container mx-auto px-4 py-16">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Глоссарий</h2>
+            <Accordion type="multiple" className="w-full">
+              <AccordionItem value="term-team">
+                <AccordionTrigger>Команда</AccordionTrigger>
+                <AccordionContent>
+                  Группа из 4 участников в возрасте от 14 до 19 лет включительно, которые разрабатывают, создают и запускают наноспутники в рамках AEROO Satellite Launch Competition. Каждая команда назначает капитана для связи с Организационным комитетом.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="term-participant">
+                <AccordionTrigger>Участник</AccordionTrigger>
+                <AccordionContent>
+                  Лицо в возрасте от 14 до 19 лет, принимающее участие в турнире.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="term-org">
+                <AccordionTrigger>Организационный комитет (Оргкомитет)</AccordionTrigger>
+                <AccordionContent>
+                  Орган, ответственный за управление проведением турнира.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="term-nanosat">
+                <AccordionTrigger>Наноспутник</AccordionTrigger>
+                <AccordionContent>
+                  Малый спутник (например, CubeSat), разработанный командами для стратостатного запуска.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="term-mentor">
+                <AccordionTrigger>Наставник</AccordionTrigger>
+                <AccordionContent>
+                  Лицо в возрасте от 21 года и старше, которое выполняет роль куратора или сопровождающего команды. Наставникам запрещено входить в зону хакатона или оказывать помощь командам во время соревнований, чтобы обеспечить честность участия.
+                </AccordionContent>
+              </AccordionItem>
+              <AccordionItem value="term-captain">
+                <AccordionTrigger>Капитан команды</AccordionTrigger>
+                <AccordionContent>
+                  Участник, отвечающий за связь между командой и Организационным комитетом, координацию работы внутри команды и организацию деятельности команды.
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
+
       </main>
 
       <Footer />
