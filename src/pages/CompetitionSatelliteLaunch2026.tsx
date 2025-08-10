@@ -201,13 +201,13 @@ const CompetitionSatelliteLaunch2026 = () => {
           <div className="absolute inset-0" style={{ background: "var(--gradient-satellite-hero)" }} />
           <div className="container mx-auto px-4 py-24 md:py-36 relative z-10">
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-[hsl(var(--space-5))]">
+              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-foreground">
                 AEROO Satellite Launch Competition 2026
               </h1>
-              <p className="text-lg md:text-2xl text-[hsl(var(--space-5)/0.9)] mb-6">
+              <p className="text-lg md:text-2xl text-muted-foreground mb-6">
                 Международный инженерный турнир по разработке и запуску наноспутников
               </p>
-              <div className="flex items-center gap-3 text-[hsl(var(--space-5)/0.85)] mb-8">
+              <div className="flex items-center gap-3 text-muted-foreground mb-8">
                 <CalendarDays className="w-5 h-5" />
                 <span>
                   Регистрация: 1 ноября 2025 – 1 января 2026 | Финал: 9–12 апреля 2026, Астана
@@ -274,7 +274,7 @@ const CompetitionSatelliteLaunch2026 = () => {
         <section ref={(el) => el && (revealRefs.current[1] = el)} className="opacity-0 translate-y-4 transition-all duration-700" style={{ background: "var(--gradient-satellite-section)" }}>
           <div className="container mx-auto px-4 py-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">О AEROO</h2>
-            <p className="text-[hsl(var(--space-5))] max-w-3xl">
+            <p className="text-muted-foreground max-w-3xl">
               AEROO — организация, развивающая аэрокосмическое образование через инженерные соревнования и образовательные
               программы. Мы готовим новое поколение инженеров и учёных для космической отрасли.
             </p>
@@ -396,7 +396,7 @@ const CompetitionSatelliteLaunch2026 = () => {
           <div className="absolute inset-0" style={{ background: "var(--gradient-satellite-section)" }} />
           <div className="container mx-auto px-4 py-16 relative z-10">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Награды</h2>
-            <div className="space-y-3 text-[hsl(var(--space-5))]">
+            <div className="space-y-3 text-foreground">
               <div>🏆 I место: грант на обучение в АУЭС им. Гумарбека Даукеева + денежный приз</div>
               <div>🥈 II и III места: денежные призы и ценные подарки</div>
               <div>🎖 Все финалисты — памятные дипломы</div>
