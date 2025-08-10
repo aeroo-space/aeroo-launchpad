@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthProvider";
 import { useTranslation } from "react-i18next";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const LANGUAGES = [
   { code: 'ru', label: 'RU' },
@@ -107,6 +108,9 @@ export function Navigation() {
   </Button>
 )}
 
+            {/* Theme Toggle */}
+            <ThemeToggle />
+
             {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
@@ -115,7 +119,8 @@ export function Navigation() {
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button>
+            </Button
+            >
           </div>
         </div>
 
@@ -155,6 +160,11 @@ export function Navigation() {
                     {lang.label}
                   </button>
                 ))}
+              </div>
+
+              {/* Theme toggle (mobile) */}
+              <div className="ml-auto">
+                <ThemeToggle />
               </div>
             </div>
             

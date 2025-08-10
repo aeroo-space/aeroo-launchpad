@@ -21,38 +21,41 @@ import CompetitionSatelliteLaunch2026 from "./pages/CompetitionSatelliteLaunch20
 import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement2025";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/competitions" element={<Competitions />} />
-            <Route path="/courses" element={<Courses />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/support" element={<Support />} />
-            <Route path="/contacts" element={<Contacts />} />
-            <Route path="/faq" element={<FAQ />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/competitions/satellite-launch-2026" element={<CompetitionSatelliteLaunch2026 />} />
-            <Route path="/competitions/space-settlement-2025" element={<CompetitionSpaceSettlement2025 />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              <Route path="/competitions" element={<Competitions />} />
+              <Route path="/courses" element={<Courses />} />
+              <Route path="/products" element={<Products />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/community" element={<Community />} />
+              <Route path="/support" element={<Support />} />
+              <Route path="/contacts" element={<Contacts />} />
+              <Route path="/faq" element={<FAQ />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/auth" element={<Auth />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/competitions/satellite-launch-2026" element={<CompetitionSatelliteLaunch2026 />} />
+              <Route path="/competitions/space-settlement-2025" element={<CompetitionSpaceSettlement2025 />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
+      </ThemeProvider>
     </AuthProvider>
   </QueryClientProvider>
 );
