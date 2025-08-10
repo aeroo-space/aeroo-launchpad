@@ -23,7 +23,7 @@ const Competitions = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { t } = useTranslation();
-  
+
   const [open, setOpen] = useState(false);
   const [teamName, setTeamName] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -142,7 +142,7 @@ const Competitions = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      
+
       <main className="container mx-auto px-4 py-12">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -183,18 +183,18 @@ const Competitions = () => {
                   <p className="text-muted-foreground mb-4 leading-relaxed">
                     {t(`competitions.items.${competition.id}.description`, { defaultValue: competition.description })}
                   </p>
-                  
+
                   <div className="space-y-2 mb-6">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">{t('competitions.age')}</span>
                       <span className="font-medium">{competition.ages}</span>
                     </div>
-                      <div className="flex justify-between text-sm">
-                        <span className="text-muted-foreground">{t('competitions.deadline')}</span>
-                        <span className="font-medium">{competition.deadline}</span>
-                      </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">{t('competitions.deadline')}</span>
+                      <span className="font-medium">{competition.deadline}</span>
+                    </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 gap-3">
                     {competition.id === 'satellite-launch' ? (
                       <Button asChild variant="outline" className="w-full">
@@ -213,9 +213,11 @@ const Competitions = () => {
                         {t('competitions.details')}
                       </Button>
                     )}
-                    <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
-                      Принять участие
-                    </Button>
+                    {competition.status === 'Регистрация' && (
+                      <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
+                        Принять участие
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>
