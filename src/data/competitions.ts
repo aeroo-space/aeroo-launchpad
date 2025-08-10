@@ -28,7 +28,7 @@ export const competitions: Competition[] = [
     category: "Спутники",
     description: "Проектирование, сборка и запуск мини‑спутников",
     icon: Satellite,
-    status: "Скоро",
+    status: "Регистрация",
     deadline: "1 января 2026",
     ages: "14-19 лет",
   },
