@@ -8,49 +8,37 @@ import {
   Target, 
   Heart, 
   Users, 
-  Trophy, 
-  Globe, 
-  Mail, 
-  MapPin,
-  Phone,
-  Linkedin,
-  Github,
-  Twitter
+  Globe 
 } from "lucide-react";
+import { toast } from "sonner";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 const achievements = [
-  { number: "500+", label: "participants", icon: Users },
-  { number: "50+", label: "projects", icon: Rocket },
-  { number: "15+", label: "awards", icon: Trophy },
-  { number: "3", label: "countries", icon: Globe }
+  { number: "5000+", labelKey: "participants", text: "участников", icon: Users },
+  { number: "30+", labelKey: "events", text: "мероприятий", icon: Rocket },
+  { number: "5", labelKey: "countries", text: "страны", icon: Globe }
 ];
 
 const team = [
   {
-    name: "Алексей Петров",
-    role: "Основатель и CEO",
-    bio: "Инженер-ракетостроитель с 10-летним опытом в космической индустрии",
+    name: "Мирас Нусупов",
+    role: "CEO",
+    bio: "Эксперт в области STEAM-образования и разработки образовательных продуктов",
     image: "/placeholder.svg"
   },
   {
-    name: "Мария Иванова", 
-    role: "Директор по образованию",
-    bio: "Эксперт в области STEM-образования и разработки образовательных программ",
-    image: "/placeholder.svg"
-  },
-  {
-    name: "Дмитрий Сидоров",
-    role: "Технический директор", 
-    bio: "Специалист по беспилотным системам и искусственному интеллекту",
+    name: "Рыспай Алихан", 
+    role: "COO",
+    bio: "6 лет в области STEAM-образования, ex CTO FIRST Robotics",
     image: "/placeholder.svg"
   }
 ];
 
 const partners = [
-  "Роскосмос", "SpaceX", "КазКосмос", "Московский авиационный институт",
-  "МФТИ", "Казахстанский национальный университет"
+  "Ministry Digital & Space",
+  "Energo University",
+  "FURO"
 ];
 
 const About = () => {
@@ -128,7 +116,7 @@ const About = () => {
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-center mb-12">{t('about.achievementsTitle', { defaultValue: 'Наши достижения' })}</h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
@@ -137,7 +125,7 @@ const About = () => {
                     <Icon className="h-10 w-10 text-primary group-hover:glow-primary transition-all" />
                   </div>
                   <div className="text-3xl font-bold text-primary mb-2">{achievement.number}</div>
-                  <div className="text-muted-foreground">{t(`about.achievements.${achievement.label}`, { defaultValue: achievement.label })}</div>
+                  <div className="text-muted-foreground">{t(`about.achievements.${achievement.labelKey}`, { defaultValue: achievement.text })}</div>
                 </div>
               );
             })}
@@ -148,7 +136,7 @@ const About = () => {
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-center mb-12">{t('about.teamTitle', { defaultValue: 'Наша команда' })}</h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             {team.map((member, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
                 <CardHeader>
@@ -189,69 +177,50 @@ const About = () => {
           </div>
         </div>
 
-        {/* Contact */}
+        {/* Lead Capture */}
         <div className="bg-muted/30 rounded-2xl p-8">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('about.contactsTitle', { defaultValue: 'Контакты' })}</h2>
-          
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-6">
-              <div className="flex items-center space-x-4">
-                <Mail className="h-6 w-6 text-primary" />
-                <div>
-                  <div className="font-medium">{t('about.contactEmail', { defaultValue: 'Email' })}</div>
-                  <div className="text-muted-foreground">info@aeroo.kz</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                <Phone className="h-6 w-6 text-primary" />
-                <div>
-                  <div className="font-medium">{t('about.contactPhone', { defaultValue: 'Телефон' })}</div>
-                  <div className="text-muted-foreground">+7 (777) 123-45-67</div>
-                </div>
-              </div>
-              
-              <div className="flex items-center space-x-4">
-                <MapPin className="h-6 w-6 text-primary" />
-                <div>
-                  <div className="font-medium">{t('about.contactAddress', { defaultValue: 'Адрес' })}</div>
-                  <div className="text-muted-foreground">Алматы, Казахстан</div>
-                </div>
-              </div>
+          <h2 className="text-3xl font-bold text-center mb-12">{t('about.leadTitle', { defaultValue: 'Свяжитесь с нами' })}</h2>
 
-              <div className="flex space-x-4">
-                <Button size="sm" variant="outline">
-                  <Linkedin className="h-4 w-4" />
-                </Button>
-                <Button size="sm" variant="outline">
-                  <Github className="h-4 w-4" />
-                </Button>
-                <Button size="sm" variant="outline">
-                  <Twitter className="h-4 w-4" />
-                </Button>
+          <div className="max-w-2xl mx-auto">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                const form = e.currentTarget as HTMLFormElement;
+                const fd = new FormData(form);
+                const name = String(fd.get('name') || '').trim();
+                const email = String(fd.get('email') || '').trim();
+                if (!name || !email) {
+                  toast.error(t('about.leadRequired', { defaultValue: 'Заполните имя и email' }));
+                  return;
+                }
+                toast.success(t('about.leadSuccess', { defaultValue: 'Спасибо! Мы свяжемся с вами в ближайшее время.' }));
+                form.reset();
+              }}
+              className="space-y-4"
+            >
+              <div>
+                <label className="block text-sm font-medium mb-2">{t('about.formName', { defaultValue: 'Имя' })}</label>
+                <input name="name" className="w-full p-3 rounded-lg border border-border bg-background" required />
               </div>
-            </div>
-            
-            <div>
-              <h3 className="text-xl font-semibold mb-6">{t('about.writeUs', { defaultValue: 'Напишите нам' })}</h3>
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">{t('about.formName', { defaultValue: 'Имя' })}</label>
-                  <input className="w-full p-3 rounded-lg border border-border bg-background" placeholder="" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">{t('about.formEmail', { defaultValue: 'Email' })}</label>
-                  <input type="email" className="w-full p-3 rounded-lg border border-border bg-background" placeholder="" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium mb-2">{t('about.formMessage', { defaultValue: 'Сообщение' })}</label>
-                  <textarea className="w-full p-3 rounded-lg border border-border bg-background h-32" placeholder=""></textarea>
-                </div>
-                <Button className="w-full btn-cosmic">
-                  {t('about.sendMessage', { defaultValue: 'Отправить сообщение' })}
-                </Button>
+              <div>
+                <label className="block text-sm font-medium mb-2">Email</label>
+                <input name="email" type="email" className="w-full p-3 rounded-lg border border-border bg-background" required />
               </div>
-            </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">{t('about.formPhone', { defaultValue: 'Телефон' })}</label>
+                <input name="phone" type="tel" className="w-full p-3 rounded-lg border border-border bg-background" />
+              </div>
+              <div>
+                <label className="block text-sm font-medium mb-2">{t('about.formMessage', { defaultValue: 'Сообщение' })}</label>
+                <textarea name="message" className="w-full p-3 rounded-lg border border-border bg-background h-32" />
+              </div>
+              <Button className="w-full btn-cosmic" type="submit">
+                {t('about.sendMessage', { defaultValue: 'Отправить' })}
+              </Button>
+              <p className="text-center text-sm text-muted-foreground">
+                {t('about.privacyNote', { defaultValue: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности.' })}
+              </p>
+            </form>
           </div>
         </div>
       </main>
