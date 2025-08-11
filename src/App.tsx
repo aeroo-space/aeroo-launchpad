@@ -22,6 +22,7 @@ import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement20
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { ThemeProvider } from "@/components/theme-provider";
+import ProtectedRoute from "@/components/common/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -47,7 +48,11 @@ const App = () => (
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              } />
               <Route path="/competitions/satellite-launch-2026" element={<CompetitionSatelliteLaunch2026 />} />
               <Route path="/competitions/space-settlement-2025" element={<CompetitionSpaceSettlement2025 />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

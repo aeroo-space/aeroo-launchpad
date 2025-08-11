@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useAuth } from "@/contexts/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { toast } from "@/components/ui/sonner";
@@ -13,6 +13,7 @@ import { supabase } from "@/integrations/supabase/client";
 const Auth = () => {
   const { user, loading, signIn, signUp } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
   const { t } = useTranslation();
   const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
@@ -31,15 +32,18 @@ const Auth = () => {
   const [newPwd2, setNewPwd2] = useState("");
   const [resetSubmitting, setResetSubmitting] = useState(false);
 
-useEffect(() => {
-  document.title = mode === "signin" ? t('auth.metaTitle.signin', { defaultValue: 'Вход — AEROO' }) : t('auth.metaTitle.signup', { defaultValue: 'Регистрация — AEROO' });
-  const metaDesc = document.querySelector('meta[name="description"]');
-  if (metaDesc) metaDesc.setAttribute('content', t('auth.metaDesc', { defaultValue: 'Вход и регистрация AEROO — авторизация для участия в соревнованиях' }));
-}, [mode, t]);
+  useEffect(() => {
+    document.title = mode === "signin" ? t('auth.metaTitle.signin', { defaultValue: 'Вход — AEROO' }) : t('auth.metaTitle.signup', { defaultValue: 'Регистрация — AEROO' });
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) metaDesc.setAttribute('content', t('auth.metaDesc', { defaultValue: 'Вход и регистрация AEROO — авторизация для участия в соревнованиях' }));
+  }, [mode, t]);
 
   useEffect(() => {
-    if (!loading && user) navigate("/dashboard", { replace: true });
-  }, [user, loading, navigate]);
+    if (!loading && user) {
+      const from = location.state?.from?.pathname || "/dashboard";
+      navigate(from, { replace: true });
+    }
+  }, [user, loading, navigate, location]);
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
@@ -58,7 +62,8 @@ useEffect(() => {
     try {
       if (mode === "signin") {
         await signIn(email, password);
-        navigate("/dashboard", { replace: true });
+        const from = location.state?.from?.pathname || "/dashboard";
+        navigate(from, { replace: true });
       } else {
         // Валидация пароля и обязательных полей
         const passwordValid = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(password);
@@ -257,11 +262,11 @@ useEffect(() => {
           <form onSubmit={handleResetPassword} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="rp1">{t('auth.newPassword', { defaultValue: 'Новый пароль' })}</Label>
-              <Input id="rp1" type="password" value={newPwd} onChange={(e)=>setNewPwd(e.target.value)} required />
+              <Input id="rp1" type="password" value={newPwd} onChange={(e) => setNewPwd(e.target.value)} required />
             </div>
             <div className="space-y-2">
               <Label htmlFor="rp2">{t('auth.confirmPassword', { defaultValue: 'Подтвердите пароль' })}</Label>
-              <Input id="rp2" type="password" value={newPwd2} onChange={(e)=>setNewPwd2(e.target.value)} required />
+              <Input id="rp2" type="password" value={newPwd2} onChange={(e) => setNewPwd2(e.target.value)} required />
             </div>
             <div className="flex justify-end gap-2">
               <Button type="button" variant="outline" onClick={() => setShowResetPwd(false)}>{t('common.cancel', { defaultValue: 'Отмена' })}</Button>

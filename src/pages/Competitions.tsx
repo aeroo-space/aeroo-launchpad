@@ -56,6 +56,7 @@ const Competitions = () => {
     if (!user) {
       toast(t('competitions.toastLoginTitle'), { description: t('competitions.toastLoginDesc') });
       navigate("/auth");
+      // TODO: handle redirect to login with notification that user needs to auth, after auth redirect to this page back
       return;
     }
     setSelectedId(id);
