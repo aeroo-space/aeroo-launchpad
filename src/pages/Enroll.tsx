@@ -50,13 +50,6 @@ export default function EnrollPage() {
     link.href = window.location.origin + `/enroll/${competitionId ?? ''}`;
   }, [competition, competitionId]);
 
-  // If user not logged in, suggest auth
-  useEffect(() => {
-    if (!user) {
-      toast(t('competitions.toastLoginTitle', { defaultValue: 'Требуется вход' }), { description: t('competitions.toastLoginDesc', { defaultValue: 'Войдите, чтобы подать заявку' }) });
-    }
-  }, [user, t]);
-
   // Form state
   const [email, setEmail] = useState("");
   const [telegram, setTelegram] = useState("");
@@ -78,10 +71,6 @@ export default function EnrollPage() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!user) {
-      navigate("/auth");
-      return;
-    }
     if (!competitionId) return;
     if (!consent) {
       toast(t('competitions.toastNeedConsentTitle', { defaultValue: 'Нужно согласие' }), { description: t('competitions.toastNeedConsentDesc', { defaultValue: 'Подтвердите согласие с правилами' }) });
@@ -91,7 +80,7 @@ export default function EnrollPage() {
     const ageNumber = typeof captainAge === "number" ? captainAge : parseInt(captainAge || "0", 10) || null;
 
     const { error } = await (supabase as any).from("enrollments").insert({
-      user_id: user.id,
+      user_id: user?.id,
       competition_id: competitionId,
       team_name: teamName,
       status: "active",

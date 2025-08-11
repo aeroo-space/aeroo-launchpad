@@ -56,7 +56,11 @@ const App = () => (
               } />
               <Route path="/competitions/satellite-launch-2026" element={<CompetitionSatelliteLaunch2026 />} />
               <Route path="/competitions/space-settlement-2025" element={<CompetitionSpaceSettlement2025 />} />
-              <Route path="/enroll/:competitionId" element={<EnrollPage />} />
+              <Route path="/enroll/:competitionId" element={
+                <ProtectedRoute>
+                  <EnrollPage />
+                </ProtectedRoute>
+              } />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
