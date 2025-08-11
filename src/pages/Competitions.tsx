@@ -53,14 +53,7 @@ const Competitions = () => {
       toast("Регистрация пока не открыта", { description: "Скоро выйдет информация — будьте в курсе событий." });
       return;
     }
-    if (!user) {
-      toast(t('competitions.toastLoginTitle'), { description: t('competitions.toastLoginDesc') });
-      navigate("/auth");
-      // TODO: handle redirect to login with notification that user needs to auth, after auth redirect to this page back
-      return;
-    }
-    setSelectedId(id);
-    setOpen(true);
+    navigate(`/enroll/${id}`);
   };
 
   const location = useLocation();
@@ -68,15 +61,9 @@ const Competitions = () => {
     const params = new URLSearchParams(location.search);
     const enroll = params.get("enroll");
     if (enroll) {
-      const comp = competitions.find((c) => c.id === enroll);
-      const isAllowed = comp?.status === "Регистрация" || enroll === "satellite-launch";
-      if (isAllowed) {
-        handleOpenEnroll(enroll);
-      } else {
-        toast("Регистрация пока не открыта", { description: "Скоро выйдет информация — будьте в курсе событий." });
-      }
+      navigate(`/enroll/${enroll}`);
     }
-  }, [location.search]);
+  }, [location.search, navigate]);
 
   const handleSubmitEnroll = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -215,8 +202,8 @@ const Competitions = () => {
                       </Button>
                     )}
                     {competition.status === 'Регистрация' && (
-                      <Button className="w-full btn-cosmic" onClick={() => handleOpenEnroll(competition.id)}>
-                        Принять участие
+                      <Button asChild className="w-full btn-cosmic">
+                        <Link to={`/enroll/${competition.id}`}>Принять участие</Link>
                       </Button>
                     )}
                   </div>
@@ -237,116 +224,9 @@ const Competitions = () => {
           </Button>
         </div>
 
-        {/* Enroll Dialog */}
-        <Dialog open={open} onOpenChange={setOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>{t('competitions.enrollDialogTitle')}</DialogTitle>
-              <DialogDescription>
-                {t('competitions.enrollDialogDesc')}
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleSubmitEnroll} className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="email">{t('form.email')}</Label>
-                  <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="tg">{t('form.telegram')}</Label>
-                  <Input id="tg" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="@username" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="team">{t('form.teamName')}</Label>
-                  <Input id="team" value={teamName} onChange={(e) => setTeamName(e.target.value)} placeholder="Например: AEROO Crew" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="captain">{t('form.captainFullName')}</Label>
-                  <Input id="captain" value={captainFullName} onChange={(e) => setCaptainFullName(e.target.value)} placeholder="Иванов Иван Иванович" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">{t('form.captainPhone')}</Label>
-                  <Input id="phone" value={captainPhone} onChange={(e) => setCaptainPhone(e.target.value)} placeholder="+7 700 000 00 00" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="age">{t('form.captainAge')}</Label>
-                  <Input id="age" type="number" min={8} value={captainAge === "" ? "" : captainAge} onChange={(e) => setCaptainAge(e.target.value === "" ? "" : Number(e.target.value))} placeholder="18" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="city">{t('form.city')}</Label>
-                  <Input id="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Алматы" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="study">{t('form.studyPlace')}</Label>
-                  <Input id="study" value={studyPlace} onChange={(e) => setStudyPlace(e.target.value)} placeholder="Школа/ВУЗ" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p2">{t('form.participant2')}</Label>
-                  <Textarea id="p2" value={participant2} onChange={(e) => setParticipant2(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p3">{t('form.participant3')}</Label>
-                  <Textarea id="p3" value={participant3} onChange={(e) => setParticipant3(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p4">{t('form.participant4')}</Label>
-                  <Textarea id="p4" value={participant4} onChange={(e) => setParticipant4(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label>{t('form.source')}</Label>
-                  <Select value={source} onValueChange={setSource}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Выберите источник" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="instagram_kazrockets">{t('form.sourceInstagramKaz')}</SelectItem>
-                      <SelectItem value="instagram_other">{t('form.sourceInstagramOther')}</SelectItem>
-                      <SelectItem value="telegram">{t('form.sourceTelegram')}</SelectItem>
-                      <SelectItem value="friends">{t('form.sourceFriends')}</SelectItem>
-                      <SelectItem value="other">{t('form.sourceOther')}</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="flex items-start gap-3 md:col-span-2">
-                  <Checkbox id="consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
-                  <Label htmlFor="consent" className="leading-snug">
-                    {t('form.consent')}
-                  </Label>
-                </div>
-              </div>
+        {/* Enroll Dialog removed in favor of dedicated page */}
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={
-                  submitting ||
-                  !email || !telegram || !teamName || !captainFullName || !captainPhone || !captainAge || !city || !studyPlace ||
-                  !participant2 || !participant3 || !participant4 || !source || !consent
-                }
-              >
-                {submitting ? t('form.sending') : t('form.submit')}
-              </Button>
-            </form>
-          </DialogContent>
-        </Dialog>
-
-        {/* Duplicate registration notice */}
-        <AlertDialog open={dupOpen} onOpenChange={setDupOpen}>
-          <AlertDialogContent className="animate-enter">
-            <AlertDialogHeader>
-              <AlertDialogTitle className="text-center">Вы уже зарегистрированы</AlertDialogTitle>
-              <AlertDialogDescription className="text-center">
-                Вы уже зарегистрированы на «{dupName}». Запись доступна в личном кабинете на странице «Мои регистрации».
-              </AlertDialogDescription>
-            </AlertDialogHeader>
-            <AlertDialogFooter className="sm:justify-center">
-              <AlertDialogCancel>Закрыть</AlertDialogCancel>
-              <AlertDialogAction asChild>
-                <Link to="/dashboard">Перейти в личный кабинет</Link>
-              </AlertDialogAction>
-            </AlertDialogFooter>
-          </AlertDialogContent>
-        </AlertDialog>
+        {/* Duplicate registration notice remains unused here */}
 
       </main>
 
