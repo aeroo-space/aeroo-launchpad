@@ -154,6 +154,7 @@ export type Database = {
           city: string | null
           created_at: string
           full_name: string | null
+          grade: string | null
           id: string
           iin: string | null
           phone: string | null
@@ -167,6 +168,7 @@ export type Database = {
           city?: string | null
           created_at?: string
           full_name?: string | null
+          grade?: string | null
           id?: string
           iin?: string | null
           phone?: string | null
@@ -180,6 +182,7 @@ export type Database = {
           city?: string | null
           created_at?: string
           full_name?: string | null
+          grade?: string | null
           id?: string
           iin?: string | null
           phone?: string | null

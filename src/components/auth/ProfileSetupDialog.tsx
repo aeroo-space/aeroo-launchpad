@@ -20,6 +20,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
   const [telegram, setTelegram] = useState("");
   const [school, setSchool] = useState("");
   const [city, setCity] = useState("");
+  const [grade, setGrade] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -37,6 +38,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
           telegram,
           school,
           city,
+          grade,
           profile_completed: true,
         });
 
@@ -51,11 +53,18 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
     }
   };
 
-  const isValid = fullName && iin && phone && telegram && school && city;
+  const isValid = fullName && iin && phone && telegram && school && city && grade;
 
   return (
     <Dialog open={open} onOpenChange={() => {}}>
       <DialogContent className="sm:max-w-md" onPointerDownOutside={(e) => e.preventDefault()}>
+        <button 
+          onClick={(e) => e.preventDefault()} 
+          className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
+          style={{ display: 'none' }}
+        >
+          <span className="sr-only">Close</span>
+        </button>
         <DialogHeader>
           <DialogTitle>Завершите настройку профиля</DialogTitle>
           <DialogDescription>
@@ -121,6 +130,16 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
               value={city}
               onChange={(e) => setCity(e.target.value)}
               placeholder="Алматы"
+              required
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="grade">Класс обучения *</Label>
+            <Input
+              id="grade"
+              value={grade}
+              onChange={(e) => setGrade(e.target.value)}
+              placeholder="11 класс"
               required
             />
           </div>

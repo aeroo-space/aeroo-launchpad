@@ -69,10 +69,15 @@ const Auth = () => {
           toast.error("Пароли не совпадают");
           return;
         }
-        if (password.length < 6) {
-          toast.error("Пароль должен содержать минимум 6 символов");
+        const isValidPassword = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(password);
+        if (!isValidPassword) {
+          toast.error("Пароль не соответствует требованиям", { 
+            description: "Минимум 8 символов, одна заглавная буква и один спецсимвол" 
+          });
           return;
         }
+        
+        // Note: Email validation is handled by Supabase on backend
         await signUp(email, password);
         setShowEmailCheck(true);
       }
@@ -165,7 +170,7 @@ const Auth = () => {
               <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} required />
               {mode === "signup" && (
                 <p className="text-xs text-muted-foreground">
-                  Минимум 6 символов
+                  Минимум 8 символов, одна заглавная буква и один спецсимвол
                 </p>
               )}
             </div>
@@ -181,7 +186,7 @@ const Auth = () => {
             {mode === "signup" && (
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">Подтвердите пароль *</Label>
-                <Input id="confirmPassword" type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength={6} required />
+                <Input id="confirmPassword" type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength={8} required />
               </div>
             )}
 

@@ -94,6 +94,7 @@ export default function EnrollPage() {
   const [mentorTelegram, setMentorTelegram] = useState("");
   
   const [source, setSource] = useState("");
+  const [questions, setQuestions] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
@@ -167,8 +168,9 @@ export default function EnrollPage() {
       mentor_city: mentorCity,
       mentor_telegram: mentorTelegram,
       
-      source,
-      consent,
+       source,
+       questions,
+       consent,
     });
     
     setSubmitting(false);
@@ -324,12 +326,12 @@ export default function EnrollPage() {
                 </div>
               </div>
 
-              {/* Participants */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Участники команды</h3>
+               {/* Participants */}
+               <div className="space-y-4">
+                 <h3 className="text-lg font-semibold">Участники команды</h3>
                 
-                {/* Participant 1 */}
-                <div className="border rounded-lg p-4 space-y-4">
+                 {/* Participant 1 */}
+                 <div className="border border-primary/20 bg-primary/5 rounded-lg p-4 space-y-4">
                   <h4 className="font-medium">Участник 1 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -390,8 +392,8 @@ export default function EnrollPage() {
                   </div>
                 </div>
 
-                {/* Participant 2 */}
-                <div className="border rounded-lg p-4 space-y-4">
+                 {/* Participant 2 */}
+                 <div className="border border-secondary/20 bg-secondary/5 rounded-lg p-4 space-y-4">
                   <h4 className="font-medium">Участник 2 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -452,8 +454,8 @@ export default function EnrollPage() {
                   </div>
                 </div>
 
-                {/* Participant 3 */}
-                <div className="border rounded-lg p-4 space-y-4">
+                 {/* Participant 3 */}
+                 <div className="border border-accent/20 bg-accent/5 rounded-lg p-4 space-y-4">
                   <h4 className="font-medium">Участник 3 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -579,8 +581,16 @@ export default function EnrollPage() {
 
               {/* Source and Consent */}
               <div className="space-y-4">
-                <div className="space-y-2">
-                  <Label>Откуда узнали о соревновании? *</Label>
+                 <div className="space-y-2">
+                   <Label>Вопросы или дополнительная информация</Label>
+                   <Input 
+                     value={questions} 
+                     onChange={(e) => setQuestions(e.target.value)} 
+                     placeholder="Ваши вопросы к организаторам..." 
+                   />
+                 </div>
+                 <div className="space-y-2">
+                   <Label>Откуда узнали о соревновании? *</Label>
                   <Select value={source} onValueChange={setSource}>
                     <SelectTrigger>
                       <SelectValue placeholder="Выберите источник" />
