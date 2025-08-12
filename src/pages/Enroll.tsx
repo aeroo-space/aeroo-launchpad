@@ -53,7 +53,7 @@ export default function EnrollPage() {
 
   // Form state
   const [teamName, setTeamName] = useState("");
-  
+
   // Captain info (pre-filled from profile)
   const [captainFullName, setCaptainFullName] = useState("");
   const [captainIin, setCaptainIin] = useState("");
@@ -62,7 +62,7 @@ export default function EnrollPage() {
   const [captainCity, setCaptainCity] = useState("");
   const [captainGrade, setCaptainGrade] = useState("");
   const [captainTelegram, setCaptainTelegram] = useState("");
-  
+
   // Participants
   const [participant1FullName, setParticipant1FullName] = useState("");
   const [participant1Iin, setParticipant1Iin] = useState("");
@@ -70,21 +70,21 @@ export default function EnrollPage() {
   const [participant1School, setParticipant1School] = useState("");
   const [participant1City, setParticipant1City] = useState("");
   const [participant1Grade, setParticipant1Grade] = useState("");
-  
+
   const [participant2FullName, setParticipant2FullName] = useState("");
   const [participant2Iin, setParticipant2Iin] = useState("");
   const [participant2Phone, setParticipant2Phone] = useState("");
   const [participant2School, setParticipant2School] = useState("");
   const [participant2City, setParticipant2City] = useState("");
   const [participant2Grade, setParticipant2Grade] = useState("");
-  
+
   const [participant3FullName, setParticipant3FullName] = useState("");
   const [participant3Iin, setParticipant3Iin] = useState("");
   const [participant3Phone, setParticipant3Phone] = useState("");
   const [participant3School, setParticipant3School] = useState("");
   const [participant3City, setParticipant3City] = useState("");
   const [participant3Grade, setParticipant3Grade] = useState("");
-  
+
   // Mentor
   const [mentorFullName, setMentorFullName] = useState("");
   const [mentorIin, setMentorIin] = useState("");
@@ -92,7 +92,7 @@ export default function EnrollPage() {
   const [mentorSchool, setMentorSchool] = useState("");
   const [mentorCity, setMentorCity] = useState("");
   const [mentorTelegram, setMentorTelegram] = useState("");
-  
+
   const [source, setSource] = useState("");
   const [questions, setQuestions] = useState("");
   const [consent, setConsent] = useState(false);
@@ -120,7 +120,7 @@ export default function EnrollPage() {
       toast("Нужно согласие", { description: "Подтвердите согласие с правилами" });
       return;
     }
-    
+
     setSubmitting(true);
 
     const { error } = await supabase.from("enrollments").insert({
@@ -128,7 +128,7 @@ export default function EnrollPage() {
       competition_id: competitionId,
       team_name: teamName,
       status: "active",
-      
+
       // Captain info
       captain_full_name: captainFullName,
       captain_iin: captainIin,
@@ -137,7 +137,7 @@ export default function EnrollPage() {
       city: captainCity,
       study_place: captainSchool,
       telegram: captainTelegram,
-      
+
       // Participants
       participant1_full_name: participant1FullName,
       participant1_iin: participant1Iin,
@@ -145,21 +145,21 @@ export default function EnrollPage() {
       participant1_school: participant1School,
       participant1_city: participant1City,
       participant1_grade: participant1Grade,
-      
+
       participant2_full_name: participant2FullName,
       participant2_iin: participant2Iin,
       participant2_phone: participant2Phone,
       participant2_school: participant2School,
       participant2_city: participant2City,
       participant2_grade: participant2Grade,
-      
+
       participant3_full_name: participant3FullName,
       participant3_iin: participant3Iin,
       participant3_phone: participant3Phone,
       participant3_school: participant3School,
       participant3_city: participant3City,
       participant3_grade: participant3Grade,
-      
+
       // Mentor
       mentor_full_name: mentorFullName,
       mentor_iin: mentorIin,
@@ -167,12 +167,12 @@ export default function EnrollPage() {
       mentor_school: mentorSchool,
       mentor_city: mentorCity,
       mentor_telegram: mentorTelegram,
-      
-       source,
-       questions,
-       consent,
+
+      source,
+      questions,
+      consent,
     });
-    
+
     setSubmitting(false);
     if (error) {
       if (error.code === "23505") {
@@ -239,278 +239,278 @@ export default function EnrollPage() {
               {/* Team Name */}
               <div className="space-y-2">
                 <Label htmlFor="team">Название команды *</Label>
-                <Input 
-                  id="team" 
-                  value={teamName} 
-                  onChange={(e) => setTeamName(e.target.value)} 
-                  placeholder="Например: AEROO Crew" 
-                  required 
+                <Input
+                  id="team"
+                  value={teamName}
+                  onChange={(e) => setTeamName(e.target.value)}
+                  placeholder="Например: AEROO Crew"
+                  required
                 />
               </div>
 
               {/* Captain Info */}
-              <div className="space-y-4">
+              <div className="bg-muted rounded-lg p-4 space-y-4">
                 <h3 className="text-lg font-semibold">Капитан команды</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="captain-name">ФИО *</Label>
-                    <Input 
-                      id="captain-name" 
-                      value={captainFullName} 
-                      onChange={(e) => setCaptainFullName(e.target.value)} 
-                      placeholder="Иванов Иван Иванович" 
-                      required 
+                    <Input
+                      id="captain-name"
+                      value={captainFullName}
+                      onChange={(e) => setCaptainFullName(e.target.value)}
+                      placeholder="Иванов Иван Иванович"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="captain-iin">ИИН *</Label>
-                    <Input 
-                      id="captain-iin" 
-                      value={captainIin} 
-                      onChange={(e) => setCaptainIin(e.target.value)} 
-                      placeholder="123456789012" 
+                    <Input
+                      id="captain-iin"
+                      value={captainIin}
+                      onChange={(e) => setCaptainIin(e.target.value)}
+                      placeholder="123456789012"
                       maxLength={12}
-                      required 
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="captain-phone">Телефон *</Label>
-                    <Input 
-                      id="captain-phone" 
-                      value={captainPhone} 
-                      onChange={(e) => setCaptainPhone(e.target.value)} 
-                      placeholder="+7 700 000 00 00" 
-                      required 
+                    <Input
+                      id="captain-phone"
+                      value={captainPhone}
+                      onChange={(e) => setCaptainPhone(e.target.value)}
+                      placeholder="+7 700 000 00 00"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="captain-school">Учебное заведение *</Label>
-                    <Input 
-                      id="captain-school" 
-                      value={captainSchool} 
-                      onChange={(e) => setCaptainSchool(e.target.value)} 
-                      placeholder="Название школы/ВУЗа" 
-                      required 
+                    <Input
+                      id="captain-school"
+                      value={captainSchool}
+                      onChange={(e) => setCaptainSchool(e.target.value)}
+                      placeholder="Название школы/ВУЗа"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="captain-city">Город *</Label>
-                    <Input 
-                      id="captain-city" 
-                      value={captainCity} 
-                      onChange={(e) => setCaptainCity(e.target.value)} 
-                      placeholder="Алматы" 
-                      required 
+                    <Input
+                      id="captain-city"
+                      value={captainCity}
+                      onChange={(e) => setCaptainCity(e.target.value)}
+                      placeholder="Алматы"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="captain-grade">Класс обучения *</Label>
-                    <Input 
-                      id="captain-grade" 
-                      value={captainGrade} 
-                      onChange={(e) => setCaptainGrade(e.target.value)} 
-                      placeholder="11 класс" 
-                      required 
+                    <Input
+                      id="captain-grade"
+                      value={captainGrade}
+                      onChange={(e) => setCaptainGrade(e.target.value)}
+                      placeholder="11 класс"
+                      required
                     />
                   </div>
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="captain-telegram">Telegram *</Label>
-                    <Input 
-                      id="captain-telegram" 
-                      value={captainTelegram} 
-                      onChange={(e) => setCaptainTelegram(e.target.value)} 
-                      placeholder="@username" 
-                      required 
+                    <Input
+                      id="captain-telegram"
+                      value={captainTelegram}
+                      onChange={(e) => setCaptainTelegram(e.target.value)}
+                      placeholder="@username"
+                      required
                     />
                   </div>
                 </div>
               </div>
 
-               {/* Participants */}
-               <div className="space-y-4">
-                 <h3 className="text-lg font-semibold">Участники команды</h3>
-                
-                 {/* Participant 1 */}
-                 <div className="border-2 border-primary/30 bg-primary/10 rounded-lg p-4 space-y-4 shadow-sm">
-                   <h4 className="font-medium text-primary">Участник 1 *</h4>
+              {/* Participants */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Участники команды</h3>
+
+                {/* Participant 1 */}
+                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  <h4 className="font-medium">Участник 1 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>ФИО *</Label>
-                      <Input 
-                        value={participant1FullName} 
-                        onChange={(e) => setParticipant1FullName(e.target.value)} 
-                        placeholder="Иванов Иван Иванович" 
-                        required 
+                      <Input
+                        value={participant1FullName}
+                        onChange={(e) => setParticipant1FullName(e.target.value)}
+                        placeholder="Иванов Иван Иванович"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>ИИН *</Label>
-                      <Input 
-                        value={participant1Iin} 
-                        onChange={(e) => setParticipant1Iin(e.target.value)} 
-                        placeholder="123456789012" 
+                      <Input
+                        value={participant1Iin}
+                        onChange={(e) => setParticipant1Iin(e.target.value)}
+                        placeholder="123456789012"
                         maxLength={12}
-                        required 
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Телефон *</Label>
-                      <Input 
-                        value={participant1Phone} 
-                        onChange={(e) => setParticipant1Phone(e.target.value)} 
-                        placeholder="+7 700 000 00 00" 
-                        required 
+                      <Input
+                        value={participant1Phone}
+                        onChange={(e) => setParticipant1Phone(e.target.value)}
+                        placeholder="+7 700 000 00 00"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Учебное заведение *</Label>
-                      <Input 
-                        value={participant1School} 
-                        onChange={(e) => setParticipant1School(e.target.value)} 
-                        placeholder="Название школы/ВУЗа" 
-                        required 
+                      <Input
+                        value={participant1School}
+                        onChange={(e) => setParticipant1School(e.target.value)}
+                        placeholder="Название школы/ВУЗа"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Город *</Label>
-                      <Input 
-                        value={participant1City} 
-                        onChange={(e) => setParticipant1City(e.target.value)} 
-                        placeholder="Алматы" 
-                        required 
+                      <Input
+                        value={participant1City}
+                        onChange={(e) => setParticipant1City(e.target.value)}
+                        placeholder="Алматы"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Класс обучения *</Label>
-                      <Input 
-                        value={participant1Grade} 
-                        onChange={(e) => setParticipant1Grade(e.target.value)} 
-                        placeholder="11 класс" 
-                        required 
+                      <Input
+                        value={participant1Grade}
+                        onChange={(e) => setParticipant1Grade(e.target.value)}
+                        placeholder="11 класс"
+                        required
                       />
                     </div>
                   </div>
                 </div>
 
-                 {/* Participant 2 */}
-                 <div className="border-2 border-emerald-500/30 bg-emerald-50/80 dark:bg-emerald-950/20 rounded-lg p-4 space-y-4 shadow-sm">
-                   <h4 className="font-medium text-emerald-700 dark:text-emerald-400">Участник 2 *</h4>
+                {/* Participant 2 */}
+                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  <h4 className="font-medium">Участник 2 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>ФИО *</Label>
-                      <Input 
-                        value={participant2FullName} 
-                        onChange={(e) => setParticipant2FullName(e.target.value)} 
-                        placeholder="Иванов Иван Иванович" 
-                        required 
+                      <Input
+                        value={participant2FullName}
+                        onChange={(e) => setParticipant2FullName(e.target.value)}
+                        placeholder="Иванов Иван Иванович"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>ИИН *</Label>
-                      <Input 
-                        value={participant2Iin} 
-                        onChange={(e) => setParticipant2Iin(e.target.value)} 
-                        placeholder="123456789012" 
+                      <Input
+                        value={participant2Iin}
+                        onChange={(e) => setParticipant2Iin(e.target.value)}
+                        placeholder="123456789012"
                         maxLength={12}
-                        required 
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Телефон *</Label>
-                      <Input 
-                        value={participant2Phone} 
-                        onChange={(e) => setParticipant2Phone(e.target.value)} 
-                        placeholder="+7 700 000 00 00" 
-                        required 
+                      <Input
+                        value={participant2Phone}
+                        onChange={(e) => setParticipant2Phone(e.target.value)}
+                        placeholder="+7 700 000 00 00"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Учебное заведение *</Label>
-                      <Input 
-                        value={participant2School} 
-                        onChange={(e) => setParticipant2School(e.target.value)} 
-                        placeholder="Название школы/ВУЗа" 
-                        required 
+                      <Input
+                        value={participant2School}
+                        onChange={(e) => setParticipant2School(e.target.value)}
+                        placeholder="Название школы/ВУЗа"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Город *</Label>
-                      <Input 
-                        value={participant2City} 
-                        onChange={(e) => setParticipant2City(e.target.value)} 
-                        placeholder="Алматы" 
-                        required 
+                      <Input
+                        value={participant2City}
+                        onChange={(e) => setParticipant2City(e.target.value)}
+                        placeholder="Алматы"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Класс обучения *</Label>
-                      <Input 
-                        value={participant2Grade} 
-                        onChange={(e) => setParticipant2Grade(e.target.value)} 
-                        placeholder="11 класс" 
-                        required 
+                      <Input
+                        value={participant2Grade}
+                        onChange={(e) => setParticipant2Grade(e.target.value)}
+                        placeholder="11 класс"
+                        required
                       />
                     </div>
                   </div>
                 </div>
 
-                 {/* Participant 3 */}
-                 <div className="border-2 border-violet-500/30 bg-violet-50/80 dark:bg-violet-950/20 rounded-lg p-4 space-y-4 shadow-sm">
-                   <h4 className="font-medium text-violet-700 dark:text-violet-400">Участник 3 *</h4>
+                {/* Participant 3 */}
+                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  <h4 className="font-medium">Участник 3 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>ФИО *</Label>
-                      <Input 
-                        value={participant3FullName} 
-                        onChange={(e) => setParticipant3FullName(e.target.value)} 
-                        placeholder="Иванов Иван Иванович" 
-                        required 
+                      <Input
+                        value={participant3FullName}
+                        onChange={(e) => setParticipant3FullName(e.target.value)}
+                        placeholder="Иванов Иван Иванович"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>ИИН *</Label>
-                      <Input 
-                        value={participant3Iin} 
-                        onChange={(e) => setParticipant3Iin(e.target.value)} 
-                        placeholder="123456789012" 
+                      <Input
+                        value={participant3Iin}
+                        onChange={(e) => setParticipant3Iin(e.target.value)}
+                        placeholder="123456789012"
                         maxLength={12}
-                        required 
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Телефон *</Label>
-                      <Input 
-                        value={participant3Phone} 
-                        onChange={(e) => setParticipant3Phone(e.target.value)} 
-                        placeholder="+7 700 000 00 00" 
-                        required 
+                      <Input
+                        value={participant3Phone}
+                        onChange={(e) => setParticipant3Phone(e.target.value)}
+                        placeholder="+7 700 000 00 00"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Учебное заведение *</Label>
-                      <Input 
-                        value={participant3School} 
-                        onChange={(e) => setParticipant3School(e.target.value)} 
-                        placeholder="Название школы/ВУЗа" 
-                        required 
+                      <Input
+                        value={participant3School}
+                        onChange={(e) => setParticipant3School(e.target.value)}
+                        placeholder="Название школы/ВУЗа"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Город *</Label>
-                      <Input 
-                        value={participant3City} 
-                        onChange={(e) => setParticipant3City(e.target.value)} 
-                        placeholder="Алматы" 
-                        required 
+                      <Input
+                        value={participant3City}
+                        onChange={(e) => setParticipant3City(e.target.value)}
+                        placeholder="Алматы"
+                        required
                       />
                     </div>
                     <div className="space-y-2">
                       <Label>Класс обучения *</Label>
-                      <Input 
-                        value={participant3Grade} 
-                        onChange={(e) => setParticipant3Grade(e.target.value)} 
-                        placeholder="11 класс" 
-                        required 
+                      <Input
+                        value={participant3Grade}
+                        onChange={(e) => setParticipant3Grade(e.target.value)}
+                        placeholder="11 класс"
+                        required
                       />
                     </div>
                   </div>
@@ -518,62 +518,62 @@ export default function EnrollPage() {
               </div>
 
               {/* Mentor */}
-              <div className="space-y-4">
+              <div className="bg-muted rounded-lg p-4 space-y-4">
                 <h3 className="text-lg font-semibold">Наставник команды</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label>ФИО *</Label>
-                    <Input 
-                      value={mentorFullName} 
-                      onChange={(e) => setMentorFullName(e.target.value)} 
-                      placeholder="Иванов Иван Иванович" 
-                      required 
+                    <Input
+                      value={mentorFullName}
+                      onChange={(e) => setMentorFullName(e.target.value)}
+                      placeholder="Иванов Иван Иванович"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>ИИН *</Label>
-                    <Input 
-                      value={mentorIin} 
-                      onChange={(e) => setMentorIin(e.target.value)} 
-                      placeholder="123456789012" 
+                    <Input
+                      value={mentorIin}
+                      onChange={(e) => setMentorIin(e.target.value)}
+                      placeholder="123456789012"
                       maxLength={12}
-                      required 
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>Телефон *</Label>
-                    <Input 
-                      value={mentorPhone} 
-                      onChange={(e) => setMentorPhone(e.target.value)} 
-                      placeholder="+7 700 000 00 00" 
-                      required 
+                    <Input
+                      value={mentorPhone}
+                      onChange={(e) => setMentorPhone(e.target.value)}
+                      placeholder="+7 700 000 00 00"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>Название учебного заведения *</Label>
-                    <Input 
-                      value={mentorSchool} 
-                      onChange={(e) => setMentorSchool(e.target.value)} 
-                      placeholder="Название школы/ВУЗа" 
-                      required 
+                    <Input
+                      value={mentorSchool}
+                      onChange={(e) => setMentorSchool(e.target.value)}
+                      placeholder="Название школы/ВУЗа"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>Город *</Label>
-                    <Input 
-                      value={mentorCity} 
-                      onChange={(e) => setMentorCity(e.target.value)} 
-                      placeholder="Алматы" 
-                      required 
+                    <Input
+                      value={mentorCity}
+                      onChange={(e) => setMentorCity(e.target.value)}
+                      placeholder="Алматы"
+                      required
                     />
                   </div>
                   <div className="space-y-2">
                     <Label>Telegram *</Label>
-                    <Input 
-                      value={mentorTelegram} 
-                      onChange={(e) => setMentorTelegram(e.target.value)} 
-                      placeholder="@username" 
-                      required 
+                    <Input
+                      value={mentorTelegram}
+                      onChange={(e) => setMentorTelegram(e.target.value)}
+                      placeholder="@username"
+                      required
                     />
                   </div>
                 </div>
@@ -581,16 +581,16 @@ export default function EnrollPage() {
 
               {/* Source and Consent */}
               <div className="space-y-4">
-                 <div className="space-y-2">
-                   <Label>Вопросы или дополнительная информация</Label>
-                   <Input 
-                     value={questions} 
-                     onChange={(e) => setQuestions(e.target.value)} 
-                     placeholder="Ваши вопросы к организаторам..." 
-                   />
-                 </div>
-                 <div className="space-y-2">
-                   <Label>Откуда узнали о соревновании? *</Label>
+                <div className="space-y-2">
+                  <Label>Вопросы или дополнительная информация</Label>
+                  <Input
+                    value={questions}
+                    onChange={(e) => setQuestions(e.target.value)}
+                    placeholder="Ваши вопросы к организаторам..."
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label>Откуда узнали о соревновании? *</Label>
                   <Select value={source} onValueChange={setSource}>
                     <SelectTrigger>
                       <SelectValue placeholder="Выберите источник" />
@@ -617,15 +617,15 @@ export default function EnrollPage() {
                 className="w-full"
                 disabled={
                   submitting ||
-                  !teamName || !captainFullName || !captainIin || !captainPhone || !captainSchool || 
+                  !teamName || !captainFullName || !captainIin || !captainPhone || !captainSchool ||
                   !captainCity || !captainGrade || !captainTelegram ||
-                  !participant1FullName || !participant1Iin || !participant1Phone || !participant1School || 
+                  !participant1FullName || !participant1Iin || !participant1Phone || !participant1School ||
                   !participant1City || !participant1Grade ||
-                  !participant2FullName || !participant2Iin || !participant2Phone || !participant2School || 
+                  !participant2FullName || !participant2Iin || !participant2Phone || !participant2School ||
                   !participant2City || !participant2Grade ||
-                  !participant3FullName || !participant3Iin || !participant3Phone || !participant3School || 
+                  !participant3FullName || !participant3Iin || !participant3Phone || !participant3School ||
                   !participant3City || !participant3Grade ||
-                  !mentorFullName || !mentorIin || !mentorPhone || !mentorSchool || 
+                  !mentorFullName || !mentorIin || !mentorPhone || !mentorSchool ||
                   !mentorCity || !mentorTelegram ||
                   !source || !consent
                 }
