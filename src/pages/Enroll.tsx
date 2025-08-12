@@ -71,9 +71,11 @@ export default function EnrollPage() {
 
   useEffect(() => {
     if (user) {
-      if (!email) setEmail(user.email || "");
-      if (!captainFullName) setCaptainFullName((user.user_metadata as any)?.full_name || "");
-      if (!studyPlace) setStudyPlace((user.user_metadata as any)?.school || "");
+      if (!email && user.email) setEmail(user.email);
+      const meta = user.user_metadata || {};
+      if (!captainFullName && meta.full_name) setCaptainFullName(meta.full_name);
+      if (!studyPlace && meta.school) setStudyPlace(meta.school);
+      if (!captainAge && meta.age) setCaptainAge(meta.age);
     }
   }, [user]);
 
