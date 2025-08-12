@@ -21,18 +21,7 @@ const products = [
     category: "Ракеты",
     inStock: true
   },
-  {
-    id: "drone-kit",
-    title: "Coding Drone Kit",
-    description: "Образовательный дрон, который учит кодить, управлять полётами и снимать с воздуха",
-    image: "/placeholder.svg", 
-    price: "",
-    features: ["FPV камера", "Программируемый контроллер", "Запасные пропеллеры", "Симулятор полёта"],
-    icon: Plane,
-    category: "Дроны",
-    inStock: true
-  },
-   {
+     {
     id: "cansat-kit",
     title: "CanSat Kit",
     description: "Для сборки и запуска спутника формата CanSat на борту модельной ракеты",
@@ -53,7 +42,29 @@ const products = [
     icon: Satellite,
     category: "Спутники",
     inStock: true
-  }
+  },
+    {
+    id: "coding-drone-kit",
+    title: "Coding Drone Kit",
+    description: "Образовательный дрон, который учит кодить, управлять полётами и снимать с воздуха",
+    image: "/placeholder.svg", 
+    price: "",
+    features: ["FPV камера", "Программируемый контроллер", "Полеты внутри помещения", "Симулятор полёта"],
+    icon: Plane,
+    category: "Дроны",
+    inStock: true
+  },
+    {
+    id: "football-drone-kit",
+    title: "Drone Football Kit",
+    description: "Полный комплект для динамичных матчей в дрон-футбол — учись управлять дроном, соревнуйся и развивай командный дух",
+    image: "/placeholder.svg", 
+    price: "",
+    features: ["Безопасный полет", "Тренировочная сетка и ворота", "Спортивный дух", "Стратегическое мышление"],
+    icon: Drone,
+    category: "Дроны",
+    inStock: true
+  },
 ];
 
 const advantages = [
