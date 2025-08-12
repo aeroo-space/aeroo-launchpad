@@ -113,7 +113,7 @@ const Products = () => {
             {t('products.hero.title', { defaultValue: 'Продукты AEROO' })}
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            {t('products.hero.subtitle', { defaultValue: 'Образовательные наборы и конструкторы для изучения аэрокосмических технологий. От простых моделей ракет до сложных наноспутников.' })}
+            {t('products.hero.subtitle', { defaultValue: 'Образовательные комплекты для изучения аэрокосмических технологий. От простых моделей ракет до сложных наноспутников.' })}
           </p>
         </div>
 
