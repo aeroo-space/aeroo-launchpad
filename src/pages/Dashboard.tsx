@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
-import { EditProfileDialog } from "@/components/dashboard/EditProfileDialog";
+import { Pencil } from "lucide-react";
 import { 
   AlertDialog,
   AlertDialogAction,
@@ -44,7 +44,9 @@ const Dashboard = () => {
   const [newPwd, setNewPwd] = useState("");
   const [newPwd2, setNewPwd2] = useState("");
   const [pwdSubmitting, setPwdSubmitting] = useState(false);
-  const [editProfileOpen, setEditProfileOpen] = useState(false);
+  const [editingField, setEditingField] = useState<string | null>(null);
+  const [fieldValue, setFieldValue] = useState("");
+  const [fieldSubmitting, setFieldSubmitting] = useState(false);
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -108,6 +110,54 @@ const Dashboard = () => {
     }
   };
 
+  const handleFieldEdit = (field: string, currentValue: string | null) => {
+    setEditingField(field);
+    setFieldValue(currentValue || "");
+  };
+
+  const handleFieldCancel = () => {
+    setEditingField(null);
+    setFieldValue("");
+  };
+
+  const handleFieldSave = async () => {
+    if (!profile || !editingField) return;
+
+    try {
+      setFieldSubmitting(true);
+      
+      const updateData = {
+        [editingField]: fieldValue.trim() || null,
+      };
+
+      const { error } = await supabase
+        .from("profiles")
+        .update(updateData)
+        .eq("user_id", profile.user_id);
+
+      if (error) throw error;
+
+      // Update auth metadata for full_name
+      if (editingField === 'full_name' && fieldValue.trim()) {
+        const { error: authError } = await supabase.auth.updateUser({
+          data: { full_name: fieldValue.trim() }
+        });
+        if (authError) console.warn("Auth metadata update failed:", authError);
+      }
+
+      toast.success(t('dashboard.fieldUpdated', { defaultValue: 'Поле обновлено' }));
+      refetchProfile();
+      setEditingField(null);
+      setFieldValue("");
+    } catch (error: any) {
+      toast.error(t('dashboard.fieldUpdateError', { defaultValue: 'Ошибка обновления' }), {
+        description: error.message
+      });
+    } finally {
+      setFieldSubmitting(false);
+    }
+  };
+
 
   if (!user) return null;
 
@@ -135,42 +185,240 @@ const Dashboard = () => {
                       <div className="text-sm text-muted-foreground">{t('dashboard.email', { defaultValue: 'Email' })}</div>
                       <div className="font-medium">{user.email || "—"}</div>
                     </div>
+                    
                     <div className="space-y-1">
                       <div className="text-sm text-muted-foreground">{t('dashboard.fullName', { defaultValue: 'ФИО' })}</div>
-                      <div className="font-medium">{profile?.full_name || "—"}</div>
+                      <div className="flex items-center gap-2">
+                        {editingField === 'full_name' ? (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              value={fieldValue}
+                              onChange={(e) => setFieldValue(e.target.value)}
+                              placeholder={t('profile.fullNamePlaceholder', { defaultValue: 'Введите ваше полное имя' })}
+                              className="flex-1"
+                            />
+                            <Button size="sm" onClick={handleFieldSave} disabled={fieldSubmitting}>
+                              {t('common.save', { defaultValue: 'Сохранить' })}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={handleFieldCancel}>
+                              {t('common.cancel', { defaultValue: 'Отмена' })}
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="font-medium flex-1">{profile?.full_name || "—"}</div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleFieldEdit('full_name', profile?.full_name)}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </div>
+
                     <div className="space-y-1">
                       <div className="text-sm text-muted-foreground">{t('dashboard.iin', { defaultValue: 'ИИН' })}</div>
-                      <div className="font-medium">{profile?.iin || "—"}</div>
+                      <div className="flex items-center gap-2">
+                        {editingField === 'iin' ? (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              value={fieldValue}
+                              onChange={(e) => setFieldValue(e.target.value)}
+                              placeholder={t('profile.iinPlaceholder', { defaultValue: '123456789012' })}
+                              maxLength={12}
+                              className="flex-1"
+                            />
+                            <Button size="sm" onClick={handleFieldSave} disabled={fieldSubmitting}>
+                              {t('common.save', { defaultValue: 'Сохранить' })}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={handleFieldCancel}>
+                              {t('common.cancel', { defaultValue: 'Отмена' })}
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="font-medium flex-1">{profile?.iin || "—"}</div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleFieldEdit('iin', profile?.iin)}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </div>
+
                     <div className="space-y-1">
                       <div className="text-sm text-muted-foreground">{t('dashboard.phone', { defaultValue: 'Телефон' })}</div>
-                      <div className="font-medium">{profile?.phone || "—"}</div>
+                      <div className="flex items-center gap-2">
+                        {editingField === 'phone' ? (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              value={fieldValue}
+                              onChange={(e) => setFieldValue(e.target.value)}
+                              placeholder={t('profile.phonePlaceholder', { defaultValue: '+7 (xxx) xxx-xx-xx' })}
+                              className="flex-1"
+                            />
+                            <Button size="sm" onClick={handleFieldSave} disabled={fieldSubmitting}>
+                              {t('common.save', { defaultValue: 'Сохранить' })}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={handleFieldCancel}>
+                              {t('common.cancel', { defaultValue: 'Отмена' })}
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="font-medium flex-1">{profile?.phone || "—"}</div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleFieldEdit('phone', profile?.phone)}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </div>
+
                     <div className="space-y-1">
                       <div className="text-sm text-muted-foreground">{t('dashboard.telegram', { defaultValue: 'Telegram' })}</div>
-                      <div className="font-medium">{profile?.telegram || "—"}</div>
+                      <div className="flex items-center gap-2">
+                        {editingField === 'telegram' ? (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              value={fieldValue}
+                              onChange={(e) => setFieldValue(e.target.value)}
+                              placeholder={t('profile.telegramPlaceholder', { defaultValue: '@username' })}
+                              className="flex-1"
+                            />
+                            <Button size="sm" onClick={handleFieldSave} disabled={fieldSubmitting}>
+                              {t('common.save', { defaultValue: 'Сохранить' })}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={handleFieldCancel}>
+                              {t('common.cancel', { defaultValue: 'Отмена' })}
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="font-medium flex-1">{profile?.telegram || "—"}</div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleFieldEdit('telegram', profile?.telegram)}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </div>
+
                     <div className="space-y-1">
-                      <div className="text-sm text-muted-foreground">{t('dashboard.school', { defaultValue: 'Школа' })}</div>
-                      <div className="font-medium">{profile?.school || "—"}</div>
+                      <div className="text-sm text-muted-foreground">{t('dashboard.school', { defaultValue: 'Школа/Университет' })}</div>
+                      <div className="flex items-center gap-2">
+                        {editingField === 'school' ? (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              value={fieldValue}
+                              onChange={(e) => setFieldValue(e.target.value)}
+                              placeholder={t('profile.schoolPlaceholder', { defaultValue: 'Название учебного заведения' })}
+                              className="flex-1"
+                            />
+                            <Button size="sm" onClick={handleFieldSave} disabled={fieldSubmitting}>
+                              {t('common.save', { defaultValue: 'Сохранить' })}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={handleFieldCancel}>
+                              {t('common.cancel', { defaultValue: 'Отмена' })}
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="font-medium flex-1">{profile?.school || "—"}</div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleFieldEdit('school', profile?.school)}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </div>
+
                     <div className="space-y-1">
                       <div className="text-sm text-muted-foreground">{t('dashboard.city', { defaultValue: 'Город' })}</div>
-                      <div className="font-medium">{profile?.city || "—"}</div>
+                      <div className="flex items-center gap-2">
+                        {editingField === 'city' ? (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              value={fieldValue}
+                              onChange={(e) => setFieldValue(e.target.value)}
+                              placeholder={t('profile.cityPlaceholder', { defaultValue: 'Ваш город' })}
+                              className="flex-1"
+                            />
+                            <Button size="sm" onClick={handleFieldSave} disabled={fieldSubmitting}>
+                              {t('common.save', { defaultValue: 'Сохранить' })}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={handleFieldCancel}>
+                              {t('common.cancel', { defaultValue: 'Отмена' })}
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="font-medium flex-1">{profile?.city || "—"}</div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleFieldEdit('city', profile?.city)}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </div>
+
                     <div className="space-y-1">
-                      <div className="text-sm text-muted-foreground">{t('dashboard.grade', { defaultValue: 'Класс' })}</div>
-                      <div className="font-medium">{profile?.grade || "—"}</div>
+                      <div className="text-sm text-muted-foreground">{t('dashboard.grade', { defaultValue: 'Класс/Курс' })}</div>
+                      <div className="flex items-center gap-2">
+                        {editingField === 'grade' ? (
+                          <div className="flex items-center gap-2 flex-1">
+                            <Input
+                              value={fieldValue}
+                              onChange={(e) => setFieldValue(e.target.value)}
+                              placeholder={t('profile.gradePlaceholder', { defaultValue: '11 класс / 2 курс' })}
+                              className="flex-1"
+                            />
+                            <Button size="sm" onClick={handleFieldSave} disabled={fieldSubmitting}>
+                              {t('common.save', { defaultValue: 'Сохранить' })}
+                            </Button>
+                            <Button size="sm" variant="outline" onClick={handleFieldCancel}>
+                              {t('common.cancel', { defaultValue: 'Отмена' })}
+                            </Button>
+                          </div>
+                        ) : (
+                          <>
+                            <div className="font-medium flex-1">{profile?.grade || "—"}</div>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              onClick={() => handleFieldEdit('grade', profile?.grade)}
+                            >
+                              <Pencil className="h-4 w-4" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
                     </div>
                   </div>
                   <div className="flex gap-2">
-                    <Button
-                      variant="outline"
-                      onClick={() => setEditProfileOpen(true)}
-                    >
-                      {t('dashboard.editProfile', { defaultValue: 'Редактировать профиль' })}
-                    </Button>
                     <Button variant="outline" onClick={() => setPwdOpen(true)}>
                       {t('dashboard.changePassword', { defaultValue: 'Сменить пароль' })}
                     </Button>
@@ -260,12 +508,6 @@ const Dashboard = () => {
           />
         )}
 
-        <EditProfileDialog
-          profile={profile}
-          open={editProfileOpen}
-          onOpenChange={setEditProfileOpen}
-          onProfileUpdated={refetchProfile}
-        />
 
         <Dialog open={pwdOpen} onOpenChange={setPwdOpen}>
           <DialogContent>
