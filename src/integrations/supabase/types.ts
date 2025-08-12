@@ -51,6 +51,7 @@ export type Database = {
           participant3_iin: string | null
           participant3_phone: string | null
           participant3_school: string | null
+          questions: string | null
           source: string | null
           status: string
           study_place: string | null
@@ -95,6 +96,7 @@ export type Database = {
           participant3_iin?: string | null
           participant3_phone?: string | null
           participant3_school?: string | null
+          questions?: string | null
           source?: string | null
           status?: string
           study_place?: string | null
@@ -139,6 +141,7 @@ export type Database = {
           participant3_iin?: string | null
           participant3_phone?: string | null
           participant3_school?: string | null
+          questions?: string | null
           source?: string | null
           status?: string
           study_place?: string | null
