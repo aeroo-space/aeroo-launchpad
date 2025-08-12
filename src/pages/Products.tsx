@@ -61,7 +61,7 @@ const products = [
     image: "/placeholder.svg", 
     price: "",
     features: ["Безопасный полет", "Тренировочная сетка и ворота", "Спортивный дух", "Стратегическое мышление"],
-    icon: Drone,
+    icon: Plane,
     category: "Дроны",
     inStock: true
   },
