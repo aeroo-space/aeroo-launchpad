@@ -69,6 +69,14 @@ export default function EnrollPage() {
   const [dupOpen, setDupOpen] = useState(false);
   const [dupName, setDupName] = useState("");
 
+  useEffect(() => {
+    if (user) {
+      if (!email) setEmail(user.email || "");
+      if (!captainFullName) setCaptainFullName((user.user_metadata as any)?.full_name || "");
+      if (!studyPlace) setStudyPlace((user.user_metadata as any)?.school || "");
+    }
+  }, [user]);
+
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!competitionId) return;
