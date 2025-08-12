@@ -331,8 +331,8 @@ export default function EnrollPage() {
                  <h3 className="text-lg font-semibold">Участники команды</h3>
                 
                  {/* Participant 1 */}
-                 <div className="border border-primary/20 bg-primary/5 rounded-lg p-4 space-y-4">
-                  <h4 className="font-medium">Участник 1 *</h4>
+                 <div className="border-2 border-primary/30 bg-primary/10 rounded-lg p-4 space-y-4 shadow-sm">
+                   <h4 className="font-medium text-primary">Участник 1 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>ФИО *</Label>
@@ -393,8 +393,8 @@ export default function EnrollPage() {
                 </div>
 
                  {/* Participant 2 */}
-                 <div className="border border-secondary/20 bg-secondary/5 rounded-lg p-4 space-y-4">
-                  <h4 className="font-medium">Участник 2 *</h4>
+                 <div className="border-2 border-emerald-500/30 bg-emerald-50/80 dark:bg-emerald-950/20 rounded-lg p-4 space-y-4 shadow-sm">
+                   <h4 className="font-medium text-emerald-700 dark:text-emerald-400">Участник 2 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>ФИО *</Label>
@@ -455,8 +455,8 @@ export default function EnrollPage() {
                 </div>
 
                  {/* Participant 3 */}
-                 <div className="border border-accent/20 bg-accent/5 rounded-lg p-4 space-y-4">
-                  <h4 className="font-medium">Участник 3 *</h4>
+                 <div className="border-2 border-violet-500/30 bg-violet-50/80 dark:bg-violet-950/20 rounded-lg p-4 space-y-4 shadow-sm">
+                   <h4 className="font-medium text-violet-700 dark:text-violet-400">Участник 3 *</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>ФИО *</Label>
