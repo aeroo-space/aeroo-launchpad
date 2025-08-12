@@ -15,6 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
+import { EditProfileDialog } from "@/components/dashboard/EditProfileDialog";
 import { 
   AlertDialog,
   AlertDialogAction,
@@ -31,7 +32,7 @@ type Enrollment = Tables<"enrollments">;
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
-  const { profile, loading: profileLoading } = useProfile();
+  const { profile, loading: profileLoading, refetch: refetchProfile } = useProfile();
   const navigate = useNavigate();
   const { t } = useTranslation();
   
@@ -43,9 +44,7 @@ const Dashboard = () => {
   const [newPwd, setNewPwd] = useState("");
   const [newPwd2, setNewPwd2] = useState("");
   const [pwdSubmitting, setPwdSubmitting] = useState(false);
-  const [nameOpen, setNameOpen] = useState(false);
-  const [fullNameInput, setFullNameInput] = useState("");
-  const [nameSubmitting, setNameSubmitting] = useState(false);
+  const [editProfileOpen, setEditProfileOpen] = useState(false);
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -109,25 +108,6 @@ const Dashboard = () => {
     }
   };
 
-  const handleNameChange = async (e: React.FormEvent) => {
-    e.preventDefault();
-    const v = fullNameInput.trim();
-    if (!v) {
-      toast.error(t('dashboard.fullNameRequired', { defaultValue: 'Укажите ФИО' }));
-      return;
-    }
-    try {
-      setNameSubmitting(true);
-      const { error } = await supabase.auth.updateUser({ data: { full_name: v } });
-      if (error) throw error;
-      toast.success(t('dashboard.fullNameUpdated', { defaultValue: 'ФИО обновлено' }));
-      setNameOpen(false);
-    } catch (err: any) {
-      toast.error(t('dashboard.fullNameUpdateError', { defaultValue: 'Не удалось обновить ФИО' }), { description: err.message });
-    } finally {
-      setNameSubmitting(false);
-    }
-  };
 
   if (!user) return null;
 
@@ -187,12 +167,9 @@ const Dashboard = () => {
                   <div className="flex gap-2">
                     <Button
                       variant="outline"
-                      onClick={() => {
-                        setFullNameInput(profile?.full_name || "");
-                        setNameOpen(true);
-                      }}
+                      onClick={() => setEditProfileOpen(true)}
                     >
-                      {t('dashboard.changeFullName', { defaultValue: 'Изменить ФИО' })}
+                      {t('dashboard.editProfile', { defaultValue: 'Редактировать профиль' })}
                     </Button>
                     <Button variant="outline" onClick={() => setPwdOpen(true)}>
                       {t('dashboard.changePassword', { defaultValue: 'Сменить пароль' })}
@@ -283,26 +260,12 @@ const Dashboard = () => {
           />
         )}
 
-        <Dialog open={nameOpen} onOpenChange={setNameOpen}>
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>{t('dashboard.changeFullName', { defaultValue: 'Изменить ФИО' })}</DialogTitle>
-              <DialogDescription>
-                {t('dashboard.fullNameDesc', { defaultValue: 'Введите ваше ФИО полностью' })}
-              </DialogDescription>
-            </DialogHeader>
-            <form onSubmit={handleNameChange} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="fullNameInput">{t('dashboard.fullName', { defaultValue: 'ФИО' })}</Label>
-                <Input id="fullNameInput" value={fullNameInput} onChange={(e)=>setFullNameInput(e.target.value)} required />
-              </div>
-              <div className="flex justify-end gap-2">
-                <Button type="button" variant="outline" onClick={() => setNameOpen(false)}>{t('common.cancel', { defaultValue: 'Отмена' })}</Button>
-                <Button type="submit" disabled={nameSubmitting}>{t('common.save', { defaultValue: 'Сохранить' })}</Button>
-              </div>
-            </form>
-          </DialogContent>
-        </Dialog>
+        <EditProfileDialog
+          profile={profile}
+          open={editProfileOpen}
+          onOpenChange={setEditProfileOpen}
+          onProfileUpdated={refetchProfile}
+        />
 
         <Dialog open={pwdOpen} onOpenChange={setPwdOpen}>
           <DialogContent>
