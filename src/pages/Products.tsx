@@ -64,7 +64,7 @@ const products = [
     icon: Plane,
     category: "Дроны",
     inStock: true
-  },
+  }
 ];
 
 const advantages = [
