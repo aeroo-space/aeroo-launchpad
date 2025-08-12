@@ -11,6 +11,7 @@ interface Profile {
   telegram: string | null;
   school: string | null;
   city: string | null;
+  grade: string | null;
   profile_completed: boolean;
   created_at: string;
   updated_at: string;

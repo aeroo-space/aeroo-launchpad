@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuth } from "@/contexts/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
+import { useProfile } from "@/hooks/useProfile";
 import { toast } from "@/components/ui/sonner";
 import { useTranslation } from "react-i18next";
 import { competitions } from "@/data/competitions";
@@ -30,6 +31,7 @@ type Enrollment = Tables<"enrollments">;
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
+  const { profile, loading: profileLoading } = useProfile();
   const navigate = useNavigate();
   const { t } = useTranslation();
   
@@ -144,26 +146,60 @@ const Dashboard = () => {
               <CardTitle>{t('dashboard.profile', { defaultValue: 'Профиль' })}</CardTitle>
             </CardHeader>
             <CardContent>
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <div className="space-y-1">
-                  <div className="text-sm text-muted-foreground">{t('dashboard.fullName', { defaultValue: 'ФИО' })}</div>
-                  <div className="font-medium">{(user.user_metadata as any)?.full_name || "—"}</div>
+              {profileLoading ? (
+                <p className="text-muted-foreground">{t('dashboard.loading', { defaultValue: 'Загрузка...' })}</p>
+              ) : (
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.email', { defaultValue: 'Email' })}</div>
+                      <div className="font-medium">{user.email || "—"}</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.fullName', { defaultValue: 'ФИО' })}</div>
+                      <div className="font-medium">{profile?.full_name || "—"}</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.iin', { defaultValue: 'ИИН' })}</div>
+                      <div className="font-medium">{profile?.iin || "—"}</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.phone', { defaultValue: 'Телефон' })}</div>
+                      <div className="font-medium">{profile?.phone || "—"}</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.telegram', { defaultValue: 'Telegram' })}</div>
+                      <div className="font-medium">{profile?.telegram || "—"}</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.school', { defaultValue: 'Школа' })}</div>
+                      <div className="font-medium">{profile?.school || "—"}</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.city', { defaultValue: 'Город' })}</div>
+                      <div className="font-medium">{profile?.city || "—"}</div>
+                    </div>
+                    <div className="space-y-1">
+                      <div className="text-sm text-muted-foreground">{t('dashboard.grade', { defaultValue: 'Класс' })}</div>
+                      <div className="font-medium">{profile?.grade || "—"}</div>
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button
+                      variant="outline"
+                      onClick={() => {
+                        setFullNameInput(profile?.full_name || "");
+                        setNameOpen(true);
+                      }}
+                    >
+                      {t('dashboard.changeFullName', { defaultValue: 'Изменить ФИО' })}
+                    </Button>
+                    <Button variant="outline" onClick={() => setPwdOpen(true)}>
+                      {t('dashboard.changePassword', { defaultValue: 'Сменить пароль' })}
+                    </Button>
+                  </div>
                 </div>
-                <div className="flex gap-2">
-                  <Button
-                    variant="outline"
-                    onClick={() => {
-                      setFullNameInput(((user.user_metadata as any)?.full_name as string) || "");
-                      setNameOpen(true);
-                    }}
-                  >
-                    {t('dashboard.changeFullName', { defaultValue: 'Изменить ФИО' })}
-                  </Button>
-                  <Button variant="outline" onClick={() => setPwdOpen(true)}>
-                    {t('dashboard.changePassword', { defaultValue: 'Сменить пароль' })}
-                  </Button>
-                </div>
-              </div>
+              )}
             </CardContent>
           </Card>
 
