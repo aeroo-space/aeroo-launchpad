@@ -38,15 +38,15 @@ export function Navigation() {
   const currentLang = (i18n.language || 'ru').split('-')[0];
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md">
-      <div className="container mx-auto px-4">
-        <div className="flex h-16 items-center justify-between">
+      <div className="container mx-auto max-w-screen-2xl px-3 sm:px-4 lg:px-6 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)]">
+        <div className="flex h-16 lg:h-20 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center space-x-3">
             <Link to="/" className="flex items-center" aria-label="AEROO — образовательная платформа">
               <img
                 src="/lovable-uploads/b69a9019-60d9-465c-8c97-374a0558b678.png"
                 alt="Логотип AEROO"
-                className="h-8 w-auto"
+                className="h-8 sm:h-9 lg:h-10 w-auto"
                 width={220}
                 height={32}
                 decoding="async"
@@ -55,16 +55,16 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
             {NAVIGATION_ITEMS.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
                   to={item.href}
-                  className="group flex items-center space-x-2 text-muted-foreground hover:text-primary transition-colors"
+                  className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 >
-                  <Icon className="h-4 w-4 group-hover:glow-primary transition-all" />
+                  <Icon className="h-5 w-5 group-hover:glow-primary transition-all" />
                   <span>{({ '/competitions': t('nav.competitions'), '/courses': t('nav.courses'), '/products': t('nav.products'), '/about': t('nav.about') } as Record<string,string>)[item.href] ?? item.label}</span>
                 </Link>
               );
@@ -72,7 +72,7 @@ export function Navigation() {
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
             {/* Language Switcher */}
             <div className="hidden sm:flex items-center space-x-1 bg-muted rounded-lg p-1">
               {LANGUAGES.map((lang) => (
@@ -80,7 +80,7 @@ export function Navigation() {
                   key={lang.code}
                   onClick={() => i18n.changeLanguage(lang.code)}
                   className={cn(
-                    "px-3 py-1 text-sm rounded-md transition-colors",
+                    "px-3 py-2 text-sm rounded-md transition-colors inline-flex items-center justify-center min-w-11 min-h-11",
                     currentLang === lang.code
                       ? "bg-primary text-primary-foreground glow-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -109,80 +109,81 @@ export function Navigation() {
 )}
 
             {/* Theme Toggle */}
-            <ThemeToggle />
+            <ThemeToggle aria-label={t('nav.toggleTheme', { defaultValue: 'Переключить тему' })} />
 
             {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
-              size="sm"
-              className="md:hidden"
+              className="md:hidden h-11 w-11"
+              aria-label={isMenuOpen ? t('nav.closeMenu', { defaultValue: 'Закрыть меню' }) : t('nav.openMenu', { defaultValue: 'Открыть меню' })}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </Button
-            >
+              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 space-y-4 border-t border-border/50">
-            {NAVIGATION_ITEMS.map((item) => {
-              const Icon = item.icon;
-              return (
-                <Link
-                  key={item.href}
-                  to={item.href}
-                  className="flex items-center space-x-3 text-muted-foreground hover:text-primary transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  <Icon className="h-5 w-5" />
-                  <span>{({ '/competitions': t('nav.competitions'), '/courses': t('nav.courses'), '/products': t('nav.products'), '/about': t('nav.about') } as Record<string,string>)[item.href] ?? item.label}</span>
-                </Link>
-              );
-            })}
-            
-            {/* Mobile Language Switcher */}
-            <div className="flex items-center space-x-2 pt-4 border-t border-border/50">
-              <Globe className="h-4 w-4 text-muted-foreground" />
-              <div className="flex space-x-1">
-                {LANGUAGES.map((lang) => (
-                  <button
-                    key={lang.code}
-                    onClick={() => i18n.changeLanguage(lang.code)}
-                    className={cn(
-                      "px-2 py-1 text-sm rounded transition-colors",
-                      currentLang === lang.code
-                        ? "bg-primary text-primary-foreground"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
+          <div className="fixed inset-x-0 top-16 lg:top-20 bottom-0 z-50 md:hidden bg-background/95 backdrop-blur-sm border-t border-border/50">
+            <div className="px-4 py-4 space-y-2 overflow-y-auto">
+              {NAVIGATION_ITEMS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    className="flex items-center gap-3 rounded-md px-3 py-3 text-base text-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                    onClick={() => setIsMenuOpen(false)}
                   >
-                    {lang.label}
-                  </button>
-                ))}
+                    <Icon className="h-5 w-5" />
+                    <span>{({ '/competitions': t('nav.competitions'), '/courses': t('nav.courses'), '/products': t('nav.products'), '/about': t('nav.about') } as Record<string,string>)[item.href] ?? item.label}</span>
+                  </Link>
+                );
+              })}
+
+              {/* Mobile Language Switcher */}
+              <div className="flex items-center gap-2 pt-4 border-t border-border/50">
+                <Globe className="h-4 w-4 text-muted-foreground" />
+                <div className="flex gap-1">
+                  {LANGUAGES.map((lang) => (
+                    <button
+                      key={lang.code}
+                      onClick={() => i18n.changeLanguage(lang.code)}
+                      className={cn(
+                        "px-3 py-2 text-sm rounded-md inline-flex items-center justify-center min-w-11 min-h-11",
+                        currentLang === lang.code
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:text-foreground"
+                      )}
+                    >
+                      {lang.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Theme toggle (mobile) */}
+                <div className="ml-auto">
+                  <ThemeToggle />
+                </div>
               </div>
 
-              {/* Theme toggle (mobile) */}
-              <div className="ml-auto">
-                <ThemeToggle />
-              </div>
+              {user ? (
+                <Button className="w-full h-11 btn-cosmic" asChild>
+                  <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
+                    <User className="h-4 w-4 mr-2" />
+                    {t('nav.dashboard')}
+                  </Link>
+                </Button>
+              ) : (
+                <Button className="w-full h-11 btn-cosmic" asChild>
+                  <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
+                    <User className="h-4 w-4 mr-2" />
+                    {t('nav.login')}
+                  </Link>
+                </Button>
+              )}
             </div>
-            
-{user ? (
-  <Button className="w-full btn-cosmic" asChild>
-    <Link to="/dashboard" onClick={() => setIsMenuOpen(false)}>
-      <User className="h-4 w-4 mr-2" />
-      {t('nav.dashboard')}
-    </Link>
-  </Button>
-) : (
-  <Button className="w-full btn-cosmic" asChild>
-    <Link to="/auth" onClick={() => setIsMenuOpen(false)}>
-      <User className="h-4 w-4 mr-2" />
-      {t('nav.login')}
-    </Link>
-  </Button>
-)}
           </div>
         )}
       </div>
