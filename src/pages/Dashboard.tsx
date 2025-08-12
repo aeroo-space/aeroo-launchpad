@@ -195,9 +195,9 @@ const Dashboard = () => {
                             <div>{t('dashboardExtra.labels.source', { defaultValue: 'Источник' })}: {e.source || "—"}</div>
                           </div>
                           <div className="mt-2 text-sm">
-                            <div>{t('dashboardExtra.labels.participant2', { defaultValue: '2 участник' })}: {e.participant2_info || "—"}</div>
-                            <div>{t('dashboardExtra.labels.participant3', { defaultValue: '3 участник' })}: {e.participant3_info || "—"}</div>
-                            <div>{t('dashboardExtra.labels.participant4', { defaultValue: '4 участник' })}: {e.participant4_info || "—"}</div>
+                            <div>Участник 1: {e.participant1_full_name || "—"}</div>
+                            <div>Участник 2: {e.participant2_full_name || "—"}</div>
+                            <div>Участник 3: {e.participant3_full_name || "—"}</div>
                           </div>
                         </div>
                         <div className="flex items-center gap-2">

@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
 import { toast } from "@/components/ui/sonner";
 import { useAuth } from "@/contexts/AuthProvider";
+import { useProfile } from "@/hooks/useProfile";
 import { supabase } from "@/integrations/supabase/client";
 import { competitions } from "@/data/competitions";
 import { CalendarDays } from "lucide-react";
@@ -21,6 +21,7 @@ export default function EnrollPage() {
   const { competitionId } = useParams<{ competitionId: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
+  const { profile } = useProfile();
   const { t } = useTranslation();
 
   const competition = useMemo(() => competitions.find(c => c.id === competitionId), [competitionId]);
@@ -51,17 +52,47 @@ export default function EnrollPage() {
   }, [competition, competitionId]);
 
   // Form state
-  const [email, setEmail] = useState("");
-  const [telegram, setTelegram] = useState("");
   const [teamName, setTeamName] = useState("");
+  
+  // Captain info (pre-filled from profile)
   const [captainFullName, setCaptainFullName] = useState("");
+  const [captainIin, setCaptainIin] = useState("");
   const [captainPhone, setCaptainPhone] = useState("");
-  const [captainAge, setCaptainAge] = useState<number | "">("");
-  const [city, setCity] = useState("");
-  const [studyPlace, setStudyPlace] = useState("");
-  const [participant2, setParticipant2] = useState("");
-  const [participant3, setParticipant3] = useState("");
-  const [participant4, setParticipant4] = useState("");
+  const [captainSchool, setCaptainSchool] = useState("");
+  const [captainCity, setCaptainCity] = useState("");
+  const [captainGrade, setCaptainGrade] = useState("");
+  const [captainTelegram, setCaptainTelegram] = useState("");
+  
+  // Participants
+  const [participant1FullName, setParticipant1FullName] = useState("");
+  const [participant1Iin, setParticipant1Iin] = useState("");
+  const [participant1Phone, setParticipant1Phone] = useState("");
+  const [participant1School, setParticipant1School] = useState("");
+  const [participant1City, setParticipant1City] = useState("");
+  const [participant1Grade, setParticipant1Grade] = useState("");
+  
+  const [participant2FullName, setParticipant2FullName] = useState("");
+  const [participant2Iin, setParticipant2Iin] = useState("");
+  const [participant2Phone, setParticipant2Phone] = useState("");
+  const [participant2School, setParticipant2School] = useState("");
+  const [participant2City, setParticipant2City] = useState("");
+  const [participant2Grade, setParticipant2Grade] = useState("");
+  
+  const [participant3FullName, setParticipant3FullName] = useState("");
+  const [participant3Iin, setParticipant3Iin] = useState("");
+  const [participant3Phone, setParticipant3Phone] = useState("");
+  const [participant3School, setParticipant3School] = useState("");
+  const [participant3City, setParticipant3City] = useState("");
+  const [participant3Grade, setParticipant3Grade] = useState("");
+  
+  // Mentor
+  const [mentorFullName, setMentorFullName] = useState("");
+  const [mentorIin, setMentorIin] = useState("");
+  const [mentorPhone, setMentorPhone] = useState("");
+  const [mentorSchool, setMentorSchool] = useState("");
+  const [mentorCity, setMentorCity] = useState("");
+  const [mentorTelegram, setMentorTelegram] = useState("");
+  
   const [source, setSource] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
@@ -69,57 +100,89 @@ export default function EnrollPage() {
   const [dupOpen, setDupOpen] = useState(false);
   const [dupName, setDupName] = useState("");
 
+  // Pre-fill captain data from profile
   useEffect(() => {
-    if (user) {
-      if (!email && user.email) setEmail(user.email);
-      const meta = user.user_metadata || {};
-      if (!captainFullName && meta.full_name) setCaptainFullName(meta.full_name);
-      if (!studyPlace && meta.school) setStudyPlace(meta.school);
-      if (!captainAge && meta.age) setCaptainAge(meta.age);
+    if (profile) {
+      if (!captainFullName && profile.full_name) setCaptainFullName(profile.full_name);
+      if (!captainIin && profile.iin) setCaptainIin(profile.iin);
+      if (!captainPhone && profile.phone) setCaptainPhone(profile.phone);
+      if (!captainSchool && profile.school) setCaptainSchool(profile.school);
+      if (!captainCity && profile.city) setCaptainCity(profile.city);
+      if (!captainTelegram && profile.telegram) setCaptainTelegram(profile.telegram);
     }
-  }, [user]);
+  }, [profile]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!competitionId) return;
     if (!consent) {
-      toast(t('competitions.toastNeedConsentTitle', { defaultValue: 'Нужно согласие' }), { description: t('competitions.toastNeedConsentDesc', { defaultValue: 'Подтвердите согласие с правилами' }) });
+      toast("Нужно согласие", { description: "Подтвердите согласие с правилами" });
       return;
     }
+    
     setSubmitting(true);
-    const ageNumber = typeof captainAge === "number" ? captainAge : parseInt(captainAge || "0", 10) || null;
 
-    const { error } = await (supabase as any).from("enrollments").insert({
+    const { error } = await supabase.from("enrollments").insert({
       user_id: user?.id,
       competition_id: competitionId,
       team_name: teamName,
       status: "active",
-      email,
-      telegram,
+      
+      // Captain info
       captain_full_name: captainFullName,
+      captain_iin: captainIin,
       captain_phone: captainPhone,
-      captain_age: ageNumber,
-      city,
-      study_place: studyPlace,
-      participant2_info: participant2,
-      participant3_info: participant3,
-      participant4_info: participant4,
+      captain_grade: captainGrade,
+      city: captainCity,
+      study_place: captainSchool,
+      telegram: captainTelegram,
+      
+      // Participants
+      participant1_full_name: participant1FullName,
+      participant1_iin: participant1Iin,
+      participant1_phone: participant1Phone,
+      participant1_school: participant1School,
+      participant1_city: participant1City,
+      participant1_grade: participant1Grade,
+      
+      participant2_full_name: participant2FullName,
+      participant2_iin: participant2Iin,
+      participant2_phone: participant2Phone,
+      participant2_school: participant2School,
+      participant2_city: participant2City,
+      participant2_grade: participant2Grade,
+      
+      participant3_full_name: participant3FullName,
+      participant3_iin: participant3Iin,
+      participant3_phone: participant3Phone,
+      participant3_school: participant3School,
+      participant3_city: participant3City,
+      participant3_grade: participant3Grade,
+      
+      // Mentor
+      mentor_full_name: mentorFullName,
+      mentor_iin: mentorIin,
+      mentor_phone: mentorPhone,
+      mentor_school: mentorSchool,
+      mentor_city: mentorCity,
+      mentor_telegram: mentorTelegram,
+      
       source,
       consent,
     });
+    
     setSubmitting(false);
     if (error) {
-      // @ts-ignore
-      if ((error as any).code === "23505") {
+      if (error.code === "23505") {
         const compName = competition?.title || competitionId;
         setDupName(compName);
         setDupOpen(true);
       } else {
-        toast.error(t('competitions.toastEnrollError', { defaultValue: 'Ошибка при отправке' }), { description: (error as any).message });
+        toast.error("Ошибка при отправке", { description: error.message });
       }
       return;
     }
-    toast.success(t('competitions.toastEnrollSuccessTitle', { defaultValue: 'Заявка отправлена' }));
+    toast.success("Заявка отправлена");
     navigate("/dashboard");
   };
 
@@ -170,82 +233,394 @@ export default function EnrollPage() {
           )}
 
           {competition && isOpen && (
-            <form onSubmit={onSubmit} className="max-w-3xl space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <form onSubmit={onSubmit} className="max-w-4xl space-y-6">
+              {/* Team Name */}
+              <div className="space-y-2">
+                <Label htmlFor="team">Название команды *</Label>
+                <Input 
+                  id="team" 
+                  value={teamName} 
+                  onChange={(e) => setTeamName(e.target.value)} 
+                  placeholder="Например: AEROO Crew" 
+                  required 
+                />
+              </div>
+
+              {/* Captain Info */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Капитан команды</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-name">ФИО *</Label>
+                    <Input 
+                      id="captain-name" 
+                      value={captainFullName} 
+                      onChange={(e) => setCaptainFullName(e.target.value)} 
+                      placeholder="Иванов Иван Иванович" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-iin">ИИН *</Label>
+                    <Input 
+                      id="captain-iin" 
+                      value={captainIin} 
+                      onChange={(e) => setCaptainIin(e.target.value)} 
+                      placeholder="123456789012" 
+                      maxLength={12}
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-phone">Телефон *</Label>
+                    <Input 
+                      id="captain-phone" 
+                      value={captainPhone} 
+                      onChange={(e) => setCaptainPhone(e.target.value)} 
+                      placeholder="+7 700 000 00 00" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-school">Учебное заведение *</Label>
+                    <Input 
+                      id="captain-school" 
+                      value={captainSchool} 
+                      onChange={(e) => setCaptainSchool(e.target.value)} 
+                      placeholder="Название школы/ВУЗа" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-city">Город *</Label>
+                    <Input 
+                      id="captain-city" 
+                      value={captainCity} 
+                      onChange={(e) => setCaptainCity(e.target.value)} 
+                      placeholder="Алматы" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-grade">Класс обучения *</Label>
+                    <Input 
+                      id="captain-grade" 
+                      value={captainGrade} 
+                      onChange={(e) => setCaptainGrade(e.target.value)} 
+                      placeholder="11 класс" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2 md:col-span-2">
+                    <Label htmlFor="captain-telegram">Telegram *</Label>
+                    <Input 
+                      id="captain-telegram" 
+                      value={captainTelegram} 
+                      onChange={(e) => setCaptainTelegram(e.target.value)} 
+                      placeholder="@username" 
+                      required 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Participants */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Участники команды</h3>
+                
+                {/* Participant 1 */}
+                <div className="border rounded-lg p-4 space-y-4">
+                  <h4 className="font-medium">Участник 1 *</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label>ФИО *</Label>
+                      <Input 
+                        value={participant1FullName} 
+                        onChange={(e) => setParticipant1FullName(e.target.value)} 
+                        placeholder="Иванов Иван Иванович" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>ИИН *</Label>
+                      <Input 
+                        value={participant1Iin} 
+                        onChange={(e) => setParticipant1Iin(e.target.value)} 
+                        placeholder="123456789012" 
+                        maxLength={12}
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Телефон *</Label>
+                      <Input 
+                        value={participant1Phone} 
+                        onChange={(e) => setParticipant1Phone(e.target.value)} 
+                        placeholder="+7 700 000 00 00" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Учебное заведение *</Label>
+                      <Input 
+                        value={participant1School} 
+                        onChange={(e) => setParticipant1School(e.target.value)} 
+                        placeholder="Название школы/ВУЗа" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Город *</Label>
+                      <Input 
+                        value={participant1City} 
+                        onChange={(e) => setParticipant1City(e.target.value)} 
+                        placeholder="Алматы" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Класс обучения *</Label>
+                      <Input 
+                        value={participant1Grade} 
+                        onChange={(e) => setParticipant1Grade(e.target.value)} 
+                        placeholder="11 класс" 
+                        required 
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Participant 2 */}
+                <div className="border rounded-lg p-4 space-y-4">
+                  <h4 className="font-medium">Участник 2 *</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label>ФИО *</Label>
+                      <Input 
+                        value={participant2FullName} 
+                        onChange={(e) => setParticipant2FullName(e.target.value)} 
+                        placeholder="Иванов Иван Иванович" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>ИИН *</Label>
+                      <Input 
+                        value={participant2Iin} 
+                        onChange={(e) => setParticipant2Iin(e.target.value)} 
+                        placeholder="123456789012" 
+                        maxLength={12}
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Телефон *</Label>
+                      <Input 
+                        value={participant2Phone} 
+                        onChange={(e) => setParticipant2Phone(e.target.value)} 
+                        placeholder="+7 700 000 00 00" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Учебное заведение *</Label>
+                      <Input 
+                        value={participant2School} 
+                        onChange={(e) => setParticipant2School(e.target.value)} 
+                        placeholder="Название школы/ВУЗа" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Город *</Label>
+                      <Input 
+                        value={participant2City} 
+                        onChange={(e) => setParticipant2City(e.target.value)} 
+                        placeholder="Алматы" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Класс обучения *</Label>
+                      <Input 
+                        value={participant2Grade} 
+                        onChange={(e) => setParticipant2Grade(e.target.value)} 
+                        placeholder="11 класс" 
+                        required 
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Participant 3 */}
+                <div className="border rounded-lg p-4 space-y-4">
+                  <h4 className="font-medium">Участник 3 *</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label>ФИО *</Label>
+                      <Input 
+                        value={participant3FullName} 
+                        onChange={(e) => setParticipant3FullName(e.target.value)} 
+                        placeholder="Иванов Иван Иванович" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>ИИН *</Label>
+                      <Input 
+                        value={participant3Iin} 
+                        onChange={(e) => setParticipant3Iin(e.target.value)} 
+                        placeholder="123456789012" 
+                        maxLength={12}
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Телефон *</Label>
+                      <Input 
+                        value={participant3Phone} 
+                        onChange={(e) => setParticipant3Phone(e.target.value)} 
+                        placeholder="+7 700 000 00 00" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Учебное заведение *</Label>
+                      <Input 
+                        value={participant3School} 
+                        onChange={(e) => setParticipant3School(e.target.value)} 
+                        placeholder="Название школы/ВУЗа" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Город *</Label>
+                      <Input 
+                        value={participant3City} 
+                        onChange={(e) => setParticipant3City(e.target.value)} 
+                        placeholder="Алматы" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>Класс обучения *</Label>
+                      <Input 
+                        value={participant3Grade} 
+                        onChange={(e) => setParticipant3Grade(e.target.value)} 
+                        placeholder="11 класс" 
+                        required 
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Mentor */}
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold">Наставник команды</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label>ФИО *</Label>
+                    <Input 
+                      value={mentorFullName} 
+                      onChange={(e) => setMentorFullName(e.target.value)} 
+                      placeholder="Иванов Иван Иванович" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>ИИН *</Label>
+                    <Input 
+                      value={mentorIin} 
+                      onChange={(e) => setMentorIin(e.target.value)} 
+                      placeholder="123456789012" 
+                      maxLength={12}
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Телефон *</Label>
+                    <Input 
+                      value={mentorPhone} 
+                      onChange={(e) => setMentorPhone(e.target.value)} 
+                      placeholder="+7 700 000 00 00" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Название учебного заведения *</Label>
+                    <Input 
+                      value={mentorSchool} 
+                      onChange={(e) => setMentorSchool(e.target.value)} 
+                      placeholder="Название школы/ВУЗа" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Город *</Label>
+                    <Input 
+                      value={mentorCity} 
+                      onChange={(e) => setMentorCity(e.target.value)} 
+                      placeholder="Алматы" 
+                      required 
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label>Telegram *</Label>
+                    <Input 
+                      value={mentorTelegram} 
+                      onChange={(e) => setMentorTelegram(e.target.value)} 
+                      placeholder="@username" 
+                      required 
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Source and Consent */}
+              <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email">{t('form.email')}</Label>
-                  <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="name@example.com" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="tg">{t('form.telegram')}</Label>
-                  <Input id="tg" value={telegram} onChange={(e) => setTelegram(e.target.value)} placeholder="@username" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="team">{t('form.teamName')}</Label>
-                  <Input id="team" value={teamName} onChange={(e) => setTeamName(e.target.value)} placeholder="Например: AEROO Crew" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="captain">{t('form.captainFullName')}</Label>
-                  <Input id="captain" value={captainFullName} onChange={(e) => setCaptainFullName(e.target.value)} placeholder="Иванов Иван Иванович" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="phone">{t('form.captainPhone')}</Label>
-                  <Input id="phone" value={captainPhone} onChange={(e) => setCaptainPhone(e.target.value)} placeholder="+7 700 000 00 00" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="age">{t('form.captainAge')}</Label>
-                  <Input id="age" type="number" min={8} value={captainAge === "" ? "" : captainAge} onChange={(e) => setCaptainAge(e.target.value === "" ? "" : Number(e.target.value))} placeholder="18" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="city">{t('form.city')}</Label>
-                  <Input id="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Алматы" required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="study">{t('form.studyPlace')}</Label>
-                  <Input id="study" value={studyPlace} onChange={(e) => setStudyPlace(e.target.value)} placeholder="Школа/ВУЗ" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p2">{t('form.participant2')}</Label>
-                  <Textarea id="p2" value={participant2} onChange={(e) => setParticipant2(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p3">{t('form.participant3')}</Label>
-                  <Textarea id="p3" value={participant3} onChange={(e) => setParticipant3(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label htmlFor="p4">{t('form.participant4')}</Label>
-                  <Textarea id="p4" value={participant4} onChange={(e) => setParticipant4(e.target.value)} placeholder="ФИО; телефон; возраст; город; место обучения; почта" required />
-                </div>
-                <div className="space-y-2 md:col-span-2">
-                  <Label>{t('form.source')}</Label>
+                  <Label>Откуда узнали о соревновании? *</Label>
                   <Select value={source} onValueChange={setSource}>
                     <SelectTrigger>
                       <SelectValue placeholder="Выберите источник" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="instagram_kazrockets">{t('form.sourceInstagramKaz')}</SelectItem>
-                      <SelectItem value="instagram_other">{t('form.sourceInstagramOther')}</SelectItem>
-                      <SelectItem value="telegram">{t('form.sourceTelegram')}</SelectItem>
-                      <SelectItem value="friends">{t('form.sourceFriends')}</SelectItem>
-                      <SelectItem value="other">{t('form.sourceOther')}</SelectItem>
+                      <SelectItem value="instagram_kazrockets">Instagram @kazrockets</SelectItem>
+                      <SelectItem value="instagram_other">Другие Instagram аккаунты</SelectItem>
+                      <SelectItem value="telegram">Telegram</SelectItem>
+                      <SelectItem value="friends">Друзья/знакомые</SelectItem>
+                      <SelectItem value="other">Другое</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="flex items-start gap-3 md:col-span-2">
+                <div className="flex items-start gap-3">
                   <Checkbox id="consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
-                  <Label htmlFor="consent" className="leading-snug">{t('form.consent')}</Label>
+                  <Label htmlFor="consent" className="leading-snug">
+                    Я согласен(а) с правилами соревнования и обработкой персональных данных *
+                  </Label>
                 </div>
               </div>
+
               <Button
                 type="submit"
                 className="w-full"
                 disabled={
                   submitting ||
-                  !email || !telegram || !teamName || !captainFullName || !captainPhone || !captainAge || !city || !studyPlace ||
-                  !participant2 || !participant3 || !participant4 || !source || !consent
+                  !teamName || !captainFullName || !captainIin || !captainPhone || !captainSchool || 
+                  !captainCity || !captainGrade || !captainTelegram ||
+                  !participant1FullName || !participant1Iin || !participant1Phone || !participant1School || 
+                  !participant1City || !participant1Grade ||
+                  !participant2FullName || !participant2Iin || !participant2Phone || !participant2School || 
+                  !participant2City || !participant2Grade ||
+                  !participant3FullName || !participant3Iin || !participant3Phone || !participant3School || 
+                  !participant3City || !participant3Grade ||
+                  !mentorFullName || !mentorIin || !mentorPhone || !mentorSchool || 
+                  !mentorCity || !mentorTelegram ||
+                  !source || !consent
                 }
               >
-                {submitting ? t('form.sending') : t('form.submit')}
+                {submitting ? "Отправка..." : "Подать заявку"}
               </Button>
             </form>
           )}

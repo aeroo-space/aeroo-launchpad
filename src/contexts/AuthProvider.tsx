@@ -2,6 +2,8 @@ import React, { createContext, useContext, useEffect, useMemo, useState } from "
 import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import { ProfileSetupDialog } from "@/components/auth/ProfileSetupDialog";
+import { useProfile } from "@/hooks/useProfile";
 
 interface AuthContextValue {
   user: User | null;
@@ -22,12 +24,28 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [session, setSession] = useState<Session | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [showProfileSetup, setShowProfileSetup] = useState(false);
   useEffect(() => {
     let isMounted = true;
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, newSession) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
       if (!isMounted) return;
       setSession(newSession);
       setUser(newSession?.user ?? null);
+      
+      // Check if user needs to complete profile setup
+      if (newSession?.user && _event === 'SIGNED_IN') {
+        setTimeout(async () => {
+          const { data: profile } = await supabase
+            .from("profiles")
+            .select("profile_completed")
+            .eq("user_id", newSession.user.id)
+            .maybeSingle();
+          
+          if (!profile?.profile_completed) {
+            setShowProfileSetup(true);
+          }
+        }, 100);
+      }
     });
 
     supabase.auth.getSession().then(({ data }) => {
@@ -80,7 +98,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     },
   }), [user, session, loading]);
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+      {user && (
+        <ProfileSetupDialog
+          user={user}
+          open={showProfileSetup}
+          onComplete={() => setShowProfileSetup(false)}
+        />
+      )}
+    </AuthContext.Provider>
+  );
 };
 
 export const useAuth = () => {

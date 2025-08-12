@@ -65,21 +65,15 @@ const Auth = () => {
         const from = location.state?.from?.pathname || "/dashboard";
         navigate(from, { replace: true });
       } else {
-        // Валидация пароля и обязательных полей
-        const passwordValid = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(password);
-        if (!passwordValid) {
-          toast.error("Пароль не соответствует требованиям", { description: "Минимум 8 символов, одна заглавная буква и один спецсимвол" });
-          return;
-        }
         if (password !== confirmPassword) {
           toast.error("Пароли не совпадают");
           return;
         }
-        if (!fullName.trim() || !age || !school.trim()) {
-          toast.error("Пожалуйста, заполните ФИО, возраст и школу");
+        if (password.length < 6) {
+          toast.error("Пароль должен содержать минимум 6 символов");
           return;
         }
-        await signUp(email, password, { full_name: fullName.trim(), age: Number(age), school: school.trim() });
+        await signUp(email, password);
         setShowEmailCheck(true);
       }
     } finally {
@@ -165,29 +159,13 @@ const Auth = () => {
               <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
             </div>
 
-            {mode === "signup" && (
-              <>
-                <div className="space-y-2">
-                  <Label htmlFor="fullName">{t('auth.fullName', { defaultValue: 'ФИО' })}</Label>
-                  <Input id="fullName" placeholder="Иванов Иван Иванович" value={fullName} onChange={(e) => setFullName(e.target.value)} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="age">{t('auth.age', { defaultValue: 'Возраст' })}</Label>
-                  <Input id="age" type="number" min={1} placeholder="16" value={age} onChange={(e) => setAge(e.target.value)} required />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="school">{t('auth.school', { defaultValue: 'Наименование учебного заведения' })}</Label>
-                  <Input id="school" placeholder="Гимназия №1" value={school} onChange={(e) => setSchool(e.target.value)} required />
-                </div>
-              </>
-            )}
 
             <div className="space-y-2">
               <Label htmlFor="password">{t('auth.password', { defaultValue: 'Пароль' })}</Label>
-              <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} required />
+              <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} required />
               {mode === "signup" && (
                 <p className="text-xs text-muted-foreground">
-                  {t('auth.passwordRules', { defaultValue: 'Минимум 8 символов, одна заглавная буква и один спецсимвол' })}
+                  Минимум 6 символов
                 </p>
               )}
             </div>
@@ -202,8 +180,8 @@ const Auth = () => {
 
             {mode === "signup" && (
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">{t('auth.confirmPassword', { defaultValue: 'Подтвердите пароль' })}</Label>
-                <Input id="confirmPassword" type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+                <Label htmlFor="confirmPassword">Подтвердите пароль *</Label>
+                <Input id="confirmPassword" type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength={6} required />
               </div>
             )}
 
@@ -217,9 +195,9 @@ const Auth = () => {
       <Dialog open={showEmailCheck} onOpenChange={setShowEmailCheck}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>{t('auth.checkEmailTitle', { defaultValue: 'Проверьте почту' })}</DialogTitle>
+            <DialogTitle>Проверьте почту</DialogTitle>
             <DialogDescription>
-              {t('auth.checkEmailDesc', { defaultValue: 'Мы отправили ссылку для подтверждения на ваш email. Перейдите по ссылке, чтобы активировать аккаунт.' })}
+              Мы отправили ссылку для подтверждения на ваш email. Перейдите по ссылке, чтобы активировать аккаунт и завершить настройку профиля.
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end">

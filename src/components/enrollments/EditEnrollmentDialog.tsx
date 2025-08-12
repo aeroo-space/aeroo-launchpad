@@ -36,9 +36,9 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
     captain_age: enrollment.captain_age ?? ("" as any),
     city: enrollment.city ?? "",
     study_place: enrollment.study_place ?? "",
-    participant2_info: enrollment.participant2_info ?? "",
-    participant3_info: enrollment.participant3_info ?? "",
-    participant4_info: enrollment.participant4_info ?? "",
+    participant1_full_name: enrollment.participant1_full_name ?? "",
+    participant2_full_name: enrollment.participant2_full_name ?? "",
+    participant3_full_name: enrollment.participant3_full_name ?? "",
     source: enrollment.source ?? "",
     consent: Boolean(enrollment.consent),
   });
@@ -54,9 +54,9 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
       captain_age: enrollment.captain_age ?? ("" as any),
       city: enrollment.city ?? "",
       study_place: enrollment.study_place ?? "",
-      participant2_info: enrollment.participant2_info ?? "",
-      participant3_info: enrollment.participant3_info ?? "",
-      participant4_info: enrollment.participant4_info ?? "",
+      participant1_full_name: enrollment.participant1_full_name ?? "",
+      participant2_full_name: enrollment.participant2_full_name ?? "",
+      participant3_full_name: enrollment.participant3_full_name ?? "",
       source: enrollment.source ?? "",
       consent: Boolean(enrollment.consent),
     });
@@ -86,9 +86,9 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
           captain_age: typeof form.captain_age === "number" ? form.captain_age : Number(form.captain_age),
           city: form.city,
           study_place: form.study_place,
-          participant2_info: form.participant2_info,
-          participant3_info: form.participant3_info,
-          participant4_info: form.participant4_info,
+          participant1_full_name: form.participant1_full_name,
+          participant2_full_name: form.participant2_full_name,
+          participant3_full_name: form.participant3_full_name,
           source: form.source,
           consent: form.consent,
         })
@@ -153,16 +153,16 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
-              <Label htmlFor="participant2_info">2 участник *</Label>
-              <Textarea id="participant2_info" name="participant2_info" value={form.participant2_info} onChange={onChange} required />
+              <Label htmlFor="participant1_full_name">Участник 1 *</Label>
+              <Input id="participant1_full_name" name="participant1_full_name" value={form.participant1_full_name} onChange={onChange} required />
             </div>
             <div>
-              <Label htmlFor="participant3_info">3 участник *</Label>
-              <Textarea id="participant3_info" name="participant3_info" value={form.participant3_info} onChange={onChange} required />
+              <Label htmlFor="participant2_full_name">Участник 2 *</Label>
+              <Input id="participant2_full_name" name="participant2_full_name" value={form.participant2_full_name} onChange={onChange} required />
             </div>
             <div>
-              <Label htmlFor="participant4_info">4 участник *</Label>
-              <Textarea id="participant4_info" name="participant4_info" value={form.participant4_info} onChange={onChange} required />
+              <Label htmlFor="participant3_full_name">Участник 3 *</Label>
+              <Input id="participant3_full_name" name="participant3_full_name" value={form.participant3_full_name} onChange={onChange} required />
             </div>
           </div>
 

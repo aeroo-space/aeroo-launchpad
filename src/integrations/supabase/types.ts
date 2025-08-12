@@ -18,6 +18,8 @@ export type Database = {
         Row: {
           captain_age: number | null
           captain_full_name: string | null
+          captain_grade: string | null
+          captain_iin: string | null
           captain_phone: string | null
           city: string | null
           competition_id: string
@@ -25,9 +27,30 @@ export type Database = {
           created_at: string
           email: string | null
           id: string
-          participant2_info: string | null
-          participant3_info: string | null
-          participant4_info: string | null
+          mentor_city: string | null
+          mentor_full_name: string | null
+          mentor_iin: string | null
+          mentor_phone: string | null
+          mentor_school: string | null
+          mentor_telegram: string | null
+          participant1_city: string | null
+          participant1_full_name: string | null
+          participant1_grade: string | null
+          participant1_iin: string | null
+          participant1_phone: string | null
+          participant1_school: string | null
+          participant2_city: string | null
+          participant2_full_name: string | null
+          participant2_grade: string | null
+          participant2_iin: string | null
+          participant2_phone: string | null
+          participant2_school: string | null
+          participant3_city: string | null
+          participant3_full_name: string | null
+          participant3_grade: string | null
+          participant3_iin: string | null
+          participant3_phone: string | null
+          participant3_school: string | null
           source: string | null
           status: string
           study_place: string | null
@@ -39,6 +62,8 @@ export type Database = {
         Insert: {
           captain_age?: number | null
           captain_full_name?: string | null
+          captain_grade?: string | null
+          captain_iin?: string | null
           captain_phone?: string | null
           city?: string | null
           competition_id: string
@@ -46,9 +71,30 @@ export type Database = {
           created_at?: string
           email?: string | null
           id?: string
-          participant2_info?: string | null
-          participant3_info?: string | null
-          participant4_info?: string | null
+          mentor_city?: string | null
+          mentor_full_name?: string | null
+          mentor_iin?: string | null
+          mentor_phone?: string | null
+          mentor_school?: string | null
+          mentor_telegram?: string | null
+          participant1_city?: string | null
+          participant1_full_name?: string | null
+          participant1_grade?: string | null
+          participant1_iin?: string | null
+          participant1_phone?: string | null
+          participant1_school?: string | null
+          participant2_city?: string | null
+          participant2_full_name?: string | null
+          participant2_grade?: string | null
+          participant2_iin?: string | null
+          participant2_phone?: string | null
+          participant2_school?: string | null
+          participant3_city?: string | null
+          participant3_full_name?: string | null
+          participant3_grade?: string | null
+          participant3_iin?: string | null
+          participant3_phone?: string | null
+          participant3_school?: string | null
           source?: string | null
           status?: string
           study_place?: string | null
@@ -60,6 +106,8 @@ export type Database = {
         Update: {
           captain_age?: number | null
           captain_full_name?: string | null
+          captain_grade?: string | null
+          captain_iin?: string | null
           captain_phone?: string | null
           city?: string | null
           competition_id?: string
@@ -67,13 +115,76 @@ export type Database = {
           created_at?: string
           email?: string | null
           id?: string
-          participant2_info?: string | null
-          participant3_info?: string | null
-          participant4_info?: string | null
+          mentor_city?: string | null
+          mentor_full_name?: string | null
+          mentor_iin?: string | null
+          mentor_phone?: string | null
+          mentor_school?: string | null
+          mentor_telegram?: string | null
+          participant1_city?: string | null
+          participant1_full_name?: string | null
+          participant1_grade?: string | null
+          participant1_iin?: string | null
+          participant1_phone?: string | null
+          participant1_school?: string | null
+          participant2_city?: string | null
+          participant2_full_name?: string | null
+          participant2_grade?: string | null
+          participant2_iin?: string | null
+          participant2_phone?: string | null
+          participant2_school?: string | null
+          participant3_city?: string | null
+          participant3_full_name?: string | null
+          participant3_grade?: string | null
+          participant3_iin?: string | null
+          participant3_phone?: string | null
+          participant3_school?: string | null
           source?: string | null
           status?: string
           study_place?: string | null
           team_name?: string | null
+          telegram?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          city: string | null
+          created_at: string
+          full_name: string | null
+          id: string
+          iin: string | null
+          phone: string | null
+          profile_completed: boolean
+          school: string | null
+          telegram: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          city?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          iin?: string | null
+          phone?: string | null
+          profile_completed?: boolean
+          school?: string | null
+          telegram?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          city?: string | null
+          created_at?: string
+          full_name?: string | null
+          id?: string
+          iin?: string | null
+          phone?: string | null
+          profile_completed?: boolean
+          school?: string | null
           telegram?: string | null
           updated_at?: string
           user_id?: string
