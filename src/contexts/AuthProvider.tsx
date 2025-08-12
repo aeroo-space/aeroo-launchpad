@@ -3,7 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import { ProfileSetupDialog } from "@/components/auth/ProfileSetupDialog";
-import { useProfile } from "@/hooks/useProfile";
+
 
 interface AuthContextValue {
   user: User | null;
