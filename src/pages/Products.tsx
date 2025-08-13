@@ -9,6 +9,7 @@ import { ChatBotPanel } from "@/components/sections/product-chatbot";
 import { ProductRequestModal } from "@/components/sections/product-request-modal";
 import { toast } from "@/components/ui/use-toast";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 const products = [
   {
     id: "rocket-kit",
@@ -90,6 +91,7 @@ const Products = () => {
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
   const chatRef = useRef<HTMLDivElement>(null);
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.title = (t('products.metaTitle', { defaultValue: 'Продукты AEROO — наборы и конструкторы' }));
@@ -101,6 +103,18 @@ const Products = () => {
   };
 
   const handleGoToChat = () => chatRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const handleViewDetails = (productId: string) => {
+    if (productId === "rocket-kit") {
+      navigate("/products/rocket-science-kit");
+    } else {
+      // Для других продуктов показываем заглушку
+      toast({ 
+        title: t('products.detailsNotReady', { defaultValue: 'Детальная страница в разработке' }), 
+        description: t('products.detailsComingSoon', { defaultValue: 'Скоро будет доступна подробная информация о продукте' }) 
+      });
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -188,13 +202,23 @@ const Products = () => {
                       <span className="text-2xl font-bold text-primary">{product.price}</span>
                     </div>
 
-<Button 
-                      className="w-full btn-cosmic" 
-                      disabled={!product.inStock}
-                      onClick={() => handleOpenRequest(product.id)}
-                    >
-                    {product.inStock ? t('products.cta.request', { defaultValue: 'Оставить заявку' }) : t('products.cta.notify', { defaultValue: 'Сообщить о поступлении' })}
-                    </Button>
+                    <div className="flex flex-col gap-3">
+                      <Button 
+                        variant="outline"
+                        className="w-full" 
+                        onClick={() => handleViewDetails(product.id)}
+                      >
+                        {t('products.cta.details', { defaultValue: 'Подробнее' })}
+                      </Button>
+                      
+                      <Button 
+                        className="w-full btn-cosmic" 
+                        disabled={!product.inStock}
+                        onClick={() => handleOpenRequest(product.id)}
+                      >
+                        {product.inStock ? t('products.cta.request', { defaultValue: 'Оставить заявку' }) : t('products.cta.notify', { defaultValue: 'Сообщить о поступлении' })}
+                      </Button>
+                    </div>
                   </CardContent>
                 </Card>
               );
