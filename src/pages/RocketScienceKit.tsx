@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Navigation } from '@/components/ui/navigation';
+import { Footer } from '@/components/sections/footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -218,6 +220,8 @@ const RocketScienceKit = () => {
         <meta property="og:type" content="product" />
         <link rel="canonical" href="https://aeroo.space/products/rocket-science-kit" />
       </Helmet>
+
+      <Navigation />
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
@@ -480,6 +484,8 @@ const RocketScienceKit = () => {
           </div>
         </section>
       </div>
+      
+      <Footer />
     </>
   );
 };
