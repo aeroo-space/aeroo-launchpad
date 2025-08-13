@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { HelmetProvider } from "react-helmet-async";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
@@ -20,6 +21,7 @@ import Dashboard from "./pages/Dashboard";
 import CompetitionSatelliteLaunch2026 from "./pages/CompetitionSatelliteLaunch2026";
 import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement2025";
 import EnrollPage from "./pages/Enroll";
+import RocketScienceKit from "./pages/RocketScienceKit";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -28,10 +30,11 @@ import ProtectedRoute from "@/components/common/ProtectedRoute";
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <ThemeProvider>
-        <TooltipProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <ThemeProvider>
+          <TooltipProvider>
           <Toaster />
           <Sonner />
           <BrowserRouter>
@@ -61,13 +64,15 @@ const App = () => (
                   <EnrollPage />
                 </ProtectedRoute>
               } />
+              <Route path="/products/rocket-science-kit" element={<RocketScienceKit />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
-        </TooltipProvider>
-      </ThemeProvider>
-    </AuthProvider>
-  </QueryClientProvider>
+          </TooltipProvider>
+        </ThemeProvider>
+      </AuthProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;
