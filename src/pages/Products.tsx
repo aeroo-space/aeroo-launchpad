@@ -45,17 +45,6 @@ const products = [
     inStock: true
   },
     {
-    id: "coding-drone-kit",
-    title: "Coding Drone Kit",
-    description: "Образовательный дрон, который учит кодить, управлять полётами и снимать с воздуха",
-    image: "/placeholder.svg", 
-    price: "",
-    features: ["FPV камера", "Программируемый контроллер", "Полеты внутри помещения", "Симулятор полёта"],
-    icon: Plane,
-    category: "Дроны",
-    inStock: true
-  },
-    {
     id: "football-drone-kit",
     title: "Drone Football Kit",
     description: "Комплект для матчей в дрон-футбол — управляй дроном, соревнуйся и развивай командный дух",
