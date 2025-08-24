@@ -20,10 +20,67 @@ const resources = {
         age: 'Возраст:',
         deadline: 'Дедлайн:',
         details: 'Подробнее',
+        participate: 'Принять участие',
         enrollTeam: 'Записаться с командой',
         archiveTitle: 'Архив соревнований',
         archiveDesc: 'Изучите результаты прошлых лет и вдохновитесь достижениями участников',
         archiveBtn: 'Посмотреть архив',
+        statuses: {
+          active: 'Активно',
+          registration: 'Регистрация',
+          soon: 'Скоро',
+          development: 'В разработке'
+        },
+        items: {
+          'aeroo-fest': {
+            title: 'AEROO Fest',
+            category: 'Фестиваль',
+            description: 'Мероприятия, шоу и мастер‑классы для продвижения аэрокосмических технологий',
+            status: 'Скоро',
+            deadline: 'Лето 2026',
+            ages: '12-19 лет'
+          },
+          'satellite-launch': {
+            title: 'AEROO Satellite Launch Competition',
+            category: 'Спутники',
+            description: 'Проектирование, сборка и запуск мини‑спутников',
+            status: 'Регистрация',
+            deadline: '1 января 2026',
+            ages: '14-19 лет'
+          },
+          'space-settlement': {
+            title: 'AEROO Space Settlement Competition',
+            category: 'Хакатон',
+            description: 'Разработка концепций поселений в космосе для долгосрочной жизни',
+            status: 'Скоро',
+            deadline: '24 октября 2025',
+            ages: '12-19 лет'
+          },
+          'ai-challenge': {
+            title: 'AEROO Space AI Competition',
+            category: 'AI',
+            description: 'Разработка автономных алгоритмов для навигации, управления и планирования миссий',
+            status: 'В разработке',
+            deadline: 'Весна 2026',
+            ages: '16-25 лет'
+          },
+          'drive-competition': {
+            title: 'AEROO Rover Competition',
+            category: 'Ровер',
+            description: 'Создание и управление роверами для исследования поверхностей планет',
+            status: 'В разработке',
+            deadline: 'Лето 2026',
+            ages: '14-21 лет'
+          },
+          'drone-competition': {
+            title: 'AEROO Drone Competition',
+            category: 'Дроны',
+            description: 'Конструирование и пилотирование дронов для зондирования, картографирования и гонок',
+            status: 'Скоро',
+            deadline: 'Октябрь 2025',
+            ages: '12-25 лет'
+          }
+        },
         enrollDialogTitle: 'Запись в соревнование',
         enrollDialogDesc: 'Заполните данные команды. После регистрации капитану придёт письмо с подтверждением и техническим заданием.',
         toastLoginTitle: 'Войдите, чтобы записаться',
@@ -380,10 +437,67 @@ const resources = {
         age: 'Жас:',
         deadline: 'Мерзімі:',
         details: 'Толығырақ',
+        participate: 'Қатысу',
         enrollTeam: 'Командамен тіркелу',
         archiveTitle: 'Сайыстар мұрағаты',
         archiveDesc: 'Өткен жылдардың нәтижелерін қарап, қатысушылардың жетістіктерінен шабыт алыңыз',
         archiveBtn: 'Мұрағатты көру',
+        statuses: {
+          active: 'Белсенді',
+          registration: 'Тіркеу',
+          soon: 'Жақында',
+          development: 'Дамытуда'
+        },
+        items: {
+          'aeroo-fest': {
+            title: 'AEROO Fest',
+            category: 'Фестиваль',
+            description: 'Аэроғарыш технологияларын дамыту үшін іс-шаралар, шоу және шеберлік сыныптары',
+            status: 'Жақында',
+            deadline: '2026 жаз',
+            ages: '12-19 жас'
+          },
+          'satellite-launch': {
+            title: 'AEROO Satellite Launch Competition',
+            category: 'Спутниктер',
+            description: 'Мини-спутниктерді жобалау, құрастыру және ұшыру',
+            status: 'Тіркеу',
+            deadline: '2026 жылдың 1 қаңтары',
+            ages: '14-19 жас'
+          },
+          'space-settlement': {
+            title: 'AEROO Space Settlement Competition',
+            category: 'Хакатон',
+            description: 'Ұзақ мерзімді өмір сүру үшін ғарыштық қонысталу тұжырымдамаларын дамыту',
+            status: 'Жақында',
+            deadline: '2025 жылдың 24 қазаны',
+            ages: '12-19 жас'
+          },
+          'ai-challenge': {
+            title: 'AEROO Space AI Competition',
+            category: 'AI',
+            description: 'Навигация, басқару және миссияларды жоспарлау үшін автономды алгоритмдер дамыту',
+            status: 'Дамытуда',
+            deadline: '2026 көктем',
+            ages: '16-25 жас'
+          },
+          'drive-competition': {
+            title: 'AEROO Rover Competition',
+            category: 'Ровер',
+            description: 'Планета беттерін зерттеу үшін роверлерді жасау және басқару',
+            status: 'Дамытуда',
+            deadline: '2026 жаз',
+            ages: '14-21 жас'
+          },
+          'drone-competition': {
+            title: 'AEROO Drone Competition',
+            category: 'Дрондар',
+            description: 'Зондтау, картография және жарыстар үшін дрондарды құрастыру және басқару',
+            status: 'Жақында',
+            deadline: '2025 қазан',
+            ages: '12-25 жас'
+          }
+        },
         enrollDialogTitle: 'Сайысқа тіркелу',
         enrollDialogDesc: 'Команда деректерін толтырыңыз. Тіркелгеннен кейін капитанға растау және техникалық тапсырма жіберіледі.',
         toastLoginTitle: 'Тіркелу үшін кіріңіз',

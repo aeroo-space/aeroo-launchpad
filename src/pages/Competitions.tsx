@@ -50,7 +50,7 @@ const Competitions = () => {
     if (!comp) return;
     const isAllowed = comp.status === "Регистрация" || comp.id === "satellite-launch";
     if (!isAllowed) {
-      toast("Регистрация пока не открыта", { description: "Скоро выйдет информация — будьте в курсе событий." });
+      toast(t('competitions.toastNotOpenTitle', { defaultValue: "Регистрация пока не открыта" }), { description: t('competitions.toastNotOpenDesc', { defaultValue: "Скоро выйдет информация — будьте в курсе событий." }) });
       return;
     }
     navigate(`/enroll/${id}`);
@@ -156,8 +156,8 @@ const Competitions = () => {
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
-                    <Badge className={`${getStatusColor(competition.status)} text-white`}>
-                      {competition.status}
+                    <Badge className={`${getStatusColor(t(`competitions.items.${competition.id}.status`))} text-white`}>
+                      {t(`competitions.items.${competition.id}.status`)}
                     </Badge>
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
@@ -175,11 +175,11 @@ const Competitions = () => {
                   <div className="space-y-2 mb-6">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">{t('competitions.age')}</span>
-                      <span className="font-medium">{competition.ages}</span>
+                      <span className="font-medium">{t(`competitions.items.${competition.id}.ages`)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">{t('competitions.deadline')}</span>
-                      <span className="font-medium">{competition.deadline}</span>
+                      <span className="font-medium">{t(`competitions.items.${competition.id}.deadline`)}</span>
                     </div>
                   </div>
 
@@ -196,14 +196,14 @@ const Competitions = () => {
                       <Button
                         variant="outline"
                         className="w-full"
-                        onClick={() => toast("Скоро выйдет информация", { description: "Будьте в курсе событий" })}
+                        onClick={() => toast(t('competitions.toastSoonTitle', { defaultValue: "Скоро выйдет информация" }), { description: t('competitions.toastSoonDesc', { defaultValue: "Будьте в курсе событий" }) })}
                       >
                         {t('competitions.details')}
                       </Button>
                     )}
-                    {competition.status === 'Регистрация' && (
+                    {t(`competitions.items.${competition.id}.status`) === t('competitions.statuses.registration') && (
                       <Button asChild className="w-full btn-cosmic">
-                        <Link to={`/enroll/${competition.id}`}>Принять участие</Link>
+                        <Link to={`/enroll/${competition.id}`}>{t('competitions.participate')}</Link>
                       </Button>
                     )}
                   </div>
