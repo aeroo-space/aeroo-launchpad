@@ -88,7 +88,11 @@ const resources = {
         toastNeedConsentTitle: 'Подтвердите согласие',
         toastNeedConsentDesc: 'Необходимо согласиться с положением и политикой',
         toastEnrollError: 'Не удалось записаться',
-        toastEnrollSuccessTitle: 'Вы записаны!'
+        toastEnrollSuccessTitle: 'Вы записаны!',
+        toastSoonTitle: 'Скоро выйдет информация',
+        toastSoonDesc: 'Будьте в курсе событий',
+        toastNotOpenTitle: 'Регистрация пока не открыта',
+        toastNotOpenDesc: 'Скоро выйдет информация — будьте в курсе событий.'
       },
       form: {
         email: 'Email капитана *',
@@ -270,7 +274,67 @@ const resources = {
         toastNeedConsentTitle: 'Confirm consent',
         toastNeedConsentDesc: 'You must accept the terms and privacy policy',
         toastEnrollError: 'Registration failed',
-        toastEnrollSuccessTitle: 'You are registered!'
+        toastEnrollSuccessTitle: 'You are registered!',
+        toastSoonTitle: 'Coming Soon',
+        toastSoonDesc: 'Stay tuned for updates',
+        toastNotOpenTitle: 'Registration not open yet',
+        toastNotOpenDesc: 'Information will be available soon — stay tuned.',
+        statuses: {
+          active: 'Active',
+          registration: 'Registration',
+          soon: 'Soon',
+          development: 'In Development'
+        },
+        items: {
+          'aeroo-fest': {
+            title: 'AEROO Fest',
+            category: 'Festival',
+            description: 'Events, shows and workshops to promote aerospace technologies',
+            status: 'Soon',
+            deadline: 'Summer 2026',
+            ages: '12-19 years'
+          },
+          'satellite-launch': {
+            title: 'AEROO Satellite Launch Competition',
+            category: 'Satellites',
+            description: 'Design, build and launch mini-satellites',
+            status: 'Registration',
+            deadline: 'January 1, 2026',
+            ages: '14-19 years'
+          },
+          'space-settlement': {
+            title: 'AEROO Space Settlement Competition',
+            category: 'Hackathon',
+            description: 'Development of space settlement concepts for long-term life',
+            status: 'Soon',
+            deadline: 'October 24, 2025',
+            ages: '12-19 years'
+          },
+          'ai-challenge': {
+            title: 'AEROO Space AI Competition',
+            category: 'AI',
+            description: 'Development of autonomous algorithms for navigation, control and mission planning',
+            status: 'In Development',
+            deadline: 'Spring 2026',
+            ages: '16-25 years'
+          },
+          'drive-competition': {
+            title: 'AEROO Rover Competition',
+            category: 'Rover',
+            description: 'Creation and control of rovers for planetary surface exploration',
+            status: 'In Development',
+            deadline: 'Summer 2026',
+            ages: '14-21 years'
+          },
+          'drone-competition': {
+            title: 'AEROO Drone Competition',
+            category: 'Drones',
+            description: 'Construction and piloting of drones for sensing, mapping and racing',
+            status: 'Soon',
+            deadline: 'October 2025',
+            ages: '12-25 years'
+          }
+        }
       },
       form: {
         email: 'Captain’s email *',
