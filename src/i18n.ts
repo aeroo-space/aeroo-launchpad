@@ -221,6 +221,30 @@ const resources = {
       home: {
         metaTitle: 'AEROO — образовательная платформа'
       },
+      footer: {
+        description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
+        location: 'Алматы, Казахстан',
+        sections: [
+          {
+            title: 'Платформа',
+            links: ['Соревнования', 'Курсы', 'Продукты', 'О нас']
+          },
+          {
+            title: 'Поддержка',
+            links: ['Контакты', 'FAQ', 'Техподдержка', 'Сообщество']
+          },
+          {
+            title: 'Документы',
+            links: ['Политика конфиденциальности', 'Пользовательское соглашение', 'Правила соревнований', 'Сертификаты']
+          }
+        ],
+        bottom: {
+          rights: 'Все права защищены.',
+          privacy: 'Конфиденциальность',
+          terms: 'Условия использования',
+          cookies: 'Cookies'
+        }
+      },
       dashboardExtra: {
         // Дополнительные подписи для страницы кабинета
         labels: {
@@ -463,6 +487,30 @@ const resources = {
       home: {
         metaTitle: 'AEROO — educational platform'
       },
+      footer: {
+        description: 'Educational platform uniting students and young engineers around aerospace technologies.',
+        location: 'Almaty, Kazakhstan',
+        sections: [
+          {
+            title: 'Platform',
+            links: ['Competitions', 'Courses', 'Products', 'About']
+          },
+          {
+            title: 'Support',
+            links: ['Contacts', 'FAQ', 'Tech Support', 'Community']
+          },
+          {
+            title: 'Documents',
+            links: ['Privacy Policy', 'Terms of Service', 'Competition Rules', 'Certificates']
+          }
+        ],
+        bottom: {
+          rights: 'All rights reserved.',
+          privacy: 'Privacy',
+          terms: 'Terms of Use',
+          cookies: 'Cookies'
+        }
+      },
       dashboardExtra: {
         labels: {
           team: 'Team',
@@ -697,6 +745,30 @@ const resources = {
       },
       home: {
         metaTitle: 'AEROO — білім беру платформасы'
+      },
+      footer: {
+        description: 'Мектеп оқушылары мен жас инженерлерді аэроғарыш технологиялары төңірегінде біріктіретін білім беру платформасы.',
+        location: 'Алматы, Қазақстан',
+        sections: [
+          {
+            title: 'Платформа',
+            links: ['Сайыстар', 'Курстар', 'Өнімдер', 'Біз туралы']
+          },
+          {
+            title: 'Қолдау',
+            links: ['Байланыс', 'Жиі қойылатын сұрақтар', 'Техникалық қолдау', 'Қауымдастық']
+          },
+          {
+            title: 'Құжаттар',
+            links: ['Құпиялылық саясаты', 'Пайдалану шарттары', 'Сайыс ережелері', 'Сертификаттар']
+          }
+        ],
+        bottom: {
+          rights: 'Барлық құқықтар қорғалған.',
+          privacy: 'Құпиялылық',
+          terms: 'Пайдалану шарттары',
+          cookies: 'Cookies'
+        }
       },
       dashboardExtra: {
         labels: {
