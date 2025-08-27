@@ -58,6 +58,14 @@ export function Navigation() {
           <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
             {NAVIGATION_ITEMS.map((item) => {
               const Icon = item.icon;
+              const translationKey = {
+                '/competitions': 'nav.competitions',
+                '/courses': 'nav.courses', 
+                '/products': 'nav.products',
+                '/about': 'nav.about',
+                '/contacts': 'nav.contacts'
+              }[item.href];
+              
               return (
                 <Link
                   key={item.href}
@@ -65,7 +73,9 @@ export function Navigation() {
                   className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 >
                   <Icon className="h-5 w-5 group-hover:glow-primary transition-all" />
-                  <span>{({ '/competitions': t('nav.competitions'), '/courses': t('nav.courses'), '/products': t('nav.products'), '/about': t('nav.about') } as Record<string,string>)[item.href] ?? item.label}</span>
+                  <span className="whitespace-nowrap min-w-fit">
+                    {translationKey ? t(translationKey) : item.label}
+                  </span>
                 </Link>
               );
             })}
@@ -129,6 +139,14 @@ export function Navigation() {
             <div className="px-4 py-4 space-y-2 overflow-y-auto">
               {NAVIGATION_ITEMS.map((item) => {
                 const Icon = item.icon;
+                const translationKey = {
+                  '/competitions': 'nav.competitions',
+                  '/courses': 'nav.courses', 
+                  '/products': 'nav.products',
+                  '/about': 'nav.about',
+                  '/contacts': 'nav.contacts'
+                }[item.href];
+                
                 return (
                   <Link
                     key={item.href}
@@ -137,7 +155,9 @@ export function Navigation() {
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Icon className="h-5 w-5" />
-                    <span>{({ '/competitions': t('nav.competitions'), '/courses': t('nav.courses'), '/products': t('nav.products'), '/about': t('nav.about') } as Record<string,string>)[item.href] ?? item.label}</span>
+                    <span className="whitespace-nowrap">
+                      {translationKey ? t(translationKey) : item.label}
+                    </span>
                   </Link>
                 );
               })}
