@@ -1,11 +1,11 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Package, Rocket, Plane, Satellite, Zap, Shield, Wrench } from "lucide-react";
-import { ChatBotPanel } from "@/components/sections/product-chatbot";
+
 import { ProductRequestModal } from "@/components/sections/product-request-modal";
 import { toast } from "@/components/ui/use-toast";
 import { useTranslation } from "react-i18next";
@@ -78,7 +78,7 @@ const advantages = [
 const Products = () => {
   const [isRequestOpen, setIsRequestOpen] = useState(false);
   const [selectedProductId, setSelectedProductId] = useState<string | null>(null);
-  const chatRef = useRef<HTMLDivElement>(null);
+  
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -91,7 +91,7 @@ const Products = () => {
     setIsRequestOpen(true);
   };
 
-  const handleGoToChat = () => chatRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  
 
   const handleViewDetails = (productId: string) => {
     if (productId === "rocket-kit") {
@@ -222,22 +222,12 @@ const Products = () => {
             {t('products.help.desc', { defaultValue: 'Наши эксперты помогут выбрать подходящий набор для вашего уровня подготовки и образовательных целей. Свяжитесь с нами для персональной консультации.' })}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="btn-cosmic" onClick={handleGoToChat}>
-              {t('products.help.getConsultation', { defaultValue: 'Получить консультацию' })}
-            </Button>
             <Button size="lg" variant="outline" onClick={() => toast({ title: t('products.catalog.soon', { defaultValue: 'Каталог скоро' }), description: t('products.catalog.pdfLater', { defaultValue: 'PDF-каталог будет доступен позже' }) })}>
               {t('products.catalog.download', { defaultValue: 'Скачать каталог' })}
             </Button>
           </div>
         </div>
 
-        {/* Online Consultation Chat */}
-        <section className="mt-12" aria-label="Онлайн-консультация AEROO">
-          <h2 className="sr-only">Онлайн-консультация</h2>
-          <div ref={chatRef} className="max-w-3xl mx-auto">
-            <ChatBotPanel />
-          </div>
-        </section>
 
         {/* Request Modal */}
         <ProductRequestModal
