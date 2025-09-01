@@ -220,7 +220,43 @@ const resources = {
         sendMessage: 'Отправить сообщение'
       },
       home: {
-        metaTitle: 'AEROO — образовательная платформа'
+        metaTitle: 'AEROO — образовательная платформа',
+        hero: {
+          competitions: {
+            title: 'Соревнования AEROO',
+            desc: 'Участвуй в инженерных и исследовательских мероприятиях.',
+            button: 'Подробнее'
+          },
+          products: {
+            title: 'Продукты AEROO',
+            desc: 'Приобретай образовательные наборы AEROO для инженерного обучения и участия в соревнованиях.',
+            button: 'Подробнее'
+          },
+          settlement: {
+            title: 'AEROO Space Settlement Competition 2026',
+            dates: 'Даты проведения: 28–29 октября 2025.',
+            registration: 'Старт регистрации: с 5 сентября.',
+            button: 'Подробнее'
+          }
+        },
+        features: {
+          title: 'Направления обучения',
+          subtitle: 'Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования',
+          learnMore: 'Узнать больше',
+          items: {
+            0: { title: 'Ракетостроение', desc: 'Изучение аэродинамики, конструирование и запуск моделей ракет с твердотопливными двигателями' },
+            1: { title: 'БПЛА', desc: 'Программирование дронов, FPV-пилотирование, аэросъёмка и автономные полёты' },
+            2: { title: 'Спутниковые технологии', desc: 'Создание наноспутников, изучение бортовых систем и подготовка к запуску' },
+            3: { title: 'Искусственный интеллект', desc: 'Разработка автономных алгоритмов для навигации и управления космическими миссиями' },
+            4: { title: 'Соревнования', desc: 'Участие в международных конкурсах по аэрокосмическим технологиям' },
+            5: { title: 'Командная работа', desc: 'Развитие навыков сотрудничества в многодисциплинарных проектах' }
+          },
+          cta: {
+            title: 'Готовы начать свой путь в космос?',
+            courses: 'Образовательные комплекты для школ',
+            competitions: 'Ближайшие соревнования'
+          }
+        }
       },
       footer: {
         description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
@@ -487,7 +523,43 @@ const resources = {
         sendMessage: 'Send message'
       },
       home: {
-        metaTitle: 'AEROO — educational platform'
+        metaTitle: 'AEROO — educational platform',
+        hero: {
+          competitions: {
+            title: 'AEROO Competitions',
+            desc: 'Participate in engineering and research events.',
+            button: 'Learn more'
+          },
+          products: {
+            title: 'AEROO Products',
+            desc: 'Purchase AEROO educational kits for engineering learning and competition participation.',
+            button: 'Learn more'
+          },
+          settlement: {
+            title: 'AEROO Space Settlement Competition 2026',
+            dates: 'Event dates: October 28–29, 2025.',
+            registration: 'Registration starts: September 5.',
+            button: 'Learn more'
+          }
+        },
+        features: {
+          title: 'Learning Directions',
+          subtitle: 'Immerse yourself in the world of aerospace technologies through practical courses and exciting competitions',
+          learnMore: 'Learn more',
+          items: {
+            0: { title: 'Rocket Science', desc: 'Study of aerodynamics, construction and launch of rocket models with solid fuel engines' },
+            1: { title: 'UAV', desc: 'Drone programming, FPV piloting, aerial photography and autonomous flights' },
+            2: { title: 'Satellite Technologies', desc: 'Creation of nanosatellites, study of onboard systems and launch preparation' },
+            3: { title: 'Artificial Intelligence', desc: 'Development of autonomous algorithms for navigation and space mission control' },
+            4: { title: 'Competitions', desc: 'Participation in international aerospace technology competitions' },
+            5: { title: 'Teamwork', desc: 'Development of collaboration skills in multidisciplinary projects' }
+          },
+          cta: {
+            title: 'Ready to start your journey to space?',
+            courses: 'Educational kits for schools',
+            competitions: 'Upcoming competitions'
+          }
+        }
       },
       footer: {
         description: 'Educational platform uniting students and young engineers around aerospace technologies.',
@@ -747,7 +819,43 @@ const resources = {
         sendMessage: 'Хабарлама жіберу'
       },
       home: {
-        metaTitle: 'AEROO — білім беру платформасы'
+        metaTitle: 'AEROO — білім беру платформасы',
+        hero: {
+          competitions: {
+            title: 'AEROO сайыстары',
+            desc: 'Инженерлік және зерттеу іс-шараларына қатысыңыз.',
+            button: 'Толығырақ'
+          },
+          products: {
+            title: 'AEROO өнімдері',
+            desc: 'Инженерлік оқыту және сайыстарға қатысу үшін AEROO білім беру жинақтарын сатып алыңыз.',
+            button: 'Толығырақ'
+          },
+          settlement: {
+            title: 'AEROO Space Settlement Competition 2026',
+            dates: 'Өткізу күндері: 2025 жылдың 28–29 қазаны.',
+            registration: 'Тіркеу басталуы: қыркүйектің 5-інен.',
+            button: 'Толығырақ'
+          }
+        },
+        features: {
+          title: 'Оқыту бағыттары',
+          subtitle: 'Практикалық курстар мен қызықты сайыстар арқылы аэроғарыш технологиялары әлеміне енуіз',
+          learnMore: 'Көбірек білу',
+          items: {
+            0: { title: 'Ракетостроение', desc: 'Аэродинамиканы зерттеу, қатты отынды қозғалтқыштармен ракета үлгілерін жасау және ұшыру' },
+            1: { title: 'БПЛА', desc: 'Дрондарды программалау, FPV басқару, аэросуретке түсіру және автономды ұшулар' },
+            2: { title: 'Спутниктік технологиялар', desc: 'Наноспутниктер жасау, борттық жүйелерді зерттеу және ұшыруға дайындық' },
+            3: { title: 'Жасанды интеллект', desc: 'Навигация және ғарыштық миссияларды басқару үшін автономды алгоритмдер дамыту' },
+            4: { title: 'Сайыстар', desc: 'Халықаралық аэроғарыш технологиялары бойынша сайыстарға қатысу' },
+            5: { title: 'Командалық жұмыс', desc: 'Көпсалалы жобаларда ынтымақтастық дағдыларын дамыту' }
+          },
+          cta: {
+            title: 'Ғарышқа саяхатты бастауға дайынсыз ба?',
+            courses: 'Мектептер үшін білім беру жинақтары',
+            competitions: 'Жақындағы сайыстар'
+          }
+        }
       },
       footer: {
         description: 'Мектеп оқушылары мен жас инженерлерді аэроғарыш технологиялары төңірегінде біріктіретін білім беру платформасы.',

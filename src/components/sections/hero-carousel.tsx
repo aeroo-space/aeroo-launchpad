@@ -9,8 +9,10 @@ import {
   type CarouselApi,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 export const HeroCarousel: React.FC = () => {
+  const { t } = useTranslation();
   const [api, setApi] = React.useState<CarouselApi | null>(null);
 
   React.useEffect(() => {
@@ -45,13 +47,13 @@ export const HeroCarousel: React.FC = () => {
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
-                      Соревнования AEROO
+                      {t('home.hero.competitions.title')}
                     </h2>
                     <p className="text-base md:text-lg text-foreground/90 mb-8">
-                      Участвуй в инженерных и исследовательских мероприятиях.
+                      {t('home.hero.competitions.desc')}
                     </p>
                     <Button asChild size="xl" variant="primary">
-                      <Link to="/competitions">Подробнее</Link>
+                      <Link to="/competitions">{t('home.hero.competitions.button')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -71,13 +73,13 @@ export const HeroCarousel: React.FC = () => {
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
-                      Продукты AEROO
+                      {t('home.hero.products.title')}
                     </h2>
                     <p className="text-base md:text-lg text-foreground/90 mb-8">
-                      Приобретай образовательные наборы AEROO для инженерного обучения и участия в соревнованиях.
+                      {t('home.hero.products.desc')}
                     </p>
                     <Button asChild size="xl" variant="primary">
-                      <Link to="/products">Подробнее</Link>
+                      <Link to="/products">{t('home.hero.products.button')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -97,16 +99,16 @@ export const HeroCarousel: React.FC = () => {
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
-                      AEROO Space Settlement Competition 2026
+                      {t('home.hero.settlement.title')}
                     </h2>
                     <p className="text-base md:text-lg text-foreground/90 mb-6">
-                      Даты проведения: 28–29 октября 2025.
+                      {t('home.hero.settlement.dates')}
                     </p>
                     <p className="text-base md:text-lg text-foreground/90 mb-8">
-                      Старт регистрации: с 5 сентября.
+                      {t('home.hero.settlement.registration')}
                     </p>
                     <Button asChild size="xl" variant="primary">
-                      <Link to="/competitions">Подробнее</Link>
+                      <Link to="/competitions">{t('home.hero.settlement.button')}</Link>
                     </Button>
                   </div>
                 </div>
@@ -115,8 +117,8 @@ export const HeroCarousel: React.FC = () => {
           </CarouselContent>
 
           {/* Nav buttons (optional) */}
-          <CarouselPrevious className="hidden md:inline-flex" aria-label="Предыдущий слайд" />
-          <CarouselNext className="hidden md:inline-flex" aria-label="Следующий слайд" />
+          <CarouselPrevious className="hidden md:inline-flex" aria-label={t('home.hero.competitions.button')} />
+          <CarouselNext className="hidden md:inline-flex" aria-label={t('home.hero.competitions.button')} />
         </Carousel>
     </section>
   );
