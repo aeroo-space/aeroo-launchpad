@@ -16,12 +16,62 @@ interface ProfileSetupDialogProps {
 export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialogProps) {
   const [fullName, setFullName] = useState("");
   const [iin, setIin] = useState("");
-  const [phone, setPhone] = useState("");
-  const [telegram, setTelegram] = useState("");
+  const [phone, setPhone] = useState("+7");
+  const [telegram, setTelegram] = useState("@");
   const [school, setSchool] = useState("");
   const [city, setCity] = useState("");
   const [grade, setGrade] = useState("");
   const [submitting, setSubmitting] = useState(false);
+
+  const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^а-яёА-ЯЁa-zA-Z\s]/g, '');
+    setFullName(value);
+  };
+
+  const handleIinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 12);
+    setIin(value);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (!value.startsWith('7')) {
+      value = '7' + value;
+    }
+    value = value.slice(0, 11);
+    
+    if (value.length >= 1) {
+      let formatted = '+7';
+      if (value.length > 1) {
+        formatted += ' ' + value.slice(1, 4);
+      }
+      if (value.length > 4) {
+        formatted += ' ' + value.slice(4, 7);
+      }
+      if (value.length > 7) {
+        formatted += ' ' + value.slice(7, 9);
+      }
+      if (value.length > 9) {
+        formatted += ' ' + value.slice(9, 11);
+      }
+      setPhone(formatted);
+    } else {
+      setPhone('+7');
+    }
+  };
+
+  const handleTelegramChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    if (!value.startsWith('@')) {
+      value = '@' + value.replace('@', '');
+    }
+    setTelegram(value);
+  };
+
+  const handleGradeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '');
+    setGrade(value);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -56,7 +106,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
     }
   };
 
-  const isValid = fullName && iin && phone && telegram && school && city && grade;
+  const isValid = fullName && iin.length === 12 && phone.length === 17 && telegram.length > 1 && school && city && grade;
 
   return (
     <Dialog open={open} onOpenChange={() => {}}>
@@ -80,7 +130,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             <Input
               id="fullName"
               value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={handleFullNameChange}
               placeholder="Иванов Иван Иванович"
               required
             />
@@ -90,7 +140,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             <Input
               id="iin"
               value={iin}
-              onChange={(e) => setIin(e.target.value)}
+              onChange={handleIinChange}
               placeholder="123456789012"
               maxLength={12}
               required
@@ -101,7 +151,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             <Input
               id="phone"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={handlePhoneChange}
               placeholder="+7 700 000 00 00"
               required
             />
@@ -111,7 +161,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             <Input
               id="telegram"
               value={telegram}
-              onChange={(e) => setTelegram(e.target.value)}
+              onChange={handleTelegramChange}
               placeholder="@username"
               required
             />
@@ -137,12 +187,12 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="grade">Класс обучения *</Label>
+            <Label htmlFor="grade">Класс/Курс обучения *</Label>
             <Input
               id="grade"
               value={grade}
-              onChange={(e) => setGrade(e.target.value)}
-              placeholder="11 класс"
+              onChange={handleGradeChange}
+              placeholder="11"
               required
             />
           </div>
