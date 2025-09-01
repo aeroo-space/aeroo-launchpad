@@ -29,62 +29,26 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
     setSubmitting(true);
 
     try {
-      console.log("[ProfileSetupDialog] Start submit for user:", user.id);
+      console.log("[ProfileSetupDialog] Upsert submit for user:", user.id);
 
-      // Сначала проверяем, есть ли уже профиль
-      const { data: existing, error: selectError } = await supabase
+      const { error } = await supabase
         .from("profiles")
-        .select("id")
-        .eq("user_id", user.id)
-        .maybeSingle();
+        .upsert({
+          user_id: user.id,
+          full_name: fullName,
+          iin,
+          phone,
+          telegram,
+          school,
+          city,
+          grade,
+          profile_completed: true,
+        }, { onConflict: 'user_id' })
+        .select('id');
 
-      if (selectError) {
-        console.error("[ProfileSetupDialog] Select error:", selectError);
-        throw selectError;
-      }
-
-      if (existing) {
-        console.log("[ProfileSetupDialog] Profile exists, performing UPDATE");
-        const { error: updateError } = await supabase
-          .from("profiles")
-          .update({
-            full_name: fullName,
-            iin,
-            phone,
-            telegram,
-            school,
-            city,
-            grade,
-            profile_completed: true,
-          })
-          .eq("user_id", user.id)
-          .select("id"); // для согласованности и отладки
-
-        if (updateError) {
-          console.error("[ProfileSetupDialog] Update error:", updateError);
-          throw updateError;
-        }
-      } else {
-        console.log("[ProfileSetupDialog] Profile not found, performing INSERT");
-        const { error: insertError } = await supabase
-          .from("profiles")
-          .insert({
-            user_id: user.id,
-            full_name: fullName,
-            iin,
-            phone,
-            telegram,
-            school,
-            city,
-            grade,
-            profile_completed: true,
-          })
-          .select("id");
-
-        if (insertError) {
-          console.error("[ProfileSetupDialog] Insert error:", insertError);
-          throw insertError;
-        }
+      if (error) {
+        console.error("[ProfileSetupDialog] Upsert error:", error);
+        throw error;
       }
 
       toast.success("Профиль успешно создан!");
