@@ -30,17 +30,20 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
     try {
       const { error } = await supabase
         .from("profiles")
-        .upsert({
-          user_id: user.id,
-          full_name: fullName,
-          iin,
-          phone,
-          telegram,
-          school,
-          city,
-          grade,
-          profile_completed: true,
-        });
+        .upsert(
+          {
+            user_id: user.id,
+            full_name: fullName,
+            iin,
+            phone,
+            telegram,
+            school,
+            city,
+            grade,
+            profile_completed: true,
+          },
+          { onConflict: 'user_id' }
+        );
 
       if (error) throw error;
 
