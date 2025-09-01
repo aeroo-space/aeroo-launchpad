@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -29,8 +28,6 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
     setSubmitting(true);
 
     try {
-      console.log("[ProfileSetupDialog] Upsert submit for user:", user.id);
-
       const { error } = await supabase
         .from("profiles")
         .upsert({
@@ -43,19 +40,14 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
           city,
           grade,
           profile_completed: true,
-        }, { onConflict: 'user_id' })
-        .select('id');
+        });
 
-      if (error) {
-        console.error("[ProfileSetupDialog] Upsert error:", error);
-        throw error;
-      }
+      if (error) throw error;
 
       toast.success("Профиль успешно создан!");
       onComplete();
     } catch (error: any) {
-      console.error("[ProfileSetupDialog] Submit failed:", error);
-      toast.error("Ошибка при создании профиля", { description: error?.message || "Неизвестная ошибка" });
+      toast.error("Ошибка при создании профиля", { description: error.message });
     } finally {
       setSubmitting(false);
     }
