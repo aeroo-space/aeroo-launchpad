@@ -277,7 +277,7 @@ const Auth = () => {
               <Input id="password" type="password" placeholder="••••••••" value={password} onChange={(e) => setPassword(e.target.value)} minLength={6} required />
               {mode === "signup" && (
                 <p className="text-xs text-muted-foreground">
-                  Минимум 8 символов, одна заглавная буква и один спецсимвол
+                  {t('auth.passwordRequirements', { defaultValue: 'Минимум 8 символов, одна заглавная буква и один спецсимвол' })}
                 </p>
               )}
             </div>
@@ -292,7 +292,7 @@ const Auth = () => {
 
             {mode === "signup" && (
               <div className="space-y-2">
-                <Label htmlFor="confirmPassword">Подтвердите пароль *</Label>
+                <Label htmlFor="confirmPassword">{t('auth.confirmPassword', { defaultValue: 'Подтвердите пароль' })} *</Label>
                 <Input id="confirmPassword" type="password" placeholder="••••••••" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} minLength={8} required />
               </div>
             )}
@@ -300,83 +300,83 @@ const Auth = () => {
             {mode === "signup" && (
               <>
                 <div className="space-y-2">
-                  <Label htmlFor="fullName">ФИО *</Label>
+                  <Label htmlFor="fullName">{t('form.fullName', { defaultValue: 'ФИО' })} *</Label>
                   <Input
                     id="fullName"
                     value={fullName}
                     onChange={handleFullNameChange}
-                    placeholder="Иванов Иван Иванович"
+                    placeholder={t('form.fullNamePlaceholder', { defaultValue: 'Иванов Иван Иванович' })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="iin">ИИН *</Label>
+                  <Label htmlFor="iin">{t('form.iin', { defaultValue: 'ИИН' })} *</Label>
                   <Input
                     id="iin"
                     value={iin}
                     onChange={handleIinChange}
-                    placeholder="123456789012"
+                    placeholder={t('form.iinPlaceholder', { defaultValue: '123456789012' })}
                     maxLength={12}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="phone">Телефон *</Label>
+                  <Label htmlFor="phone">{t('form.phone', { defaultValue: 'Телефон' })} *</Label>
                   <Input
                     id="phone"
                     value={phone}
                     onChange={handlePhoneChange}
-                    placeholder="+7 700 000 00 00"
+                    placeholder={t('form.phonePlaceholder', { defaultValue: '+7 700 000 00 00' })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="telegram">Telegram *</Label>
+                  <Label htmlFor="telegram">{t('form.telegram', { defaultValue: 'Telegram' })} *</Label>
                   <Input
                     id="telegram"
                     value={telegram}
                     onChange={handleTelegramChange}
-                    placeholder="@username"
+                    placeholder={t('form.telegramPlaceholder', { defaultValue: '@username' })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="school">Учебное заведение *</Label>
+                  <Label htmlFor="school">{t('form.school', { defaultValue: 'Учебное заведение' })} *</Label>
                   <Input
                     id="school"
                     value={school}
                     onChange={(e) => setSchool(e.target.value)}
-                    placeholder="Название школы/ВУЗа"
+                    placeholder={t('form.schoolPlaceholder', { defaultValue: 'Название школы/ВУЗа' })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="city">Город *</Label>
+                  <Label htmlFor="city">{t('form.city', { defaultValue: 'Город' })} *</Label>
                   <Input
                     id="city"
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
-                    placeholder="Алматы"
+                    placeholder={t('form.cityPlaceholder', { defaultValue: 'Алматы' })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="grade">Класс/Курс обучения *</Label>
+                  <Label htmlFor="grade">{t('form.grade', { defaultValue: 'Класс/Курс обучения' })} *</Label>
                   <Input
                     id="grade"
                     value={grade}
                     onChange={handleGradeChange}
-                    placeholder="11"
+                    placeholder={t('form.gradePlaceholder', { defaultValue: '11' })}
                     required
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="age">Возраст *</Label>
+                  <Label htmlFor="age">{t('form.age', { defaultValue: 'Возраст' })} *</Label>
                   <Input
                     id="age"
                     value={age}
                     onChange={handleAgeChange}
-                    placeholder="18"
+                    placeholder={t('form.agePlaceholder', { defaultValue: '18' })}
                     required
                   />
                 </div>
