@@ -84,8 +84,8 @@ export default function CompetitionSpaceSettlement2025() {
   }, []);
 
   const applyBtn = (
-    <Button size="lg" variant="primary" onClick={() => toast("Регистрация пока закрыта", { description: "Подождите до 5 сентября 2025 года" })} aria-label="Принять участие — регистрация на AEROO Space Settlement 2025">
-      Принять участие
+    <Button size="lg" variant="primary" asChild aria-label="Принять участие — регистрация на AEROO Space Settlement 2025">
+      <Link to="/enroll/space-settlement">Принять участие</Link>
     </Button>
   );
 
@@ -134,7 +134,7 @@ export default function CompetitionSpaceSettlement2025() {
               <div className="flex items-center gap-3 text-muted-foreground mb-8">
                 <CalendarDays className="w-5 h-5 text-primary" />
                 <span>
-                  Регистрация: 05.09.2025 – 24.10.2025 | Хакатон: 28–29.10.2025
+                  Регистрация до 24.10.2025 | Хакатон: 28–29.10.2025
                 </span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
@@ -240,7 +240,6 @@ export default function CompetitionSpaceSettlement2025() {
             <h2 className="text-3xl md:text-4xl font-bold mb-8">Ключевые даты</h2>
             <div className="relative border-l border-border pl-6 space-y-10">
               {[
-                { date: "05.09.2025 — открытие регистрации", icon: CalendarDays },
                 { date: "24.10.2025 (23:59 GMT+5) — дедлайн подачи заявки", icon: CalendarDays },
                 { date: "28–29.10.2025 — хакатон (36 часов на выполнение задания)", icon: Rocket },
               ].map((item, i) => (

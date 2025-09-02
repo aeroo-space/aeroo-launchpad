@@ -255,9 +255,9 @@ const resources = {
             button: 'Подробнее'
           },
           settlement: {
-            title: 'AEROO Space Settlement Competition 2026',
+            title: 'AEROO Space Settlement Competition 2025',
             dates: 'Даты проведения: 28–29 октября 2025.',
-            registration: 'Старт регистрации: с 5 сентября.',
+            registration: 'Регистрация до 24 октября 2025.',
             button: 'Подробнее'
           }
         },
@@ -580,9 +580,9 @@ const resources = {
             button: 'Learn more'
           },
           settlement: {
-            title: 'AEROO Space Settlement Competition 2026',
+            title: 'AEROO Space Settlement Competition 2025',
             dates: 'Event dates: October 28–29, 2025.',
-            registration: 'Registration starts: September 5.',
+            registration: 'Registration until October 24, 2025.',
             button: 'Learn more'
           }
         },
@@ -898,9 +898,9 @@ const resources = {
             button: 'Толығырақ'
           },
           settlement: {
-            title: 'AEROO Space Settlement Competition 2026',
+            title: 'AEROO Space Settlement Competition 2025',
             dates: 'Өткізу күндері: 2025 жылдың 28–29 қазаны.',
-            registration: 'Тіркеу басталуы: қыркүйектің 5-інен.',
+            registration: 'Тіркеу мерзімі: 24 қазанға дейін.',
             button: 'Толығырақ'
           }
         },
