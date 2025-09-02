@@ -4,15 +4,15 @@ import { supabase } from "@/integrations/supabase/client";
 
 interface Profile {
   id: string;
-  user_id: string;
   full_name: string | null;
   iin: string | null;
   phone: string | null;
   telegram: string | null;
   school: string | null;
   city: string | null;
-  grade: string | null;
-  profile_completed: boolean;
+  grade: number | null;
+  age: number | null;
+  is_complete: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -34,7 +34,7 @@ export function useProfile() {
         const { data, error } = await supabase
           .from("profiles")
           .select("*")
-          .eq("user_id", user.id)
+          .eq("id", user.id)
           .maybeSingle();
 
         if (error) throw error;
@@ -55,7 +55,7 @@ export function useProfile() {
       supabase
         .from("profiles")
         .select("*")
-        .eq("user_id", user.id)
+        .eq("id", user.id)
         .maybeSingle()
         .then(({ data }) => {
           setProfile(data);

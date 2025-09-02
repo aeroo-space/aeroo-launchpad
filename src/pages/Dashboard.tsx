@@ -133,7 +133,7 @@ const Dashboard = () => {
       const { error } = await supabase
         .from("profiles")
         .update(updateData)
-        .eq("user_id", profile.user_id);
+        .eq("id", profile.id);
 
       if (error) throw error;
 
@@ -409,7 +409,7 @@ const Dashboard = () => {
                             <Button
                               size="sm"
                               variant="ghost"
-                              onClick={() => handleFieldEdit('grade', profile?.grade)}
+                              onClick={() => handleFieldEdit('grade', profile?.grade?.toString() || '')}
                             >
                               <Pencil className="h-4 w-4" />
                             </Button>

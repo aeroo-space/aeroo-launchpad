@@ -26,6 +26,7 @@ const Auth = () => {
   const [school, setSchool] = useState("");
   const [city, setCity] = useState("");
   const [grade, setGrade] = useState("");
+  const [age, setAge] = useState("");
   const [showEmailCheck, setShowEmailCheck] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
@@ -84,6 +85,11 @@ const Auth = () => {
   const handleGradeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/\D/g, '');
     setGrade(value);
+  };
+
+  const handleAgeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '');
+    setAge(value);
   };
 
   useEffect(() => {
@@ -157,7 +163,7 @@ const Auth = () => {
         });
         
         // Validate all profile fields for signup
-        if (!fullName.trim() || iin.length !== 12 || phoneDigits.length !== 11 || telegramUsername.length === 0 || !school.trim() || !city.trim() || !grade) {
+        if (!fullName.trim() || iin.length !== 12 || phoneDigits.length !== 11 || telegramUsername.length === 0 || !school.trim() || !city.trim() || !grade || !age) {
           toast.error("Пожалуйста, заполните все поля корректно", {
             description: "Проверьте все обязательные поля"
           });
@@ -172,7 +178,8 @@ const Auth = () => {
           telegram: telegram,
           school: school.trim(),
           city: city.trim(),
-          grade: grade
+          grade: grade,
+          age: age
         };
         
         console.log('Sending to Supabase:', userData);
@@ -360,6 +367,16 @@ const Auth = () => {
                     value={grade}
                     onChange={handleGradeChange}
                     placeholder="11"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="age">Возраст *</Label>
+                  <Input
+                    id="age"
+                    value={age}
+                    onChange={handleAgeChange}
+                    placeholder="18"
                     required
                   />
                 </div>

@@ -154,46 +154,46 @@ export type Database = {
       }
       profiles: {
         Row: {
-          city: string | null
+          age: number
+          city: string
           created_at: string
-          full_name: string | null
-          grade: string | null
+          full_name: string
+          grade: number
           id: string
-          iin: string | null
-          phone: string | null
-          profile_completed: boolean
-          school: string | null
-          telegram: string | null
+          iin: string
+          is_complete: boolean
+          phone: string
+          school: string
+          telegram: string
           updated_at: string
-          user_id: string
         }
         Insert: {
-          city?: string | null
+          age: number
+          city: string
           created_at?: string
-          full_name?: string | null
-          grade?: string | null
-          id?: string
-          iin?: string | null
-          phone?: string | null
-          profile_completed?: boolean
-          school?: string | null
-          telegram?: string | null
+          full_name: string
+          grade: number
+          id: string
+          iin: string
+          is_complete?: boolean
+          phone: string
+          school: string
+          telegram: string
           updated_at?: string
-          user_id: string
         }
         Update: {
-          city?: string | null
+          age?: number
+          city?: string
           created_at?: string
-          full_name?: string | null
-          grade?: string | null
+          full_name?: string
+          grade?: number
           id?: string
-          iin?: string | null
-          phone?: string | null
-          profile_completed?: boolean
-          school?: string | null
-          telegram?: string | null
+          iin?: string
+          is_complete?: boolean
+          phone?: string
+          school?: string
+          telegram?: string
           updated_at?: string
-          user_id?: string
         }
         Relationships: []
       }

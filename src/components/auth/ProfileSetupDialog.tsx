@@ -82,17 +82,18 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
         .from("profiles")
         .upsert(
           {
-            user_id: user.id,
+            id: user.id,
             full_name: fullName,
             iin,
             phone,
             telegram,
             school,
             city,
-            grade,
-            profile_completed: true,
+            grade: parseInt(grade) || 1,
+            age: 18, // Default age
+            is_complete: true,
           },
-          { onConflict: "user_id" }
+          { onConflict: "id" }
         );
 
       if (error) throw error;
