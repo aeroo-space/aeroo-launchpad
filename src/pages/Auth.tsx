@@ -143,6 +143,16 @@ const Auth = () => {
         }
         
         // Validate all profile fields for signup
+        console.log('Validation check:', {
+          fullName: fullName, hasFullName: !!fullName,
+          iin: iin, iinLength: iin.length,
+          phone: phone, phoneLength: phone.length,
+          telegram: telegram, telegramLength: telegram.length,
+          school: school, hasSchool: !!school,
+          city: city, hasCity: !!city,
+          grade: grade, hasGrade: !!grade
+        });
+        
         if (!fullName || iin.length !== 12 || phone.length !== 17 || telegram.length <= 1 || !school || !city || !grade) {
           toast.error("Пожалуйста, заполните все поля");
           return;
