@@ -142,32 +142,43 @@ const Auth = () => {
           return;
         }
         
-        // Validate all profile fields for signup
+        // Normalize phone and telegram for validation
+        const phoneDigits = phone.replace(/\D/g, '');
+        const telegramUsername = telegram.slice(1); // Remove '@' for length check
+        
         console.log('Validation check:', {
-          fullName: fullName, hasFullName: !!fullName,
-          iin: iin, iinLength: iin.length,
-          phone: phone, phoneLength: phone.length,
-          telegram: telegram, telegramLength: telegram.length,
-          school: school, hasSchool: !!school,
-          city: city, hasCity: !!city,
-          grade: grade, hasGrade: !!grade
+          fullName: fullName.trim(),
+          iin: iin,
+          phoneDigits: phoneDigits,
+          telegramUsername: telegramUsername,
+          school: school.trim(),
+          city: city.trim(),
+          grade: grade
         });
         
-        if (!fullName || iin.length !== 12 || phone.length !== 17 || telegram.length <= 1 || !school || !city || !grade) {
-          toast.error("Пожалуйста, заполните все поля");
+        // Validate all profile fields for signup
+        if (!fullName.trim() || iin.length !== 12 || phoneDigits.length !== 11 || telegramUsername.length === 0 || !school.trim() || !city.trim() || !grade) {
+          toast.error("Пожалуйста, заполните все поля корректно", {
+            description: "Проверьте все обязательные поля"
+          });
           return;
         }
         
+        // Prepare user metadata for Supabase
+        const userData = {
+          full_name: fullName.trim(),
+          iin: iin,
+          phone: phone,
+          telegram: telegram,
+          school: school.trim(),
+          city: city.trim(),
+          grade: grade
+        };
+        
+        console.log('Sending to Supabase:', userData);
+        
         // Note: Email validation is handled by Supabase on backend
-        await signUp(email, password, {
-          full_name: fullName,
-          iin,
-          phone,
-          telegram,
-          school,
-          city,
-          grade
-        });
+        await signUp(email, password, userData);
         setShowEmailCheck(true);
       }
     } finally {
