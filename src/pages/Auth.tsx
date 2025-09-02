@@ -46,6 +46,17 @@ const Auth = () => {
   }, [user, loading, navigate, location]);
 
   useEffect(() => {
+    // Проверяем URL параметры для сброса пароля
+    const urlParams = new URLSearchParams(window.location.search);
+    const token = urlParams.get('token');
+    const type = urlParams.get('type');
+    
+    if (token && type === 'recovery') {
+      setShowResetPwd(true);
+      // Очищаем URL от параметров
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
       if (event === "PASSWORD_RECOVERY") {
         setShowResetPwd(true);
