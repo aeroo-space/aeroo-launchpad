@@ -28,7 +28,7 @@ export const competitions: Competition[] = [
     category: "", // Will be translated
     description: "", // Will be translated
     icon: Satellite,
-    status: "", // Will be translated
+    status: "Скоро", // Will be translated
     deadline: "", // Will be translated
     ages: "", // Will be translated
   },
