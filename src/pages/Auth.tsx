@@ -39,22 +39,27 @@ const Auth = () => {
   }, [mode, t]);
 
   useEffect(() => {
-    if (!loading && user) {
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+    const searchParams = new URLSearchParams(window.location.search);
+    const isRecovery = hashParams.get("type") === "recovery" || searchParams.get("type") === "recovery" || showResetPwd;
+    if (!loading && user && !isRecovery) {
       const from = location.state?.from?.pathname || "/dashboard";
       navigate(from, { replace: true });
     }
-  }, [user, loading, navigate, location]);
+  }, [user, loading, navigate, location, showResetPwd]);
 
   useEffect(() => {
-    // Проверяем URL параметры для сброса пароля
-    const urlParams = new URLSearchParams(window.location.search);
-    const token = urlParams.get('token');
-    const type = urlParams.get('type');
-    
-    if (token && type === 'recovery') {
+    // Обнаружение режима восстановления пароля: из hash или query
+    const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ""));
+    const searchParams = new URLSearchParams(window.location.search);
+    const isRecovery = hashParams.get("type") === "recovery" || searchParams.get("type") === "recovery";
+
+    if (isRecovery) {
       setShowResetPwd(true);
-      // Очищаем URL от параметров
-      window.history.replaceState({}, document.title, window.location.pathname);
+      // Убираем токены из URL после инициализации
+      setTimeout(() => {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }, 0);
     }
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
