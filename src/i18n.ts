@@ -360,7 +360,7 @@ const resources = {
             title: 'AEROO Satellite Launch Competition',
             category: 'Satellites',
             description: 'Design, build and launch mini-satellites',
-            status: 'Registration',
+            status: 'Soon',
             deadline: 'January 1, 2026',
             ages: '14-19 years'
           },
@@ -368,7 +368,7 @@ const resources = {
             title: 'AEROO Space Settlement Competition',
             category: 'Hackathon',
             description: 'Development of space settlement concepts for long-term life',
-            status: 'Soon',
+            status: 'Registration',
             deadline: 'October 24, 2025',
             ages: '12-19 years'
           },
@@ -648,7 +648,7 @@ const resources = {
             title: 'AEROO Satellite Launch Competition',
             category: 'Спутниктер',
             description: 'Мини-спутниктерді жобалау, құрастыру және ұшыру',
-            status: 'Тіркеу',
+            status: 'Жақында',
             deadline: '2026 жылдың 1 қаңтары',
             ages: '14-19 жас'
           },
@@ -656,7 +656,7 @@ const resources = {
             title: 'AEROO Space Settlement Competition',
             category: 'Хакатон',
             description: 'Ұзақ мерзімді өмір сүру үшін ғарыштық қонысталу тұжырымдамаларын дамыту',
-            status: 'Жақында',
+            status: 'Тіркеу',
             deadline: '2025 жылдың 24 қазаны',
             ages: '12-19 жас'
           },
