@@ -118,7 +118,7 @@ export default function EnrollPage() {
     e.preventDefault();
     if (!competitionId) return;
     if (!consent) {
-      toast("Нужно согласие", { description: "Подтвердите согласие с правилами" });
+      toast(t('form.toastConsentRequired'), { description: t('form.toastConsentDescription') });
       return;
     }
 
@@ -181,11 +181,11 @@ export default function EnrollPage() {
         setDupName(compName);
         setDupOpen(true);
       } else {
-        toast.error("Ошибка при отправке", { description: error.message });
+        toast.error(t('form.toastSubmitError'), { description: error.message });
       }
       return;
     }
-    toast.success("Заявка отправлена");
+    toast.success(t('form.toastSubmitSuccess'));
     navigate("/dashboard");
   };
 
@@ -195,22 +195,22 @@ export default function EnrollPage() {
       <main>
         <header className="container mx-auto px-4 pt-6">
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Link to="/competitions" className="hover:underline">Соревнования</Link>
+            <Link to="/competitions" className="hover:underline">{t('form.breadcrumbCompetitions')}</Link>
             <span>/</span>
-            <span>Заявка</span>
+            <span>{t('form.breadcrumbApplication')}</span>
           </div>
         </header>
 
         <section className="container mx-auto px-4 py-10">
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">Заявка на участие</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">{t('form.applicationTitle')}</h1>
             <p className="text-muted-foreground mb-6">
               {competition ? competition.title : "Выберите соревнование"}
             </p>
             {competition && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
                 <CalendarDays className="w-4 h-4 text-primary" />
-                <span>Статус: {statusText}</span>
+                <span>{t('form.statusLabel')} {statusText}</span>
               </div>
             )}
           </div>
@@ -218,7 +218,7 @@ export default function EnrollPage() {
           {!competition && (
             <Card className="max-w-3xl">
               <CardContent className="p-6">
-                Соревнование не найдено. Вернуться к списку — <Link to="/competitions" className="text-primary hover:underline">Соревнования</Link>.
+                {t('form.competitionNotFound')} <Link to="/competitions" className="text-primary hover:underline">{t('form.breadcrumbCompetitions')}</Link>.
               </CardContent>
             </Card>
           )}
@@ -226,7 +226,7 @@ export default function EnrollPage() {
           {competition && !isOpen && (
             <Card className="max-w-3xl">
               <CardContent className="p-6">
-                <p className="text-foreground mb-4">Регистрация пока не открыта. Следите за новостями.</p>
+                <p className="text-foreground mb-4">{t('form.registrationNotOpen')}</p>
                 <div className="flex gap-3">
                   <Button asChild variant="outline"><Link to={`/competitions/${competition.id === 'satellite-launch' ? 'satellite-launch-2026' : ''}` || "/competitions"}>Подробнее</Link></Button>
                   <Button asChild><Link to="/competitions">К списку соревнований</Link></Button>
@@ -239,7 +239,7 @@ export default function EnrollPage() {
             <form onSubmit={onSubmit} className="max-w-4xl space-y-6">
               {/* Team Name */}
               <div className="space-y-2">
-                <Label htmlFor="team">Название команды *</Label>
+                <Label htmlFor="team">{t('form.teamName')}</Label>
                 <Input
                   id="team"
                   value={teamName}
@@ -251,66 +251,66 @@ export default function EnrollPage() {
 
               {/* Captain Info */}
               <div className="bg-muted rounded-lg p-4 space-y-4">
-                <h3 className="text-lg font-semibold">Капитан команды</h3>
+                <h3 className="text-lg font-semibold">{t('form.teamCaptain')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="captain-name">ФИО *</Label>
+                    <Label htmlFor="captain-name">{t('form.fullName')} *</Label>
                     <Input
                       id="captain-name"
                       value={captainFullName}
                       onChange={(e) => setCaptainFullName(e.target.value)}
-                      placeholder="Иванов Иван Иванович"
+                      placeholder={t('form.fullNamePlaceholder')}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="captain-iin">ИИН *</Label>
+                    <Label htmlFor="captain-iin">{t('form.iin')} *</Label>
                     <Input
                       id="captain-iin"
                       value={captainIin}
                       onChange={(e) => setCaptainIin(e.target.value)}
-                      placeholder="123456789012"
+                      placeholder={t('form.iinPlaceholder')}
                       maxLength={12}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="captain-phone">Телефон *</Label>
+                    <Label htmlFor="captain-phone">{t('form.phone')} *</Label>
                     <Input
                       id="captain-phone"
                       value={captainPhone}
                       onChange={(e) => setCaptainPhone(e.target.value)}
-                      placeholder="+7 700 000 00 00"
+                      placeholder={t('form.phonePlaceholder')}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="captain-school">Учебное заведение *</Label>
+                    <Label htmlFor="captain-school">{t('form.school')} *</Label>
                     <Input
                       id="captain-school"
                       value={captainSchool}
                       onChange={(e) => setCaptainSchool(e.target.value)}
-                      placeholder="Название школы/ВУЗа"
+                      placeholder={t('form.schoolPlaceholder')}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="captain-city">Город *</Label>
+                    <Label htmlFor="captain-city">{t('form.city')}</Label>
                     <Input
                       id="captain-city"
                       value={captainCity}
                       onChange={(e) => setCaptainCity(e.target.value)}
-                      placeholder="Алматы"
+                      placeholder={t('form.cityPlaceholder')}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="captain-grade">Класс обучения *</Label>
+                    <Label htmlFor="captain-grade">{t('form.grade')} *</Label>
                     <Input
                       id="captain-grade"
                       value={captainGrade}
                       onChange={(e) => setCaptainGrade(e.target.value)}
-                      placeholder="11 класс"
+                      placeholder={t('form.gradePlaceholder')}
                       required
                     />
                   </div>
@@ -320,7 +320,7 @@ export default function EnrollPage() {
                       id="captain-telegram"
                       value={captainTelegram}
                       onChange={(e) => setCaptainTelegram(e.target.value)}
-                      placeholder="@username"
+                      placeholder={t('form.telegramPlaceholder')}
                       required
                     />
                   </div>
@@ -329,64 +329,64 @@ export default function EnrollPage() {
 
               {/* Participants */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Участники команды</h3>
+                <h3 className="text-lg font-semibold">{t('form.teamParticipants')}</h3>
 
                 {/* Participant 1 */}
                 <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">Участник 1 *</h4>
+                  <h4 className="font-medium">{t('form.participant1')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>ФИО *</Label>
+                      <Label>{t('form.fullName')} *</Label>
                       <Input
                         value={participant1FullName}
                         onChange={(e) => setParticipant1FullName(e.target.value)}
-                        placeholder="Иванов Иван Иванович"
+                        placeholder={t('form.fullNamePlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>ИИН *</Label>
+                      <Label>{t('form.iin')} *</Label>
                       <Input
                         value={participant1Iin}
                         onChange={(e) => setParticipant1Iin(e.target.value)}
-                        placeholder="123456789012"
+                        placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Телефон *</Label>
+                      <Label>{t('form.phone')} *</Label>
                       <Input
                         value={participant1Phone}
                         onChange={(e) => setParticipant1Phone(e.target.value)}
-                        placeholder="+7 700 000 00 00"
+                        placeholder={t('form.phonePlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Учебное заведение *</Label>
+                      <Label>{t('form.school')} *</Label>
                       <Input
                         value={participant1School}
                         onChange={(e) => setParticipant1School(e.target.value)}
-                        placeholder="Название школы/ВУЗа"
+                        placeholder={t('form.schoolPlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Город *</Label>
+                      <Label>{t('form.city')} *</Label>
                       <Input
                         value={participant1City}
                         onChange={(e) => setParticipant1City(e.target.value)}
-                        placeholder="Алматы"
+                        placeholder={t('form.cityPlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Класс обучения *</Label>
+                      <Label>{t('form.grade')} *</Label>
                       <Input
                         value={participant1Grade}
                         onChange={(e) => setParticipant1Grade(e.target.value)}
-                        placeholder="11 класс"
+                        placeholder={t('form.gradePlaceholder')}
                         required
                       />
                     </div>
@@ -395,60 +395,60 @@ export default function EnrollPage() {
 
                 {/* Participant 2 */}
                 <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">Участник 2 *</h4>
+                  <h4 className="font-medium">{t('form.participant2Title')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>ФИО *</Label>
+                      <Label>{t('form.fullName')} *</Label>
                       <Input
                         value={participant2FullName}
                         onChange={(e) => setParticipant2FullName(e.target.value)}
-                        placeholder="Иванов Иван Иванович"
+                        placeholder={t('form.fullNamePlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>ИИН *</Label>
+                      <Label>{t('form.iin')} *</Label>
                       <Input
                         value={participant2Iin}
                         onChange={(e) => setParticipant2Iin(e.target.value)}
-                        placeholder="123456789012"
+                        placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Телефон *</Label>
+                      <Label>{t('form.phone')} *</Label>
                       <Input
                         value={participant2Phone}
                         onChange={(e) => setParticipant2Phone(e.target.value)}
-                        placeholder="+7 700 000 00 00"
+                        placeholder={t('form.phonePlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Учебное заведение *</Label>
+                      <Label>{t('form.school')} *</Label>
                       <Input
                         value={participant2School}
                         onChange={(e) => setParticipant2School(e.target.value)}
-                        placeholder="Название школы/ВУЗа"
+                        placeholder={t('form.schoolPlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Город *</Label>
+                      <Label>{t('form.city')} *</Label>
                       <Input
                         value={participant2City}
                         onChange={(e) => setParticipant2City(e.target.value)}
-                        placeholder="Алматы"
+                        placeholder={t('form.cityPlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Класс обучения *</Label>
+                      <Label>{t('form.grade')} *</Label>
                       <Input
                         value={participant2Grade}
                         onChange={(e) => setParticipant2Grade(e.target.value)}
-                        placeholder="11 класс"
+                        placeholder={t('form.gradePlaceholder')}
                         required
                       />
                     </div>
@@ -457,60 +457,60 @@ export default function EnrollPage() {
 
                 {/* Participant 3 */}
                 <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">Участник 3 *</h4>
+                  <h4 className="font-medium">{t('form.participant3Title')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>ФИО *</Label>
+                      <Label>{t('form.fullName')} *</Label>
                       <Input
                         value={participant3FullName}
                         onChange={(e) => setParticipant3FullName(e.target.value)}
-                        placeholder="Иванов Иван Иванович"
+                        placeholder={t('form.fullNamePlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>ИИН *</Label>
+                      <Label>{t('form.iin')} *</Label>
                       <Input
                         value={participant3Iin}
                         onChange={(e) => setParticipant3Iin(e.target.value)}
-                        placeholder="123456789012"
+                        placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Телефон *</Label>
+                      <Label>{t('form.phone')} *</Label>
                       <Input
                         value={participant3Phone}
                         onChange={(e) => setParticipant3Phone(e.target.value)}
-                        placeholder="+7 700 000 00 00"
+                        placeholder={t('form.phonePlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Учебное заведение *</Label>
+                      <Label>{t('form.school')} *</Label>
                       <Input
                         value={participant3School}
                         onChange={(e) => setParticipant3School(e.target.value)}
-                        placeholder="Название школы/ВУЗа"
+                        placeholder={t('form.schoolPlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Город *</Label>
+                      <Label>{t('form.city')} *</Label>
                       <Input
                         value={participant3City}
                         onChange={(e) => setParticipant3City(e.target.value)}
-                        placeholder="Алматы"
+                        placeholder={t('form.cityPlaceholder')}
                         required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>Класс обучения *</Label>
+                      <Label>{t('form.grade')} *</Label>
                       <Input
                         value={participant3Grade}
                         onChange={(e) => setParticipant3Grade(e.target.value)}
-                        placeholder="11 класс"
+                        placeholder={t('form.gradePlaceholder')}
                         required
                       />
                     </div>
@@ -520,51 +520,51 @@ export default function EnrollPage() {
 
               {/* Mentor */}
               <div className="bg-muted rounded-lg p-4 space-y-4">
-                <h3 className="text-lg font-semibold">Наставник команды</h3>
+                <h3 className="text-lg font-semibold">{t('form.mentor')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label>ФИО *</Label>
+                    <Label>{t('form.fullName')} *</Label>
                     <Input
                       value={mentorFullName}
                       onChange={(e) => setMentorFullName(e.target.value)}
-                      placeholder="Иванов Иван Иванович"
+                      placeholder={t('form.fullNamePlaceholder')}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>ИИН *</Label>
+                    <Label>{t('form.iin')} *</Label>
                     <Input
                       value={mentorIin}
                       onChange={(e) => setMentorIin(e.target.value)}
-                      placeholder="123456789012"
+                      placeholder={t('form.iinPlaceholder')}
                       maxLength={12}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Телефон *</Label>
+                    <Label>{t('form.phone')} *</Label>
                     <Input
                       value={mentorPhone}
                       onChange={(e) => setMentorPhone(e.target.value)}
-                      placeholder="+7 700 000 00 00"
+                      placeholder={t('form.phonePlaceholder')}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Название учебного заведения *</Label>
+                    <Label>{t('form.school')} *</Label>
                     <Input
                       value={mentorSchool}
                       onChange={(e) => setMentorSchool(e.target.value)}
-                      placeholder="Название школы/ВУЗа"
+                      placeholder={t('form.schoolPlaceholder')}
                       required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Город *</Label>
+                    <Label>{t('form.city')} *</Label>
                     <Input
                       value={mentorCity}
                       onChange={(e) => setMentorCity(e.target.value)}
-                      placeholder="Алматы"
+                      placeholder={t('form.cityPlaceholder')}
                       required
                     />
                   </div>
@@ -573,7 +573,7 @@ export default function EnrollPage() {
                     <Input
                       value={mentorTelegram}
                       onChange={(e) => setMentorTelegram(e.target.value)}
-                      placeholder="@username"
+                      placeholder={t('form.telegramPlaceholder')}
                       required
                     />
                   </div>
@@ -583,7 +583,7 @@ export default function EnrollPage() {
               {/* Source and Consent */}
               <div className="space-y-4">
                 <div className="space-y-2">
-                  <Label>Вопросы или дополнительная информация</Label>
+                  <Label>{t('form.questions')}</Label>
                   <Input
                     value={questions}
                     onChange={(e) => setQuestions(e.target.value)}
@@ -591,24 +591,24 @@ export default function EnrollPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label>Откуда узнали о соревновании? *</Label>
+                  <Label>{t('form.source')}</Label>
                   <Select value={source} onValueChange={setSource}>
                     <SelectTrigger>
                       <SelectValue placeholder="Выберите источник" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="instagram_aeroo">Instagram @aeroo</SelectItem>
-                      <SelectItem value="instagram_other">Другие Instagram аккаунты</SelectItem>
-                      <SelectItem value="telegram">Telegram</SelectItem>
-                      <SelectItem value="friends">Друзья/знакомые</SelectItem>
-                      <SelectItem value="other">Другое</SelectItem>
+                      <SelectItem value="instagram_aeroo">{t('form.sourceInstagramKaz')}</SelectItem>
+                      <SelectItem value="instagram_other">{t('form.sourceInstagramOther')}</SelectItem>
+                      <SelectItem value="telegram">{t('form.sourceTelegram')}</SelectItem>
+                      <SelectItem value="friends">{t('form.sourceFriends')}</SelectItem>
+                      <SelectItem value="other">{t('form.sourceOther')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="flex items-start gap-3">
                   <Checkbox id="consent" checked={consent} onCheckedChange={(v) => setConsent(Boolean(v))} />
                   <Label htmlFor="consent" className="leading-snug">
-                    Я согласен(а) с правилами соревнования и обработкой персональных данных *
+                    {t('form.consent')} *
                   </Label>
                 </div>
               </div>
@@ -631,7 +631,7 @@ export default function EnrollPage() {
                   !source || !consent
                 }
               >
-                {submitting ? "Отправка..." : "Подать заявку"}
+                {submitting ? t('form.sending') : t('form.submit')}
               </Button>
             </form>
           )}
