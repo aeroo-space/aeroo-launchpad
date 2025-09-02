@@ -14,7 +14,15 @@ interface AuthContextValue {
   signUp: (
     email: string,
     password: string,
-    metadata?: { full_name?: string; age?: number; school?: string }
+    metadata?: { 
+      full_name?: string; 
+      iin?: string;
+      phone?: string;
+      telegram?: string;
+      school?: string;
+      city?: string;
+      grade?: string;
+    }
   ) => Promise<void>;
   signOut: () => Promise<void>;
 }
@@ -49,17 +57,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
           return; // Skip profile setup check for recovery
         }
         
-        setTimeout(async () => {
-          const { data: profile } = await supabase
-            .from("profiles")
-            .select("profile_completed")
-            .eq("user_id", newSession.user.id)
-            .maybeSingle();
-          
-          if (!profile?.profile_completed) {
-            setShowProfileSetup(true);
-          }
-        }, 100);
+        // Skip profile setup check since profiles are auto-created via trigger
+        // setTimeout(async () => {
+        //   const { data: profile } = await supabase
+        //     .from("profiles")
+        //     .select("profile_completed")
+        //     .eq("user_id", newSession.user.id)
+        //     .maybeSingle();
+        //   
+        //   if (!profile?.profile_completed) {
+        //     setShowProfileSetup(true);
+        //   }
+        // }, 100);
       }
     });
 

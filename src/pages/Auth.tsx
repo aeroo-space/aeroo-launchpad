@@ -20,8 +20,12 @@ const Auth = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
-  const [age, setAge] = useState("");
+  const [iin, setIin] = useState("");
+  const [phone, setPhone] = useState("+7");
+  const [telegram, setTelegram] = useState("@");
   const [school, setSchool] = useState("");
+  const [city, setCity] = useState("");
+  const [grade, setGrade] = useState("");
   const [showEmailCheck, setShowEmailCheck] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [showForgot, setShowForgot] = useState(false);
@@ -31,6 +35,56 @@ const Auth = () => {
   const [newPwd, setNewPwd] = useState("");
   const [newPwd2, setNewPwd2] = useState("");
   const [resetSubmitting, setResetSubmitting] = useState(false);
+
+  const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^а-яёА-ЯЁa-zA-Z\s]/g, '');
+    setFullName(value);
+  };
+
+  const handleIinChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '').slice(0, 12);
+    setIin(value);
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value.replace(/\D/g, '');
+    if (!value.startsWith('7')) {
+      value = '7' + value;
+    }
+    value = value.slice(0, 11);
+    
+    if (value.length >= 1) {
+      let formatted = '+7';
+      if (value.length > 1) {
+        formatted += ' ' + value.slice(1, 4);
+      }
+      if (value.length > 4) {
+        formatted += ' ' + value.slice(4, 7);
+      }
+      if (value.length > 7) {
+        formatted += ' ' + value.slice(7, 9);
+      }
+      if (value.length > 9) {
+        formatted += ' ' + value.slice(9, 11);
+      }
+      setPhone(formatted);
+    } else {
+      setPhone('+7');
+    }
+  };
+
+  const handleTelegramChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let value = e.target.value;
+    if (!value.startsWith('@')) {
+      value = '@' + value.replace('@', '');
+    }
+    setTelegram(value);
+  };
+
+  const handleGradeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, '');
+    setGrade(value);
+  };
 
   useEffect(() => {
     document.title = mode === "signin" ? t('auth.metaTitle.signin', { defaultValue: 'Вход — AEROO' }) : t('auth.metaTitle.signup', { defaultValue: 'Регистрация — AEROO' });
@@ -88,8 +142,22 @@ const Auth = () => {
           return;
         }
         
+        // Validate all profile fields for signup
+        if (!fullName || iin.length !== 12 || phone.length !== 17 || telegram.length <= 1 || !school || !city || !grade) {
+          toast.error("Пожалуйста, заполните все поля");
+          return;
+        }
+        
         // Note: Email validation is handled by Supabase on backend
-        await signUp(email, password);
+        await signUp(email, password, {
+          full_name: fullName,
+          iin,
+          phone,
+          telegram,
+          school,
+          city,
+          grade
+        });
         setShowEmailCheck(true);
       }
     } finally {
@@ -201,6 +269,82 @@ const Auth = () => {
               </div>
             )}
 
+            {mode === "signup" && (
+              <>
+                <div className="space-y-2">
+                  <Label htmlFor="fullName">ФИО *</Label>
+                  <Input
+                    id="fullName"
+                    value={fullName}
+                    onChange={handleFullNameChange}
+                    placeholder="Иванов Иван Иванович"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="iin">ИИН *</Label>
+                  <Input
+                    id="iin"
+                    value={iin}
+                    onChange={handleIinChange}
+                    placeholder="123456789012"
+                    maxLength={12}
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Телефон *</Label>
+                  <Input
+                    id="phone"
+                    value={phone}
+                    onChange={handlePhoneChange}
+                    placeholder="+7 700 000 00 00"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="telegram">Telegram *</Label>
+                  <Input
+                    id="telegram"
+                    value={telegram}
+                    onChange={handleTelegramChange}
+                    placeholder="@username"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="school">Учебное заведение *</Label>
+                  <Input
+                    id="school"
+                    value={school}
+                    onChange={(e) => setSchool(e.target.value)}
+                    placeholder="Название школы/ВУЗа"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="city">Город *</Label>
+                  <Input
+                    id="city"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    placeholder="Алматы"
+                    required
+                  />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="grade">Класс/Курс обучения *</Label>
+                  <Input
+                    id="grade"
+                    value={grade}
+                    onChange={handleGradeChange}
+                    placeholder="11"
+                    required
+                  />
+                </div>
+              </>
+            )}
+
             <Button className="w-full" type="submit" disabled={submitting}>
               {mode === "signin" ? t('auth.signin', { defaultValue: 'Войти' }) : t('auth.createAccount', { defaultValue: 'Создать аккаунт' })}
             </Button>
@@ -213,7 +357,7 @@ const Auth = () => {
           <DialogHeader>
             <DialogTitle>Проверьте почту</DialogTitle>
             <DialogDescription>
-              Мы отправили ссылку для подтверждения на ваш email. Перейдите по ссылке, чтобы активировать аккаунт и завершить настройку профиля.
+              Мы отправили ссылку для подтверждения на ваш email. Перейдите по ссылке, чтобы активировать аккаунт.
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end">
