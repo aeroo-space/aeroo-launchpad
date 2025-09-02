@@ -3,6 +3,7 @@ import type { Session, User } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
 import { ProfileSetupDialog } from "@/components/auth/ProfileSetupDialog";
+import { ForcePasswordResetDialog } from "@/components/auth/ForcePasswordResetDialog";
 
 
 interface AuthContextValue {
@@ -25,6 +26,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
   const [showProfileSetup, setShowProfileSetup] = useState(false);
+  const [showForcePasswordReset, setShowForcePasswordReset] = useState(false);
+  
   useEffect(() => {
     let isMounted = true;
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, newSession) => {
@@ -32,8 +35,20 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       setSession(newSession);
       setUser(newSession?.user ?? null);
       
-      // Check if user needs to complete profile setup
+      // Check for recovery login - force password change
       if (newSession?.user && _event === 'SIGNED_IN') {
+        // Check URL for recovery parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        const isRecovery = urlParams.get('type') === 'recovery' || hashParams.get('type') === 'recovery';
+        
+        if (isRecovery) {
+          // Clear URL parameters
+          window.history.replaceState({}, document.title, window.location.pathname);
+          setShowForcePasswordReset(true);
+          return; // Skip profile setup check for recovery
+        }
+        
         setTimeout(async () => {
           const { data: profile } = await supabase
             .from("profiles")
@@ -102,11 +117,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     <AuthContext.Provider value={value}>
       {children}
       {user && (
-        <ProfileSetupDialog
-          user={user}
-          open={showProfileSetup}
-          onComplete={() => setShowProfileSetup(false)}
-        />
+        <>
+          <ProfileSetupDialog
+            user={user}
+            open={showProfileSetup}
+            onComplete={() => setShowProfileSetup(false)}
+          />
+          <ForcePasswordResetDialog
+            user={user}
+            open={showForcePasswordReset}
+            onComplete={() => setShowForcePasswordReset(false)}
+          />
+        </>
       )}
     </AuthContext.Provider>
   );
