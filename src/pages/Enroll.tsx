@@ -25,7 +25,8 @@ export default function EnrollPage() {
   const { t } = useTranslation();
 
   const competition = useMemo(() => competitions.find(c => c.id === competitionId), [competitionId]);
-  const isOpen = competition?.status === "Регистрация";
+  const statusText = competitionId ? t(`competitions.items.${competitionId}.status`) : "";
+  const isOpen = statusText === t('competitions.statuses.registration');
 
   // SEO
   useEffect(() => {
@@ -209,7 +210,7 @@ export default function EnrollPage() {
             {competition && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
                 <CalendarDays className="w-4 h-4 text-primary" />
-                <span>Статус: {competition.status}</span>
+                <span>Статус: {statusText}</span>
               </div>
             )}
           </div>
