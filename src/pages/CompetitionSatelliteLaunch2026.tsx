@@ -470,7 +470,7 @@ const CompetitionSatelliteLaunch2026 = () => {
                       <SelectValue placeholder="Выберите источник" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="instagram_kazrockets">{t('form.sourceInstagramKaz')}</SelectItem>
+                      <SelectItem value="instagram_aeroo">{t('form.sourceInstagramAeroo')}</SelectItem>
                       <SelectItem value="instagram_other">{t('form.sourceInstagramOther')}</SelectItem>
                       <SelectItem value="telegram">{t('form.sourceTelegram')}</SelectItem>
                       <SelectItem value="friends">{t('form.sourceFriends')}</SelectItem>

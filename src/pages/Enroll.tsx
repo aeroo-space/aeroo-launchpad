@@ -597,7 +597,7 @@ export default function EnrollPage() {
                       <SelectValue placeholder="Выберите источник" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="instagram_kazrockets">Instagram @kazrockets</SelectItem>
+                      <SelectItem value="instagram_aeroo">Instagram @aeroo</SelectItem>
                       <SelectItem value="instagram_other">Другие Instagram аккаунты</SelectItem>
                       <SelectItem value="telegram">Telegram</SelectItem>
                       <SelectItem value="friends">Друзья/знакомые</SelectItem>
