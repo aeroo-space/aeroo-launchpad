@@ -112,12 +112,12 @@ const Contacts = () => {
           </a>
 
           {/* Location */}
-          <div className="rounded-xl border border-border p-6">
+          <div className="group rounded-xl border border-border p-6 hover:glow-primary transition-colors">
             <div className="flex items-center gap-3 mb-2">
               <MapPin className="h-5 w-5 text-primary" />
               <h2 className="font-semibold">{t('contacts.location', { defaultValue: 'Локация' })}</h2>
             </div>
-            <p className="text-muted-foreground">{t('footer.location', { defaultValue: 'Алматы, Казахстан' })}</p>
+            <p className="text-muted-foreground group-hover:text-foreground transition-colors">{t('footer.location', { defaultValue: 'Алматы, Казахстан' })}</p>
           </div>
         </section>
       </main>
