@@ -41,12 +41,12 @@ export function Navigation() {
       <div className="container mx-auto max-w-screen-2xl px-3 sm:px-4 lg:px-6 pl-[env(safe-area-inset-left)] pr-[env(safe-area-inset-right)] pt-[env(safe-area-inset-top)]">
         <div className="flex h-16 lg:h-20 items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center flex-shrink-0">
             <Link to="/" className="flex items-center" aria-label="AEROO — образовательная платформа">
               <img
                 src="/lovable-uploads/b69a9019-60d9-465c-8c97-374a0558b678.png"
                 alt="Логотип AEROO"
-                className="h-8 sm:h-9 lg:h-10 w-auto"
+                className="h-10 w-auto"
                 width={220}
                 height={32}
                 decoding="async"
@@ -55,7 +55,7 @@ export function Navigation() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-6 lg:space-x-8 xl:space-x-10">
+          <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6 flex-1 justify-center">
             {NAVIGATION_ITEMS.map((item) => {
               const Icon = item.icon;
               const translationKey = {
@@ -70,10 +70,10 @@ export function Navigation() {
                 <Link
                   key={item.href}
                   to={item.href}
-                  className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors px-2 py-2 rounded-md hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
+                  className="group inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors px-3 py-2 rounded-md hover:bg-muted/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40"
                 >
-                  <Icon className="h-5 w-5 group-hover:glow-primary transition-all" />
-                  <span className="whitespace-nowrap min-w-fit">
+                  <Icon className="h-4 w-4 group-hover:glow-primary transition-all" />
+                  <span className="whitespace-nowrap text-sm">
                     {translationKey ? t(translationKey) : item.label}
                   </span>
                 </Link>
@@ -82,15 +82,15 @@ export function Navigation() {
           </nav>
 
           {/* Right Side Actions */}
-          <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+          <div className="flex items-center gap-2 lg:gap-3 flex-shrink-0">
             {/* Language Switcher */}
-            <div className="hidden sm:flex items-center space-x-1 bg-muted rounded-lg p-1">
+            <div className="hidden md:flex items-center space-x-1 bg-muted rounded-lg p-1">
               {LANGUAGES.map((lang) => (
                 <button
                   key={lang.code}
                   onClick={() => i18n.changeLanguage(lang.code)}
                   className={cn(
-                    "px-3 py-2 text-sm rounded-md transition-colors inline-flex items-center justify-center min-w-11 min-h-11",
+                    "px-2 py-1.5 text-xs font-medium rounded-md transition-colors inline-flex items-center justify-center min-w-8 min-h-8",
                     currentLang === lang.code
                       ? "bg-primary text-primary-foreground glow-primary"
                       : "text-muted-foreground hover:text-foreground"
@@ -101,22 +101,22 @@ export function Navigation() {
               ))}
             </div>
 
-{/* Profile/Login or Dashboard */}
-{user ? (
-  <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
-    <Link to="/dashboard">
-      <User className="h-4 w-4 mr-2" />
-      {t('nav.dashboard')}
-    </Link>
-  </Button>
-) : (
-  <Button variant="outline" size="sm" className="hidden sm:flex" asChild>
-    <Link to="/auth">
-      <User className="h-4 w-4 mr-2" />
-      {t('nav.login')}
-    </Link>
-  </Button>
-)}
+            {/* Profile/Login or Dashboard */}
+            {user ? (
+              <Button variant="outline" size="sm" className="hidden md:flex" asChild>
+                <Link to="/dashboard">
+                  <User className="h-4 w-4 mr-2" />
+                  {t('nav.dashboard')}
+                </Link>
+              </Button>
+            ) : (
+              <Button variant="outline" size="sm" className="hidden md:flex" asChild>
+                <Link to="/auth">
+                  <User className="h-4 w-4 mr-2" />
+                  {t('nav.login')}
+                </Link>
+              </Button>
+            )}
 
             {/* Theme Toggle */}
             <ThemeToggle aria-label={t('nav.toggleTheme', { defaultValue: 'Переключить тему' })} />
@@ -124,11 +124,11 @@ export function Navigation() {
             {/* Mobile Menu Toggle */}
             <Button
               variant="ghost"
-              className="md:hidden h-11 w-11"
+              className="lg:hidden h-10 w-10"
               aria-label={isMenuOpen ? t('nav.closeMenu', { defaultValue: 'Закрыть меню' }) : t('nav.openMenu', { defaultValue: 'Открыть меню' })}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </Button>
           </div>
         </div>
