@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet-async";
+import { Navigation } from "@/components/ui/navigation";
+import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, User, Code, Cpu, Settings } from "lucide-react";
@@ -45,6 +47,8 @@ export default function Careers() {
 
   return (
     <>
+      <Navigation />
+      
       <Helmet>
         <title>{t('careers.metaTitle', { defaultValue: 'Карьера в AEROO — Присоединяйтесь к нашей команде' })}</title>
         <meta 
@@ -199,6 +203,8 @@ export default function Careers() {
           </section>
         </div>
       </main>
+      
+      <Footer />
     </>
   );
 }
