@@ -66,6 +66,7 @@ export default function EnrollPage() {
   const [captainCity, setCaptainCity] = useState("");
   const [captainGrade, setCaptainGrade] = useState("");
   const [captainTelegram, setCaptainTelegram] = useState("");
+  const [captainEmail, setCaptainEmail] = useState("");
 
   // Participants
   const [participant1FullName, setParticipant1FullName] = useState("");
@@ -116,7 +117,10 @@ export default function EnrollPage() {
       setCaptainTelegram(profile.telegram || "");
       setCaptainGrade(profile.grade?.toString() || "");
     }
-  }, [profile]);
+    if (user?.email) {
+      setCaptainEmail(user.email);
+    }
+  }, [profile, user]);
 
   // Refetch profile when user comes to the page to ensure latest data
   useEffect(() => {
@@ -148,6 +152,7 @@ export default function EnrollPage() {
       captain_grade: captainGrade,
       city: captainCity,
       study_place: captainSchool,
+      email: captainEmail,
       telegram: captainTelegram,
 
       // Participants
@@ -327,6 +332,16 @@ export default function EnrollPage() {
                       id="captain-grade"
                       value={captainGrade}
                       placeholder={t('form.gradePlaceholder')}
+                      readOnly
+                      className="bg-muted-foreground/10"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-email">Email *</Label>
+                    <Input
+                      id="captain-email"
+                      value={captainEmail}
+                      placeholder="example@email.com"
                       readOnly
                       className="bg-muted-foreground/10"
                     />
