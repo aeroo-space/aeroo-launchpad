@@ -651,13 +651,35 @@ const resources = {
         metaTitle: 'Пользовательское соглашение — AEROO',
         metaDesc: 'Правила использования платформы AEROO',
         title: 'Пользовательское соглашение',
-        subtitle: 'Правила использования платформы AEROO.'
+        subtitle: 'Правила использования платформы AEROO.',
+        content: {
+          general: {
+            title: '1. ОБЩИЕ ПОЛОЖЕНИЯ',
+            point1: '1.1. Настоящее Пользовательское соглашение (далее – Соглашение) регулирует отношения между Товариществом с ограниченной ответственностью "AEROO" (далее – Компания) и Пользователем при использовании сайта, расположенного по адресу: aeroo.space, и всех его поддоменов (далее – Сайт).',
+            point2: '1.2. Использование Сайта означает полное согласие Пользователя с настоящим Соглашением.',
+            point3: '1.3. Компания оставляет за собой право вносить изменения в настоящее Соглашение без уведомления Пользователя. Новая редакция вступает в силу с момента ее публикации на Сайте.',
+            point4: '1.4. Пользователь обязуется самостоятельно отслеживать изменения в настоящем Соглашении.'
+          },
+          definitions: {
+            title: '2. ОПРЕДЕЛЕНИЯ ТЕРМИНОВ',
+            intro: '2.1. Перечисленные ниже термины, используемые в настоящем Соглашении, означают:',
+            site: '2.1.1. Сайт – совокупность веб-страниц, расположенных на доменном имени aeroo.space и его поддоменах, предназначенных для информирования, предоставления услуг и взаимодействия с Пользователями.',
+            admin: '2.1.2. Администрация – сотрудники Компании, уполномоченные управлять Сайтом.',
+            user: '2.1.3. Пользователь – физическое или юридическое лицо, получившее доступ к Сайту посредством сети Интернет.',
+            content: '2.1.4. Содержание – охраняемые результаты интеллектуальной деятельности, включая текстовые, графические, фото- и видеоматериалы, логотипы, программное обеспечение и другие объекты интеллектуальной собственности, размещенные на Сайте.'
+          }
+        }
       },
       privacy: {
         metaTitle: 'Политика конфиденциальности — AEROO',
         metaDesc: 'Как мы собираем и обрабатываем ваши данные',
         title: 'Политика конфиденциальности',
-        subtitle: 'Порядок сбора, обработки, хранения, использования и защиты персональной информации пользователей.'
+        subtitle: 'Порядок сбора, обработки, хранения, использования и защиты персональной информации пользователей.',
+        content: {
+          intro: 'Настоящая Политика конфиденциальности (далее — Политика) регулирует порядок сбора, обработки, хранения, использования и защиты персональной информации пользователей сайта https://www.aeroo.space/ (далее — Сайт).',
+          description: 'Сайт предоставляет возможность регистрации для участия в образовательных курсах, соревнованиях, мероприятиях, а также для получения информационных материалов. Администратором данных выступает ТОО «AEROO» (далее — Компания).',
+          agreement: 'Используя Сайт, Пользователь подтверждает свое согласие с условиями настоящей Политики. Если Пользователь не согласен с условиями, он обязан прекратить использование Сайта.'
+        }
       }
     }
   },
@@ -1267,13 +1289,35 @@ const resources = {
         metaTitle: 'Terms of Service — AEROO',
         metaDesc: 'AEROO platform usage rules',
         title: 'Terms of Service',
-        subtitle: 'AEROO platform usage rules.'
+        subtitle: 'AEROO platform usage rules.',
+        content: {
+          general: {
+            title: '1. GENERAL PROVISIONS',
+            point1: '1.1. These Terms of Service (hereinafter referred to as the Agreement) govern the relationship between Limited Liability Partnership "AEROO" (hereinafter referred to as the Company) and the User when using the website located at: aeroo.space, and all its subdomains (hereinafter referred to as the Site).',
+            point2: '1.2. Use of the Site means full agreement of the User with this Agreement.',
+            point3: '1.3. The Company reserves the right to make changes to this Agreement without notifying the User. The new version comes into effect from the moment of its publication on the Site.',
+            point4: '1.4. The User undertakes to independently monitor changes in this Agreement.'
+          },
+          definitions: {
+            title: '2. DEFINITIONS OF TERMS',
+            intro: '2.1. The terms listed below, used in this Agreement, mean:',
+            site: '2.1.1. Site – a set of web pages located on the domain name aeroo.space and its subdomains, designed to inform, provide services and interact with Users.',
+            admin: '2.1.2. Administration – Company employees authorized to manage the Site.',
+            user: '2.1.3. User – an individual or legal entity that has gained access to the Site via the Internet.',
+            content: '2.1.4. Content – protected results of intellectual activity, including text, graphic, photo and video materials, logos, software and other intellectual property objects posted on the Site.'
+          }
+        }
       },
       privacy: {
         metaTitle: 'Privacy Policy — AEROO',
         metaDesc: 'How we collect and process your data',
         title: 'Privacy Policy',
-        subtitle: 'The procedure for collecting, processing, storing, using and protecting personal information of users.'
+        subtitle: 'The procedure for collecting, processing, storing, using and protecting personal information of users.',
+        content: {
+          intro: 'This Privacy Policy (hereinafter referred to as the Policy) regulates the procedure for collecting, processing, storing, using and protecting personal information of users of the website https://www.aeroo.space/ (hereinafter referred to as the Site).',
+          description: 'The Site provides the opportunity to register for participation in educational courses, competitions, events, as well as to receive informational materials. The data administrator is LLP "AEROO" (hereinafter referred to as the Company).',
+          agreement: 'By using the Site, the User confirms their agreement with the terms of this Policy. If the User does not agree with the terms, they must stop using the Site.'
+        }
       }
     }
   },
@@ -1883,13 +1927,35 @@ const resources = {
         metaTitle: 'Пайдаланушы келісімі — AEROO',
         metaDesc: 'AEROO платформасын пайдалану ережелері',
         title: 'Пайдаланушы келісімі',
-        subtitle: 'AEROO платформасын пайдалану ережелері.'
+        subtitle: 'AEROO платформасын пайдалану ережелері.',
+        content: {
+          general: {
+            title: '1. ЖАЛПЫ ЕРЕЖЕЛЕР',
+            point1: '1.1. Осы Пайдаланушы келісімі (бұдан әрі – Келісім) "AEROO" жауапкершілігі шектеулі серіктестігі (бұдан әрі – Компания) мен Пайдаланушы арасындағы қатынастарды aeroo.space мекенжайында орналасқан сайтты және оның барлық субдомендерін (бұдан әрі – Сайт) пайдалану кезінде реттейді.',
+            point2: '1.2. Сайтты пайдалану Пайдаланушының осы Келісіммен толық келісуін білдіреді.',
+            point3: '1.3. Компания Пайдаланушыны хабардар етпестен осы Келісімге өзгерістер енгізу құқығын өзінде қалдырады. Жаңа редакция Сайтта жарияланған сәттен бастап күшіне енеді.',
+            point4: '1.4. Пайдаланушы осы Келісімдегі өзгерістерді дербес қадағалауға міндеттенеді.'
+          },
+          definitions: {
+            title: '2. ТЕРМИНДЕРДІҢ АНЫҚТАМАЛАРЫ',
+            intro: '2.1. Төменде көрсетілген, осы Келісімде қолданылатын терминдер мынаны білдіреді:',
+            site: '2.1.1. Сайт – aeroo.space домен атауында және оның субдомендерінде орналасқан, Пайдаланушыларды ақпараттандыру, қызмет көрсету және олармен өзара әрекеттесу үшін арналған веб-беттердің жиынтығы.',
+            admin: '2.1.2. Әкімшілік – Сайтты басқаруға уәкілеттік берілген Компания қызметкерлері.',
+            user: '2.1.3. Пайдаланушы – Интернет желісі арқылы Сайтқа қол жеткізген жеке немесе заңды тұлға.',
+            content: '2.1.4. Мазмұн – Сайтта орналастырылған мәтіндік, графикалық, фото және видео материалдар, логотиптер, бағдарламалық қамтамасыз ету және зияткерлік меншіктің басқа объектілерін қоса алғанда, зияткерлік қызметтің қорғалатын нәтижелері.'
+          }
+        }
       },
       privacy: {
         metaTitle: 'Құпиялылық саясаты — AEROO',
         metaDesc: 'Біз сіздің деректеріңізді қалай жинайтындығымыз және өңдейтіндігіміз',
         title: 'Құпиялылық саясаты',
-        subtitle: 'Пайдаланушылардың жеке ақпаратын жинау, өңдеу, сақтау, пайдалану және қорғау тәртібі.'
+        subtitle: 'Пайдаланушылардың жеке ақпаратын жинау, өңдеу, сақтау, пайдалану және қорғау тәртібі.',
+        content: {
+          intro: 'Осы Құпиялылық саясаты (бұдан әрі — Саясат) https://www.aeroo.space/ сайтының (бұдан әрі — Сайт) пайдаланушыларының жеке ақпаратын жинау, өңдеу, сақтау, пайдалану және қорғау тәртібін реттейді.',
+          description: 'Сайт білім беру курстарына, сайыстарға, іс-шараларға қатысуға тіркелу, сондай-ақ ақпараттық материалдарды алу мүмкіндігін ұсынады. Деректер әкімшісі "AEROO" ЖШС болып табылады (бұдан әрі — Компания).',
+          agreement: 'Сайтты пайдалана отырып, Пайдаланушы осы Саясаттың шарттарымен келісетінін растайды. Егер Пайдаланушы шарттармен келіспесе, ол Сайтты пайдалануды тоқтатуға міндетті.'
+        }
       }
     }
   }
