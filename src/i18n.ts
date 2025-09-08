@@ -646,6 +646,18 @@ const resources = {
         phone: 'Телефон',
         telegram: 'Сообщество AEROO',
         location: 'Локация'
+      },
+      terms: {
+        metaTitle: 'Пользовательское соглашение — AEROO',
+        metaDesc: 'Правила использования платформы AEROO',
+        title: 'Пользовательское соглашение',
+        subtitle: 'Правила использования платформы AEROO.'
+      },
+      privacy: {
+        metaTitle: 'Политика конфиденциальности — AEROO',
+        metaDesc: 'Как мы собираем и обрабатываем ваши данные',
+        title: 'Политика конфиденциальности',
+        subtitle: 'Порядок сбора, обработки, хранения, использования и защиты персональной информации пользователей.'
       }
     }
   },
@@ -1250,6 +1262,18 @@ const resources = {
         phone: 'Phone',
         telegram: 'AEROO Community',
         location: 'Location'
+      },
+      terms: {
+        metaTitle: 'Terms of Service — AEROO',
+        metaDesc: 'AEROO platform usage rules',
+        title: 'Terms of Service',
+        subtitle: 'AEROO platform usage rules.'
+      },
+      privacy: {
+        metaTitle: 'Privacy Policy — AEROO',
+        metaDesc: 'How we collect and process your data',
+        title: 'Privacy Policy',
+        subtitle: 'The procedure for collecting, processing, storing, using and protecting personal information of users.'
       }
     }
   },
@@ -1854,6 +1878,18 @@ const resources = {
         phone: 'Телефон',
         telegram: 'AEROO қауымдастығы',
         location: 'Орналасуы'
+      },
+      terms: {
+        metaTitle: 'Пайдаланушы келісімі — AEROO',
+        metaDesc: 'AEROO платформасын пайдалану ережелері',
+        title: 'Пайдаланушы келісімі',
+        subtitle: 'AEROO платформасын пайдалану ережелері.'
+      },
+      privacy: {
+        metaTitle: 'Құпиялылық саясаты — AEROO',
+        metaDesc: 'Біз сіздің деректеріңізді қалай жинайтындығымыз және өңдейтіндігіміз',
+        title: 'Құпиялылық саясаты',
+        subtitle: 'Пайдаланушылардың жеке ақпаратын жинау, өңдеу, сақтау, пайдалану және қорғау тәртібі.'
       }
     }
   }

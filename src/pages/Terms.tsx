@@ -16,8 +16,8 @@ const Terms = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-12">
         <header className="mb-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Пользовательское соглашение</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Правила использования платформы AEROO.</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('terms.title', { defaultValue: 'Пользовательское соглашение' })}</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">{t('terms.subtitle', { defaultValue: 'Правила использования платформы AEROO.' })}</p>
         </header>
         <section className="prose prose-invert max-w-4xl mx-auto">
           <h2 className="text-2xl font-bold mb-4">1. ОБЩИЕ ПОЛОЖЕНИЯ</h2>

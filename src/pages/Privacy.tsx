@@ -16,8 +16,8 @@ const Privacy = () => {
       <Navigation />
       <main className="container mx-auto px-4 py-12">
         <header className="mb-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Политика конфиденциальности</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">Порядок сбора, обработки, хранения, использования и защиты персональной информации пользователей.</p>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('privacy.title', { defaultValue: 'Политика конфиденциальности' })}</h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">{t('privacy.subtitle', { defaultValue: 'Порядок сбора, обработки, хранения, использования и защиты персональной информации пользователей.' })}</p>
         </header>
         <section className="prose prose-invert max-w-4xl mx-auto">
           <p className="text-lg mb-8">Настоящая Политика конфиденциальности (далее — Политика) регулирует порядок сбора, обработки, хранения, использования и защиты персональной информации пользователей сайта <strong>https://www.aeroo.space/</strong> (далее — Сайт).</p>
