@@ -38,7 +38,11 @@ const team = [
 const partners = [
   "Ministry Digital & Space",
   "Energo University",
-  "FURO"
+  "FURO",
+  "Estes Rockets",
+  "SpaceLab",
+  "The Global Citizen Education Group",
+  "Sheilex"
 ];
 
 const About = () => {
@@ -171,7 +175,16 @@ const About = () => {
           </div>
           
           <div className="text-center mt-12">
-            <Button variant="outline" size="lg">
+            <Button 
+              variant="outline" 
+              size="lg"
+              onClick={() => {
+                const contactForm = document.querySelector('[name="name"]')?.closest('form');
+                if (contactForm) {
+                  contactForm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+              }}
+            >
               {t('about.becomePartner', { defaultValue: 'Стать партнёром' })}
             </Button>
           </div>
