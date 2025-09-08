@@ -31,7 +31,7 @@ const team = [
     name: "Рыспай Алихан", 
     role: "COO",
     bio: "6 лет в области STEAM-образования, ex CTO FIRST Robotics",
-    image: "/placeholder.svg"
+    image: "/lovable-uploads/191e5103-1470-4cd9-b480-294ceb5290e1.png"
   }
 ];
 
