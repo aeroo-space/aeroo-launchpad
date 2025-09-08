@@ -35,8 +35,7 @@ const FOOTER_LINKS = [
     links: [
       { name: "Политика конфиденциальности", href: "/privacy" },
       { name: "Пользовательское соглашение", href: "/terms" },
-      { name: "Правила соревнований", href: "/rules" },
-      { name: "Сертификаты", href: "/certificates" }
+      { name: "Правила соревнований", href: "/rules" }
     ]
   }
 ];

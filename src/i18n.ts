@@ -313,7 +313,7 @@ const resources = {
           },
           {
             title: 'Образование',
-            links: ['Соревнования', 'Курсы', 'Продукты', 'Сертификаты']
+            links: ['Соревнования', 'Курсы', 'Продукты']
           },
           {
             title: 'Поддержка',
@@ -321,7 +321,7 @@ const resources = {
           },
           {
             title: 'Правовая информация',
-            links: ['Политика конфиденциальности', 'Условия использования', 'Правила соревнований', 'Сертификаты']
+            links: ['Политика конфиденциальности', 'Условия использования', 'Правила соревнований']
           }
         ],
         bottom: {
@@ -710,7 +710,7 @@ const resources = {
           },
           {
             title: 'Education',
-            links: ['Competitions', 'Courses', 'Products', 'Certificates']
+            links: ['Competitions', 'Courses', 'Products']
           },
           {
             title: 'Support',
@@ -718,7 +718,7 @@ const resources = {
           },
           {
             title: 'Legal',
-            links: ['Privacy Policy', 'Terms of Use', 'Competition Rules', 'Certificates']
+            links: ['Privacy Policy', 'Terms of Use', 'Competition Rules']
           }
         ],
         bottom: {
@@ -1265,7 +1265,7 @@ const resources = {
           },
           {
             title: 'Білім беру',
-            links: ['Сайыстар', 'Курстар', 'Өнімдер', 'Сертификаттар']
+            links: ['Сайыстар', 'Курстар', 'Өнімдер']
           },
           {
             title: 'Қолдау',
@@ -1273,7 +1273,7 @@ const resources = {
           },
           {
             title: 'Құжаттар',
-            links: ['Құпиялылық саясаты', 'Пайдалану шарттары', 'Сайыс ережелері', 'Сертификаттар']
+            links: ['Құпиялылық саясаты', 'Пайдалану шарттары', 'Сайыс ережелері']
           }
         ],
         bottom: {
