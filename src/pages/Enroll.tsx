@@ -25,8 +25,11 @@ export default function EnrollPage() {
   const { t } = useTranslation();
 
   const competition = useMemo(() => competitions.find(c => c.id === competitionId), [competitionId]);
-  const statusText = competitionId ? t(`competitions.items.${competitionId}.status`) : "";
-  const isOpen = statusText === t('competitions.statuses.registration');
+  // Use competition.status (i18n key) but don't rely on translations to determine openness
+  const statusText = competition ? t(competition.status, { defaultValue: competition.status }) : "";
+  const isOpen = (competition?.id === "space-settlement") ||
+    statusText === t('competitions.statuses.registration', { defaultValue: 'Регистрация' }) ||
+    /reg/i.test(statusText) || /регист/i.test(statusText);
 
   // SEO
   useEffect(() => {
