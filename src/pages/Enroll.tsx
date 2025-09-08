@@ -346,7 +346,7 @@ export default function EnrollPage() {
                       className="bg-muted-foreground/10"
                     />
                   </div>
-                  <div className="space-y-2 md:col-span-2">
+                  <div className="space-y-2">
                     <Label htmlFor="captain-telegram">Telegram *</Label>
                     <Input
                       id="captain-telegram"
