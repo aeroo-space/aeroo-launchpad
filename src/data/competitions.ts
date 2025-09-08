@@ -1,4 +1,4 @@
-import { Satellite, Building, Brain, Car, Plane, Trophy } from "lucide-react";
+import { Satellite, Building, Brain, Car, Plane, Trophy, CircleDot } from "lucide-react";
 
 export type Competition = {
   id: string;
@@ -67,7 +67,7 @@ export const competitions: Competition[] = [
     title: "competitions.droneCompetition.title", 
     category: "competitions.droneCompetition.category",
     description: "competitions.droneCompetition.description",
-    icon: Plane,
+    icon: CircleDot,
     status: "competitions.droneCompetition.status",
     deadline: "competitions.droneCompetition.deadline",
     ages: "competitions.droneCompetition.ages",
