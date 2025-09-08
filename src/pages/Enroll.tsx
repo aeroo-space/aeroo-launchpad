@@ -105,9 +105,9 @@ export default function EnrollPage() {
   const [dupOpen, setDupOpen] = useState(false);
   const [dupName, setDupName] = useState("");
 
-  // Pre-fill captain data from profile and update when profile changes
+  // Pre-fill captain data from profile only if fields are empty
   useEffect(() => {
-    if (profile) {
+    if (profile && !captainFullName && !captainIin && !captainPhone) {
       setCaptainFullName(profile.full_name || "");
       setCaptainIin(profile.iin || "");
       setCaptainPhone(profile.phone || "");
@@ -116,7 +116,7 @@ export default function EnrollPage() {
       setCaptainTelegram(profile.telegram || "");
       setCaptainGrade(profile.grade?.toString() || "");
     }
-  }, [profile]);
+  }, [profile, captainFullName, captainIin, captainPhone]);
 
   // Refetch profile when user comes to the page to ensure latest data
   useEffect(() => {
@@ -262,7 +262,12 @@ export default function EnrollPage() {
 
               {/* Captain Info */}
               <div className="bg-muted rounded-lg p-4 space-y-4">
-                <h3 className="text-lg font-semibold">{t('form.teamCaptain')}</h3>
+                <div className="flex items-center justify-between">
+                  <h3 className="text-lg font-semibold">{t('form.teamCaptain')}</h3>
+                  <span className="text-sm text-muted-foreground">
+                    Данные заполнены из профиля (можно редактировать)
+                  </span>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="captain-name">{t('form.fullName')} *</Label>
