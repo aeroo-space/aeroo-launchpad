@@ -154,19 +154,33 @@ const Auth = () => {
         
         console.log('Validation check:', {
           fullName: fullName.trim(),
+          fullNameValid: fullName.trim().length > 0,
           iin: iin,
+          iinValid: iin.length === 12,
           phoneDigits: phoneDigits,
+          phoneValid: phoneDigits.length === 11,
           telegramUsername: telegramUsername,
+          telegramValid: telegramUsername.length > 0,
           school: school.trim(),
+          schoolValid: school.trim().length > 0,
           city: city.trim(),
-          grade: grade
+          cityValid: city.trim().length > 0,
+          grade: grade,
+          gradeValid: grade.length > 0,
+          age: age,
+          ageValid: age.length > 0
         });
         
         // Validate all profile fields for signup
-        if (!fullName.trim() || iin.length !== 12 || phoneDigits.length !== 11 || telegramUsername.length === 0 || !school.trim() || !city.trim() || !grade || !age) {
-          toast.error("Пожалуйста, заполните все поля корректно", {
-            description: "Проверьте все обязательные поля"
-          });
+        if (!fullName.trim() || 
+            iin.length !== 12 || 
+            phoneDigits.length !== 11 || 
+            telegramUsername.length === 0 || 
+            !school.trim() || 
+            !city.trim() || 
+            !grade || 
+            !age) {
+          alert("Пожалуйста, заполните все поля");
           return;
         }
         
