@@ -308,20 +308,16 @@ const resources = {
         description: 'Образовательная платформа для изучения аэрокосмических технологий и участия в международных соревнованиях.',
         sections: [
           {
-            title: 'Компания',
-            links: ['О нас', 'Команда', 'Карьера', 'Новости']
-          },
-          {
-            title: 'Образование',
-            links: ['Соревнования', 'Курсы', 'Продукты']
+            title: 'Платформа',
+            links: ['Соревнования', 'Курсы', 'Продукты', 'О нас']
           },
           {
             title: 'Поддержка',
             links: ['Контакты', 'FAQ', 'Техподдержка', 'Сообщество']
           },
           {
-            title: 'Правовая информация',
-            links: ['Политика конфиденциальности', 'Условия использования', 'Правила соревнований']
+            title: 'Документы',
+            links: ['Политика конфиденциальности', 'Пользовательское соглашение', 'Правила соревнований']
           }
         ],
         bottom: {
@@ -705,19 +701,15 @@ const resources = {
         description: 'Educational platform for studying aerospace technologies and participating in international competitions.',
         sections: [
           {
-            title: 'Company',
-            links: ['About', 'Team', 'Careers', 'News']
-          },
-          {
-            title: 'Education',
-            links: ['Competitions', 'Courses', 'Products']
+            title: 'Platform',
+            links: ['Competitions', 'Courses', 'Products', 'About']
           },
           {
             title: 'Support',
             links: ['Contacts', 'FAQ', 'Tech Support', 'Community']
           },
           {
-            title: 'Legal',
+            title: 'Documents',
             links: ['Privacy Policy', 'Terms of Use', 'Competition Rules']
           }
         ],
@@ -1260,12 +1252,8 @@ const resources = {
         description: 'Аэроғарыш технологияларын зерттеуге және халықаралық сайыстарға қатысуға арналған білім беру платформасы.',
         sections: [
           {
-            title: 'Компания',
-            links: ['Біз туралы', 'Команда', 'Мансап', 'Жаңалықтар']
-          },
-          {
-            title: 'Білім беру',
-            links: ['Сайыстар', 'Курстар', 'Өнімдер']
+            title: 'Платформа',
+            links: ['Сайыстар', 'Курстар', 'Өнімдер', 'Біз туралы']
           },
           {
             title: 'Қолдау',
