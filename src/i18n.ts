@@ -656,6 +656,31 @@ const resources = {
               3: 'Strategic thinking'
         }
       },
+        },
+        inStock: 'In stock',
+        outOfStock: 'Out of stock',
+        includes: 'What\'s included in the kit:',
+        cta: {
+          details: 'Details',
+          request: 'Request',
+          notify: 'Notify when available'
+        },
+        detailsNotReady: 'Detail page under development',
+        detailsComingSoon: 'Detailed product information will be available soon',
+        help: {
+          title: 'Need consultation?',
+          desc: 'Our experts will help you choose the right kit for your skill level and educational goals. Contact us for a personalized consultation.'
+        },
+        catalog: {
+          download: 'Download catalog',
+          soon: 'Catalog coming soon',
+          pdfLater: 'PDF catalog will be available later'
+        },
+        request: {
+          sent: 'Request sent',
+          weWillContact: 'We will contact you by email'
+        }
+      },
       home: {
         metaTitle: 'AEROO — Educational Platform',
         hero: {
@@ -711,31 +736,6 @@ const resources = {
             courses: 'Educational Kits for Schools',
             competitions: 'Upcoming Competitions'
           }
-        }
-      }
-        },
-        inStock: 'In stock',
-        outOfStock: 'Out of stock',
-        includes: 'What\'s included in the kit:',
-        cta: {
-          details: 'Details',
-          request: 'Request',
-          notify: 'Notify when available'
-        },
-        detailsNotReady: 'Detail page under development',
-        detailsComingSoon: 'Detailed product information will be available soon',
-        help: {
-          title: 'Need consultation?',
-          desc: 'Our experts will help you choose the right kit for your skill level and educational goals. Contact us for a personalized consultation.'
-        },
-        catalog: {
-          download: 'Download catalog',
-          soon: 'Catalog coming soon',
-          pdfLater: 'PDF catalog will be available later'
-        },
-        request: {
-          sent: 'Request sent',
-          weWillContact: 'We will contact you by email'
         }
       },
       dashboard: {
