@@ -185,6 +185,53 @@ const resources = {
             courses: 'Образовательные комплекты для школ',
             competitions: 'Ближайшие соревнования'
           }
+        },
+        testimonials: {
+          title: 'Отзывы о AEROO',
+          subtitle: 'Что говорят о нас директора школ, учителя, участники и победители соревнований',
+          types: {
+            director: 'Директор',
+            teacher: 'Учитель', 
+            participant: 'Участник',
+            winner: 'Победитель'
+          },
+          items: {
+            0: {
+              text: 'AEROO полностью изменил подход к изучению физики и технологий в нашей школе. Ученики стали более заинтересованными и мотивированными.',
+              author: 'Алмагуль Нурбекова',
+              position: 'Директор НИШ г. Алматы'
+            },
+            1: {
+              text: 'Образовательные наборы AEROO помогают объяснить сложные концепции аэродинамики простым и понятным способом. Результаты учеников значительно улучшились.',
+              author: 'Дмитрий Петров',
+              position: 'Учитель физики, Лицей №165'
+            },
+            2: {
+              text: 'Победа в соревновании Space Settlement дала мне уверенность в выборе будущей профессии. Теперь я изучаю аэрокосмическую инженерию в университете.',
+              author: 'Айжан Касымова',
+              position: 'Победительница Space Settlement 2024'
+            },
+            3: {
+              text: 'Участие в проектах AEROO научило меня работать в команде и решать реальные инженерные задачи. Это бесценный опыт!',
+              author: 'Арман Турсунов',
+              position: 'Участник CanSat Competition'
+            },
+            4: {
+              text: 'Наборы CubeSat позволяют студентам получить практический опыт работы с настоящими спутниковыми технологиями. Это будущее образования!',
+              author: 'Светлана Ким',
+              position: 'Преподаватель КазНТУ'
+            },
+            5: {
+              text: 'Благодаря сотрудничеству с AEROO мы смогли организовать современную лабораторию робототехники. Качество оборудования превосходное.',
+              author: 'Ержан Мусабеков',
+              position: 'Директор IT-лицея'
+            }
+          },
+          cta: {
+            text: 'Присоединяйтесь к тысячам довольных участников и педагогов',
+            competitions: 'Участвовать в соревнованиях',
+            products: 'Заказать наборы'
+          }
         }
       },
       features: {
@@ -736,6 +783,53 @@ const resources = {
             courses: 'Educational Kits for Schools',
             competitions: 'Upcoming Competitions'
           }
+        },
+        testimonials: {
+          title: 'AEROO Reviews',
+          subtitle: 'What school directors, teachers, participants and competition winners say about us',
+          types: {
+            director: 'Director',
+            teacher: 'Teacher',
+            participant: 'Participant', 
+            winner: 'Winner'
+          },
+          items: {
+            0: {
+              text: 'AEROO has completely transformed the approach to studying physics and technology in our school. Students have become more interested and motivated.',
+              author: 'Almagul Nurbekova',
+              position: 'Director of NIS Almaty'
+            },
+            1: {
+              text: 'AEROO educational kits help explain complex aerodynamics concepts in a simple and understandable way. Student results have improved significantly.',
+              author: 'Dmitry Petrov',
+              position: 'Physics Teacher, Lyceum #165'
+            },
+            2: {
+              text: 'Winning the Space Settlement competition gave me confidence in choosing my future profession. Now I study aerospace engineering at university.',
+              author: 'Aizhan Kasymova',
+              position: 'Space Settlement 2024 Winner'
+            },
+            3: {
+              text: 'Participating in AEROO projects taught me to work in a team and solve real engineering problems. This is invaluable experience!',
+              author: 'Arman Tursunov',
+              position: 'CanSat Competition Participant'
+            },
+            4: {
+              text: 'CubeSat kits allow students to gain practical experience with real satellite technologies. This is the future of education!',
+              author: 'Svetlana Kim',
+              position: 'KazNTU Professor'
+            },
+            5: {
+              text: 'Thanks to cooperation with AEROO, we were able to organize a modern robotics laboratory. The quality of equipment is excellent.',
+              author: 'Yerzhan Musabekov',
+              position: 'IT Lyceum Director'
+            }
+          },
+          cta: {
+            text: 'Join thousands of satisfied participants and educators',
+            competitions: 'Participate in competitions',
+            products: 'Order kits'
+          }
         }
       },
       dashboard: {
@@ -1065,9 +1159,56 @@ const resources = {
             2: {
               title: 'Сарапшылардың қолдауы',
               desc: 'Біздің инженерлердің техникалық қолдауы мен кеңестері'
-            }
           }
         },
+        testimonials: {
+          title: 'AEROO туралы пікірлер',
+          subtitle: 'Мектеп директорлары, мұғалімдер, қатысушылар мен сайыс жеңімпаздары біз туралы не дейді',
+          types: {
+            director: 'Директор',
+            teacher: 'Мұғалім',
+            participant: 'Қатысушы',
+            winner: 'Жеңімпаз'
+          },
+          items: {
+            0: {
+              text: 'AEROO біздің мектептегі физика мен технологияларды зерттеу тәсілін толығымен өзгертті. Оқушылар қызығушылық пен уәждемелік танытады.',
+              author: 'Алмагүл Нұрбекова',
+              position: 'НЗМ Алматы қ. директоры'
+            },
+            1: {
+              text: 'AEROO білім беру жиынтықтары аэродинамиканың күрделі тұжырымдамаларын қарапайым және түсінікті тәсілмен түсіндіруге көмектеседі. Оқушылардың нәтижелері айтарлықтай жақсарды.',
+              author: 'Дмитрий Петров',
+              position: 'Физика мұғалімі, №165 лицей'
+            },
+            2: {
+              text: 'Space Settlement сайысындағы жеңіс маған болашақ мамандығымды таңдауда сенімділік берді. Қазір университетте аэроғарыш инженериясын оқып жатырмын.',
+              author: 'Айжан Қасымова',
+              position: 'Space Settlement 2024 жеңімпазы'
+            },
+            3: {
+              text: 'AEROO жобаларына қатысу мені командада жұмыс істеуге және нақты инженерлік мәселелерді шешуге үйретті. Бұл бағасыз тәжірибе!',
+              author: 'Арман Тұрсынов',
+              position: 'CanSat Competition қатысушысы'
+            },
+            4: {
+              text: 'CubeSat жиынтықтары студенттерге нақты серіктік технологиялармен практикалық тәжірибе алуға мүмкіндік береді. Бұл білім берудің болашағы!',
+              author: 'Светлана Ким',
+              position: 'ҚазҰТУ оқытушысы'
+            },
+            5: {
+              text: 'AEROO-мен ынтымақтастық арқасында біз заманауи робототехника зертханасын ұйымдастыра алдық. Жабдықтың сапасы тамаша.',
+              author: 'Ержан Мұсабеков',
+              position: 'IT-лицей директоры'
+            }
+          },
+          cta: {
+            text: 'Мыңдаған қанағаттанған қатысушылар мен педагогтарға қосылыңыз',
+            competitions: 'Сайыстарға қатысу',
+            products: 'Жиынтықтар тапсырысы'
+          }
+        }
+      },
         grid: {
           title: 'Біздің өнімдер'
         },
