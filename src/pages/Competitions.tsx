@@ -219,7 +219,13 @@ const Competitions = () => {
           <p className="text-muted-foreground mb-6">
             {t('competitions.archiveDesc')}
           </p>
-          <Button variant="outline" size="lg">
+          <Button 
+            variant="outline" 
+            size="lg"
+            onClick={() => toast("Архив скоро будет доступен", { 
+              description: "Мы работаем над созданием архива прошлых соревнований. Скоро здесь появится история всех наших мероприятий!" 
+            })}
+          >
             {t('competitions.archiveBtn')}
           </Button>
         </div>
