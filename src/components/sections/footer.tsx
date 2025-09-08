@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const SOCIAL_LINKS = [
-  { name: "Instagram", href: "https://www.instagram.com/aeroo.space/", icon: Instagram },
+  { name: "Instagram", href: "https://instagram.com/aeroo.space", icon: Instagram },
   { name: "Telegram", href: "https://t.me/+5nKRCrdTXT05YThi", icon: Send },
-  { name: "WhatsApp", href: "https://wa.me/77751639790", icon: MessageCircle },
-  { name: "Email", href: "mailto:info@aeroo.space", icon: Mail }
+  { name: "WhatsApp", href: "https://wa.me/77751639790?text=Здравствуйте!%20Хочу%20узнать%20больше%20о%20AEROO", icon: MessageCircle },
+  { name: "Email", href: "mailto:info@aeroo.space?subject=Вопрос%20по%20AEROO", icon: Mail }
 ];
 
 const FOOTER_LINKS = [
@@ -93,7 +93,28 @@ export function Footer() {
                     className="w-10 h-10 p-0 hover:glow-primary transition-all"
                     asChild
                   >
-                    <a href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}>
+                    <a 
+                      href={social.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      aria-label={social.name}
+                      onClick={(e) => {
+                        // Обработка для WhatsApp - проверяем доступность приложения
+                        if (social.name === "WhatsApp") {
+                          e.preventDefault();
+                          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+                          const whatsappUrl = isMobile 
+                            ? `whatsapp://send?phone=77751639790&text=${encodeURIComponent('Здравствуйте! Хочу узнать больше о AEROO')}`
+                            : 'https://web.whatsapp.com/send?phone=77751639790&text=Здравствуйте!%20Хочу%20узнать%20больше%20о%20AEROO';
+                          window.open(whatsappUrl, '_blank');
+                        }
+                        // Для Instagram - используем более надежную ссылку
+                        else if (social.name === "Instagram") {
+                          e.preventDefault();
+                          window.open('https://instagram.com/aeroo.space', '_blank');
+                        }
+                      }}
+                    >
                       <Icon className="h-5 w-5" />
                     </a>
                   </Button>
