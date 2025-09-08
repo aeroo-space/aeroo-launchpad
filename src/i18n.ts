@@ -8,6 +8,7 @@ const resources = {
     translation: {
       nav: {
         competitions: 'Соревнования',
+        community: 'Сообщество',
         courses: 'Курсы',
         products: 'Продукты',
         about: 'О нас',
@@ -127,6 +128,63 @@ const resources = {
           participants: 'участников',
           competitions: 'соревнований',
           projects: 'проектов'
+        }
+      },
+      home: {
+        metaTitle: 'AEROO — образовательная платформа',
+        hero: {
+          competitions: {
+            title: 'Соревнования мирового уровня',
+            desc: 'Участвуйте в престижных международных соревнованиях по аэрокосмическим технологиям и проверьте свои знания.',
+            button: 'К соревнованиям'
+          },
+          products: {
+            title: 'Образовательные наборы',
+            desc: 'Изучайте аэрокосмические технологии через практические эксперименты с нашими образовательными комплектами.',
+            button: 'Смотреть продукты'
+          },
+          settlement: {
+            title: 'Space Settlement Competition 2025',
+            dates: 'Регистрация: до 15 февраля 2025',
+            registration: 'Создайте проект космического поселения будущего в команде единомышленников.',
+            button: 'Зарегистрироваться'
+          }
+        },
+        features: {
+          title: 'Направления обучения',
+          subtitle: 'Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования',
+          items: {
+            0: {
+              title: 'Ракетостроение',
+              desc: 'Изучение аэродинамики, конструирование и запуск моделей ракет с твердотопливными двигателями'
+            },
+            1: {
+              title: 'БПЛА',
+              desc: 'Программирование дронов, FPV-пилотирование, аэросъёмка и автономные полёты'
+            },
+            2: {
+              title: 'Спутниковые технологии',
+              desc: 'Создание наноспутников, изучение бортовых систем и подготовка к запуску'
+            },
+            3: {
+              title: 'Искусственный интеллект',
+              desc: 'Разработка автономных алгоритмов для навигации и управления космическими миссиями'
+            },
+            4: {
+              title: 'Соревнования',
+              desc: 'Участие в международных конкурсах по аэрокосмическим технологиям'
+            },
+            5: {
+              title: 'Командная работа',
+              desc: 'Развитие навыков сотрудничества в многодисциплинарных проектах'
+            }
+          },
+          learnMore: 'Узнать больше',
+          cta: {
+            title: 'Готовы начать свой путь в космос?',
+            courses: 'Образовательные комплекты для школ',
+            competitions: 'Ближайшие соревнования'
+          }
         }
       },
       features: {
@@ -356,6 +414,7 @@ const resources = {
     translation: {
       nav: {
         competitions: 'Competitions',
+        community: 'Community',
         courses: 'Courses',
         products: 'Products',
         about: 'About',
@@ -595,8 +654,65 @@ const resources = {
               1: 'Training net and goals',
               2: 'Sporting spirit',
               3: 'Strategic thinking'
-            }
+        }
+      },
+      home: {
+        metaTitle: 'AEROO — Educational Platform',
+        hero: {
+          competitions: {
+            title: 'World-Class Competitions',
+            desc: 'Participate in prestigious international aerospace technology competitions and test your knowledge.',
+            button: 'View Competitions'
+          },
+          products: {
+            title: 'Educational Kits',
+            desc: 'Learn aerospace technologies through hands-on experiments with our educational kits.',
+            button: 'View Products'
+          },
+          settlement: {
+            title: 'Space Settlement Competition 2025',
+            dates: 'Registration: until February 15, 2025',
+            registration: 'Create a future space settlement project with a team of like-minded individuals.',
+            button: 'Register'
           }
+        },
+        features: {
+          title: 'Learning Areas',
+          subtitle: 'Dive into the world of aerospace technologies through practical courses and exciting competitions',
+          items: {
+            0: {
+              title: 'Rocket Engineering',
+              desc: 'Study aerodynamics, design and launch rocket models with solid fuel engines'
+            },
+            1: {
+              title: 'UAV',
+              desc: 'Drone programming, FPV piloting, aerial photography and autonomous flights'
+            },
+            2: {
+              title: 'Satellite Technologies',
+              desc: 'Create nanosatellites, study onboard systems and prepare for launch'
+            },
+            3: {
+              title: 'Artificial Intelligence',
+              desc: 'Develop autonomous algorithms for navigation and space mission control'
+            },
+            4: {
+              title: 'Competitions',
+              desc: 'Participate in international aerospace technology competitions'
+            },
+            5: {
+              title: 'Teamwork',
+              desc: 'Develop collaboration skills in multidisciplinary projects'
+            }
+          },
+          learnMore: 'Learn More',
+          cta: {
+            title: 'Ready to start your journey to space?',
+            courses: 'Educational Kits for Schools',
+            competitions: 'Upcoming Competitions'
+          }
+        }
+      }
         },
         inStock: 'In stock',
         outOfStock: 'Out of stock',
@@ -701,6 +817,7 @@ const resources = {
     translation: {
       nav: {
         competitions: 'Сайыстар',
+        community: 'Қауымдастық',
         courses: 'Курстар',
         products: 'Өнімдер',
         about: 'Біз туралы',
@@ -820,6 +937,63 @@ const resources = {
           participants: 'қатысушы',
           competitions: 'сайыс',
           projects: 'жоба'
+        }
+      },
+      home: {
+        metaTitle: 'AEROO — білім беру платформасы',
+        hero: {
+          competitions: {
+            title: 'Әлемдік деңгейдегі сайыстар',
+            desc: 'Беделді халықаралық аэроғарыштық технологиялар сайыстарына қатысып, білімдеріңізді сынаңыз.',
+            button: 'Сайыстарды көру'
+          },
+          products: {
+            title: 'Білім беру жиынтықтары',
+            desc: 'Біздің білім беру жиынтықтарымен практикалық тәжірибелер арқылы аэроғарыштық технологияларды үйреніңіз.',
+            button: 'Өнімдерді көру'
+          },
+          settlement: {
+            title: 'Space Settlement Competition 2025',
+            dates: 'Тіркелу: 2025 жылдың 15 ақпанына дейін',
+            registration: 'Ұқсас ойлы серіктестер командасымен болашақ ғарыштық қоныс жобасын жасаңыз.',
+            button: 'Тіркелу'
+          }
+        },
+        features: {
+          title: 'Оқыту бағыттары',
+          subtitle: 'Практикалық курстар мен қызықты сайыстар арқылы аэроғарыштық технологиялар әлеміне енуіңіз',
+          items: {
+            0: {
+              title: 'Ракета жасау',
+              desc: 'Аэродинамиканы зерттеу, қатты отынды қозғалтқыштары бар ракета үлгілерін жобалау және ұшыру'
+            },
+            1: {
+              title: 'БПЛА',
+              desc: 'Дрон бағдарламалау, FPV басқару, аэросуретке түсіру және автономды ұшулар'
+            },
+            2: {
+              title: 'Серіктік технологиялары',
+              desc: 'Наноспутниктер жасау, борттық жүйелерді зерттеу және ұшыруға дайындалу'
+            },
+            3: {
+              title: 'Жасанды интеллект',
+              desc: 'Навигация және ғарыштық миссияларды басқаруға арналған автономды алгоритмдер дамыту'
+            },
+            4: {
+              title: 'Сайыстар',
+              desc: 'Халықаралық аэроғарыштық технологиялар жарыстарына қатысу'
+            },
+            5: {
+              title: 'Командалық жұмыс',
+              desc: 'Көп салалы жобаларда ынтымақтастық дағдыларын дамыту'
+            }
+          },
+          learnMore: 'Толығырақ білу',
+          cta: {
+            title: 'Ғарышқа сапарыңызды бастауға дайынсыз ба?',
+            courses: 'Мектептерге арналған білім беру жиынтықтары',
+            competitions: 'Алдағы сайыстар'
+          }
         }
       },
       features: {
