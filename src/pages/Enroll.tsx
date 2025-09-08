@@ -105,9 +105,9 @@ export default function EnrollPage() {
   const [dupOpen, setDupOpen] = useState(false);
   const [dupName, setDupName] = useState("");
 
-  // Pre-fill captain data from profile only if fields are empty
+  // Pre-fill captain data from profile and update when profile changes
   useEffect(() => {
-    if (profile && !captainFullName && !captainIin && !captainPhone) {
+    if (profile) {
       setCaptainFullName(profile.full_name || "");
       setCaptainIin(profile.iin || "");
       setCaptainPhone(profile.phone || "");
@@ -116,7 +116,7 @@ export default function EnrollPage() {
       setCaptainTelegram(profile.telegram || "");
       setCaptainGrade(profile.grade?.toString() || "");
     }
-  }, [profile, captainFullName, captainIin, captainPhone]);
+  }, [profile]);
 
   // Refetch profile when user comes to the page to ensure latest data
   useEffect(() => {
@@ -264,9 +264,11 @@ export default function EnrollPage() {
               <div className="bg-muted rounded-lg p-4 space-y-4">
                 <div className="flex items-center justify-between">
                   <h3 className="text-lg font-semibold">{t('form.teamCaptain')}</h3>
-                  <span className="text-sm text-muted-foreground">
-                    Данные заполнены из профиля (можно редактировать)
-                  </span>
+                  <Button variant="outline" size="sm" asChild>
+                    <Link to="/dashboard">
+                      Редактировать в профиле
+                    </Link>
+                  </Button>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
@@ -274,9 +276,9 @@ export default function EnrollPage() {
                     <Input
                       id="captain-name"
                       value={captainFullName}
-                      onChange={(e) => setCaptainFullName(e.target.value)}
                       placeholder={t('form.fullNamePlaceholder')}
-                      required
+                      readOnly
+                      className="bg-muted-foreground/10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -284,10 +286,9 @@ export default function EnrollPage() {
                     <Input
                       id="captain-iin"
                       value={captainIin}
-                      onChange={(e) => setCaptainIin(e.target.value)}
                       placeholder={t('form.iinPlaceholder')}
-                      maxLength={12}
-                      required
+                      readOnly
+                      className="bg-muted-foreground/10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -295,9 +296,9 @@ export default function EnrollPage() {
                     <Input
                       id="captain-phone"
                       value={captainPhone}
-                      onChange={(e) => setCaptainPhone(e.target.value)}
                       placeholder={t('form.phonePlaceholder')}
-                      required
+                      readOnly
+                      className="bg-muted-foreground/10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -305,9 +306,9 @@ export default function EnrollPage() {
                     <Input
                       id="captain-school"
                       value={captainSchool}
-                      onChange={(e) => setCaptainSchool(e.target.value)}
                       placeholder={t('form.schoolPlaceholder')}
-                      required
+                      readOnly
+                      className="bg-muted-foreground/10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -315,9 +316,9 @@ export default function EnrollPage() {
                     <Input
                       id="captain-city"
                       value={captainCity}
-                      onChange={(e) => setCaptainCity(e.target.value)}
                       placeholder={t('form.cityPlaceholder')}
-                      required
+                      readOnly
+                      className="bg-muted-foreground/10"
                     />
                   </div>
                   <div className="space-y-2">
@@ -325,9 +326,9 @@ export default function EnrollPage() {
                     <Input
                       id="captain-grade"
                       value={captainGrade}
-                      onChange={(e) => setCaptainGrade(e.target.value)}
                       placeholder={t('form.gradePlaceholder')}
-                      required
+                      readOnly
+                      className="bg-muted-foreground/10"
                     />
                   </div>
                   <div className="space-y-2 md:col-span-2">
@@ -335,9 +336,9 @@ export default function EnrollPage() {
                     <Input
                       id="captain-telegram"
                       value={captainTelegram}
-                      onChange={(e) => setCaptainTelegram(e.target.value)}
                       placeholder={t('form.telegramPlaceholder')}
-                      required
+                      readOnly
+                      className="bg-muted-foreground/10"
                     />
                   </div>
                 </div>
