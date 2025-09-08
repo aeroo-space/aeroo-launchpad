@@ -32,8 +32,8 @@ const resources = {
           title: "AEROO Fest 2026",
           category: "Всеказахстанский фестиваль",
           description: "Грандиозный фестиваль космических технологий и инноваций для участников всех возрастов",
-          status: "Активно",
-          deadline: "15 марта 2026",
+          status: "Скоро",
+          deadline: "",
           ages: "7-18 лет"
         },
         satelliteLaunch: {
@@ -41,7 +41,7 @@ const resources = {
           category: "Космическое соревнование",
           description: "Международное соревнование по запуску спутников с возможностью реального запуска проектов",
           status: "Скоро",
-          deadline: "1 октября 2026",
+          deadline: "",
           ages: "14-18 лет"
         },
         spaceSettlement: {
@@ -57,7 +57,7 @@ const resources = {
           category: "Искусственный интеллект",
           description: "Разработайте AI-решения для космических задач и исследований",
           status: "В разработке",
-          deadline: "Скоро",
+          deadline: "",
           ages: "16-25 лет"
         },
         driveCompetition: {
@@ -65,7 +65,7 @@ const resources = {
           category: "Инженерные решения",
           description: "Создайте инновационные транспортные решения для космических миссий",
           status: "В разработке", 
-          deadline: "Скоро",
+          deadline: "",
           ages: "14-20 лет"
         },
         droneCompetition: {
@@ -73,7 +73,7 @@ const resources = {
           category: "Беспилотники",
           description: "Команды управляют дронами в защитных сферах и соревнуются на специальной арене, забивая голы в полете.",
           status: "В разработке",
-          deadline: "Скоро", 
+          deadline: "", 
           ages: "12-18 лет"
         }
       },
@@ -533,8 +533,8 @@ const resources = {
           title: "AEROO Fest 2026",
           category: "National Festival",
           description: "A grand festival of space technologies and innovations for participants of all ages",
-          status: "Active",
-          deadline: "March 15, 2026",
+          status: "Coming Soon",
+          deadline: "",
           ages: "7-18 years"
         },
         satelliteLaunch: {
@@ -542,7 +542,7 @@ const resources = {
           category: "Space Competition",
           description: "International satellite launch competition with possibility of real project launches",
           status: "Coming Soon",
-          deadline: "October 1, 2026",
+          deadline: "",
           ages: "14-18 years"
         },
         spaceSettlement: {
@@ -558,7 +558,7 @@ const resources = {
           category: "Artificial Intelligence",
           description: "Develop AI solutions for space tasks and research",
           status: "In Development",
-          deadline: "Coming Soon",
+          deadline: "",
           ages: "16-25 years"
         },
         driveCompetition: {
@@ -566,7 +566,7 @@ const resources = {
           category: "Engineering Solutions",
           description: "Create innovative transportation solutions for space missions",
           status: "In Development", 
-          deadline: "Coming Soon",
+          deadline: "",
           ages: "14-20 years"
         },
         droneCompetition: {
@@ -574,7 +574,7 @@ const resources = {
           category: "Drones",
           description: "Teams control drones in protective spheres and compete in a special arena, scoring goals in flight.",
           status: "In Development",
-          deadline: "Coming Soon", 
+          deadline: "", 
           ages: "12-18 years"
         }
       },
@@ -1031,8 +1031,8 @@ const resources = {
           title: "AEROO Fest 2026",
           category: "Ұлттық фестиваль",
           description: "Барлық жас ерекшелігіндегі қатысушыларға арналған ғарыштық технологиялар мен инновациялардың керемет фестивалі",
-          status: "Белсенді",
-          deadline: "15 наурыз 2026",
+          status: "Жақында",
+          deadline: "",
           ages: "7-18 жас"
         },
         satelliteLaunch: {
@@ -1040,7 +1040,7 @@ const resources = {
           category: "Ғарыштық сайыс",
           description: "Жобаларды нақты іске қосу мүмкіндігімен халықаралық серіктерді іске қосу сайысы",
           status: "Жақында",
-          deadline: "1 қазан 2026",
+          deadline: "",
           ages: "14-18 жас"
         },
         spaceSettlement: {
@@ -1056,7 +1056,7 @@ const resources = {
           category: "Жасанды интеллект",
           description: "Ғарыштық тапсырмалар мен зерттеулерге арналған AI шешімдерін әзірлеңіз",
           status: "Әзірлеуде",
-          deadline: "Жақында",
+          deadline: "",
           ages: "16-25 жас"
         },
         driveCompetition: {
@@ -1064,7 +1064,7 @@ const resources = {
           category: "Инженерлік шешімдер",
           description: "Ғарыштық миссияларға арналған инновациялық көлік шешімдерін жасаңыз",
           status: "Әзірлеуде", 
-          deadline: "Жақында",
+          deadline: "",
           ages: "14-20 жас"
         },
         droneCompetition: {
@@ -1072,7 +1072,7 @@ const resources = {
           category: "Дронтар",
           description: "Командалар қорғаныш сфераларда дронтарды басқарады және арнайы аренада ұшып жүріп гол соғуға сайысады.",
           status: "Әзірлеуде",
-          deadline: "Жақында", 
+          deadline: "", 
           ages: "12-18 жас"
         }
       },
