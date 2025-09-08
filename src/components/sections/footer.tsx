@@ -35,8 +35,7 @@ const FOOTER_LINKS = [
     title: "Документы",
     links: [
       { name: "Политика конфиденциальности", href: "/privacy" },
-      { name: "Пользовательское соглашение", href: "/terms" },
-      { name: "Правила соревнований", href: "/rules" }
+      { name: "Пользовательское соглашение", href: "/terms" }
     ]
   }
 ];
@@ -143,17 +142,6 @@ export function Footer() {
           <p className="text-sm text-muted-foreground">
             © 2024 AEROO. {t('footer.bottom.rights', { defaultValue: 'Все права защищены.' })}
           </p>
-          <div className="flex space-x-6">
-            <a href="/privacy" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              {t('footer.bottom.privacy', { defaultValue: 'Конфиденциальность' })}
-            </a>
-            <a href="/terms" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              {t('footer.bottom.terms', { defaultValue: 'Условия использования' })}
-            </a>
-            <a href="/cookies" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              {t('footer.bottom.cookies', { defaultValue: 'Cookies' })}
-            </a>
-          </div>
         </div>
       </div>
 
