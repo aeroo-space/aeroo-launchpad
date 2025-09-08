@@ -27,7 +27,55 @@ const resources = {
         archiveTitle: 'Архив соревнований',
         openRegistration: 'Регистрация',
         pendingRegistration: 'Скоро',
-        registrationClosed: 'Закрыто'
+        registrationClosed: 'Закрыто',
+        aerooFest: {
+          title: "AerOO Fest 2025",
+          category: "Всеказахстанский фестиваль",
+          description: "Грандиозный фестиваль космических технологий и инноваций для участников всех возрастов",
+          status: "Активно",
+          deadline: "15 марта 2025",
+          ages: "7-18 лет"
+        },
+        satelliteLaunch: {
+          title: "Satellite Launch 2026",
+          category: "Космическое соревнование",
+          description: "Международное соревнование по запуску спутников с возможностью реального запуска проектов",
+          status: "Скоро",
+          deadline: "1 октября 2026",
+          ages: "14-18 лет"
+        },
+        spaceSettlement: {
+          title: "Space Settlement 2025",
+          category: "Проектирование поселений",
+          description: "Создайте проект космического поселения будущего с командой единомышленников",
+          status: "Регистрация",
+          deadline: "20 апреля 2025", 
+          ages: "12-18 лет"
+        },
+        aiChallenge: {
+          title: "AI Challenge",
+          category: "Искусственный интеллект",
+          description: "Разработайте AI-решения для космических задач и исследований",
+          status: "В разработке",
+          deadline: "Скоро",
+          ages: "16-25 лет"
+        },
+        driveCompetition: {
+          title: "DRIVE Competition",
+          category: "Инженерные решения",
+          description: "Создайте инновационные транспортные решения для космических миссий",
+          status: "В разработке", 
+          deadline: "Скоро",
+          ages: "14-20 лет"
+        },
+        droneCompetition: {
+          title: "Drone Competition",
+          category: "Беспилотники",
+          description: "Соревнование по созданию и управлению дронами для космических исследований",
+          status: "В разработке",
+          deadline: "Скоро", 
+          ages: "12-18 лет"
+        }
       },
       common: {
         loading: 'Загрузка...',
@@ -480,7 +528,55 @@ const resources = {
         archiveTitle: 'Competition Archive',
         openRegistration: 'Registration',
         pendingRegistration: 'Coming Soon',
-        registrationClosed: 'Closed'
+        registrationClosed: 'Closed',
+        aerooFest: {
+          title: "AerOO Fest 2025",
+          category: "National Festival",
+          description: "A grand festival of space technologies and innovations for participants of all ages",
+          status: "Active",
+          deadline: "March 15, 2025",
+          ages: "7-18 years"
+        },
+        satelliteLaunch: {
+          title: "Satellite Launch 2026",
+          category: "Space Competition",
+          description: "International satellite launch competition with possibility of real project launches",
+          status: "Coming Soon",
+          deadline: "October 1, 2026",
+          ages: "14-18 years"
+        },
+        spaceSettlement: {
+          title: "Space Settlement 2025",
+          category: "Settlement Design",
+          description: "Create a future space settlement project with a team of like-minded individuals",
+          status: "Registration",
+          deadline: "April 20, 2025", 
+          ages: "12-18 years"
+        },
+        aiChallenge: {
+          title: "AI Challenge",
+          category: "Artificial Intelligence",
+          description: "Develop AI solutions for space tasks and research",
+          status: "In Development",
+          deadline: "Coming Soon",
+          ages: "16-25 years"
+        },
+        driveCompetition: {
+          title: "DRIVE Competition",
+          category: "Engineering Solutions",
+          description: "Create innovative transportation solutions for space missions",
+          status: "In Development", 
+          deadline: "Coming Soon",
+          ages: "14-20 years"
+        },
+        droneCompetition: {
+          title: "Drone Competition",
+          category: "Drones",
+          description: "Competition for creating and controlling drones for space exploration",
+          status: "In Development",
+          deadline: "Coming Soon", 
+          ages: "12-18 years"
+        }
       },
       common: {
         loading: 'Loading...',
@@ -930,7 +1026,55 @@ const resources = {
         archiveTitle: 'Сайыстар мұрағаты',
         openRegistration: 'Тіркелу',
         pendingRegistration: 'Жақында',
-        registrationClosed: 'Жабық'
+        registrationClosed: 'Жабық',
+        aerooFest: {
+          title: "AerOO Fest 2025",
+          category: "Ұлттық фестиваль",
+          description: "Барлық жас ерекшелігіндегі қатысушыларға арналған ғарыштық технологиялар мен инновациялардың керемет фестивалі",
+          status: "Белсенді",
+          deadline: "15 наурыз 2025",
+          ages: "7-18 жас"
+        },
+        satelliteLaunch: {
+          title: "Satellite Launch 2026",
+          category: "Ғарыштық сайыс",
+          description: "Жобаларды нақты іске қосу мүмкіндігімен халықаралық серіктерді іске қосу сайысы",
+          status: "Жақында",
+          deadline: "1 қазан 2026",
+          ages: "14-18 жас"
+        },
+        spaceSettlement: {
+          title: "Space Settlement 2025",
+          category: "Қоныстарды жобалау",
+          description: "Ұқсас көзқарасты ұстанатын адамдар командасымен болашақ ғарыштық қоныс жобасын жасаңыз",
+          status: "Тіркелу",
+          deadline: "20 сәуір 2025", 
+          ages: "12-18 жас"
+        },
+        aiChallenge: {
+          title: "AI Challenge",
+          category: "Жасанды интеллект",
+          description: "Ғарыштық тапсырмалар мен зерттеулерге арналған AI шешімдерін әзірлеңіз",
+          status: "Әзірлеуде",
+          deadline: "Жақында",
+          ages: "16-25 жас"
+        },
+        driveCompetition: {
+          title: "DRIVE Competition",
+          category: "Инженерлік шешімдер",
+          description: "Ғарыштық миссияларға арналған инновациялық көлік шешімдерін жасаңыз",
+          status: "Әзірлеуде", 
+          deadline: "Жақында",
+          ages: "14-20 жас"
+        },
+        droneCompetition: {
+          title: "Drone Competition",
+          category: "Дронтар",
+          description: "Ғарыштық зерттеулер үшін дронтарды жасау және басқару сайысы",
+          status: "Әзірлеуде",
+          deadline: "Жақында", 
+          ages: "12-18 жас"
+        }
       },
       common: {
         loading: 'Жүктелуде...',

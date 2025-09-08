@@ -14,63 +14,63 @@ export type Competition = {
 export const competitions: Competition[] = [
   {
     id: "aeroo-fest",
-    title: "", // Will be translated
-    category: "", // Will be translated
-    description: "", // Will be translated
+    title: "competitions.aerooFest.title",
+    category: "competitions.aerooFest.category", 
+    description: "competitions.aerooFest.description",
     icon: Trophy,
-    status: "", // Will be translated
-    deadline: "", // Will be translated
-    ages: "", // Will be translated
+    status: "competitions.aerooFest.status",
+    deadline: "competitions.aerooFest.deadline",
+    ages: "competitions.aerooFest.ages",
   },
   {
     id: "satellite-launch",
-    title: "", // Will be translated
-    category: "", // Will be translated
-    description: "", // Will be translated
+    title: "competitions.satelliteLaunch.title",
+    category: "competitions.satelliteLaunch.category",
+    description: "competitions.satelliteLaunch.description", 
     icon: Satellite,
-    status: "Скоро", // Will be translated
-    deadline: "", // Will be translated
-    ages: "", // Will be translated
+    status: "competitions.satelliteLaunch.status",
+    deadline: "competitions.satelliteLaunch.deadline",
+    ages: "competitions.satelliteLaunch.ages",
   },
   {
     id: "space-settlement",
-    title: "", // Will be translated
-    category: "", // Will be translated
-    description: "", // Will be translated
+    title: "competitions.spaceSettlement.title",
+    category: "competitions.spaceSettlement.category",
+    description: "competitions.spaceSettlement.description",
     icon: Building,
-    status: "", // Will be translated
-    deadline: "", // Will be translated
-    ages: "", // Will be translated
+    status: "competitions.spaceSettlement.status", 
+    deadline: "competitions.spaceSettlement.deadline",
+    ages: "competitions.spaceSettlement.ages",
   },
   {
     id: "ai-challenge",
-    title: "", // Will be translated
-    category: "", // Will be translated
-    description: "", // Will be translated
+    title: "competitions.aiChallenge.title",
+    category: "competitions.aiChallenge.category",
+    description: "competitions.aiChallenge.description",
     icon: Brain,
-    status: "", // Will be translated
-    deadline: "", // Will be translated
-    ages: "", // Will be translated
+    status: "competitions.aiChallenge.status",
+    deadline: "competitions.aiChallenge.deadline", 
+    ages: "competitions.aiChallenge.ages",
   },
   {
-    id: "drive-competition",
-    title: "", // Will be translated
-    category: "", // Will be translated
-    description: "", // Will be translated
+    id: "drive-competition", 
+    title: "competitions.driveCompetition.title",
+    category: "competitions.driveCompetition.category",
+    description: "competitions.driveCompetition.description",
     icon: Car,
-    status: "", // Will be translated
-    deadline: "", // Will be translated
-    ages: "", // Will be translated
+    status: "competitions.driveCompetition.status",
+    deadline: "competitions.driveCompetition.deadline",
+    ages: "competitions.driveCompetition.ages",
   },
   {
     id: "drone-competition",
-    title: "", // Will be translated
-    category: "", // Will be translated
-    description: "", // Will be translated
+    title: "competitions.droneCompetition.title", 
+    category: "competitions.droneCompetition.category",
+    description: "competitions.droneCompetition.description",
     icon: Plane,
-    status: "", // Will be translated
-    deadline: "", // Will be translated
-    ages: "", // Will be translated
+    status: "competitions.droneCompetition.status",
+    deadline: "competitions.droneCompetition.deadline",
+    ages: "competitions.droneCompetition.ages",
   },
 ];
 

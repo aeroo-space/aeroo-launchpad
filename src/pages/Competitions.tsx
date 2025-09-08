@@ -156,30 +156,30 @@ const Competitions = () => {
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
-                    <Badge className={`${getStatusColor(t(`competitions.items.${competition.id}.status`))} text-white`}>
-                      {t(`competitions.items.${competition.id}.status`)}
+                    <Badge className={`${getStatusColor(t(competition.status))} text-white`}>
+                      {t(competition.status)}
                     </Badge>
                   </div>
                   <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    {t(`competitions.items.${competition.id}.title`, { defaultValue: competition.title })}
+                    {t(competition.title)}
                   </CardTitle>
                   <CardDescription className="text-sm font-medium text-primary/70">
-                    {t(`competitions.items.${competition.id}.category`, { defaultValue: competition.category })}
+                    {t(competition.category)}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {t(`competitions.items.${competition.id}.description`, { defaultValue: competition.description })}
+                    {t(competition.description)}
                   </p>
 
                   <div className="space-y-2 mb-6">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">{t('competitions.age')}</span>
-                      <span className="font-medium">{t(`competitions.items.${competition.id}.ages`)}</span>
+                      <span className="font-medium">{t(competition.ages)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">{t('competitions.deadline')}</span>
-                      <span className="font-medium">{t(`competitions.items.${competition.id}.deadline`)}</span>
+                      <span className="font-medium">{t(competition.deadline)}</span>
                     </div>
                   </div>
 
