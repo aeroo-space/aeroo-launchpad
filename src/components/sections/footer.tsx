@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const SOCIAL_LINKS = [
-  { name: "Instagram", href: "https://instagram.com/aeroo.space", icon: Instagram },
+  { name: "Instagram", href: "https://www.instagram.com/aeroo.space/", icon: Instagram },
   { name: "Telegram", href: "https://t.me/+5nKRCrdTXT05YThi", icon: Send },
-  { name: "WhatsApp", href: "https://wa.me/77751639790?text=Здравствуйте!%20Хочу%20узнать%20больше%20о%20AEROO", icon: MessageCircle },
+  { name: "WhatsApp", href: "https://wa.me/+77770990300", icon: MessageCircle },
   { name: "Email", href: "mailto:info@aeroo.space?subject=Вопрос%20по%20AEROO", icon: Mail }
 ];
 
