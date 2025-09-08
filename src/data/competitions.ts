@@ -13,6 +13,16 @@ export type Competition = {
 
 export const competitions: Competition[] = [
   {
+    id: "space-settlement",
+    title: "competitions.spaceSettlement.title",
+    category: "competitions.spaceSettlement.category",
+    description: "competitions.spaceSettlement.description",
+    icon: Building,
+    status: "competitions.spaceSettlement.status", 
+    deadline: "competitions.spaceSettlement.deadline",
+    ages: "competitions.spaceSettlement.ages",
+  },
+  {
     id: "aeroo-fest",
     title: "competitions.aerooFest.title",
     category: "competitions.aerooFest.category", 
@@ -31,16 +41,6 @@ export const competitions: Competition[] = [
     status: "competitions.satelliteLaunch.status",
     deadline: "competitions.satelliteLaunch.deadline",
     ages: "competitions.satelliteLaunch.ages",
-  },
-  {
-    id: "space-settlement",
-    title: "competitions.spaceSettlement.title",
-    category: "competitions.spaceSettlement.category",
-    description: "competitions.spaceSettlement.description",
-    icon: Building,
-    status: "competitions.spaceSettlement.status", 
-    deadline: "competitions.spaceSettlement.deadline",
-    ages: "competitions.spaceSettlement.ages",
   },
   {
     id: "ai-challenge",
