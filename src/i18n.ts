@@ -17,99 +17,99 @@ const resources = {
       },
       competitions: {
         title: 'Соревнования AEROO',
-        subtitle: 'Присоединяйтесь к инновационным соревнованиям в области аэрокосмических технологий. Проверьте свои навыки и создавайте будущее вместе с нами.',
+        subtitle: 'Присоединяйтесь к инновационным соревнованиям по аэрокосмическим технологиям. Проверьте свои навыки и создавайте будущее вместе.',
         age: 'Возраст:',
         deadline: 'Дедлайн:',
         details: 'Подробнее',
-        participate: 'Принять участие',
-        enrollTeam: 'Записаться с командой',
+        participate: 'Участвовать',
+        enrollTeam: 'Регистрация команды',
         archiveTitle: 'Архив соревнований',
-        archiveDesc: 'Изучите результаты прошлых лет и вдохновитесь достижениями участников',
-        archiveBtn: 'Посмотреть архив',
-        statuses: {
-          active: 'Активно',
-          registration: 'Регистрация',
-          soon: 'Скоро',
-          development: 'В разработке'
-        },
-        items: {
-          'aeroo-fest': {
-            title: 'AEROO Fest',
-            category: 'Фестиваль',
-            description: 'Мероприятия, шоу и мастер‑классы для продвижения аэрокосмических технологий',
-            status: 'Скоро',
-            deadline: 'Лето 2026',
-            ages: '12-19 лет'
-          },
-          'satellite-launch': {
-            title: 'AEROO Satellite Launch Competition',
-            category: 'Спутники',
-            description: 'Проектирование, сборка и запуск мини‑спутников',
-            status: 'Скоро',
-            deadline: '1 января 2026',
-            ages: '14-19 лет'
-          },
-          'space-settlement': {
-            title: 'AEROO Space Settlement Competition',
-            category: 'Хакатон',
-            description: 'Разработка концепций поселений в космосе для долгосрочной жизни',
-            status: 'Регистрация',
-            deadline: '24 октября 2025',
-            ages: '12-19 лет'
-          },
-          'ai-challenge': {
-            title: 'AEROO Space AI Competition',
-            category: 'AI',
-            description: 'Разработка автономных алгоритмов для навигации, управления и планирования миссий',
-            status: 'В разработке',
-            deadline: 'Весна 2026',
-            ages: '16-25 лет'
-          },
-          'drive-competition': {
-            title: 'AEROO Rover Competition',
-            category: 'Ровер',
-            description: 'Создание и управление роверами для исследования поверхностей планет',
-            status: 'В разработке',
-            deadline: 'Лето 2026',
-            ages: '14-21 лет'
-          },
-          'drone-competition': {
-            title: 'AEROO Drone Competition',
-            category: 'Дроны',
-            description: 'Конструирование и пилотирование дронов для зондирования, картографирования и гонок',
-            status: 'Скоро',
-            deadline: 'Октябрь 2025',
-            ages: '12-25 лет'
-          }
-        },
-        enrollDialogTitle: 'Запись в соревнование',
-        enrollDialogDesc: 'Заполните данные команды. После регистрации капитану придёт письмо с подтверждением и техническим заданием.',
-        toastLoginTitle: 'Войдите, чтобы записаться',
-        toastLoginDesc: 'Переходим на страницу входа',
-        toastNeedConsentTitle: 'Подтвердите согласие',
-        toastNeedConsentDesc: 'Необходимо согласиться с положением и политикой',
-        toastEnrollError: 'Не удалось записаться',
-        toastEnrollSuccessTitle: 'Вы записаны!',
-        toastSoonTitle: 'Скоро выйдет информация',
-        toastSoonDesc: 'Будьте в курсе событий',
-        toastNotOpenTitle: 'Регистрация пока не открыта',
-        toastNotOpenDesc: 'Скоро выйдет информация — будьте в курсе событий.'
+        openRegistration: 'Регистрация',
+        pendingRegistration: 'Скоро',
+        registrationClosed: 'Закрыто'
       },
-      form: {
-        email: 'Email капитана *',
-        emailBasic: 'Email',
-        telegram: 'Telegram-аккаунт для связи *',
-        teamName: 'Название команды *',
-        captainFullName: 'ФИО капитана команды *',
-        captainPhone: 'Номер телефона капитана *',
-        captainAge: 'Возраст капитана *',
-        city: 'Город *',
-        cityPlaceholder: 'Алматы',
-        studyPlace: 'Место обучения *',
-        participant2: '2 участник команды (ФИО, телефон, возраст, город, место обучения, почта) *',
-        participant3: '3 участник команды (ФИО, телефон, возраст, город, место обучения, почта) *',
-        participant4: '4 участник команды (ФИО, телефон, возраст, город, место обучения, почта) *',
-        source: 'Откуда узнали о соревновании? *',
+      common: {
+        loading: 'Загрузка...',
+        error: 'Ошибка',
+        success: 'Успешно',
+        cancel: 'Отмена',
+        save: 'Сохранить',
+        submit: 'Отправить',
+        back: 'Назад',
+        next: 'Далее',
+        edit: 'Редактировать',
+        delete: 'Удалить',
+        confirm: 'Подтвердить',
+        yes: 'Да',
+        no: 'Нет'
+      },
+      auth: {
+        signIn: 'Войти',
+        signUp: 'Зарегистрироваться',
+        signOut: 'Выйти',
+        email: 'Email',
+        password: 'Пароль',
+        forgotPassword: 'Забыли пароль?',
+        resetPassword: 'Сбросить пароль',
+        confirmPassword: 'Подтвердите пароль',
+        alreadyHaveAccount: 'Уже есть аккаунт?',
+        dontHaveAccount: 'Нет аккаунта?',
+        emailSent: 'Письмо отправлено',
+        checkEmail: 'Проверьте свой email для подтверждения',
+        invalidCredentials: 'Неверные учетные данные',
+        weakPassword: 'Слабый пароль',
+        emailAlreadyExists: 'Email уже зарегистрирован',
+        passwordsMustMatch: 'Пароли должны совпадать',
+        passwordTooShort: 'Пароль должен содержать минимум 6 символов',
+        passwordUpdated: 'Пароль обновлён',
+        passwordUpdateError: 'Ошибка обновления пароля',
+        passwordsDontMatch: 'Пароли не совпадают',
+        passwordInvalid: 'Пароль не соответствует требованиям',
+        passwordRules: 'Минимум 8 символов, одна заглавная буква и один спецсимвол'
+      },
+      profile: {
+        title: 'Профиль',
+        fullName: 'ФИО',
+        fullNamePlaceholder: 'Введите ваше полное имя',
+        iin: 'ИИН',
+        iinPlaceholder: '123456789012',
+        phone: 'Телефон',
+        phonePlaceholder: '+7 (xxx) xxx-xx-xx',
+        telegram: 'Telegram',
+        telegramPlaceholder: '@username',
+        school: 'Школа/Университет',
+        schoolPlaceholder: 'Название учебного заведения',
+        city: 'Город',
+        cityPlaceholder: 'Ваш город',
+        grade: 'Класс/Курс',
+        age: 'Возраст'
+      },
+      enroll: {
+        title: 'Регистрация на соревнование',
+        competition: 'Соревнование',
+        status: 'Статус',
+        personalInfo: 'Личная информация',
+        teamInfo: 'Информация о команде',
+        teamName: 'Название команды',
+        teamNamePlaceholder: 'Введите название команды',
+        captain: 'Капитан команды',
+        captainFullName: 'ФИО капитана',
+        captainFullNamePlaceholder: 'Иванов Иван Иванович',
+        captainPhone: 'Телефон капитана',
+        captainPhonePlaceholder: '+7 (xxx) xxx-xx-xx',
+        captainAge: 'Возраст капитана',
+        captainAgePlaceholder: '18',
+        city: 'Город',
+        cityPlaceholder: 'Ваш город',
+        studyPlace: 'Место обучения',
+        studyPlacePlaceholder: 'Название учебного заведения',
+        participant: 'Участник',
+        participantName: 'ФИО участника',
+        participantNamePlaceholder: 'Введите ФИО участника',
+        addParticipant: 'Добавить участника',
+        removeParticipant: 'Удалить участника',
+        source: 'Откуда узнали о соревновании?',
+        selectSource: 'Выберите источник',
         consent: 'С Положением ознакомлен(-а) и согласен(-а) с политикой конфиденциальности',
         submit: 'Подтвердить участие',
         sending: 'Отправка...',
@@ -117,201 +117,58 @@ const resources = {
         sourceInstagramOther: 'Instagram других аккаунтов',
         sourceTelegram: 'Telegram',
         sourceFriends: 'У знакомых',
-        sourceOther: 'Другое',
-        fullName: 'ФИО',
-        fullNamePlaceholder: 'Иванов Иван Иванович',
-        iin: 'ИИН',
-        iinPlaceholder: '123456789012',
-        phone: 'Телефон',
-        phonePlaceholder: '+7 700 000 00 00',
-        telegramPlaceholder: '@username',
-        school: 'Учебное заведение',
-        schoolPlaceholder: 'Название школы/ВУЗа',
-        grade: 'Класс/Курс обучения',
-        gradePlaceholder: '11',
-        age: 'Возраст',
-        agePlaceholder: '18',
-        teamCaptain: 'Капитан команды',
-        teamParticipants: 'Участники команды',
-        participant1: 'Участник 1 *',
-        participant2Title: 'Участник 2 *',
-        participant3Title: 'Участник 3 *',
-        mentor: 'Ментор',
-        questions: 'Вопросы или комментарии',
-        applicationTitle: 'Заявка на участие',
-        breadcrumbCompetitions: 'Соревнования',
-        breadcrumbApplication: 'Заявка',
-        statusLabel: 'Статус:',
-        registrationNotOpen: 'Регистрация пока не открыта. Следите за новостями.',
-        competitionNotFound: 'Соревнование не найдено. Вернуться к списку —',
-        toastConsentRequired: 'Нужно согласие',
-        toastConsentDescription: 'Подтвердите согласие с правилами',
-        toastSubmitError: 'Ошибка при отправке',
-        toastSubmitSuccess: 'Заявка отправлена'
+        sourceOther: 'Другое'
       },
-      dashboard: {
-        title: 'Личный кабинет',
-        logout: 'Выйти',
-        myEnrollments: 'Мои участия в соревнованиях',
-        loading: 'Загрузка...',
-        empty: 'Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.'
+      hero: {
+        title: 'Изучай. Создавай. Запускай.',
+        subtitle: 'Присоединяйся к будущему аэрокосмических технологий вместе с AEROO. Участвуй в соревнованиях, изучай космические технологии и создавай инновационные проекты.',
+        cta: 'Начать путешествие',
+        stats: {
+          participants: 'участников',
+          competitions: 'соревнований',
+          projects: 'проектов'
+        }
       },
-      auth: {
-        metaTitle: { signin: 'Вход — AEROO', signup: 'Регистрация — AEROO' },
-        metaDesc: 'Вход и регистрация AEROO — авторизация для участия в соревнованиях',
-        heading: 'Аутентификация AEROO',
-        signin: 'Войти',
-        signup: 'Регистрация',
-        password: 'Пароль',
-        confirmPassword: 'Подтвердите пароль',
-        passwordRequirements: 'Минимум 8 символов, одна заглавная буква и один спецсимвол',
-        createAccount: 'Создать аккаунт',
-        forgotPassword: 'Забыли пароль?',
-        setNewPassword: 'Установка нового пароля',
-        newPassword: 'Новый пароль',
-        sendLink: 'Отправить ссылку',
-        passwordRules: 'Минимум 8 символов, одна заглавная буква и один спецсимвол'
-      },
-      community: {
-        metaTitle: 'Сообщество AEROO — общение и поддержка',
-        metaDesc: 'Пространство AEROO: вопросы, помощь, анонсы и нетворкинг',
-        hero: {
-          title: 'Сообщество AEROO',
-          subtitle: 'Пространство для учеников, студентов, наставников и инженеров. Делитесь опытом и участвуйте в проектах AEROO.'
-        },
-        cards: {
-          networking: { title: 'Знакомства и нетворкинг', desc: 'Находите команду для соревнований и проекты для портфолио.' },
-          help: { title: 'Вопросы и помощь', desc: 'Получайте ответы от менторов и сообщества по наборам и технике.' },
-          announcements: { title: 'Анонсы и активности', desc: 'Будьте в курсе курсов, соревнований и запусков AEROO.' }
-        },
-        cta: { button: 'Перейти в сообщество', note: 'Откроется в новом окне Telegram' }
-      },
-      support: {
-        metaTitle: 'Техподдержка AEROO',
-        metaDesc: 'Помощь с доступом, наборами, заказами и участием в соревнованиях',
-        title: 'Техподдержка',
-        subtitle: 'Поможем с доступом, наборами, заказами и участием в соревнованиях. Напишите нам и мы ответим в ближайшее время.',
-        emailLabel: 'Почта:',
-        telegramLabel: 'Telegram:'
-      },
-      terms: {
-        metaTitle: 'Пользовательское соглашение — AEROO',
-        metaDesc: 'Правила использования платформы AEROO',
-        title: 'Пользовательское соглашение',
-        subtitle: 'Правила использования платформы AEROO.',
-        body: 'Используя наш сайт, вы соглашаетесь соблюдать правила и не нарушать права других пользователей.'
-      },
-      privacy: {
-        metaTitle: 'Политика конфиденциальности — AEROO',
-        metaDesc: 'Как мы собираем и обрабатываем ваши данные',
-        title: 'Политика конфиденциальности',
-        subtitle: 'Как мы собираем и обрабатываем ваши данные.',
-        body: 'Мы относимся к безопасности данных ответственно. Данные используются исключительно для предоставления услуг AEROO.'
-      },
-      faq: {
-        metaTitle: 'FAQ — AEROO',
-        metaDesc: 'Ответы на популярные вопросы',
-        title: 'Частые вопросы',
-        subtitle: 'Ответы на популярные вопросы о платформах, наборах и соревнованиях AEROO.',
-        q1: 'Как записаться на соревнование?',
-        a1: 'Выберите соревнование на странице «Соревнования» и нажмите «Участвовать». Далее следуйте инструкции.',
-        q2: 'Как выбрать набор?',
-        a2: 'Начните с ракетного набора AEROO-R1, если вы новичок. Для продвинутых подойдёт AEROO-S3.'
-      },
-      notFound: {
-        metaTitle: 'Страница не найдена — AEROO',
-        title: '404',
-        message: 'Упс! Страница не найдена',
-        back: 'Вернуться на главную'
-      },
-      about: {
-        metaTitle: 'О AEROO — миссия и команда',
-        metaDesc: 'Образовательная экосистема AEROO: миссия, ценности, команда и партнёры',
-        heroTitle: 'О AEROO',
-        heroSubtitle: 'Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление в области аэрокосмических технологий.',
-        missionTitle: 'Наша миссия',
-        missionText: 'Создать образовательную экосистему, которая объединяет школьников, студентов и молодых инженеров вокруг передовых технологий. Мы стремимся сделать аэрокосмические знания доступными каждому талантливому человеку.',
-        valuesTitle: 'Наши ценности',
-        values: {
-          innovation: 'Инновации и технологическое превосходство',
-          openness: 'Открытость и доступность образования',
-          teamwork: 'Командная работа и взаимопомощь',
-          excellence: 'Стремление к совершенству'
-        },
-        achievementsTitle: 'Наши достижения',
-        achievements: {
-          participants: 'Участников',
-          projects: 'Проектов',
-          awards: 'Наград',
-          countries: 'Страны'
-        },
-        teamTitle: 'Наша команда',
-        partnersTitle: 'Наши партнёры',
-        becomePartner: 'Стать партнёром',
-        contactsTitle: 'Контакты',
-        contactEmail: 'Email',
-        contactPhone: 'Телефон',
-        contactAddress: 'Адрес',
-        writeUs: 'Напишите нам',
-        formName: 'Имя',
-        formEmail: 'Email',
-        formMessage: 'Сообщение',
-        sendMessage: 'Отправить сообщение'
-      },
-      home: {
-        metaTitle: 'AEROO — образовательная платформа',
-        hero: {
-          competitions: {
-            title: 'Соревнования AEROO',
-            desc: 'Участвуй в инженерных и исследовательских мероприятиях.',
-            button: 'Подробнее'
+      features: {
+        title: 'Почему выбирают AEROO?',
+        subtitle: 'Мы предлагаем уникальные возможности для развития в области аэрокосмических технологий',
+        items: {
+          0: {
+            title: 'Практическое обучение',
+            description: 'Получайте знания через реальные проекты и эксперименты'
           },
-          products: {
-            title: 'Продукты AEROO',
-            desc: 'Приобретай образовательные наборы AEROO для инженерного обучения и участия в соревнованиях.',
-            button: 'Подробнее'
+          1: {
+            title: 'Международные соревнования',
+            description: 'Участвуйте в престижных соревнованиях мирового уровня'
           },
-          settlement: {
-            title: 'AEROO Space Settlement Competition 2025',
-            dates: 'Даты проведения: 28–29 октября 2025.',
-            registration: 'Регистрация до 24 октября 2025.',
-            button: 'Подробнее'
-          }
-        },
-        features: {
-          title: 'Направления обучения',
-          subtitle: 'Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования',
-          learnMore: 'Узнать больше',
-          items: {
-            0: { title: 'Ракетостроение', desc: 'Изучение аэродинамики, конструирование и запуск моделей ракет с твердотопливными двигателями' },
-            1: { title: 'БПЛА', desc: 'Программирование дронов, FPV-пилотирование, аэросъёмка и автономные полёты' },
-            2: { title: 'Спутниковые технологии', desc: 'Создание наноспутников, изучение бортовых систем и подготовка к запуску' },
-            3: { title: 'Искусственный интеллект', desc: 'Разработка автономных алгоритмов для навигации и управления космическими миссиями' },
-            4: { title: 'Соревнования', desc: 'Участие в международных конкурсах по аэрокосмическим технологиям' },
-            5: { title: 'Командная работа', desc: 'Развитие навыков сотрудничества в многодисциплинарных проектах' }
+          2: {
+            title: 'Экспертное сообщество',
+            description: 'Общайтесь с профессионалами индустрии и единомышленниками'
           },
-          cta: {
-            title: 'Готовы начать свой путь в космос?',
-            courses: 'Образовательные комплекты для школ',
-            competitions: 'Ближайшие соревнования'
+          3: {
+            title: 'Современное оборудование',
+            description: 'Работайте с передовыми технологиями и инструментами'
           }
         }
       },
       footer: {
-        description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
-        location: 'Алматы, Казахстан',
+        description: 'Образовательная платформа для изучения аэрокосмических технологий и участия в международных соревнованиях.',
         sections: [
           {
-            title: 'Платформа',
-            links: ['Соревнования', 'Курсы', 'Продукты', 'О нас']
+            title: 'Компания',
+            links: ['О нас', 'Команда', 'Карьера', 'Новости']
+          },
+          {
+            title: 'Образование',
+            links: ['Соревнования', 'Курсы', 'Продукты', 'Сертификаты']
           },
           {
             title: 'Поддержка',
             links: ['Контакты', 'FAQ', 'Техподдержка', 'Сообщество']
           },
           {
-            title: 'Документы',
-            links: ['Политика конфиденциальности', 'Пользовательское соглашение', 'Правила соревнований', 'Сертификаты']
+            title: 'Правовая информация',
+            links: ['Политика конфиденциальности', 'Условия использования', 'Правила соревнований', 'Сертификаты']
           }
         ],
         bottom: {
@@ -321,7 +178,6 @@ const resources = {
           cookies: 'Cookies'
         }
       },
-      // Products page translations
       products: {
         metaTitle: 'Продукты AEROO — наборы и конструкторы',
         hero: {
@@ -418,7 +274,6 @@ const resources = {
           weWillContact: 'Мы свяжемся с вами по email'
         }
       },
-      // Dashboard page translations
       dashboard: {
         title: 'Личный кабинет — AEROO',
         logout: 'Выйти',
@@ -450,7 +305,6 @@ const resources = {
         newPassword: 'Новый пароль',
         confirmPassword: 'Подтвердите пароль'
       },
-      // Profile setup dialog translations
       profileSetup: {
         title: 'Завершите настройку профиля',
         description: 'Пожалуйста, заполните информацию о себе для завершения регистрации.',
@@ -474,7 +328,6 @@ const resources = {
         error: 'Ошибка при создании профиля'
       },
       dashboardExtra: {
-        // Дополнительные подписи для страницы кабинета
         labels: {
           team: 'Команда',
           email: 'Email',
@@ -508,100 +361,103 @@ const resources = {
         about: 'About',
         contacts: 'Contacts',
         dashboard: 'Dashboard',
-        login: 'Log in',
+        login: 'Login',
       },
       competitions: {
         title: 'AEROO Competitions',
-        subtitle: 'Join innovative competitions in aerospace technologies. Test your skills and build the future with us.',
+        subtitle: 'Join innovative aerospace technology competitions. Test your skills and create the future together.',
         age: 'Age:',
         deadline: 'Deadline:',
-        details: 'Learn more',
-        enrollTeam: 'Register with a team',
-        archiveTitle: 'Competitions Archive',
-        archiveDesc: 'Explore results from previous years and get inspired by participants’ achievements',
-        archiveBtn: 'View archive',
-        enrollDialogTitle: 'Competition Registration',
-        enrollDialogDesc: 'Fill in your team details. After registration, the captain will receive a confirmation and the technical task.',
-        toastLoginTitle: 'Please log in to register',
-        toastLoginDesc: 'Redirecting to the login page',
-        toastNeedConsentTitle: 'Confirm consent',
-        toastNeedConsentDesc: 'You must accept the terms and privacy policy',
-        toastEnrollError: 'Registration failed',
-        toastEnrollSuccessTitle: 'You are registered!',
-        toastSoonTitle: 'Coming Soon',
-        toastSoonDesc: 'Stay tuned for updates',
-        toastNotOpenTitle: 'Registration not open yet',
-        toastNotOpenDesc: 'Information will be available soon — stay tuned.',
-        statuses: {
-          active: 'Active',
-          registration: 'Registration',
-          soon: 'Soon',
-          development: 'In Development'
-        },
-        items: {
-          'aeroo-fest': {
-            title: 'AEROO Fest',
-            category: 'Festival',
-            description: 'Events, shows and workshops to promote aerospace technologies',
-            status: 'Soon',
-            deadline: 'Summer 2026',
-            ages: '12-19 years'
-          },
-          'satellite-launch': {
-            title: 'AEROO Satellite Launch Competition',
-            category: 'Satellites',
-            description: 'Design, build and launch mini-satellites',
-            status: 'Soon',
-            deadline: 'January 1, 2026',
-            ages: '14-19 years'
-          },
-          'space-settlement': {
-            title: 'AEROO Space Settlement Competition',
-            category: 'Hackathon',
-            description: 'Development of space settlement concepts for long-term life',
-            status: 'Registration',
-            deadline: 'October 24, 2025',
-            ages: '12-19 years'
-          },
-          'ai-challenge': {
-            title: 'AEROO Space AI Competition',
-            category: 'AI',
-            description: 'Development of autonomous algorithms for navigation, control and mission planning',
-            status: 'In Development',
-            deadline: 'Spring 2026',
-            ages: '16-25 years'
-          },
-          'drive-competition': {
-            title: 'AEROO Rover Competition',
-            category: 'Rover',
-            description: 'Creation and control of rovers for planetary surface exploration',
-            status: 'In Development',
-            deadline: 'Summer 2026',
-            ages: '14-21 years'
-          },
-          'drone-competition': {
-            title: 'AEROO Drone Competition',
-            category: 'Drones',
-            description: 'Construction and piloting of drones for sensing, mapping and racing',
-            status: 'Soon',
-            deadline: 'October 2025',
-            ages: '12-25 years'
-          }
-        }
+        details: 'Details',
+        participate: 'Participate',
+        enrollTeam: 'Team Registration',
+        archiveTitle: 'Competition Archive',
+        openRegistration: 'Registration',
+        pendingRegistration: 'Coming Soon',
+        registrationClosed: 'Closed'
       },
-      form: {
-        email: 'Captain’s email *',
-        telegram: 'Telegram for contact *',
-        teamName: 'Team name *',
-        captainFullName: 'Captain’s full name *',
-        captainPhone: 'Captain’s phone number *',
-        captainAge: 'Captain’s age *',
-        city: 'City *',
-        studyPlace: 'Place of study *',
-        participant2: '2nd team member (Full name, phone, age, city, place of study, email) *',
-        participant3: '3rd team member (Full name, phone, age, city, place of study, email) *',
-        participant4: '4th team member (Full name, phone, age, city, place of study, email) *',
-        source: 'How did you hear about the competition? *',
+      common: {
+        loading: 'Loading...',
+        error: 'Error',
+        success: 'Success',
+        cancel: 'Cancel',
+        save: 'Save',
+        submit: 'Submit',
+        back: 'Back',
+        next: 'Next',
+        edit: 'Edit',
+        delete: 'Delete',
+        confirm: 'Confirm',
+        yes: 'Yes',
+        no: 'No'
+      },
+      auth: {
+        signIn: 'Sign In',
+        signUp: 'Sign Up',
+        signOut: 'Sign Out',
+        email: 'Email',
+        password: 'Password',
+        forgotPassword: 'Forgot Password?',
+        resetPassword: 'Reset Password',
+        confirmPassword: 'Confirm Password',
+        alreadyHaveAccount: 'Already have an account?',
+        dontHaveAccount: 'Don\'t have an account?',
+        emailSent: 'Email sent',
+        checkEmail: 'Check your email for confirmation',
+        invalidCredentials: 'Invalid credentials',
+        weakPassword: 'Weak password',
+        emailAlreadyExists: 'Email already exists',
+        passwordsMustMatch: 'Passwords must match',
+        passwordTooShort: 'Password must be at least 6 characters',
+        passwordUpdated: 'Password updated',
+        passwordUpdateError: 'Password update error',
+        passwordsDontMatch: 'Passwords don\'t match',
+        passwordInvalid: 'Password doesn\'t meet requirements',
+        passwordRules: 'Minimum 8 characters, one uppercase letter and one special character'
+      },
+      profile: {
+        title: 'Profile',
+        fullName: 'Full Name',
+        fullNamePlaceholder: 'Enter your full name',
+        iin: 'IIN',
+        iinPlaceholder: '123456789012',
+        phone: 'Phone',
+        phonePlaceholder: '+7 (xxx) xxx-xx-xx',
+        telegram: 'Telegram',
+        telegramPlaceholder: '@username',
+        school: 'School/University',
+        schoolPlaceholder: 'Educational institution name',
+        city: 'City',
+        cityPlaceholder: 'Your city',
+        grade: 'Grade/Course',
+        age: 'Age'
+      },
+      enroll: {
+        title: 'Competition Registration',
+        competition: 'Competition',
+        status: 'Status',
+        personalInfo: 'Personal Information',
+        teamInfo: 'Team Information',
+        teamName: 'Team Name',
+        teamNamePlaceholder: 'Enter team name',
+        captain: 'Team Captain',
+        captainFullName: 'Captain Full Name',
+        captainFullNamePlaceholder: 'John Smith',
+        captainPhone: 'Captain Phone',
+        captainPhonePlaceholder: '+7 (xxx) xxx-xx-xx',
+        captainAge: 'Captain Age',
+        captainAgePlaceholder: '18',
+        city: 'City',
+        cityPlaceholder: 'Your city',
+        studyPlace: 'Place of Study',
+        studyPlacePlaceholder: 'Educational institution name',
+        participant: 'Participant',
+        participantName: 'Participant Name',
+        participantNamePlaceholder: 'Enter participant name',
+        addParticipant: 'Add Participant',
+        removeParticipant: 'Remove Participant',
+        source: 'How did you hear about the competition?',
+        selectSource: 'Select source',
         consent: 'I have read the Terms and agree with the Privacy Policy',
         submit: 'Confirm participation',
         sending: 'Sending...',
@@ -609,186 +465,58 @@ const resources = {
         sourceInstagramOther: 'Instagram (other accounts)',
         sourceTelegram: 'Telegram',
         sourceFriends: 'From friends',
-        sourceOther: 'Other',
-        emailBasic: 'Email',
-        fullName: 'Full Name',
-        fullNamePlaceholder: 'John Smith',
-        iin: 'IIN',
-        iinPlaceholder: '123456789012',
-        phone: 'Phone',
-        phonePlaceholder: '+7 700 000 00 00',
-        telegramPlaceholder: '@username',
-        school: 'Educational Institution',
-        schoolPlaceholder: 'School/University name',
-        grade: 'Grade/Course',
-        gradePlaceholder: '11',
-        age: 'Age',
-        agePlaceholder: '18',
-        cityPlaceholder: 'Almaty'
+        sourceOther: 'Other'
       },
-      dashboard: {
-        title: 'Dashboard',
-        logout: 'Sign out',
-        myEnrollments: 'My competition enrollments',
-        loading: 'Loading...',
-        empty: 'No records yet. Go to the “Competitions” page to enroll.'
+      hero: {
+        title: 'Learn. Create. Launch.',
+        subtitle: 'Join the future of aerospace technology with AEROO. Participate in competitions, study space technologies and create innovative projects.',
+        cta: 'Start Journey',
+        stats: {
+          participants: 'participants',
+          competitions: 'competitions',
+          projects: 'projects'
+        }
       },
-      auth: {
-        metaTitle: { signin: 'Sign in — AEROO', signup: 'Sign up — AEROO' },
-        metaDesc: 'AEROO sign in and registration — authorize to join competitions',
-        heading: 'AEROO Authentication',
-        signin: 'Sign in',
-        signup: 'Sign up',
-        password: 'Password',
-        confirmPassword: 'Confirm Password',
-        passwordRequirements: 'Minimum 8 characters, one uppercase letter and one special character',
-        createAccount: 'Create account',
-        forgotPassword: 'Forgot Password?',
-        setNewPassword: 'Set New Password',
-        newPassword: 'New Password',
-        sendLink: 'Send Link',
-        passwordRules: 'Minimum 8 characters, one uppercase letter and one special character'
-      },
-      community: {
-        metaTitle: 'AEROO Community — chat and support',
-        metaDesc: 'AEROO space for questions, help, announcements, and networking',
-        hero: {
-          title: 'AEROO Community',
-          subtitle: 'A space for students, mentors, and engineers. Share experience and join AEROO projects.'
-        },
-        cards: {
-          networking: { title: 'Networking', desc: 'Find teammates for competitions and projects for your portfolio.' },
-          help: { title: 'Questions and help', desc: 'Get answers from mentors and the community about kits and technology.' },
-          announcements: { title: 'Announcements and activities', desc: 'Stay up to date with AEROO courses, competitions, and launches.' }
-        },
-        cta: { button: 'Go to community', note: 'Opens in a new Telegram window' }
-      },
-      support: {
-        metaTitle: 'AEROO Support',
-        metaDesc: 'Help with access, kits, orders, and competitions',
-        title: 'Support',
-        subtitle: 'We help with access, kits, orders, and competitions. Message us and we will reply shortly.',
-        emailLabel: 'Email:',
-        telegramLabel: 'Telegram:'
-      },
-      terms: {
-        metaTitle: 'Terms of Service — AEROO',
-        metaDesc: 'Rules for using the AEROO platform',
-        title: 'Terms of Service',
-        subtitle: 'Rules for using the AEROO platform.',
-        body: 'By using our site, you agree to follow the rules and not violate other users’ rights.'
-      },
-      privacy: {
-        metaTitle: 'Privacy Policy — AEROO',
-        metaDesc: 'How we collect and process your data',
-        title: 'Privacy Policy',
-        subtitle: 'How we collect and process your data.',
-        body: 'We take data security seriously. Data is used solely to provide AEROO services.'
-      },
-      faq: {
-        metaTitle: 'FAQ — AEROO',
-        metaDesc: 'Answers to popular questions',
-        title: 'Frequently Asked Questions',
-        subtitle: 'Answers to common questions about AEROO platforms, kits, and competitions.',
-        q1: 'How to enroll in a competition?',
-        a1: 'Choose a competition on the “Competitions” page and click “Participate”. Then follow the instructions.',
-        q2: 'How to choose a kit?',
-        a2: 'Start with the AEROO-R1 rocket kit if you are a beginner. For advanced users, AEROO-S3 is suitable.'
-      },
-      notFound: {
-        metaTitle: 'Page not found — AEROO',
-        title: '404',
-        message: 'Oops! Page not found',
-        back: 'Return to Home'
-      },
-      about: {
-        metaTitle: 'About AEROO — mission and team',
-        metaDesc: 'AEROO learning ecosystem: mission, values, team and partners',
-        heroTitle: 'About AEROO',
-        heroSubtitle: 'We inspire and teach the next generation of builders, developing skills, teamwork and systems thinking in aerospace technologies.',
-        missionTitle: 'Our mission',
-        missionText: 'Create an educational ecosystem that unites schoolchildren, students and young engineers around advanced technologies. We strive to make aerospace knowledge accessible to every talented person.',
-        valuesTitle: 'Our values',
-        values: {
-          innovation: 'Innovation and technological excellence',
-          openness: 'Openness and accessible education',
-          teamwork: 'Teamwork and mutual assistance',
-          excellence: 'Striving for excellence'
-        },
-        achievementsTitle: 'Our achievements',
-        achievements: {
-          participants: 'Participants',
-          projects: 'Projects',
-          awards: 'Awards',
-          countries: 'Countries'
-        },
-        teamTitle: 'Our team',
-        partnersTitle: 'Our partners',
-        becomePartner: 'Become a partner',
-        contactsTitle: 'Contacts',
-        contactEmail: 'Email',
-        contactPhone: 'Phone',
-        contactAddress: 'Address',
-        writeUs: 'Write to us',
-        formName: 'Name',
-        formEmail: 'Email',
-        formMessage: 'Message',
-        sendMessage: 'Send message'
-      },
-      home: {
-        metaTitle: 'AEROO — educational platform',
-        hero: {
-          competitions: {
-            title: 'AEROO Competitions',
-            desc: 'Participate in engineering and research events.',
-            button: 'Learn more'
+      features: {
+        title: 'Why choose AEROO?',
+        subtitle: 'We offer unique opportunities for development in aerospace technology',
+        items: {
+          0: {
+            title: 'Hands-on Learning',
+            description: 'Gain knowledge through real projects and experiments'
           },
-          products: {
-            title: 'AEROO Products',
-            desc: 'Purchase AEROO educational kits for engineering learning and competition participation.',
-            button: 'Learn more'
+          1: {
+            title: 'International Competitions',
+            description: 'Participate in prestigious world-class competitions'
           },
-          settlement: {
-            title: 'AEROO Space Settlement Competition 2025',
-            dates: 'Event dates: October 28–29, 2025.',
-            registration: 'Registration until October 24, 2025.',
-            button: 'Learn more'
-          }
-        },
-        features: {
-          title: 'Learning Directions',
-          subtitle: 'Immerse yourself in the world of aerospace technologies through practical courses and exciting competitions',
-          learnMore: 'Learn more',
-          items: {
-            0: { title: 'Rocket Science', desc: 'Study of aerodynamics, construction and launch of rocket models with solid fuel engines' },
-            1: { title: 'UAV', desc: 'Drone programming, FPV piloting, aerial photography and autonomous flights' },
-            2: { title: 'Satellite Technologies', desc: 'Creation of nanosatellites, study of onboard systems and launch preparation' },
-            3: { title: 'Artificial Intelligence', desc: 'Development of autonomous algorithms for navigation and space mission control' },
-            4: { title: 'Competitions', desc: 'Participation in international aerospace technology competitions' },
-            5: { title: 'Teamwork', desc: 'Development of collaboration skills in multidisciplinary projects' }
+          2: {
+            title: 'Expert Community',
+            description: 'Connect with industry professionals and like-minded people'
           },
-          cta: {
-            title: 'Ready to start your journey to space?',
-            courses: 'Educational kits for schools',
-            competitions: 'Upcoming competitions'
+          3: {
+            title: 'Modern Equipment',
+            description: 'Work with cutting-edge technologies and tools'
           }
         }
       },
       footer: {
-        description: 'Educational platform uniting students and young engineers around aerospace technologies.',
-        location: 'Almaty, Kazakhstan',
+        description: 'Educational platform for studying aerospace technologies and participating in international competitions.',
         sections: [
           {
-            title: 'Platform',
-            links: ['Competitions', 'Courses', 'Products', 'About']
+            title: 'Company',
+            links: ['About', 'Team', 'Careers', 'News']
+          },
+          {
+            title: 'Education',
+            links: ['Competitions', 'Courses', 'Products', 'Certificates']
           },
           {
             title: 'Support',
             links: ['Contacts', 'FAQ', 'Tech Support', 'Community']
           },
           {
-            title: 'Documents',
-            links: ['Privacy Policy', 'Terms of Service', 'Competition Rules', 'Certificates']
+            title: 'Legal',
+            links: ['Privacy Policy', 'Terms of Use', 'Competition Rules', 'Certificates']
           }
         ],
         bottom: {
@@ -798,182 +526,178 @@ const resources = {
           cookies: 'Cookies'
         }
       },
-      // Products page translations
       products: {
-          metaTitle: 'AEROO Products — kits and constructors',
-          hero: {
-            title: 'AEROO Products',
-            subtitle: 'Educational kits for studying aerospace technologies. From simple rocket models to complex nanosatellites.'
-          },
-          advantages: {
-            title: 'Advantages of our kits',
-            items: {
-              0: {
-                title: 'Innovative technologies',
-                desc: 'We use the latest achievements in aerospace technologies'
-              },
-              1: {
-                title: 'Complete safety',
-                desc: 'All kits undergo strict certification and testing'
-              },
-              2: {
-                title: 'Expert support',
-                desc: 'Technical support and consultations from our engineers'
-              }
-            }
-          },
-          grid: {
-            title: 'Our products'
-          },
+        metaTitle: 'AEROO Products — kits and constructors',
+        hero: {
+          title: 'AEROO Products',
+          subtitle: 'Educational kits for studying aerospace technologies. From simple rocket models to complex nanosatellites.'
+        },
+        advantages: {
+          title: 'Advantages of our kits',
           items: {
-            'rocket-kit': {
-              title: 'Rocket Science Kit',
-              description: 'Educational kit for studying the basics of rocket science and aerodynamics',
-              category: 'Rockets',
-              features: {
-                0: 'Safe engines',
-                1: 'Rocket constructor',
-                2: 'Build your rocket',
-                3: 'Launch simulation'
-              }
+            0: {
+              title: 'Innovative technologies',
+              desc: 'We use the latest achievements in aerospace technologies'
             },
-            'cansat-kit': {
-              title: 'CanSat Kit',
-              description: 'For assembling and launching a CanSat format satellite aboard a model rocket',
-              category: 'Rockets',
-              features: {
-                0: 'Advanced rocket model',
-                1: 'Electronics work',
-                2: 'Real-time data',
-                3: 'Payload'
-              }
+            1: {
+              title: 'Complete safety',
+              desc: 'All kits undergo strict certification and testing'
             },
-            'satellite-kit': {
-              title: 'CubeSat Kit',
-              description: 'Satellite with the ability to launch into the stratosphere for conducting real scientific experiments',
-              category: 'Satellites',
-              features: {
-                0: 'Solar panels',
-                1: 'LoRa radio system',
-                2: 'Onboard computer',
-                3: 'Sensors'
-              }
-            },
-            'football-drone-kit': {
-              title: 'Drone Football Kit',
-              description: 'Kit for drone football matches — control the drone, compete and develop team spirit',
-              category: 'Drones',
-              features: {
-                0: 'Safe flight',
-                1: 'Training net and goals',
-                2: 'Sporting spirit',
-                3: 'Strategic thinking'
-              }
+            2: {
+              title: 'Expert support',
+              desc: 'Technical support and consultations from our engineers'
             }
-          },
-          inStock: 'In stock',
-          outOfStock: 'Out of stock',
-          includes: 'What\'s included in the kit:',
-          cta: {
-            details: 'Details',
-            request: 'Request',
-            notify: 'Notify when available'
-          },
-          detailsNotReady: 'Detail page under development',
-          detailsComingSoon: 'Detailed product information will be available soon',
-          help: {
-            title: 'Need consultation?',
-            desc: 'Our experts will help you choose the right kit for your skill level and educational goals. Contact us for a personalized consultation.'
-          },
-          catalog: {
-            download: 'Download catalog',
-            soon: 'Catalog coming soon',
-            pdfLater: 'PDF catalog will be available later'
-          },
-          request: {
-            sent: 'Request sent',
-            weWillContact: 'We will contact you by email'
           }
         },
-      // Dashboard page translations
-      dashboard: {
-          title: 'Dashboard — AEROO',
-          logout: 'Logout',
-          profile: 'Profile',
-          loading: 'Loading...',
-          email: 'Email',
-          fullName: 'Full Name',
-          iin: 'IIN',
-          phone: 'Phone',
-          telegram: 'Telegram',
-          school: 'School/University',
-          city: 'City',
-          grade: 'Grade/Course',
-          age: 'Age',
-          fieldUpdated: 'Field updated',
-          fieldUpdateError: 'Update error',
-          registrations: 'My Registrations',
-          noRegistrations: 'You don\'t have any active competition registrations yet.',
-          competition: 'Competition',
-          registeredAt: 'Registration Date',
-          status: 'Status',
-          actions: 'Actions',
-          edit: 'Edit',
-          delete: 'Delete',
-          deleteConfirm: 'Are you sure?',
-          deleteDescription: 'This action cannot be undone. The registration will be permanently deleted.',
-          changePassword: 'Change Password',
-          currentPassword: 'Current Password',
-          newPassword: 'New Password',
-          confirmPassword: 'Confirm Password'
+        grid: {
+          title: 'Our products'
         },
-      // Profile setup dialog translations
-      profileSetup: {
-          title: 'Complete profile setup',
-          description: 'Please fill in your information to complete registration.',
-          fullName: 'Full Name',
-          fullNamePlaceholder: 'John Smith',
-          iin: 'IIN',
-          iinPlaceholder: '123456789012',
-          phone: 'Phone',
-          phonePlaceholder: '+7 700 000 00 00',
-          telegram: 'Telegram',
-          telegramPlaceholder: '@username',
-          school: 'Educational Institution',
-          schoolPlaceholder: 'School/University name',
-          city: 'City',
-          cityPlaceholder: 'Almaty',
-          grade: 'Grade/Course',
-          gradePlaceholder: '11',
-          submit: 'Complete registration',
-          submitting: 'Saving...',
-          success: 'Profile successfully created!',
-          error: 'Error creating profile'
-        },
-      dashboardExtra: {
-          labels: {
-            team: 'Team',
-            email: 'Email',
-            telegram: 'Telegram',
-            captain: 'Captain',
-            captainPhone: 'Captain phone',
-            captainAge: 'Captain age',
-            city: 'City',
-            studyPlace: 'Place of study',
-            source: 'Source',
-            participant2: '2nd participant',
-            participant3: '3rd participant',
-            participant4: '4th participant',
-            status: 'Status'
+        items: {
+          'rocket-kit': {
+            title: 'Rocket Science Kit',
+            description: 'Educational kit for studying the basics of rocket science and aerodynamics',
+            category: 'Rockets',
+            features: {
+              0: 'Safe engines',
+              1: 'Rocket constructor',
+              2: 'Build your rocket',
+              3: 'Launch simulation'
+            }
           },
-          actions: { edit: 'Edit', delete: 'Delete', cancel: 'Cancel', confirmDelete: 'Delete' },
-          confirm: { title: 'Delete registration?', desc: 'This action is irreversible. Your competition entry will be deleted.' },
-          toasts: { deleteSuccess: 'Registration deleted', deleteError: 'Failed to delete' }
+          'cansat-kit': {
+            title: 'CanSat Kit',
+            description: 'For assembling and launching a CanSat format satellite aboard a model rocket',
+            category: 'Rockets',
+            features: {
+              0: 'Advanced rocket model',
+              1: 'Electronics work',
+              2: 'Real-time data',
+              3: 'Payload'
+            }
+          },
+          'satellite-kit': {
+            title: 'CubeSat Kit',
+            description: 'Satellite with the ability to launch into the stratosphere for conducting real scientific experiments',
+            category: 'Satellites',
+            features: {
+              0: 'Solar panels',
+              1: 'LoRa radio system',
+              2: 'Onboard computer',
+              3: 'Sensors'
+            }
+          },
+          'football-drone-kit': {
+            title: 'Drone Football Kit',
+            description: 'Kit for drone football matches — control the drone, compete and develop team spirit',
+            category: 'Drones',
+            features: {
+              0: 'Safe flight',
+              1: 'Training net and goals',
+              2: 'Sporting spirit',
+              3: 'Strategic thinking'
+            }
+          }
+        },
+        inStock: 'In stock',
+        outOfStock: 'Out of stock',
+        includes: 'What\'s included in the kit:',
+        cta: {
+          details: 'Details',
+          request: 'Request',
+          notify: 'Notify when available'
+        },
+        detailsNotReady: 'Detail page under development',
+        detailsComingSoon: 'Detailed product information will be available soon',
+        help: {
+          title: 'Need consultation?',
+          desc: 'Our experts will help you choose the right kit for your skill level and educational goals. Contact us for a personalized consultation.'
+        },
+        catalog: {
+          download: 'Download catalog',
+          soon: 'Catalog coming soon',
+          pdfLater: 'PDF catalog will be available later'
+        },
+        request: {
+          sent: 'Request sent',
+          weWillContact: 'We will contact you by email'
         }
+      },
+      dashboard: {
+        title: 'Dashboard — AEROO',
+        logout: 'Logout',
+        profile: 'Profile',
+        loading: 'Loading...',
+        email: 'Email',
+        fullName: 'Full Name',
+        iin: 'IIN',
+        phone: 'Phone',
+        telegram: 'Telegram',
+        school: 'School/University',
+        city: 'City',
+        grade: 'Grade/Course',
+        age: 'Age',
+        fieldUpdated: 'Field updated',
+        fieldUpdateError: 'Update error',
+        registrations: 'My Registrations',
+        noRegistrations: 'You don\'t have any active competition registrations yet.',
+        competition: 'Competition',
+        registeredAt: 'Registration Date',
+        status: 'Status',
+        actions: 'Actions',
+        edit: 'Edit',
+        delete: 'Delete',
+        deleteConfirm: 'Are you sure?',
+        deleteDescription: 'This action cannot be undone. The registration will be permanently deleted.',
+        changePassword: 'Change Password',
+        currentPassword: 'Current Password',
+        newPassword: 'New Password',
+        confirmPassword: 'Confirm Password'
+      },
+      profileSetup: {
+        title: 'Complete profile setup',
+        description: 'Please fill in your information to complete registration.',
+        fullName: 'Full Name',
+        fullNamePlaceholder: 'John Smith',
+        iin: 'IIN',
+        iinPlaceholder: '123456789012',
+        phone: 'Phone',
+        phonePlaceholder: '+7 700 000 00 00',
+        telegram: 'Telegram',
+        telegramPlaceholder: '@username',
+        school: 'Educational Institution',
+        schoolPlaceholder: 'School/University name',
+        city: 'City',
+        cityPlaceholder: 'Almaty',
+        grade: 'Grade/Course',
+        gradePlaceholder: '11',
+        submit: 'Complete registration',
+        submitting: 'Saving...',
+        success: 'Profile successfully created!',
+        error: 'Error creating profile'
+      },
+      dashboardExtra: {
+        labels: {
+          team: 'Team',
+          email: 'Email',
+          telegram: 'Telegram',
+          captain: 'Captain',
+          captainPhone: 'Captain phone',
+          captainAge: 'Captain age',
+          city: 'City',
+          studyPlace: 'Place of study',
+          source: 'Source',
+          participant2: '2nd participant',
+          participant3: '3rd participant',
+          participant4: '4th participant',
+          status: 'Status'
+        },
+        actions: { edit: 'Edit', delete: 'Delete', cancel: 'Cancel', confirmDelete: 'Delete' },
+        confirm: { title: 'Delete registration?', desc: 'This action is irreversible. Your competition entry will be deleted.' },
+        toasts: { deleteSuccess: 'Registration deleted', deleteError: 'Failed to delete' }
       }
     }
   },
-  kz: {
+  kk: {
     translation: {
       nav: {
         competitions: 'Сайыстар',
@@ -993,88 +717,92 @@ const resources = {
         participate: 'Қатысу',
         enrollTeam: 'Командамен тіркелу',
         archiveTitle: 'Сайыстар мұрағаты',
-        archiveDesc: 'Өткен жылдардың нәтижелерін қарап, қатысушылардың жетістіктерінен шабыт алыңыз',
-        archiveBtn: 'Мұрағатты көру',
-        statuses: {
-          active: 'Белсенді',
-          registration: 'Тіркеу',
-          soon: 'Жақында',
-          development: 'Дамытуда'
-        },
-        items: {
-          'aeroo-fest': {
-            title: 'AEROO Fest',
-            category: 'Фестиваль',
-            description: 'Аэроғарыш технологияларын дамыту үшін іс-шаралар, шоу және шеберлік сыныптары',
-            status: 'Жақында',
-            deadline: '2026 жаз',
-            ages: '12-19 жас'
-          },
-          'satellite-launch': {
-            title: 'AEROO Satellite Launch Competition',
-            category: 'Спутниктер',
-            description: 'Мини-спутниктерді жобалау, құрастыру және ұшыру',
-            status: 'Жақында',
-            deadline: '2026 жылдың 1 қаңтары',
-            ages: '14-19 жас'
-          },
-          'space-settlement': {
-            title: 'AEROO Space Settlement Competition',
-            category: 'Хакатон',
-            description: 'Ұзақ мерзімді өмір сүру үшін ғарыштық қонысталу тұжырымдамаларын дамыту',
-            status: 'Тіркеу',
-            deadline: '2025 жылдың 24 қазаны',
-            ages: '12-19 жас'
-          },
-          'ai-challenge': {
-            title: 'AEROO Space AI Competition',
-            category: 'AI',
-            description: 'Навигация, басқару және миссияларды жоспарлау үшін автономды алгоритмдер дамыту',
-            status: 'Дамытуда',
-            deadline: '2026 көктем',
-            ages: '16-25 жас'
-          },
-          'drive-competition': {
-            title: 'AEROO Rover Competition',
-            category: 'Ровер',
-            description: 'Планета беттерін зерттеу үшін роверлерді жасау және басқару',
-            status: 'Дамытуда',
-            deadline: '2026 жаз',
-            ages: '14-21 жас'
-          },
-          'drone-competition': {
-            title: 'AEROO Drone Competition',
-            category: 'Дрондар',
-            description: 'Зондтау, картография және жарыстар үшін дрондарды құрастыру және басқару',
-            status: 'Жақында',
-            deadline: '2025 қазан',
-            ages: '12-25 жас'
-          }
-        },
-        enrollDialogTitle: 'Сайысқа тіркелу',
-        enrollDialogDesc: 'Команда деректерін толтырыңыз. Тіркелгеннен кейін капитанға растау және техникалық тапсырма жіберіледі.',
-        toastLoginTitle: 'Тіркелу үшін кіріңіз',
-        toastLoginDesc: 'Кіру бетіне өтіп жатырмыз',
-        toastNeedConsentTitle: 'Келісімді растаңыз',
-        toastNeedConsentDesc: 'Ереже мен құпиялылық саясатына келісу қажет',
-        toastEnrollError: 'Тіркелу сәтсіз аяқталды',
-        toastEnrollSuccessTitle: 'Сіз тіркелдіңіз!'
+        openRegistration: 'Тіркелу',
+        pendingRegistration: 'Жақында',
+        registrationClosed: 'Жабық'
       },
-      form: {
-        email: 'Капитанның email-ы *',
-        emailBasic: 'Пошта',
-        telegram: 'Байланыс үшін Telegram *',
-        teamName: 'Команда атауы *',
-        captainFullName: 'Капитанның толық аты-жөні *',
-        captainPhone: 'Капитанның телефон нөмірі *',
-        captainAge: 'Капитанның жасы *',
-        city: 'Қала *',
-        cityPlaceholder: 'Алматы',
-        studyPlace: 'Оқу орны *',
-        participant2: '2-ші қатысушы (АЖТ, телефон, жас, қала, оқу орны, email) *',
-        participant3: '3-ші қатысушы (АЖТ, телефон, жас, қала, оқу орны, email) *',
-        participant4: '4-ші қатысушы (АЖТ, телефон, жас, қала, оқу орны, email) *',
-        source: 'Сайыс туралы қайдан білдіңіз? *',
+      common: {
+        loading: 'Жүктелуде...',
+        error: 'Қате',
+        success: 'Сәтті',
+        cancel: 'Болдырмау',
+        save: 'Сақтау',
+        submit: 'Жіберу',
+        back: 'Артқа',
+        next: 'Келесі',
+        edit: 'Өңдеу',
+        delete: 'Жою',
+        confirm: 'Растау',
+        yes: 'Иә',
+        no: 'Жоқ'
+      },
+      auth: {
+        signIn: 'Кіру',
+        signUp: 'Тіркелу',
+        signOut: 'Шығу',
+        email: 'Email',
+        password: 'Құпия сөз',
+        forgotPassword: 'Құпия сөзді ұмыттыңыз ба?',
+        resetPassword: 'Құпия сөзді қалпына келтіру',
+        confirmPassword: 'Құпия сөзді растау',
+        alreadyHaveAccount: 'Аккаунтыңыз бар ма?',
+        dontHaveAccount: 'Аккаунтыңыз жоқ па?',
+        emailSent: 'Email жіберілді',
+        checkEmail: 'Растау үшін email-ді тексеріңіз',
+        invalidCredentials: 'Жарамсыз деректер',
+        weakPassword: 'Әлсіз құпия сөз',
+        emailAlreadyExists: 'Email бұрын тіркелген',
+        passwordsMustMatch: 'Құпия сөздер сәйкес болуы керек',
+        passwordTooShort: 'Құпия сөз кемінде 6 белгіден болуы керек',
+        passwordUpdated: 'Құпия сөз жаңартылды',
+        passwordUpdateError: 'Құпия сөзді жаңарту қатесі',
+        passwordsDontMatch: 'Құпия сөздер сәйкес емес',
+        passwordInvalid: 'Құпия сөз талаптарға сәйкес емес',
+        passwordRules: 'Кемінде 8 белгі, бір бас әріп және бір арнайы белгі'
+      },
+      profile: {
+        title: 'Профиль',
+        fullName: 'Аты-жөні',
+        fullNamePlaceholder: 'Толық атыңызды енгізіңіз',
+        iin: 'ЖСН',
+        iinPlaceholder: '123456789012',
+        phone: 'Телефон',
+        phonePlaceholder: '+7 (xxx) xxx-xx-xx',
+        telegram: 'Telegram',
+        telegramPlaceholder: '@username',
+        school: 'Мектеп/Университет',
+        schoolPlaceholder: 'Білім беру мекемесінің атауы',
+        city: 'Қала',
+        cityPlaceholder: 'Сіздің қалаңыз',
+        grade: 'Сынып/Курс',
+        age: 'Жас'
+      },
+      enroll: {
+        title: 'Сайысқа тіркелу',
+        competition: 'Сайыс',
+        status: 'Күйі',
+        personalInfo: 'Жеке ақпарат',
+        teamInfo: 'Команда туралы ақпарат',
+        teamName: 'Команда атауы',
+        teamNamePlaceholder: 'Команда атауын енгізіңіз',
+        captain: 'Команда капитаны',
+        captainFullName: 'Капитанның аты-жөні',
+        captainFullNamePlaceholder: 'Иванов Иван Иванович',
+        captainPhone: 'Капитанның телефоны',
+        captainPhonePlaceholder: '+7 (xxx) xxx-xx-xx',
+        captainAge: 'Капитанның жасы',
+        captainAgePlaceholder: '18',
+        city: 'Қала',
+        cityPlaceholder: 'Сіздің қалаңыз',
+        studyPlace: 'Оқу орны',
+        studyPlacePlaceholder: 'Білім беру мекемесінің атауы',
+        participant: 'Қатысушы',
+        participantName: 'Қатысушының аты-жөні',
+        participantNamePlaceholder: 'Қатысушының аты-жөнін енгізіңіз',
+        addParticipant: 'Қатысушы қосу',
+        removeParticipant: 'Қатысушыны алып тастау',
+        source: 'Сайыс туралы қайдан білдіңіз?',
+        selectSource: 'Дереккөзді таңдаңыз',
         consent: 'Ережемен таныспын және құпиялылық саясатына келісемін',
         submit: 'Қатысуды растау',
         sending: 'Жіберілуде...',
@@ -1082,193 +810,50 @@ const resources = {
         sourceInstagramOther: 'Instagram (басқа аккаунттар)',
         sourceTelegram: 'Telegram',
         sourceFriends: 'Таныстардан',
-        sourceOther: 'Басқа',
-        fullName: 'Аты-жөні',
-        fullNamePlaceholder: 'Иванов Иван Иванович',
-        iin: 'ЖСН',
-        iinPlaceholder: '123456789012',
-        phone: 'Телефон',
-        phonePlaceholder: '+7 700 000 00 00',
-        telegramPlaceholder: '@username',
-        school: 'Оқу орны',
-        schoolPlaceholder: 'Мектеп/ЖОО атауы',
-        grade: 'Сынып/Курс',
-        gradePlaceholder: '11',
-        age: 'Жас',
-        agePlaceholder: '18',
-        teamCaptain: 'Команда капитаны',
-        teamParticipants: 'Команда қатысушылары',
-        participant1: 'Қатысушы 1 *',
-        participant2Title: 'Қатысушы 2 *',
-        participant3Title: 'Қатысушы 3 *',
-        mentor: 'Ментор',
-        questions: 'Сұрақтар немесе пікірлер',
-        applicationTitle: 'Қатысуға өтінім',
-        breadcrumbCompetitions: 'Сайыстар',
-        breadcrumbApplication: 'Өтінім',
-        statusLabel: 'Мәртебе:',
-        registrationNotOpen: 'Тіркеу әзірше ашылмаған. Жаңалықтарды бақылаңыз.',
-        competitionNotFound: 'Сайыс табылмады. Тізімге оралу —',
-        toastConsentRequired: 'Келісім қажет',
-        toastConsentDescription: 'Ережелерге келісімді растаңыз',
-        toastSubmitError: 'Жіберуде қате',
-        toastSubmitSuccess: 'Өтінім жіберілді'
+        sourceOther: 'Басқа'
       },
-      dashboard: {
-        title: 'Жеке кабинет',
-        logout: 'Шығу',
-        myEnrollments: 'Менің сайысқа тіркелулерім',
-        loading: 'Жүктелуде...',
-        empty: 'Әзірге жазбалар жоқ. Тіркелу үшін «Сайыстар» бетіне өтіңіз.'
+      hero: {
+        title: 'Үйрен. Жаса. Ұшыр.',
+        subtitle: 'AEROO-мен аэроғарыш технологияларының болашағына қосыл. Сайыстарға қатыс, ғарыш технологияларын үйрен және инновациялық жобалар жаса.',
+        cta: 'Саяхатты бастау',
+        stats: {
+          participants: 'қатысушы',
+          competitions: 'сайыс',
+          projects: 'жоба'
+        }
       },
-      auth: {
-        metaTitle: { signin: 'Кіру — AEROO', signup: 'Тіркелу — AEROO' },
-        metaDesc: 'AEROO-ға кіру және тіркелу — сайыстарға қатысу үшін авторизация',
-        heading: 'AEROO аутентификациясы',
-        signin: 'Кіру',
-        signup: 'Тіркелу',
-        password: 'Құпиясөз',
-        confirmPassword: 'Құпиясөзді растау',
-        passwordRequirements: 'Кемінде 8 таңба, бір бас әріп және бір арнайы таңба',
-        createAccount: 'Аккаунт жасау',
-        forgotPassword: 'Құпиясөзді ұмыттыңыз ба?',
-        setNewPassword: 'Жаңа құпиясөз орнату',
-        newPassword: 'Жаңа құпиясөз',
-        sendLink: 'Сілтеме жіберу',
-        passwordRules: 'Кемінде 8 таңба, бір бас әріп және бір арнайы таңба'
-      },
-      community: {
-        metaTitle: 'AEROO қауымдастығы — байланыс және қолдау',
-        metaDesc: 'AEROO кеңістігі: сұрақтар, көмек, жаңалықтар және нетворкинг',
-        hero: {
-          title: 'AEROO қауымдастығы',
-          subtitle: 'Оқушылар, студенттер, менторлар және инженерлерге арналған кеңістік. Тәжірибе бөлісіп, AEROO жобаларына қатысыңыз.'
-        },
-        cards: {
-          networking: { title: 'Танысу және нетворкинг', desc: 'Сайыстар үшін команда және портфолиоға арналған жобалар табыңыз.' },
-          help: { title: 'Сұрақтар және көмек', desc: 'Жинақтар мен техникалар туралы жауаптарды менторлар мен қауымдастықтан алыңыз.' },
-          announcements: { title: 'Жаңалықтар және іс-шаралар', desc: 'AEROO курстары, сайыстары және ұшырылымдары туралы хабардар болыңыз.' }
-        },
-        cta: { button: 'Қауымдастыққа өту', note: 'Telegram жаңа терезеде ашылады' }
-      },
-      support: {
-        metaTitle: 'AEROO қолдау қызметі',
-        metaDesc: 'Қол жеткізу, жинақтар, тапсырыстар және сайыстар бойынша көмек',
-        title: 'Қолдау қызметі',
-        subtitle: 'Қол жеткізу, жинақтар, тапсырыстар және сайыстар бойынша көмектесеміз. Жазыңыз, жақын арада жауап береміз.',
-        emailLabel: 'Пошта:',
-        telegramLabel: 'Telegram:'
-      },
-      terms: {
-        metaTitle: 'Пайдалану шарттары — AEROO',
-        metaDesc: 'AEROO платформасын пайдалану ережелері',
-        title: 'Пайдалану шарттары',
-        subtitle: 'AEROO платформасын пайдалану ережелері.',
-        body: 'Біздің сайтты пайдалана отырып, сіз ережелерді сақтауға және басқа пайдаланушылардың құқықтарын бұзбауға келісесіз.'
-      },
-      privacy: {
-        metaTitle: 'Құпиялылық саясаты — AEROO',
-        metaDesc: 'Деректерді қалай жинаймыз және өңдейміз',
-        title: 'Құпиялылық саясаты',
-        subtitle: 'Деректерді қалай жинаймыз және өңдейміз.',
-        body: 'Біз деректер қауіпсіздігін жауапкершілікпен қараймыз. Деректер тек AEROO қызметтерін көрсету үшін қолданылады.'
-      },
-      faq: {
-        metaTitle: 'Жиі қойылатын сұрақтар — AEROO',
-        metaDesc: 'Танымал сұрақтарға жауаптар',
-        title: 'Жиі қойылатын сұрақтар',
-        subtitle: 'AEROO платформалары, жинақтар және сайыстар туралы жиі қойылатын сұрақтарға жауаптар.',
-        q1: 'Сайысқа қалай тіркелуге болады?',
-        a1: '«Сайыстар» бетінде сайысты таңдап, «Қатысу» түймесін басыңыз. Әрі қарай нұсқаулықты орындаңыз.',
-        q2: 'Жинақты қалай таңдау керек?',
-        a2: 'Бастаушыларға AEROO-R1 ракета жинағын ұсынамыз. Тәжірибелілер үшін AEROO-S3 қолайлы.'
-      },
-      notFound: {
-        metaTitle: 'Бет табылмады — AEROO',
-        title: '404',
-        message: 'Қате! Бет табылмады',
-        back: 'Басты бетке оралу'
-      },
-      about: {
-        metaTitle: 'AEROO туралы — миссия және команда',
-        metaDesc: 'AEROO білім беру экожүйесі: миссия, құндылықтар, команда және серіктестер',
-        heroTitle: 'AEROO туралы',
-        heroSubtitle: 'Біз жаңа буын жасаушыларын шабыттандырып, оқытамыз: дағдылар, командалық жұмыс және аэроғарыштық технологиялардағы жүйелік ойлау.',
-        missionTitle: 'Біздің миссия',
-        missionText: 'Мектеп оқушыларын, студенттерді және жас инженерлерді заманауи технологиялар төңірегінде біріктіретін білім беру экожүйесін құру. Аэроғарыштық білімді әрбір дарынды адамға қолжетімді еткіміз келеді.',
-        valuesTitle: 'Құндылықтарымыз',
-        values: {
-          innovation: 'Инновация және технологиялық үздіксіздік',
-          openness: 'Ашықтық және білімге қолжетімділік',
-          teamwork: 'Командалық жұмыс және өзара көмек',
-          excellence: 'Жетілдіруге ұмтылу'
-        },
-        achievementsTitle: 'Жетістіктеріміз',
-        achievements: {
-          participants: 'Қатысушылар',
-          projects: 'Жобалар',
-          awards: 'Жүлделер',
-          countries: 'Елдер'
-        },
-        teamTitle: 'Біздің команда',
-        partnersTitle: 'Серіктестеріміз',
-        becomePartner: 'Серіктес болу',
-        contactsTitle: 'Байланыс',
-        contactEmail: 'Email',
-        contactPhone: 'Телефон',
-        contactAddress: 'Мекенжай',
-        writeUs: 'Бізге жазыңыз',
-        formName: 'Аты',
-        formEmail: 'Email',
-        formMessage: 'Хабарлама',
-        sendMessage: 'Хабарлама жіберу'
-      },
-      home: {
-        metaTitle: 'AEROO — білім беру платформасы',
-        hero: {
-          competitions: {
-            title: 'AEROO сайыстары',
-            desc: 'Инженерлік және зерттеу іс-шараларына қатысыңыз.',
-            button: 'Толығырақ'
+      features: {
+        title: 'Неліктен AEROO-ны таңдайды?',
+        subtitle: 'Біз аэроғарыш технологиялары саласында дамуға арналған бірегей мүмкіндіктер ұсынамыз',
+        items: {
+          0: {
+            title: 'Практикалық оқыту',
+            description: 'Нақты жобалар мен тәжірибелер арқылы білім алыңыз'
           },
-          products: {
-            title: 'AEROO өнімдері',
-            desc: 'Инженерлік оқыту және сайыстарға қатысу үшін AEROO білім беру жинақтарын сатып алыңыз.',
-            button: 'Толығырақ'
+          1: {
+            title: 'Халықаралық сайыстар',
+            description: 'Әлемдік деңгейдегі беделді сайыстарға қатысыңыз'
           },
-          settlement: {
-            title: 'AEROO Space Settlement Competition 2025',
-            dates: 'Өткізу күндері: 2025 жылдың 28–29 қазаны.',
-            registration: 'Тіркеу мерзімі: 24 қазанға дейін.',
-            button: 'Толығырақ'
-          }
-        },
-        features: {
-          title: 'Оқыту бағыттары',
-          subtitle: 'Практикалық курстар мен қызықты сайыстар арқылы аэроғарыш технологиялары әлеміне енуіз',
-          learnMore: 'Көбірек білу',
-          items: {
-            0: { title: 'Ракетостроение', desc: 'Аэродинамиканы зерттеу, қатты отынды қозғалтқыштармен ракета үлгілерін жасау және ұшыру' },
-            1: { title: 'БПЛА', desc: 'Дрондарды программалау, FPV басқару, аэросуретке түсіру және автономды ұшулар' },
-            2: { title: 'Спутниктік технологиялар', desc: 'Наноспутниктер жасау, борттық жүйелерді зерттеу және ұшыруға дайындық' },
-            3: { title: 'Жасанды интеллект', desc: 'Навигация және ғарыштық миссияларды басқару үшін автономды алгоритмдер дамыту' },
-            4: { title: 'Сайыстар', desc: 'Халықаралық аэроғарыш технологиялары бойынша сайыстарға қатысу' },
-            5: { title: 'Командалық жұмыс', desc: 'Көпсалалы жобаларда ынтымақтастық дағдыларын дамыту' }
+          2: {
+            title: 'Сарапшы қауымдастығы',
+            description: 'Индустрия мамандары мен ойластырушылармен қарым-қатынас жасаңыз'
           },
-          cta: {
-            title: 'Ғарышқа саяхатты бастауға дайынсыз ба?',
-            courses: 'Мектептер үшін білім беру жинақтары',
-            competitions: 'Жақындағы сайыстар'
+          3: {
+            title: 'Заманауи жабдықтар',
+            description: 'Озық технологиялар мен құралдармен жұмыс жасаңыз'
           }
         }
       },
       footer: {
-        description: 'Мектеп оқушылары мен жас инженерлерді аэроғарыш технологиялары төңірегінде біріктіретін білім беру платформасы.',
-        location: 'Алматы, Қазақстан',
+        description: 'Аэроғарыш технологияларын зерттеуге және халықаралық сайыстарға қатысуға арналған білім беру платформасы.',
         sections: [
           {
-            title: 'Платформа',
-            links: ['Сайыстар', 'Курстар', 'Өнімдер', 'Біз туралы']
+            title: 'Компания',
+            links: ['Біз туралы', 'Команда', 'Мансап', 'Жаңалықтар']
+          },
+          {
+            title: 'Білім беру',
+            links: ['Сайыстар', 'Курстар', 'Өнімдер', 'Сертификаттар']
           },
           {
             title: 'Қолдау',
@@ -1286,7 +871,6 @@ const resources = {
           cookies: 'Cookies'
         }
       },
-      // Products page translations
       products: {
         metaTitle: 'AEROO өнімдері — жиынтықтар мен конструкторлар',
         hero: {
@@ -1383,7 +967,6 @@ const resources = {
           weWillContact: 'Біз сізбен email арқылы байланысамыз'
         }
       },
-      // Dashboard page translations
       dashboard: {
         title: 'Жеке кабинет — AEROO',
         logout: 'Шығу',
@@ -1415,159 +998,6 @@ const resources = {
         newPassword: 'Жаңа құпия сөз',
         confirmPassword: 'Құпия сөзді растау'
       },
-      // Profile setup dialog translations
-      profileSetup: {
-        title: 'Профиль орнатуын аяқтаңыз',
-        description: 'Тіркелуді аяқтау үшін өзіңіз туралы ақпаратты толтырыңыз.',
-        fullName: 'Аты-жөні',
-        fullNamePlaceholder: 'Иванов Иван Иванович',
-        iin: 'ЖСН',
-        iinPlaceholder: '123456789012',
-        phone: 'Телефон',
-        phonePlaceholder: '+7 700 000 00 00',
-        telegram: 'Telegram',
-        telegramPlaceholder: '@username',
-        school: 'Білім беру мекемесі',
-        schoolPlaceholder: 'Мектеп/ЖОО атауы',
-        city: 'Қала',
-        cityPlaceholder: 'Алматы',
-        grade: 'Сынып/Курс',
-        gradePlaceholder: '11',
-        submit: 'Тіркелуді аяқтау',
-        submitting: 'Сақталуда...',
-        success: 'Профиль сәтті жасалды!',
-        error: 'Профиль жасау қатесі'
-      },
-      // Products page translations
-      products: {
-        metaTitle: 'AEROO өнімдері — жиынтықтар мен конструкторлар',
-        hero: {
-          title: 'AEROO өнімдері',
-          subtitle: 'Аэроғарыштық технологияларды зерттеуге арналған білім беру жиынтықтары. Қарапайым ракета үлгілерінен күрделі наноспутниктерге дейін.'
-        },
-        advantages: {
-          title: 'Біздің жиынтықтардың артықшылықтары',
-          items: {
-            0: {
-              title: 'Инновациялық технологиялар',
-              desc: 'Аэроғарыштық технологиялар саласындағы соңғы жетістіктерді қолданамыз'
-            },
-            1: {
-              title: 'Толық қауіпсіздік',
-              desc: 'Барлық жиынтықтар қатаң сертификаттау мен тестілеуден өтеді'
-            },
-            2: {
-              title: 'Сарапшылардың қолдауы',
-              desc: 'Біздің инженерлердің техникалық қолдауы мен кеңестері'
-            }
-          }
-        },
-        grid: {
-          title: 'Біздің өнімдер'
-        },
-        items: {
-          'rocket-kit': {
-            title: 'Rocket Science Kit',
-            description: 'Ракета жасау және аэродинамика негіздерін үйренуге арналған білім беру жиынтығы',
-            category: 'Ракеталар',
-            features: {
-              0: 'Қауіпсіз қозғалтқыштар',
-              1: 'Ракета конструкторы',
-              2: 'Өз ракетаңды жаса',
-              3: 'Ұшыру симуляциясы'
-            }
-          },
-          'cansat-kit': {
-            title: 'CanSat Kit',
-            description: 'CanSat пішіндегі серіктік үлгілік ракетада құрастыру және ұшыруға арналған',
-            category: 'Ракеталар',
-            features: {
-              0: 'Озық ракета үлгісі',
-              1: 'Электроникамен жұмыс',
-              2: 'Нақты уақыттағы мәліметтер',
-              3: 'Пайдалы жүк'
-            }
-          },
-          'satellite-kit': {
-            title: 'CubeSat Kit',
-            description: 'Нақты ғылыми тәжірибелер жүргізу үшін стратосфераға ұшыру мүмкіндігі бар серіктік',
-            category: 'Серіктіктер',
-            features: {
-              0: 'Күн панельдері',
-              1: 'LoRa радиожүйесі',
-              2: 'Борттық компьютер',
-              3: 'Сенсорлар'
-            }
-          },
-          'football-drone-kit': {
-            title: 'Drone Football Kit',
-            description: 'Дрон футболындағы матчтарға арналған жиынтық — дронды басқар, жарыс және командалық рухты дамыт',
-            category: 'Дрондар',
-            features: {
-              0: 'Қауіпсіз ұшу',
-              1: 'Жаттығу тор мен қақпалар',
-              2: 'Спорттық рух',
-              3: 'Стратегиялық ойлау'
-            }
-          }
-        },
-        inStock: 'Қойымда бар',
-        outOfStock: 'Қойымда жоқ',
-        includes: 'Жиынтыққа кіретіндер:',
-        cta: {
-          details: 'Толығырақ',
-          request: 'Өтінім қалдыру',
-          notify: 'Келу туралы хабарлау'
-        },
-        detailsNotReady: 'Толық бет әзірленуде',
-        detailsComingSoon: 'Өнім туралы толық ақпарат жақында қол жетімді болады',
-        help: {
-          title: 'Кеңес керек пе?',
-          desc: 'Біздің сарапшылар сіздің дайындық деңгейіңіз бен білім беру мақсаттарыңызға сәйкес жиынтық таңдауға көмектеседі. Жеке кеңес алу үшін бізбен байланысыңыз.'
-        },
-        catalog: {
-          download: 'Каталогты жүктеп алу',
-          soon: 'Каталог жақында',
-          pdfLater: 'PDF-каталог кейінірек қол жетімді болады'
-        },
-        request: {
-          sent: 'Өтінім жіберілді',
-          weWillContact: 'Біз сізбен email арқылы байланысамыз'
-        }
-      },
-      // Dashboard page translations
-      dashboard: {
-        title: 'Жеке кабинет — AEROO',
-        logout: 'Шығу',
-        profile: 'Профиль',
-        loading: 'Жүктелуде...',
-        email: 'Email',
-        fullName: 'Аты-жөні',
-        iin: 'ЖСН',
-        phone: 'Телефон',
-        telegram: 'Telegram',
-        school: 'Мектеп/Университет',
-        city: 'Қала',
-        grade: 'Сынып/Курс',
-        age: 'Жас',
-        fieldUpdated: 'Өріс жаңартылды',
-        fieldUpdateError: 'Жаңарту қатесі',
-        registrations: 'Менің тіркелімдерім',
-        noRegistrations: 'Сізде әлі белсенді жарыс тіркелімдері жоқ.',
-        competition: 'Жарыс',
-        registeredAt: 'Тіркелу күні',
-        status: 'Мәртебе',
-        actions: 'Әрекеттер',
-        edit: 'Өңдеу',
-        delete: 'Жою',
-        deleteConfirm: 'Сіз сенімдісіз бе?',
-        deleteDescription: 'Бұл әрекетті болдырмауға болмайды. Тіркелім мәңгіге жойылады.',
-        changePassword: 'Құпия сөзді өзгерту',
-        currentPassword: 'Ағымдағы құпия сөз',
-        newPassword: 'Жаңа құпия сөз',
-        confirmPassword: 'Құпия сөзді растау'
-      },
-      // Profile setup dialog translations
       profileSetup: {
         title: 'Профиль орнатуын аяқтаңыз',
         description: 'Тіркелуді аяқтау үшін өзіңіз туралы ақпаратты толтырыңыз.',
@@ -1612,7 +1042,7 @@ const resources = {
       }
     }
   }
-} as const;
+};
 
 i18n
   .use(initReactI18next)
