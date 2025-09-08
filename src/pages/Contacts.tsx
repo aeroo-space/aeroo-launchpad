@@ -85,7 +85,16 @@ const Contacts = () => {
           </a>
 
           {/* Instagram */}
-          <a href="https://www.instagram.com/aeroo.space/" target="_blank" rel="noopener noreferrer" className="group rounded-xl border border-border p-6 hover:glow-primary transition-colors">
+          <a 
+            href="https://instagram.com/aeroo.space" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="group rounded-xl border border-border p-6 hover:glow-primary transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open('https://instagram.com/aeroo.space', '_blank', 'noopener,noreferrer');
+            }}
+          >
             <div className="flex items-center gap-3 mb-2">
               <Instagram className="h-5 w-5 text-primary" />
               <h2 className="font-semibold">Instagram</h2>
