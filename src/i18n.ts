@@ -29,11 +29,11 @@ const resources = {
         pendingRegistration: 'Скоро',
         registrationClosed: 'Закрыто',
         aerooFest: {
-          title: "AerOO Fest 2025",
+          title: "AEROO Fest 2026",
           category: "Всеказахстанский фестиваль",
           description: "Грандиозный фестиваль космических технологий и инноваций для участников всех возрастов",
           status: "Активно",
-          deadline: "15 марта 2025",
+          deadline: "15 марта 2026",
           ages: "7-18 лет"
         },
         satelliteLaunch: {
@@ -53,7 +53,7 @@ const resources = {
           ages: "12-18 лет"
         },
         aiChallenge: {
-          title: "AI Challenge",
+          title: "Space AI 2026",
           category: "Искусственный интеллект",
           description: "Разработайте AI-решения для космических задач и исследований",
           status: "В разработке",
@@ -69,9 +69,9 @@ const resources = {
           ages: "14-20 лет"
         },
         droneCompetition: {
-          title: "Drone Competition",
+          title: "Drone Football",
           category: "Беспилотники",
-          description: "Соревнование по созданию и управлению дронами для космических исследований",
+          description: "Команды управляют дронами в защитных сферах и соревнуются на специальной арене, забивая голы в полете.",
           status: "В разработке",
           deadline: "Скоро", 
           ages: "12-18 лет"
@@ -530,11 +530,11 @@ const resources = {
         pendingRegistration: 'Coming Soon',
         registrationClosed: 'Closed',
         aerooFest: {
-          title: "AerOO Fest 2025",
+          title: "AEROO Fest 2026",
           category: "National Festival",
           description: "A grand festival of space technologies and innovations for participants of all ages",
           status: "Active",
-          deadline: "March 15, 2025",
+          deadline: "March 15, 2026",
           ages: "7-18 years"
         },
         satelliteLaunch: {
@@ -554,7 +554,7 @@ const resources = {
           ages: "12-18 years"
         },
         aiChallenge: {
-          title: "AI Challenge",
+          title: "Space AI 2026",
           category: "Artificial Intelligence",
           description: "Develop AI solutions for space tasks and research",
           status: "In Development",
@@ -570,9 +570,9 @@ const resources = {
           ages: "14-20 years"
         },
         droneCompetition: {
-          title: "Drone Competition",
+          title: "Drone Football",
           category: "Drones",
-          description: "Competition for creating and controlling drones for space exploration",
+          description: "Teams control drones in protective spheres and compete in a special arena, scoring goals in flight.",
           status: "In Development",
           deadline: "Coming Soon", 
           ages: "12-18 years"
@@ -1028,11 +1028,11 @@ const resources = {
         pendingRegistration: 'Жақында',
         registrationClosed: 'Жабық',
         aerooFest: {
-          title: "AerOO Fest 2025",
+          title: "AEROO Fest 2026",
           category: "Ұлттық фестиваль",
           description: "Барлық жас ерекшелігіндегі қатысушыларға арналған ғарыштық технологиялар мен инновациялардың керемет фестивалі",
           status: "Белсенді",
-          deadline: "15 наурыз 2025",
+          deadline: "15 наурыз 2026",
           ages: "7-18 жас"
         },
         satelliteLaunch: {
@@ -1052,7 +1052,7 @@ const resources = {
           ages: "12-18 жас"
         },
         aiChallenge: {
-          title: "AI Challenge",
+          title: "Space AI 2026",
           category: "Жасанды интеллект",
           description: "Ғарыштық тапсырмалар мен зерттеулерге арналған AI шешімдерін әзірлеңіз",
           status: "Әзірлеуде",
@@ -1068,9 +1068,9 @@ const resources = {
           ages: "14-20 жас"
         },
         droneCompetition: {
-          title: "Drone Competition",
+          title: "Drone Football",
           category: "Дронтар",
-          description: "Ғарыштық зерттеулер үшін дронтарды жасау және басқару сайысы",
+          description: "Командалар қорғаныш сфераларда дронтарды басқарады және арнайы аренада ұшып жүріп гол соғуға сайысады.",
           status: "Әзірлеуде",
           deadline: "Жақында", 
           ages: "12-18 жас"
