@@ -637,6 +637,15 @@ const resources = {
         formMessage: 'Сообщение',
         sendMessage: 'Отправить',
         privacyNote: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности.'
+      },
+      contacts: {
+        metaTitle: 'Контакты — AEROO',
+        metaDesc: 'Свяжитесь с AEROO: email, телефон, Instagram, Telegram и WhatsApp.',
+        title: 'Контакты AEROO',
+        subtitle: 'Мы на связи: выберите удобный способ и свяжитесь с нашей командой.',
+        phone: 'Телефон',
+        telegram: 'Сообщество AEROO',
+        location: 'Локация'
       }
     }
   },
@@ -1232,6 +1241,15 @@ const resources = {
         formMessage: 'Message',
         sendMessage: 'Send',
         privacyNote: 'By submitting the form, you agree to the privacy policy.'
+      },
+      contacts: {
+        metaTitle: 'Contacts — AEROO',
+        metaDesc: 'Contact AEROO: email, phone, Instagram, Telegram and WhatsApp.',
+        title: 'AEROO Contacts',
+        subtitle: 'We are in touch: choose a convenient way and contact our team.',
+        phone: 'Phone',
+        telegram: 'AEROO Community',
+        location: 'Location'
       }
     }
   },
@@ -1827,6 +1845,15 @@ const resources = {
         formMessage: 'Хабарлама',
         sendMessage: 'Жіберу',
         privacyNote: 'Форманы жібере отырып, сіз құпиялылық саясатымен келісесіз.'
+      },
+      contacts: {
+        metaTitle: 'Байланыс — AEROO',
+        metaDesc: 'AEROO-мен байланысыңыз: email, телефон, Instagram, Telegram және WhatsApp.',
+        title: 'AEROO байланыс',
+        subtitle: 'Біз байланыстамыз: ыңғайлы тәсілді таңдап, біздің командамен хабарласыңыз.',
+        phone: 'Телефон',
+        telegram: 'AEROO қауымдастығы',
+        location: 'Орналасуы'
       }
     }
   }
