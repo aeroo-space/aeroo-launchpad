@@ -72,7 +72,7 @@ const resources = {
           title: "Drone Football",
           category: "Беспилотники",
           description: "Команды управляют дронами в защитных сферах и соревнуются на специальной арене, забивая голы в полете.",
-          status: "В разработке",
+          status: "Скоро",
           deadline: "", 
           ages: "12-18 лет"
         }
@@ -573,7 +573,7 @@ const resources = {
           title: "Drone Football",
           category: "Drones",
           description: "Teams control drones in protective spheres and compete in a special arena, scoring goals in flight.",
-          status: "In Development",
+          status: "Coming Soon",
           deadline: "", 
           ages: "12-18 years"
         }
@@ -1071,7 +1071,7 @@ const resources = {
           title: "Drone Football",
           category: "Дронтар",
           description: "Командалар қорғаныш сфераларда дронтарды басқарады және арнайы аренада ұшып жүріп гол соғуға сайысады.",
-          status: "Әзірлеуде",
+          status: "Жақында",
           deadline: "", 
           ages: "12-18 жас"
         }
