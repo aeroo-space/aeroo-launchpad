@@ -21,7 +21,7 @@ export default function EnrollPage() {
   const { competitionId } = useParams<{ competitionId: string }>();
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { profile } = useProfile();
+  const { profile, refetch } = useProfile();
   const { t } = useTranslation();
 
   const competition = useMemo(() => competitions.find(c => c.id === competitionId), [competitionId]);
@@ -105,17 +105,25 @@ export default function EnrollPage() {
   const [dupOpen, setDupOpen] = useState(false);
   const [dupName, setDupName] = useState("");
 
-  // Pre-fill captain data from profile
+  // Pre-fill captain data from profile and update when profile changes
   useEffect(() => {
     if (profile) {
-      if (!captainFullName && profile.full_name) setCaptainFullName(profile.full_name);
-      if (!captainIin && profile.iin) setCaptainIin(profile.iin);
-      if (!captainPhone && profile.phone) setCaptainPhone(profile.phone);
-      if (!captainSchool && profile.school) setCaptainSchool(profile.school);
-      if (!captainCity && profile.city) setCaptainCity(profile.city);
-      if (!captainTelegram && profile.telegram) setCaptainTelegram(profile.telegram);
+      setCaptainFullName(profile.full_name || "");
+      setCaptainIin(profile.iin || "");
+      setCaptainPhone(profile.phone || "");
+      setCaptainSchool(profile.school || "");
+      setCaptainCity(profile.city || "");
+      setCaptainTelegram(profile.telegram || "");
+      setCaptainGrade(profile.grade?.toString() || "");
     }
   }, [profile]);
+
+  // Refetch profile when user comes to the page to ensure latest data
+  useEffect(() => {
+    if (user && refetch) {
+      refetch();
+    }
+  }, [user, refetch]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
