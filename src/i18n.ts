@@ -1314,9 +1314,87 @@ const resources = {
         title: 'Privacy Policy',
         subtitle: 'The procedure for collecting, processing, storing, using and protecting personal information of users.',
         content: {
-          intro: 'This Privacy Policy (hereinafter referred to as the Policy) regulates the procedure for collecting, processing, storing, using and protecting personal information of users of the website https://www.aeroo.space/ (hereinafter referred to as the Site).',
-          description: 'The Site provides the opportunity to register for participation in educational courses, competitions, events, as well as to receive informational materials. The data administrator is LLP "AEROO" (hereinafter referred to as the Company).',
-          agreement: 'By using the Site, the User confirms their agreement with the terms of this Policy. If the User does not agree with the terms, they must stop using the Site.'
+          intro: 'This Privacy Policy (hereinafter — the Policy) governs the collection, processing, storage, use, and protection of personal information of users of the website https://www.aeroo.space/ (hereinafter — the Website).',
+          description: 'The Website provides the opportunity to register for participation in educational courses, competitions, events, as well as to receive informational materials. The data controller is LLP "AEROO" (hereinafter — the Company).',
+          agreement: 'By using the Website, the User confirms their consent to the terms of this Policy. If the User does not agree with the terms, they must stop using the Website.',
+          section1: {
+            title: '1. Personal Information of Users',
+            subtitle1: '1.1. Collected information',
+            intro1: 'The Company collects the following categories of personal data:',
+            identification: 'Identification data: first name, last name, age (to verify eligibility for age categories);',
+            contact: 'Contact data: phone number, email address;',
+            educational: 'Educational data: place of study, grade or course of study, achievements;',
+            technical: 'Technical data: IP address, browser type, information about the user\'s device.',
+            subtitle2: '1.2. Data sources',
+            sources: 'The data is provided voluntarily by the User during registration on the Website, when filling out forms, or submitting applications to participate in events or courses.',
+            subtitle3: '1.3. Cookies and technical information',
+            cookies: 'The Website may automatically collect technical information using cookies. This data is used for traffic analysis, optimization of the Website, and improving user experience.',
+            subtitle4: '1.4. Processing of minors\' data',
+            minors: 'If the User is under 18 years old, registration is possible only with the consent of parents or legal guardians.'
+          },
+          section2: {
+            title: '2. Purposes of Processing Personal Information',
+            intro: 'The personal information of Users is processed for the following purposes:',
+            purpose1: 'Registration for educational courses, competitions, and events organized by the Company;',
+            purpose2: 'Organization of the learning process, distribution of materials, and management of access to educational resources;',
+            purpose3: 'Informing about participation conditions, updates, and schedule changes of events;',
+            purpose4: 'Preparation of certificates, diplomas, and other confirming documents;',
+            purpose5: 'Conducting statistical and analytical research to improve the quality of services provided;',
+            purpose6: 'Informing about new events, courses, and promotions of the Company (subject to the User\'s consent).'
+          },
+          section3: {
+            title: '3. Conditions of Processing Personal Information',
+            subtitle1: '3.1. User consent',
+            consent: 'The processing of personal data is carried out only based on the voluntary consent of the User, expressed by filling out registration forms on the Website.',
+            subtitle2: '3.2. Data transfer',
+            transferIntro: 'The Company may transfer personal data to third parties in the following cases:',
+            transfer1: 'To fulfill obligations (for example, to partners providing educational resources or organizing events);',
+            transfer2: 'With the explicit consent of the User;',
+            transfer3: 'In cases provided for by the legislation of the Republic of Kazakhstan (e.g., at the request of government authorities).',
+            subtitle3: '3.3. Data storage',
+            storage: 'Users\' personal information is stored for the period necessary to achieve the purposes of processing, but not longer than 5 years after the completion of events, unless a longer storage period is required by law.',
+            subtitle4: '3.4. Data deletion',
+            deletion: 'The User has the right to request the deletion of their data by sending a request to the Company\'s email: info@aeroo.space.'
+          },
+          section4: {
+            title: '4. Protection of Personal Information',
+            subtitle1: '4.1. Security measures',
+            intro: 'The Company applies modern technical and organizational measures to protect personal data from:',
+            measure1: 'Unauthorized access and alteration;',
+            measure2: 'Loss, destruction, or leakage;',
+            measure3: 'Other unlawful actions.',
+            subtitle2: '4.2. Access to data',
+            access: 'Access to personal information is granted only to authorized employees of the Company, who have received training in the field of personal data handling.',
+            subtitle3: '4.3. Incident response',
+            incident: 'In the event of a data breach or other security incident, the Company will notify Users and the competent authorities within the time frame established by law.'
+          },
+          section5: {
+            title: '5. User Rights',
+            subtitle: '5.1. The User has the right to:',
+            right1: 'Obtain information about the purposes and methods of processing their data;',
+            right2: 'Request a copy of their personal data processed by the Company;',
+            right3: 'Require correction or deletion of their data;',
+            right4: 'Withdraw consent to the processing of data;',
+            right5: 'Restrict the use of their data within the framework of the law.',
+            subtitle2: '5.2. Requests',
+            requests: 'To exercise these rights, the User may send a request to info@aeroo.space. The request will be processed within 30 business days.'
+          },
+          section6: {
+            title: '6. Dispute Resolution',
+            subtitle1: '6.1. Pre-trial settlement',
+            pretrial: 'All disputes arising in connection with the processing of personal data shall be resolved in a pre-trial procedure.',
+            subtitle2: '6.2. Court jurisdiction',
+            court: 'If it is not possible to resolve the dispute in a pre-trial procedure, it shall be submitted to the court at the place of registration of the Company in accordance with the legislation of the Republic of Kazakhstan.'
+          },
+          section7: {
+            title: '7. Changes and Amendments',
+            subtitle1: '7.1. Updates',
+            updates: 'The Company has the right to amend this Policy. The current version of the Policy is available at: https://www.aeroo.space/policy/.',
+            subtitle2: '7.2. Effective date',
+            effective: 'The new version of the Policy comes into force from the moment of its publication, unless otherwise provided by the Policy or legislation.',
+            subtitle3: '7.3. Notifications',
+            notifications: 'The Company notifies Users of significant changes to the Policy by publishing a notice on the Website or by sending informational emails to the Users\' contact details.'
+          }
         }
       }
     }
