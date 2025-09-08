@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const SOCIAL_LINKS = [
-  { name: "Instagram", href: "https://www.instagram.com/aeroo.space/", icon: Instagram },
+  { name: "Instagram", href: "https://instagram.com/aeroo.space", icon: Instagram },
   { name: "Telegram", href: "https://t.me/+5nKRCrdTXT05YThi", icon: Send },
-  { name: "WhatsApp", href: "https://wa.me/+77770990300", icon: MessageCircle },
+  { name: "WhatsApp", href: "https://wa.me/77770990300", icon: MessageCircle },
   { name: "Email", href: "mailto:info@aeroo.space?subject=Вопрос%20по%20AEROO", icon: Mail }
 ];
 
@@ -98,6 +98,7 @@ export function Footer() {
                       target="_blank" 
                       rel="noopener noreferrer" 
                       aria-label={social.name}
+                      onClick={(e) => { e.preventDefault(); window.open(social.href, '_blank', 'noopener,noreferrer'); }}
                     >
                       <Icon className="h-5 w-5" />
                     </a>
