@@ -18,7 +18,8 @@ const FOOTER_LINKS = [
       { name: "Соревнования", href: "/competitions" },
       { name: "Курсы", href: "/courses" },
       { name: "Продукты", href: "/products" },
-      { name: "О нас", href: "/about" }
+      { name: "О нас", href: "/about" },
+      { name: "Карьера", href: "/careers" }
     ]
   },
   {

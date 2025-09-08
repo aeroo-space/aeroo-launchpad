@@ -10,6 +10,7 @@ import Courses from "./pages/Courses";
 import Products from "./pages/Products";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import Careers from "./pages/Careers";
 import Community from "./pages/Community";
 import Support from "./pages/Support";
 import FAQ from "./pages/FAQ";
@@ -47,7 +48,8 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/community" element={<Community />} />
               <Route path="/support" element={<Support />} />
-              <Route path="/contacts" element={<Contacts />} />
+            <Route path="/careers" element={<Careers />} />
+            <Route path="/contacts" element={<Contacts />} />
               <Route path="/faq" element={<FAQ />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
