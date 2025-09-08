@@ -105,17 +105,12 @@ export function TestimonialsSection() {
                   })}"
                 </blockquote>
 
-                {/* Author Info */}
+                {/* Author Position Only */}
                 <footer className="border-t border-border/50 pt-4">
                   <div className="text-sm">
-                    <div className="font-semibold text-foreground">
-                      {t(`home.testimonials.items.${testimonial.id}.author`, { 
-                        defaultValue: 'Автор' 
-                      })}
-                    </div>
-                    <div className="text-muted-foreground">
+                    <div className="text-muted-foreground font-medium">
                       {t(`home.testimonials.items.${testimonial.id}.position`, { 
-                        defaultValue: 'Должность' 
+                        defaultValue: "Должность" 
                       })}
                     </div>
                   </div>
