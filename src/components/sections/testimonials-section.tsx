@@ -105,16 +105,6 @@ export function TestimonialsSection() {
                   })}"
                 </blockquote>
 
-                {/* Author Position Only */}
-                <footer className="border-t border-border/50 pt-4">
-                  <div className="text-sm">
-                    <div className="text-muted-foreground font-medium">
-                      {t(`home.testimonials.items.${testimonial.id}.position`, { 
-                        defaultValue: "Должность" 
-                      })}
-                    </div>
-                  </div>
-                </footer>
               </article>
             );
           })}
