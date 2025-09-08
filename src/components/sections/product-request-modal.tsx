@@ -4,6 +4,9 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthProvider";
+import { toast } from "@/components/ui/sonner";
 
 export type ProductOption = { id: string; title: string };
 
@@ -16,11 +19,13 @@ interface Props {
 }
 
 export function ProductRequestModal({ open, onOpenChange, products, selectedProductId, onSubmitted }: Props) {
+  const { user } = useAuth();
   const [productId, setProductId] = useState<string>(selectedProductId ?? products[0]?.id ?? "");
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     if (selectedProductId) setProductId(selectedProductId);
@@ -35,10 +40,36 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // TODO: Отправка в Supabase (таблица leads/requests). Сейчас — заглушка UI.
-    onSubmitted?.();
-    onOpenChange(false);
-    reset();
+    setSubmitting(true);
+
+    try {
+      const { error } = await supabase.from("product_requests").insert({
+        user_id: user?.id || null,
+        product_id: productId,
+        name,
+        email,
+        organization: org || null,
+        comment: comment || null,
+        status: 'pending'
+      });
+
+      if (error) throw error;
+
+      toast("Заявка отправлена!", { 
+        description: "Мы свяжемся с вами в ближайшее время" 
+      });
+      
+      onSubmitted?.();
+      onOpenChange(false);
+      reset();
+    } catch (error) {
+      console.error("Error submitting request:", error);
+      toast("Ошибка отправки", { 
+        description: "Попробуйте снова или свяжитесь с нами напрямую" 
+      });
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -91,8 +122,8 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Отмена
             </Button>
-            <Button type="submit" className="btn-cosmic">
-              Отправить
+            <Button type="submit" className="btn-cosmic" disabled={submitting}>
+              {submitting ? "Отправка..." : "Отправить"}
             </Button>
           </div>
         </form>

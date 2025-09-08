@@ -22,6 +22,7 @@ import Dashboard from "./pages/Dashboard";
 import CompetitionSatelliteLaunch2026 from "./pages/CompetitionSatelliteLaunch2026";
 import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement2025";
 import EnrollPage from "./pages/Enroll";
+import ProductRequestsPage from "./pages/ProductRequests";
 import RocketScienceKit from "./pages/RocketScienceKit";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
@@ -64,6 +65,11 @@ const App = () => (
               <Route path="/enroll/:competitionId" element={
                 <ProtectedRoute>
                   <EnrollPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/product-requests" element={
+                <ProtectedRoute>
+                  <ProductRequestsPage />
                 </ProtectedRoute>
               } />
               <Route path="/products/rocket-science-kit" element={<RocketScienceKit />} />
