@@ -321,6 +321,158 @@ const resources = {
           cookies: 'Cookies'
         }
       },
+      // Products page translations
+      products: {
+        metaTitle: 'Продукты AEROO — наборы и конструкторы',
+        hero: {
+          title: 'Продукты AEROO',
+          subtitle: 'Образовательные комплекты для изучения аэрокосмических технологий. От простых моделей ракет до сложных наноспутников.'
+        },
+        advantages: {
+          title: 'Преимущества наших наборов',
+          items: {
+            0: {
+              title: 'Инновационные технологии',
+              desc: 'Используем последние достижения в области аэрокосмических технологий'
+            },
+            1: {
+              title: 'Полная безопасность',
+              desc: 'Все наборы проходят строгую сертификацию и тестирование'
+            },
+            2: {
+              title: 'Поддержка экспертов',
+              desc: 'Техническая поддержка и консультации от наших инженеров'
+            }
+          }
+        },
+        grid: {
+          title: 'Наши продукты'
+        },
+        items: {
+          'rocket-kit': {
+            title: 'Rocket Science Kit',
+            description: 'Образовательный комплект для изучения основ ракетостроения и аэродинамики',
+            category: 'Ракеты',
+            features: {
+              0: 'Безопасные двигатели',
+              1: 'Конструктор ракеты',
+              2: 'Создай свою ракету',
+              3: 'Симуляция запуска'
+            }
+          },
+          'cansat-kit': {
+            title: 'CanSat Kit',
+            description: 'Для сборки и запуска спутника формата CanSat на борту модельной ракеты',
+            category: 'Ракеты',
+            features: {
+              0: 'Продвинутая модель ракеты',
+              1: 'Работа с электроникой',
+              2: 'Данные в режиме реального времени',
+              3: 'Полезная нагрузка'
+            }
+          },
+          'satellite-kit': {
+            title: 'CubeSat Kit',
+            description: 'Спутник с возможностью запуска в стратосферу для проведения реальных научных экспериментов',
+            category: 'Спутники',
+            features: {
+              0: 'Солнечные панели',
+              1: 'Радиосистема LoRa',
+              2: 'Бортовой компьютер',
+              3: 'Датчики'
+            }
+          },
+          'football-drone-kit': {
+            title: 'Drone Football Kit',
+            description: 'Комплект для матчей в дрон-футбол — управляй дроном, соревнуйся и развивай командный дух',
+            category: 'Дроны',
+            features: {
+              0: 'Безопасный полет',
+              1: 'Тренировочная сетка и ворота',
+              2: 'Спортивный дух',
+              3: 'Стратегическое мышление'
+            }
+          }
+        },
+        inStock: 'В наличии',
+        outOfStock: 'Нет в наличии',
+        includes: 'Что входит в набор:',
+        cta: {
+          details: 'Подробнее',
+          request: 'Оставить заявку',
+          notify: 'Сообщить о поступлении'
+        },
+        detailsNotReady: 'Детальная страница в разработке',
+        detailsComingSoon: 'Скоро будет доступна подробная информация о продукте',
+        help: {
+          title: 'Нужна консультация?',
+          desc: 'Наши эксперты помогут выбрать подходящий набор для вашего уровня подготовки и образовательных целей. Свяжитесь с нами для персональной консультации.'
+        },
+        catalog: {
+          download: 'Скачать каталог',
+          soon: 'Каталог скоро',
+          pdfLater: 'PDF-каталог будет доступен позже'
+        },
+        request: {
+          sent: 'Заявка отправлена',
+          weWillContact: 'Мы свяжемся с вами по email'
+        }
+      },
+      // Dashboard page translations
+      dashboard: {
+        title: 'Личный кабинет — AEROO',
+        logout: 'Выйти',
+        profile: 'Профиль',
+        loading: 'Загрузка...',
+        email: 'Email',
+        fullName: 'ФИО',
+        iin: 'ИИН',
+        phone: 'Телефон',
+        telegram: 'Telegram',
+        school: 'Школа/Университет',
+        city: 'Город',
+        grade: 'Класс/Курс',
+        age: 'Возраст',
+        fieldUpdated: 'Поле обновлено',
+        fieldUpdateError: 'Ошибка обновления',
+        registrations: 'Мои регистрации',
+        noRegistrations: 'У вас пока нет активных регистраций на соревнования.',
+        competition: 'Соревнование',
+        registeredAt: 'Дата регистрации',
+        status: 'Статус',
+        actions: 'Действия',
+        edit: 'Редактировать',
+        delete: 'Удалить',
+        deleteConfirm: 'Вы уверены?',
+        deleteDescription: 'Это действие нельзя отменить. Регистрация будет удалена безвозвратно.',
+        changePassword: 'Сменить пароль',
+        currentPassword: 'Текущий пароль',
+        newPassword: 'Новый пароль',
+        confirmPassword: 'Подтвердите пароль'
+      },
+      // Profile setup dialog translations
+      profileSetup: {
+        title: 'Завершите настройку профиля',
+        description: 'Пожалуйста, заполните информацию о себе для завершения регистрации.',
+        fullName: 'ФИО',
+        fullNamePlaceholder: 'Иванов Иван Иванович',
+        iin: 'ИИН',
+        iinPlaceholder: '123456789012',
+        phone: 'Телефон',
+        phonePlaceholder: '+7 700 000 00 00',
+        telegram: 'Telegram',
+        telegramPlaceholder: '@username',
+        school: 'Учебное заведение',
+        schoolPlaceholder: 'Название школы/ВУЗа',
+        city: 'Город',
+        cityPlaceholder: 'Алматы',
+        grade: 'Класс/Курс обучения',
+        gradePlaceholder: '11',
+        submit: 'Завершить регистрацию',
+        submitting: 'Сохранение...',
+        success: 'Профиль успешно создан!',
+        error: 'Ошибка при создании профиля'
+      },
       dashboardExtra: {
         // Дополнительные подписи для страницы кабинета
         labels: {
@@ -646,25 +798,178 @@ const resources = {
           cookies: 'Cookies'
         }
       },
-      dashboardExtra: {
-        labels: {
-          team: 'Team',
-          email: 'Email',
-          telegram: 'Telegram',
-          captain: 'Captain',
-          captainPhone: 'Captain phone',
-          captainAge: 'Captain age',
-          city: 'City',
-          studyPlace: 'Place of study',
-          source: 'Source',
-          participant2: '2nd participant',
-          participant3: '3rd participant',
-          participant4: '4th participant',
-          status: 'Status'
+      // Products page translations
+      products: {
+          metaTitle: 'AEROO Products — kits and constructors',
+          hero: {
+            title: 'AEROO Products',
+            subtitle: 'Educational kits for studying aerospace technologies. From simple rocket models to complex nanosatellites.'
+          },
+          advantages: {
+            title: 'Advantages of our kits',
+            items: {
+              0: {
+                title: 'Innovative technologies',
+                desc: 'We use the latest achievements in aerospace technologies'
+              },
+              1: {
+                title: 'Complete safety',
+                desc: 'All kits undergo strict certification and testing'
+              },
+              2: {
+                title: 'Expert support',
+                desc: 'Technical support and consultations from our engineers'
+              }
+            }
+          },
+          grid: {
+            title: 'Our products'
+          },
+          items: {
+            'rocket-kit': {
+              title: 'Rocket Science Kit',
+              description: 'Educational kit for studying the basics of rocket science and aerodynamics',
+              category: 'Rockets',
+              features: {
+                0: 'Safe engines',
+                1: 'Rocket constructor',
+                2: 'Build your rocket',
+                3: 'Launch simulation'
+              }
+            },
+            'cansat-kit': {
+              title: 'CanSat Kit',
+              description: 'For assembling and launching a CanSat format satellite aboard a model rocket',
+              category: 'Rockets',
+              features: {
+                0: 'Advanced rocket model',
+                1: 'Electronics work',
+                2: 'Real-time data',
+                3: 'Payload'
+              }
+            },
+            'satellite-kit': {
+              title: 'CubeSat Kit',
+              description: 'Satellite with the ability to launch into the stratosphere for conducting real scientific experiments',
+              category: 'Satellites',
+              features: {
+                0: 'Solar panels',
+                1: 'LoRa radio system',
+                2: 'Onboard computer',
+                3: 'Sensors'
+              }
+            },
+            'football-drone-kit': {
+              title: 'Drone Football Kit',
+              description: 'Kit for drone football matches — control the drone, compete and develop team spirit',
+              category: 'Drones',
+              features: {
+                0: 'Safe flight',
+                1: 'Training net and goals',
+                2: 'Sporting spirit',
+                3: 'Strategic thinking'
+              }
+            }
+          },
+          inStock: 'In stock',
+          outOfStock: 'Out of stock',
+          includes: 'What\'s included in the kit:',
+          cta: {
+            details: 'Details',
+            request: 'Request',
+            notify: 'Notify when available'
+          },
+          detailsNotReady: 'Detail page under development',
+          detailsComingSoon: 'Detailed product information will be available soon',
+          help: {
+            title: 'Need consultation?',
+            desc: 'Our experts will help you choose the right kit for your skill level and educational goals. Contact us for a personalized consultation.'
+          },
+          catalog: {
+            download: 'Download catalog',
+            soon: 'Catalog coming soon',
+            pdfLater: 'PDF catalog will be available later'
+          },
+          request: {
+            sent: 'Request sent',
+            weWillContact: 'We will contact you by email'
+          }
         },
-        actions: { edit: 'Edit', delete: 'Delete', cancel: 'Cancel', confirmDelete: 'Delete' },
-        confirm: { title: 'Delete registration?', desc: 'This action is irreversible. Your competition entry will be deleted.' },
-        toasts: { deleteSuccess: 'Registration deleted', deleteError: 'Failed to delete' }
+      // Dashboard page translations
+      dashboard: {
+          title: 'Dashboard — AEROO',
+          logout: 'Logout',
+          profile: 'Profile',
+          loading: 'Loading...',
+          email: 'Email',
+          fullName: 'Full Name',
+          iin: 'IIN',
+          phone: 'Phone',
+          telegram: 'Telegram',
+          school: 'School/University',
+          city: 'City',
+          grade: 'Grade/Course',
+          age: 'Age',
+          fieldUpdated: 'Field updated',
+          fieldUpdateError: 'Update error',
+          registrations: 'My Registrations',
+          noRegistrations: 'You don\'t have any active competition registrations yet.',
+          competition: 'Competition',
+          registeredAt: 'Registration Date',
+          status: 'Status',
+          actions: 'Actions',
+          edit: 'Edit',
+          delete: 'Delete',
+          deleteConfirm: 'Are you sure?',
+          deleteDescription: 'This action cannot be undone. The registration will be permanently deleted.',
+          changePassword: 'Change Password',
+          currentPassword: 'Current Password',
+          newPassword: 'New Password',
+          confirmPassword: 'Confirm Password'
+        },
+      // Profile setup dialog translations
+      profileSetup: {
+          title: 'Complete profile setup',
+          description: 'Please fill in your information to complete registration.',
+          fullName: 'Full Name',
+          fullNamePlaceholder: 'John Smith',
+          iin: 'IIN',
+          iinPlaceholder: '123456789012',
+          phone: 'Phone',
+          phonePlaceholder: '+7 700 000 00 00',
+          telegram: 'Telegram',
+          telegramPlaceholder: '@username',
+          school: 'Educational Institution',
+          schoolPlaceholder: 'School/University name',
+          city: 'City',
+          cityPlaceholder: 'Almaty',
+          grade: 'Grade/Course',
+          gradePlaceholder: '11',
+          submit: 'Complete registration',
+          submitting: 'Saving...',
+          success: 'Profile successfully created!',
+          error: 'Error creating profile'
+        },
+      dashboardExtra: {
+          labels: {
+            team: 'Team',
+            email: 'Email',
+            telegram: 'Telegram',
+            captain: 'Captain',
+            captainPhone: 'Captain phone',
+            captainAge: 'Captain age',
+            city: 'City',
+            studyPlace: 'Place of study',
+            source: 'Source',
+            participant2: '2nd participant',
+            participant3: '3rd participant',
+            participant4: '4th participant',
+            status: 'Status'
+          },
+          actions: { edit: 'Edit', delete: 'Delete', cancel: 'Cancel', confirmDelete: 'Delete' },
+          confirm: { title: 'Delete registration?', desc: 'This action is irreversible. Your competition entry will be deleted.' },
+          toasts: { deleteSuccess: 'Registration deleted', deleteError: 'Failed to delete' }
+        }
       }
     }
   },
@@ -980,6 +1285,310 @@ const resources = {
           terms: 'Пайдалану шарттары',
           cookies: 'Cookies'
         }
+      },
+      // Products page translations
+      products: {
+        metaTitle: 'AEROO өнімдері — жиынтықтар мен конструкторлар',
+        hero: {
+          title: 'AEROO өнімдері',
+          subtitle: 'Аэроғарыштық технологияларды зерттеуге арналған білім беру жиынтықтары. Қарапайым ракета үлгілерінен күрделі наноспутниктерге дейін.'
+        },
+        advantages: {
+          title: 'Біздің жиынтықтардың артықшылықтары',
+          items: {
+            0: {
+              title: 'Инновациялық технологиялар',
+              desc: 'Аэроғарыштық технологиялар саласындағы соңғы жетістіктерді қолданамыз'
+            },
+            1: {
+              title: 'Толық қауіпсіздік',
+              desc: 'Барлық жиынтықтар қатаң сертификаттау мен тестілеуден өтеді'
+            },
+            2: {
+              title: 'Сарапшылардың қолдауы',
+              desc: 'Біздің инженерлердің техникалық қолдауы мен кеңестері'
+            }
+          }
+        },
+        grid: {
+          title: 'Біздің өнімдер'
+        },
+        items: {
+          'rocket-kit': {
+            title: 'Rocket Science Kit',
+            description: 'Ракета жасау және аэродинамика негіздерін үйренуге арналған білім беру жиынтығы',
+            category: 'Ракеталар',
+            features: {
+              0: 'Қауіпсіз қозғалтқыштар',
+              1: 'Ракета конструкторы',
+              2: 'Өз ракетаңды жаса',
+              3: 'Ұшыру симуляциясы'
+            }
+          },
+          'cansat-kit': {
+            title: 'CanSat Kit',
+            description: 'CanSat пішіндегі серіктік үлгілік ракетада құрастыру және ұшыруға арналған',
+            category: 'Ракеталар',
+            features: {
+              0: 'Озық ракета үлгісі',
+              1: 'Электроникамен жұмыс',
+              2: 'Нақты уақыттағы мәліметтер',
+              3: 'Пайдалы жүк'
+            }
+          },
+          'satellite-kit': {
+            title: 'CubeSat Kit',
+            description: 'Нақты ғылыми тәжірибелер жүргізу үшін стратосфераға ұшыру мүмкіндігі бар серіктік',
+            category: 'Серіктіктер',
+            features: {
+              0: 'Күн панельдері',
+              1: 'LoRa радиожүйесі',
+              2: 'Борттық компьютер',
+              3: 'Сенсорлар'
+            }
+          },
+          'football-drone-kit': {
+            title: 'Drone Football Kit',
+            description: 'Дрон футболындағы матчтарға арналған жиынтық — дронды басқар, жарыс және командалық рухты дамыт',
+            category: 'Дрондар',
+            features: {
+              0: 'Қауіпсіз ұшу',
+              1: 'Жаттығу тор мен қақпалар',
+              2: 'Спорттық рух',
+              3: 'Стратегиялық ойлау'
+            }
+          }
+        },
+        inStock: 'Қойымда бар',
+        outOfStock: 'Қойымда жоқ',
+        includes: 'Жиынтыққа кіретіндер:',
+        cta: {
+          details: 'Толығырақ',
+          request: 'Өтінім қалдыру',
+          notify: 'Келу туралы хабарлау'
+        },
+        detailsNotReady: 'Толық бет әзірленуде',
+        detailsComingSoon: 'Өнім туралы толық ақпарат жақында қол жетімді болады',
+        help: {
+          title: 'Кеңес керек пе?',
+          desc: 'Біздің сарапшылар сіздің дайындық деңгейіңіз бен білім беру мақсаттарыңызға сәйкес жиынтық таңдауға көмектеседі. Жеке кеңес алу үшін бізбен байланысыңыз.'
+        },
+        catalog: {
+          download: 'Каталогты жүктеп алу',
+          soon: 'Каталог жақында',
+          pdfLater: 'PDF-каталог кейінірек қол жетімді болады'
+        },
+        request: {
+          sent: 'Өтінім жіберілді',
+          weWillContact: 'Біз сізбен email арқылы байланысамыз'
+        }
+      },
+      // Dashboard page translations
+      dashboard: {
+        title: 'Жеке кабинет — AEROO',
+        logout: 'Шығу',
+        profile: 'Профиль',
+        loading: 'Жүктелуде...',
+        email: 'Email',
+        fullName: 'Аты-жөні',
+        iin: 'ЖСН',
+        phone: 'Телефон',
+        telegram: 'Telegram',
+        school: 'Мектеп/Университет',
+        city: 'Қала',
+        grade: 'Сынып/Курс',
+        age: 'Жас',
+        fieldUpdated: 'Өріс жаңартылды',
+        fieldUpdateError: 'Жаңарту қатесі',
+        registrations: 'Менің тіркелімдерім',
+        noRegistrations: 'Сізде әлі белсенді жарыс тіркелімдері жоқ.',
+        competition: 'Жарыс',
+        registeredAt: 'Тіркелу күні',
+        status: 'Мәртебе',
+        actions: 'Әрекеттер',
+        edit: 'Өңдеу',
+        delete: 'Жою',
+        deleteConfirm: 'Сіз сенімдісіз бе?',
+        deleteDescription: 'Бұл әрекетті болдырмауға болмайды. Тіркелім мәңгіге жойылады.',
+        changePassword: 'Құпия сөзді өзгерту',
+        currentPassword: 'Ағымдағы құпия сөз',
+        newPassword: 'Жаңа құпия сөз',
+        confirmPassword: 'Құпия сөзді растау'
+      },
+      // Profile setup dialog translations
+      profileSetup: {
+        title: 'Профиль орнатуын аяқтаңыз',
+        description: 'Тіркелуді аяқтау үшін өзіңіз туралы ақпаратты толтырыңыз.',
+        fullName: 'Аты-жөні',
+        fullNamePlaceholder: 'Иванов Иван Иванович',
+        iin: 'ЖСН',
+        iinPlaceholder: '123456789012',
+        phone: 'Телефон',
+        phonePlaceholder: '+7 700 000 00 00',
+        telegram: 'Telegram',
+        telegramPlaceholder: '@username',
+        school: 'Білім беру мекемесі',
+        schoolPlaceholder: 'Мектеп/ЖОО атауы',
+        city: 'Қала',
+        cityPlaceholder: 'Алматы',
+        grade: 'Сынып/Курс',
+        gradePlaceholder: '11',
+        submit: 'Тіркелуді аяқтау',
+        submitting: 'Сақталуда...',
+        success: 'Профиль сәтті жасалды!',
+        error: 'Профиль жасау қатесі'
+      },
+      // Products page translations
+      products: {
+        metaTitle: 'AEROO өнімдері — жиынтықтар мен конструкторлар',
+        hero: {
+          title: 'AEROO өнімдері',
+          subtitle: 'Аэроғарыштық технологияларды зерттеуге арналған білім беру жиынтықтары. Қарапайым ракета үлгілерінен күрделі наноспутниктерге дейін.'
+        },
+        advantages: {
+          title: 'Біздің жиынтықтардың артықшылықтары',
+          items: {
+            0: {
+              title: 'Инновациялық технологиялар',
+              desc: 'Аэроғарыштық технологиялар саласындағы соңғы жетістіктерді қолданамыз'
+            },
+            1: {
+              title: 'Толық қауіпсіздік',
+              desc: 'Барлық жиынтықтар қатаң сертификаттау мен тестілеуден өтеді'
+            },
+            2: {
+              title: 'Сарапшылардың қолдауы',
+              desc: 'Біздің инженерлердің техникалық қолдауы мен кеңестері'
+            }
+          }
+        },
+        grid: {
+          title: 'Біздің өнімдер'
+        },
+        items: {
+          'rocket-kit': {
+            title: 'Rocket Science Kit',
+            description: 'Ракета жасау және аэродинамика негіздерін үйренуге арналған білім беру жиынтығы',
+            category: 'Ракеталар',
+            features: {
+              0: 'Қауіпсіз қозғалтқыштар',
+              1: 'Ракета конструкторы',
+              2: 'Өз ракетаңды жаса',
+              3: 'Ұшыру симуляциясы'
+            }
+          },
+          'cansat-kit': {
+            title: 'CanSat Kit',
+            description: 'CanSat пішіндегі серіктік үлгілік ракетада құрастыру және ұшыруға арналған',
+            category: 'Ракеталар',
+            features: {
+              0: 'Озық ракета үлгісі',
+              1: 'Электроникамен жұмыс',
+              2: 'Нақты уақыттағы мәліметтер',
+              3: 'Пайдалы жүк'
+            }
+          },
+          'satellite-kit': {
+            title: 'CubeSat Kit',
+            description: 'Нақты ғылыми тәжірибелер жүргізу үшін стратосфераға ұшыру мүмкіндігі бар серіктік',
+            category: 'Серіктіктер',
+            features: {
+              0: 'Күн панельдері',
+              1: 'LoRa радиожүйесі',
+              2: 'Борттық компьютер',
+              3: 'Сенсорлар'
+            }
+          },
+          'football-drone-kit': {
+            title: 'Drone Football Kit',
+            description: 'Дрон футболындағы матчтарға арналған жиынтық — дронды басқар, жарыс және командалық рухты дамыт',
+            category: 'Дрондар',
+            features: {
+              0: 'Қауіпсіз ұшу',
+              1: 'Жаттығу тор мен қақпалар',
+              2: 'Спорттық рух',
+              3: 'Стратегиялық ойлау'
+            }
+          }
+        },
+        inStock: 'Қойымда бар',
+        outOfStock: 'Қойымда жоқ',
+        includes: 'Жиынтыққа кіретіндер:',
+        cta: {
+          details: 'Толығырақ',
+          request: 'Өтінім қалдыру',
+          notify: 'Келу туралы хабарлау'
+        },
+        detailsNotReady: 'Толық бет әзірленуде',
+        detailsComingSoon: 'Өнім туралы толық ақпарат жақында қол жетімді болады',
+        help: {
+          title: 'Кеңес керек пе?',
+          desc: 'Біздің сарапшылар сіздің дайындық деңгейіңіз бен білім беру мақсаттарыңызға сәйкес жиынтық таңдауға көмектеседі. Жеке кеңес алу үшін бізбен байланысыңыз.'
+        },
+        catalog: {
+          download: 'Каталогты жүктеп алу',
+          soon: 'Каталог жақында',
+          pdfLater: 'PDF-каталог кейінірек қол жетімді болады'
+        },
+        request: {
+          sent: 'Өтінім жіберілді',
+          weWillContact: 'Біз сізбен email арқылы байланысамыз'
+        }
+      },
+      // Dashboard page translations
+      dashboard: {
+        title: 'Жеке кабинет — AEROO',
+        logout: 'Шығу',
+        profile: 'Профиль',
+        loading: 'Жүктелуде...',
+        email: 'Email',
+        fullName: 'Аты-жөні',
+        iin: 'ЖСН',
+        phone: 'Телефон',
+        telegram: 'Telegram',
+        school: 'Мектеп/Университет',
+        city: 'Қала',
+        grade: 'Сынып/Курс',
+        age: 'Жас',
+        fieldUpdated: 'Өріс жаңартылды',
+        fieldUpdateError: 'Жаңарту қатесі',
+        registrations: 'Менің тіркелімдерім',
+        noRegistrations: 'Сізде әлі белсенді жарыс тіркелімдері жоқ.',
+        competition: 'Жарыс',
+        registeredAt: 'Тіркелу күні',
+        status: 'Мәртебе',
+        actions: 'Әрекеттер',
+        edit: 'Өңдеу',
+        delete: 'Жою',
+        deleteConfirm: 'Сіз сенімдісіз бе?',
+        deleteDescription: 'Бұл әрекетті болдырмауға болмайды. Тіркелім мәңгіге жойылады.',
+        changePassword: 'Құпия сөзді өзгерту',
+        currentPassword: 'Ағымдағы құпия сөз',
+        newPassword: 'Жаңа құпия сөз',
+        confirmPassword: 'Құпия сөзді растау'
+      },
+      // Profile setup dialog translations
+      profileSetup: {
+        title: 'Профиль орнатуын аяқтаңыз',
+        description: 'Тіркелуді аяқтау үшін өзіңіз туралы ақпаратты толтырыңыз.',
+        fullName: 'Аты-жөні',
+        fullNamePlaceholder: 'Иванов Иван Иванович',
+        iin: 'ЖСН',
+        iinPlaceholder: '123456789012',
+        phone: 'Телефон',
+        phonePlaceholder: '+7 700 000 00 00',
+        telegram: 'Telegram',
+        telegramPlaceholder: '@username',
+        school: 'Білім беру мекемесі',
+        schoolPlaceholder: 'Мектеп/ЖОО атауы',
+        city: 'Қала',
+        cityPlaceholder: 'Алматы',
+        grade: 'Сынып/Курс',
+        gradePlaceholder: '11',
+        submit: 'Тіркелуді аяқтау',
+        submitting: 'Сақталуда...',
+        success: 'Профиль сәтті жасалды!',
+        error: 'Профиль жасау қатесі'
       },
       dashboardExtra: {
         labels: {

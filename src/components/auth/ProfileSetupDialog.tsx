@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { User } from "@supabase/supabase-js";
+import { useTranslation } from "react-i18next";
 
 interface ProfileSetupDialogProps {
   user: User;
@@ -14,6 +15,7 @@ interface ProfileSetupDialogProps {
 }
 
 export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialogProps) {
+  const { t } = useTranslation();
   const [fullName, setFullName] = useState("");
   const [iin, setIin] = useState("");
   const [phone, setPhone] = useState("+7");
@@ -98,10 +100,10 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
 
       if (error) throw error;
 
-      toast.success("Профиль успешно создан!");
+      toast.success(t('profileSetup.success'));
       onComplete();
     } catch (error: any) {
-      toast.error("Ошибка при создании профиля", { description: error.message });
+      toast.error(t('profileSetup.error'), { description: error.message });
     } finally {
       setSubmitting(false);
     }
@@ -120,80 +122,80 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
           <span className="sr-only">Close</span>
         </button>
         <DialogHeader>
-          <DialogTitle>Завершите настройку профиля</DialogTitle>
+          <DialogTitle>{t('profileSetup.title')}</DialogTitle>
           <DialogDescription>
-            Пожалуйста, заполните информацию о себе для завершения регистрации.
+            {t('profileSetup.description')}
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="fullName">ФИО *</Label>
+            <Label htmlFor="fullName">{t('profileSetup.fullName')} *</Label>
             <Input
               id="fullName"
               value={fullName}
               onChange={handleFullNameChange}
-              placeholder="Иванов Иван Иванович"
+              placeholder={t('profileSetup.fullNamePlaceholder')}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="iin">ИИН *</Label>
+            <Label htmlFor="iin">{t('profileSetup.iin')} *</Label>
             <Input
               id="iin"
               value={iin}
               onChange={handleIinChange}
-              placeholder="123456789012"
+              placeholder={t('profileSetup.iinPlaceholder')}
               maxLength={12}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="phone">Телефон *</Label>
+            <Label htmlFor="phone">{t('profileSetup.phone')} *</Label>
             <Input
               id="phone"
               value={phone}
               onChange={handlePhoneChange}
-              placeholder="+7 700 000 00 00"
+              placeholder={t('profileSetup.phonePlaceholder')}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="telegram">Telegram *</Label>
+            <Label htmlFor="telegram">{t('profileSetup.telegram')} *</Label>
             <Input
               id="telegram"
               value={telegram}
               onChange={handleTelegramChange}
-              placeholder="@username"
+              placeholder={t('profileSetup.telegramPlaceholder')}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="school">Учебное заведение *</Label>
+            <Label htmlFor="school">{t('profileSetup.school')} *</Label>
             <Input
               id="school"
               value={school}
               onChange={(e) => setSchool(e.target.value)}
-              placeholder="Название школы/ВУЗа"
+              placeholder={t('profileSetup.schoolPlaceholder')}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="city">Город *</Label>
+            <Label htmlFor="city">{t('profileSetup.city')} *</Label>
             <Input
               id="city"
               value={city}
               onChange={(e) => setCity(e.target.value)}
-              placeholder="Алматы"
+              placeholder={t('profileSetup.cityPlaceholder')}
               required
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="grade">Класс/Курс обучения *</Label>
+            <Label htmlFor="grade">{t('profileSetup.grade')} *</Label>
             <Input
               id="grade"
               value={grade}
               onChange={handleGradeChange}
-              placeholder="11"
+              placeholder={t('profileSetup.gradePlaceholder')}
               required
             />
           </div>
@@ -202,7 +204,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             className="w-full"
             disabled={submitting || !isValid}
           >
-            {submitting ? "Сохранение..." : "Завершить регистрацию"}
+            {submitting ? t('profileSetup.submitting') : t('profileSetup.submit')}
           </Button>
         </form>
       </DialogContent>
