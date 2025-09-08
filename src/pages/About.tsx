@@ -25,7 +25,7 @@ const team = [
     name: "Мирас Нусупов",
     role: "CEO",
     bio: "Эксперт в области STEAM-образования и разработки образовательных продуктов",
-    image: "/placeholder.svg"
+    image: "/lovable-uploads/4545a519-7175-4528-aa72-a8ac5307ea4d.png"
   },
   {
     name: "Рыспай Алихан", 
@@ -146,8 +146,12 @@ const About = () => {
             {team.map((member, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
                 <CardHeader>
-                  <div className="aspect-square bg-muted rounded-lg mb-4 flex items-center justify-center">
-                    <Users className="h-16 w-16 text-muted-foreground" />
+                  <div className="aspect-square bg-muted rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                    {member.image !== "/placeholder.svg" ? (
+                      <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                    ) : (
+                      <Users className="h-16 w-16 text-muted-foreground" />
+                    )}
                   </div>
                   <CardTitle className="group-hover:text-primary transition-colors">
                     {member.name}
