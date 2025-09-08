@@ -20,21 +20,6 @@ const achievements = [
   { number: "5", labelKey: "countries", text: "страны", icon: Globe }
 ];
 
-const team = [
-  {
-    name: "Мирас Нусупов",
-    role: "CEO",
-    bio: "Эксперт в области STEAM-образования и разработки образовательных продуктов",
-    image: "/lovable-uploads/4545a519-7175-4528-aa72-a8ac5307ea4d.png"
-  },
-  {
-    name: "Рыспай Алихан", 
-    role: "COO",
-    bio: "6 лет в области STEAM-образования, ex CTO FIRST Robotics",
-    image: "/lovable-uploads/191e5103-1470-4cd9-b480-294ceb5290e1.png"
-  }
-];
-
 const partners = [
   "Digital & Space Ministry",
   "Energo University",
@@ -49,6 +34,21 @@ const partners = [
 
 const About = () => {
   const { t } = useTranslation();
+  
+  const team = [
+    {
+      nameKey: 'teamMembers.mirasName',
+      role: "CEO",
+      bio: "Эксперт в области STEAM-образования и разработки образовательных продуктов",
+      image: "/lovable-uploads/4545a519-7175-4528-aa72-a8ac5307ea4d.png"
+    },
+    {
+      nameKey: 'teamMembers.ryspayName', 
+      role: "COO",
+      bio: "6 лет в области STEAM-образования, ex CTO FIRST Robotics",
+      image: "/lovable-uploads/191e5103-1470-4cd9-b480-294ceb5290e1.png"
+    }
+  ];
   useEffect(() => {
     document.title = t('about.metaTitle', { defaultValue: 'О AEROO — миссия и команда' });
     const metaDesc = document.querySelector('meta[name="description"]');
@@ -148,13 +148,13 @@ const About = () => {
                 <CardHeader>
                   <div className="aspect-square bg-muted rounded-lg mb-4 flex items-center justify-center overflow-hidden">
                     {member.image !== "/placeholder.svg" ? (
-                      <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                      <img src={member.image} alt={t(`about.${member.nameKey}`, { defaultValue: member.nameKey.includes('miras') ? 'Мирас Нусупов' : 'Рыспай Алихан' })} className="w-full h-full object-cover" />
                     ) : (
                       <Users className="h-16 w-16 text-muted-foreground" />
                     )}
                   </div>
                   <CardTitle className="group-hover:text-primary transition-colors">
-                    {member.name}
+                    {t(`about.${member.nameKey}`, { defaultValue: member.nameKey.includes('miras') ? 'Мирас Нусупов' : 'Рыспай Алихан' })}
                   </CardTitle>
                   <CardDescription className="font-medium text-primary/70">
                     {member.role}

@@ -601,6 +601,42 @@ const resources = {
           desc: 'Это действие необратимо. Ваша запись в соревнование будет удалена.'
         },
         toasts: { deleteSuccess: 'Регистрация удалена', deleteError: 'Не удалось удалить' }
+      },
+      about: {
+        metaTitle: 'О AEROO — миссия и команда',
+        metaDesc: 'Образовательная экосистема AEROO: миссия, ценности, команда и партнёры',
+        heroTitle: 'О AEROO',
+        heroSubtitle: 'Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление в области аэрокосмических технологий.',
+        missionTitle: 'Наша миссия',
+        missionText: 'Создать образовательную экосистему, которая объединяет школьников, студентов и молодых инженеров вокруг передовых технологий. Мы стремимся сделать аэрокосмические знания доступными каждому талантливому человеку.',
+        valuesTitle: 'Наши ценности',
+        values: {
+          innovation: 'Инновации и технологическое превосходство',
+          openness: 'Открытость и доступность образования',
+          teamwork: 'Командная работа и взаимопомощь',
+          excellence: 'Стремление к совершенству'
+        },
+        achievementsTitle: 'Наши достижения',
+        achievements: {
+          participants: 'участников',
+          events: 'мероприятий',
+          countries: 'страны'
+        },
+        teamTitle: 'Наша команда',
+        teamMembers: {
+          mirasName: 'Мирас Нусупов',
+          ryspayName: 'Рыспай Алихан'
+        },
+        partnersTitle: 'Наши партнёры',
+        becomePartner: 'Стать партнёром',
+        leadTitle: 'Свяжитесь с нами',
+        leadRequired: 'Заполните имя и email',
+        leadSuccess: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
+        formName: 'Имя',
+        formPhone: 'Телефон',
+        formMessage: 'Сообщение',
+        sendMessage: 'Отправить',
+        privacyNote: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности.'
       }
     }
   },
@@ -1160,6 +1196,42 @@ const resources = {
         actions: { edit: 'Edit', delete: 'Delete', cancel: 'Cancel', confirmDelete: 'Delete' },
         confirm: { title: 'Delete registration?', desc: 'This action is irreversible. Your competition entry will be deleted.' },
         toasts: { deleteSuccess: 'Registration deleted', deleteError: 'Failed to delete' }
+      },
+      about: {
+        metaTitle: 'About AEROO — mission and team',
+        metaDesc: 'AEROO educational ecosystem: mission, values, team and partners',
+        heroTitle: 'About AEROO',
+        heroSubtitle: 'We inspire and educate the new generation of creators, developing skills, teamwork and systems thinking in aerospace technologies.',
+        missionTitle: 'Our mission',
+        missionText: 'Create an educational ecosystem that unites school students, university students and young engineers around advanced technologies. We strive to make aerospace knowledge accessible to every talented person.',
+        valuesTitle: 'Our values',
+        values: {
+          innovation: 'Innovation and technological excellence',
+          openness: 'Openness and accessibility of education',
+          teamwork: 'Teamwork and mutual assistance',
+          excellence: 'Pursuit of excellence'
+        },
+        achievementsTitle: 'Our achievements',
+        achievements: {
+          participants: 'participants',
+          events: 'events',
+          countries: 'countries'
+        },
+        teamTitle: 'Our team',
+        teamMembers: {
+          mirasName: 'Miras Nussupov',
+          ryspayName: 'Ryspay Alikhan'
+        },
+        partnersTitle: 'Our partners',
+        becomePartner: 'Become a partner',
+        leadTitle: 'Contact us',
+        leadRequired: 'Please fill in name and email',
+        leadSuccess: 'Thank you! We will contact you soon.',
+        formName: 'Name',
+        formPhone: 'Phone',
+        formMessage: 'Message',
+        sendMessage: 'Send',
+        privacyNote: 'By submitting the form, you agree to the privacy policy.'
       }
     }
   },
@@ -1719,6 +1791,42 @@ const resources = {
         actions: { edit: 'Өңдеу', delete: 'Жою', cancel: 'Болдырмау', confirmDelete: 'Жою' },
         confirm: { title: 'Тіркелуді жою?', desc: 'Бұл әрекет қайтымсыз. Сайысқа тіркелуіңіз жойылады.' },
         toasts: { deleteSuccess: 'Тіркелу жойылды', deleteError: 'Жою сәтсіз аяқталды' }
+      },
+      about: {
+        metaTitle: 'AEROO туралы — миссия және команда',
+        metaDesc: 'AEROO білім беру экожүйесі: миссия, құндылықтар, команда және серіктестер',
+        heroTitle: 'AEROO туралы',
+        heroSubtitle: 'Біз аэроғарыш технологиялары саласында дағдыларды, командалық жұмысты және жүйелік ойлауды дамыта отырып, жаңа буын жасаушыларын шабыттандырамыз және оқытамыз.',
+        missionTitle: 'Біздің миссия',
+        missionText: 'Мектеп оқушыларын, студенттерді және жас инженерлерді озық технологиялар айналасында біріктіретін білім беру экожүйесін құру. Біз аэроғарыш білімін әр талантты адамға қол жетімді ету үшін тырысамыз.',
+        valuesTitle: 'Біздің құндылықтар',
+        values: {
+          innovation: 'Инновациялар және технологиялық үстемдік',
+          openness: 'Білім берудің ашықтығы мен қол жетімділігі',
+          teamwork: 'Командалық жұмыс және өзара көмек',
+          excellence: 'Кемелдікке ұмтылу'
+        },
+        achievementsTitle: 'Біздің жетістіктер',
+        achievements: {
+          participants: 'қатысушы',
+          events: 'іс-шара',
+          countries: 'ел'
+        },
+        teamTitle: 'Біздің команда',
+        teamMembers: {
+          mirasName: 'Мирас Нусупов',
+          ryspayName: 'Рыспай Алихан'
+        },
+        partnersTitle: 'Біздің серіктестер',
+        becomePartner: 'Серіктес болу',
+        leadTitle: 'Бізбен байланысыңыз',
+        leadRequired: 'Атыңыз бен email-ді толтырыңыз',
+        leadSuccess: 'Рахмет! Біз сізбен жақын арада байланысамыз.',
+        formName: 'Аты',
+        formPhone: 'Телефон',
+        formMessage: 'Хабарлама',
+        sendMessage: 'Жіберу',
+        privacyNote: 'Форманы жібере отырып, сіз құпиялылық саясатымен келісесіз.'
       }
     }
   }
