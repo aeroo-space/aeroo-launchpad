@@ -98,22 +98,6 @@ export function Footer() {
                       target="_blank" 
                       rel="noopener noreferrer" 
                       aria-label={social.name}
-                      onClick={(e) => {
-                        // Обработка для WhatsApp - проверяем доступность приложения
-                        if (social.name === "WhatsApp") {
-                          e.preventDefault();
-                          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-                          const whatsappUrl = isMobile 
-                            ? `whatsapp://send?phone=77751639790&text=${encodeURIComponent('Здравствуйте! Хочу узнать больше о AEROO')}`
-                            : 'https://web.whatsapp.com/send?phone=77751639790&text=Здравствуйте!%20Хочу%20узнать%20больше%20о%20AEROO';
-                          window.open(whatsappUrl, '_blank');
-                        }
-                        // Для Instagram - используем более надежную ссылку
-                        else if (social.name === "Instagram") {
-                          e.preventDefault();
-                          window.open('https://instagram.com/aeroo.space', '_blank');
-                        }
-                      }}
                     >
                       <Icon className="h-5 w-5" />
                     </a>
