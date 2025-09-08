@@ -160,7 +160,7 @@ export function Footer() {
       {/* Background Stars */}
       <div className="absolute bottom-10 left-10 w-1 h-1 bg-primary rounded-full animate-pulse opacity-40" />
       <div className="absolute bottom-20 right-20 w-2 h-2 bg-accent rounded-full animate-ping opacity-30" />
-      <div className="absolute bottom-32 left-1/3 w-1 h-1 bg-primary-glow rounded-full animate-pulse opacity-50" />
+      
     </footer>
   );
 }
