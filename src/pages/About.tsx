@@ -36,13 +36,15 @@ const team = [
 ];
 
 const partners = [
-  "Ministry Digital & Space",
+  "Digital & Space Ministry",
   "Energo University",
-  "FURO",
+  "Fund for Sustainable Development of Education",
   "Estes Rockets",
   "SpaceLab",
   "The Global Citizen Education Group",
-  "Sheilex"
+  "Sheilex",
+  "Federation of International DroneSoccer Association",
+  "Republican scientific and practical center «Daryn»"
 ];
 
 const About = () => {
@@ -166,7 +168,7 @@ const About = () => {
         <div className="mb-20">
           <h2 className="text-3xl font-bold text-center mb-12">{t('about.partnersTitle', { defaultValue: 'Наши партнёры' })}</h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
             {partners.map((partner, index) => (
               <div key={index} className="bg-muted/30 rounded-lg p-4 text-center hover:bg-muted/50 transition-colors">
                 <div className="text-sm font-medium text-muted-foreground">{partner}</div>
