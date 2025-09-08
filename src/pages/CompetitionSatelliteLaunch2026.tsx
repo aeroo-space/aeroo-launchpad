@@ -341,7 +341,7 @@ const CompetitionSatelliteLaunch2026 = () => {
                 },
               ].map((item, idx) => (
                 <div key={idx} className="relative">
-                  <div className="absolute -left-3 top-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+                  <div className="absolute -left-3 top-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center z-10">
                     <item.icon className="w-3.5 h-3.5 text-primary" />
                   </div>
                   <div className="glass-card rounded-xl p-6">
