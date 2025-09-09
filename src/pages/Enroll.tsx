@@ -260,7 +260,7 @@ export default function EnrollPage() {
                   id="team"
                   value={teamName}
                   onChange={(e) => setTeamName(e.target.value)}
-                  placeholder="Например: AEROO Crew"
+                  placeholder={t('enroll.teamNamePlaceholder')}
                   required
                 />
               </div>
@@ -619,14 +619,14 @@ export default function EnrollPage() {
                   <Input
                     value={questions}
                     onChange={(e) => setQuestions(e.target.value)}
-                    placeholder="Ваши вопросы к организаторам..."
+                    placeholder={t('form.questionsPlaceholder')}
                   />
                 </div>
                 <div className="space-y-2">
                   <Label>{t('form.source')}</Label>
                   <Select value={source} onValueChange={setSource}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Выберите источник" />
+                      <SelectValue placeholder={t('enroll.selectSource')} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="instagram_aeroo">{t('form.sourceInstagramKaz')}</SelectItem>
