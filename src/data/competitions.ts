@@ -14,7 +14,7 @@ export type Competition = {
 export const competitions: Competition[] = [
   {
     id: "space-settlement",
-    title: "competitions.spaceSettlement.title",
+    title: "Space Settlement 2025",
     category: "competitions.spaceSettlement.category",
     description: "competitions.spaceSettlement.description",
     icon: Building,
