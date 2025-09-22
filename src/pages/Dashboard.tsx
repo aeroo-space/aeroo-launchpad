@@ -37,6 +37,8 @@ const Dashboard = () => {
   const { t } = useTranslation();
   
   const [enrollments, setEnrollments] = useState<Enrollment[]>([]);
+  const [productRequests, setProductRequests] = useState<any[]>([]);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const [selected, setSelected] = useState<Enrollment | null>(null);
   const [editOpen, setEditOpen] = useState(false);
@@ -57,12 +59,33 @@ const Dashboard = () => {
       return;
     }
     (async () => {
-      const { data, error } = await (supabase as any)
+      // Check if user is admin
+      const { data: adminCheck } = await supabase.rpc('is_admin');
+      setIsAdmin(adminCheck || false);
+
+      // Load enrollments
+      const { data: enrollmentData, error: enrollmentError } = await supabase
         .from("enrollments")
         .select("*")
         .eq("user_id", user.id)
         .order("created_at", { ascending: false });
-      if (!error && data) setEnrollments(data as Enrollment[]);
+      
+      if (!enrollmentError && enrollmentData) {
+        setEnrollments(enrollmentData as Enrollment[]);
+      }
+
+      // Load product requests if admin
+      if (adminCheck) {
+        const { data: requestData, error: requestError } = await supabase
+          .from("product_requests")
+          .select("*")
+          .order("created_at", { ascending: false });
+        
+        if (!requestError && requestData) {
+          setProductRequests(requestData);
+        }
+      }
+
       setLoading(false);
     })();
   }, [user, navigate]);
