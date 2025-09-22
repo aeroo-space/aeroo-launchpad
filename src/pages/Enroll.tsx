@@ -145,14 +145,9 @@ export default function EnrollPage() {
       return;
     }
 
-    // Check if at least one participant is filled out
-    const hasParticipant1 = participant1FullName.trim() && participant1Iin.trim() && participant1Phone.trim() && participant1School.trim() && participant1City.trim() && participant1Grade.trim();
-    const hasParticipant2 = participant2FullName.trim() && participant2Iin.trim() && participant2Phone.trim() && participant2School.trim() && participant2City.trim() && participant2Grade.trim();
-    const hasParticipant3 = participant3FullName.trim() && participant3Iin.trim() && participant3Phone.trim() && participant3School.trim() && participant3City.trim() && participant3Grade.trim();
-    const hasParticipant4 = participant4FullName.trim() && participant4Iin.trim() && participant4Phone.trim() && participant4School.trim() && participant4City.trim() && participant4Grade.trim();
-
-    if (!hasParticipant1 && !hasParticipant2 && !hasParticipant3 && !hasParticipant4) {
-      toast.error(t('form.minOneParticipant', { defaultValue: "Необходимо заполнить данные хотя бы одного участника" }));
+    // Captain is required (participant 1), others are optional
+    if (!captainFullName.trim() || !captainIin.trim() || !captainPhone.trim() || !captainSchool.trim() || !captainCity.trim() || !captainGrade.trim()) {
+      toast.error("Данные капитана команды (Участник 1) обязательны для заполнения");
       return;
     }
 
@@ -322,10 +317,10 @@ export default function EnrollPage() {
                 </div>
               </div>
 
-              {/* Captain Info */}
+              {/* Participant 1 (Captain) */}
               <div className="bg-muted rounded-lg p-4 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">{t('form.teamCaptain')}</h3>
+                  <h3 className="text-lg font-semibold">Участник 1 (Капитан команды) *</h3>
                   <Button variant="outline" size="sm" asChild>
                     <Link to="/dashboard">
                       Редактировать в профиле
@@ -416,13 +411,13 @@ export default function EnrollPage() {
                 </div>
               </div>
 
-              {/* Participants */}
+              {/* Additional Participants (Optional) */}
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold">{t('form.teamParticipants')}</h3>
+                <h3 className="text-lg font-semibold">Дополнительные участники (необязательно)</h3>
 
                 {/* Participant 1 */}
                 <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">{t('form.participant1')}</h4>
+                  <h4 className="font-medium">Участник 2</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>
@@ -478,7 +473,7 @@ export default function EnrollPage() {
 
                 {/* Participant 2 */}
                 <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">{t('form.participant2Title')}</h4>
+                  <h4 className="font-medium">Участник 3</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>
@@ -534,7 +529,7 @@ export default function EnrollPage() {
 
                 {/* Participant 3 */}
                 <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">{t('form.participant3Title')}</h4>
+                  <h4 className="font-medium">Участник 4</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>
@@ -590,7 +585,7 @@ export default function EnrollPage() {
 
                 {/* Participant 4 */}
                 <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">{t('form.participant4Title')}</h4>
+                  <h4 className="font-medium">Участник 5</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>
@@ -739,16 +734,8 @@ export default function EnrollPage() {
                 className="w-full"
                 disabled={
                   submitting ||
-                  !teamName || !captainFullName || !captainIin || !captainPhone || !captainSchool ||
+                  !teamName || !league || !captainFullName || !captainIin || !captainPhone || !captainSchool ||
                   !captainCity || !captainGrade || !captainTelegram ||
-                  !participant1FullName || !participant1Iin || !participant1Phone || !participant1School ||
-                  !participant1City || !participant1Grade ||
-                  !participant2FullName || !participant2Iin || !participant2Phone || !participant2School ||
-                  !participant2City || !participant2Grade ||
-                  !participant3FullName || !participant3Iin || !participant3Phone || !participant3School ||
-                  !participant3City || !participant3Grade ||
-                  !mentorFullName || !mentorIin || !mentorPhone || !mentorSchool ||
-                  !mentorCity || !mentorTelegram ||
                   !source || !consent
                 }
               >
