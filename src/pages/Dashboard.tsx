@@ -14,7 +14,7 @@ import type { Tables } from "@/integrations/supabase/types";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
+
 import { Pencil, Download } from "lucide-react";
 import { 
   AlertDialog,
@@ -40,8 +40,6 @@ const Dashboard = () => {
   const [productRequests, setProductRequests] = useState<any[]>([]);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [selected, setSelected] = useState<Enrollment | null>(null);
-  const [editOpen, setEditOpen] = useState(false);
   const [pwdOpen, setPwdOpen] = useState(false);
   const [newPwd, setNewPwd] = useState("");
   const [newPwd2, setNewPwd2] = useState("");
@@ -603,7 +601,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => { setSelected(e); setEditOpen(true); }}>
+                        <Button variant="outline" size="sm" onClick={() => navigate(`/edit-enrollment/${e.id}`)}>
                           {t('dashboardExtra.actions.edit', { defaultValue: 'Редактировать' })}
                         </Button>
                         <AlertDialog>
@@ -881,17 +879,6 @@ const Dashboard = () => {
             </Card>
           )}
         </section>
-        {selected && (
-          <EditEnrollmentDialog
-            enrollment={selected}
-            open={editOpen}
-            onOpenChange={(o) => setEditOpen(o)}
-            onUpdated={(updated) => {
-              // Real-time updates will handle the refresh automatically
-              setSelected(updated);
-            }}
-          />
-        )}
 
 
         <Dialog open={pwdOpen} onOpenChange={setPwdOpen}>

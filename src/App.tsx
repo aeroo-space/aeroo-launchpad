@@ -24,6 +24,7 @@ import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement20
 import EnrollPage from "./pages/Enroll";
 import ProductRequestsPage from "./pages/ProductRequests";
 import RocketScienceKit from "./pages/RocketScienceKit";
+import EditEnrollment from "./pages/EditEnrollment";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -73,6 +74,11 @@ const App = () => (
                 </ProtectedRoute>
               } />
               <Route path="/products/rocket-science-kit" element={<RocketScienceKit />} />
+              <Route path="/edit-enrollment/:enrollmentId" element={
+                <ProtectedRoute>
+                  <EditEnrollment />
+                </ProtectedRoute>
+              } />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
