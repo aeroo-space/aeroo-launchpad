@@ -5,6 +5,7 @@ import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -111,6 +112,8 @@ export default function EnrollPage() {
   const [questions, setQuestions] = useState("");
   const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [existingEnrollment, setExistingEnrollment] = useState<any>(null);
+  const [isEditMode, setIsEditMode] = useState(false);
 
   const [dupOpen, setDupOpen] = useState(false);
   const [dupName, setDupName] = useState("");
@@ -146,6 +149,63 @@ export default function EnrollPage() {
     }
   }, [profile, user]);
 
+  // Check for existing enrollment and prefill form if editing
+  useEffect(() => {
+    const checkExistingEnrollment = async () => {
+      if (user && competitionId) {
+        const { data, error } = await supabase
+          .from("enrollments")
+          .select("*")
+          .eq("user_id", user.id)
+          .eq("competition_id", competitionId)
+          .eq("status", "active")
+          .maybeSingle();
+        
+        if (data && !error) {
+          setExistingEnrollment(data);
+          setIsEditMode(true);
+          // Prefill form with existing data
+          setTeamName(data.team_name || "");
+          setLeague(data.league || "");
+          setParticipant1FullName(data.participant1_full_name || "");
+          setParticipant1Iin(data.participant1_iin || "");
+          setParticipant1Phone(data.participant1_phone || "");
+          setParticipant1School(data.participant1_school || "");
+          setParticipant1City(data.participant1_city || "");
+          setParticipant1Grade(data.participant1_grade || "");
+          setParticipant2FullName(data.participant2_full_name || "");
+          setParticipant2Iin(data.participant2_iin || "");
+          setParticipant2Phone(data.participant2_phone || "");
+          setParticipant2School(data.participant2_school || "");
+          setParticipant2City(data.participant2_city || "");
+          setParticipant2Grade(data.participant2_grade || "");
+          setParticipant3FullName(data.participant3_full_name || "");
+          setParticipant3Iin(data.participant3_iin || "");
+          setParticipant3Phone(data.participant3_phone || "");
+          setParticipant3School(data.participant3_school || "");
+          setParticipant3City(data.participant3_city || "");
+          setParticipant3Grade(data.participant3_grade || "");
+          setParticipant4FullName(data.participant4_full_name || "");
+          setParticipant4Iin(data.participant4_iin || "");
+          setParticipant4Phone(data.participant4_phone || "");
+          setParticipant4School(data.participant4_school || "");
+          setParticipant4City(data.participant4_city || "");
+          setParticipant4Grade(data.participant4_grade || "");
+          setMentorFullName(data.mentor_full_name || "");
+          setMentorIin(data.mentor_iin || "");
+          setMentorPhone(data.mentor_phone || "");
+          setMentorSchool(data.mentor_school || "");
+          setMentorCity(data.mentor_city || "");
+          setMentorTelegram(data.mentor_telegram || "");
+          setSource(data.source || "");
+          setQuestions(data.questions || "");
+          setConsent(data.consent || false);
+        }
+      }
+    };
+    checkExistingEnrollment();
+  }, [user, competitionId]);
+
   // Refetch profile when user comes to the page to ensure latest data
   useEffect(() => {
     if (user && refetch) {
@@ -175,7 +235,7 @@ export default function EnrollPage() {
 
     setSubmitting(true);
 
-    const { error } = await supabase.from("enrollments").insert({
+    const enrollmentData = {
       user_id: user?.id,
       competition_id: competitionId,
       team_name: teamName,
@@ -233,7 +293,11 @@ export default function EnrollPage() {
       source,
       questions,
       consent,
-    });
+    };
+
+    const { error } = isEditMode && existingEnrollment
+      ? await supabase.from("enrollments").update(enrollmentData).eq("id", existingEnrollment.id)
+      : await supabase.from("enrollments").insert(enrollmentData);
 
     setSubmitting(false);
     if (error) {
@@ -246,7 +310,7 @@ export default function EnrollPage() {
       }
       return;
     }
-    toast.success(t('form.toastSubmitSuccess'));
+    toast.success(isEditMode ? "Заявка успешно обновлена" : t('form.toastSubmitSuccess'));
     navigate("/dashboard");
   };
 
@@ -264,7 +328,9 @@ export default function EnrollPage() {
 
         <section className="container mx-auto px-4 py-10">
           <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">{t('form.applicationTitle')}</h1>
+            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+              {isEditMode ? "Редактирование заявки" : t('form.applicationTitle')}
+            </h1>
             <p className="text-muted-foreground mb-6">
               {competition ? competition.title : "Выберите соревнование"}
             </p>
@@ -733,10 +799,11 @@ export default function EnrollPage() {
               <div className="space-y-4">
                 <div className="space-y-2">
                   <Label>{t('form.questions')}</Label>
-                  <Input
+                  <Textarea
                     value={questions}
                     onChange={(e) => setQuestions(e.target.value)}
                     placeholder={t('form.questionsPlaceholder')}
+                    className="min-h-[100px] resize-y"
                   />
                 </div>
                 <div className="space-y-2">
@@ -772,7 +839,7 @@ export default function EnrollPage() {
                   !source || !consent
                 }
               >
-                {submitting ? t('form.sending') : t('form.submit')}
+                {submitting ? t('form.sending') : (isEditMode ? "Обновить заявку" : t('form.submit'))}
               </Button>
             </form>
           )}
