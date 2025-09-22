@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
-import { Pencil } from "lucide-react";
+import { Pencil, Download } from "lucide-react";
 import { 
   AlertDialog,
   AlertDialogAction,
@@ -236,6 +236,61 @@ const Dashboard = () => {
     } finally {
       setFieldSubmitting(false);
     }
+  };
+
+  const downloadEnrollments = () => {
+    const csvContent = [
+      // CSV Header
+      [
+        'Дата регистрации',
+        'Команда',
+        'Лига',
+        'Капитан',
+        'Email капитана',
+        'Телефон капитана',
+        'Возраст капитана',
+        'Город',
+        'Место обучения',
+        'Участник 1',
+        'Участник 2', 
+        'Участник 3',
+        'Участник 4',
+        'Наставник',
+        'Телефон наставника',
+        'Источник',
+        'Статус'
+      ].join(','),
+      // CSV Data
+      ...adminEnrollments.map(enrollment => [
+        new Date(enrollment.created_at).toLocaleDateString('ru-RU'),
+        `"${enrollment.team_name || 'Не указано'}"`,
+        `"${enrollment.league || 'Не указано'}"`,
+        `"${enrollment.captain_full_name || 'Не указано'}"`,
+        `"${enrollment.email || 'Не указано'}"`,
+        `"${enrollment.captain_phone || 'Не указано'}"`,
+        enrollment.captain_age || 'Не указано',
+        `"${enrollment.city || 'Не указано'}"`,
+        `"${enrollment.study_place || 'Не указано'}"`,
+        `"${enrollment.participant1_full_name || 'Не указано'}"`,
+        `"${enrollment.participant2_full_name || 'Не указано'}"`,
+        `"${enrollment.participant3_full_name || 'Не указано'}"`,
+        `"${enrollment.participant4_full_name || 'Не указано'}"`,
+        `"${enrollment.mentor_full_name || 'Не указано'}"`,
+        `"${enrollment.mentor_phone || 'Не указано'}"`,
+        `"${enrollment.source || 'Не указано'}"`,
+        `"${enrollment.status === 'active' ? 'Активный' : enrollment.status}"`
+      ].join(','))
+    ].join('\n');
+
+    const blob = new Blob(['\uFEFF' + csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    const url = URL.createObjectURL(blob);
+    link.setAttribute('href', url);
+    link.setAttribute('download', `space-settlement-2025-teams-${new Date().toISOString().split('T')[0]}.csv`);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
 
@@ -580,63 +635,164 @@ const Dashboard = () => {
           {isAdmin && (
             <Card>
               <CardHeader>
-                <CardTitle>Участники Space Settlement Competition 2025</CardTitle>
+                <div className="flex justify-between items-center">
+                  <CardTitle>Участники Space Settlement Competition 2025</CardTitle>
+                  <Button 
+                    onClick={downloadEnrollments}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2"
+                  >
+                    <Download className="h-4 w-4" />
+                    Скачать список
+                  </Button>
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  Всего зарегистрировано команд: {adminEnrollments.length}
+                </p>
               </CardHeader>
               <CardContent>
                 {adminEnrollments.length === 0 ? (
-                  <p className="text-muted-foreground">Участников пока нет</p>
+                  <div className="flex flex-col items-center justify-center py-8 text-center">
+                    <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
+                      <Download className="h-8 w-8 text-muted-foreground" />
+                    </div>
+                    <p className="text-muted-foreground">Участников пока нет</p>
+                  </div>
                 ) : (
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     {adminEnrollments.map((enrollment) => (
-                      <div key={enrollment.id} className="border rounded-lg p-4 space-y-2">
+                      <div key={enrollment.id} className="border rounded-xl p-6 space-y-4 bg-gradient-to-r from-background to-muted/20 hover:shadow-md transition-shadow">
                         <div className="flex justify-between items-start">
-                          <div className="space-y-1">
-                            <h4 className="font-medium">Команда: {enrollment.team_name || "Не указано"}</h4>
-                            <p className="text-sm text-muted-foreground">Капитан: {enrollment.captain_full_name}</p>
-                            <p className="text-sm text-muted-foreground">Email: {enrollment.email}</p>
-                            <p className="text-sm text-muted-foreground">Телефон: {enrollment.captain_phone}</p>
-                            <p className="text-sm text-muted-foreground">Лига: {enrollment.league}</p>
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-3">
+                              <h4 className="text-lg font-semibold text-primary">
+                                {enrollment.team_name || "Команда без названия"}
+                              </h4>
+                              <div className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${
+                                enrollment.status === 'active' 
+                                  ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' 
+                                  : 'bg-gray-100 text-gray-700 border border-gray-200'
+                              }`}>
+                                {enrollment.status === 'active' ? 'Активная команда' : enrollment.status}
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-4 text-sm">
+                              <span className="flex items-center gap-1">
+                                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                <span className="font-medium">Капитан:</span> {enrollment.captain_full_name}
+                              </span>
+                              <span className="flex items-center gap-1">
+                                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                                <span className="font-medium">Лига:</span> {enrollment.league}
+                              </span>
+                            </div>
                           </div>
-                          <div className="text-right text-sm text-muted-foreground">
-                            <div>{new Date(enrollment.created_at).toLocaleDateString('ru-RU')}</div>
-                            <div className={`inline-block px-2 py-1 rounded text-xs ${
-                              enrollment.status === 'active' ? 'bg-green-100 text-green-800' :
-                              'bg-gray-100 text-gray-800'
-                            }`}>
-                              {enrollment.status === 'active' ? 'Активный' : enrollment.status}
+                          <div className="text-right">
+                            <div className="text-sm text-muted-foreground">
+                              {new Date(enrollment.created_at).toLocaleDateString('ru-RU', {
+                                day: 'numeric',
+                                month: 'long',
+                                year: 'numeric'
+                              })}
                             </div>
                           </div>
                         </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-                          <div>
-                            <p className="font-medium mb-1">Участники:</p>
-                            <ul className="space-y-1 text-muted-foreground">
-                              {enrollment.participant1_full_name && (
-                                <li>1. {enrollment.participant1_full_name}</li>
+                        
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                          {/* Contact Info */}
+                          <div className="space-y-3">
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Контактная информация</h5>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
+                                <span className="text-muted-foreground">Email:</span>
+                                <span className="break-all">{enrollment.email}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
+                                <span className="text-muted-foreground">Телефон:</span>
+                                <span>{enrollment.captain_phone}</span>
+                              </div>
+                              {enrollment.telegram && (
+                                <div className="flex items-center gap-2">
+                                  <span className="w-1.5 h-1.5 bg-purple-400 rounded-full"></span>
+                                  <span className="text-muted-foreground">Telegram:</span>
+                                  <span>{enrollment.telegram}</span>
+                                </div>
                               )}
-                              {enrollment.participant2_full_name && (
-                                <li>2. {enrollment.participant2_full_name}</li>
-                              )}
-                              {enrollment.participant3_full_name && (
-                                <li>3. {enrollment.participant3_full_name}</li>
-                              )}
-                              {enrollment.participant4_full_name && (
-                                <li>4. {enrollment.participant4_full_name}</li>
-                              )}
-                            </ul>
+                              <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
+                                <span className="text-muted-foreground">Возраст:</span>
+                                <span>{enrollment.captain_age} лет</span>
+                              </div>
+                            </div>
                           </div>
-                          <div>
-                            <p className="font-medium mb-1">Наставник:</p>
-                            <p className="text-muted-foreground">{enrollment.mentor_full_name || "Не указан"}</p>
-                            {enrollment.mentor_phone && (
-                              <p className="text-muted-foreground">Телефон: {enrollment.mentor_phone}</p>
-                            )}
+
+                          {/* Team Members */}
+                          <div className="space-y-3">
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Состав команды</h5>
+                            <div className="space-y-2">
+                              {[
+                                enrollment.participant1_full_name,
+                                enrollment.participant2_full_name,
+                                enrollment.participant3_full_name,
+                                enrollment.participant4_full_name
+                              ].filter(Boolean).map((participant, index) => (
+                                <div key={index} className="flex items-center gap-2 text-sm">
+                                  <span className="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-medium">
+                                    {index + 1}
+                                  </span>
+                                  <span>{participant}</span>
+                                </div>
+                              ))}
+                              {![
+                                enrollment.participant1_full_name,
+                                enrollment.participant2_full_name,
+                                enrollment.participant3_full_name,
+                                enrollment.participant4_full_name
+                              ].filter(Boolean).length && (
+                                <p className="text-sm text-muted-foreground italic">Участники не указаны</p>
+                              )}
+                            </div>
+                          </div>
+
+                          {/* Additional Info */}
+                          <div className="space-y-3">
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Дополнительная информация</h5>
+                            <div className="space-y-2 text-sm">
+                              <div>
+                                <span className="text-muted-foreground">Город:</span>
+                                <span className="ml-2">{enrollment.city || "Не указан"}</span>
+                              </div>
+                              <div>
+                                <span className="text-muted-foreground">Учебное заведение:</span>
+                                <span className="ml-2">{enrollment.study_place || "Не указано"}</span>
+                              </div>
+                              <div>
+                                <span className="text-muted-foreground">Наставник:</span>
+                                <span className="ml-2">{enrollment.mentor_full_name || "Не указан"}</span>
+                              </div>
+                              {enrollment.mentor_phone && (
+                                <div>
+                                  <span className="text-muted-foreground">Телефон наставника:</span>
+                                  <span className="ml-2">{enrollment.mentor_phone}</span>
+                                </div>
+                              )}
+                              <div>
+                                <span className="text-muted-foreground">Источник:</span>
+                                <span className="ml-2">{enrollment.source || "Не указан"}</span>
+                              </div>
+                            </div>
                           </div>
                         </div>
+
                         {enrollment.questions && (
-                          <div>
-                            <p className="text-sm font-medium mb-1">Вопросы:</p>
-                            <p className="text-sm bg-muted p-2 rounded">{enrollment.questions}</p>
+                          <div className="pt-4 border-t">
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide mb-2">Вопросы от команды</h5>
+                            <div className="bg-muted/50 p-4 rounded-lg">
+                              <p className="text-sm leading-relaxed">{enrollment.questions}</p>
+                            </div>
                           </div>
                         )}
                       </div>
