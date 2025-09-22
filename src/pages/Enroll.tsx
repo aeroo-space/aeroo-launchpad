@@ -144,7 +144,8 @@ export default function EnrollPage() {
     // Format as +7 XXX XXX XX XX
     let formatted = '';
     if (digits.length > 0) {
-      if (digits.startsWith('7')) {
+      if (digits.startsWith('7') && digits.length >= 11) {
+        // Handle numbers starting with 7 (like 77479494560)
         formatted = '+7';
         if (digits.length > 1) {
           formatted += ' ' + digits.slice(1, 4);
@@ -162,6 +163,21 @@ export default function EnrollPage() {
         // Convert 8XXXXXXXXXX to +7XXXXXXXXXX
         const withoutEight = digits.slice(1);
         formatted = '+7 ' + withoutEight.slice(0, 3) + ' ' + withoutEight.slice(3, 6) + ' ' + withoutEight.slice(6, 8) + ' ' + withoutEight.slice(8, 10);
+      } else if (digits.startsWith('7')) {
+        // Handle partial numbers starting with 7
+        formatted = '+7';
+        if (digits.length > 1) {
+          formatted += ' ' + digits.slice(1, 4);
+        }
+        if (digits.length > 4) {
+          formatted += ' ' + digits.slice(4, 7);
+        }
+        if (digits.length > 7) {
+          formatted += ' ' + digits.slice(7, 9);
+        }
+        if (digits.length > 9) {
+          formatted += ' ' + digits.slice(9, 11);
+        }
       } else {
         // Start with +7 for any other input
         formatted = '+7';
@@ -1013,8 +1029,8 @@ export default function EnrollPage() {
                     <Label>{t('form.phone')}</Label>
                     <Input
                       value={mentorPhone}
-                      onChange={(e) => handleDigitsOnlyChange(e.target.value, setMentorPhone)}
-                      placeholder={t('form.phonePlaceholder')}
+                      onChange={(e) => handlePhoneChange(e.target.value, setMentorPhone)}
+                      placeholder="+7 777 777 77 77"
                     />
                   </div>
                   <div className="space-y-2">
