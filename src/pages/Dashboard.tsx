@@ -110,6 +110,17 @@ const Dashboard = () => {
       toast.error(t('dashboardExtra.toasts.deleteError', { defaultValue: 'Не удалось удалить' }), { description: err.message });
     }
   };
+
+  const handleDeleteProductRequest = async (id: string) => {
+    try {
+      const { error } = await supabase.from("product_requests").delete().eq("id", id);
+      if (error) throw error;
+      setProductRequests((prev) => prev.filter((x) => x.id !== id));
+      toast.success('Заявка удалена');
+    } catch (err: any) {
+      toast.error('Не удалось удалить заявку', { description: err.message });
+    }
+  };
   
   const handlePasswordChange = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -566,6 +577,29 @@ const Dashboard = () => {
                               <p className="text-sm bg-muted p-2 rounded">{request.comment}</p>
                             </div>
                           )}
+                        </div>
+                        <div className="flex justify-end mt-3">
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button variant="destructive" size="sm">
+                                Удалить заявку
+                              </Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>Удалить заявку?</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  Это действие необратимо. Заявка будет полностью удалена из системы.
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>Отмена</AlertDialogCancel>
+                                <AlertDialogAction onClick={() => handleDeleteProductRequest(request.id)}>
+                                  Удалить
+                                </AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
                         </div>
                       </div>
                     ))}
