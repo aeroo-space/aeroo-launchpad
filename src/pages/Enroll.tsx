@@ -227,52 +227,84 @@ export default function EnrollPage() {
         } else {
           // Regular mode - check for existing enrollment
           const { data, error } = await supabase
-          .from("enrollments")
-          .select("*")
-          .eq("user_id", user.id)
-          .eq("competition_id", competitionId)
-          .eq("status", "active")
-          .maybeSingle();
-        
-        if (data && !error) {
-          setExistingEnrollment(data);
-          setIsEditMode(true);
-          // Prefill form with existing data
-          setTeamName(data.team_name || "");
-          setLeague(data.league || "");
-          setParticipant1FullName(data.participant1_full_name || "");
-          setParticipant1Iin(data.participant1_iin || "");
-          setParticipant1Phone(data.participant1_phone || "");
-          setParticipant1School(data.participant1_school || "");
-          setParticipant1City(data.participant1_city || "");
-          setParticipant1Grade(data.participant1_grade || "");
-          setParticipant2FullName(data.participant2_full_name || "");
-          setParticipant2Iin(data.participant2_iin || "");
-          setParticipant2Phone(data.participant2_phone || "");
-          setParticipant2School(data.participant2_school || "");
-          setParticipant2City(data.participant2_city || "");
-          setParticipant2Grade(data.participant2_grade || "");
-          setParticipant3FullName(data.participant3_full_name || "");
-          setParticipant3Iin(data.participant3_iin || "");
-          setParticipant3Phone(data.participant3_phone || "");
-          setParticipant3School(data.participant3_school || "");
-          setParticipant3City(data.participant3_city || "");
-          setParticipant3Grade(data.participant3_grade || "");
-          setParticipant4FullName(data.participant4_full_name || "");
-          setParticipant4Iin(data.participant4_iin || "");
-          setParticipant4Phone(data.participant4_phone || "");
-          setParticipant4School(data.participant4_school || "");
-          setParticipant4City(data.participant4_city || "");
-          setParticipant4Grade(data.participant4_grade || "");
-          setMentorFullName(data.mentor_full_name || "");
-          setMentorIin(data.mentor_iin || "");
-          setMentorPhone(data.mentor_phone || "");
-          setMentorSchool(data.mentor_school || "");
-          setMentorCity(data.mentor_city || "");
-          setMentorTelegram(data.mentor_telegram || "");
-          setSource(data.source || "");
-          setQuestions(data.questions || "");
-          setConsent(data.consent || false);
+            .from("enrollments")
+            .select("*")
+            .eq("user_id", user.id)
+            .eq("competition_id", competitionId)
+            .eq("status", "active")
+            .maybeSingle();
+            
+          if (error) {
+            console.error("Error checking existing enrollment:", error);
+            return;
+          }
+          
+          enrollmentData = data;
+          setIsEditMode(false);
+        }
+
+        if (enrollmentData) {
+          setExistingEnrollment(enrollmentData);
+          
+          // Prefill form with existing enrollment data
+          setTeamName(enrollmentData.team_name || "");
+          setLeague(enrollmentData.league || "");
+          setCaptainEmail(enrollmentData.email || "");
+          setCaptainTelegram(enrollmentData.telegram || "");
+          setCaptainFullName(enrollmentData.captain_full_name || "");
+          setCaptainPhone(enrollmentData.captain_phone || "");
+          setCaptainAge(enrollmentData.captain_age?.toString() || "");
+          setCaptainIin(enrollmentData.captain_iin || "");
+          setCaptainGrade(enrollmentData.captain_grade || "");
+          setCaptainCity(enrollmentData.city || "");
+          setCaptainSchool(enrollmentData.study_place || "");
+          
+          // Set team member count based on existing data
+          if (enrollmentData.participant3_full_name) setTeamMemberCount(4);
+          else if (enrollmentData.participant2_full_name) setTeamMemberCount(3);
+          else if (enrollmentData.participant1_full_name) setTeamMemberCount(2);
+          else setTeamMemberCount(1);
+          
+          // Prefill participant data
+          setParticipant1FullName(enrollmentData.participant1_full_name || "");
+          setParticipant1Iin(enrollmentData.participant1_iin || "");
+          setParticipant1Phone(enrollmentData.participant1_phone || "");
+          setParticipant1School(enrollmentData.participant1_school || "");
+          setParticipant1City(enrollmentData.participant1_city || "");
+          setParticipant1Grade(enrollmentData.participant1_grade || "");
+          
+          setParticipant2FullName(enrollmentData.participant2_full_name || "");
+          setParticipant2Iin(enrollmentData.participant2_iin || "");
+          setParticipant2Phone(enrollmentData.participant2_phone || "");
+          setParticipant2School(enrollmentData.participant2_school || "");
+          setParticipant2City(enrollmentData.participant2_city || "");
+          setParticipant2Grade(enrollmentData.participant2_grade || "");
+          
+          setParticipant3FullName(enrollmentData.participant3_full_name || "");
+          setParticipant3Iin(enrollmentData.participant3_iin || "");
+          setParticipant3Phone(enrollmentData.participant3_phone || "");
+          setParticipant3School(enrollmentData.participant3_school || "");
+          setParticipant3City(enrollmentData.participant3_city || "");
+          setParticipant3Grade(enrollmentData.participant3_grade || "");
+          
+          setParticipant4FullName(enrollmentData.participant4_full_name || "");
+          setParticipant4Iin(enrollmentData.participant4_iin || "");
+          setParticipant4Phone(enrollmentData.participant4_phone || "");
+          setParticipant4School(enrollmentData.participant4_school || "");
+          setParticipant4City(enrollmentData.participant4_city || "");
+          setParticipant4Grade(enrollmentData.participant4_grade || "");
+          
+          // Prefill mentor data
+          setMentorFullName(enrollmentData.mentor_full_name || "");
+          setMentorIin(enrollmentData.mentor_iin || "");
+          setMentorPhone(enrollmentData.mentor_phone || "");
+          setMentorSchool(enrollmentData.mentor_school || "");
+          setMentorCity(enrollmentData.mentor_city || "");
+          setMentorTelegram(enrollmentData.mentor_telegram || "");
+          
+          setSource(enrollmentData.source || "");
+          setQuestions(enrollmentData.questions || "");
+          setConsent(enrollmentData.consent || false);
         }
       }
     };
