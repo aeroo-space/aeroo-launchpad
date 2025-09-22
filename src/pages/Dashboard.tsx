@@ -524,9 +524,6 @@ const Dashboard = () => {
           </Card>
 
           {/* Admin Panel - Product Requests */}
-          <div style={{padding: '10px', background: '#f0f0f0', margin: '10px 0'}}>
-            Debug: isAdmin = {isAdmin ? 'true' : 'false'}, productRequests count = {productRequests.length}
-          </div>
           {isAdmin && (
             <Card>
               <CardHeader>
