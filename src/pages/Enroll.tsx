@@ -133,6 +133,52 @@ export default function EnrollPage() {
     }
   };
 
+  const handlePhoneChange = (value: string, setter: (value: string) => void) => {
+    // Remove all non-digits
+    const digits = value.replace(/\D/g, '');
+    
+    // Format as +7 XXX XXX XX XX
+    let formatted = '';
+    if (digits.length > 0) {
+      if (digits.startsWith('7')) {
+        formatted = '+7';
+        if (digits.length > 1) {
+          formatted += ' ' + digits.slice(1, 4);
+        }
+        if (digits.length > 4) {
+          formatted += ' ' + digits.slice(4, 7);
+        }
+        if (digits.length > 7) {
+          formatted += ' ' + digits.slice(7, 9);
+        }
+        if (digits.length > 9) {
+          formatted += ' ' + digits.slice(9, 11);
+        }
+      } else if (digits.startsWith('8') && digits.length === 11) {
+        // Convert 8XXXXXXXXXX to +7XXXXXXXXXX
+        const withoutEight = digits.slice(1);
+        formatted = '+7 ' + withoutEight.slice(0, 3) + ' ' + withoutEight.slice(3, 6) + ' ' + withoutEight.slice(6, 8) + ' ' + withoutEight.slice(8, 10);
+      } else {
+        // Start with +7 for any other input
+        formatted = '+7';
+        if (digits.length > 0) {
+          formatted += ' ' + digits.slice(0, 3);
+        }
+        if (digits.length > 3) {
+          formatted += ' ' + digits.slice(3, 6);
+        }
+        if (digits.length > 6) {
+          formatted += ' ' + digits.slice(6, 8);
+        }
+        if (digits.length > 8) {
+          formatted += ' ' + digits.slice(8, 10);
+        }
+      }
+    }
+    
+    setter(formatted);
+  };
+
   // Pre-fill captain data from profile and update when profile changes
   useEffect(() => {
     if (profile) {
@@ -663,14 +709,15 @@ export default function EnrollPage() {
                         maxLength={12}
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label>{t('form.phone')}</Label>
-                      <Input
-                        value={participant1Phone}
-                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant1Phone)}
-                        placeholder={t('form.phonePlaceholder')}
-                      />
-                    </div>
+                     <div className="space-y-2">
+                       <Label>{t('form.phone')} *</Label>
+                       <Input
+                         value={participant1Phone}
+                         onChange={(e) => handlePhoneChange(e.target.value, setParticipant1Phone)}
+                         placeholder="+7 777 777 77 77"
+                         required={teamMemberCount >= 2}
+                       />
+                     </div>
                     <div className="space-y-2">
                       <Label>{t('form.school')}</Label>
                       <Input
@@ -721,14 +768,15 @@ export default function EnrollPage() {
                         maxLength={12}
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label>{t('form.phone')}</Label>
-                      <Input
-                        value={participant2Phone}
-                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant2Phone)}
-                        placeholder={t('form.phonePlaceholder')}
-                      />
-                    </div>
+                     <div className="space-y-2">
+                       <Label>{t('form.phone')} *</Label>
+                       <Input
+                         value={participant2Phone}
+                         onChange={(e) => handlePhoneChange(e.target.value, setParticipant2Phone)}
+                         placeholder="+7 777 777 77 77"
+                         required={teamMemberCount >= 3}
+                       />
+                     </div>
                     <div className="space-y-2">
                       <Label>{t('form.school')}</Label>
                       <Input
@@ -779,14 +827,15 @@ export default function EnrollPage() {
                         maxLength={12}
                       />
                     </div>
-                    <div className="space-y-2">
-                      <Label>{t('form.phone')}</Label>
-                      <Input
-                        value={participant3Phone}
-                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant3Phone)}
-                        placeholder={t('form.phonePlaceholder')}
-                      />
-                    </div>
+                     <div className="space-y-2">
+                       <Label>{t('form.phone')} *</Label>
+                       <Input
+                         value={participant3Phone}
+                         onChange={(e) => handlePhoneChange(e.target.value, setParticipant3Phone)}
+                         placeholder="+7 777 777 77 77"
+                         required={teamMemberCount >= 4}
+                       />
+                     </div>
                     <div className="space-y-2">
                       <Label>{t('form.school')}</Label>
                       <Input
