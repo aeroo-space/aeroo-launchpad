@@ -58,7 +58,8 @@ export default function EnrollPage() {
 
   // Form state
   const [teamName, setTeamName] = useState("");
-  const [league, setLeague] = useState("");
+  const [league, setLeague] = useState(""); // junior or senior
+  const [teamMemberCount, setTeamMemberCount] = useState<number | null>(null);
 
   // Captain info (pre-filled from profile)
   const [captainFullName, setCaptainFullName] = useState("");
@@ -221,21 +222,116 @@ export default function EnrollPage() {
       return;
     }
 
-    // Check required fields and create specific error messages
-    const missingFields: string[] = [];
-    
-    if (!teamName.trim()) missingFields.push("Название команды");
-    if (!league.trim()) missingFields.push("Лига");
-    if (!captainFullName.trim()) missingFields.push("ФИО капитана");
-    if (!captainIin.trim()) missingFields.push("ИИН капитана");
-    if (!captainPhone.trim()) missingFields.push("Телефон капитана");
-    if (!captainSchool.trim()) missingFields.push("Учебное заведение капитана");
-    if (!captainCity.trim()) missingFields.push("Город капитана");
-    if (!captainGrade.trim()) missingFields.push("Класс капитана");
-    if (!captainAge.trim()) missingFields.push("Возраст капитана");
+    // Validation functions
+    const validateName = (name: string, fieldName: string) => {
+      if (!name.trim()) return `${fieldName} обязательно для заполнения`;
+      if (/\d/.test(name)) return `${fieldName} не должно содержать цифры`;
+      return null;
+    };
 
-    if (missingFields.length > 0) {
-      const errorMessage = `Необходимо заполнить следующие поля: ${missingFields.join(", ")}`;
+    const validateCity = (city: string, fieldName: string) => {
+      if (!city.trim()) return `${fieldName} обязательно для заполнения`;
+      if (/\d/.test(city)) return `${fieldName} не должно содержать цифры`;
+      return null;
+    };
+
+    const validatePhone = (phone: string, fieldName: string) => {
+      if (!phone.trim()) return `${fieldName} обязательно для заполнения`;
+      const phoneRegex = /^\+7 \d{3} \d{3} \d{2} \d{2}$/;
+      if (!phoneRegex.test(phone)) return `${fieldName} должен быть в формате +7 777 777 77 77`;
+      return null;
+    };
+
+    // Check required fields and create specific error messages
+    const validationErrors: string[] = [];
+    
+    if (!teamName.trim()) validationErrors.push("Название команды");
+    if (!league.trim()) validationErrors.push("Лига");
+    if (teamMemberCount === null) validationErrors.push("Количество участников команды");
+    
+    // Captain validation
+    const captainNameError = validateName(captainFullName, "ФИО капитана");
+    if (captainNameError) validationErrors.push(captainNameError);
+    
+    if (!captainIin.trim()) validationErrors.push("ИИН капитана");
+    else if (captainIin.length !== 12 || !/^\d{12}$/.test(captainIin)) {
+      validationErrors.push("ИИН капитана должен содержать 12 цифр");
+    }
+    
+    const captainPhoneError = validatePhone(captainPhone, "Телефон капитана");
+    if (captainPhoneError) validationErrors.push(captainPhoneError);
+    
+    if (!captainSchool.trim()) validationErrors.push("Учебное заведение капитана");
+    
+    const captainCityError = validateCity(captainCity, "Город капитана");
+    if (captainCityError) validationErrors.push(captainCityError);
+    
+    if (!captainGrade.trim()) validationErrors.push("Класс капитана");
+    if (!captainAge.trim()) validationErrors.push("Возраст капитана");
+
+    // Validate additional team members based on count
+    if (teamMemberCount && teamMemberCount > 1) {
+      const participant1NameError = validateName(participant1FullName, "ФИО участника 1");
+      if (participant1NameError) validationErrors.push(participant1NameError);
+      
+      if (!participant1Iin.trim()) validationErrors.push("ИИН участника 1");
+      else if (participant1Iin.length !== 12 || !/^\d{12}$/.test(participant1Iin)) {
+        validationErrors.push("ИИН участника 1 должен содержать 12 цифр");
+      }
+      
+      const participant1PhoneError = validatePhone(participant1Phone, "Телефон участника 1");
+      if (participant1PhoneError) validationErrors.push(participant1PhoneError);
+      
+      if (!participant1School.trim()) validationErrors.push("Учебное заведение участника 1");
+      
+      const participant1CityError = validateCity(participant1City, "Город участника 1");
+      if (participant1CityError) validationErrors.push(participant1CityError);
+      
+      if (!participant1Grade.trim()) validationErrors.push("Класс участника 1");
+    }
+
+    if (teamMemberCount && teamMemberCount > 2) {
+      const participant2NameError = validateName(participant2FullName, "ФИО участника 2");
+      if (participant2NameError) validationErrors.push(participant2NameError);
+      
+      if (!participant2Iin.trim()) validationErrors.push("ИИН участника 2");
+      else if (participant2Iin.length !== 12 || !/^\d{12}$/.test(participant2Iin)) {
+        validationErrors.push("ИИН участника 2 должен содержать 12 цифр");
+      }
+      
+      const participant2PhoneError = validatePhone(participant2Phone, "Телефон участника 2");
+      if (participant2PhoneError) validationErrors.push(participant2PhoneError);
+      
+      if (!participant2School.trim()) validationErrors.push("Учебное заведение участника 2");
+      
+      const participant2CityError = validateCity(participant2City, "Город участника 2");
+      if (participant2CityError) validationErrors.push(participant2CityError);
+      
+      if (!participant2Grade.trim()) validationErrors.push("Класс участника 2");
+    }
+
+    if (teamMemberCount && teamMemberCount > 3) {
+      const participant3NameError = validateName(participant3FullName, "ФИО участника 3");
+      if (participant3NameError) validationErrors.push(participant3NameError);
+      
+      if (!participant3Iin.trim()) validationErrors.push("ИИН участника 3");
+      else if (participant3Iin.length !== 12 || !/^\d{12}$/.test(participant3Iin)) {
+        validationErrors.push("ИИН участника 3 должен содержать 12 цифр");
+      }
+      
+      const participant3PhoneError = validatePhone(participant3Phone, "Телефон участника 3");
+      if (participant3PhoneError) validationErrors.push(participant3PhoneError);
+      
+      if (!participant3School.trim()) validationErrors.push("Учебное заведение участника 3");
+      
+      const participant3CityError = validateCity(participant3City, "Город участника 3");
+      if (participant3CityError) validationErrors.push(participant3CityError);
+      
+      if (!participant3Grade.trim()) validationErrors.push("Класс участника 3");
+    }
+
+    if (validationErrors.length > 0) {
+      const errorMessage = `Ошибки валидации: ${validationErrors.join("; ")}`;
       toast.error(errorMessage);
       return;
     }
@@ -412,6 +508,29 @@ export default function EnrollPage() {
                   </label>
                 </div>
               </div>
+
+              {/* Team Member Count Selection */}
+              {captainFullName.trim() && captainIin.trim() && captainPhone.trim() && captainSchool.trim() && captainCity.trim() && captainGrade.trim() && captainAge.trim() && (
+                <div className="space-y-2">
+                  <Label>Количество участников команды *</Label>
+                  <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
+                    {[1, 2, 3, 4].map((count) => (
+                      <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
+                        <input
+                          type="radio"
+                          name="teamMemberCount"
+                          value={count}
+                          checked={teamMemberCount === count}
+                          onChange={(e) => setTeamMemberCount(Number(e.target.value))}
+                          className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                          required
+                        />
+                        <span className="text-sm font-medium">{count} участник{count > 1 ? (count < 5 ? 'а' : 'ов') : ''}</span>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+              )}
 
               {/* Participant 1 (Captain) */}
               <div className="bg-muted rounded-lg p-4 space-y-4">
