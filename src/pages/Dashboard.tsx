@@ -53,6 +53,21 @@ const Dashboard = () => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
 
+  // Function to load enrollments
+  const loadEnrollments = async () => {
+    if (!user) return;
+    
+    const { data: enrollmentData, error: enrollmentError } = await supabase
+      .from("enrollments")
+      .select("*")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false });
+    
+    if (!enrollmentError && enrollmentData) {
+      setEnrollments(enrollmentData as Enrollment[]);
+    }
+  };
+
   useEffect(() => {
     if (!user) {
       navigate("/auth", { replace: true });
@@ -64,15 +79,7 @@ const Dashboard = () => {
       setIsAdmin(adminCheck || false);
 
       // Load enrollments
-      const { data: enrollmentData, error: enrollmentError } = await supabase
-        .from("enrollments")
-        .select("*")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false });
-      
-      if (!enrollmentError && enrollmentData) {
-        setEnrollments(enrollmentData as Enrollment[]);
-      }
+      await loadEnrollments();
 
       // Load product requests if admin
       if (adminCheck) {
@@ -89,6 +96,33 @@ const Dashboard = () => {
       setLoading(false);
     })();
   }, [user, navigate]);
+
+  // Set up real-time subscription for enrollments
+  useEffect(() => {
+    if (!user) return;
+
+    const channel = supabase
+      .channel('enrollments-changes')
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'enrollments',
+          filter: `user_id=eq.${user.id}`
+        },
+        (payload) => {
+          console.log('Enrollment change detected:', payload);
+          // Reload enrollments when any change occurs
+          loadEnrollments();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [user]);
 
   const compsById = useMemo(() => {
     const map: Record<string, string> = {};
@@ -614,20 +648,8 @@ const Dashboard = () => {
             open={editOpen}
             onOpenChange={(o) => setEditOpen(o)}
             onUpdated={(updated) => {
-              setEnrollments((prev) => prev.map((x) => (x.id === updated.id ? updated : x)));
+              // Real-time updates will handle the refresh automatically
               setSelected(updated);
-              // Force refresh to ensure data is up to date
-              setTimeout(async () => {
-                const { data: refreshData, error } = await supabase
-                  .from("enrollments")
-                  .select("*")
-                  .eq("user_id", user?.id)
-                  .order("created_at", { ascending: false });
-                
-                if (!error && refreshData) {
-                  setEnrollments(refreshData as Enrollment[]);
-                }
-              }, 500);
             }}
           />
         )}
