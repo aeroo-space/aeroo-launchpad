@@ -514,7 +514,7 @@ export default function EnrollPage() {
                 <div className="space-y-2">
                   <Label>Количество участников команды *</Label>
                   <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
-                    {[1, 2, 3, 4].map((count) => (
+                    {[1, 2, 3, 4, 5].map((count) => (
                       <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
                         <input
                           type="radio"
@@ -637,11 +637,13 @@ export default function EnrollPage() {
               </div>
 
               {/* Additional Participants (Optional) */}
-              <div className="space-y-4">
-                <h3 className="text-lg font-semibold">Дополнительные участники (необязательно)</h3>
+              {teamMemberCount > 1 && (
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold">Дополнительные участники (необязательно)</h3>
 
-                {/* Participant 1 */}
-                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  {/* Participant 2 */}
+                  {teamMemberCount >= 2 && (
+                    <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
                   <h4 className="font-medium">Участник 2</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -693,11 +695,13 @@ export default function EnrollPage() {
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
+                    </div>
                   </div>
-                </div>
+                  )}
 
-                {/* Participant 2 */}
-                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  {/* Participant 3 */}
+                  {teamMemberCount >= 3 && (
+                    <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
                   <h4 className="font-medium">Участник 3</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -749,11 +753,13 @@ export default function EnrollPage() {
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
+                    </div>
                   </div>
-                </div>
+                  )}
 
-                {/* Participant 3 */}
-                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  {/* Participant 4 */}
+                  {teamMemberCount >= 4 && (
+                    <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
                   <h4 className="font-medium">Участник 4</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -805,11 +811,13 @@ export default function EnrollPage() {
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
+                    </div>
                   </div>
-                </div>
+                  )}
 
-                {/* Participant 4 */}
-                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  {/* Participant 5 */}
+                  {teamMemberCount >= 5 && (
+                    <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
                   <h4 className="font-medium">Участник 5</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
@@ -861,9 +869,11 @@ export default function EnrollPage() {
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
+                    </div>
                   </div>
+                  )}
                 </div>
-              </div>
+              )}
 
               {/* Mentor */}
               <div className="bg-muted rounded-lg p-4 space-y-4">
