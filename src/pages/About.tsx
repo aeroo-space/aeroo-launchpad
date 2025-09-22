@@ -231,7 +231,8 @@ const About = () => {
                       product_id: 'partnership',
                       name: name,
                       email: email,
-                      organization: phone ? `Телефон: ${phone}` : null,
+                      phone: phone || null,
+                      organization: null,
                       comment: message || 'Заявка на партнерство со страницы "О нас"',
                       status: 'pending'
                     });

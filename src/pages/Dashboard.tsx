@@ -551,6 +551,9 @@ const Dashboard = () => {
                           <div className="space-y-1">
                             <h4 className="font-medium">{request.name}</h4>
                             <p className="text-sm text-muted-foreground">{request.email}</p>
+                            {request.phone && (
+                              <p className="text-sm text-muted-foreground">Телефон: {request.phone}</p>
+                            )}
                             {request.organization && (
                               <p className="text-sm text-muted-foreground">Организация: {request.organization}</p>
                             )}

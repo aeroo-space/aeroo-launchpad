@@ -24,6 +24,7 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
   const [name, setName] = useState("");
   const [org, setOrg] = useState("");
   const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [comment, setComment] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
@@ -35,6 +36,7 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
     setName("");
     setOrg("");
     setEmail("");
+    setPhone("");
     setComment("");
   }
 
@@ -48,6 +50,7 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
         product_id: productId,
         name,
         email,
+        phone: phone || null,
         organization: org || null,
         comment: comment || null,
         status: 'pending'
@@ -111,6 +114,17 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="phone">Телефон</Label>
+            <Input 
+              id="phone" 
+              type="tel" 
+              value={phone} 
+              onChange={(e) => setPhone(e.target.value)} 
+              placeholder="+7 777 777 77 77"
+            />
           </div>
 
           <div className="space-y-2">
