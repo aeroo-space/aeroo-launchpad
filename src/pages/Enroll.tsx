@@ -57,6 +57,7 @@ export default function EnrollPage() {
 
   // Form state
   const [teamName, setTeamName] = useState("");
+  const [league, setLeague] = useState("");
 
   // Captain info (pre-filled from profile)
   const [captainFullName, setCaptainFullName] = useState("");
@@ -161,6 +162,7 @@ export default function EnrollPage() {
       user_id: user?.id,
       competition_id: competitionId,
       team_name: teamName,
+      league: league,
       status: "active",
 
       // Captain info
@@ -288,6 +290,36 @@ export default function EnrollPage() {
                   placeholder={t('enroll.teamNamePlaceholder')}
                   required
                 />
+              </div>
+
+              {/* League Selection */}
+              <div className="space-y-2">
+                <Label htmlFor="league">Лига *</Label>
+                <div className="flex gap-4">
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="league"
+                      value="junior"
+                      checked={league === "junior"}
+                      onChange={(e) => setLeague(e.target.value)}
+                      className="text-primary"
+                      required
+                    />
+                    <span>Младшая лига (5-9 классы)</span>
+                  </label>
+                  <label className="flex items-center space-x-2 cursor-pointer">
+                    <input
+                      type="radio"
+                      name="league"
+                      value="senior"
+                      checked={league === "senior"}
+                      onChange={(e) => setLeague(e.target.value)}
+                      className="text-primary"
+                    />
+                    <span>Старшая лига (10-11 классы)</span>
+                  </label>
+                </div>
               </div>
 
               {/* Captain Info */}
