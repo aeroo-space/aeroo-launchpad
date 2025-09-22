@@ -241,7 +241,7 @@ const resources = {
           },
           settlement: {
             title: 'Space Settlement Competition 2025',
-            dates: 'Регистрация: до 15 февраля 2025',
+            dates: 'Регистрация: до 25 октября 2025',
             registration: 'Создайте проект космического поселения будущего в команде единомышленников.',
             button: 'Зарегистрироваться'
           }
