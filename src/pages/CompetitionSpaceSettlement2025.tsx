@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,7 @@ import {
   Award,
   Send,
   Mail,
+  Clock,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -42,6 +43,32 @@ const sections = [
 
 export default function CompetitionSpaceSettlement2025() {
   const revealRefs = useRef<HTMLElement[]>([]);
+  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+
+  // Countdown timer
+  useEffect(() => {
+    const deadline = new Date("2025-10-25T23:59:00+05:00"); // GMT+5
+    
+    const updateTimer = () => {
+      const now = new Date();
+      const diff = deadline.getTime() - now.getTime();
+      
+      if (diff > 0) {
+        setTimeLeft({
+          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+          hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+          minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+          seconds: Math.floor((diff % (1000 * 60)) / 1000)
+        });
+      } else {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      }
+    };
+
+    updateTimer();
+    const interval = setInterval(updateTimer, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   // Basic SEO
   useEffect(() => {
@@ -142,6 +169,35 @@ export default function CompetitionSpaceSettlement2025() {
                 <Button asChild variant="outline" size="lg">
                   <a href="#about">Подробнее</a>
                 </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Countdown Timer */}
+        <section className="bg-muted/30 py-12">
+          <div className="container mx-auto px-4">
+            <div className="text-center">
+              <h2 className="text-2xl md:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
+                <Clock className="w-6 h-6 text-primary" />
+                До окончания регистрации
+              </h2>
+              <p className="text-muted-foreground mb-6">25 октября 2025, 23:59 GMT+5</p>
+              <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
+                {[
+                  { value: timeLeft.days, label: "дней" },
+                  { value: timeLeft.hours, label: "часов" },
+                  { value: timeLeft.minutes, label: "минут" },
+                  { value: timeLeft.seconds, label: "секунд" }
+                ].map((item, i) => (
+                  <div key={i} className="bg-background/80 backdrop-blur rounded-lg p-4 border">
+                    <div className="text-2xl md:text-3xl font-bold text-primary">{item.value.toString().padStart(2, '0')}</div>
+                    <div className="text-sm text-muted-foreground">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-6">
+                {applyBtn}
               </div>
             </div>
           </div>
