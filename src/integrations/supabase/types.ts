@@ -27,6 +27,7 @@ export type Database = {
           created_at: string
           email: string | null
           id: string
+          league: string | null
           mentor_city: string | null
           mentor_full_name: string | null
           mentor_iin: string | null
@@ -78,6 +79,7 @@ export type Database = {
           created_at?: string
           email?: string | null
           id?: string
+          league?: string | null
           mentor_city?: string | null
           mentor_full_name?: string | null
           mentor_iin?: string | null
@@ -129,6 +131,7 @@ export type Database = {
           created_at?: string
           email?: string | null
           id?: string
+          league?: string | null
           mentor_city?: string | null
           mentor_full_name?: string | null
           mentor_iin?: string | null
