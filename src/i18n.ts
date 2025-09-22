@@ -51,7 +51,7 @@ const resources = {
           category: "Проектирование поселений",
           description: "Создайте проект космического поселения будущего с командой единомышленников",
           status: "Регистрация",
-          deadline: "20 апреля 2025", 
+          deadline: "25 октября 2025", 
           ages: "12-18 лет"
         },
         aiChallenge: {
@@ -738,7 +738,7 @@ const resources = {
           category: "Settlement Design",
           description: "Create a future space settlement project with a team of like-minded individuals",
           status: "Registration",
-          deadline: "April 20, 2025", 
+          deadline: "October 25, 2025", 
           ages: "12-18 years"
         },
         aiChallenge: {
@@ -1454,7 +1454,7 @@ const resources = {
           category: "Қоныстарды жобалау",
           description: "Ұқсас көзқарасты ұстанатын адамдар командасымен болашақ ғарыштық қоныс жобасын жасаңыз",
           status: "Тіркелу",
-          deadline: "20 сәуір 2025", 
+          deadline: "25 қазан 2025", 
           ages: "12-18 жас"
         },
         aiChallenge: {
