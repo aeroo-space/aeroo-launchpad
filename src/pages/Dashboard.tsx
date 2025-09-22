@@ -601,7 +601,7 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => navigate(`/edit-enrollment/${e.id}`)}>
+                        <Button variant="outline" size="sm" onClick={() => navigate(`/enroll/space-settlement?edit=${e.id}`)}>
                           {t('dashboardExtra.actions.edit', { defaultValue: 'Редактировать' })}
                         </Button>
                         <AlertDialog>

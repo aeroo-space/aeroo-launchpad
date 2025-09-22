@@ -24,6 +24,10 @@ export default function EnrollPage() {
   const { user } = useAuth();
   const { profile, refetch } = useProfile();
   const { t } = useTranslation();
+  
+  // Check if we're in edit mode based on URL params
+  const urlParams = new URLSearchParams(window.location.search);
+  const editEnrollmentId = urlParams.get('edit');
 
   const competition = useMemo(() => competitions.find(c => c.id === competitionId), [competitionId]);
   // Use competition.status (i18n key) but don't rely on translations to determine openness
@@ -200,7 +204,29 @@ export default function EnrollPage() {
   useEffect(() => {
     const checkExistingEnrollment = async () => {
       if (user && competitionId) {
-        const { data, error } = await supabase
+        let enrollmentData = null;
+        
+        if (editEnrollmentId) {
+          // Edit mode - fetch specific enrollment by ID
+          const { data, error } = await supabase
+            .from("enrollments")
+            .select("*")
+            .eq("id", editEnrollmentId)
+            .eq("user_id", user.id) // Security check
+            .single();
+          
+          if (error) {
+            console.error("Error fetching enrollment for edit:", error);
+            toast.error("Заявка не найдена или у вас нет доступа к ней");
+            navigate('/dashboard');
+            return;
+          }
+          
+          enrollmentData = data;
+          setIsEditMode(true);
+        } else {
+          // Regular mode - check for existing enrollment
+          const { data, error } = await supabase
           .from("enrollments")
           .select("*")
           .eq("user_id", user.id)
@@ -251,7 +277,7 @@ export default function EnrollPage() {
       }
     };
     checkExistingEnrollment();
-  }, [user, competitionId]);
+  }, [user, competitionId, editEnrollmentId, navigate]);
 
   // Refetch profile when user comes to the page to ensure latest data
   useEffect(() => {
@@ -376,6 +402,12 @@ export default function EnrollPage() {
       if (!participant3Grade.trim()) validationErrors.push("Класс участника 3");
     }
 
+    // Mentor validation if mentor info is provided
+    if (mentorFullName.trim()) {
+      const mentorPhoneError = validatePhone(mentorPhone, "Телефон ментора");
+      if (mentorPhoneError) validationErrors.push(mentorPhoneError);
+    }
+
     if (validationErrors.length > 0) {
       const errorMessage = `Ошибки валидации: ${validationErrors.join("; ")}`;
       toast.error(errorMessage);
@@ -402,49 +434,49 @@ export default function EnrollPage() {
       email: captainEmail,
       telegram: captainTelegram,
 
-      // Participants
-      participant1_full_name: participant1FullName,
-      participant1_iin: participant1Iin,
-      participant1_phone: participant1Phone,
-      participant1_school: participant1School,
-      participant1_city: participant1City,
-      participant1_grade: participant1Grade,
+      // Participants - clear unused participants based on team size
+      participant1_full_name: teamMemberCount > 1 ? participant1FullName : null,
+      participant1_iin: teamMemberCount > 1 ? participant1Iin : null,
+      participant1_phone: teamMemberCount > 1 ? participant1Phone : null,
+      participant1_school: teamMemberCount > 1 ? participant1School : null,
+      participant1_city: teamMemberCount > 1 ? participant1City : null,
+      participant1_grade: teamMemberCount > 1 ? participant1Grade : null,
 
-      participant2_full_name: participant2FullName,
-      participant2_iin: participant2Iin,
-      participant2_phone: participant2Phone,
-      participant2_school: participant2School,
-      participant2_city: participant2City,
-      participant2_grade: participant2Grade,
+      participant2_full_name: teamMemberCount > 2 ? participant2FullName : null,
+      participant2_iin: teamMemberCount > 2 ? participant2Iin : null,
+      participant2_phone: teamMemberCount > 2 ? participant2Phone : null,
+      participant2_school: teamMemberCount > 2 ? participant2School : null,
+      participant2_city: teamMemberCount > 2 ? participant2City : null,
+      participant2_grade: teamMemberCount > 2 ? participant2Grade : null,
 
-      participant3_full_name: participant3FullName,
-      participant3_iin: participant3Iin,
-      participant3_phone: participant3Phone,
-      participant3_school: participant3School,
-      participant3_city: participant3City,
-      participant3_grade: participant3Grade,
+      participant3_full_name: teamMemberCount > 3 ? participant3FullName : null,
+      participant3_iin: teamMemberCount > 3 ? participant3Iin : null,
+      participant3_phone: teamMemberCount > 3 ? participant3Phone : null,
+      participant3_school: teamMemberCount > 3 ? participant3School : null,
+      participant3_city: teamMemberCount > 3 ? participant3City : null,
+      participant3_grade: teamMemberCount > 3 ? participant3Grade : null,
 
-      participant4_full_name: participant4FullName,
-      participant4_iin: participant4Iin,
-      participant4_phone: participant4Phone,
-      participant4_school: participant4School,
-      participant4_city: participant4City,
-      participant4_grade: participant4Grade,
+      participant4_full_name: teamMemberCount > 4 ? participant4FullName : null,
+      participant4_iin: teamMemberCount > 4 ? participant4Iin : null,
+      participant4_phone: teamMemberCount > 4 ? participant4Phone : null,
+      participant4_school: teamMemberCount > 4 ? participant4School : null,
+      participant4_city: teamMemberCount > 4 ? participant4City : null,
+      participant4_grade: teamMemberCount > 4 ? participant4Grade : null,
 
       // Mentor
-      mentor_full_name: mentorFullName,
-      mentor_iin: mentorIin,
-      mentor_phone: mentorPhone,
-      mentor_school: mentorSchool,
-      mentor_city: mentorCity,
-      mentor_telegram: mentorTelegram,
+      mentor_full_name: mentorFullName || null,
+      mentor_iin: mentorIin || null,
+      mentor_phone: mentorPhone || null,
+      mentor_school: mentorSchool || null,
+      mentor_city: mentorCity || null,
+      mentor_telegram: mentorTelegram || null,
 
-      source,
-      questions,
+      source: source || null,
+      questions: questions || null,
       consent,
     };
 
-    const { error } = isEditMode && existingEnrollment
+    const { error } = (isEditMode || editEnrollmentId) && existingEnrollment
       ? await supabase.from("enrollments").update(enrollmentData).eq("id", existingEnrollment.id)
       : await supabase.from("enrollments").insert(enrollmentData);
 
@@ -459,7 +491,7 @@ export default function EnrollPage() {
       }
       return;
     }
-    toast.success(isEditMode ? "Заявка успешно обновлена" : t('form.toastSubmitSuccess'));
+    toast.success((isEditMode || editEnrollmentId) ? "Заявка успешно обновлена" : t('form.toastSubmitSuccess'));
     navigate("/dashboard");
   };
 
