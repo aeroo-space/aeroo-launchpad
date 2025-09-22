@@ -49,6 +49,7 @@ const Dashboard = () => {
   const [editingField, setEditingField] = useState<string | null>(null);
   const [fieldValue, setFieldValue] = useState("");
   const [fieldSubmitting, setFieldSubmitting] = useState(false);
+  const [adminEnrollments, setAdminEnrollments] = useState<Enrollment[]>([]);
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -90,6 +91,17 @@ const Dashboard = () => {
         
         if (!requestError && requestData) {
           setProductRequests(requestData);
+        }
+
+        // Load all enrollments for admin view
+        const { data: allEnrollments, error: enrollmentError } = await supabase
+          .from("enrollments")
+          .select("*")
+          .eq("competition_id", "space-settlement-2025")
+          .order("created_at", { ascending: false });
+        
+        if (!enrollmentError && allEnrollments) {
+          setAdminEnrollments(allEnrollments as Enrollment[]);
         }
       }
 
@@ -563,6 +575,77 @@ const Dashboard = () => {
               )}
             </CardContent>
           </Card>
+
+          {/* Admin Panel - Space Settlement Competition Enrollments */}
+          {isAdmin && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Участники Space Settlement Competition 2025</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {adminEnrollments.length === 0 ? (
+                  <p className="text-muted-foreground">Участников пока нет</p>
+                ) : (
+                  <div className="space-y-4">
+                    {adminEnrollments.map((enrollment) => (
+                      <div key={enrollment.id} className="border rounded-lg p-4 space-y-2">
+                        <div className="flex justify-between items-start">
+                          <div className="space-y-1">
+                            <h4 className="font-medium">Команда: {enrollment.team_name || "Не указано"}</h4>
+                            <p className="text-sm text-muted-foreground">Капитан: {enrollment.captain_full_name}</p>
+                            <p className="text-sm text-muted-foreground">Email: {enrollment.email}</p>
+                            <p className="text-sm text-muted-foreground">Телефон: {enrollment.captain_phone}</p>
+                            <p className="text-sm text-muted-foreground">Лига: {enrollment.league}</p>
+                          </div>
+                          <div className="text-right text-sm text-muted-foreground">
+                            <div>{new Date(enrollment.created_at).toLocaleDateString('ru-RU')}</div>
+                            <div className={`inline-block px-2 py-1 rounded text-xs ${
+                              enrollment.status === 'active' ? 'bg-green-100 text-green-800' :
+                              'bg-gray-100 text-gray-800'
+                            }`}>
+                              {enrollment.status === 'active' ? 'Активный' : enrollment.status}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                          <div>
+                            <p className="font-medium mb-1">Участники:</p>
+                            <ul className="space-y-1 text-muted-foreground">
+                              {enrollment.participant1_full_name && (
+                                <li>1. {enrollment.participant1_full_name}</li>
+                              )}
+                              {enrollment.participant2_full_name && (
+                                <li>2. {enrollment.participant2_full_name}</li>
+                              )}
+                              {enrollment.participant3_full_name && (
+                                <li>3. {enrollment.participant3_full_name}</li>
+                              )}
+                              {enrollment.participant4_full_name && (
+                                <li>4. {enrollment.participant4_full_name}</li>
+                              )}
+                            </ul>
+                          </div>
+                          <div>
+                            <p className="font-medium mb-1">Наставник:</p>
+                            <p className="text-muted-foreground">{enrollment.mentor_full_name || "Не указан"}</p>
+                            {enrollment.mentor_phone && (
+                              <p className="text-muted-foreground">Телефон: {enrollment.mentor_phone}</p>
+                            )}
+                          </div>
+                        </div>
+                        {enrollment.questions && (
+                          <div>
+                            <p className="text-sm font-medium mb-1">Вопросы:</p>
+                            <p className="text-sm bg-muted p-2 rounded">{enrollment.questions}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
 
           {/* Admin Panel - Product Requests */}
           {isAdmin && (
