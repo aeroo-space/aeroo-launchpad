@@ -11,8 +11,10 @@ import {
   Globe 
 } from "lucide-react";
 import { toast } from "sonner";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthProvider";
 
 const achievements = [
   { number: "5000+", labelKey: "participants", text: "участников", icon: Users },
@@ -34,6 +36,8 @@ const partners = [
 
 const About = () => {
   const { t } = useTranslation();
+  const { user } = useAuth();
+  const [submitting, setSubmitting] = useState(false);
   
   const team = [
     {
@@ -202,18 +206,46 @@ const About = () => {
 
           <div className="max-w-2xl mx-auto">
             <form
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
-                const form = e.currentTarget as HTMLFormElement;
-                const fd = new FormData(form);
-                const name = String(fd.get('name') || '').trim();
-                const email = String(fd.get('email') || '').trim();
-                if (!name || !email) {
-                  toast.error(t('about.leadRequired', { defaultValue: 'Заполните имя и email' }));
-                  return;
+                setSubmitting(true);
+                
+                try {
+                  const form = e.currentTarget as HTMLFormElement;
+                  const fd = new FormData(form);
+                  const name = String(fd.get('name') || '').trim();
+                  const email = String(fd.get('email') || '').trim();
+                  const phone = String(fd.get('phone') || '').trim();
+                  const message = String(fd.get('message') || '').trim();
+                  
+                  if (!name || !email) {
+                    toast.error(t('about.leadRequired', { defaultValue: 'Заполните имя и email' }));
+                    return;
+                  }
+
+                  // Сохраняем заявку в базу данных
+                  const { error } = await supabase
+                    .from('product_requests')
+                    .insert({
+                      user_id: user?.id || null,
+                      product_id: 'partnership',
+                      name: name,
+                      email: email,
+                      organization: phone ? `Телефон: ${phone}` : null,
+                      comment: message || 'Заявка на партнерство со страницы "О нас"',
+                      status: 'pending'
+                    });
+
+                  if (error) throw error;
+
+                  toast.success(t('about.leadSuccess', { defaultValue: 'Спасибо! Мы свяжемся с вами в ближайшее время.' }));
+                  form.reset();
+                } catch (error: any) {
+                  console.error('Error submitting partnership request:', error);
+                  toast.error('Ошибка при отправке заявки. Попробуйте еще раз.');
+                } finally {
+                  setSubmitting(false);
                 }
-                toast.success(t('about.leadSuccess', { defaultValue: 'Спасибо! Мы свяжемся с вами в ближайшее время.' }));
-                form.reset();
               }}
               className="space-y-4"
             >
@@ -233,8 +265,8 @@ const About = () => {
                 <label className="block text-sm font-medium mb-2">{t('about.formMessage', { defaultValue: 'Сообщение' })}</label>
                 <textarea name="message" className="w-full p-3 rounded-lg border border-border bg-background h-32" />
               </div>
-              <Button className="w-full btn-cosmic" type="submit">
-                {t('about.sendMessage', { defaultValue: 'Отправить' })}
+              <Button className="w-full btn-cosmic" type="submit" disabled={submitting}>
+                {submitting ? 'Отправляем...' : t('about.sendMessage', { defaultValue: 'Отправить' })}
               </Button>
               <p className="text-center text-sm text-muted-foreground">
                 {t('about.privacyNote', { defaultValue: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности.' })}

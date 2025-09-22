@@ -557,7 +557,9 @@ const Dashboard = () => {
                           </div>
                         </div>
                         <div>
-                          <p className="text-sm font-medium mb-1">Продукт: {request.product_id}</p>
+                          <p className="text-sm font-medium mb-1">
+                            Продукт: {request.product_id === 'partnership' ? 'Партнерство' : request.product_id}
+                          </p>
                           {request.comment && (
                             <div>
                               <p className="text-sm font-medium mb-1">Комментарий:</p>
