@@ -306,7 +306,7 @@ export default function EnrollPage() {
                       className="text-primary"
                       required
                     />
-                    <span>Младшая лига (5-9 классы)</span>
+                    <span>Младшая лига (7-9 классы)</span>
                   </label>
                   <label className="flex items-center space-x-2 cursor-pointer">
                     <input
@@ -317,7 +317,7 @@ export default function EnrollPage() {
                       onChange={(e) => setLeague(e.target.value)}
                       className="text-primary"
                     />
-                    <span>Старшая лига (10-11 классы)</span>
+                    <span>Старшая лига (10-12 классы)</span>
                   </label>
                 </div>
               </div>
