@@ -60,7 +60,9 @@ const Dashboard = () => {
     }
     (async () => {
       // Check if user is admin
-      const { data: adminCheck } = await supabase.rpc('is_admin');
+      console.log('Checking admin status for user:', user.id);
+      const { data: adminCheck, error: adminError } = await supabase.rpc('is_admin');
+      console.log('Admin check result:', adminCheck, 'Error:', adminError);
       setIsAdmin(adminCheck || false);
 
       // Load enrollments
@@ -75,12 +77,14 @@ const Dashboard = () => {
       }
 
       // Load product requests if admin
+      console.log('Is admin?', adminCheck, 'Loading product requests...');
       if (adminCheck) {
         const { data: requestData, error: requestError } = await supabase
           .from("product_requests")
           .select("*")
           .order("created_at", { ascending: false });
         
+        console.log('Product requests data:', requestData, 'Error:', requestError);
         if (!requestError && requestData) {
           setProductRequests(requestData);
         }
@@ -518,6 +522,59 @@ const Dashboard = () => {
               )}
             </CardContent>
           </Card>
+
+          {/* Admin Panel - Product Requests */}
+          <div style={{padding: '10px', background: '#f0f0f0', margin: '10px 0'}}>
+            Debug: isAdmin = {isAdmin ? 'true' : 'false'}, productRequests count = {productRequests.length}
+          </div>
+          {isAdmin && (
+            <Card>
+              <CardHeader>
+                <CardTitle>Заявки на связь</CardTitle>
+              </CardHeader>
+              <CardContent>
+                {productRequests.length === 0 ? (
+                  <p className="text-muted-foreground">Заявок пока нет</p>
+                ) : (
+                  <div className="space-y-4">
+                    {productRequests.map((request) => (
+                      <div key={request.id} className="border rounded-lg p-4 space-y-2">
+                        <div className="flex justify-between items-start">
+                          <div className="space-y-1">
+                            <h4 className="font-medium">{request.name}</h4>
+                            <p className="text-sm text-muted-foreground">{request.email}</p>
+                            {request.organization && (
+                              <p className="text-sm text-muted-foreground">Организация: {request.organization}</p>
+                            )}
+                          </div>
+                          <div className="text-right text-sm text-muted-foreground">
+                            <div>{new Date(request.created_at).toLocaleDateString('ru-RU')}</div>
+                            <div className={`inline-block px-2 py-1 rounded text-xs ${
+                              request.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                              request.status === 'completed' ? 'bg-green-100 text-green-800' :
+                              'bg-gray-100 text-gray-800'
+                            }`}>
+                              {request.status === 'pending' ? 'Ожидает' : 
+                               request.status === 'completed' ? 'Завершено' : request.status}
+                            </div>
+                          </div>
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium mb-1">Продукт: {request.product_id}</p>
+                          {request.comment && (
+                            <div>
+                              <p className="text-sm font-medium mb-1">Комментарий:</p>
+                              <p className="text-sm bg-muted p-2 rounded">{request.comment}</p>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+          )}
         </section>
         {selected && (
           <EditEnrollmentDialog
