@@ -68,6 +68,7 @@ export default function EnrollPage() {
   const [captainGrade, setCaptainGrade] = useState("");
   const [captainTelegram, setCaptainTelegram] = useState("");
   const [captainEmail, setCaptainEmail] = useState("");
+  const [captainAge, setCaptainAge] = useState("");
 
   // Participants
   const [participant1FullName, setParticipant1FullName] = useState("");
@@ -114,6 +115,20 @@ export default function EnrollPage() {
   const [dupOpen, setDupOpen] = useState(false);
   const [dupName, setDupName] = useState("");
 
+  // Helper functions for input validation
+  const handleDigitsOnlyChange = (value: string, setter: (value: string) => void) => {
+    const digitsOnly = value.replace(/\D/g, '');
+    setter(digitsOnly);
+  };
+
+  const handleTelegramChange = (value: string, setter: (value: string) => void) => {
+    if (!value.startsWith('@') && value.length > 0) {
+      setter('@' + value.replace(/^@+/, ''));
+    } else {
+      setter(value);
+    }
+  };
+
   // Pre-fill captain data from profile and update when profile changes
   useEffect(() => {
     if (profile) {
@@ -124,6 +139,7 @@ export default function EnrollPage() {
       setCaptainCity(profile.city || "");
       setCaptainTelegram(profile.telegram || "");
       setCaptainGrade(profile.grade?.toString() || "");
+      setCaptainAge(profile.age?.toString() || "");
     }
     if (user?.email) {
       setCaptainEmail(user.email);
@@ -151,6 +167,12 @@ export default function EnrollPage() {
       return;
     }
 
+    // Captain age is mandatory
+    if (!captainAge.trim()) {
+      toast.error("Пожалуйста, укажите возраст капитана");
+      return;
+    }
+
     setSubmitting(true);
 
     const { error } = await supabase.from("enrollments").insert({
@@ -165,6 +187,7 @@ export default function EnrollPage() {
       captain_iin: captainIin,
       captain_phone: captainPhone,
       captain_grade: captainGrade,
+      captain_age: parseInt(captainAge) || null,
       city: captainCity,
       study_place: captainSchool,
       email: captainEmail,
@@ -408,6 +431,16 @@ export default function EnrollPage() {
                       className="bg-muted-foreground/10"
                     />
                   </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="captain-age">Возраст капитана *</Label>
+                    <Input
+                      id="captain-age"
+                      value={captainAge}
+                      placeholder="Введите возраст"
+                      readOnly
+                      className="bg-muted-foreground/10"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -431,7 +464,7 @@ export default function EnrollPage() {
                       <Label>{t('form.iin')}</Label>
                       <Input
                         value={participant1Iin}
-                        onChange={(e) => setParticipant1Iin(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant1Iin)}
                         placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
                       />
@@ -440,7 +473,7 @@ export default function EnrollPage() {
                       <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant1Phone}
-                        onChange={(e) => setParticipant1Phone(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant1Phone)}
                         placeholder={t('form.phonePlaceholder')}
                       />
                     </div>
@@ -464,7 +497,7 @@ export default function EnrollPage() {
                       <Label>{t('form.grade')}</Label>
                       <Input
                         value={participant1Grade}
-                        onChange={(e) => setParticipant1Grade(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant1Grade)}
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
@@ -487,7 +520,7 @@ export default function EnrollPage() {
                       <Label>{t('form.iin')}</Label>
                       <Input
                         value={participant2Iin}
-                        onChange={(e) => setParticipant2Iin(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant2Iin)}
                         placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
                       />
@@ -496,7 +529,7 @@ export default function EnrollPage() {
                       <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant2Phone}
-                        onChange={(e) => setParticipant2Phone(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant2Phone)}
                         placeholder={t('form.phonePlaceholder')}
                       />
                     </div>
@@ -520,7 +553,7 @@ export default function EnrollPage() {
                       <Label>{t('form.grade')}</Label>
                       <Input
                         value={participant2Grade}
-                        onChange={(e) => setParticipant2Grade(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant2Grade)}
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
@@ -543,7 +576,7 @@ export default function EnrollPage() {
                       <Label>{t('form.iin')}</Label>
                       <Input
                         value={participant3Iin}
-                        onChange={(e) => setParticipant3Iin(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant3Iin)}
                         placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
                       />
@@ -552,7 +585,7 @@ export default function EnrollPage() {
                       <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant3Phone}
-                        onChange={(e) => setParticipant3Phone(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant3Phone)}
                         placeholder={t('form.phonePlaceholder')}
                       />
                     </div>
@@ -576,7 +609,7 @@ export default function EnrollPage() {
                       <Label>{t('form.grade')}</Label>
                       <Input
                         value={participant3Grade}
-                        onChange={(e) => setParticipant3Grade(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant3Grade)}
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
@@ -599,7 +632,7 @@ export default function EnrollPage() {
                       <Label>{t('form.iin')}</Label>
                       <Input
                         value={participant4Iin}
-                        onChange={(e) => setParticipant4Iin(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant4Iin)}
                         placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
                       />
@@ -608,7 +641,7 @@ export default function EnrollPage() {
                       <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant4Phone}
-                        onChange={(e) => setParticipant4Phone(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant4Phone)}
                         placeholder={t('form.phonePlaceholder')}
                       />
                     </div>
@@ -632,7 +665,7 @@ export default function EnrollPage() {
                       <Label>{t('form.grade')}</Label>
                       <Input
                         value={participant4Grade}
-                        onChange={(e) => setParticipant4Grade(e.target.value)}
+                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant4Grade)}
                         placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
@@ -656,7 +689,7 @@ export default function EnrollPage() {
                     <Label>{t('form.iin')}</Label>
                     <Input
                       value={mentorIin}
-                      onChange={(e) => setMentorIin(e.target.value)}
+                      onChange={(e) => handleDigitsOnlyChange(e.target.value, setMentorIin)}
                       placeholder={t('form.iinPlaceholder')}
                       maxLength={12}
                     />
@@ -665,7 +698,7 @@ export default function EnrollPage() {
                     <Label>{t('form.phone')}</Label>
                     <Input
                       value={mentorPhone}
-                      onChange={(e) => setMentorPhone(e.target.value)}
+                      onChange={(e) => handleDigitsOnlyChange(e.target.value, setMentorPhone)}
                       placeholder={t('form.phonePlaceholder')}
                     />
                   </div>
@@ -689,8 +722,8 @@ export default function EnrollPage() {
                     <Label>Telegram</Label>
                     <Input
                       value={mentorTelegram}
-                      onChange={(e) => setMentorTelegram(e.target.value)}
-                      placeholder={t('form.telegramPlaceholder')}
+                      onChange={(e) => handleTelegramChange(e.target.value, setMentorTelegram)}
+                      placeholder="@username"
                     />
                   </div>
                 </div>
@@ -735,7 +768,7 @@ export default function EnrollPage() {
                 disabled={
                   submitting ||
                   !teamName || !league || !captainFullName || !captainIin || !captainPhone || !captainSchool ||
-                  !captainCity || !captainGrade || !captainTelegram ||
+                  !captainCity || !captainGrade || !captainTelegram || !captainAge ||
                   !source || !consent
                 }
               >
