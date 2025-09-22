@@ -90,6 +90,13 @@ export default function EnrollPage() {
   const [participant3City, setParticipant3City] = useState("");
   const [participant3Grade, setParticipant3Grade] = useState("");
 
+  const [participant4FullName, setParticipant4FullName] = useState("");
+  const [participant4Iin, setParticipant4Iin] = useState("");
+  const [participant4Phone, setParticipant4Phone] = useState("");
+  const [participant4School, setParticipant4School] = useState("");
+  const [participant4City, setParticipant4City] = useState("");
+  const [participant4Grade, setParticipant4Grade] = useState("");
+
   // Mentor
   const [mentorFullName, setMentorFullName] = useState("");
   const [mentorIin, setMentorIin] = useState("");
@@ -137,6 +144,17 @@ export default function EnrollPage() {
       return;
     }
 
+    // Check if at least one participant is filled out
+    const hasParticipant1 = participant1FullName.trim() && participant1Iin.trim() && participant1Phone.trim() && participant1School.trim() && participant1City.trim() && participant1Grade.trim();
+    const hasParticipant2 = participant2FullName.trim() && participant2Iin.trim() && participant2Phone.trim() && participant2School.trim() && participant2City.trim() && participant2Grade.trim();
+    const hasParticipant3 = participant3FullName.trim() && participant3Iin.trim() && participant3Phone.trim() && participant3School.trim() && participant3City.trim() && participant3Grade.trim();
+    const hasParticipant4 = participant4FullName.trim() && participant4Iin.trim() && participant4Phone.trim() && participant4School.trim() && participant4City.trim() && participant4Grade.trim();
+
+    if (!hasParticipant1 && !hasParticipant2 && !hasParticipant3 && !hasParticipant4) {
+      toast.error(t('form.minOneParticipant', { defaultValue: "Необходимо заполнить данные хотя бы одного участника" }));
+      return;
+    }
+
     setSubmitting(true);
 
     const { error } = await supabase.from("enrollments").insert({
@@ -176,6 +194,13 @@ export default function EnrollPage() {
       participant3_school: participant3School,
       participant3_city: participant3City,
       participant3_grade: participant3Grade,
+
+      participant4_full_name: participant4FullName,
+      participant4_iin: participant4Iin,
+      participant4_phone: participant4Phone,
+      participant4_school: participant4School,
+      participant4_city: participant4City,
+      participant4_grade: participant4Grade,
 
       // Mentor
       mentor_full_name: mentorFullName,
@@ -368,58 +393,52 @@ export default function EnrollPage() {
                   <h4 className="font-medium">{t('form.participant1')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>{t('form.fullName')} *</Label>
+                      <Label>{t('form.fullName')}</Label>
                       <Input
                         value={participant1FullName}
                         onChange={(e) => setParticipant1FullName(e.target.value)}
                         placeholder={t('form.fullNamePlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.iin')} *</Label>
+                      <Label>{t('form.iin')}</Label>
                       <Input
                         value={participant1Iin}
                         onChange={(e) => setParticipant1Iin(e.target.value)}
                         placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.phone')} *</Label>
+                      <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant1Phone}
                         onChange={(e) => setParticipant1Phone(e.target.value)}
                         placeholder={t('form.phonePlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.school')} *</Label>
+                      <Label>{t('form.school')}</Label>
                       <Input
                         value={participant1School}
                         onChange={(e) => setParticipant1School(e.target.value)}
                         placeholder={t('form.schoolPlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.city')} *</Label>
+                      <Label>{t('form.city')}</Label>
                       <Input
                         value={participant1City}
                         onChange={(e) => setParticipant1City(e.target.value)}
                         placeholder={t('form.cityPlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.grade')} *</Label>
+                      <Label>{t('form.grade')}</Label>
                       <Input
                         value={participant1Grade}
                         onChange={(e) => setParticipant1Grade(e.target.value)}
                         placeholder={t('form.gradePlaceholder')}
-                        required
                       />
                     </div>
                   </div>
@@ -430,58 +449,52 @@ export default function EnrollPage() {
                   <h4 className="font-medium">{t('form.participant2Title')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>{t('form.fullName')} *</Label>
+                      <Label>{t('form.fullName')}</Label>
                       <Input
                         value={participant2FullName}
                         onChange={(e) => setParticipant2FullName(e.target.value)}
                         placeholder={t('form.fullNamePlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.iin')} *</Label>
+                      <Label>{t('form.iin')}</Label>
                       <Input
                         value={participant2Iin}
                         onChange={(e) => setParticipant2Iin(e.target.value)}
                         placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.phone')} *</Label>
+                      <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant2Phone}
                         onChange={(e) => setParticipant2Phone(e.target.value)}
                         placeholder={t('form.phonePlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.school')} *</Label>
+                      <Label>{t('form.school')}</Label>
                       <Input
                         value={participant2School}
                         onChange={(e) => setParticipant2School(e.target.value)}
                         placeholder={t('form.schoolPlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.city')} *</Label>
+                      <Label>{t('form.city')}</Label>
                       <Input
                         value={participant2City}
                         onChange={(e) => setParticipant2City(e.target.value)}
                         placeholder={t('form.cityPlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.grade')} *</Label>
+                      <Label>{t('form.grade')}</Label>
                       <Input
                         value={participant2Grade}
                         onChange={(e) => setParticipant2Grade(e.target.value)}
                         placeholder={t('form.gradePlaceholder')}
-                        required
                       />
                     </div>
                   </div>
@@ -492,58 +505,108 @@ export default function EnrollPage() {
                   <h4 className="font-medium">{t('form.participant3Title')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label>{t('form.fullName')} *</Label>
+                      <Label>{t('form.fullName')}</Label>
                       <Input
                         value={participant3FullName}
                         onChange={(e) => setParticipant3FullName(e.target.value)}
                         placeholder={t('form.fullNamePlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.iin')} *</Label>
+                      <Label>{t('form.iin')}</Label>
                       <Input
                         value={participant3Iin}
                         onChange={(e) => setParticipant3Iin(e.target.value)}
                         placeholder={t('form.iinPlaceholder')}
                         maxLength={12}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.phone')} *</Label>
+                      <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant3Phone}
                         onChange={(e) => setParticipant3Phone(e.target.value)}
                         placeholder={t('form.phonePlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.school')} *</Label>
+                      <Label>{t('form.school')}</Label>
                       <Input
                         value={participant3School}
                         onChange={(e) => setParticipant3School(e.target.value)}
                         placeholder={t('form.schoolPlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.city')} *</Label>
+                      <Label>{t('form.city')}</Label>
                       <Input
                         value={participant3City}
                         onChange={(e) => setParticipant3City(e.target.value)}
                         placeholder={t('form.cityPlaceholder')}
-                        required
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label>{t('form.grade')} *</Label>
+                      <Label>{t('form.grade')}</Label>
                       <Input
                         value={participant3Grade}
                         onChange={(e) => setParticipant3Grade(e.target.value)}
                         placeholder={t('form.gradePlaceholder')}
-                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Participant 4 */}
+                <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                  <h4 className="font-medium">{t('form.participant4Title')}</h4>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label>{t('form.fullName')}</Label>
+                      <Input
+                        value={participant4FullName}
+                        onChange={(e) => setParticipant4FullName(e.target.value)}
+                        placeholder={t('form.fullNamePlaceholder')}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>{t('form.iin')}</Label>
+                      <Input
+                        value={participant4Iin}
+                        onChange={(e) => setParticipant4Iin(e.target.value)}
+                        placeholder={t('form.iinPlaceholder')}
+                        maxLength={12}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>{t('form.phone')}</Label>
+                      <Input
+                        value={participant4Phone}
+                        onChange={(e) => setParticipant4Phone(e.target.value)}
+                        placeholder={t('form.phonePlaceholder')}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>{t('form.school')}</Label>
+                      <Input
+                        value={participant4School}
+                        onChange={(e) => setParticipant4School(e.target.value)}
+                        placeholder={t('form.schoolPlaceholder')}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>{t('form.city')}</Label>
+                      <Input
+                        value={participant4City}
+                        onChange={(e) => setParticipant4City(e.target.value)}
+                        placeholder={t('form.cityPlaceholder')}
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label>{t('form.grade')}</Label>
+                      <Input
+                        value={participant4Grade}
+                        onChange={(e) => setParticipant4Grade(e.target.value)}
+                        placeholder={t('form.gradePlaceholder')}
                       />
                     </div>
                   </div>
@@ -555,58 +618,52 @@ export default function EnrollPage() {
                 <h3 className="text-lg font-semibold">{t('form.mentor')}</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label>{t('form.fullName')} *</Label>
+                    <Label>{t('form.fullName')}</Label>
                     <Input
                       value={mentorFullName}
                       onChange={(e) => setMentorFullName(e.target.value)}
                       placeholder={t('form.fullNamePlaceholder')}
-                      required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>{t('form.iin')} *</Label>
+                    <Label>{t('form.iin')}</Label>
                     <Input
                       value={mentorIin}
                       onChange={(e) => setMentorIin(e.target.value)}
                       placeholder={t('form.iinPlaceholder')}
                       maxLength={12}
-                      required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>{t('form.phone')} *</Label>
+                    <Label>{t('form.phone')}</Label>
                     <Input
                       value={mentorPhone}
                       onChange={(e) => setMentorPhone(e.target.value)}
                       placeholder={t('form.phonePlaceholder')}
-                      required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>{t('form.school')} *</Label>
+                    <Label>{t('form.school')}</Label>
                     <Input
                       value={mentorSchool}
                       onChange={(e) => setMentorSchool(e.target.value)}
                       placeholder={t('form.schoolPlaceholder')}
-                      required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>{t('form.city')} *</Label>
+                    <Label>{t('form.city')}</Label>
                     <Input
                       value={mentorCity}
                       onChange={(e) => setMentorCity(e.target.value)}
                       placeholder={t('form.cityPlaceholder')}
-                      required
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Telegram *</Label>
+                    <Label>Telegram</Label>
                     <Input
                       value={mentorTelegram}
                       onChange={(e) => setMentorTelegram(e.target.value)}
                       placeholder={t('form.telegramPlaceholder')}
-                      required
                     />
                   </div>
                 </div>
