@@ -616,6 +616,18 @@ const Dashboard = () => {
             onUpdated={(updated) => {
               setEnrollments((prev) => prev.map((x) => (x.id === updated.id ? updated : x)));
               setSelected(updated);
+              // Force refresh to ensure data is up to date
+              setTimeout(async () => {
+                const { data: refreshData, error } = await supabase
+                  .from("enrollments")
+                  .select("*")
+                  .eq("user_id", user?.id)
+                  .order("created_at", { ascending: false });
+                
+                if (!error && refreshData) {
+                  setEnrollments(refreshData as Enrollment[]);
+                }
+              }, 500);
             }}
           />
         )}
