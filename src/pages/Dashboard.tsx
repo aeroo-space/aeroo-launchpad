@@ -60,9 +60,7 @@ const Dashboard = () => {
     }
     (async () => {
       // Check if user is admin
-      console.log('Checking admin status for user:', user.id);
       const { data: adminCheck, error: adminError } = await supabase.rpc('is_admin');
-      console.log('Admin check result:', adminCheck, 'Error:', adminError);
       setIsAdmin(adminCheck || false);
 
       // Load enrollments
@@ -77,14 +75,12 @@ const Dashboard = () => {
       }
 
       // Load product requests if admin
-      console.log('Is admin?', adminCheck, 'Loading product requests...');
       if (adminCheck) {
         const { data: requestData, error: requestError } = await supabase
           .from("product_requests")
           .select("*")
           .order("created_at", { ascending: false });
         
-        console.log('Product requests data:', requestData, 'Error:', requestError);
         if (!requestError && requestData) {
           setProductRequests(requestData);
         }
