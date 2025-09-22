@@ -221,15 +221,22 @@ export default function EnrollPage() {
       return;
     }
 
-    // Captain is required (participant 1), others are optional
-    if (!captainFullName.trim() || !captainIin.trim() || !captainPhone.trim() || !captainSchool.trim() || !captainCity.trim() || !captainGrade.trim()) {
-      toast.error("Данные капитана команды (Участник 1) обязательны для заполнения");
-      return;
-    }
+    // Check required fields and create specific error messages
+    const missingFields: string[] = [];
+    
+    if (!teamName.trim()) missingFields.push("Название команды");
+    if (!league.trim()) missingFields.push("Лига");
+    if (!captainFullName.trim()) missingFields.push("ФИО капитана");
+    if (!captainIin.trim()) missingFields.push("ИИН капитана");
+    if (!captainPhone.trim()) missingFields.push("Телефон капитана");
+    if (!captainSchool.trim()) missingFields.push("Учебное заведение капитана");
+    if (!captainCity.trim()) missingFields.push("Город капитана");
+    if (!captainGrade.trim()) missingFields.push("Класс капитана");
+    if (!captainAge.trim()) missingFields.push("Возраст капитана");
 
-    // Captain age is mandatory
-    if (!captainAge.trim()) {
-      toast.error("Пожалуйста, укажите возраст капитана");
+    if (missingFields.length > 0) {
+      const errorMessage = `Необходимо заполнить следующие поля: ${missingFields.join(", ")}`;
+      toast.error(errorMessage);
       return;
     }
 
@@ -379,29 +386,29 @@ export default function EnrollPage() {
               {/* League Selection */}
               <div className="space-y-2">
                 <Label htmlFor="league">Лига *</Label>
-                <div className="flex gap-4">
-                  <label className="flex items-center space-x-2 cursor-pointer">
+                <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
+                  <label className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
                     <input
                       type="radio"
                       name="league"
                       value="junior"
                       checked={league === "junior"}
                       onChange={(e) => setLeague(e.target.value)}
-                      className="text-primary"
+                      className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       required
                     />
-                    <span>Младшая лига (7-9 классы)</span>
+                    <span className="text-sm font-medium">Младшая лига (7-9 классы)</span>
                   </label>
-                  <label className="flex items-center space-x-2 cursor-pointer">
+                  <label className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
                     <input
                       type="radio"
                       name="league"
                       value="senior"
                       checked={league === "senior"}
                       onChange={(e) => setLeague(e.target.value)}
-                      className="text-primary"
+                      className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     />
-                    <span>Старшая лига (10-12 классы)</span>
+                    <span className="text-sm font-medium">Старшая лига (10-12 классы)</span>
                   </label>
                 </div>
               </div>
