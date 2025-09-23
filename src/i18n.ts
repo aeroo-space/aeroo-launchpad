@@ -463,6 +463,42 @@ const resources = {
         detailsNotReady: 'Детальная страница в разработке',
         detailsComingSoon: 'Скоро будет доступна подробная информация о продукте'
       },
+      about: {
+        metaTitle: 'О AEROO — миссия и команда',
+        metaDesc: 'Образовательная экосистема AEROO: миссия, ценности, команда и партнёры',
+        heroTitle: 'О AEROO',
+        heroSubtitle: 'Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление в области аэрокосмических технологий.',
+        missionTitle: 'Наша миссия',
+        missionText: 'Создать образовательную экосистему, которая объединяет школьников, студентов и молодых инженеров вокруг передовых технологий. Мы стремимся сделать аэрокосмические знания доступными каждому талантливому человеку.',
+        valuesTitle: 'Наши ценности',
+        values: {
+          innovation: 'Инновации и технологическое превосходство',
+          openness: 'Открытость и доступность образования',
+          teamwork: 'Командная работа и взаимопомощь',
+          excellence: 'Стремление к совершенству'
+        },
+        achievementsTitle: 'Наши достижения',
+        achievements: {
+          participants: 'участников',
+          events: 'мероприятий',
+          countries: 'страны'
+        },
+        teamTitle: 'Наша команда',
+        teamMembers: {
+          mirasName: 'Мирас Нусупов',
+          ryspayName: 'Рыспай Алихан'
+        },
+        partnersTitle: 'Наши партнёры',
+        becomePartner: 'Стать партнёром',
+        leadTitle: 'Свяжитесь с нами',
+        leadRequired: 'Заполните имя и email',
+        leadSuccess: 'Спасибо! Мы свяжемся с вами в ближайшее время.',
+        formName: 'Имя',
+        formPhone: 'Телефон',
+        formMessage: 'Сообщение',
+        sendMessage: 'Отправить',
+        privacyNote: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности.'
+      },
       footer: {
         description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
         location: 'Алматы, Казахстан',
@@ -973,6 +1009,42 @@ const resources = {
         detailsNotReady: 'Detail page in development',
         detailsComingSoon: 'Detailed product information will be available soon'
       },
+      about: {
+        metaTitle: 'About AEROO — mission and team',
+        metaDesc: 'AEROO educational ecosystem: mission, values, team and partners',
+        heroTitle: 'About AEROO',
+        heroSubtitle: 'We inspire and educate a new generation of creators, developing skills, teamwork and systems thinking in aerospace technologies.',
+        missionTitle: 'Our Mission',
+        missionText: 'Create an educational ecosystem that unites school students, university students and young engineers around advanced technologies. We strive to make aerospace knowledge accessible to every talented person.',
+        valuesTitle: 'Our Values',
+        values: {
+          innovation: 'Innovation and technological excellence',
+          openness: 'Openness and accessibility of education',
+          teamwork: 'Teamwork and mutual assistance',
+          excellence: 'Pursuit of excellence'
+        },
+        achievementsTitle: 'Our Achievements',
+        achievements: {
+          participants: 'participants',
+          events: 'events',
+          countries: 'countries'
+        },
+        teamTitle: 'Our Team',
+        teamMembers: {
+          mirasName: 'Miras Nusupov',
+          ryspayName: 'Ryspay Alikhan'
+        },
+        partnersTitle: 'Our Partners',
+        becomePartner: 'Become a Partner',
+        leadTitle: 'Contact Us',
+        leadRequired: 'Please fill in name and email',
+        leadSuccess: 'Thank you! We will contact you soon.',
+        formName: 'Name',
+        formPhone: 'Phone',
+        formMessage: 'Message',
+        sendMessage: 'Send',
+        privacyNote: 'By submitting this form, you agree to our privacy policy.'
+      },
       footer: {
         description: 'Educational platform uniting schoolchildren, students and young engineers around aerospace technologies.',
         location: 'Almaty, Kazakhstan',
@@ -1475,6 +1547,42 @@ const resources = {
         },
         detailsNotReady: 'Толық бет әзірленуде',
         detailsComingSoon: 'Өнім туралы толық ақпарат жақында қол жетімді болады'
+      },
+      about: {
+        metaTitle: 'AEROO туралы — миссия мен команда',
+        metaDesc: 'AEROO білім беру экожүйесі: миссия, құндылықтар, команда мен серіптестер',
+        heroTitle: 'AEROO туралы',
+        heroSubtitle: 'Біз аэроғарыш технологиялары саласында дағдылар, командалық жұмыс пен жүйелік ойлауды дамыта отырып, жаңа буын жасаушыларды шабыттандырамыз және оқытамыз.',
+        missionTitle: 'Біздің миссия',
+        missionText: 'Мектеп оқушылары, студенттер мен жас инженерлерді озық технологиялар айналасында біріктіретін білім беру экожүйесін құру. Біз аэроғарыш білімін әрбір талантты адамға қол жетімді ету үшін ұмтыламыз.',
+        valuesTitle: 'Біздің құндылықтар',
+        values: {
+          innovation: 'Инновация мен технологиялық үстемдік',
+          openness: 'Білім берудің ашықтығы мен қол жетімділігі',
+          teamwork: 'Командалық жұмыс пен өзара көмек',
+          excellence: 'Кемелдікке ұмтылу'
+        },
+        achievementsTitle: 'Біздің жетістіктер',
+        achievements: {
+          participants: 'қатысушы',
+          events: 'іс-шара',
+          countries: 'ел'
+        },
+        teamTitle: 'Біздің команда',
+        teamMembers: {
+          mirasName: 'Мирас Нұсупов',
+          ryspayName: 'Рыспай Алихан'
+        },
+        partnersTitle: 'Біздің серіптестер',
+        becomePartner: 'Серіптес болу',
+        leadTitle: 'Бізбен байланысыңыз',
+        leadRequired: 'Аты мен email толтырыңыз',
+        leadSuccess: 'Рақмет! Біз сізбен жақын арада хабарласамыз.',
+        formName: 'Аты',
+        formPhone: 'Телефон',
+        formMessage: 'Хабарлама',
+        sendMessage: 'Жіберу',
+        privacyNote: 'Форманы жібере отырып, сіз құпиялылық саясатымызбен келісесіз.'
       },
       footer: {
         description: 'Мектеп оқушылары, студенттер мен жас инженерлерді аэроғарыш технологиялары айналасында біріктіретін білім беру платформасы.',
