@@ -128,12 +128,11 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log("=== Email Send Attempt ===");
     console.log("Sending email to:", recipientEmail);
-    console.log("Environment:", isProduction ? "production" : "test");
     
     const emailResponse = await resend.emails.send({
       from: "AEROO <onboarding@resend.dev>",
       to: [recipientEmail],
-      subject: `Регистрация команды "${teamName}" подтверждена${!isProduction ? ' (ТЕСТ)' : ''}`,
+      subject: `Регистрация команды "${teamName}" подтверждена`,
       html: emailHtml,
     });
 
