@@ -43,7 +43,7 @@ const handler = async (req: Request): Promise<Response> => {
       .join("");
 
     const emailResponse = await resend.emails.send({
-      from: "AEROO <info@aeroo.space>",
+      from: "AEROO <onboarding@resend.dev>",
       to: [captainEmail],
       subject: `Регистрация команды "${teamName}" подтверждена`,
       html: `
