@@ -655,8 +655,8 @@ export default function EnrollPage() {
               <CardContent className="p-6">
                 <p className="text-foreground mb-4">{t('form.registrationNotOpen')}</p>
                 <div className="flex gap-3">
-                  <Button asChild variant="outline"><Link to={`/competitions/${competition.id === 'satellite-launch' ? 'satellite-launch-2026' : ''}` || "/competitions"}>Подробнее</Link></Button>
-                  <Button asChild><Link to="/competitions">К списку соревнований</Link></Button>
+                  <Button asChild variant="outline"><Link to={`/competitions/${competition.id === 'satellite-launch' ? 'satellite-launch-2026' : ''}` || "/competitions"}>{t('common.learnMore')}</Link></Button>
+                  <Button asChild><Link to="/competitions">{t('form.competitionsList')}</Link></Button>
                 </div>
               </CardContent>
             </Card>
