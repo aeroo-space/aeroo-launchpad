@@ -569,30 +569,45 @@ export default function EnrollPage() {
       return;
     }
 
-    // Send confirmation email for new registrations (non-blocking)
+    // Send confirmation email for new registrations
     if (!isEditMode && !editEnrollmentId) {
-      // Fire and forget - don't await to avoid blocking the UI
-      const participants = [
-        { name: captainFullName, role: 'Капитан команды' },
-        ...(participant1FullName ? [{ name: participant1FullName, role: 'Участник' }] : []),
-        ...(participant2FullName ? [{ name: participant2FullName, role: 'Участник' }] : []),
-        ...(participant3FullName ? [{ name: participant3FullName, role: 'Участник' }] : []),
-        ...(participant4FullName ? [{ name: participant4FullName, role: 'Участник' }] : []),
-        ...(mentorFullName ? [{ name: mentorFullName, role: 'Ментор' }] : []),
-      ];
+      try {
+        console.log("Attempting to send confirmation email...");
+        
+        const participants = [
+          { name: captainFullName, role: 'Капитан команды' },
+          ...(participant1FullName ? [{ name: participant1FullName, role: 'Участник' }] : []),
+          ...(participant2FullName ? [{ name: participant2FullName, role: 'Участник' }] : []),
+          ...(participant3FullName ? [{ name: participant3FullName, role: 'Участник' }] : []),
+          ...(participant4FullName ? [{ name: participant4FullName, role: 'Участник' }] : []),
+          ...(mentorFullName ? [{ name: mentorFullName, role: 'Ментор' }] : []),
+        ];
 
-      supabase.functions.invoke('send-enrollment-confirmation', {
-        body: {
+        const emailData = {
           captainEmail: captainEmail,
           captainName: captainFullName,
           teamName: teamName,
           competitionTitle: competition?.title || 'Соревнование',
           participants: participants
+        };
+
+        console.log("Email data:", emailData);
+
+        const emailResult = await supabase.functions.invoke('send-enrollment-confirmation', {
+          body: emailData
+        });
+
+        if (emailResult.error) {
+          console.error('Email function error:', emailResult.error);
+          throw new Error(`Email sending failed: ${emailResult.error.message}`);
         }
-      }).catch(emailError => {
+
+        console.log('Email sent successfully:', emailResult.data);
+      } catch (emailError) {
         console.error('Failed to send confirmation email:', emailError);
-        // Silently fail - don't block user experience
-      });
+        // Show a warning but don't block the success flow
+        toast.warning("Регистрация успешна, но не удалось отправить email-подтверждение");
+      }
     }
 
     toast.success((isEditMode || editEnrollmentId) ? "Заявка успешно обновлена" : t('form.toastSubmitSuccess'));

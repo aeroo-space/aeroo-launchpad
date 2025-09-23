@@ -27,15 +27,35 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
+    console.log("=== Send Enrollment Confirmation Function Started ===");
+    console.log("Request method:", req.method);
+    console.log("Request headers:", Object.fromEntries(req.headers.entries()));
+
+    const requestBody = await req.json();
+    console.log("Request body received:", requestBody);
+
     const { 
       captainEmail, 
       captainName, 
       teamName, 
       competitionTitle, 
       participants 
-    }: EnrollmentConfirmationRequest = await req.json();
+    }: EnrollmentConfirmationRequest = requestBody;
 
-    console.log("Sending enrollment confirmation to:", captainEmail);
+    console.log("=== Email Configuration ===");
+    console.log("Recipient:", captainEmail);
+    console.log("Captain name:", captainName);
+    console.log("Team name:", teamName);
+    console.log("Competition:", competitionTitle);
+    console.log("Participants count:", participants?.length || 0);
+
+    // Check if RESEND_API_KEY is available
+    const apiKey = Deno.env.get("RESEND_API_KEY");
+    if (!apiKey) {
+      console.error("RESEND_API_KEY environment variable is not set");
+      throw new Error("Email service not configured - missing API key");
+    }
+    console.log("RESEND_API_KEY is configured:", apiKey ? "Yes" : "No");
 
     // Generate participant list HTML
     const participantsList = participants
@@ -47,11 +67,7 @@ const handler = async (req: Request): Promise<Response> => {
     const testEmail = "info@aeroo.space"; // Replace with your verified Resend email
     const recipientEmail = isProduction ? captainEmail : testEmail;
     
-    const emailResponse = await resend.emails.send({
-      from: "AEROO <onboarding@resend.dev>",
-      to: [recipientEmail],
-      subject: `Регистрация команды "${teamName}" подтверждена${!isProduction ? ' (ТЕСТ)' : ''}`,
-      html: `
+    const emailHtml = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #1a1a1a; font-size: 28px; font-weight: bold; margin: 0;">AEROO</h1>
@@ -110,10 +126,22 @@ const handler = async (req: Request): Promise<Response> => {
             </p>
           </div>
         </div>
-      `,
+      `;
+    
+    console.log("=== Email Send Attempt ===");
+    console.log("Sending email to:", recipientEmail);
+    console.log("Environment:", isProduction ? "production" : "test");
+    
+    const emailResponse = await resend.emails.send({
+      from: "AEROO <onboarding@resend.dev>",
+      to: [recipientEmail],
+      subject: `Регистрация команды "${teamName}" подтверждена${!isProduction ? ' (ТЕСТ)' : ''}`,
+      html: emailHtml,
     });
 
+    console.log("=== Email Response ===");
     console.log("Email sent successfully:", emailResponse);
+    console.log("Email ID:", emailResponse.data?.id || "No ID returned");
 
     return new Response(JSON.stringify(emailResponse), {
       status: 200,
@@ -123,9 +151,18 @@ const handler = async (req: Request): Promise<Response> => {
       },
     });
   } catch (error: any) {
-    console.error("Error in send-enrollment-confirmation function:", error);
+    console.error("=== ERROR in send-enrollment-confirmation function ===");
+    console.error("Error type:", typeof error);
+    console.error("Error message:", error.message);
+    console.error("Error stack:", error.stack);
+    console.error("Full error object:", error);
+    
     return new Response(
-      JSON.stringify({ error: error.message }),
+      JSON.stringify({ 
+        error: error.message,
+        type: typeof error,
+        stack: error.stack 
+      }),
       {
         status: 500,
         headers: { "Content-Type": "application/json", ...corsHeaders },
