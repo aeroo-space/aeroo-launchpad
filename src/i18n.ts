@@ -367,6 +367,102 @@ const resources = {
               text: 'AEROO помогает нашей школе готовить будущих инженеров и исследователей космоса.'
         }
       },
+      products: {
+        metaTitle: 'Продукты AEROO — наборы и конструкторы',
+        hero: {
+          title: 'Продукты AEROO',
+          subtitle: 'Образовательные комплекты для изучения аэрокосмических технологий. От простых моделей ракет до сложных наноспутников.'
+        },
+        advantages: {
+          title: 'Преимущества наших наборов',
+          items: {
+            0: {
+              title: 'Инновационные технологии',
+              desc: 'Используем последние достижения в области аэрокосмических технологий'
+            },
+            1: {
+              title: 'Полная безопасность',
+              desc: 'Все наборы проходят строгую сертификацию и тестирование'
+            },
+            2: {
+              title: 'Поддержка экспертов',
+              desc: 'Техническая поддержка и консультации от наших инженеров'
+            }
+          }
+        },
+        grid: {
+          title: 'Наши продукты'
+        },
+        items: {
+          'rocket-kit': {
+            title: 'Rocket Science Kit',
+            description: 'Образовательный комплект для изучения основ ракетостроения и аэродинамики',
+            category: 'Ракеты',
+            features: {
+              0: 'Безопасные двигатели',
+              1: 'Конструктор ракеты',
+              2: 'Создай свою ракету',
+              3: 'Симуляция запуска'
+            }
+          },
+          'cansat-kit': {
+            title: 'CanSat Kit',
+            description: 'Для сборки и запуска спутника формата CanSat на борту модельной ракеты',
+            category: 'Ракеты',
+            features: {
+              0: 'Продвинутая модель ракеты',
+              1: 'Работа с электроникой',
+              2: 'Данные в режиме реального времени',
+              3: 'Полезная нагрузка'
+            }
+          },
+          'satellite-kit': {
+            title: 'CubeSat Kit',
+            description: 'Спутник с возможностью запуска в стратосферу для проведения реальных научных экспериментов',
+            category: 'Спутники',
+            features: {
+              0: 'Солнечные панели',
+              1: 'Радиосистема LoRa',
+              2: 'Бортовой компьютер',
+              3: 'Датчики'
+            }
+          },
+          'football-drone-kit': {
+            title: 'Drone Football Kit',
+            description: 'Комплект для матчей в дрон-футбол — управляй дроном, соревнуйся и развивай командный дух',
+            category: 'Дроны',
+            features: {
+              0: 'Безопасный полет',
+              1: 'Тренировочная сетка и ворота',
+              2: 'Спортивный дух',
+              3: 'Стратегическое мышление'
+            }
+          }
+        },
+        inStock: 'В наличии',
+        outOfStock: 'Нет в наличии',
+        includes: 'Что входит в набор:',
+        cta: {
+          details: 'Подробнее',
+          request: 'Оставить заявку',
+          notify: 'Сообщить о поступлении'
+        },
+        help: {
+          title: 'Нужна консультация?',
+          desc: 'Наши эксперты помогут выбрать подходящий набор для вашего уровня подготовки и образовательных целей. Свяжитесь с нами для персональной консультации.'
+        },
+        catalog: {
+          download: 'Скачать каталог',
+          soon: 'Каталог скоро',
+          pdfLater: 'PDF-каталог будет доступен позже'
+        },
+        request: {
+          sent: 'Заявка отправлена',
+          weWillContact: 'Мы свяжемся с вами по email'
+        },
+        detailsNotReady: 'Детальная страница в разработке',
+        detailsComingSoon: 'Скоро будет доступна подробная информация о продукте'
+      },
       footer: {
         description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
         location: 'Алматы, Казахстан',
@@ -781,6 +877,102 @@ const resources = {
           }
         }
       },
+      products: {
+        metaTitle: 'AEROO Products — kits and constructors',
+        hero: {
+          title: 'AEROO Products',
+          subtitle: 'Educational kits for studying aerospace technologies. From simple rocket models to complex nanosatellites.'
+        },
+        advantages: {
+          title: 'Advantages of our kits',
+          items: {
+            0: {
+              title: 'Innovative technologies',
+              desc: 'We use the latest achievements in aerospace technologies'
+            },
+            1: {
+              title: 'Complete safety',
+              desc: 'All kits undergo strict certification and testing'
+            },
+            2: {
+              title: 'Expert support',
+              desc: 'Technical support and consultations from our engineers'
+            }
+          }
+        },
+        grid: {
+          title: 'Our products'
+        },
+        items: {
+          'rocket-kit': {
+            title: 'Rocket Science Kit',
+            description: 'Educational kit for studying the basics of rocket engineering and aerodynamics',
+            category: 'Rockets',
+            features: {
+              0: 'Safe engines',
+              1: 'Rocket constructor',
+              2: 'Build your rocket',
+              3: 'Launch simulation'
+            }
+          },
+          'cansat-kit': {
+            title: 'CanSat Kit',
+            description: 'For assembling and launching a CanSat format satellite aboard a model rocket',
+            category: 'Rockets',
+            features: {
+              0: 'Advanced rocket model',
+              1: 'Electronics work',
+              2: 'Real-time data',
+              3: 'Payload'
+            }
+          },
+          'satellite-kit': {
+            title: 'CubeSat Kit',
+            description: 'Satellite with the possibility of launching into the stratosphere for conducting real scientific experiments',
+            category: 'Satellites',
+            features: {
+              0: 'Solar panels',
+              1: 'LoRa radio system',
+              2: 'Onboard computer',
+              3: 'Sensors'
+            }
+          },
+          'football-drone-kit': {
+            title: 'Drone Football Kit',
+            description: 'Kit for drone football matches — control the drone, compete and develop team spirit',
+            category: 'Drones',
+            features: {
+              0: 'Safe flight',
+              1: 'Training net and goals',
+              2: 'Sportsmanship',
+              3: 'Strategic thinking'
+            }
+          }
+        },
+        inStock: 'In stock',
+        outOfStock: 'Out of stock',
+        includes: 'What\'s included in the kit:',
+        cta: {
+          details: 'Details',
+          request: 'Request',
+          notify: 'Notify when available'
+        },
+        help: {
+          title: 'Need consultation?',
+          desc: 'Our experts will help you choose the right kit for your level of preparation and educational goals. Contact us for personal consultation.'
+        },
+        catalog: {
+          download: 'Download catalog',
+          soon: 'Catalog coming soon',
+          pdfLater: 'PDF catalog will be available later'
+        },
+        request: {
+          sent: 'Request sent',
+          weWillContact: 'We will contact you by email'
+        },
+        detailsNotReady: 'Detail page in development',
+        detailsComingSoon: 'Detailed product information will be available soon'
+      },
       footer: {
         description: 'Educational platform uniting schoolchildren, students and young engineers around aerospace technologies.',
         location: 'Almaty, Kazakhstan',
@@ -1187,6 +1379,102 @@ const resources = {
             products: 'Жиынтықтар тапсырысы'
           }
         }
+      },
+      products: {
+        metaTitle: 'AEROO өнімдері — жиынтықтар мен конструкторлар',
+        hero: {
+          title: 'AEROO өнімдері',
+          subtitle: 'Аэроғарыш технологияларын зерттеуге арналған білім беру жиынтықтары. Қарапайым зымыран үлгілерінен күрделі наноспутниктерге дейін.'
+        },
+        advantages: {
+          title: 'Біздің жиынтықтардың артықшылықтары',
+          items: {
+            0: {
+              title: 'Инновациялық технологиялар',
+              desc: 'Аэроғарыш технологиялары саласындағы соңғы жетістіктерді пайдаланамыз'
+            },
+            1: {
+              title: 'Толық қауіпсіздік',
+              desc: 'Барлық жиынтықтар қатаң сертификаттау мен сынаудан өтеді'
+            },
+            2: {
+              title: 'Сарапшылардың қолдауы',
+              desc: 'Біздің инженерлерден техникалық қолдау мен кеңестер'
+            }
+          }
+        },
+        grid: {
+          title: 'Біздің өнімдер'
+        },
+        items: {
+          'rocket-kit': {
+            title: 'Rocket Science Kit',
+            description: 'Зымыран құрастыру мен аэродинамика негіздерін зерттеуге арналған білім беру жиынтығы',
+            category: 'Зымырандар',
+            features: {
+              0: 'Қауіпсіз қозғалтқыштар',
+              1: 'Зымыран конструкторы',
+              2: 'Өз зымыраныңызды жасаңыз',
+              3: 'Ұшыру симуляциясы'
+            }
+          },
+          'cansat-kit': {
+            title: 'CanSat Kit',
+            description: 'Үлгі зымыранның борттағы CanSat форматындағы спутникті құрастыру мен ұшыруға арналған',
+            category: 'Зымырандар',
+            features: {
+              0: 'Жетілдірілген зымыран үлгісі',
+              1: 'Электроникамен жұмыс',
+              2: 'Нақты уақыттағы деректер',
+              3: 'Пайдалы жүк'
+            }
+          },
+          'satellite-kit': {
+            title: 'CubeSat Kit',
+            description: 'Нақты ғылыми эксперименттер жүргізу үшін стратосфераға ұшыру мүмкіндігі бар спутник',
+            category: 'Спутниктер',
+            features: {
+              0: 'Күн панельдері',
+              1: 'LoRa радиожүйесі',
+              2: 'Борттық компьютер',
+              3: 'Датчиктер'
+            }
+          },
+          'football-drone-kit': {
+            title: 'Drone Football Kit',
+            description: 'Дрон-футбол матчтарына арналған жиынтық — дронды басқарыңыз, сайысыңыз және командалық рухты дамытыңыз',
+            category: 'Дрондар',
+            features: {
+              0: 'Қауіпсіз ұшу',
+              1: 'Жаттығу желісі мен қақпалар',
+              2: 'Спорттық рух',
+              3: 'Стратегиялық ойлау'
+            }
+          }
+        },
+        inStock: 'Қоймада бар',
+        outOfStock: 'Қоймада жоқ',
+        includes: 'Жиынтыққа кіретіндер:',
+        cta: {
+          details: 'Толығырақ',
+          request: 'Өтінім қалдыру',
+          notify: 'Келгенде хабарлау'
+        },
+        help: {
+          title: 'Кеңес керек пе?',
+          desc: 'Біздің сарапшылар сіздің дайындық деңгейіңіз бен білім беру мақсаттарыңызға сәйкес жиынтықты таңдауға көмектеседі. Жеке кеңес алу үшін бізбен байланысыңыз.'
+        },
+        catalog: {
+          download: 'Каталогты жүктеу',
+          soon: 'Каталог жақында',
+          pdfLater: 'PDF-каталог кейінірек қол жетімді болады'
+        },
+        request: {
+          sent: 'Өтінім жіберілді',
+          weWillContact: 'Біз сізбен email арқылы хабарласамыз'
+        },
+        detailsNotReady: 'Толық бет әзірленуде',
+        detailsComingSoon: 'Өнім туралы толық ақпарат жақында қол жетімді болады'
       },
       footer: {
         description: 'Мектеп оқушылары, студенттер мен жас инженерлерді аэроғарыш технологиялары айналасында біріктіретін білім беру платформасы.',
