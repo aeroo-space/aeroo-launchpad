@@ -62,10 +62,8 @@ const handler = async (req: Request): Promise<Response> => {
       .map(p => `<li style="margin-bottom: 8px;"><strong>${p.name}</strong> - ${p.role}</li>`)
       .join("");
 
-    // For testing: send to verified email if domain is not verified
-    const isProduction = Deno.env.get("ENVIRONMENT") === "production";
-    const testEmail = "info@aeroo.space"; // Replace with your verified Resend email
-    const recipientEmail = isProduction ? captainEmail : testEmail;
+    // Send directly to the captain's email
+    const recipientEmail = captainEmail;
     
     const emailHtml = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
