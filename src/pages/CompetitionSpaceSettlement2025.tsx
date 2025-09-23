@@ -249,10 +249,6 @@ export default function CompetitionSpaceSettlement2025() {
         <section id="rules" ref={(el) => el && (revealRefs.current[8] = el)} className="opacity-0 translate-y-4 transition-all duration-700 bg-muted/20">
           <div className="container mx-auto px-4 py-16">
             <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Положение о соревновании</h2>
-              <p className="text-lg text-muted-foreground mb-8">
-                Ознакомьтесь с полным положением о соревновании, требованиями к участникам и критериями оценки
-              </p>
               <Card className="glass-card p-8">
                 <div className="flex flex-col items-center gap-6">
                   <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
