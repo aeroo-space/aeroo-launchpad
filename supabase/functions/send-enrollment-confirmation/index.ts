@@ -42,10 +42,15 @@ const handler = async (req: Request): Promise<Response> => {
       .map(p => `<li style="margin-bottom: 8px;"><strong>${p.name}</strong> - ${p.role}</li>`)
       .join("");
 
+    // For testing: send to verified email if domain is not verified
+    const isProduction = Deno.env.get("ENVIRONMENT") === "production";
+    const testEmail = "info@aeroo.space"; // Replace with your verified Resend email
+    const recipientEmail = isProduction ? captainEmail : testEmail;
+    
     const emailResponse = await resend.emails.send({
       from: "AEROO <onboarding@resend.dev>",
-      to: [captainEmail],
-      subject: `Регистрация команды "${teamName}" подтверждена`,
+      to: [recipientEmail],
+      subject: `Регистрация команды "${teamName}" подтверждена${!isProduction ? ' (ТЕСТ)' : ''}`,
       html: `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
           <div style="text-align: center; margin-bottom: 30px;">
