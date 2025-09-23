@@ -415,7 +415,6 @@ export default function CompetitionSpaceSettlement2025() {
         <section id="contacts" ref={(el) => el && (revealRefs.current[7] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('spaceSettlement2025.contacts.title')}</h2>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Контакты</h2>
             <div className="grid sm:grid-cols-2 gap-6 max-w-2xl">
               <a href="mailto:info@aeroo.space" className="glass-card rounded-xl p-5 flex items-center gap-3 hover-scale">
                 <Mail className="w-5 h-5 text-primary" />
