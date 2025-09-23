@@ -671,6 +671,42 @@ const resources = {
             title: 'AEROO Competitions',
             desc: 'Join innovative aerospace technology competitions',
             button: 'All competitions'
+          }
+        },
+        testimonials: {
+          title: 'AEROO Reviews',
+          subtitle: 'What school directors, teachers, participants and competition winners say about us',
+          types: {
+            director: 'Director',
+            teacher: 'Teacher',
+            participant: 'Participant',
+            winner: 'Winner'
+          },
+          items: {
+            0: {
+              text: 'AEROO provides excellent educational materials. Our students show high results in space projects.'
+            },
+            1: {
+              text: 'Excellent methodological support and quality materials help us conduct engaging astronomy lessons.'
+            },
+            2: {
+              text: 'Winning the competition gave me tremendous experience and knowledge in space technology!'
+            },
+            3: {
+              text: 'Participating in AEROO programs opened new horizons in space exploration. Very grateful for the opportunity!'
+            },
+            4: {
+              text: 'Great platform for developing children\'s interest in science. Recommend to all colleagues!'
+            },
+            5: {
+              text: 'AEROO helps our school prepare future engineers and space researchers.'
+            }
+          },
+          cta: {
+            text: 'Join thousands of satisfied participants and educators',
+            competitions: 'Participate in competitions',
+            products: 'Order kits'
+          }
         }
       },
       footer: {
@@ -706,42 +742,6 @@ const resources = {
         },
         bottom: {
           rights: 'All rights reserved.'
-        }
-      },
-        testimonials: {
-          title: 'AEROO Reviews',
-          subtitle: 'What school directors, teachers, participants and competition winners say about us',
-          types: {
-            director: 'Director',
-            teacher: 'Teacher',
-            participant: 'Participant',
-            winner: 'Winner'
-          },
-          items: {
-            0: {
-              text: 'AEROO provides excellent educational materials. Our students show high results in space projects.'
-            },
-            1: {
-              text: 'Excellent methodological support and quality materials help us conduct engaging astronomy lessons.'
-            },
-            2: {
-              text: 'Winning the competition gave me tremendous experience and knowledge in space technology!'
-            },
-            3: {
-              text: 'Participating in AEROO programs opened new horizons in space exploration. Very grateful for the opportunity!'
-            },
-            4: {
-              text: 'Great platform for developing children\'s interest in science. Recommend to all colleagues!'
-            },
-            5: {
-              text: 'AEROO helps our school prepare future engineers and space researchers.'
-            }
-          },
-          cta: {
-            text: 'Join thousands of satisfied participants and educators',
-            competitions: 'Participate in competitions',
-            products: 'Order kits'
-          }
         }
       }
     }
