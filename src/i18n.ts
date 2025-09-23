@@ -1570,7 +1570,7 @@ const resources = {
         },
         teamTitle: 'Біздің команда',
         teamMembers: {
-          mirasName: 'Мирас Нұсупов',
+          mirasName: 'Мирас Нусупов',
           ryspayName: 'Рыспай Алихан'
         },
         partnersTitle: 'Біздің серіптестер',
