@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -25,7 +24,6 @@ import {
   Mail,
   Clock,
   ExternalLink,
-  Globe,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -45,11 +43,8 @@ const sections = [
 ] as const;
 
 export default function CompetitionSpaceSettlement2025() {
-  const { t, i18n } = useTranslation();
   const revealRefs = useRef<HTMLElement[]>([]);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-
-  const currentLang = i18n.language || 'ru';
 
   // Countdown timer
   useEffect(() => {
@@ -78,7 +73,7 @@ export default function CompetitionSpaceSettlement2025() {
 
   // Basic SEO
   useEffect(() => {
-    document.title = t('spaceSettlement2025.metaTitle');
+    document.title = "AEROO Space Settlement Competition 2025 — онлайн-хакатон";
     const metaDesc =
       (document.querySelector('meta[name="description"]') as HTMLMetaElement) ||
       (() => {
@@ -87,7 +82,8 @@ export default function CompetitionSpaceSettlement2025() {
         document.head.appendChild(m);
         return m;
       })();
-    metaDesc.content = t('spaceSettlement2025.metaDescription');
+    metaDesc.content =
+      "Онлайн-хакатон по проектированию космических поселений для школьников. Регистрация: 20.09–25.10.2025, хакатон: 28–29.10.2025.";
 
     let link = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
     if (!link) {
@@ -96,7 +92,7 @@ export default function CompetitionSpaceSettlement2025() {
       document.head.appendChild(link);
     }
     link.href = window.location.origin + "/competitions/space-settlement-2025";
-  }, [t]);
+  }, []);
 
   // Reveal on scroll
   useEffect(() => {
@@ -116,63 +112,34 @@ export default function CompetitionSpaceSettlement2025() {
   }, []);
 
   const applyBtn = (
-    <Button size="lg" variant="primary" asChild aria-label={t('spaceSettlement2025.participate')}>
-      <Link to="/enroll/space-settlement">{t('spaceSettlement2025.participate')}</Link>
+    <Button size="lg" variant="primary" asChild aria-label="Принять участие — регистрация на AEROO Space Settlement 2025">
+      <Link to="/enroll/space-settlement">Принять участие</Link>
     </Button>
   );
-
-  const languageOptions = [
-    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
-    { code: 'kk', name: 'Қазақша', flag: '🇰🇿' },
-    { code: 'en', name: 'English', flag: '🇺🇸' }
-  ];
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
 
       <main>
-        {/* Language Switcher */}
-        <div className="container mx-auto px-4 pt-4">
-          <div className="flex justify-end">
-            <div className="flex items-center gap-2 bg-background/80 backdrop-blur rounded-lg border p-2">
-              <Globe className="w-4 h-4 text-muted-foreground" />
-              {languageOptions.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => i18n.changeLanguage(lang.code)}
-                  className={`px-3 py-1.5 rounded-md text-sm transition-colors ${
-                    currentLang === lang.code
-                      ? 'bg-primary text-primary-foreground'
-                      : 'hover:bg-muted'
-                  }`}
-                >
-                  <span className="mr-1">{lang.flag}</span>
-                  {lang.name}
-                </button>
-              ))}
-            </div>
-          </div>
-        </div>
-
         {/* Breadcrumbs */}
-        <div className="container mx-auto px-4 pt-2">
+        <div className="container mx-auto px-4 pt-6">
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="/">{t('spaceSettlement2025.breadcrumb.home')}</Link>
+                  <Link to="/">Главная</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="/competitions">{t('spaceSettlement2025.breadcrumb.competitions')}</Link>
+                  <Link to="/competitions">Соревнования</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>{t('spaceSettlement2025.breadcrumb.current')}</BreadcrumbPage>
+                <BreadcrumbPage>AEROO Space Settlement Competition 2025</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -187,21 +154,21 @@ export default function CompetitionSpaceSettlement2025() {
           <div className="container mx-auto px-4 py-24 md:py-36 relative z-10">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
-                {t('spaceSettlement2025.title')}
+                AEROO Space Settlement Competition 2025
               </h1>
               <p className="text-lg md:text-2xl text-muted-foreground/90 mb-6">
-                {t('spaceSettlement2025.subtitle')}
+                Республиканский онлайн-хакатон по проектированию космических поселений
               </p>
               <div className="flex items-center gap-3 text-muted-foreground mb-8">
                 <CalendarDays className="w-5 h-5 text-primary" />
                 <span>
-                  {t('spaceSettlement2025.registration')}
+                  Регистрация до 25.10.2025 | Хакатон 28-29 октября 2025
                 </span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
                 {applyBtn}
                 <Button asChild variant="outline" size="lg">
-                  <a href="#about">{t('spaceSettlement2025.moreInfo')}</a>
+                  <a href="#about">Подробнее</a>
                 </Button>
               </div>
             </div>
@@ -214,15 +181,15 @@ export default function CompetitionSpaceSettlement2025() {
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
                 <Clock className="w-6 h-6 text-primary" />
-                {t('spaceSettlement2025.countdown.title')}
+                До окончания регистрации
               </h2>
-              <p className="text-muted-foreground mb-6">{t('spaceSettlement2025.countdown.subtitle')}</p>
+              <p className="text-muted-foreground mb-6">25 октября 2025, 23:59 GMT+5</p>
               <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
                 {[
-                  { value: timeLeft.days, label: t('spaceSettlement2025.countdown.days') },
-                  { value: timeLeft.hours, label: t('spaceSettlement2025.countdown.hours') },
-                  { value: timeLeft.minutes, label: t('spaceSettlement2025.countdown.minutes') },
-                  { value: timeLeft.seconds, label: t('spaceSettlement2025.countdown.seconds') }
+                  { value: timeLeft.days, label: "дней" },
+                  { value: timeLeft.hours, label: "часов" },
+                  { value: timeLeft.minutes, label: "минут" },
+                  { value: timeLeft.seconds, label: "секунд" }
                 ].map((item, i) => (
                   <div key={i} className="bg-background/80 backdrop-blur rounded-lg p-4 border">
                     <div className="text-2xl md:text-3xl font-bold text-primary">{item.value.toString().padStart(2, '0')}</div>
@@ -242,17 +209,18 @@ export default function CompetitionSpaceSettlement2025() {
           <div className="container mx-auto px-4 py-16">
             <div className="grid md:grid-cols-2 gap-10 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('spaceSettlement2025.about.title')}</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">О соревновании</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    {t('spaceSettlement2025.about.description1')}
+                    AEROO Space Settlement Competition 2025 — республиканский онлайн-хакатон научно-исследовательской и инженерной направленности для школьников.
                   </p>
                   <p>
-                    {t('spaceSettlement2025.about.description2')}
+                    Цель — развить навыки проектирования космических поселений, научного анализа и инженерного обоснования.
                   </p>
-                  <p>
-                    {t('spaceSettlement2025.about.description3')} <a href="https://nss.org/nss-space-settlement-contest/" target="_blank" rel="noopener" className="story-link">{t('spaceSettlement2025.about.description4')}</a>{t('spaceSettlement2025.about.description5')}
-                  </p>
+                <p>
+                  Лучшие участники войдут в сборную Казахстана для участия в международном конкурсе 
+                  <a href="https://nss.org/nss-space-settlement-contest/" target="_blank" rel="noopener" className="story-link">NSS Space Settlement Contest</a>.
+                </p>
                 </div>
 
 
@@ -287,9 +255,9 @@ export default function CompetitionSpaceSettlement2025() {
                     <FileText className="w-8 h-8 text-primary" />
                   </div>
                   <div className="text-center">
-                    <h3 className="text-xl font-semibold mb-2">{t('spaceSettlement2025.rules.cardTitle')}</h3>
+                    <h3 className="text-xl font-semibold mb-2">Положение о соревновании</h3>
                     <p className="text-muted-foreground mb-6">
-                      {t('spaceSettlement2025.rules.cardDescription')}
+                      Подробная информация о правилах участия, критериях оценки и требованиях к проектам
                     </p>
                     <Button size="lg" variant="outline" asChild className="group">
                       <a 
@@ -298,7 +266,7 @@ export default function CompetitionSpaceSettlement2025() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2"
                       >
-                        <span>{t('spaceSettlement2025.rules.openRules')}</span>
+                        <span>Открыть положение</span>
                         <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </a>
                     </Button>
@@ -312,14 +280,14 @@ export default function CompetitionSpaceSettlement2025() {
         {/* Goals */}
         <section id="goals" ref={(el) => el && (revealRefs.current[1] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('spaceSettlement2025.goals.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Цели и задачи</h2>
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
               {[
-                { icon: Lightbulb, text: t('spaceSettlement2025.goals.items.0') },
-                { icon: Rocket, text: t('spaceSettlement2025.goals.items.1') },
-                { icon: Users, text: t('spaceSettlement2025.goals.items.2') },
-                { icon: Star, text: t('spaceSettlement2025.goals.items.3') },
-                { icon: School, text: t('spaceSettlement2025.goals.items.4') },
+                { icon: Lightbulb, text: "Развитие инженерных и исследовательских компетенций школьников" },
+                { icon: Rocket, text: "Разработка проектов космических поселений с научным и инженерным обоснованием" },
+                { icon: Users, text: "Формирование сборной Казахстана для NSS Space Settlement Contest" },
+                { icon: Star, text: "Популяризация аэрокосмических направлений" },
+                { icon: School, text: "Выявление и поддержка талантливых участников" },
               ].map((g, i) => (
                 <Card key={i} className="glass-card">
                   <CardContent className="p-6 flex items-start gap-4">
@@ -335,18 +303,18 @@ export default function CompetitionSpaceSettlement2025() {
         {/* Format & Leagues */}
         <section id="format" ref={(el) => el && (revealRefs.current[2] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('spaceSettlement2025.format.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Формат и секции хакатона</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {[{
-                title: t('spaceSettlement2025.format.junior'),
+                title: "Младшая лига: 7–9 классы",
               }, {
-                title: t('spaceSettlement2025.format.senior'),
+                title: "Старшая лига: 10–12 классы",
               }].map((item, idx) => (
                 <Card key={idx} className="glass-card">
                   <CardContent className="p-6 space-y-3">
                     <h3 className="text-xl font-semibold">{item.title}</h3>
-                    <div className="flex items-center gap-2 text-muted-foreground"><FileText className="w-4 h-4 text-primary" /> {t('spaceSettlement2025.format.task')}</div>
-                    <div className="flex items-center gap-2 text-muted-foreground"><CalendarDays className="w-4 h-4 text-primary" /> {t('spaceSettlement2025.format.format')}</div>
+                    <div className="flex items-center gap-2 text-muted-foreground"><FileText className="w-4 h-4 text-primary" /> Задание: разработка научно-инженерного проекта по теме колонизации космоса (10–15 страниц)</div>
+                    <div className="flex items-center gap-2 text-muted-foreground"><CalendarDays className="w-4 h-4 text-primary" /> Формат: онлайн, 36 часов на выполнение с момента публикации задания</div>
                     
                   </CardContent>
                 </Card>
@@ -358,11 +326,11 @@ export default function CompetitionSpaceSettlement2025() {
         {/* Timeline */}
         <section id="timeline" ref={(el) => el && (revealRefs.current[3] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('spaceSettlement2025.timeline.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Ключевые даты</h2>
             <div className="relative border-l border-border pl-6 space-y-10">
               {[
-                { date: t('spaceSettlement2025.timeline.deadline'), icon: CalendarDays },
-                { date: t('spaceSettlement2025.timeline.hackathon'), icon: Rocket },
+                { date: "25 октября 2025 (23:59 GMT+5) — дедлайн подачи заявки", icon: CalendarDays },
+                { date: "28–29 Октября 2025 — хакатон (36 часов на выполнение задания)", icon: Rocket },
               ].map((item, i) => (
                 <div key={i} className="relative">
                   <div className="absolute -left-3 top-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
@@ -380,9 +348,9 @@ export default function CompetitionSpaceSettlement2025() {
         {/* Submission */}
         <section id="submission" ref={(el) => el && (revealRefs.current[4] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('spaceSettlement2025.submission.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Подача работ</h2>
             <p className="text-muted-foreground max-w-3xl">
-              {t('spaceSettlement2025.submission.description')}
+              Все работы загружаются в электронном виде через платформу организаторов до установленного дедлайна. Плагиат запрещён.
             </p>
             
           </div>
@@ -397,11 +365,11 @@ export default function CompetitionSpaceSettlement2025() {
           className="opacity-0 translate-y-4 transition-all duration-700"
         >
           <div className="container mx-auto px-4 py-20">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('spaceSettlement2025.awards.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Награды</h2>
             <ul className="list-disc pl-6 space-y-2 text-foreground/90 max-w-2xl">
-              <li className="flex items-center gap-2"><Award className="w-4 h-4 text-primary" /> {t('spaceSettlement2025.awards.items.0')}</li>
-              <li className="flex items-center gap-2"><Award className="w-4 h-4 text-primary" /> {t('spaceSettlement2025.awards.items.1')}</li>
-              <li className="flex items-center gap-2"><Award className="w-4 h-4 text-primary" /> {t('spaceSettlement2025.awards.items.2')}</li>
+              <li className="flex items-center gap-2"><Award className="w-4 h-4 text-primary" /> Денежные призы</li>
+              <li className="flex items-center gap-2"><Award className="w-4 h-4 text-primary" /> Гранты от Energo University</li>
+              <li className="flex items-center gap-2"><Award className="w-4 h-4 text-primary" /> Формирование сборной Казахстана для NSS Space Settlement Contest</li>
             </ul>
             <div className="mt-8">{applyBtn}</div>
           </div>
@@ -410,15 +378,15 @@ export default function CompetitionSpaceSettlement2025() {
         {/* Contacts */}
         <section id="contacts" ref={(el) => el && (revealRefs.current[7] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('spaceSettlement2025.contacts.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Контакты</h2>
             <div className="grid sm:grid-cols-2 gap-6 max-w-2xl">
               <a href="mailto:info@aeroo.space" className="glass-card rounded-xl p-5 flex items-center gap-3 hover-scale">
                 <Mail className="w-5 h-5 text-primary" />
-                <span>{t('spaceSettlement2025.contacts.email')}</span>
+                <span>info@aeroo.space</span>
               </a>
               <a href={TG_COMMUNITY} target="_blank" rel="noopener" className="glass-card rounded-xl p-5 flex items-center gap-3 hover-scale">
                 <Send className="w-5 h-5 text-primary" />
-                <span>{t('spaceSettlement2025.contacts.community')}</span>
+                <span>AEROO Community</span>
               </a>
             </div>
           </div>
