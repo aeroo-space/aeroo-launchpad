@@ -289,6 +289,17 @@ const resources = {
             title: 'Образовательные наборы AEROO',
             desc: 'Практические наборы для изучения ракетостроения, спутниковых технологий и космических исследований',
             button: 'Заказать наборы'
+          },
+          settlement: {
+            title: 'Space Settlement 2025',
+            dates: '25 октября 2025 — 15 января 2026',
+            registration: 'Регистрация открыта',
+            button: 'Участвовать'
+          },
+          competitions: {
+            title: 'Соревнования AEROO',
+            desc: 'Присоединяйтесь к инновационным соревнованиям по аэрокосмическим технологиям',
+            button: 'Все соревнования'
           }
         },
         testimonials: {
@@ -614,6 +625,17 @@ const resources = {
             title: 'AEROO Educational Kits',
             desc: 'Practical kits for studying rocket engineering, satellite technology and space research',
             button: 'Order kits'
+          },
+          settlement: {
+            title: 'Space Settlement 2025',
+            dates: 'October 25, 2025 — January 15, 2026',
+            registration: 'Registration open',
+            button: 'Participate'
+          },
+          competitions: {
+            title: 'AEROO Competitions',
+            desc: 'Join innovative aerospace technology competitions',
+            button: 'All competitions'
           }
         },
         testimonials: {
@@ -939,6 +961,17 @@ const resources = {
             title: 'AEROO білім беру жиынтықтары',
             desc: 'Зымыран құрастыру, спутник технологиялары мен ғарыш зерттеулерін үйрену үшін практикалық жиынтықтар',
             button: 'Жиынтықтар тапсырысы'
+          },
+          settlement: {
+            title: 'Space Settlement 2025',
+            dates: '25 қазан 2025 — 15 қаңтар 2026',
+            registration: 'Тіркелу ашық',
+            button: 'Қатысу'
+          },
+          competitions: {
+            title: 'AEROO сайыстары',
+            desc: 'Аэроғарыш технологияларының инновациялық сайыстарына қосылыңыз',
+            button: 'Барлық сайыстар'
           }
         },
         testimonials: {
