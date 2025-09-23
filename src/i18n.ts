@@ -278,7 +278,9 @@ const resources = {
         participantCountPlural: 'а',
         participantCountMany: 'ов',
         mentorSection: 'Наставник',
-        competitionsList: 'К списку соревнований'
+        competitionsList: 'К списку соревнований',
+        captainAge: 'Возраст капитана',
+        ageRequired: 'Введите возраст'
       }
     }
   },
@@ -556,7 +558,9 @@ const resources = {
         participantCountPlural: 's',
         participantCountMany: 's',
         mentorSection: 'Mentor',
-        competitionsList: 'To competitions list'
+        competitionsList: 'To competitions list',
+        captainAge: 'Captain Age',
+        ageRequired: 'Enter age'
       }
     }
   },
@@ -834,7 +838,9 @@ const resources = {
         participantCountPlural: '',
         participantCountMany: '',
         mentorSection: 'Дайындаушы',
-        competitionsList: 'Сайыстар тізіміне'
+        competitionsList: 'Сайыстар тізіміне',
+        captainAge: 'Капитан жасы',
+        ageRequired: 'Жасты енгізіңіз'
       }
     }
   }

@@ -690,7 +690,7 @@ export default function EnrollPage() {
                       className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
                       required
                     />
-                    <span className="text-sm font-medium">Младшая лига (7-9 классы)</span>
+                    <span className="text-sm font-medium">{t('form.juniorLeague')}</span>
                   </label>
                   <label className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
                     <input
@@ -821,11 +821,11 @@ export default function EnrollPage() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="captain-age">Возраст капитана *</Label>
+                    <Label htmlFor="captain-age">{t('form.captainAge')} *</Label>
                     <Input
                       id="captain-age"
                       value={captainAge}
-                      placeholder="Введите возраст"
+                      placeholder={t('form.ageRequired')}
                       readOnly
                       className="bg-muted-foreground/10"
                     />
