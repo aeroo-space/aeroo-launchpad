@@ -39,8 +39,8 @@ export default function EnrollPage() {
   // SEO
   useEffect(() => {
     const title = competition
-      ? `Заявка — ${competition.title}`
-      : "Заявка на участие — AEROO";
+      ? `${t('form.applicationTitle')} — ${competition.title}`
+      : `${t('form.applicationTitle')} — AEROO`;
     document.title = title;
     const metaDesc = (document.querySelector('meta[name="description"]') as HTMLMetaElement) || (() => {
       const m = document.createElement("meta");
@@ -237,7 +237,7 @@ export default function EnrollPage() {
           
           if (error) {
             console.error("Error fetching enrollment for edit:", error);
-            toast.error("Заявка не найдена или у вас нет доступа к ней");
+            toast.error(t('form.enrollmentNotFound'));
             navigate('/dashboard');
             return;
           }
@@ -373,21 +373,21 @@ export default function EnrollPage() {
 
     // Validation functions
     const validateName = (name: string, fieldName: string) => {
-      if (!name.trim()) return `${fieldName} обязательно для заполнения`;
-      if (/\d/.test(name)) return `${fieldName} не должно содержать цифры`;
+      if (!name.trim()) return `${fieldName} ${t('form.required')}`;
+      if (/\d/.test(name)) return `${fieldName} ${t('form.noDigits')}`;
       return null;
     };
 
     const validateCity = (city: string, fieldName: string) => {
-      if (!city.trim()) return `${fieldName} обязательно для заполнения`;
-      if (/\d/.test(city)) return `${fieldName} не должно содержать цифры`;
+      if (!city.trim()) return `${fieldName} ${t('form.required')}`;
+      if (/\d/.test(city)) return `${fieldName} ${t('form.noDigits')}`;
       return null;
     };
 
     const validatePhone = (phone: string, fieldName: string) => {
-      if (!phone.trim()) return `${fieldName} обязательно для заполнения`;
+      if (!phone.trim()) return `${fieldName} ${t('form.required')}`;
       const phoneRegex = /^\+7 \d{3} \d{3} \d{2} \d{2}$/;
-      if (!phoneRegex.test(phone)) return `${fieldName} должен быть в формате +7 777 777 77 77`;
+      if (!phoneRegex.test(phone)) return `${fieldName} ${t('form.phoneFormat')}`;
       return null;
     };
 
@@ -629,10 +629,10 @@ export default function EnrollPage() {
         <section className="container mx-auto px-4 py-10">
           <div className="max-w-3xl">
             <h1 className="text-3xl md:text-4xl font-bold mb-3">
-              {isEditMode ? "Редактирование заявки" : t('form.applicationTitle')}
+              {isEditMode ? t('form.editApplication') : t('form.applicationTitle')}
             </h1>
             <p className="text-muted-foreground mb-6">
-              {competition ? competition.title : "Выберите соревнование"}
+              {competition ? competition.title : t('form.selectCompetition')}
             </p>
             {competition && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
@@ -701,7 +701,7 @@ export default function EnrollPage() {
                       onChange={(e) => setLeague(e.target.value)}
                       className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
                     />
-                    <span className="text-sm font-medium">Старшая лига (10-12 классы)</span>
+                    <span className="text-sm font-medium">{t('form.seniorLeague')}</span>
                   </label>
                 </div>
               </div>
@@ -709,7 +709,7 @@ export default function EnrollPage() {
               {/* Team Member Count Selection */}
               {captainFullName.trim() && captainIin.trim() && captainPhone.trim() && captainSchool.trim() && captainCity.trim() && captainGrade.trim() && captainAge.trim() && (
                 <div className="space-y-2">
-                  <Label>Количество участников команды *</Label>
+                  <Label>{t('form.teamMemberCount')} *</Label>
                   <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
                     {[1, 2, 3, 4, 5].map((count) => (
                       <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
@@ -722,7 +722,7 @@ export default function EnrollPage() {
                           className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
                           required
                         />
-                        <span className="text-sm font-medium">{count} участник{count > 1 ? (count < 5 ? 'а' : 'ов') : ''}</span>
+                        <span className="text-sm font-medium">{count} {t('form.participantCount')}{count > 1 ? (count < 5 ? t('form.participantCountPlural') : t('form.participantCountMany')) : ''}</span>
                       </label>
                     ))}
                   </div>
@@ -732,10 +732,10 @@ export default function EnrollPage() {
               {/* Participant 1 (Captain) */}
               <div className="bg-muted rounded-lg p-4 space-y-4">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold">Участник 1 (Капитан команды) *</h3>
+                  <h3 className="text-lg font-semibold">{t('form.participant1Captain')} *</h3>
                   <Button variant="outline" size="sm" asChild>
                     <Link to="/dashboard">
-                      Редактировать в профиле
+                      {t('form.editInProfile')}
                     </Link>
                   </Button>
                 </div>
