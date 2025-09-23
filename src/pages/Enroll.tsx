@@ -218,8 +218,12 @@ export default function EnrollPage() {
 
   // Check for existing enrollment and prefill form if editing
   useEffect(() => {
+    let isMounted = true;
+    
     const checkExistingEnrollment = async () => {
-      if (user && competitionId) {
+      if (!user || !competitionId) return;
+      
+      try {
         let enrollmentData = null;
         
         if (editEnrollmentId) {
@@ -239,7 +243,7 @@ export default function EnrollPage() {
           }
           
           enrollmentData = data;
-          setIsEditMode(true);
+          if (isMounted) setIsEditMode(true);
         } else {
           // Regular mode - check for existing enrollment
           const { data, error } = await supabase
@@ -256,30 +260,52 @@ export default function EnrollPage() {
           }
           
           enrollmentData = data;
-          setIsEditMode(false);
+          if (isMounted) setIsEditMode(false);
         }
 
-        if (enrollmentData) {
+        if (enrollmentData && isMounted) {
           setExistingEnrollment(enrollmentData);
           
-          // Prefill form with existing enrollment data
-          setTeamName(enrollmentData.team_name || "");
-          setLeague(enrollmentData.league || "");
-          setCaptainEmail(enrollmentData.email || "");
-          setCaptainTelegram(enrollmentData.telegram || "");
-          setCaptainFullName(enrollmentData.captain_full_name || "");
-          setCaptainPhone(enrollmentData.captain_phone || "");
-          setCaptainAge(enrollmentData.captain_age?.toString() || "");
-          setCaptainIin(enrollmentData.captain_iin || "");
-          setCaptainGrade(enrollmentData.captain_grade || "");
-          setCaptainCity(enrollmentData.city || "");
-          setCaptainSchool(enrollmentData.study_place || "");
+          // Batch all state updates to prevent multiple re-renders
+          const updates = {
+            teamName: enrollmentData.team_name || "",
+            league: enrollmentData.league || "",
+            captainEmail: enrollmentData.email || "",
+            captainTelegram: enrollmentData.telegram || "",
+            captainFullName: enrollmentData.captain_full_name || "",
+            captainPhone: enrollmentData.captain_phone || "",
+            captainAge: enrollmentData.captain_age?.toString() || "",
+            captainIin: enrollmentData.captain_iin || "",
+            captainGrade: enrollmentData.captain_grade || "",
+            captainCity: enrollmentData.city || "",
+            captainSchool: enrollmentData.study_place || "",
+            source: enrollmentData.source || "",
+            questions: enrollmentData.questions || "",
+            consent: enrollmentData.consent || false
+          };
+          
+          // Apply all updates at once
+          setTeamName(updates.teamName);
+          setLeague(updates.league);
+          setCaptainEmail(updates.captainEmail);
+          setCaptainTelegram(updates.captainTelegram);
+          setCaptainFullName(updates.captainFullName);
+          setCaptainPhone(updates.captainPhone);
+          setCaptainAge(updates.captainAge);
+          setCaptainIin(updates.captainIin);
+          setCaptainGrade(updates.captainGrade);
+          setCaptainCity(updates.captainCity);
+          setCaptainSchool(updates.captainSchool);
+          setSource(updates.source);
+          setQuestions(updates.questions);
+          setConsent(updates.consent);
           
           // Set team member count based on existing data
-          if (enrollmentData.participant3_full_name) setTeamMemberCount(4);
-          else if (enrollmentData.participant2_full_name) setTeamMemberCount(3);
-          else if (enrollmentData.participant1_full_name) setTeamMemberCount(2);
-          else setTeamMemberCount(1);
+          let memberCount = 1;
+          if (enrollmentData.participant3_full_name) memberCount = 4;
+          else if (enrollmentData.participant2_full_name) memberCount = 3;
+          else if (enrollmentData.participant1_full_name) memberCount = 2;
+          setTeamMemberCount(memberCount);
           
           // Prefill participant data
           setParticipant1FullName(enrollmentData.participant1_full_name || "");
@@ -317,14 +343,17 @@ export default function EnrollPage() {
           setMentorSchool(enrollmentData.mentor_school || "");
           setMentorCity(enrollmentData.mentor_city || "");
           setMentorTelegram(enrollmentData.mentor_telegram || "");
-          
-          setSource(enrollmentData.source || "");
-          setQuestions(enrollmentData.questions || "");
-          setConsent(enrollmentData.consent || false);
         }
+      } catch (error) {
+        console.error("Error in checkExistingEnrollment:", error);
       }
     };
+    
     checkExistingEnrollment();
+    
+    return () => {
+      isMounted = false;
+    };
   }, [user, competitionId, editEnrollmentId, navigate]);
 
   // Refetch profile when user comes to the page to ensure latest data
@@ -540,31 +569,30 @@ export default function EnrollPage() {
       return;
     }
 
-    // Send confirmation email for new registrations
+    // Send confirmation email for new registrations (non-blocking)
     if (!isEditMode && !editEnrollmentId) {
-      try {
-        const participants = [
-          { name: captainFullName, role: 'Капитан команды' },
-          ...(participant1FullName ? [{ name: participant1FullName, role: 'Участник' }] : []),
-          ...(participant2FullName ? [{ name: participant2FullName, role: 'Участник' }] : []),
-          ...(participant3FullName ? [{ name: participant3FullName, role: 'Участник' }] : []),
-          ...(participant4FullName ? [{ name: participant4FullName, role: 'Участник' }] : []),
-          ...(mentorFullName ? [{ name: mentorFullName, role: 'Ментор' }] : []),
-        ];
+      // Fire and forget - don't await to avoid blocking the UI
+      const participants = [
+        { name: captainFullName, role: 'Капитан команды' },
+        ...(participant1FullName ? [{ name: participant1FullName, role: 'Участник' }] : []),
+        ...(participant2FullName ? [{ name: participant2FullName, role: 'Участник' }] : []),
+        ...(participant3FullName ? [{ name: participant3FullName, role: 'Участник' }] : []),
+        ...(participant4FullName ? [{ name: participant4FullName, role: 'Участник' }] : []),
+        ...(mentorFullName ? [{ name: mentorFullName, role: 'Ментор' }] : []),
+      ];
 
-        await supabase.functions.invoke('send-enrollment-confirmation', {
-          body: {
-            captainEmail: captainEmail,
-            captainName: captainFullName,
-            teamName: teamName,
-            competitionTitle: competition?.title || 'Соревнование',
-            participants: participants
-          }
-        });
-      } catch (emailError) {
+      supabase.functions.invoke('send-enrollment-confirmation', {
+        body: {
+          captainEmail: captainEmail,
+          captainName: captainFullName,
+          teamName: teamName,
+          competitionTitle: competition?.title || 'Соревнование',
+          participants: participants
+        }
+      }).catch(emailError => {
         console.error('Failed to send confirmation email:', emailError);
-        // Don't block the success flow if email fails
-      }
+        // Silently fail - don't block user experience
+      });
     }
 
     toast.success((isEditMode || editEnrollmentId) ? "Заявка успешно обновлена" : t('form.toastSubmitSuccess'));
