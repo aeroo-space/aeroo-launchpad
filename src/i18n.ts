@@ -280,7 +280,8 @@ const resources = {
         mentorSection: 'Наставник',
         competitionsList: 'К списку соревнований',
         captainAge: 'Возраст капитана',
-        ageRequired: 'Введите возраст'
+        ageRequired: 'Введите возраст',
+        selectSource: 'Выберите'
       }
     }
   },
@@ -560,7 +561,8 @@ const resources = {
         mentorSection: 'Mentor',
         competitionsList: 'To competitions list',
         captainAge: 'Captain Age',
-        ageRequired: 'Enter age'
+        ageRequired: 'Enter age',
+        selectSource: 'Select'
       }
     }
   },
@@ -840,7 +842,8 @@ const resources = {
         mentorSection: 'Дайындаушы',
         competitionsList: 'Сайыстар тізіміне',
         captainAge: 'Капитан жасы',
-        ageRequired: 'Жасты енгізіңіз'
+        ageRequired: 'Жасты енгізіңіз',
+        selectSource: 'Таңдаңыз'
       }
     }
   }

@@ -1146,7 +1146,7 @@ export default function EnrollPage() {
                   <Label>{t('form.source')}</Label>
                   <Select value={source} onValueChange={setSource}>
                     <SelectTrigger>
-                      <SelectValue placeholder={t('enroll.selectSource')} />
+                      <SelectValue placeholder={t('form.selectSource')} />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="instagram_aeroo">{t('form.sourceInstagramKaz')}</SelectItem>
