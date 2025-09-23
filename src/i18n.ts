@@ -302,6 +302,42 @@ const resources = {
             button: 'Все соревнования'
           }
         },
+        features: {
+          title: 'Направления обучения',
+          subtitle: 'Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования',
+          items: {
+            0: {
+              title: 'Ракетостроение',
+              desc: 'Изучение аэродинамики, конструирование и запуск моделей ракет с твердотопливными двигателями'
+            },
+            1: {
+              title: 'БПЛА',
+              desc: 'Программирование дронов, FPV-пилотирование, аэросъёмка и автономные полёты'
+            },
+            2: {
+              title: 'Спутниковые технологии',
+              desc: 'Создание наноспутников, изучение бортовых систем и подготовка к запуску'
+            },
+            3: {
+              title: 'Искусственный интеллект',
+              desc: 'Разработка автономных алгоритмов для навигации и управления космическими миссиями'
+            },
+            4: {
+              title: 'Соревнования',
+              desc: 'Участие в международных конкурсах по аэрокосмическим технологиям'
+            },
+            5: {
+              title: 'Командная работа',
+              desc: 'Развитие навыков сотрудничества в многодисциплинарных проектах'
+            }
+          },
+          learnMore: 'Узнать больше',
+          cta: {
+            title: 'Готовы начать свой путь в космос?',
+            courses: 'Образовательные комплекты для школ',
+            competitions: 'Ближайшие соревнования'
+          }
+        },
         testimonials: {
           title: 'Отзывы о AEROO',
           subtitle: 'Что говорят о нас директора школ, учителя, участники и победители соревнований',
@@ -673,6 +709,42 @@ const resources = {
             button: 'All competitions'
           }
         },
+        features: {
+          title: 'Learning Directions',
+          subtitle: 'Dive into the world of aerospace technologies through practical courses and exciting competitions',
+          items: {
+            0: {
+              title: 'Rocket Engineering',
+              desc: 'Study of aerodynamics, design and launch of rocket models with solid fuel engines'
+            },
+            1: {
+              title: 'UAV',
+              desc: 'Drone programming, FPV piloting, aerial photography and autonomous flights'
+            },
+            2: {
+              title: 'Satellite Technologies',
+              desc: 'Creation of nanosatellites, study of onboard systems and launch preparation'
+            },
+            3: {
+              title: 'Artificial Intelligence',
+              desc: 'Development of autonomous algorithms for navigation and control of space missions'
+            },
+            4: {
+              title: 'Competitions',
+              desc: 'Participation in international aerospace technology competitions'
+            },
+            5: {
+              title: 'Teamwork',
+              desc: 'Development of collaboration skills in multidisciplinary projects'
+            }
+          },
+          learnMore: 'Learn more',
+          cta: {
+            title: 'Ready to start your journey to space?',
+            courses: 'Educational kits for schools',
+            competitions: 'Upcoming competitions'
+          }
+        },
         testimonials: {
           title: 'AEROO Reviews',
           subtitle: 'What school directors, teachers, participants and competition winners say about us',
@@ -1042,6 +1114,42 @@ const resources = {
             title: 'AEROO сайыстары',
             desc: 'Аэроғарыш технологияларының инновациялық сайыстарына қосылыңыз',
             button: 'Барлық сайыстар'
+          }
+        },
+        features: {
+          title: 'Оқыту бағыттары',
+          subtitle: 'Практикалық курстар мен қызықты сайыстар арқылы аэроғарыш технологияларының әлеміне сүңгіңіз',
+          items: {
+            0: {
+              title: 'Зымыран құрастыру',
+              desc: 'Аэродинамиканы зерттеу, қатты отынды қозғалтқыштары бар зымыран үлгілерін құрастыру және ұшыру'
+            },
+            1: {
+              title: 'ДРОН',
+              desc: 'Дрондарды программалау, FPV ұшыру, аэроақпарат және автономды ұшулар'
+            },
+            2: {
+              title: 'Спутник технологиялары',
+              desc: 'Наноспутниктер жасау, борттық жүйелерді зерттеу және ұшыруға дайындық'
+            },
+            3: {
+              title: 'Жасанды интеллект',
+              desc: 'Ғарыштық миссияларды навигациялау мен басқару үшін автономды алгоритмдер әзірлеу'
+            },
+            4: {
+              title: 'Сайыстар',
+              desc: 'Аэроғарыш технологияларының халықаралық сайыстарына қатысу'
+            },
+            5: {
+              title: 'Командалық жұмыс',
+              desc: 'Көппәнді жобаларда ынтымақтастық дағдыларын дамыту'
+            }
+          },
+          learnMore: 'Көбірек білу',
+          cta: {
+            title: 'Ғарышқа саяхатыңызды бастауға дайынсыз ба?',
+            courses: 'Мектептерге арналған білім беру жиынтықтары',
+            competitions: 'Келешектегі сайыстар'
           }
         },
         testimonials: {
