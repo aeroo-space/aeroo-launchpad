@@ -62,8 +62,9 @@ const handler = async (req: Request): Promise<Response> => {
       .map(p => `<li style="margin-bottom: 8px;"><strong>${p.name}</strong> - ${p.role}</li>`)
       .join("");
 
-    // Send directly to the captain's email
-    const recipientEmail = captainEmail;
+    // Temporarily send to verified email until domain is verified
+    // TODO: Change back to captainEmail once domain is verified
+    const recipientEmail = "info@aeroo.space";
     
     const emailHtml = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #ffffff;">
