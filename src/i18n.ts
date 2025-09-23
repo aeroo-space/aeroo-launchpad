@@ -282,6 +282,43 @@ const resources = {
         captainAge: 'Возраст капитана',
         ageRequired: 'Введите возраст',
         selectSource: 'Выберите'
+      },
+      home: {
+        testimonials: {
+          title: 'Отзывы о AEROO',
+          subtitle: 'Что говорят о нас директора школ, учителя, участники и победители соревнований',
+          types: {
+            director: 'Директор',
+            teacher: 'Учитель',
+            participant: 'Участник',
+            winner: 'Победитель'
+          },
+          items: {
+            0: {
+              text: 'AEROO предоставляет отличные образовательные материалы. Наши ученики показывают высокие результаты в космических проектах.'
+            },
+            1: {
+              text: 'Прекрасная методическая поддержка и качественные материалы помогают нам проводить увлекательные уроки астрономии.'
+            },
+            2: {
+              text: 'Победа в соревновании дала мне огромный опыт и знания в области космических технологий!'
+            },
+            3: {
+              text: 'Участие в программах AEROO открыло новые горизонты в изучении космоса. Очень благодарен за возможность!'
+            },
+            4: {
+              text: 'Отличная платформа для развития интереса к науке у детей. Рекомендую всем коллегам!'
+            },
+            5: {
+              text: 'AEROO помогает нашей школе готовить будущих инженеров и исследователей космоса.'
+            }
+          },
+          cta: {
+            text: 'Присоединяйтесь к тысячам довольных участников и педагогов',
+            competitions: 'Участвовать в соревнованиях',
+            products: 'Заказать наборы'
+          }
+        }
       }
     }
   },
@@ -563,6 +600,43 @@ const resources = {
         captainAge: 'Captain Age',
         ageRequired: 'Enter age',
         selectSource: 'Select'
+      },
+      home: {
+        testimonials: {
+          title: 'AEROO Reviews',
+          subtitle: 'What school directors, teachers, participants and competition winners say about us',
+          types: {
+            director: 'Director',
+            teacher: 'Teacher',
+            participant: 'Participant',
+            winner: 'Winner'
+          },
+          items: {
+            0: {
+              text: 'AEROO provides excellent educational materials. Our students show high results in space projects.'
+            },
+            1: {
+              text: 'Excellent methodological support and quality materials help us conduct engaging astronomy lessons.'
+            },
+            2: {
+              text: 'Winning the competition gave me tremendous experience and knowledge in space technology!'
+            },
+            3: {
+              text: 'Participating in AEROO programs opened new horizons in space exploration. Very grateful for the opportunity!'
+            },
+            4: {
+              text: 'Great platform for developing children\'s interest in science. Recommend to all colleagues!'
+            },
+            5: {
+              text: 'AEROO helps our school prepare future engineers and space researchers.'
+            }
+          },
+          cta: {
+            text: 'Join thousands of satisfied participants and educators',
+            competitions: 'Participate in competitions',
+            products: 'Order kits'
+          }
+        }
       }
     }
   },
@@ -844,6 +918,43 @@ const resources = {
         captainAge: 'Капитан жасы',
         ageRequired: 'Жасты енгізіңіз',
         selectSource: 'Таңдаңыз'
+      },
+      home: {
+        testimonials: {
+          title: 'AEROO туралы пікірлер',
+          subtitle: 'Мектеп директорлары, мұғалімдер, қатысушылар мен сайыс жеңімпаздары біз туралы не дейді',
+          types: {
+            director: 'Директор',
+            teacher: 'Мұғалім',
+            participant: 'Қатысушы',
+            winner: 'Жеңімпаз'
+          },
+          items: {
+            0: {
+              text: 'AEROO тамаша білім беру материалдарын ұсынады. Біздің оқушылар ғарыш жобаларында жоғары нәтижелер көрсетеді.'
+            },
+            1: {
+              text: 'Керемет әдістемелік қолдау мен сапалы материалдар бізге қызықты астрономия сабақтарын өткізуге көмектеседі.'
+            },
+            2: {
+              text: 'Сайыста жеңіс маған ғарыш технологиялары саласында зор тәжірибе мен білім берді!'
+            },
+            3: {
+              text: 'AEROO бағдарламаларына қатысу ғарышты зерттеуде жаңа көкжиектер ашты. Мүмкіндік үшін өте ризамын!'
+            },
+            4: {
+              text: 'Балаларда ғылымға деген қызығушылықты дамыту үшін тамаша платформа. Барлық әріптестерге ұсынамын!'
+            },
+            5: {
+              text: 'AEROO біздің мектепке болашақ инженерлер мен ғарыш зерттеушілерін дайындауға көмектеседі.'
+            }
+          },
+          cta: {
+            text: 'Мыңдаған қанағаттанған қатысушылар мен педагогтарға қосылыңыз',
+            competitions: 'Сайыстарға қатысу',
+            products: 'Жиынтықтар тапсырысы'
+          }
+        }
       }
     }
   }
