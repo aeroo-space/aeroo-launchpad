@@ -284,6 +284,13 @@ const resources = {
         selectSource: 'Выберите'
       },
       home: {
+        hero: {
+          products: {
+            title: 'Образовательные наборы AEROO',
+            desc: 'Практические наборы для изучения ракетостроения, спутниковых технологий и космических исследований',
+            button: 'Заказать наборы'
+          }
+        },
         testimonials: {
           title: 'Отзывы о AEROO',
           subtitle: 'Что говорят о нас директора школ, учителя, участники и победители соревнований',
@@ -602,6 +609,13 @@ const resources = {
         selectSource: 'Select'
       },
       home: {
+        hero: {
+          products: {
+            title: 'AEROO Educational Kits',
+            desc: 'Practical kits for studying rocket engineering, satellite technology and space research',
+            button: 'Order kits'
+          }
+        },
         testimonials: {
           title: 'AEROO Reviews',
           subtitle: 'What school directors, teachers, participants and competition winners say about us',
@@ -920,6 +934,13 @@ const resources = {
         selectSource: 'Таңдаңыз'
       },
       home: {
+        hero: {
+          products: {
+            title: 'AEROO білім беру жиынтықтары',
+            desc: 'Зымыран құрастыру, спутник технологиялары мен ғарыш зерттеулерін үйрену үшін практикалық жиынтықтар',
+            button: 'Жиынтықтар тапсырысы'
+          }
+        },
         testimonials: {
           title: 'AEROO туралы пікірлер',
           subtitle: 'Мектеп директорлары, мұғалімдер, қатысушылар мен сайыс жеңімпаздары біз туралы не дейді',
