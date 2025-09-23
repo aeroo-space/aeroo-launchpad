@@ -499,6 +499,15 @@ const resources = {
         sendMessage: 'Отправить',
         privacyNote: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности.'
       },
+      contacts: {
+        metaTitle: 'Контакты — AEROO',
+        metaDesc: 'Свяжитесь с AEROO: email, телефон, Instagram, Telegram и WhatsApp.',
+        title: 'Контакты AEROO',
+        subtitle: 'Мы на связи: выберите удобный способ и свяжитесь с нашей командой.',
+        phone: 'Телефон',
+        telegram: 'Сообщество AEROO',
+        location: 'Локация'
+      },
       footer: {
         description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
         location: 'Алматы, Казахстан',
@@ -1045,6 +1054,15 @@ const resources = {
         sendMessage: 'Send',
         privacyNote: 'By submitting this form, you agree to our privacy policy.'
       },
+      contacts: {
+        metaTitle: 'Contacts — AEROO',
+        metaDesc: 'Contact AEROO: email, phone, Instagram, Telegram and WhatsApp.',
+        title: 'AEROO Contacts',
+        subtitle: 'We are in touch: choose a convenient way and contact our team.',
+        phone: 'Phone',
+        telegram: 'AEROO Community',
+        location: 'Location'
+      },
       footer: {
         description: 'Educational platform uniting schoolchildren, students and young engineers around aerospace technologies.',
         location: 'Almaty, Kazakhstan',
@@ -1583,6 +1601,15 @@ const resources = {
         formMessage: 'Хабарлама',
         sendMessage: 'Жіберу',
         privacyNote: 'Форманы жібере отырып, сіз құпиялылық саясатымызбен келісесіз.'
+      },
+      contacts: {
+        metaTitle: 'Байланыс — AEROO',
+        metaDesc: 'AEROO-мен байланысыңыз: email, телефон, Instagram, Telegram және WhatsApp.',
+        title: 'AEROO Байланыстары',
+        subtitle: 'Біз қарым-қатынастамыз: ыңғайлы тәсілді таңдап, біздің командамен байланысыңыз.',
+        phone: 'Телефон',
+        telegram: 'AEROO қауымдастығы',
+        location: 'Орналасуы'
       },
       footer: {
         description: 'Мектеп оқушылары, студенттер мен жас инженерлерді аэроғарыш технологиялары айналасында біріктіретін білім беру платформасы.',
