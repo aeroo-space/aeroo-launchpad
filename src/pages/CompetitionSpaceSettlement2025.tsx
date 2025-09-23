@@ -23,6 +23,7 @@ import {
   Send,
   Mail,
   Clock,
+  ExternalLink,
 } from "lucide-react";
 
 import { Link } from "react-router-dom";
@@ -240,6 +241,42 @@ export default function CompetitionSpaceSettlement2025() {
                   </CardContent>
                 </Card>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Competition Rules */}
+        <section id="rules" ref={(el) => el && (revealRefs.current[8] = el)} className="opacity-0 translate-y-4 transition-all duration-700 bg-muted/20">
+          <div className="container mx-auto px-4 py-16">
+            <div className="max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Положение о соревновании</h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Ознакомьтесь с полным положением о соревновании, требованиями к участникам и критериями оценки
+              </p>
+              <Card className="glass-card p-8">
+                <div className="flex flex-col items-center gap-6">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <FileText className="w-8 h-8 text-primary" />
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-xl font-semibold mb-2">Положение о соревновании</h3>
+                    <p className="text-muted-foreground mb-6">
+                      Подробная информация о правилах участия, критериях оценки и требованиях к проектам
+                    </p>
+                    <Button size="lg" variant="outline" asChild className="group">
+                      <a 
+                        href="https://docs.google.com/document/d/13y24KHT0ZB9YJMKn4pUwpKVbY1dH1S30AjwCiC9o5EY/edit?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2"
+                      >
+                        <span>Открыть положение</span>
+                        <ExternalLink className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </Card>
             </div>
           </div>
         </section>
