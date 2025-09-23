@@ -135,50 +135,27 @@ export default function CompetitionSpaceSettlement2025() {
       <Navigation />
 
       <main>
-        {/* Breadcrumbs and Language Switcher */}
+        {/* Breadcrumbs */}
         <div className="container mx-auto px-4 pt-6">
-          <div className="flex justify-between items-center">
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem>
-                  <BreadcrumbLink asChild>
-                    <Link to="/">{t('spaceSettlement2025.breadcrumbs.home')}</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbLink asChild>
-                    <Link to="/competitions">{t('spaceSettlement2025.breadcrumbs.competitions')}</Link>
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>{t('spaceSettlement2025.hero.title')}</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-            
-            {/* Language Switcher */}
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button variant="outline" size="sm" className="gap-2">
-                  <Languages className="w-4 h-4" />
-                  {i18n.language === 'ru' ? 'РУС' : i18n.language === 'kz' ? 'ҚАЗ' : 'ENG'}
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem onClick={() => changeLanguage('ru')}>
-                  🇷🇺 Русский
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => changeLanguage('kz')}>
-                  🇰🇿 Қазақша
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={() => changeLanguage('en')}>
-                  🇺🇸 English
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <Breadcrumb>
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/">{t('spaceSettlement2025.breadcrumbs.home')}</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbLink asChild>
+                  <Link to="/competitions">{t('spaceSettlement2025.breadcrumbs.competitions')}</Link>
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{t('spaceSettlement2025.hero.title')}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
         </div>
 
         {/* Hero */}
