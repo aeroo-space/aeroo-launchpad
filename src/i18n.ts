@@ -329,8 +329,43 @@ const resources = {
             },
             5: {
               text: 'AEROO помогает нашей школе готовить будущих инженеров и исследователей космоса.'
+        }
+      },
+      footer: {
+        description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
+        location: 'Алматы, Казахстан',
+        sections: {
+          0: {
+            title: 'Платформа',
+            links: {
+              0: 'Соревнования',
+              1: 'Курсы',
+              2: 'Продукты',
+              3: 'О нас',
+              4: 'Карьера'
             }
           },
+          1: {
+            title: 'Поддержка',
+            links: {
+              0: 'Контакты',
+              1: 'FAQ',
+              2: 'Техподдержка',
+              3: 'Сообщество'
+            }
+          },
+          2: {
+            title: 'Документы',
+            links: {
+              0: 'Политика конфиденциальности',
+              1: 'Пользовательское соглашение'
+            }
+          }
+        },
+        bottom: {
+          rights: 'Все права защищены.'
+        }
+      },
           cta: {
             text: 'Присоединяйтесь к тысячам довольных участников и педагогов',
             competitions: 'Участвовать в соревнованиях',
@@ -636,8 +671,43 @@ const resources = {
             title: 'AEROO Competitions',
             desc: 'Join innovative aerospace technology competitions',
             button: 'All competitions'
+        }
+      },
+      footer: {
+        description: 'Educational platform uniting schoolchildren, students and young engineers around aerospace technologies.',
+        location: 'Almaty, Kazakhstan',
+        sections: {
+          0: {
+            title: 'Platform',
+            links: {
+              0: 'Competitions',
+              1: 'Courses',
+              2: 'Products',
+              3: 'About Us',
+              4: 'Careers'
+            }
+          },
+          1: {
+            title: 'Support',
+            links: {
+              0: 'Contacts',
+              1: 'FAQ',
+              2: 'Tech Support',
+              3: 'Community'
+            }
+          },
+          2: {
+            title: 'Documents',
+            links: {
+              0: 'Privacy Policy',
+              1: 'Terms of Service'
+            }
           }
         },
+        bottom: {
+          rights: 'All rights reserved.'
+        }
+      },
         testimonials: {
           title: 'AEROO Reviews',
           subtitle: 'What school directors, teachers, participants and competition winners say about us',
@@ -1008,6 +1078,41 @@ const resources = {
             competitions: 'Сайыстарға қатысу',
             products: 'Жиынтықтар тапсырысы'
           }
+        }
+      },
+      footer: {
+        description: 'Мектеп оқушылары, студенттер мен жас инженерлерді аэроғарыш технологиялары айналасында біріктіретін білім беру платформасы.',
+        location: 'Алматы, Қазақстан',
+        sections: {
+          0: {
+            title: 'Платформа',
+            links: {
+              0: 'Сайыстар',
+              1: 'Курстар',
+              2: 'Өнімдер',
+              3: 'Біз туралы',
+              4: 'Мансап'
+            }
+          },
+          1: {
+            title: 'Қолдау',
+            links: {
+              0: 'Байланыстар',
+              1: 'ЖҚС',
+              2: 'Техникалық қолдау',
+              3: 'Қауымдастық'
+            }
+          },
+          2: {
+            title: 'Құжаттар',
+            links: {
+              0: 'Құпиялылық саясаты',
+              1: 'Пайдаланушы келісімі'
+            }
+          }
+        },
+        bottom: {
+          rights: 'Барлық құқықтар қорғалған.'
         }
       }
     }
