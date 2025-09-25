@@ -340,16 +340,16 @@ export default function CompetitionSpaceSettlement2025() {
         <section id="timeline" ref={(el) => el && (revealRefs.current[3] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('spaceSettlement2025.timeline.title')}</h2>
-            <div className="relative border-l border-border pl-6 space-y-10">
+            <div className="relative border-l border-border pl-10 space-y-10">
               {[
                 { date: t('spaceSettlement2025.timeline.deadline'), icon: CalendarDays },
                 { date: t('spaceSettlement2025.timeline.hackathon'), icon: Rocket },
               ].map((item, i) => (
                 <div key={i} className="relative">
-                  <div className="absolute -left-3 top-1 w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
-                    <item.icon className="w-3.5 h-3.5 text-primary" />
+                  <div className="absolute -left-6 top-3 w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-lg border-2 border-background z-10">
+                    <item.icon className="w-4 h-4 text-primary-foreground" />
                   </div>
-                  <div className="glass-card rounded-xl p-6">
+                  <div className="glass-card rounded-xl p-6 ml-2">
                     <p className="text-foreground">{item.date}</p>
                   </div>
                 </div>
