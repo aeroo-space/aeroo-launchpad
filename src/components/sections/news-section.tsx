@@ -24,7 +24,7 @@ const NewsSection = () => {
             {t('news.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            {t('news.subtitle')}
+            {t('news.subtitle', 'Последние новости и достижения AEROO в области космического образования')}
           </p>
         </div>
 
@@ -44,19 +44,19 @@ const NewsSection = () => {
                       <div className="glass-card rounded-xl p-6 h-full border border-border/30 bg-card/10 backdrop-blur-md hover:bg-card/20 transition-all duration-300">
                         <div className="flex flex-col h-full">
                           <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2">
-                            {t(`news.items.item${itemIndex}.title`)}
+                            {t(`news.items.${itemIndex}.title`)}
                           </h3>
                           <p className="text-sm text-muted-foreground mb-3">
-                            {t(`news.items.item${itemIndex}.date`)}
+                            {t(`news.items.${itemIndex}.date`)}
                           </p>
                           <p className="text-sm text-foreground/90 mb-4 line-clamp-3 flex-grow">
-                            {t(`news.items.item${itemIndex}.summary`)}
+                            {t(`news.items.${itemIndex}.summary`)}
                           </p>
                           <Button
                             variant="outline"
                             size="sm"
                             className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
-                            onClick={() => window.open(t(`news.items.item${itemIndex}.link`), '_blank')}
+                            onClick={() => window.open(t(`news.items.${itemIndex}.link`), '_blank')}
                           >
                             {t('news.readMore')}
                             <ExternalLink className="w-4 h-4 ml-2" />
@@ -75,14 +75,14 @@ const NewsSection = () => {
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 backdrop-blur-sm">
             <Instagram className="w-5 h-5 text-primary" />
-            <span className="text-foreground">{t('news.instagram.text')}</span>
+            <span className="text-foreground">{t('news.instagramCta')}</span>
             <Button
               variant="link"
               size="sm"
               className="text-primary hover:text-primary-glow p-0 h-auto"
-              onClick={() => window.open(t('news.instagram.link'), '_blank')}
+              onClick={() => window.open('https://www.instagram.com/aeroo.space', '_blank')}
             >
-              {t('news.instagram.handle')}
+              @aeroo.space
             </Button>
           </div>
         </div>
