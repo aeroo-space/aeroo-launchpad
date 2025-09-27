@@ -135,7 +135,7 @@ const NewsSection = () => {
         
         .news-track {
           display: flex;
-          animation: scroll-left 120s linear infinite;
+          animation: scroll-left 40s linear infinite;
           width: calc(200%);
         }
         
@@ -172,7 +172,7 @@ const NewsSection = () => {
           }
           
           .news-track {
-            animation-duration: 90s;
+            animation-duration: 30s;
           }
         }
       `}</style>
