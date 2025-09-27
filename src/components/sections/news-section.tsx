@@ -1,51 +1,9 @@
 import { ExternalLink, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from 'react-i18next';
 
 const NewsSection = () => {
-  const newsItems = [
-    {
-      id: 1,
-      title: 'AEROO Space AI Competition',
-      date: '2024',
-      summary: 'Новые возможности для одарённых детей в РК: наука, спорт, искусство и ИИ',
-      link: 'https://inbusiness.kz/ru/last/novye-vozmozhnosti-dlya-odarennyh-detej-v-rk-nauka-sport-iskusstvo-i-ii'
-    },
-    {
-      id: 2,
-      title: 'Интервью с основателем AEROO',
-      date: '14 мая 2025',
-      summary: 'Ему всего 23, а он уже запустил стартап и учит детей строить космические ракеты',
-      link: 'https://digitalbusiness.kz/2025-05-14/emu-vsego-23-a-on-uzhe-zapustil-startap-i-uchit-detey-stroit-kosmicheskie-raketi-istoriya-parnya-iz-almati/'
-    },
-    {
-      id: 3,
-      title: 'Помогают детям изучить инженерию',
-      date: '2024',
-      summary: 'Воспитывают будущих космонавтов - история стартапа RocketTech',
-      link: 'https://er10.kz/read/analitika/pomogajut-detjam-izuchit-inzheneriju-na-praktike-i-vospityvajut-budushhih-kosmonavtov-istorija-startapa-rockettech/'
-    },
-    {
-      id: 4,
-      title: 'Forbes про AEROO',
-      date: '2024',
-      summary: 'Казахстанские ракеты: Готовы ли мы совместно с детьми XXI века исследовать будущее?',
-      link: 'https://forbes.kz/articles/kazrockets_zyimyiran_jasaua_yizyiatyin_balalarmen_aryishtyi_brlese_zertteuge_dayyinbyiz'
-    },
-    {
-      id: 5,
-      title: 'Меморандум с Kazakhstan Engineering',
-      date: '2024',
-      summary: 'Подписан меморандум о сотрудничестве с представителями Kazakhstan Engineering',
-      link: 'https://ke.kz/ru/press-center/news/4864/'
-    },
-    {
-      id: 6,
-      title: 'Подготовка будущих инженеров',
-      date: '2024',
-      summary: 'Почему подготовка будущих инженеров в Казахстане строится на энтузиазме',
-      link: 'https://inbusiness.kz/ru/news/pochemu-podgotovka-budushih-inzhenerov-v-kazahstane-stroitsya-na-entuziazme'
-    }
-  ];
+  const { t } = useTranslation();
 
   return (
     <section className="relative py-20 overflow-hidden bg-gradient-to-b from-background via-background/95 to-background">
@@ -63,10 +21,10 @@ const NewsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-            СМИ о нас
+            {t('news.title')}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Последние новости и достижения AEROO в области космического образования
+            {t('news.subtitle')}
           </p>
         </div>
 
@@ -76,35 +34,38 @@ const NewsSection = () => {
             <div className="news-ticker group">
               <div className="news-track">
                 {/* Duplicate the news items for seamless loop */}
-                {[...newsItems, ...newsItems].map((item, index) => (
-                  <div
-                    key={`${item.id}-${index}`}
-                    className="news-item flex-shrink-0 w-80 md:w-96 mx-4"
-                  >
-                    <div className="glass-card rounded-xl p-6 h-full border border-border/30 bg-card/10 backdrop-blur-md hover:bg-card/20 transition-all duration-300">
-                      <div className="flex flex-col h-full">
-                        <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2">
-                          {item.title}
-                        </h3>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          {item.date}
-                        </p>
-                        <p className="text-sm text-foreground/90 mb-4 line-clamp-3 flex-grow">
-                          {item.summary}
-                        </p>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
-                          onClick={() => window.open(item.link, '_blank')}
-                        >
-                          Читать далее
-                          <ExternalLink className="w-4 h-4 ml-2" />
-                        </Button>
+                {[...Array(6), ...Array(6)].map((_, index) => {
+                  const itemIndex = (index % 6) + 1;
+                  return (
+                    <div
+                      key={`news-${itemIndex}-${index}`}
+                      className="news-item flex-shrink-0 w-80 md:w-96 mx-4"
+                    >
+                      <div className="glass-card rounded-xl p-6 h-full border border-border/30 bg-card/10 backdrop-blur-md hover:bg-card/20 transition-all duration-300">
+                        <div className="flex flex-col h-full">
+                          <h3 className="text-lg font-semibold text-foreground mb-2 line-clamp-2">
+                            {t(`news.items.item${itemIndex}.title`)}
+                          </h3>
+                          <p className="text-sm text-muted-foreground mb-3">
+                            {t(`news.items.item${itemIndex}.date`)}
+                          </p>
+                          <p className="text-sm text-foreground/90 mb-4 line-clamp-3 flex-grow">
+                            {t(`news.items.item${itemIndex}.summary`)}
+                          </p>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full border-primary/50 text-primary hover:bg-primary hover:text-primary-foreground"
+                            onClick={() => window.open(t(`news.items.item${itemIndex}.link`), '_blank')}
+                          >
+                            {t('news.readMore')}
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </Button>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </div>
@@ -114,14 +75,14 @@ const NewsSection = () => {
         <div className="mt-12 text-center">
           <div className="inline-flex items-center gap-3 px-6 py-3 rounded-xl bg-gradient-to-r from-primary/20 to-accent/20 border border-primary/30 backdrop-blur-sm">
             <Instagram className="w-5 h-5 text-primary" />
-            <span className="text-foreground">Для получения последних новостей подписывайтесь на нас в Instagram:</span>
+            <span className="text-foreground">{t('news.instagram.text')}</span>
             <Button
               variant="link"
               size="sm"
               className="text-primary hover:text-primary-glow p-0 h-auto"
-              onClick={() => window.open('https://www.instagram.com/aeroo.space', '_blank')}
+              onClick={() => window.open(t('news.instagram.link'), '_blank')}
             >
-              @aeroo.space
+              {t('news.instagram.handle')}
             </Button>
           </div>
         </div>
