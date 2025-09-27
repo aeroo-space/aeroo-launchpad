@@ -365,6 +365,8 @@ const resources = {
             },
             5: {
               text: 'AEROO помогает нашей школе готовить будущих инженеров и исследователей космоса.'
+            }
+          }
         }
       },
       products: {
@@ -920,6 +922,42 @@ const resources = {
             competitions: 'Participate in competitions',
             products: 'Order kits'
           }
+        },
+        news: {
+          title: 'News About Us',
+          subtitle: 'Latest news and achievements of AEROO in space education',
+          readMore: 'Read More',
+          instagramCta: 'For the latest news, follow us on Instagram:',
+          item1: {
+            title: 'AEROO Space AI Competition',
+            date: '2024',
+            summary: 'New opportunities for gifted children in Kazakhstan: science, sports, arts and AI'
+          },
+          item2: {
+            title: 'Interview with AEROO founder',
+            date: 'May 14, 2025',
+            summary: 'He is only 23, but he already launched a startup and teaches children to build space rockets'
+          },
+          item3: {
+            title: 'Helping children learn engineering',
+            date: '2024',
+            summary: 'Raising future astronauts - the story of RocketTech startup'
+          },
+          item4: {
+            title: 'Forbes about AEROO',
+            date: '2024',
+            summary: 'Kazakhstani rockets: Are we ready to explore the future together with 21st century children?'
+          },
+          item5: {
+            title: 'MOU with Kazakhstan Engineering',
+            date: '2024',
+            summary: 'Memorandum of cooperation signed with Kazakhstan Engineering representatives'
+          },
+          item6: {
+            title: 'Training future engineers',
+            date: '2024',
+            summary: 'Why the training of future engineers in Kazakhstan is built on enthusiasm'
+          }
         }
       },
       products: {
@@ -1467,6 +1505,42 @@ const resources = {
             text: 'Мыңдаған қанағаттанған қатысушылар мен педагогтарға қосылыңыз',
             competitions: 'Сайыстарға қатысу',
             products: 'Жиынтықтар тапсырысы'
+          }
+        },
+        news: {
+          title: 'Біз туралы жаңалықтар',
+          subtitle: 'AEROO ғарыштық білім беру саласындағы соңғы жаңалықтар мен жетістіктері',
+          readMore: 'Толығырақ оқу',
+          instagramCta: 'Соңғы жаңалықтар үшін Instagram-та бізге жазылыңыз:',
+          item1: {
+            title: 'AEROO Space AI Competition',
+            date: '2024',
+            summary: 'ҚР-дағы дарынды балалар үшін жаңа мүмкіндіктер: ғылым, спорт, өнер және ЖИ'
+          },
+          item2: {
+            title: 'AEROO негізін қалаушымен сұхбат',
+            date: '2025 жылдың 14 мамыры',
+            summary: 'Оған тек 23 жас, бірақ ол қазірдің өзінде стартап іске қосып, балаларды ғарыштық зымырандар жасауға үйретеді'
+          },
+          item3: {
+            title: 'Балаларға инженерияны үйренуге көмектеседі',
+            date: '2024',
+            summary: 'Болашақ ғарышкерлерді тәрбиелейді - RocketTech стартапының тарихы'
+          },
+          item4: {
+            title: 'Forbes AEROO туралы',
+            date: '2024',
+            summary: 'Қазақстандық зымырандар: XXI ғасыр балаларымен бірге болашақты зерттеуге дайынбыз ба?'
+          },
+          item5: {
+            title: 'Kazakhstan Engineering-мен меморандум',
+            date: '2024',
+            summary: 'Kazakhstan Engineering өкілдерімен ынтымақтастық туралы меморандум қол қойылды'
+          },
+          item6: {
+            title: 'Болашақ инженерлерді дайындау',
+            date: '2024',
+            summary: 'Қазақстанда болашақ инженерлерді дайындау неліктен энтузиазмге негізделген'
           }
         }
       },
