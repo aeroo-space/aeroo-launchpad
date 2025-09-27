@@ -17,7 +17,7 @@ const resources = {
         login: 'Войти',
       },
       news: {
-        title: 'Новости о нас',
+        title: 'СМИ о нас',
         instagramCta: 'Для получения последних новостей подписывайтесь на наш Instagram:',
         items: {
           1: {

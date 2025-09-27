@@ -63,7 +63,7 @@ const NewsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent mb-4">
-            Новости о нас
+            СМИ о нас
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Последние новости и достижения AEROO в области космического образования
