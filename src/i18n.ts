@@ -457,7 +457,129 @@ const resources = {
         archiveBtn: 'View Archive',
         openRegistration: 'Registration',
         pendingRegistration: 'Coming Soon',
-        registrationClosed: 'Closed'
+        registrationClosed: 'Closed',
+        aerooFest: {
+          title: "AEROO Fest 2026",
+          category: "National Festival",
+          description: "Grand festival of space technologies and innovation for participants of all ages",
+          status: "Coming Soon",
+          deadline: "",
+          ages: "7-18 years"
+        },
+        satelliteLaunch: {
+          title: "Satellite Launch 2026",
+          category: "Space Competition",
+          description: "International satellite launch competition with real launch opportunities",
+          status: "Coming Soon",
+          deadline: "",
+          ages: "14-18 years"
+        },
+        spaceSettlement: {
+          title: "Space Settlement 2025",
+          category: "Settlement Design",
+          description: "Create a space settlement project of the future with a team of like-minded people",
+          status: "Registration",
+          deadline: "October 25, 2025",
+          ages: "12-18 years"
+        },
+        aiChallenge: {
+          title: "Space AI 2026",
+          category: "Artificial Intelligence",
+          description: "Develop AI solutions for space tasks and research",
+          status: "In Development",
+          deadline: "",
+          ages: "16-25 years"
+        },
+        driveCompetition: {
+          title: "DRIVE Competition",
+          category: "Engineering Solutions",
+          description: "Create innovative transport solutions for space missions",
+          status: "In Development",
+          deadline: "",
+          ages: "14-20 years"
+        },
+        droneCompetition: {
+          title: "Drone Football",
+          category: "Drones",
+          description: "Teams control drones in protective spheres and compete in a special arena, scoring goals in flight.",
+          status: "Coming Soon",
+          deadline: "",
+          ages: "12-18 years"
+        }
+      },
+      spaceSettlement2025: {
+        meta: {
+          title: "AEROO Space Settlement Competition 2025 — Online Hackathon",
+          description: "Online hackathon on space settlement design for schoolchildren. Registration: Sept 20 – Oct 25, 2025, hackathon: Oct 28-29, 2025."
+        },
+        hero: {
+          title: "AEROO Space Settlement Competition 2025",
+          subtitle: "National Online Hackathon on Space Settlement Design",
+          dates: "Registration until Oct 25, 2025 | Hackathon Oct 28-29, 2025",
+          participate: "Participate",
+          learnMore: "Learn More"
+        },
+        countdown: {
+          title: "Until Registration Closes",
+          deadline: "October 25, 2025, 23:59 GMT+5",
+          days: "days",
+          hours: "hours",
+          minutes: "minutes",
+          seconds: "seconds"
+        },
+        breadcrumbs: {
+          home: "Home",
+          competitions: "Competitions"
+        },
+        about: {
+          title: "About the Competition",
+          text1: "AEROO Space Settlement Competition 2025 is a national online hackathon with research and engineering focus for school students.",
+          text2: "The goal is to develop skills in space settlement design, scientific analysis, and engineering justification.",
+          text3: "Top participants will join Kazakhstan's national team for the international",
+          nssLink: "NSS Space Settlement Contest"
+        },
+        rules: {
+          title: "Competition Regulations",
+          description: "Detailed information on participation rules, evaluation criteria, and project requirements",
+          button: "Open Regulations"
+        },
+        goals: {
+          title: "Goals and Objectives",
+          items: [
+            "Develop engineering and research competencies of schoolchildren",
+            "Develop space settlement projects with scientific and engineering justification",
+            "Form Kazakhstan's national team for NSS Space Settlement Contest",
+            "Promote aerospace directions",
+            "Identify and support talented participants"
+          ]
+        },
+        format: {
+          title: "Format and Hackathon Sections",
+          junior: "Junior League: Grades 7-9",
+          senior: "Senior League: Grades 10-12",
+          task: "Task: Develop a scientific-engineering project on space colonization (10-15 pages)",
+          duration: "Format: Online, 36 hours to complete from task publication"
+        },
+        timeline: {
+          title: "Key Dates",
+          deadline: "October 25, 2025 (23:59 GMT+5) — Application deadline",
+          hackathon: "October 28-29, 2025 — Hackathon (36 hours to complete)"
+        },
+        submission: {
+          title: "Project Submission",
+          description: "All projects are submitted digitally through the organizers' platform before the deadline. Plagiarism is prohibited."
+        },
+        awards: {
+          title: "Awards",
+          items: [
+            "Cash prizes",
+            "Grants from Energo University",
+            "Formation of Kazakhstan's national team for NSS Space Settlement Contest"
+          ]
+        },
+        contacts: {
+          title: "Contacts"
+        }
       },
       contacts: {
         meta: {
@@ -556,7 +678,129 @@ const resources = {
         archiveBtn: 'Мұрағатты қарау',
         openRegistration: 'Тіркелу',
         pendingRegistration: 'Жақында',
-        registrationClosed: 'Жабық'
+        registrationClosed: 'Жабық',
+        aerooFest: {
+          title: "AEROO Fest 2026",
+          category: "Республикалық фестиваль",
+          description: "Барлық жастағы қатысушыларға арналған ғарыштық технологиялар мен инновациялардың грандиозды фестивалі",
+          status: "Жақында",
+          deadline: "",
+          ages: "7-18 жас"
+        },
+        satelliteLaunch: {
+          title: "Satellite Launch 2026",
+          category: "Ғарыш жарысы",
+          description: "Нақты ұшыру мүмкіндіктері бар серіктерді ұшыру бойынша халықаралық жарыс",
+          status: "Жақында",
+          deadline: "",
+          ages: "14-18 жас"
+        },
+        spaceSettlement: {
+          title: "Space Settlement 2025",
+          category: "Қоныстарды жобалау",
+          description: "Ойдағыдай адамдар тобымен болашақтың ғарыштық қонысы жобасын жасаңыз",
+          status: "Тіркелу",
+          deadline: "25 қазан 2025",
+          ages: "12-18 жас"
+        },
+        aiChallenge: {
+          title: "Space AI 2026",
+          category: "Жасанды интеллект",
+          description: "Ғарыштық тапсырмалар мен зерттеулер үшін AI шешімдерін әзірлеңіз",
+          status: "Әзірленуде",
+          deadline: "",
+          ages: "16-25 жас"
+        },
+        driveCompetition: {
+          title: "DRIVE жарысы",
+          category: "Инженерлік шешімдер",
+          description: "Ғарыштық миссияларға арналған инновациялық көлік шешімдерін жасаңыз",
+          status: "Әзірленуде",
+          deadline: "",
+          ages: "14-20 жас"
+        },
+        droneCompetition: {
+          title: "Drone Football",
+          category: "Дрондар",
+          description: "Командалар қорғаныс сфераларында дрондарды басқарады және арнайы аренада ұшып жүріп гол салып жарысады.",
+          status: "Жақында",
+          deadline: "",
+          ages: "12-18 жас"
+        }
+      },
+      spaceSettlement2025: {
+        meta: {
+          title: "AEROO Space Settlement Competition 2025 — онлайн-хакатон",
+          description: "Мектеп оқушыларына арналған ғарыштық қоныстарды жобалау бойынша онлайн-хакатон. Тіркелу: 20.09–25.10.2025, хакатон: 28–29.10.2025."
+        },
+        hero: {
+          title: "AEROO Space Settlement Competition 2025",
+          subtitle: "Ғарыштық қоныстарды жобалау бойынша республикалық онлайн-хакатон",
+          dates: "25.10.2025 дейін тіркелу | Хакатон 28-29 қазан 2025",
+          participate: "Қатысу",
+          learnMore: "Толығырақ"
+        },
+        countdown: {
+          title: "Тіркелу аяқталғанша",
+          deadline: "25 қазан 2025, 23:59 GMT+5",
+          days: "күн",
+          hours: "сағат",
+          minutes: "минут",
+          seconds: "секунд"
+        },
+        breadcrumbs: {
+          home: "Басты бет",
+          competitions: "Жарыстар"
+        },
+        about: {
+          title: "Жарыс туралы",
+          text1: "AEROO Space Settlement Competition 2025 — мектеп оқушыларына арналған ғылыми-зерттеу және инженерлік бағытты республикалық онлайн-хакатон.",
+          text2: "Мақсаты — ғарыштық қоныстарды жобалау, ғылыми талдау және инженерлік негіздеу дағдыларын дамыту.",
+          text3: "Үздік қатысушылар халықаралық жарысқа қатысу үшін Қазақстан құраmasына кіреді",
+          nssLink: "NSS Space Settlement Contest"
+        },
+        rules: {
+          title: "Жарыс туралы ереже",
+          description: "Қатысу ережелері, бағалау өлшемдері және жобаларға қойылатын талаптар туралы толық ақпарат",
+          button: "Ережені ашу"
+        },
+        goals: {
+          title: "Мақсаттар мен міндеттер",
+          items: [
+            "Мектеп оқушыларының инженерлік және зерттеу құзыреттерін дамыту",
+            "Ғылыми және инженерлік негіздемесі бар ғарыштық қоныстар жобаларын әзірлеу",
+            "NSS Space Settlement Contest үшін Қазақстан құрамасын қалыптастыру",
+            "Аэроғарыштық бағыттарды танымал ету",
+            "Дарынды қатысушыларды анықтау және қолдау"
+          ]
+        },
+        format: {
+          title: "Хакатон форматы мен секциялары",
+          junior: "Кіші лига: 7–9 сыныптар",
+          senior: "Үлкен лига: 10–12 сыныптар",
+          task: "Тапсырма: ғарышты отарлау тақырыбы бойынша ғылыми-инженерлік жоба әзірлеу (10–15 бет)",
+          duration: "Формат: онлайн, тапсырма жарияланған сәттен бастап орындауға 36 сағат"
+        },
+        timeline: {
+          title: "Негізгі күндер",
+          deadline: "25 қазан 2025 (23:59 GMT+5) — өтінім беру мерзімі",
+          hackathon: "28–29 қазан 2025 — хакатон (орындауға 36 сағат)"
+        },
+        submission: {
+          title: "Жұмыстарды тапсыру",
+          description: "Барлық жұмыстар белгіленген мерзімге дейін ұйымдастырушылардың платформасы арқылы электронды түрде жүктеледі. Плагиат тыйым салынған."
+        },
+        awards: {
+          title: "Марапаттар",
+          items: [
+            "Ақшалай сыйлықтар",
+            "Energo University грантары",
+            "NSS Space Settlement Contest үшін Қазақстан құрамасын қалыптастыру"
+          ]
+        },
+        contacts: {
+          title: "Байланыстар"
+        }
       },
       contacts: {
         meta: {
