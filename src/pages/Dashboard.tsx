@@ -576,7 +576,11 @@ const Dashboard = () => {
                     <li key={e.id} className="py-4 flex flex-col gap-3">
                       <div className="flex items-start justify-between">
                         <div>
-                          <div className="font-medium">{compsById[e.competition_id] ?? e.competition_id}</div>
+                          <div className="font-medium">
+                            {competitions.find(c => c.id === e.competition_id) 
+                              ? t(competitions.find(c => c.id === e.competition_id)!.title)
+                              : e.competition_id}
+                          </div>
                           <div className="text-sm text-muted-foreground">{t('dashboardExtra.labels.team', { defaultValue: 'Команда' })}: {e.team_name || "—"}</div>
                           <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
                             <div>{t('dashboardExtra.labels.email', { defaultValue: 'Email' })}: {e.email || "—"}</div>
