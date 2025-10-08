@@ -42,11 +42,20 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    
+    // Require authentication
+    if (!user) {
+      toast("Требуется авторизация", { 
+        description: "Пожалуйста, войдите в аккаунт для отправки заявки" 
+      });
+      return;
+    }
+    
     setSubmitting(true);
 
     try {
       const { error } = await supabase.from("product_requests").insert({
-        user_id: user?.id || null,
+        user_id: user.id,
         product_id: productId,
         name,
         email,
@@ -81,6 +90,14 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
         <DialogHeader>
           <DialogTitle>Оставить заявку</DialogTitle>
         </DialogHeader>
+
+        {!user && (
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-md p-4 mb-4">
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">
+              Для отправки заявки необходимо войти в аккаунт
+            </p>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
@@ -136,7 +153,7 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
             <Button type="button" variant="outline" onClick={() => onOpenChange(false)}>
               Отмена
             </Button>
-            <Button type="submit" className="btn-cosmic" disabled={submitting}>
+            <Button type="submit" className="btn-cosmic" disabled={submitting || !user}>
               {submitting ? "Отправка..." : "Отправить"}
             </Button>
           </div>

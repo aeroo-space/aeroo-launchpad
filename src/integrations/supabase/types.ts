@@ -185,7 +185,7 @@ export type Database = {
           product_id: string
           status: string
           updated_at: string
-          user_id: string | null
+          user_id: string
         }
         Insert: {
           comment?: string | null
@@ -198,7 +198,7 @@ export type Database = {
           product_id: string
           status?: string
           updated_at?: string
-          user_id?: string | null
+          user_id: string
         }
         Update: {
           comment?: string | null
@@ -211,7 +211,7 @@ export type Database = {
           product_id?: string
           status?: string
           updated_at?: string
-          user_id?: string | null
+          user_id?: string
         }
         Relationships: []
       }
