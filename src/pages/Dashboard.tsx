@@ -249,10 +249,10 @@ const Dashboard = () => {
         'Возраст капитана',
         'Город',
         'Место обучения',
-        'Участник 1',
-        'Участник 2', 
-        'Участник 3',
+        'Участник 2',
+        'Участник 3', 
         'Участник 4',
+        'Участник 5',
         'Наставник',
         'Телефон наставника',
         'Источник',
@@ -589,9 +589,11 @@ const Dashboard = () => {
                             <div>{t('dashboardExtra.labels.source', { defaultValue: 'Источник' })}: {e.source || "—"}</div>
                           </div>
                           <div className="mt-2 text-sm">
-                            <div>Участник 1: {e.participant1_full_name || "—"}</div>
-                            <div>Участник 2: {e.participant2_full_name || "—"}</div>
-                            <div>Участник 3: {e.participant3_full_name || "—"}</div>
+                            <div>Участник 2: {e.participant1_full_name || "—"}</div>
+                            <div>Участник 3: {e.participant2_full_name || "—"}</div>
+                            <div>Участник 4: {e.participant3_full_name || "—"}</div>
+                            <div>Участник 5: {e.participant4_full_name || "—"}</div>
+                            {e.mentor_full_name && <div className="mt-1 pt-1 border-t">Ментор: {e.mentor_full_name}</div>}
                           </div>
                         </div>
                         <div className="flex items-center gap-2">

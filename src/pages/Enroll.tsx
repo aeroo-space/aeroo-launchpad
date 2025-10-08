@@ -301,8 +301,9 @@ export default function EnrollPage() {
           setConsent(updates.consent);
           
           // Set team member count based on existing data
-          let memberCount = 1;
-          if (enrollmentData.participant3_full_name) memberCount = 4;
+          let memberCount = 1; // Captain only
+          if (enrollmentData.participant4_full_name) memberCount = 5;
+          else if (enrollmentData.participant3_full_name) memberCount = 4;
           else if (enrollmentData.participant2_full_name) memberCount = 3;
           else if (enrollmentData.participant1_full_name) memberCount = 2;
           setTeamMemberCount(memberCount);
