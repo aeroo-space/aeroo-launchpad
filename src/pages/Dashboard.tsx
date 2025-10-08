@@ -136,9 +136,9 @@ const Dashboard = () => {
 
   const compsById = useMemo(() => {
     const map: Record<string, string> = {};
-    competitions.forEach((c) => (map[c.id] = c.title));
+    competitions.forEach((c) => (map[c.id] = t(c.title)));
     return map;
-  }, []);
+  }, [t]);
 
   const handleDelete = async (id: string) => {
     try {
@@ -581,14 +581,9 @@ const Dashboard = () => {
                           <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
                             <div>{t('dashboardExtra.labels.email', { defaultValue: 'Email' })}: {e.email || "—"}</div>
                             <div>{t('dashboardExtra.labels.telegram', { defaultValue: 'Telegram' })}: {e.telegram || "—"}</div>
-                            <div>{t('dashboardExtra.labels.captain', { defaultValue: 'Капитан' })}: {e.captain_full_name || "—"}</div>
-                            <div>{t('dashboardExtra.labels.captainPhone', { defaultValue: 'Телефон капитана' })}: {e.captain_phone || "—"}</div>
-                            <div>{t('dashboardExtra.labels.captainAge', { defaultValue: 'Возраст капитана' })}: {e.captain_age ?? "—"}</div>
-                            <div>{t('dashboardExtra.labels.city', { defaultValue: 'Город' })}: {e.city || "—"}</div>
-                            <div>{t('dashboardExtra.labels.studyPlace', { defaultValue: 'Место обучения' })}: {e.study_place || "—"}</div>
-                            <div>{t('dashboardExtra.labels.source', { defaultValue: 'Источник' })}: {e.source || "—"}</div>
                           </div>
                           <div className="mt-2 text-sm">
+                            <div>{t('dashboardExtra.labels.captain', { defaultValue: 'Капитан' })}: {e.captain_full_name || "—"}</div>
                             <div>Участник 2: {e.participant1_full_name || "—"}</div>
                             <div>Участник 3: {e.participant2_full_name || "—"}</div>
                             <div>Участник 4: {e.participant3_full_name || "—"}</div>
