@@ -14,7 +14,7 @@ export type Competition = {
 export const competitions: Competition[] = [
   {
     id: "space-settlement",
-    title: "Space Settlement 2025",
+    title: "competitions.spaceSettlement.title",
     category: "competitions.spaceSettlement.category",
     description: "competitions.spaceSettlement.description",
     icon: Building,
@@ -78,13 +78,13 @@ export const getStatusColor = (status: string) => {
   if (status.includes("Active") || status.includes("Активно") || status.includes("Белсенді")) {
     return "bg-green-500";
   }
-  if (status.includes("Registration") || status.includes("Регистрация") || status.includes("Тіркеу")) {
+  if (status.includes("Registration") || status.includes("Регистрация") || status.includes("Тіркел")) {
     return "bg-blue-500";
   }
-  if (status.includes("Soon") || status.includes("Скоро") || status.includes("Жақында")) {
+  if (status.includes("Soon") || status.includes("Скоро") || status.includes("Жақында") || status.includes("Coming Soon")) {
     return "bg-orange-500";
   }
-  if (status.includes("Development") || status.includes("разработке") || status.includes("дамытуда")) {
+  if (status.includes("Development") || status.includes("разработке") || status.includes("Әзірлен") || status.includes("In Development")) {
     return "bg-gray-500";
   }
   return "bg-gray-500";
