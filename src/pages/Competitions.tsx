@@ -222,8 +222,8 @@ const Competitions = () => {
           <Button 
             variant="outline" 
             size="lg"
-            onClick={() => toast("Архив скоро будет доступен", { 
-              description: "Мы работаем над созданием архива прошлых соревнований. Скоро здесь появится история всех наших мероприятий!" 
+            onClick={() => toast(t('competitions.archiveToastTitle'), { 
+              description: t('competitions.archiveToastDesc')
             })}
           >
             {t('competitions.archiveBtn')}
