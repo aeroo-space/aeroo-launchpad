@@ -671,7 +671,7 @@ export default function EnrollPage() {
                   id="team"
                   value={teamName}
                   onChange={(e) => setTeamName(e.target.value)}
-                  placeholder={t('enroll.teamNamePlaceholder')}
+                  placeholder="AEROO Team"
                   required
                 />
               </div>
@@ -1041,8 +1041,8 @@ export default function EnrollPage() {
                       <Label>{t('form.phone')}</Label>
                       <Input
                         value={participant4Phone}
-                        onChange={(e) => handleDigitsOnlyChange(e.target.value, setParticipant4Phone)}
-                        placeholder={t('form.phonePlaceholder')}
+                        onChange={(e) => handlePhoneChange(e.target.value, setParticipant4Phone)}
+                        placeholder="+7 777 777 77 77"
                       />
                     </div>
                     <div className="space-y-2">
