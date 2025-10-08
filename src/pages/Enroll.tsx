@@ -671,7 +671,7 @@ export default function EnrollPage() {
                   id="team"
                   value={teamName}
                   onChange={(e) => setTeamName(e.target.value)}
-                  placeholder={t('enroll.teamNamePlaceholder')}
+                  placeholder="AEROO Team"
                   required
                 />
               </div>
