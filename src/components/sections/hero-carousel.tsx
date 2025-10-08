@@ -41,8 +41,7 @@ export const HeroCarousel: React.FC = () => {
                   src="/lovable-uploads/d178795f-04a5-480a-ad63-2cd5036b6027.png"
                   alt="Иллюстрация соревнований AEROO — школьники, дрон, спутник и ракета"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
-                  fetchPriority="high"
-                  decoding="async"
+                  loading="lazy"
                 />
                  <div className="absolute inset-0 -z-10 bg-gradient-to-b from-background/80 via-background/60 to-background/90" />
                 <div className="container mx-auto px-6 md:px-8">
