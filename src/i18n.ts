@@ -389,6 +389,190 @@ const resources = {
           }
         }
       },
+      ews: {
+        seo: {
+          title: 'Открываем Мир Науки — Международные соревнования по космическим исследованиям',
+          description: 'Бесплатные соревнования для школьников 14–18 лет: наноспутники, космический ИИ и ракетомоделирование. Регистрация до 19 января 2026.'
+        },
+        hero: {
+          badge: 'Международные соревнования',
+          title: 'Открываем Мир Науки',
+          subtitle: 'Международные научные соревнования по космическим исследованиям для школьников 14–18 лет',
+          facts: {
+            free: 'Бесплатно',
+            categories: '3 категории',
+            final: 'Астана: 9–12 апреля 2026 (GMT+5)'
+          }
+        },
+        cta: {
+          register: 'Зарегистрироваться',
+          login: 'Личный кабинет',
+          soon: 'Скоро откроем регистрацию',
+          closed: 'Регистрация закрыта'
+        },
+        about: {
+          title: 'О соревновании',
+          intro: 'Организаторы: РНПЦ «Дарын» (Минпросвещения РК) совместно с AEROO. Международный формат (RU/KZ/EN), очный финал в Астане.',
+          mission: 'Миссия: вовлечь школьников в космическую науку через реальные инженерные задачи.',
+          who: {
+            title: 'Кто может участвовать',
+            text: 'Школьники 14–18 лет (индивидуально/команда — зависит от секции)'
+          },
+          cost: {
+            title: 'Стоимость участия',
+            text: 'Бесплатно'
+          }
+        },
+        tracks: {
+          title: 'Категории соревнований',
+          subtitle: 'Выберите направление по душе',
+          age: 'Возраст',
+          team: 'Команда',
+          details: 'Подробнее',
+          stages_title: 'Этапы',
+          aslc: {
+            name: 'AEROO Satellite Launch Competition (ASLC)',
+            summary: 'Проектирование и сборка наноспутника на базе AEROO CubeSat Kit, финальный запуск со стратостата.',
+            age: '14–18',
+            team: '4 участника',
+            stages: [
+              'Онлайн: концепт миссии',
+              'Онлайн: инженерный проект',
+              'Очный финал: сборка и запуск'
+            ]
+          },
+          space_ai: {
+            name: 'AEROO Space AI Competition',
+            summary: 'Космический проект с применением ИИ и коммерческой моделью; MVP и питч.',
+            age: '14–18',
+            team: 'до 4 участников',
+            stages: [
+              'Онлайн: 1 месяц на идею/ИИ/MVP',
+              'Очный финал: защита проекта'
+            ]
+          },
+          rocket_science: {
+            name: 'AEROO Rocket Science Competition',
+            summary: 'Водяные ракеты и модельные ракеты',
+            age: '14–18',
+            team: 'до 2 участников',
+            stages: ['Онлайн этап', 'Очный финал'],
+            subtracks_title: 'Подкатегории',
+            water_rockets: {
+              name: 'Водяные ракеты',
+              summary: 'Сборка и запуск водяной ракеты; упор на устойчивый полёт и дальность.',
+              age: '14–15 (возможен 14–16 по решению оргкомитета)',
+              team: 'до 2 участников'
+            },
+            model_rockets: {
+              name: 'Модельные ракеты (2.5H*c)',
+              summary: 'Проект в OpenRocket и макет; финальный запуск с парашютом и эко-миссией.',
+              age: '15–18',
+              team: 'до 2 участников'
+            }
+          }
+        },
+        timeline: {
+          title: 'Сроки',
+          registration: {
+            label: 'Регистрация',
+            date: '10 октября 2025 (12:00) — 19 января 2026 (23:59)',
+            desc: 'Зарегистрируйтесь на платформе и создайте команду'
+          },
+          submission: {
+            label: 'Онлайн-отбор',
+            date: '1–28 февраля 2026',
+            desc: 'Выполнение и отправка заданий'
+          },
+          results: {
+            label: 'Итоги отбора',
+            date: '10 марта 2026 (12:00)',
+            desc: 'Объявление финалистов'
+          },
+          arrival: {
+            label: 'Приезд команд',
+            date: '8 апреля 2026',
+            desc: 'Прибытие в Астану и подготовка'
+          },
+          final: {
+            label: 'Финал',
+            date: '9–12 апреля 2026, Астана',
+            desc: 'Защита проектов и определение победителей'
+          }
+        },
+        prizes: {
+          title: 'Призы и возможности',
+          medals: {
+            title: 'Медали и дипломы',
+            desc: 'Дипломы I, II, III степени Минпросвещения РК'
+          },
+          special: {
+            title: 'Спецпризы',
+            desc: 'Подарки от организаторов и партнёров'
+          },
+          fund: {
+            title: 'Призовой фонд AEROO',
+            desc: 'Денежные призы по решению жюри и организаторов'
+          },
+          education: {
+            title: 'Образовательные возможности',
+            desc: 'Потенциальные гранты от АУЭС им. Г. Даукеева'
+          }
+        },
+        howto: {
+          title: 'Как участвовать',
+          step1: {
+            title: 'Зарегистрируйтесь',
+            desc: 'Создайте аккаунт на платформе AEROO'
+          },
+          step2: {
+            title: 'Выполните задания',
+            desc: 'Пройдите онлайн-этап в своей секции'
+          },
+          step3: {
+            title: 'Приезжайте на финал',
+            desc: 'Защитите проект в Астане'
+          }
+        },
+        faq: {
+          title: 'Частые вопросы',
+          free: {
+            q: 'Это бесплатно?',
+            a: 'Да, участие полностью бесплатное.'
+          },
+          language: {
+            q: 'На каком языке проводится?',
+            a: 'Соревнование проводится на трёх языках: русский, казахский, английский.'
+          },
+          organizers: {
+            q: 'Кто организаторы?',
+            a: 'РНПЦ «Дарын» Министерства просвещения РК и компания AEROO.'
+          },
+          age: {
+            q: 'Есть ли возрастные ограничения?',
+            a: 'См. карточки секций выше — у каждого направления свои возрастные рамки.'
+          },
+          logistics: {
+            q: 'Кто оплачивает поездку?',
+            a: 'Логистику и быт организаторы и направляющая сторона закрывают по официальным анонсам.'
+          }
+        },
+        contacts: {
+          title: 'Контакты',
+          org: {
+            title: 'Организационные вопросы'
+          },
+          tech: {
+            title: 'Технические вопросы и платформа'
+          }
+        },
+        email: {
+          title: 'Подписка на новости',
+          desc: 'Получите уведомление, когда откроется регистрация',
+          placeholder: 'Ваш email',
+          submit: 'Подписаться'
+        }
+      },
       contacts: {
         meta: {
           title: 'AEROO — Контакты | Свяжитесь с нами',
@@ -602,6 +786,190 @@ const resources = {
         },
         contacts: {
           title: "Contacts"
+        }
+      },
+      ews: {
+        seo: {
+          title: 'Exploring the World of Science — International Space Research Competitions',
+          description: 'Free competitions for students aged 14–18: nanosatellites, space AI, and rocket modeling. Registration until January 19, 2026.'
+        },
+        hero: {
+          badge: 'International Competition',
+          title: 'Exploring the World of Science',
+          subtitle: 'International scientific competitions in space research for students aged 14–18',
+          facts: {
+            free: 'Free',
+            categories: '3 categories',
+            final: 'Astana: April 9–12, 2026 (GMT+5)'
+          }
+        },
+        cta: {
+          register: 'Register',
+          login: 'Dashboard',
+          soon: 'Registration Opening Soon',
+          closed: 'Registration Closed'
+        },
+        about: {
+          title: 'About the Competition',
+          intro: 'Organizers: Daryn RSPC (Ministry of Education of RK) together with AEROO. International format (RU/KZ/EN), in-person final in Astana.',
+          mission: 'Mission: engage students in space science through real engineering challenges.',
+          who: {
+            title: 'Who Can Participate',
+            text: 'Students aged 14–18 (individual/team — depends on category)'
+          },
+          cost: {
+            title: 'Participation Cost',
+            text: 'Free'
+          }
+        },
+        tracks: {
+          title: 'Competition Categories',
+          subtitle: 'Choose your track',
+          age: 'Age',
+          team: 'Team',
+          details: 'Learn More',
+          stages_title: 'Stages',
+          aslc: {
+            name: 'AEROO Satellite Launch Competition (ASLC)',
+            summary: 'Design and build a nanosatellite based on AEROO CubeSat Kit, final launch from stratospheric balloon.',
+            age: '14–18',
+            team: '4 participants',
+            stages: [
+              'Online: mission concept',
+              'Online: engineering project',
+              'In-person final: assembly and launch'
+            ]
+          },
+          space_ai: {
+            name: 'AEROO Space AI Competition',
+            summary: 'Space project using AI and commercial model; MVP and pitch.',
+            age: '14–18',
+            team: 'up to 4 participants',
+            stages: [
+              'Online: 1 month for idea/AI/MVP',
+              'In-person final: project defense'
+            ]
+          },
+          rocket_science: {
+            name: 'AEROO Rocket Science Competition',
+            summary: 'Water rockets and model rockets',
+            age: '14–18',
+            team: 'up to 2 participants',
+            stages: ['Online stage', 'In-person final'],
+            subtracks_title: 'Subcategories',
+            water_rockets: {
+              name: 'Water Rockets',
+              summary: 'Build and launch water rocket; focus on stable flight and distance.',
+              age: '14–15 (may be 14–16 by organizers decision)',
+              team: 'up to 2 participants'
+            },
+            model_rockets: {
+              name: 'Model Rockets (2.5H*c)',
+              summary: 'OpenRocket project and mockup; final launch with parachute and eco-mission.',
+              age: '15–18',
+              team: 'up to 2 participants'
+            }
+          }
+        },
+        timeline: {
+          title: 'Timeline',
+          registration: {
+            label: 'Registration',
+            date: 'October 10, 2025 (12:00) — January 19, 2026 (23:59)',
+            desc: 'Register on the platform and form your team'
+          },
+          submission: {
+            label: 'Online Selection',
+            date: 'February 1–28, 2026',
+            desc: 'Complete and submit assignments'
+          },
+          results: {
+            label: 'Selection Results',
+            date: 'March 10, 2026 (12:00)',
+            desc: 'Finalists announcement'
+          },
+          arrival: {
+            label: 'Teams Arrival',
+            date: 'April 8, 2026',
+            desc: 'Arrival in Astana and preparation'
+          },
+          final: {
+            label: 'Final',
+            date: 'April 9–12, 2026, Astana',
+            desc: 'Project defense and winners determination'
+          }
+        },
+        prizes: {
+          title: 'Prizes and Opportunities',
+          medals: {
+            title: 'Medals and Diplomas',
+            desc: 'I, II, III degree diplomas from Ministry of Education of RK'
+          },
+          special: {
+            title: 'Special Prizes',
+            desc: 'Gifts from organizers and partners'
+          },
+          fund: {
+            title: 'AEROO Prize Fund',
+            desc: 'Cash prizes by jury and organizers decision'
+          },
+          education: {
+            title: 'Educational Opportunities',
+            desc: 'Potential grants from G. Daukeyev AUES'
+          }
+        },
+        howto: {
+          title: 'How to Participate',
+          step1: {
+            title: 'Register',
+            desc: 'Create an account on AEROO platform'
+          },
+          step2: {
+            title: 'Complete Tasks',
+            desc: 'Pass the online stage in your category'
+          },
+          step3: {
+            title: 'Come to Final',
+            desc: 'Defend your project in Astana'
+          }
+        },
+        faq: {
+          title: 'FAQ',
+          free: {
+            q: 'Is it free?',
+            a: 'Yes, participation is completely free.'
+          },
+          language: {
+            q: 'What language is it held in?',
+            a: 'The competition is held in three languages: Russian, Kazakh, English.'
+          },
+          organizers: {
+            q: 'Who are the organizers?',
+            a: 'Daryn RSPC of the Ministry of Education of RK and AEROO company.'
+          },
+          age: {
+            q: 'Are there age restrictions?',
+            a: 'See the category cards above — each track has its own age limits.'
+          },
+          logistics: {
+            q: 'Who pays for the trip?',
+            a: 'Logistics and accommodation are covered by organizers and sending party according to official announcements.'
+          }
+        },
+        contacts: {
+          title: 'Contacts',
+          org: {
+            title: 'Organizational Questions'
+          },
+          tech: {
+            title: 'Technical Questions and Platform'
+          }
+        },
+        email: {
+          title: 'Subscribe to News',
+          desc: 'Get notified when registration opens',
+          placeholder: 'Your email',
+          submit: 'Subscribe'
         }
       },
       contacts: {
@@ -858,6 +1226,190 @@ const resources = {
         yes: 'Иә',
         no: 'Жоқ',
         learnMore: 'Толығырақ білу'
+      },
+      ews: {
+        seo: {
+          title: 'Ғылым әлемін ашу — Ғарыштық зерттеулер бойынша халықаралық жарыстар',
+          description: '14-18 жас аралығындағы оқушыларға арналған тегін жарыстар: наноспутниктер, ғарыштық AI және зымыран үлгілері. Тіркелу 19 қаңтар 2026-ға дейін.'
+        },
+        hero: {
+          badge: 'Халықаралық жарыс',
+          title: 'Ғылым әлемін ашу',
+          subtitle: '14-18 жас аралығындағы оқушыларға арналған ғарыштық зерттеулер бойынша халықаралық ғылыми жарыстар',
+          facts: {
+            free: 'Тегін',
+            categories: '3 санат',
+            final: 'Астана: 9-12 сәуір 2026 (GMT+5)'
+          }
+        },
+        cta: {
+          register: 'Тіркелу',
+          login: 'Жеке кабинет',
+          soon: 'Жақында тіркелу ашылады',
+          closed: 'Тіркелу жабық'
+        },
+        about: {
+          title: 'Жарыс туралы',
+          intro: 'Ұйымдастырушылар: «Дарын» ҒЗОКМ (ҚР БҒМ) AEROO-мен бірлесіп. Халықаралық формат (RU/KZ/EN), Астанада очты финал.',
+          mission: 'Миссия: оқушыларды нақты инженерлік тапсырмалар арқылы ғарыштық ғылымға тарту.',
+          who: {
+            title: 'Кім қатыса алады',
+            text: '14-18 жас аралығындағы оқушылар (жеке/команда - бөлімге байланысты)'
+          },
+          cost: {
+            title: 'Қатысу құны',
+            text: 'Тегін'
+          }
+        },
+        tracks: {
+          title: 'Жарыс санаттары',
+          subtitle: 'Өзіңізге қолайлы бағытты таңдаңыз',
+          age: 'Жас',
+          team: 'Команда',
+          details: 'Толығырақ',
+          stages_title: 'Кезеңдер',
+          aslc: {
+            name: 'AEROO Satellite Launch Competition (ASLC)',
+            summary: 'AEROO CubeSat Kit негізінде наноспутникті жобалау және жинау, стратостатпен соңғы ұшыру.',
+            age: '14-18',
+            team: '4 қатысушы',
+            stages: [
+              'Онлайн: миссия концепциясы',
+              'Онлайн: инженерлік жоба',
+              'Очты финал: жинау және ұшыру'
+            ]
+          },
+          space_ai: {
+            name: 'AEROO Space AI Competition',
+            summary: 'AI және коммерциялық модельмен ғарыштық жоба; MVP және питч.',
+            age: '14-18',
+            team: '4 қатысушыға дейін',
+            stages: [
+              'Онлайн: идея/AI/MVP-ге 1 ай',
+              'Очты финал: жобаны қорғау'
+            ]
+          },
+          rocket_science: {
+            name: 'AEROO Rocket Science Competition',
+            summary: 'Су зымырандары және модельдік зымырандар',
+            age: '14-18',
+            team: '2 қатысушыға дейін',
+            stages: ['Онлайн кезең', 'Очты финал'],
+            subtracks_title: 'Бағыттар',
+            water_rockets: {
+              name: 'Су зымырандары',
+              summary: 'Су мен сығылған ауамен жинау және ұшыру; тұрақты ұшу және қашықтыққа баса назар.',
+              age: '14-15 (ұйымкомнің шешімі бойынша 14-16 болуы мүмкін)',
+              team: '2 қатысушыға дейін'
+            },
+            model_rockets: {
+              name: 'Модельдік зымырандар (2.5H*c)',
+              summary: 'OpenRocket-тегі жоба мен макет; парашютпен және эко-миссиямен соңғы ұшыру.',
+              age: '15-18',
+              team: '2 қатысушыға дейін'
+            }
+          }
+        },
+        timeline: {
+          title: 'Күнтізбе',
+          registration: {
+            label: 'Тіркелу',
+            date: '10 қазан 2025 (12:00) — 19 қаңтар 2026 (23:59)',
+            desc: 'Платформада тіркеліп, командаңызды құрыңыз'
+          },
+          submission: {
+            label: 'Онлайн іріктеу',
+            date: '1-28 ақпан 2026',
+            desc: 'Тапсырмаларды орындап жіберу'
+          },
+          results: {
+            label: 'Іріктеу нәтижелері',
+            date: '10 наурыз 2026 (12:00)',
+            desc: 'Финалға өткендер жарияланады'
+          },
+          arrival: {
+            label: 'Командалардың келуі',
+            date: '8 сәуір 2026',
+            desc: 'Астанаға келу және дайындық'
+          },
+          final: {
+            label: 'Финал',
+            date: '9-12 сәуір 2026, Астана',
+            desc: 'Жобаларды қорғау және жеңімпаздарды анықтау'
+          }
+        },
+        prizes: {
+          title: 'Сыйлықтар мен мүмкіндіктер',
+          medals: {
+            title: 'Медальдар мен дипломдар',
+            desc: 'ҚР БҒМ І, ІІ, ІІІ дәрежелі дипломдары'
+          },
+          special: {
+            title: 'Арнайы сыйлықтар',
+            desc: 'Ұйымдастырушылар мен серіктестерден сыйлықтар'
+          },
+          fund: {
+            title: 'AEROO сыйлық қоры',
+            desc: 'Әділқазылар алқасы мен ұйымдастырушылардың шешімі бойынша ақшалай сыйлықтар'
+          },
+          education: {
+            title: 'Білім беру мүмкіндіктері',
+            desc: 'Г. Даукеев атындағы АУЭО-дан әлеуетті гранттар'
+          }
+        },
+        howto: {
+          title: 'Қалай қатысу керек',
+          step1: {
+            title: 'Тіркелу',
+            desc: 'AEROO платформасында тіркеліңіз'
+          },
+          step2: {
+            title: 'Тапсырмаларды орындау',
+            desc: 'Өз бөліміңіздегі онлайн кезең тапсырмаларын орындаңыз'
+          },
+          step3: {
+            title: 'Финалға келу',
+            desc: 'Астанаға келіп, жобаңызды қорғаңыз'
+          }
+        },
+        faq: {
+          title: 'Жиі қойылатын сұрақтар',
+          free: {
+            q: 'Бұл тегін бе?',
+            a: 'Иә, қатысу толығымен тегін.'
+          },
+          language: {
+            q: 'Қандай тілде өткізіледі?',
+            a: 'Жарыс үш тілде жүргізіледі: орыс, қазақ, ағылшын.'
+          },
+          organizers: {
+            q: 'Ұйымдастырушылар кімдер?',
+            a: 'ҚР Білім және ғылым министрлігінің «Дарын» ҒЗОКМ және AEROO компаниясы.'
+          },
+          age: {
+            q: 'Жас шектеуі бар ма?',
+            a: 'Жоғарыдағы санаттар карточкаларын қараңыз — әр бағыттың өз жас шектеулері бар.'
+          },
+          logistics: {
+            q: 'Сапарды кім төлейді?',
+            a: 'Логистика мен тұруды ұйымдастырушылар мен жіберуші тарап ресми хабарламалар бойынша қамтамасыз етеді.'
+          }
+        },
+        contacts: {
+          title: 'Байланыс',
+          org: {
+            title: 'Ұйымдастыру сұрақтары'
+          },
+          tech: {
+            title: 'Техникалық сұрақтар және платформа'
+          }
+        },
+        email: {
+          title: 'Жаңалықтарға жазылу',
+          desc: 'Тіркелу ашылғанда хабарлама аламын',
+          placeholder: 'Email мекенжайыңыз',
+          submit: 'Жазылу'
+        }
       }
     }
   }
