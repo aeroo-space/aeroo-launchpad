@@ -184,14 +184,14 @@ const ExploringWorldOfScience = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-                О соревновании
+                {t('ews.about.title')}
               </h2>
               
               <Card className="p-8 glass-card">
                 <div className="space-y-8">
                   {/* Organizers Section */}
                   <div className="text-center">
-                    <h3 className="text-xl font-semibold mb-6">Организаторы</h3>
+                    <h3 className="text-xl font-semibold mb-6">{t('ews.about.organizers')}</h3>
                     
                     <div className="flex items-center justify-center gap-12 mb-6">
                       <img src={logoDaryn} alt="РНПЦ Дарын" className="h-16 md:h-20 object-contain hover-scale" />
@@ -200,13 +200,13 @@ const ExploringWorldOfScience = () => {
                     </div>
                     
                     <p className="text-lg text-muted-foreground">
-                      Организаторами являются РНПЦ «Дарын» и AEROO
+                      {t('ews.about.intro')}
                     </p>
                   </div>
 
                   <div className="border-t border-border pt-6">
                     <p className="text-lg mb-6">
-                      Наша миссия - вовлечь молодежь в космическую науку через реальные инженерные соревнования.
+                      {t('ews.about.mission')}
                     </p>
 
                     {/* Features */}
@@ -214,7 +214,7 @@ const ExploringWorldOfScience = () => {
                       <div className="flex items-center gap-3 justify-center">
                         <Globe className="w-5 h-5 text-primary" />
                         <p className="text-lg font-medium">
-                          Международный формат, очный финал в Астане
+                          {t('ews.about.format')}
                         </p>
                       </div>
                     </div>
@@ -223,15 +223,15 @@ const ExploringWorldOfScience = () => {
                       <div className="flex items-start gap-3">
                         <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold mb-1">Кто может участвовать</h3>
-                          <p className="text-muted-foreground">Школьники 14–18 лет (индивидуально/команда — зависит от секции)</p>
+                          <h3 className="font-semibold mb-1">{t('ews.about.who.title')}</h3>
+                          <p className="text-muted-foreground">{t('ews.about.who.text')}</p>
                         </div>
                       </div>
                       <div className="flex items-start gap-3">
                         <Gift className="w-6 h-6 text-success mt-1 flex-shrink-0" />
                         <div>
-                          <h3 className="font-semibold mb-1">Стоимость участия</h3>
-                          <p className="text-muted-foreground">Бесплатно</p>
+                          <h3 className="font-semibold mb-1">{t('ews.about.cost.title')}</h3>
+                          <p className="text-muted-foreground">{t('ews.about.cost.text')}</p>
                         </div>
                       </div>
                     </div>

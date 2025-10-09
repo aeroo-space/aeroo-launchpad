@@ -666,8 +666,10 @@ const resources = {
         },
         about: {
           title: 'О соревновании',
-          intro: 'Организаторы: РНПЦ «Дарын» (Минпросвещения РК) совместно с AEROO. Международный формат (RU/KZ/EN), очный финал в Астане.',
-          mission: 'Миссия: вовлечь школьников в космическую науку через реальные инженерные задачи.',
+          organizers: 'Организаторы',
+          intro: 'Организаторами являются РНПЦ «Дарын» и AEROO',
+          mission: 'Наша миссия - вовлечь молодежь в космическую науку через реальные инженерные соревнования.',
+          format: 'Международный формат, очный финал в Астане',
           who: {
             title: 'Кто может участвовать',
             text: 'Школьники 14–18 лет (индивидуально/команда — зависит от секции)'
@@ -1348,8 +1350,10 @@ const resources = {
         },
         about: {
           title: 'About the Competition',
-          intro: 'Organizers: Daryn RSPC (Ministry of Education of RK) together with AEROO. International format (RU/KZ/EN), in-person final in Astana.',
-          mission: 'Mission: engage students in space science through real engineering challenges.',
+          organizers: 'Organizers',
+          intro: 'The organizers are Daryn RSPC and AEROO',
+          mission: 'Our mission is to engage youth in space science through real engineering competitions.',
+          format: 'International format, in-person final in Astana',
           who: {
             title: 'Who Can Participate',
             text: 'Students aged 14–18 (individual/team — depends on category)'
@@ -2081,8 +2085,10 @@ const resources = {
         },
         about: {
           title: 'Жарыс туралы',
-          intro: 'Ұйымдастырушылар: «Дарын» ҒЗОКМ (ҚР БҒМ) AEROO-мен бірлесіп. Халықаралық формат (RU/KZ/EN), Астанада очты финал.',
-          mission: 'Миссия: оқушыларды нақты инженерлік тапсырмалар арқылы ғарыштық ғылымға тарту.',
+          organizers: 'Ұйымдастырушылар',
+          intro: 'Ұйымдастырушылар «Дарын» ҒЗОКМ және AEROO болып табылады',
+          mission: 'Біздің миссиямыз - жастарды нақты инженерлік жарыстар арқылы ғарыштық ғылымға тарту.',
+          format: 'Халықаралық формат, Астанада очты финал',
           who: {
             title: 'Кім қатыса алады',
             text: '14-18 жас аралығындағы оқушылар (жеке/команда - бөлімге байланысты)'
