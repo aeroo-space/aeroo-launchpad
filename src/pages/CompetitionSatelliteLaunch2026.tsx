@@ -327,23 +327,6 @@ const CompetitionSatelliteLaunch2026 = () => {
               ))}
             </div>
 
-            <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-              {[
-                { icon: Cpu, text: "Развитие технического мышления и прикладных инженерных навыков" },
-                { icon: ClipboardList, text: "Системное проектирование спутниковых миссий" },
-                { icon: CircuitBoard, text: "3D‑моделирование, CAD и трассировка печатных плат (PCB)" },
-                { icon: Wrench, text: "Разработка и отладка ПО для микроконтроллеров, телеметрия и датчики" },
-                { icon: Presentation, text: "Подготовка презентаций и защита инженерных решений; командная работа" },
-                { icon: Users, text: "Расширение знаний в аэрокосмике, обмен опытом и международная культура" },
-              ].map((g, i) => (
-                <Card key={i} className="glass-card">
-                  <CardContent className="p-6 flex items-start gap-4">
-                    <g.icon className="w-6 h-6 text-primary" />
-                    <p className="text-sm text-muted-foreground">{g.text}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
           </div>
         </section>
 
