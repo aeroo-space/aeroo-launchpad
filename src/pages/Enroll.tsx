@@ -633,7 +633,7 @@ export default function EnrollPage() {
               {isEditMode ? t('form.editApplication') : t('form.applicationTitle')}
             </h1>
             <p className="text-muted-foreground mb-6">
-              {competition ? competition.title : t('form.selectCompetition')}
+              {competition ? t(competition.title) : t('form.selectCompetition')}
             </p>
             {competition && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground mb-8">
