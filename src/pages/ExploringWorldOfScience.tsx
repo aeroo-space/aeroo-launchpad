@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Navigation } from '@/components/ui/navigation';
@@ -29,6 +30,7 @@ import {
 
 const ExploringWorldOfScience = () => {
   const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
   const [selectedTrack, setSelectedTrack] = useState<string | null>(null);
   const [showEmailDialog, setShowEmailDialog] = useState(false);
   const [email, setEmail] = useState('');
@@ -72,6 +74,19 @@ const ExploringWorldOfScience = () => {
     console.log('Email subscription:', email);
     setShowEmailDialog(false);
     setEmail('');
+  };
+
+  const handleTrackClick = (trackId: string) => {
+    // Navigate to specific competition pages
+    const trackPages: Record<string, string> = {
+      'aslc': '/competitions/satellite-launch-2026',
+      'space_ai': '/competitions/exploring-world-of-science', // placeholder
+      'rocket_science': '/competitions/exploring-world-of-science' // placeholder
+    };
+    
+    if (trackPages[trackId]) {
+      navigate(trackPages[trackId]);
+    }
   };
 
   const tracks = [
@@ -242,8 +257,7 @@ const ExploringWorldOfScience = () => {
                 return (
                   <Card 
                     key={track.id}
-                    className="p-6 glass-card hover:shadow-2xl transition-all duration-300 cursor-pointer group fade-in"
-                    onClick={() => setSelectedTrack(track.id)}
+                    className="p-6 glass-card hover:shadow-2xl transition-all duration-300 group fade-in"
                   >
                     <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${track.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
                       <Icon className="w-8 h-8 text-white" />
@@ -263,7 +277,11 @@ const ExploringWorldOfScience = () => {
                       </div>
                     </div>
 
-                    <Button variant="ghost" className="w-full mt-4 group-hover:bg-primary/10">
+                    <Button 
+                      variant="ghost" 
+                      className="w-full mt-4 group-hover:bg-primary/10"
+                      onClick={() => handleTrackClick(track.id)}
+                    >
                       {t('ews.tracks.details')}
                     </Button>
                   </Card>
