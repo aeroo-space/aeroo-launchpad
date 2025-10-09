@@ -461,16 +461,29 @@ const CompetitionSatelliteLaunch2026 = () => {
         <section id="awards" ref={(el) => el && (revealRefs.current[5] = el)} className="opacity-0 translate-y-4 transition-all duration-700 relative overflow-hidden">
           <div className="absolute inset-0" style={{ background: "var(--gradient-satellite-section)" }} />
           <div className="container mx-auto px-4 py-16 relative z-10">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Награды</h2>
-            <div className="space-y-3 text-foreground">
-              <div>🏆 I место: грант на обучение в АУЭС им. Гумарбека Даукеева + денежный приз</div>
-              <div>🥈 II и III места: денежные призы и ценные подарки</div>
-              <div>🎖 Все финалисты — памятные дипломы</div>
-            </div>
-            <div className="mt-8">
-              <Button variant="primary" size="xl" onClick={handleOpenEnroll} aria-label="Принять участие — подать заявку на участие" data-testid="cta-bottom-apply">
-                Принять участие
-              </Button>
+            <div className="grid md:grid-cols-2 gap-8 items-start">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">Награды</h2>
+                <div className="space-y-3 text-foreground">
+                  <div>🏆 I место: Образовательный грант в Energo University</div>
+                  <div>🥈 II и III места: денежные призы и ценные подарки</div>
+                  <div>🎖 Все финалисты — памятные дипломы</div>
+                </div>
+                <div className="mt-8">
+                  <Button variant="primary" size="xl" onClick={handleOpenEnroll} aria-label="Принять участие — подать заявку на участие" data-testid="cta-bottom-apply">
+                    Принять участие
+                  </Button>
+                </div>
+              </div>
+              <div className="flex items-center justify-center md:justify-end">
+                <div className="text-center md:text-right">
+                  <p className="text-lg text-muted-foreground mb-2">Призовой фонд</p>
+                  <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
+                    1 500 000
+                  </p>
+                  <p className="text-2xl md:text-3xl font-semibold text-foreground mt-2">тенге</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
