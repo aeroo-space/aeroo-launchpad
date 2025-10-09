@@ -301,7 +301,7 @@ const CompetitionSatelliteLaunch2026 = () => {
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 mb-8">
               {[
                 { src: goalsTeam1, alt: "Команда участников AEROO на фоне стратостатов", caption: "Участники увидели фотографа и решили красиво позировать" },
-                { src: goalsLaunch, alt: "Участники наблюдают за запуском спутника", caption: "Участники наблюдают за запуском спутника" },
+                { src: goalsLaunch, alt: "Команда на фоне запуска аэростата", caption: "Команда на фоне запуска аэростата" },
                 { src: goalsTeam2, alt: "Победители турнира с наградами", caption: "Победители турнира с наградами" },
                 { src: goalsSatellite, alt: "Подготовка CubeSat к запуску", caption: "Подготовка CubeSat к запуску" },
                 { src: goalsCubesat, alt: "Наноспутник готовый к запуску на стратостате", caption: "Наноспутник готовый к запуску на стратостате" },
