@@ -525,6 +525,49 @@ const resources = {
           practice: "Разработка и отладка ПО для микроконтроллеров, телеметрия и датчики",
           opportunities: "Подготовка презентаций и защита инженерных решений: командная работа",
           media: "Расширение знаний в аэрокосмике, обмен опытом и международная культура"
+        },
+        stages: {
+          title: "Этапы проведения",
+          stage1: {
+            title: "I этап — Отборочный (онлайн)",
+            date: "5–25 января 2026",
+            details: "Творческое задание по концепции миссии. Главное — идея, актуальность и польза. 60 лучших команд проходят в полуфинал."
+          },
+          stage2: {
+            title: "II этап — Полуфинал (онлайн)",
+            date: "1–20 февраля 2026",
+            details: "Разработка проекта на основе AEROO CubeSat Kit с инженерными расчётами и выбором компонентов. Отбираются 15 финалистов."
+          },
+          stage3: {
+            title: "III этап — Финал (очно, Астана)",
+            date: "9–12 апреля 2026",
+            day1: "9 апреля — инструктаж и подготовка",
+            day2: "10 апреля — 24 часа на сборку спутников",
+            day3: "11 апреля — запуск на стратосферу",
+            day4: "12 апреля — награждение победителей"
+          }
+        },
+        gallery: {
+          img1: "Участники на фоне запуска аэростата",
+          img2: "Участники смотрят на запуск их спутника",
+          img3: "Участники встретили фотографа и решили позировать",
+          img4: "Подготовка CubeSat к запуску",
+          img5: "Наноспутник готовый к запуску на стратостате",
+          img6: "Стратосферный аэростат в небе"
+        },
+        awards: {
+          title: "Награды",
+          place1: "🏆 I место: Образовательный грант в Energo University",
+          places23: "🥈 II и III места: денежные призы и ценные подарки",
+          finalists: "🎖 Все финалисты — памятные дипломы",
+          fund: "Призовой фонд",
+          currency: "тенге"
+        },
+        contacts: {
+          title: "Контакты"
+        },
+        faq: {
+          title: "Популярные вопросы по AEROO Satellite Launch Competition"
         }
       },
       common: {
@@ -1316,6 +1359,49 @@ const resources = {
           practice: "Software development and debugging for microcontrollers, telemetry and sensors",
           opportunities: "Preparation of presentations and defense of engineering solutions: teamwork",
           media: "Expansion of knowledge in aerospace, experience exchange and international culture"
+        },
+        stages: {
+          title: "Competition Stages",
+          stage1: {
+            title: "Stage I — Qualifying (online)",
+            date: "January 5–25, 2026",
+            details: "Creative assignment on mission concept. Main focus — idea, relevance and benefit. Top 60 teams advance to semifinal."
+          },
+          stage2: {
+            title: "Stage II — Semifinal (online)",
+            date: "February 1–20, 2026",
+            details: "Project development based on AEROO CubeSat Kit with engineering calculations and component selection. 15 finalists selected."
+          },
+          stage3: {
+            title: "Stage III — Final (in-person, Astana)",
+            date: "April 9–12, 2026",
+            day1: "April 9 — briefing and preparation",
+            day2: "April 10 — 24 hours for satellite assembly",
+            day3: "April 11 — launch to stratosphere",
+            day4: "April 12 — award ceremony"
+          }
+        },
+        gallery: {
+          img1: "Participants against the background of balloon launch",
+          img2: "Participants watching their satellite launch",
+          img3: "Participants met the photographer and decided to pose",
+          img4: "CubeSat preparation for launch",
+          img5: "Nanosatellite ready for stratospheric balloon launch",
+          img6: "Stratospheric balloon in the sky"
+        },
+        awards: {
+          title: "Awards",
+          place1: "🏆 1st place: Educational grant at Energo University",
+          places23: "🥈 2nd and 3rd places: cash prizes and valuable gifts",
+          finalists: "🎖 All finalists — commemorative diplomas",
+          fund: "Prize Fund",
+          currency: "tenge"
+        },
+        contacts: {
+          title: "Contacts"
+        },
+        faq: {
+          title: "Popular Questions about AEROO Satellite Launch Competition"
         }
       },
       spaceSettlement2025: {

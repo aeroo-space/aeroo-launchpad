@@ -305,19 +305,19 @@ const CompetitionSatelliteLaunch2026 = () => {
             {/* Images Grid with captions */}
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 mb-8">
               {[
-                { src: goalsTeam1, alt: "Участники на фоне запуска аэростата", caption: "Участники на фоне запуска аэростата" },
-                { src: goalsLaunch, alt: "Участники смотрят на запуск их спутника", caption: "Участники смотрят на запуск их спутника" },
-                { src: goalsTeam2, alt: "Участники встретили фотографа и решили позировать", caption: "Участники встретили фотографа и решили позировать" },
-                { src: goalsSatellite, alt: "Подготовка CubeSat к запуску", caption: "Подготовка CubeSat к запуску" },
-                { src: goalsCubesat, alt: "Наноспутник готовый к запуску на стратостате", caption: "Наноспутник готовый к запуску на стратостате" },
-                { src: goalsStratosphericBalloon, alt: "Стратосферный аэростат в небе", caption: "Стратосферный аэростат в небе" },
+                { src: goalsTeam1, captionKey: "gallery.img1" },
+                { src: goalsLaunch, captionKey: "gallery.img2" },
+                { src: goalsTeam2, captionKey: "gallery.img3" },
+                { src: goalsSatellite, captionKey: "gallery.img4" },
+                { src: goalsCubesat, captionKey: "gallery.img5" },
+                { src: goalsStratosphericBalloon, captionKey: "gallery.img6" },
               ].map((img, i) => (
                 <Card key={i} className="glass-card overflow-hidden group">
                   <CardContent className="p-0">
                     <div className="aspect-[4/3] w-full bg-muted relative animate-fade-in overflow-hidden">
                       <img
                         src={img.src}
-                        alt={img.alt}
+                        alt={t(`satelliteLaunch2026.${img.captionKey}`)}
                         loading="lazy"
                         decoding="async"
                         className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
@@ -325,7 +325,7 @@ const CompetitionSatelliteLaunch2026 = () => {
                       <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/80 via-transparent to-transparent" />
                     </div>
                     <div className="p-4">
-                      <p className="text-sm text-muted-foreground text-center">{img.caption}</p>
+                      <p className="text-sm text-muted-foreground text-center">{t(`satelliteLaunch2026.${img.captionKey}`)}</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -338,33 +338,21 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Stages timeline */}
         <section id="stages" ref={(el) => el && (revealRefs.current[3] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Этапы проведения</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('satelliteLaunch2026.stages.title')}</h2>
             <div className="relative border-l border-border pl-6 space-y-10">
               {[
                 {
-                  title: "I этап — Отборочный (онлайн)",
-                  date: "5–25 января 2026",
+                  key: 'stage1',
                   icon: CalendarDays,
-                  details:
-                    "Творческое задание по концепции миссии. Главное — идея, актуальность и польза. 60 лучших команд проходят в полуфинал.",
                 },
                 {
-                  title: "II этап — Полуфинал (онлайн)",
-                  date: "1–20 февраля 2026",
+                  key: 'stage2',
                   icon: ClipboardList,
-                  details:
-                    "Разработка проекта на основе AEROO CubeSat Kit с инженерными расчётами и выбором компонентов. Отбираются 15 финалистов.",
                 },
                 {
-                  title: "III этап — Финал (очно, Астана)",
-                  date: "9–12 апреля 2026",
+                  key: 'stage3',
                   icon: Rocket,
-                  details: [
-                    "9 апреля — инструктаж и подготовка",
-                    "10 апреля — 24 часа на сборку спутников",
-                    "11 апреля — запуск на стратосферу",
-                    "12 апреля — награждение победителей",
-                  ],
+                  hasSubDays: true
                 },
               ].map((item, idx) => (
                 <div key={idx} className="relative">
@@ -372,19 +360,20 @@ const CompetitionSatelliteLaunch2026 = () => {
                     <item.icon className="w-3.5 h-3.5 text-primary" />
                   </div>
                   <div className="glass-card rounded-xl p-6">
-                    <h3 className="text-xl font-semibold mb-1">{item.title}</h3>
+                    <h3 className="text-xl font-semibold mb-1">{t(`satelliteLaunch2026.stages.${item.key}.title`)}</h3>
                     <div className="text-sm text-muted-foreground mb-4 flex items-center gap-2">
                       <CalendarDays className="w-4 h-4 text-primary" aria-hidden="true" />
-                      <span>{item.date}</span>
+                      <span>{t(`satelliteLaunch2026.stages.${item.key}.date`)}</span>
                     </div>
-                    {Array.isArray(item.details) ? (
+                    {item.hasSubDays ? (
                       <ul className="list-disc pl-6 space-y-1 text-muted-foreground">
-                        {item.details.map((d, i) => (
-                          <li key={i}>{d}</li>
-                        ))}
+                        <li>{t('satelliteLaunch2026.stages.stage3.day1')}</li>
+                        <li>{t('satelliteLaunch2026.stages.stage3.day2')}</li>
+                        <li>{t('satelliteLaunch2026.stages.stage3.day3')}</li>
+                        <li>{t('satelliteLaunch2026.stages.stage3.day4')}</li>
                       </ul>
                     ) : (
-                      <p className="text-muted-foreground">{item.details}</p>
+                      <p className="text-muted-foreground">{t(`satelliteLaunch2026.stages.${item.key}.details`)}</p>
                     )}
                   </div>
                 </div>
@@ -457,25 +446,25 @@ const CompetitionSatelliteLaunch2026 = () => {
           <div className="container mx-auto px-4 py-16 relative z-10">
             <div className="grid md:grid-cols-2 gap-8 items-start">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Награды</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('satelliteLaunch2026.awards.title')}</h2>
                 <div className="space-y-3 text-foreground">
-                  <div>🏆 I место: Образовательный грант в Energo University</div>
-                  <div>🥈 II и III места: денежные призы и ценные подарки</div>
-                  <div>🎖 Все финалисты — памятные дипломы</div>
+                  <div>{t('satelliteLaunch2026.awards.place1')}</div>
+                  <div>{t('satelliteLaunch2026.awards.places23')}</div>
+                  <div>{t('satelliteLaunch2026.awards.finalists')}</div>
                 </div>
                 <div className="mt-8">
-                  <Button variant="primary" size="xl" onClick={handleOpenEnroll} aria-label="Принять участие — подать заявку на участие" data-testid="cta-bottom-apply">
-                    Принять участие
+                  <Button variant="primary" size="xl" onClick={handleOpenEnroll} aria-label={t('satelliteLaunch2026.cta.participate')} data-testid="cta-bottom-apply">
+                    {t('satelliteLaunch2026.cta.participate')}
                   </Button>
                 </div>
               </div>
               <div className="flex items-center justify-center md:justify-end">
                 <div className="text-center md:text-right">
-                  <p className="text-lg text-muted-foreground mb-2">Призовой фонд</p>
+                  <p className="text-lg text-muted-foreground mb-2">{t('satelliteLaunch2026.awards.fund')}</p>
                   <p className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
                     1 500 000
                   </p>
-                  <p className="text-2xl md:text-3xl font-semibold text-foreground mt-2">тенге</p>
+                  <p className="text-2xl md:text-3xl font-semibold text-foreground mt-2">{t('satelliteLaunch2026.awards.currency')}</p>
                 </div>
               </div>
             </div>
@@ -596,7 +585,7 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Contacts */}
         <section id="contacts" ref={(el) => el && (revealRefs.current[6] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Контакты</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('satelliteLaunch2026.contacts.title')}</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <Card className="glass-card">
                 <CardContent className="p-6 space-y-3">
@@ -616,7 +605,7 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* FAQ */}
         <section id="faq" ref={(el) => el && (revealRefs.current[7] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Популярные вопросы по AEROO Satellite Launch Competition</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('satelliteLaunch2026.faq.title')}</h2>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="q1">
                 <AccordionTrigger>Кто может участвовать в соревновании?</AccordionTrigger>
