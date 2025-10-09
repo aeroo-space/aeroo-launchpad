@@ -616,6 +616,33 @@ const resources = {
             question: "Можно ли поменять участников команды после регистрации?",
             answer: "Изменения возможны до 1 января 2026 года. Пишите на"
           }
+        },
+        glossary: {
+          title: "Глоссарий",
+          team: {
+            term: "Команда",
+            definition: "Группа из 4 участников в возрасте от 14 до 19 лет включительно, которые разрабатывают, создают и запускают наноспутники в рамках AEROO Satellite Launch Competition. Каждая команда назначает капитана для связи с Организационным комитетом."
+          },
+          participant: {
+            term: "Участник",
+            definition: "Лицо в возрасте от 14 до 19 лет, принимающее участие в турнире."
+          },
+          orgCommittee: {
+            term: "Организационный комитет (Оргкомитет)",
+            definition: "Орган, ответственный за управление проведением турнира."
+          },
+          nanosatellite: {
+            term: "Наноспутник",
+            definition: "Малый спутник (например, CubeSat), разработанный командами для стратостатного запуска."
+          },
+          mentor: {
+            term: "Наставник",
+            definition: "Лицо в возрасте от 21 года и старше, которое выполняет роль куратора или сопровождающего команды. Наставникам запрещено входить в зону хакатона или оказывать помощь командам во время соревнований, чтобы обеспечить честность участия."
+          },
+          captain: {
+            term: "Капитан команды",
+            definition: "Участник, отвечающий за связь между командой и Организационным комитетом, координацию работы внутри команды и организацию деятельности команды."
+          }
         }
       },
       common: {
@@ -1497,6 +1524,33 @@ const resources = {
           q10: {
             question: "Can team members be changed after registration?",
             answer: "Changes are possible until January 1, 2026. Write to"
+          }
+        },
+        glossary: {
+          title: "Glossary",
+          team: {
+            term: "Team",
+            definition: "A group of 4 participants aged 14 to 19 years inclusive who design, create, and launch nanosatellites as part of AEROO Satellite Launch Competition. Each team appoints a captain to liaise with the Organizing Committee."
+          },
+          participant: {
+            term: "Participant",
+            definition: "An individual aged 14 to 19 years who takes part in the tournament."
+          },
+          orgCommittee: {
+            term: "Organizing Committee (OrgCommittee)",
+            definition: "The body responsible for managing the tournament."
+          },
+          nanosatellite: {
+            term: "Nanosatellite",
+            definition: "A small satellite (e.g., CubeSat) designed by teams for stratospheric balloon launch."
+          },
+          mentor: {
+            term: "Mentor",
+            definition: "An individual aged 21 years and above who acts as a supervisor or chaperone for teams. Mentors are prohibited from entering the hackathon area or assisting teams during the competition to ensure fair participation."
+          },
+          captain: {
+            term: "Team Captain",
+            definition: "A participant responsible for communication between the team and the Organizing Committee, coordinating work within the team, and organizing team activities."
           }
         }
       },
@@ -2397,6 +2451,33 @@ const resources = {
           q10: {
             question: "Тіркелгеннен кейін команда мүшелерін өзгертуге бола ма?",
             answer: "Өзгерістер 2026 жылғы 1 қаңтарға дейін мүмкін. Мына мекенжайға жазыңыз:"
+          }
+        },
+        glossary: {
+          title: "Глоссарий",
+          team: {
+            term: "Команда",
+            definition: "AEROO Satellite Launch Competition шеңберінде наноспутниктерді жобалайтын, жасайтын және ұшыратын 14-тен 19 жасқа дейінгі 4 қатысушыдан тұратын топ. Әрбір команда Ұйымдастыру комитетімен байланыс үшін капитанды тағайындайды."
+          },
+          participant: {
+            term: "Қатысушы",
+            definition: "Турнирге қатысатын 14-тен 19 жасқа дейінгі адам."
+          },
+          orgCommittee: {
+            term: "Ұйымдастыру комитеті (Оргкомитет)",
+            definition: "Турнирді өткізуді басқаруға жауапты орган."
+          },
+          nanosatellite: {
+            term: "Наноспутник",
+            definition: "Стратостатта ұшыру үшін командалармен жасалған шағын спутник (мысалы, CubeSat)."
+          },
+          mentor: {
+            term: "Тренер",
+            definition: "21 жастан асқан адам, команданың кураторы немесе серіктесі рөлін атқарады. Тренерлерге әділ қатысуды қамтамасыз ету үшін хакатон аймағына кіруге немесе жарыс кезінде командаларға көмектесуге тыйым салынған."
+          },
+          captain: {
+            term: "Команда капитаны",
+            definition: "Команда мен Ұйымдастыру комитеті арасындағы байланысқа, команда ішіндегі жұмысты үйлестіруге және команда қызметін ұйымдастыруға жауапты қатысушы."
           }
         }
       },

@@ -700,42 +700,42 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Glossary */}
         <section id="glossary" ref={(el) => el && (revealRefs.current[8] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Глоссарий</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('satelliteLaunch2026.glossary.title')}</h2>
             <Accordion type="multiple" className="w-full">
               <AccordionItem value="term-team">
-                <AccordionTrigger>Команда</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.glossary.team.term')}</AccordionTrigger>
                 <AccordionContent>
-                  Группа из 4 участников в возрасте от 14 до 19 лет включительно, которые разрабатывают, создают и запускают наноспутники в рамках AEROO Satellite Launch Competition. Каждая команда назначает капитана для связи с Организационным комитетом.
+                  {t('satelliteLaunch2026.glossary.team.definition')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="term-participant">
-                <AccordionTrigger>Участник</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.glossary.participant.term')}</AccordionTrigger>
                 <AccordionContent>
-                  Лицо в возрасте от 14 до 19 лет, принимающее участие в турнире.
+                  {t('satelliteLaunch2026.glossary.participant.definition')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="term-org">
-                <AccordionTrigger>Организационный комитет (Оргкомитет)</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.glossary.orgCommittee.term')}</AccordionTrigger>
                 <AccordionContent>
-                  Орган, ответственный за управление проведением турнира.
+                  {t('satelliteLaunch2026.glossary.orgCommittee.definition')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="term-nanosat">
-                <AccordionTrigger>Наноспутник</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.glossary.nanosatellite.term')}</AccordionTrigger>
                 <AccordionContent>
-                  Малый спутник (например, CubeSat), разработанный командами для стратостатного запуска.
+                  {t('satelliteLaunch2026.glossary.nanosatellite.definition')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="term-mentor">
-                <AccordionTrigger>Наставник</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.glossary.mentor.term')}</AccordionTrigger>
                 <AccordionContent>
-                  Лицо в возрасте от 21 года и старше, которое выполняет роль куратора или сопровождающего команды. Наставникам запрещено входить в зону хакатона или оказывать помощь командам во время соревнований, чтобы обеспечить честность участия.
+                  {t('satelliteLaunch2026.glossary.mentor.definition')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="term-captain">
-                <AccordionTrigger>Капитан команды</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.glossary.captain.term')}</AccordionTrigger>
                 <AccordionContent>
-                  Участник, отвечающий за связь между командой и Организационным комитетом, координацию работы внутри команды и организацию деятельности команды.
+                  {t('satelliteLaunch2026.glossary.captain.definition')}
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
