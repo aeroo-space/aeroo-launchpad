@@ -645,6 +645,98 @@ const resources = {
           }
         }
       },
+      spaceAI2026: {
+        seo: {
+          title: "AEROO Space AI Competition 2026 | Космические проекты с ИИ",
+          description: "Присоединяйся к соревнованию по разработке AI-проектов для космоса! Для школьников 14-18 лет. Призовой фонд до 1 000 000 тенге."
+        },
+        hero: {
+          badge: "AEROO Space AI Competition 2026",
+          title: "Создай свой SpaceTech стартап прямо сейчас!",
+          subtitle: "Для школьников 14-18 лет. Создай MVP с искусственным интеллектом, представь бизнес-модель и выиграй призы до 1 000 000 тенге!",
+          aiSkills: "Развитие навыков ИИ",
+          internationalExp: "Международный опыт",
+          grants: "Гранты на обучение",
+          participate: "Участвовать",
+          learnMore: "Узнать больше"
+        },
+        about: {
+          title: "О соревновании",
+          description: "Секция AEROO Space AI Competition — это проектное соревнование, где команды (до 4 человек) создают инновационные космические решения с использованием ИИ (например, анализ спутниковых снимков, автоматизация запусков). Фокус на коммерциализации — представь свой проект как стартап!",
+          participants: "Участники",
+          participantsInfo: "Школьники 14-18 лет, команды до 4 человек",
+          prizeFund: "Призовой фонд",
+          prizeFundInfo: "До 1 000 000 тенге + гранты",
+          goalsTitle: "Цели и задачи",
+          goal1: "Вовлечение молодежи в космическую науку через ИИ",
+          goal2: "Развитие практических навыков программирования и машинного обучения",
+          goal3: "Поддержка предпринимательского мышления и бизнес-навыков",
+          goal4: "Создание инновационных решений для космической отрасли"
+        },
+        stages: {
+          title: "Этапы проведения",
+          stage1Title: "I этап (онлайн)",
+          stage1Duration: "1 месяц",
+          stage1Task1: "Разработка концепции проекта с использованием ИИ",
+          stage1Task2: "Создание MVP (Minimum Viable Product)",
+          stage1Task3: "Подготовка pitch-deck (до 15 страниц)",
+          stage1Task4: "Техническая документация",
+          stage1Task5: "Размещение материалов на GitHub",
+          stage2Title: "II этап (финал в Астане)",
+          stage2Duration: "Очный формат",
+          stage2Task1: "Защита проекта (7 минут презентация)",
+          stage2Task2: "Ответы на вопросы жюри (3 минуты)",
+          stage2Task3: "Демонстрация работающего продукта",
+          datesTitle: "Ключевые даты",
+          registration: "Регистрация",
+          registrationDate: "10 октября 2025 (12:00 GMT+5) — 19 января 2026 (23:59 GMT+5)",
+          submission: "Прием работ",
+          submissionDate: "1 — 28 февраля 2026",
+          results: "Результаты",
+          resultsDate: "10 марта 2026",
+          final: "Финал в Астане",
+          finalDate: "9-12 апреля 2026"
+        },
+        criteria: {
+          title: "Критерии оценки",
+          innovation: "Инновационность проекта",
+          innovationDesc: "Насколько идея оригинальна и применима к космической отрасли",
+          aiApplication: "Применение ИИ",
+          aiApplicationDesc: "Качество и глубина интеграции искусственного интеллекта",
+          technical: "Техническая реализация",
+          technicalDesc: "Работоспособность, стабильность MVP, качество кода",
+          business: "Бизнес-модель",
+          businessDesc: "Реалистичность коммерческой составляющей",
+          documentation: "Оформление документации",
+          documentationDesc: "Качество технической документации и GitHub",
+          presentation: "Качество презентации",
+          presentationDesc: "Структурированность и убедительность выступления",
+          total: "ИТОГО"
+        },
+        prizes: {
+          title: "Награды и призы",
+          cash: "Денежные призы",
+          cashDesc: "До 1 000 000 тенге для победителей",
+          eduGrants: "Образовательные гранты",
+          eduGrantsDesc: "Гранты от АУЭС им. Гумарбека Даукеева",
+          gadgets: "Гаджеты и техника",
+          gadgetsDesc: "Современные устройства для призеров",
+          certificates: "Сертификаты",
+          certificatesDesc: "Все финалисты получают сертификаты участия"
+        },
+        registration: {
+          title: "Регистрация",
+          description: "Регистрируйся на платформе AEROO. Участие бесплатное!",
+          button: "Зарегистрироваться сейчас"
+        },
+        contacts: {
+          title: "Контакты и партнеры",
+          contactUs: "Свяжитесь с нами",
+          partners: "Партнеры",
+          socialMedia: "Социальные сети",
+          telegram: "Telegram канал"
+        }
+      },
       common: {
         loading: 'Загрузка...',
         error: 'Ошибка',
@@ -1552,6 +1644,98 @@ const resources = {
             term: "Team Captain",
             definition: "A participant responsible for communication between the team and the Organizing Committee, coordinating work within the team, and organizing team activities."
           }
+        }
+      },
+      spaceAI2026: {
+        seo: {
+          title: "AEROO Space AI Competition 2026 | Space Projects with AI",
+          description: "Join the competition for developing AI projects for space! For students aged 14-18. Prize fund up to 1,000,000 tenge."
+        },
+        hero: {
+          badge: "AEROO Space AI Competition 2026",
+          title: "Create Your SpaceTech Startup Right Now!",
+          subtitle: "For students aged 14-18. Create an MVP with artificial intelligence, present a business model, and win prizes up to 1,000,000 tenge!",
+          aiSkills: "AI Skills Development",
+          internationalExp: "International Experience",
+          grants: "Educational Grants",
+          participate: "Participate",
+          learnMore: "Learn More"
+        },
+        about: {
+          title: "About the Competition",
+          description: "AEROO Space AI Competition is a project-based competition where teams (up to 4 people) create innovative space solutions using AI (e.g., satellite imagery analysis, launch automation). Focus on commercialization — present your project as a startup!",
+          participants: "Participants",
+          participantsInfo: "Students aged 14-18, teams up to 4 people",
+          prizeFund: "Prize Fund",
+          prizeFundInfo: "Up to 1,000,000 tenge + grants",
+          goalsTitle: "Goals and Objectives",
+          goal1: "Engaging youth in space science through AI",
+          goal2: "Developing practical programming and machine learning skills",
+          goal3: "Supporting entrepreneurial thinking and business skills",
+          goal4: "Creating innovative solutions for the space industry"
+        },
+        stages: {
+          title: "Competition Stages",
+          stage1Title: "Stage I (online)",
+          stage1Duration: "1 month",
+          stage1Task1: "Development of project concept using AI",
+          stage1Task2: "Creation of MVP (Minimum Viable Product)",
+          stage1Task3: "Preparation of pitch deck (up to 15 pages)",
+          stage1Task4: "Technical documentation",
+          stage1Task5: "Posting materials on GitHub",
+          stage2Title: "Stage II (final in Astana)",
+          stage2Duration: "In-person format",
+          stage2Task1: "Project defense (7 minutes presentation)",
+          stage2Task2: "Answering jury questions (3 minutes)",
+          stage2Task3: "Demonstration of working product",
+          datesTitle: "Key Dates",
+          registration: "Registration",
+          registrationDate: "October 10, 2025 (12:00 GMT+5) — January 19, 2026 (23:59 GMT+5)",
+          submission: "Submission",
+          submissionDate: "February 1–28, 2026",
+          results: "Results",
+          resultsDate: "March 10, 2026",
+          final: "Finals in Astana",
+          finalDate: "April 9-12, 2026"
+        },
+        criteria: {
+          title: "Evaluation Criteria",
+          innovation: "Project Innovation",
+          innovationDesc: "How original and applicable the idea is to the space industry",
+          aiApplication: "AI Application",
+          aiApplicationDesc: "Quality and depth of artificial intelligence integration",
+          technical: "Technical Implementation",
+          technicalDesc: "MVP functionality, stability, code quality",
+          business: "Business Model",
+          businessDesc: "Commercial viability",
+          documentation: "Documentation Quality",
+          documentationDesc: "Quality of technical documentation and GitHub",
+          presentation: "Presentation Quality",
+          presentationDesc: "Structure and persuasiveness of the presentation",
+          total: "TOTAL"
+        },
+        prizes: {
+          title: "Awards and Prizes",
+          cash: "Cash Prizes",
+          cashDesc: "Up to 1,000,000 tenge for winners",
+          eduGrants: "Educational Grants",
+          eduGrantsDesc: "Grants from AUES named after Gumarbek Daukeev",
+          gadgets: "Gadgets and Equipment",
+          gadgetsDesc: "Modern devices for prize winners",
+          certificates: "Certificates",
+          certificatesDesc: "All finalists receive participation certificates"
+        },
+        registration: {
+          title: "Registration",
+          description: "Register on the AEROO platform. Participation is free!",
+          button: "Register Now"
+        },
+        contacts: {
+          title: "Contacts and Partners",
+          contactUs: "Contact Us",
+          partners: "Partners",
+          socialMedia: "Social Media",
+          telegram: "Telegram Channel"
         }
       },
       spaceSettlement2025: {
@@ -2479,6 +2663,98 @@ const resources = {
             term: "Команда капитаны",
             definition: "Команда мен Ұйымдастыру комитеті арасындағы байланысқа, команда ішіндегі жұмысты үйлестіруге және команда қызметін ұйымдастыруға жауапты қатысушы."
           }
+        }
+      },
+      spaceAI2026: {
+        seo: {
+          title: "AEROO Space AI Competition 2026 | AI арқылы ғарыштық жобалар",
+          description: "Ғарышқа арналған AI жобаларын әзірлеу бойынша жарысқа қосыл! 14-18 жас аралығындағы оқушыларға. Жүлде қоры 1 000 000 теңгеге дейін."
+        },
+        hero: {
+          badge: "AEROO Space AI Competition 2026",
+          title: "Өз SpaceTech стартапыңды дәл қазір жаса!",
+          subtitle: "14-18 жас аралығындағы оқушыларға. Жасанды интеллектпен MVP жаса, бизнес-модельді көрсет және 1 000 000 теңгеге дейін жүлдеге ие бол!",
+          aiSkills: "AI дағдыларын дамыту",
+          internationalExp: "Халықаралық тәжірибе",
+          grants: "Оқуға гранттар",
+          participate: "Қатысу",
+          learnMore: "Толығырақ білу"
+        },
+        about: {
+          title: "Жарыс туралы",
+          description: "AEROO Space AI Competition - бұл командалар (4 адамға дейін) AI қолданып инновациялық ғарыштық шешімдерді жасайтын жобалық жарыс (мысалы, спутниктік суреттерді талдау, ұшыруды автоматтандыру). Коммерцияландыруға назар аудару - жобаңызды стартап ретінде көрсет!",
+          participants: "Қатысушылар",
+          participantsInfo: "14-18 жас аралығындағы оқушылар, 4 адамға дейін командалар",
+          prizeFund: "Жүлде қоры",
+          prizeFundInfo: "1 000 000 теңгеге дейін + гранттар",
+          goalsTitle: "Мақсаттар мен міндеттер",
+          goal1: "Жастарды AI арқылы ғарыш ғылымына тарту",
+          goal2: "Программалау және машиналық оқытудың практикалық дағдыларын дамыту",
+          goal3: "Кәсіпкерлік ойлау және бизнес дағдыларын қолдау",
+          goal4: "Ғарыш өнеркәсібіне арналған инновациялық шешімдерді жасау"
+        },
+        stages: {
+          title: "Өткізу кезеңдері",
+          stage1Title: "I кезең (онлайн)",
+          stage1Duration: "1 ай",
+          stage1Task1: "AI қолданып жоба концепциясын әзірлеу",
+          stage1Task2: "MVP (Minimum Viable Product) жасау",
+          stage1Task3: "Питч-дек дайындау (15 бетке дейін)",
+          stage1Task4: "Техникалық құжаттама",
+          stage1Task5: "GitHub-қа материалдарды жариялау",
+          stage2Title: "II кезең (Астанада финал)",
+          stage2Duration: "Очты формат",
+          stage2Task1: "Жобаны қорғау (7 минут презентация)",
+          stage2Task2: "Әділ алқа сұрақтарына жауап беру (3 минут)",
+          stage2Task3: "Жұмыс істейтін өнімді көрсету",
+          datesTitle: "Негізгі күндер",
+          registration: "Тіркелу",
+          registrationDate: "10 қазан 2025 (12:00 GMT+5) — 19 қаңтар 2026 (23:59 GMT+5)",
+          submission: "Жұмыстарды қабылдау",
+          submissionDate: "1-28 ақпан 2026",
+          results: "Нәтижелер",
+          resultsDate: "10 наурыз 2026",
+          final: "Астанада финал",
+          finalDate: "9-12 сәуір 2026"
+        },
+        criteria: {
+          title: "Бағалау өлшемдері",
+          innovation: "Жобаның инновациялығы",
+          innovationDesc: "Идея қаншалықты түпнұсқа және ғарыш өнеркәсібіне қолданылады",
+          aiApplication: "AI қолдану",
+          aiApplicationDesc: "Жасанды интеллектті интеграциялаудың сапасы мен тереңдігі",
+          technical: "Техникалық іске асыру",
+          technicalDesc: "MVP жұмысқа қабілеттілігі, тұрақтылығы, код сапасы",
+          business: "Бизнес-модель",
+          businessDesc: "Коммерциялық құрамдастың шынайылығы",
+          documentation: "Құжаттаманы ресімдеу",
+          documentationDesc: "Техникалық құжаттаманың және GitHub сапасы",
+          presentation: "Презентация сапасы",
+          presentationDesc: "Баяндаудың құрылымдылығы мен сендіргіштігі",
+          total: "БАРЛЫҒЫ"
+        },
+        prizes: {
+          title: "Марапаттар мен сыйлықтар",
+          cash: "Ақшалай сыйлықтар",
+          cashDesc: "Жеңімпаздарға 1 000 000 теңгеге дейін",
+          eduGrants: "Білім беру гранттары",
+          eduGrantsDesc: "Г. Даукеев атындағы АУЭС гранттары",
+          gadgets: "Гаджеттер және техника",
+          gadgetsDesc: "Жүлдегерлерге заманауи құрылғылар",
+          certificates: "Сертификаттар",
+          certificatesDesc: "Барлық финалистер қатысу сертификаттарын алады"
+        },
+        registration: {
+          title: "Тіркелу",
+          description: "AEROO платформасында тіркеліңіз. Қатысу тегін!",
+          button: "Қазір тіркелу"
+        },
+        contacts: {
+          title: "Байланыстар мен серіктестер",
+          contactUs: "Бізбен байланысыңыз",
+          partners: "Серіктестер",
+          socialMedia: "Әлеуметтік желілер",
+          telegram: "Telegram каналы"
         }
       },
       contacts: {

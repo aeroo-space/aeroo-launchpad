@@ -5,6 +5,7 @@ import { Footer } from '@/components/sections/footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   Brain,
   Rocket,
@@ -26,6 +27,7 @@ import {
 
 const SpaceAI2026 = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const revealRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -51,50 +53,50 @@ const SpaceAI2026 = () => {
 
   const stages = [
     {
-      title: "I этап (онлайн)",
-      duration: "1 месяц",
+      title: t('spaceAI2026.stages.stage1Title'),
+      duration: t('spaceAI2026.stages.stage1Duration'),
       tasks: [
-        "Разработка концепции проекта с использованием ИИ",
-        "Создание MVP (Minimum Viable Product)",
-        "Подготовка pitch-deck (до 15 страниц)",
-        "Техническая документация",
-        "Размещение материалов на GitHub"
+        t('spaceAI2026.stages.stage1Task1'),
+        t('spaceAI2026.stages.stage1Task2'),
+        t('spaceAI2026.stages.stage1Task3'),
+        t('spaceAI2026.stages.stage1Task4'),
+        t('spaceAI2026.stages.stage1Task5')
       ],
       icon: Code
     },
     {
-      title: "II этап (финал в Астане)",
-      duration: "Очный формат",
+      title: t('spaceAI2026.stages.stage2Title'),
+      duration: t('spaceAI2026.stages.stage2Duration'),
       tasks: [
-        "Защита проекта (7 минут презентация)",
-        "Ответы на вопросы жюри (3 минуты)",
-        "Демонстрация работающего продукта"
+        t('spaceAI2026.stages.stage2Task1'),
+        t('spaceAI2026.stages.stage2Task2'),
+        t('spaceAI2026.stages.stage2Task3')
       ],
       icon: Rocket
     }
   ];
 
   const criteria = [
-    { name: "Инновационность проекта", desc: "Насколько идея оригинальна и применима к космической отрасли", points: "0-20" },
-    { name: "Применение ИИ", desc: "Качество и глубина интеграции искусственного интеллекта", points: "0-20" },
-    { name: "Техническая реализация", desc: "Работоспособность, стабильность MVP, качество кода", points: "0-20" },
-    { name: "Бизнес-модель", desc: "Реалистичность коммерческой составляющей", points: "0-15" },
-    { name: "Оформление документации", desc: "Качество технической документации и GitHub", points: "0-10" },
-    { name: "Качество презентации", desc: "Структурированность и убедительность выступления", points: "0-15" }
+    { name: t('spaceAI2026.criteria.innovation'), desc: t('spaceAI2026.criteria.innovationDesc'), points: "0-20" },
+    { name: t('spaceAI2026.criteria.aiApplication'), desc: t('spaceAI2026.criteria.aiApplicationDesc'), points: "0-20" },
+    { name: t('spaceAI2026.criteria.technical'), desc: t('spaceAI2026.criteria.technicalDesc'), points: "0-20" },
+    { name: t('spaceAI2026.criteria.business'), desc: t('spaceAI2026.criteria.businessDesc'), points: "0-15" },
+    { name: t('spaceAI2026.criteria.documentation'), desc: t('spaceAI2026.criteria.documentationDesc'), points: "0-10" },
+    { name: t('spaceAI2026.criteria.presentation'), desc: t('spaceAI2026.criteria.presentationDesc'), points: "0-15" }
   ];
 
   const timeline = [
-    { label: "Регистрация", date: "10 октября 2025 (12:00 GMT+5) — 19 января 2026 (23:59 GMT+5)" },
-    { label: "Прием работ", date: "1 — 28 февраля 2026" },
-    { label: "Результаты", date: "10 марта 2026" },
-    { label: "Финал в Астане", date: "9-12 апреля 2026" }
+    { label: t('spaceAI2026.stages.registration'), date: t('spaceAI2026.stages.registrationDate') },
+    { label: t('spaceAI2026.stages.submission'), date: t('spaceAI2026.stages.submissionDate') },
+    { label: t('spaceAI2026.stages.results'), date: t('spaceAI2026.stages.resultsDate') },
+    { label: t('spaceAI2026.stages.final'), date: t('spaceAI2026.stages.finalDate') }
   ];
 
   return (
     <>
       <Helmet>
-        <title>AEROO Space AI Competition 2026 | Космические проекты с ИИ</title>
-        <meta name="description" content="Присоединяйся к соревнованию по разработке AI-проектов для космоса! Для школьников 14-18 лет. Призовой фонд до 1 000 000 тенге." />
+        <title>{t('spaceAI2026.seo.title')}</title>
+        <meta name="description" content={t('spaceAI2026.seo.description')} />
         <link rel="canonical" href="https://aeroo.space/competitions/space-ai-2026" />
       </Helmet>
 
@@ -110,31 +112,31 @@ const SpaceAI2026 = () => {
           <div className="container mx-auto px-4 relative z-10 text-center">
             <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-primary/10 rounded-full border border-primary/30 backdrop-blur-sm">
               <Brain className="w-4 h-4 text-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">AEROO Space AI Competition 2026</span>
+              <span className="text-sm font-medium text-primary">{t('spaceAI2026.hero.badge')}</span>
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 pb-2">
               <span className="inline-block bg-gradient-to-r from-primary via-green-400 to-cyan-400 bg-clip-text text-transparent px-1 py-2">
-                Создай свой SpaceTech стартап прямо сейчас!
+                {t('spaceAI2026.hero.title')}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto">
-              Для школьников 14-18 лет. Создай MVP с искусственным интеллектом, представь бизнес-модель и выиграй призы до 1 000 000 тенге!
+              {t('spaceAI2026.hero.subtitle')}
             </p>
 
             <div className="flex flex-wrap justify-center gap-6 mb-12">
               <div className="flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-lg border border-primary/20">
                 <Target className="w-5 h-5 text-primary" />
-                <span className="font-medium">Развитие навыков ИИ</span>
+                <span className="font-medium">{t('spaceAI2026.hero.aiSkills')}</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-lg border border-primary/20">
                 <Globe className="w-5 h-5 text-primary" />
-                <span className="font-medium">Международный опыт</span>
+                <span className="font-medium">{t('spaceAI2026.hero.internationalExp')}</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-primary/5 rounded-lg border border-primary/20">
                 <Award className="w-5 h-5 text-primary" />
-                <span className="font-medium">Гранты на обучение</span>
+                <span className="font-medium">{t('spaceAI2026.hero.grants')}</span>
               </div>
             </div>
 
@@ -144,7 +146,7 @@ const SpaceAI2026 = () => {
                 className="btn-cosmic group relative overflow-hidden"
                 onClick={() => navigate('/enroll/exploring-world-of-science')}
               >
-                <span className="relative z-10">Участвовать</span>
+                <span className="relative z-10">{t('spaceAI2026.hero.participate')}</span>
                 <Sparkles className="ml-2 w-5 h-5 relative z-10" />
               </Button>
               
@@ -154,7 +156,7 @@ const SpaceAI2026 = () => {
                 className="border-primary/30 hover:bg-primary/10"
                 onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Узнать больше
+                {t('spaceAI2026.hero.learnMore')}
               </Button>
             </div>
           </div>
@@ -165,30 +167,30 @@ const SpaceAI2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
               <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent px-1 py-2">
-                О соревновании
+                {t('spaceAI2026.about.title')}
               </span>
             </h2>
             
             <div className="max-w-4xl mx-auto">
               <Card className="p-8 bg-card/50 backdrop-blur-sm border-primary/20">
                 <p className="text-lg mb-6 leading-relaxed">
-                  Секция AEROO Space AI Competition — это проектное соревнование, где команды (до 4 человек) создают инновационные космические решения с использованием ИИ (например, анализ спутниковых снимков, автоматизация запусков). Фокус на коммерциализации — представь свой проект как стартап!
+                  {t('spaceAI2026.about.description')}
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="flex items-start gap-3 p-4 bg-primary/5 rounded-lg border border-primary/20">
                     <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1">Участники</h3>
-                      <p className="text-muted-foreground">Школьники 14-18 лет, команды до 4 человек</p>
+                      <h3 className="font-semibold mb-1">{t('spaceAI2026.about.participants')}</h3>
+                      <p className="text-muted-foreground">{t('spaceAI2026.about.participantsInfo')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3 p-4 bg-primary/5 rounded-lg border border-primary/20">
                     <Trophy className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1">Призовой фонд</h3>
-                      <p className="text-muted-foreground">До 1 000 000 тенге + гранты</p>
+                      <h3 className="font-semibold mb-1">{t('spaceAI2026.about.prizeFund')}</h3>
+                      <p className="text-muted-foreground">{t('spaceAI2026.about.prizeFundInfo')}</p>
                     </div>
                   </div>
                 </div>
@@ -196,13 +198,13 @@ const SpaceAI2026 = () => {
                 <div className="space-y-3">
                   <h3 className="font-semibold text-xl mb-3 flex items-center gap-2">
                     <Zap className="w-5 h-5 text-primary" />
-                    Цели и задачи
+                    {t('spaceAI2026.about.goalsTitle')}
                   </h3>
                   {[
-                    "Вовлечение молодежи в космическую науку через ИИ",
-                    "Развитие практических навыков программирования и машинного обучения",
-                    "Поддержка предпринимательского мышления и бизнес-навыков",
-                    "Создание инновационных решений для космической отрасли"
+                    t('spaceAI2026.about.goal1'),
+                    t('spaceAI2026.about.goal2'),
+                    t('spaceAI2026.about.goal3'),
+                    t('spaceAI2026.about.goal4')
                   ].map((goal, idx) => (
                     <div key={idx} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -220,7 +222,7 @@ const SpaceAI2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
               <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent px-1 py-2">
-                Этапы проведения
+                {t('spaceAI2026.stages.title')}
               </span>
             </h2>
 
@@ -254,7 +256,7 @@ const SpaceAI2026 = () => {
 
             {/* Timeline */}
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-center mb-8">Ключевые даты</h3>
+              <h3 className="text-2xl font-bold text-center mb-8">{t('spaceAI2026.stages.datesTitle')}</h3>
               <div className="space-y-4">
                 {timeline.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4 p-4 bg-card/50 backdrop-blur-sm rounded-lg border border-primary/20">
@@ -275,7 +277,7 @@ const SpaceAI2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
               <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent px-1 py-2">
-                Критерии оценки
+                {t('spaceAI2026.criteria.title')}
               </span>
             </h2>
 
@@ -284,9 +286,9 @@ const SpaceAI2026 = () => {
                 <thead>
                   <tr className="border-b border-primary/20">
                     <th className="text-left p-4 font-semibold">№</th>
-                    <th className="text-left p-4 font-semibold">Критерий</th>
-                    <th className="text-left p-4 font-semibold">Описание</th>
-                    <th className="text-left p-4 font-semibold">Баллы</th>
+                    <th className="text-left p-4 font-semibold">{t('spaceAI2026.criteria.title')}</th>
+                    <th className="text-left p-4 font-semibold">{t('spaceAI2026.criteria.title')}</th>
+                    <th className="text-left p-4 font-semibold">{t('spaceAI2026.criteria.title')}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -303,7 +305,7 @@ const SpaceAI2026 = () => {
                     </tr>
                   ))}
                   <tr className="border-t-2 border-primary/30 font-bold">
-                    <td className="p-4" colSpan={3}>ИТОГО</td>
+                    <td className="p-4" colSpan={3}>{t('spaceAI2026.criteria.total')}</td>
                     <td className="p-4">
                       <span className="px-3 py-1 bg-primary/20 text-primary rounded-full text-sm font-semibold">
                         100
@@ -321,7 +323,7 @@ const SpaceAI2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
               <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent px-1 py-2">
-                Награды и призы
+                {t('spaceAI2026.prizes.title')}
               </span>
             </h2>
 
@@ -331,32 +333,32 @@ const SpaceAI2026 = () => {
                   <div className="flex items-start gap-3">
                     <Trophy className="w-8 h-8 text-primary flex-shrink-0" />
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Денежные призы</h3>
-                      <p className="text-muted-foreground">До 1 000 000 тенге для победителей</p>
+                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.cash')}</h3>
+                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.cashDesc')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
                     <Award className="w-8 h-8 text-primary flex-shrink-0" />
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Образовательные гранты</h3>
-                      <p className="text-muted-foreground">Гранты от АУЭС им. Гумарбека Даукеева</p>
+                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.eduGrants')}</h3>
+                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.eduGrantsDesc')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
                     <Zap className="w-8 h-8 text-primary flex-shrink-0" />
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Гаджеты и техника</h3>
-                      <p className="text-muted-foreground">Современные устройства для призеров</p>
+                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.gadgets')}</h3>
+                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.gadgetsDesc')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3">
                     <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" />
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Сертификаты</h3>
-                      <p className="text-muted-foreground">Все финалисты получают сертификаты участия</p>
+                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.certificates')}</h3>
+                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.certificatesDesc')}</p>
                     </div>
                   </div>
                 </div>
@@ -370,12 +372,12 @@ const SpaceAI2026 = () => {
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
               <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent px-1 py-2">
-                Регистрация
+                {t('spaceAI2026.registration.title')}
               </span>
             </h2>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Регистрируйся на платформе AEROO. Участие бесплатное!
+              {t('spaceAI2026.registration.description')}
             </p>
 
             <Button 
@@ -383,7 +385,7 @@ const SpaceAI2026 = () => {
               className="btn-cosmic text-lg px-12 py-6"
               onClick={() => navigate('/enroll/exploring-world-of-science')}
             >
-              Зарегистрироваться сейчас
+              {t('spaceAI2026.registration.button')}
               <Rocket className="ml-2 w-6 h-6" />
             </Button>
           </div>
@@ -394,13 +396,13 @@ const SpaceAI2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
               <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent px-1 py-2">
-                Контакты и партнеры
+                {t('spaceAI2026.contacts.title')}
               </span>
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
               <Card className="p-6 bg-card/50 backdrop-blur-sm border-primary/20">
-                <h3 className="text-xl font-bold mb-4">Свяжитесь с нами</h3>
+                <h3 className="text-xl font-bold mb-4">{t('spaceAI2026.contacts.contactUs')}</h3>
                 <div className="space-y-4">
                   <a href="tel:+77751639790" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                     <Phone className="w-5 h-5" />
@@ -416,13 +418,13 @@ const SpaceAI2026 = () => {
                   </a>
                   <a href="https://t.me/+cbnepGa-hscxNmUy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
                     <MessageCircle className="w-5 h-5" />
-                    <span>Telegram канал</span>
+                    <span>{t('spaceAI2026.contacts.telegram')}</span>
                   </a>
                 </div>
               </Card>
 
               <Card className="p-6 bg-card/50 backdrop-blur-sm border-primary/20">
-                <h3 className="text-xl font-bold mb-4">Партнеры</h3>
+                <h3 className="text-xl font-bold mb-4">{t('spaceAI2026.contacts.partners')}</h3>
                 <div className="space-y-3 text-muted-foreground">
                   <p>• РНПЦ "Дарын" (Минпросвещения РК)</p>
                   <p>• AEROO</p>
@@ -430,7 +432,7 @@ const SpaceAI2026 = () => {
                 </div>
                 
                 <div className="mt-6">
-                  <h4 className="font-semibold mb-3">Социальные сети</h4>
+                  <h4 className="font-semibold mb-3">{t('spaceAI2026.contacts.socialMedia')}</h4>
                   <div className="flex gap-4">
                     <a href="https://instagram.com/aeroo.space" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                       @aeroo.space
