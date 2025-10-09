@@ -1,55 +1,555 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Navigation } from '@/components/ui/navigation';
 import { Footer } from '@/components/sections/footer';
 import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
+import {
+  Rocket,
+  Trophy,
+  Users,
+  Calendar,
+  Award,
+  CheckCircle2,
+  Mail,
+  Phone,
+  Globe,
+  MessageCircle,
+  Target,
+  Zap,
+  Sparkles,
+  Flame,
+  Wind,
+  Leaf
+} from 'lucide-react';
 
 const RocketScience2026 = () => {
   const navigate = useNavigate();
+  const revealRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('opacity-100', 'translate-y-0');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    revealRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => observer.disconnect();
   }, []);
+
+  const tracks = [
+    {
+      id: 'water',
+      title: 'Водяные ракеты',
+      age: '14-15 лет',
+      team: 'До 2 участников',
+      icon: Wind,
+      color: 'from-blue-500 to-cyan-500',
+      description: 'Устойчивый полет на воде и воздухе',
+      requirements: [
+        'Максимальная высота: не ограничена',
+        'Материалы: пластиковые бутылки, безопасные материалы',
+        'Топливо: вода + сжатый воздух',
+        'Безопасность: соблюдение норм запуска'
+      ]
+    },
+    {
+      id: 'model',
+      title: 'Модельные ракеты',
+      age: '15-18 лет',
+      team: 'До 2 участников',
+      icon: Rocket,
+      color: 'from-orange-500 to-red-500',
+      description: 'С двигателями 2.5H*c, парашютом и экологической миссией',
+      requirements: [
+        'Двигатель: 2.5H*c (сертифицированный)',
+        'Система спасения: парашют обязателен',
+        'Экологическая миссия: разбрасывание семян',
+        'Габариты: в соответствии с регламентом'
+      ]
+    }
+  ];
+
+  const timeline = [
+    { label: "Регистрация", date: "10 октября 2025 (12:00 GMT+5) — 19 января 2026 (23:59 GMT+5)" },
+    { label: "Прием работ (I этап)", date: "1 — 28 февраля 2026" },
+    { label: "Результаты", date: "10 марта 2026" },
+    { label: "Финал в Астане", date: "9-12 апреля 2026" }
+  ];
+
+  const waterCriteriaOnline = [
+    { criterion: "Описание идеи", desc: "Ясность концепции и целей проекта", points: "0-10" },
+    { criterion: "Аккуратность сборки", desc: "Качество изготовления и внимание к деталям", points: "0-10" },
+    { criterion: "Оригинальность дизайна", desc: "Уникальность и креативность решения", points: "0-10" },
+    { criterion: "Соблюдение безопасности", desc: "Использование безопасных материалов", points: "0-10" }
+  ];
+
+  const waterCriteriaFinal = [
+    { criterion: "Дальность полета", desc: "Максимальная горизонтальная дистанция", points: "0-25" },
+    { criterion: "Точность попадания", desc: "Приземление в заданной зоне", points: "0-15" },
+    { criterion: "Стабильность полета", desc: "Управляемость и траектория", points: "0-20" }
+  ];
+
+  const modelCriteria = [
+    { criterion: "Точность модели", desc: "Соответствие реальному прототипу", points: "0-15" },
+    { criterion: "3D-проект", desc: "Качество цифровой модели", points: "0-15" },
+    { criterion: "Техническая документация", desc: "Полнота и качество описания", points: "0-10" },
+    { criterion: "Габариты и вес", desc: "Соответствие требованиям", points: "0-10" },
+    { criterion: "Траектория полета", desc: "Высота и стабильность", points: "0-20" },
+    { criterion: "Работа парашюта", desc: "Корректное раскрытие и спуск", points: "0-15" },
+    { criterion: "Экологическая миссия", desc: "Успешное разбрасывание семян", points: "0-15" }
+  ];
 
   return (
     <>
       <Helmet>
-        <title>Rocket Science 2026 - AEROO</title>
-        <meta name="description" content="Создайте и запустите собственные ракеты, изучите основы аэродинамики" />
+        <title>AEROO Rocket Science Competition 2026 | Проектирование и запуск ракет</title>
+        <meta name="description" content="Присоединяйся к соревнованию по ракетостроению! Для школьников 14-18 лет. Водяные и модельные ракеты." />
         <link rel="canonical" href="https://aeroo.space/competitions/rocket-science-2026" />
       </Helmet>
 
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-[#000033] relative overflow-hidden">
+        {/* Animated starfield background */}
+        <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_50%)] pointer-events-none" />
+        
         <Navigation />
 
-        <main className="container mx-auto px-4 py-12">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
-              Rocket Science 2026
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              Создайте и запустите собственные ракеты, изучите основы аэродинамики
-            </p>
-            
-            <Button 
-              size="xl" 
-              className="btn-cosmic"
-              onClick={() => navigate('/enroll/rocket-science')}
-            >
-              Принять участие
-            </Button>
-          </div>
+        {/* Hero Section */}
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#000033]/50 to-[#000033]" />
+          
+          <div className="container mx-auto px-4 relative z-10 text-center">
+            <div className="inline-flex items-center gap-2 mb-6 px-4 py-2 bg-orange-500/10 rounded-full border border-orange-500/30 backdrop-blur-sm animate-pulse">
+              <Rocket className="w-4 h-4 text-orange-500" />
+              <span className="text-sm font-medium text-orange-500 font-orbitron">AEROO Rocket Science Competition 2026</span>
+            </div>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="bg-muted/30 rounded-2xl p-8 text-center">
-              <h2 className="text-3xl font-bold mb-4">Скоро здесь появится подробная информация</h2>
-              <p className="text-muted-foreground">
-                Следите за обновлениями на нашем сайте и в социальных сетях
-              </p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 via-red-500 to-orange-400 bg-clip-text text-transparent px-1 py-2">
+                Проектируй, собирай и запускай ракеты в небо!
+              </span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto">
+              Для школьников 14-18 лет. Два направления: водяные и модельные ракеты. Выиграй призы, гранты и сертификаты!
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-6 mb-12">
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/20 backdrop-blur-sm">
+                <Target className="w-5 h-5 text-orange-500" />
+                <span className="font-medium text-white">Развитие инженерных навыков</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/20 backdrop-blur-sm">
+                <Users className="w-5 h-5 text-orange-500" />
+                <span className="font-medium text-white">Командная работа</span>
+              </div>
+              <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/20 backdrop-blur-sm">
+                <Leaf className="w-5 h-5 text-orange-500" />
+                <span className="font-medium text-white">Экологическая миссия</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                size="xl" 
+                className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-orbitron"
+                onClick={() => navigate('/enroll/exploring-world-of-science')}
+              >
+                <span className="relative z-10">Участвовать</span>
+                <Flame className="ml-2 w-5 h-5 relative z-10" />
+              </Button>
+              
+              <Button 
+                size="xl" 
+                variant="outline"
+                className="border-orange-500/30 hover:bg-orange-500/10 text-white font-orbitron"
+                onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                Узнать больше
+              </Button>
             </div>
           </div>
-        </main>
+        </section>
+
+        {/* About Section */}
+        <section id="about" ref={(el) => el && (revealRefs.current[0] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
+                О соревновании
+              </span>
+            </h2>
+            
+            <div className="max-w-4xl mx-auto">
+              <Card className="p-8 bg-white/5 backdrop-blur-sm border-orange-500/20">
+                <p className="text-lg mb-6 leading-relaxed text-white/90">
+                  Секция AEROO Rocket Science Competition — инженерное соревнование по проектированию, сборке и запуску ракет. Два направления: Водяные ракеты (14-15 лет, до 2 участников) — устойчивый полет на воде и воздухе; Модельные ракеты (15-18 лет, до 2 участников) — с двигателями 2.5H*c, парашютом и экологической миссией (разбрасывание семян). Фокус на аэродинамике, безопасности и инновациях.
+                </p>
+
+                <div className="grid md:grid-cols-2 gap-6 mb-6">
+                  <div className="flex items-start gap-3 p-4 bg-orange-500/5 rounded-lg border border-orange-500/20">
+                    <Users className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1 text-white font-orbitron">Участники</h3>
+                      <p className="text-white/70">Команды до 2 человек. Один участник — одна секция</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3 p-4 bg-orange-500/5 rounded-lg border border-orange-500/20">
+                    <Trophy className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
+                    <div>
+                      <h3 className="font-semibold mb-1 text-white font-orbitron">Призовой фонд</h3>
+                      <p className="text-white/70">До 1 000 000 тенге + гранты</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="font-semibold text-xl mb-3 flex items-center gap-2 font-orbitron text-white">
+                    <Zap className="w-5 h-5 text-orange-500" />
+                    Цели и задачи
+                  </h3>
+                  {[
+                    "Развитие интереса к космонавтике и ракетостроению",
+                    "Практические навыки проектирования и конструирования",
+                    "Командная работа и инженерное мышление",
+                    "Популяризация экологических инициатив через космическую науку"
+                  ].map((goal, idx) => (
+                    <div key={idx} className="flex items-start gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                      <span className="text-white/90">{goal}</span>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Tracks Section */}
+        <section ref={(el) => el && (revealRefs.current[1] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700 bg-white/5">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
+                Направления
+              </span>
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+              {tracks.map((track, idx) => {
+                const Icon = track.icon;
+                return (
+                  <Card 
+                    key={idx} 
+                    className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 group"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${track.color} flex items-center justify-center group-hover:scale-110 transition-transform`}>
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
+                      <div>
+                        <h3 className="text-2xl font-bold text-white font-orbitron">{track.title}</h3>
+                        <p className="text-sm text-white/70">{track.age} • {track.team}</p>
+                      </div>
+                    </div>
+                    
+                    <p className="text-white/90 mb-4">{track.description}</p>
+                    
+                    <div className="space-y-2">
+                      <h4 className="font-semibold text-white font-orbitron">Требования:</h4>
+                      {track.requirements.map((req, reqIdx) => (
+                        <div key={reqIdx} className="flex items-start gap-2">
+                          <CheckCircle2 className="w-4 h-4 text-orange-500 mt-1 flex-shrink-0" />
+                          <span className="text-sm text-white/80">{req}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Timeline Section */}
+        <section ref={(el) => el && (revealRefs.current[2] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
+                Этапы проведения
+              </span>
+            </h2>
+
+            <div className="max-w-4xl mx-auto mb-12">
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">I этап (онлайн)</h3>
+                <ul className="space-y-2 text-white/90">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <span>Видео сборки/макета вашей ракеты</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <span>Публикация в Instagram с хэштегами #exploring_world_of_science_2026 #aeroo_rocket_science_2026</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
+                    <span>Отметка @aeroo.space @rspc_daryn</span>
+                  </li>
+                </ul>
+              </Card>
+
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20 mt-6">
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">II этап (финал в Астане)</h3>
+                <div className="space-y-4 text-white/90">
+                  <div>
+                    <h4 className="font-semibold mb-2 text-white">Водяные ракеты:</h4>
+                    <ul className="space-y-1 ml-4">
+                      <li>• 60 минут на сборку</li>
+                      <li>• 3 попытки запуска</li>
+                      <li>• Оценка дальности, точности и стабильности</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-semibold mb-2 text-white">Модельные ракеты:</h4>
+                    <ul className="space-y-1 ml-4">
+                      <li>• Запуск с оценкой траектории</li>
+                      <li>• Проверка работы парашюта</li>
+                      <li>• Оценка высева семян (экологическая миссия)</li>
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Timeline dates */}
+            <div className="max-w-4xl mx-auto">
+              <h3 className="text-2xl font-bold text-center mb-8 text-white font-orbitron">Ключевые даты</h3>
+              <div className="space-y-4">
+                {timeline.map((item, idx) => (
+                  <div key={idx} className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-orange-500/20">
+                    <Calendar className="w-5 h-5 text-orange-500 mt-1 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-white">{item.label}</h4>
+                      <p className="text-sm text-white/70">{item.date}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Criteria Section */}
+        <section ref={(el) => el && (revealRefs.current[3] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700 bg-white/10">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
+                Критерии оценки
+              </span>
+            </h2>
+
+            <div className="max-w-4xl mx-auto space-y-8">
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Водяные ракеты (I этап - онлайн)</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full table-auto text-left">
+                    <thead>
+                      <tr className="text-white/70">
+                        <th className="py-2 px-3 font-semibold">Критерий</th>
+                        <th className="py-2 px-3 font-semibold">Описание</th>
+                        <th className="py-2 px-3 font-semibold">Баллы</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {waterCriteriaOnline.map((item, idx) => (
+                        <tr key={idx} className="even:bg-white/5">
+                          <td className="py-2 px-3 text-white">{item.criterion}</td>
+                          <td className="py-2 px-3 text-white/90">{item.desc}</td>
+                          <td className="py-2 px-3 text-white">{item.points}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Водяные ракеты (II этап - финал)</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full table-auto text-left">
+                    <thead>
+                      <tr className="text-white/70">
+                        <th className="py-2 px-3 font-semibold">Критерий</th>
+                        <th className="py-2 px-3 font-semibold">Описание</th>
+                        <th className="py-2 px-3 font-semibold">Баллы</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {waterCriteriaFinal.map((item, idx) => (
+                        <tr key={idx} className="even:bg-white/5">
+                          <td className="py-2 px-3 text-white">{item.criterion}</td>
+                          <td className="py-2 px-3 text-white/90">{item.desc}</td>
+                          <td className="py-2 px-3 text-white">{item.points}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Модельные ракеты</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full table-auto text-left">
+                    <thead>
+                      <tr className="text-white/70">
+                        <th className="py-2 px-3 font-semibold">Критерий</th>
+                        <th className="py-2 px-3 font-semibold">Описание</th>
+                        <th className="py-2 px-3 font-semibold">Баллы</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {modelCriteria.map((item, idx) => (
+                        <tr key={idx} className="even:bg-white/5">
+                          <td className="py-2 px-3 text-white">{item.criterion}</td>
+                          <td className="py-2 px-3 text-white/90">{item.desc}</td>
+                          <td className="py-2 px-3 text-white">{item.points}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Prizes Section */}
+        <section ref={(el) => el && (revealRefs.current[4] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
+                Награды и призы
+              </span>
+            </h2>
+
+            <div className="max-w-4xl mx-auto">
+              <Card className="p-8 bg-white/5 backdrop-blur-sm border-orange-500/20 text-center">
+                <p className="text-lg mb-6 leading-relaxed text-white/90">
+                  Победители: медали, дипломы, призы (гаджеты, оборудование), образовательные гранты от АУЭС им. Гумарбека Даукеева. Все финалисты — сертификаты. Общий призовой фонд до 1 000 000 тенге.
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                  <div className="flex flex-col items-center">
+                    <Award className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
+                    <span className="text-white font-semibold">Медали и дипломы</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Sparkles className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
+                    <span className="text-white font-semibold">Гаджеты и оборудование</span>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <Trophy className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
+                    <span className="text-white font-semibold">Образовательные гранты</span>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Registration Section */}
+        <section ref={(el) => el && (revealRefs.current[5] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700 bg-white/5">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
+                Регистрация
+              </span>
+            </h2>
+
+            <div className="max-w-4xl mx-auto">
+              <Card className="p-8 bg-white/5 backdrop-blur-sm border-orange-500/20 text-center">
+                <p className="text-lg mb-6 leading-relaxed text-white/90">
+                  Регистрируйся на платформе AEROO. Участие бесплатное!
+                </p>
+                <Button 
+                  size="xl" 
+                  className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-orbitron animate-pulse"
+                  onClick={() => navigate('/enroll/exploring-world-of-science')}
+                >
+                  <span className="relative z-10">Зарегистрироваться сейчас</span>
+                  <Flame className="ml-2 w-5 h-5 relative z-10" />
+                </Button>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Contacts Section */}
+        <section ref={(el) => el && (revealRefs.current[6] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
+              <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
+                Контакты и партнеры
+              </span>
+            </h2>
+
+            <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Контактная информация</h3>
+                <ul className="space-y-2 text-white/90">
+                  <li className="flex items-center gap-2">
+                    <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <a href="tel:+77751639790">+7 775 163 97 90</a>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Mail className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <a href="mailto:info@aeroo.space">info@aeroo.space</a>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <MessageCircle className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <a href="https://t.me/+cbnepGa-hscxNmUy" target="_blank" rel="noopener noreferrer">Telegram</a>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <Globe className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <a href="https://aeroo.space" target="_blank" rel="noopener noreferrer">https://aeroo.space</a>
+                  </li>
+                </ul>
+              </Card>
+
+              <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Наши партнеры</h3>
+                <ul className="space-y-2 text-white/90">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <span>РНПЦ "Дарын"</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <span>AEROO</span>
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0" />
+                    <span>АУЭС</span>
+                  </li>
+                </ul>
+              </Card>
+            </div>
+          </div>
+        </section>
 
         <Footer />
       </div>
