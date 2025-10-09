@@ -199,12 +199,12 @@ const resources = {
       satelliteLaunch2026: {
         benefits: {
           title: 'Преимущества участия',
-          certificates: 'Сертификаты, призы и признание победителей',
-          networking: 'Нетворкинг с участниками и экспертами',
-          skills: 'Развитие инженерных навыков и портфолио',
-          practice: 'Практический опыт работы с реальным оборудованием AEROO CubeSat Kit',
-          opportunities: 'Возможность стажировок и партнёрства',
-          media: 'Медийное внимание и продвижение команды'
+          certificates: 'Развитие технического мышления и прикладных инженерных навыков',
+          networking: 'Системное проектирование спутниковых миссий',
+          skills: '3D-моделирование, CAD и трассировка печатных плат (PCB)',
+          practice: 'Разработка и отладка ПО для микроконтроллеров, телеметрия и датчики',
+          opportunities: 'Подготовка презентаций и защита инженерных решений: командная работа',
+          media: 'Расширение знаний в аэрокосмике, обмен опытом и международная культура'
         }
       },
       common: {
@@ -1013,12 +1013,12 @@ const resources = {
       satelliteLaunch2026: {
         benefits: {
           title: 'Participation Benefits',
-          certificates: 'Certificates, prizes and recognition of winners',
-          networking: 'Networking with participants and experts',
-          skills: 'Boost engineering skills and portfolio',
-          practice: 'Hands-on experience with real AEROO CubeSat Kit equipment',
-          opportunities: 'Chance for internships and partnerships',
-          media: 'Media attention and team promotion'
+          certificates: 'Development of technical thinking and applied engineering skills',
+          networking: 'Systematic design of satellite missions',
+          skills: '3D modeling, CAD and printed circuit board (PCB) routing',
+          practice: 'Software development and debugging for microcontrollers, telemetry and sensors',
+          opportunities: 'Presentation preparation and defense of engineering solutions: teamwork',
+          media: 'Expanding knowledge in aerospace, exchange of experience and international culture'
         }
       }
     }
@@ -1436,12 +1436,12 @@ const resources = {
       satelliteLaunch2026: {
         benefits: {
           title: 'Қатысудың артықшылықтары',
-          certificates: 'Сертификаттар, сыйлықтар және жеңімпаздарды тану',
-          networking: 'Қатысушылар мен сарапшылармен байланыс',
-          skills: 'Инженерлік дағдыларды дамыту және портфолио',
-          practice: 'AEROO CubeSat Kit нақты жабдығымен тәжірибе',
-          opportunities: 'Тағылымдама және серіктестік мүмкіндіктері',
-          media: 'Медиа назары және команданы алға жылжыту'
+          certificates: 'Техникалық ойлауды және қолданбалы инженерлік дағдыларды дамыту',
+          networking: 'Спутниктік миссияларды жүйелі жобалау',
+          skills: '3D-модельдеу, CAD және басылған тізбектерді трассировкалау (PCB)',
+          practice: 'Микроконтроллерлер үшін бағдарламалық қамтаманы әзірлеу және жөндеу, телеметрия және датчиктер',
+          opportunities: 'Презентацияларды дайындау және инженерлік шешімдерді қорғау: командалық жұмыс',
+          media: 'Аэроғарыштық білімді кеңейту, тәжірибе алмасу және халықаралық мәдениет'
         }
       }
     }
