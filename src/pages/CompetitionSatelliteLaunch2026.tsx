@@ -260,15 +260,15 @@ const CompetitionSatelliteLaunch2026 = () => {
               <div>
                 <Card className="glass-card overflow-hidden">
                   <CardContent className="p-0">
-                    <div className="aspect-video w-full bg-muted relative animate-fade-in hover-scale">
-                      <img
-                        src={satelliteCrew}
-                        alt="AEROO Satellite Launch — участники и организаторы на мероприятии"
-                        loading="lazy"
-                        decoding="async"
+                    <div className="aspect-video w-full bg-muted relative animate-fade-in">
+                      <video
+                        src="/videos/satellite-competition-2025.mp4"
+                        controls
                         className="h-full w-full object-cover object-center"
-                      />
-                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                        poster={satelliteCrew}
+                      >
+                        Ваш браузер не поддерживает воспроизведение видео.
+                      </video>
                     </div>
                   </CardContent>
                 </Card>
