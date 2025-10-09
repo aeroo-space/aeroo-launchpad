@@ -111,7 +111,7 @@ const CompetitionSatelliteLaunch2026 = () => {
   const [dupName, setDupName] = useState("");
 
   const handleOpenEnroll = () => {
-    navigate("/enroll/satellite-launch");
+    navigate("/enroll/exploring-world-of-science");
   };
   const handleSubmitEnroll = async (e: React.FormEvent) => {
     e.preventDefault();
