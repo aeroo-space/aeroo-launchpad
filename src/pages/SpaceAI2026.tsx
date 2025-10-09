@@ -114,7 +114,7 @@ const SpaceAI2026 = () => {
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-green-400 to-cyan-400 bg-clip-text text-transparent">
-              Разрабатывай космические проекты с ИИ и запускай свой стартап!
+              Создай свой SpaceTech стартап прямо сейчас!
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto">
