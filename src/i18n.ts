@@ -120,6 +120,14 @@ const resources = {
           status: "Скоро",
           deadline: "", 
           ages: "12-18 лет"
+        },
+        exploringWorldOfScience: {
+          title: "Открываем Мир Науки",
+          category: "Научно-практический конкурс",
+          description: "Исследуйте различные научные направления и реализуйте собственные исследовательские проекты",
+          status: "Регистрация",
+          deadline: "15 ноября 2025",
+          ages: "7-18 лет"
         }
       },
       spaceSettlement2025: {

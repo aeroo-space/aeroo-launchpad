@@ -1,4 +1,4 @@
-import { Satellite, Building, Brain, Car, Plane, Trophy, CircleDot } from "lucide-react";
+import { Satellite, Building, Brain, Car, Plane, Trophy, CircleDot, FlaskConical } from "lucide-react";
 
 export type Competition = {
   id: string;
@@ -71,6 +71,16 @@ export const competitions: Competition[] = [
     status: "competitions.droneCompetition.status",
     deadline: "competitions.droneCompetition.deadline",
     ages: "competitions.droneCompetition.ages",
+  },
+  {
+    id: "exploring-world-of-science",
+    title: "competitions.exploringWorldOfScience.title",
+    category: "competitions.exploringWorldOfScience.category",
+    description: "competitions.exploringWorldOfScience.description",
+    icon: FlaskConical,
+    status: "Регистрация",
+    deadline: "competitions.exploringWorldOfScience.deadline",
+    ages: "competitions.exploringWorldOfScience.ages",
   },
 ];
 
