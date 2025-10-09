@@ -1071,7 +1071,7 @@ const resources = {
       }
     }
   },
-  kk: {
+  kz: {
     translation: {
       nav: {
         competitions: 'Жарыстар',
