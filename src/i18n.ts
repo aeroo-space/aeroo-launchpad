@@ -374,6 +374,42 @@ const resources = {
           weWillContact: "Мы свяжемся с вами по email"
         }
       },
+      about: {
+        metaTitle: "О AEROO — миссия и команда",
+        metaDesc: "Образовательная экосистема AEROO: миссия, ценности, команда и партнёры",
+        heroTitle: "О AEROO",
+        heroSubtitle: "Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление в области аэрокосмических технологий.",
+        missionTitle: "Наша миссия",
+        missionText: "Создать образовательную экосистему, которая объединяет школьников, студентов и молодых инженеров вокруг передовых технологий. Мы стремимся сделать аэрокосмические знания доступными каждому талантливому человеку.",
+        valuesTitle: "Наши ценности",
+        values: {
+          innovation: "Инновации и технологическое превосходство",
+          openness: "Открытость и доступность образования",
+          teamwork: "Командная работа и взаимопомощь",
+          excellence: "Стремление к совершенству"
+        },
+        achievementsTitle: "Наши достижения",
+        achievements: {
+          participants: "участников",
+          events: "мероприятий",
+          countries: "страны"
+        },
+        teamTitle: "Наша команда",
+        teamMembers: {
+          mirasName: "Мирас Нусупов",
+          ryspayName: "Рыспай Алихан"
+        },
+        partnersTitle: "Наши партнёры",
+        becomePartner: "Стать партнёром",
+        leadTitle: "Свяжитесь с нами",
+        leadRequired: "Заполните имя и email",
+        leadSuccess: "Спасибо! Мы свяжемся с вами в ближайшее время.",
+        formName: "Имя",
+        formPhone: "Телефон",
+        formMessage: "Сообщение",
+        sendMessage: "Отправить",
+        privacyNote: "Отправляя форму, вы соглашаетесь с политикой конфиденциальности."
+      },
       spaceSettlement2025: {
         meta: {
           title: "AEROO Space Settlement Competition 2025 — онлайн-хакатон",
@@ -1169,6 +1205,42 @@ const resources = {
           weWillContact: "We will contact you by email"
         }
       },
+      about: {
+        metaTitle: "About AEROO — Mission and Team",
+        metaDesc: "AEROO educational ecosystem: mission, values, team and partners",
+        heroTitle: "About AEROO",
+        heroSubtitle: "We inspire and educate a new generation of creators, developing skills, teamwork and systemic thinking in the field of aerospace technologies.",
+        missionTitle: "Our Mission",
+        missionText: "To create an educational ecosystem that unites schoolchildren, students and young engineers around advanced technologies. We strive to make aerospace knowledge accessible to every talented person.",
+        valuesTitle: "Our Values",
+        values: {
+          innovation: "Innovation and technological excellence",
+          openness: "Openness and accessibility of education",
+          teamwork: "Teamwork and mutual assistance",
+          excellence: "Pursuit of excellence"
+        },
+        achievementsTitle: "Our Achievements",
+        achievements: {
+          participants: "participants",
+          events: "events",
+          countries: "countries"
+        },
+        teamTitle: "Our Team",
+        teamMembers: {
+          mirasName: "Miras Nussupov",
+          ryspayName: "Ryspay Alikhan"
+        },
+        partnersTitle: "Our Partners",
+        becomePartner: "Become a Partner",
+        leadTitle: "Contact Us",
+        leadRequired: "Fill in name and email",
+        leadSuccess: "Thank you! We will contact you soon.",
+        formName: "Name",
+        formPhone: "Phone",
+        formMessage: "Message",
+        sendMessage: "Send",
+        privacyNote: "By submitting the form, you agree to the privacy policy."
+      },
       spaceSettlement2025: {
         meta: {
           title: "AEROO Space Settlement Competition 2025 — Online Hackathon",
@@ -1833,6 +1905,42 @@ const resources = {
           sent: "Өтінім Жіберілді",
           weWillContact: "Біз сізбен email арқылы байланысамыз"
         }
+      },
+      about: {
+        metaTitle: "AEROO туралы — миссия және команда",
+        metaDesc: "AEROO білім беру экожүйесі: миссия, құндылықтар, команда және серіктестер",
+        heroTitle: "AEROO туралы",
+        heroSubtitle: "Біз жаңа буын жасаушыларды шабыттандырамыз және оқытамыз, ғарыштық технологиялар саласында дағдыларды, командалық жұмысты және жүйелі ойлауды дамытамыз.",
+        missionTitle: "Біздің миссиямыз",
+        missionText: "Мектеп оқушылары, студенттер мен жас инженерлерді озық технологиялар айналасында біріктіретін білім беру экожүйесін құру. Біз ғарыштық білімді әрбір талантты адамға қолжетімді ету үшін тырысамыз.",
+        valuesTitle: "Біздің құндылықтарымыз",
+        values: {
+          innovation: "Инновациялар мен технологиялық үстемдік",
+          openness: "Білім берудің ашықтығы мен қолжетімділігі",
+          teamwork: "Командалық жұмыс және өзара көмек",
+          excellence: "Үздік болуға ұмтылу"
+        },
+        achievementsTitle: "Біздің жетістіктеріміз",
+        achievements: {
+          participants: "қатысушы",
+          events: "шара",
+          countries: "ел"
+        },
+        teamTitle: "Біздің команда",
+        teamMembers: {
+          mirasName: "Мирас Нусупов",
+          ryspayName: "Рыспай Әлихан"
+        },
+        partnersTitle: "Біздің серіктестер",
+        becomePartner: "Серіктес болу",
+        leadTitle: "Бізбен байланысыңыз",
+        leadRequired: "Атыңыз бен email толтырыңыз",
+        leadSuccess: "Рахмет! Біз сізбен жақын арада байланысамыз.",
+        formName: "Аты",
+        formPhone: "Телефон",
+        formMessage: "Хабарлама",
+        sendMessage: "Жіберу",
+        privacyNote: "Форманы жібере отырып, сіз құпиялылық саясатымен келісесіз."
       },
       spaceSettlement2025: {
         meta: {
