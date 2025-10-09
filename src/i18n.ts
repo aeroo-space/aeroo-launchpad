@@ -151,6 +151,41 @@ const resources = {
       cta: {
         apply: 'Подать заявку'
       },
+      footer: {
+        description: 'Образовательная платформа, объединяющая школьников, студентов и молодых инженеров вокруг аэрокосмических технологий.',
+        location: 'Алматы, Казахстан',
+        sections: {
+          0: {
+            title: 'Платформа',
+            links: {
+              0: 'Соревнования',
+              1: 'Курсы',
+              2: 'Продукты',
+              3: 'О нас',
+              4: 'Карьера'
+            }
+          },
+          1: {
+            title: 'Поддержка',
+            links: {
+              0: 'Контакты',
+              1: 'FAQ',
+              2: 'Техподдержка',
+              3: 'Сообщество'
+            }
+          },
+          2: {
+            title: 'Документы',
+            links: {
+              0: 'Политика конфиденциальности',
+              1: 'Пользовательское соглашение'
+            }
+          }
+        },
+        bottom: {
+          rights: 'Все права защищены.'
+        }
+      },
       spaceSettlement2025: {
         meta: {
           title: "AEROO Space Settlement Competition 2025 — онлайн-хакатон",
@@ -773,6 +808,41 @@ const resources = {
       cta: {
         apply: 'Apply'
       },
+      footer: {
+        description: 'Educational platform connecting school students and young engineers around aerospace technologies.',
+        location: 'Almaty, Kazakhstan',
+        sections: {
+          0: {
+            title: 'Platform',
+            links: {
+              0: 'Competitions',
+              1: 'Courses',
+              2: 'Products',
+              3: 'About',
+              4: 'Careers'
+            }
+          },
+          1: {
+            title: 'Support',
+            links: {
+              0: 'Contacts',
+              1: 'FAQ',
+              2: 'Tech Support',
+              3: 'Community'
+            }
+          },
+          2: {
+            title: 'Documents',
+            links: {
+              0: 'Privacy Policy',
+              1: 'Terms of Service'
+            }
+          }
+        },
+        bottom: {
+          rights: 'All rights reserved.'
+        }
+      },
       spaceSettlement2025: {
         meta: {
           title: "AEROO Space Settlement Competition 2025 — Online Hackathon",
@@ -1214,6 +1284,41 @@ const resources = {
       },
       cta: {
         apply: 'Өтінім беру'
+      },
+      footer: {
+        description: 'Аэроғарыштық технологиялар айналасында мектеп оқушылары мен жас инженерлерді біріктіретін білім беру платформасы.',
+        location: 'Алматы, Қазақстан',
+        sections: {
+          0: {
+            title: 'Платформа',
+            links: {
+              0: 'Жарыстар',
+              1: 'Курстар',
+              2: 'Өнімдер',
+              3: 'Біз туралы',
+              4: 'Мансап'
+            }
+          },
+          1: {
+            title: 'Қолдау',
+            links: {
+              0: 'Байланыс',
+              1: 'FAQ',
+              2: 'Техникалық қолдау',
+              3: 'Қауымдастық'
+            }
+          },
+          2: {
+            title: 'Құжаттар',
+            links: {
+              0: 'Құпиялылық саясаты',
+              1: 'Пайдаланушы келісімі'
+            }
+          }
+        },
+        bottom: {
+          rights: 'Барлық құқықтар қорғалған.'
+        }
       },
       spaceSettlement2025: {
         meta: {
