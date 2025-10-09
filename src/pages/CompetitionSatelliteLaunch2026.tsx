@@ -291,7 +291,7 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Goals */}
         <section id="goals" ref={(el) => el && (revealRefs.current[2] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Как прошло в прошлом году?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">Как было в прошлом году?</h2>
             <p className="text-muted-foreground mb-6 max-w-3xl">
               Цель турнира — вовлечь молодёжь в практическую инженерную деятельность и повысить интерес к космическим
               технологиям через проектную и командную работу.
