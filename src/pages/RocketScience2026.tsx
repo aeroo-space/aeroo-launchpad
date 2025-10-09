@@ -5,6 +5,7 @@ import { Footer } from '@/components/sections/footer';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
   Rocket,
   Trophy,
@@ -26,6 +27,7 @@ import {
 
 const RocketScience2026 = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const revealRefs = useRef<(HTMLElement | null)[]>([]);
 
   useEffect(() => {
@@ -52,64 +54,64 @@ const RocketScience2026 = () => {
   const tracks = [
     {
       id: 'water',
-      title: 'Водяные ракеты',
-      age: '14-15 лет',
-      team: 'До 2 участников',
+      title: t('rocketScience2026.tracks.water.title'),
+      age: t('rocketScience2026.tracks.water.age'),
+      team: t('rocketScience2026.tracks.water.team'),
       icon: Wind,
       color: 'from-blue-500 to-cyan-500',
-      description: 'Устойчивый полет на воде и воздухе',
+      description: t('rocketScience2026.tracks.water.description'),
       requirements: [
-        'Максимальная высота: не ограничена',
-        'Материалы: пластиковые бутылки, безопасные материалы',
-        'Топливо: вода + сжатый воздух',
-        'Безопасность: соблюдение норм запуска'
+        t('rocketScience2026.tracks.water.req1'),
+        t('rocketScience2026.tracks.water.req2'),
+        t('rocketScience2026.tracks.water.req3'),
+        t('rocketScience2026.tracks.water.req4')
       ]
     },
     {
       id: 'model',
-      title: 'Модельные ракеты',
-      age: '15-18 лет',
-      team: 'До 2 участников',
+      title: t('rocketScience2026.tracks.model.title'),
+      age: t('rocketScience2026.tracks.model.age'),
+      team: t('rocketScience2026.tracks.model.team'),
       icon: Rocket,
       color: 'from-orange-500 to-red-500',
-      description: 'С двигателями 2.5H*c, парашютом и экологической миссией',
+      description: t('rocketScience2026.tracks.model.description'),
       requirements: [
-        'Двигатель: 2.5H*c (сертифицированный)',
-        'Система спасения: парашют обязателен',
-        'Экологическая миссия: разбрасывание семян',
-        'Габариты: в соответствии с регламентом'
+        t('rocketScience2026.tracks.model.req1'),
+        t('rocketScience2026.tracks.model.req2'),
+        t('rocketScience2026.tracks.model.req3'),
+        t('rocketScience2026.tracks.model.req4')
       ]
     }
   ];
 
   const timeline = [
-    { label: "Регистрация", date: "10 октября 2025 (12:00 GMT+5) — 19 января 2026 (23:59 GMT+5)" },
-    { label: "Прием работ (I этап)", date: "1 — 28 февраля 2026" },
-    { label: "Результаты", date: "10 марта 2026" },
-    { label: "Финал в Астане", date: "9-12 апреля 2026" }
+    { label: t('rocketScience2026.timeline.registration'), date: t('rocketScience2026.timeline.registrationDate') },
+    { label: t('rocketScience2026.timeline.stage1'), date: t('rocketScience2026.timeline.stage1Date') },
+    { label: t('rocketScience2026.timeline.results'), date: t('rocketScience2026.timeline.resultsDate') },
+    { label: t('rocketScience2026.timeline.final'), date: t('rocketScience2026.timeline.finalDate') }
   ];
 
   const waterCriteriaOnline = [
-    { criterion: "Описание идеи", desc: "Ясность концепции и целей проекта", points: "0-10" },
-    { criterion: "Аккуратность сборки", desc: "Качество изготовления и внимание к деталям", points: "0-10" },
-    { criterion: "Оригинальность дизайна", desc: "Уникальность и креативность решения", points: "0-10" },
-    { criterion: "Соблюдение безопасности", desc: "Использование безопасных материалов", points: "0-10" }
+    { criterion: t('rocketScience2026.criteria.waterOnline.idea'), desc: t('rocketScience2026.criteria.waterOnline.ideaDesc'), points: "0-10" },
+    { criterion: t('rocketScience2026.criteria.waterOnline.assembly'), desc: t('rocketScience2026.criteria.waterOnline.assemblyDesc'), points: "0-10" },
+    { criterion: t('rocketScience2026.criteria.waterOnline.design'), desc: t('rocketScience2026.criteria.waterOnline.designDesc'), points: "0-10" },
+    { criterion: t('rocketScience2026.criteria.waterOnline.safety'), desc: t('rocketScience2026.criteria.waterOnline.safetyDesc'), points: "0-10" }
   ];
 
   const waterCriteriaFinal = [
-    { criterion: "Дальность полета", desc: "Максимальная горизонтальная дистанция", points: "0-25" },
-    { criterion: "Точность попадания", desc: "Приземление в заданной зоне", points: "0-15" },
-    { criterion: "Стабильность полета", desc: "Управляемость и траектория", points: "0-20" }
+    { criterion: t('rocketScience2026.criteria.waterFinal.distance'), desc: t('rocketScience2026.criteria.waterFinal.distanceDesc'), points: "0-25" },
+    { criterion: t('rocketScience2026.criteria.waterFinal.accuracy'), desc: t('rocketScience2026.criteria.waterFinal.accuracyDesc'), points: "0-15" },
+    { criterion: t('rocketScience2026.criteria.waterFinal.stability'), desc: t('rocketScience2026.criteria.waterFinal.stabilityDesc'), points: "0-20" }
   ];
 
   const modelCriteria = [
-    { criterion: "Точность модели", desc: "Соответствие реальному прототипу", points: "0-15" },
-    { criterion: "3D-проект", desc: "Качество цифровой модели", points: "0-15" },
-    { criterion: "Техническая документация", desc: "Полнота и качество описания", points: "0-10" },
-    { criterion: "Габариты и вес", desc: "Соответствие требованиям", points: "0-10" },
-    { criterion: "Траектория полета", desc: "Высота и стабильность", points: "0-20" },
-    { criterion: "Работа парашюта", desc: "Корректное раскрытие и спуск", points: "0-15" },
-    { criterion: "Экологическая миссия", desc: "Успешное разбрасывание семян", points: "0-15" }
+    { criterion: t('rocketScience2026.criteria.model.accuracy'), desc: t('rocketScience2026.criteria.model.accuracyDesc'), points: "0-15" },
+    { criterion: t('rocketScience2026.criteria.model.model3d'), desc: t('rocketScience2026.criteria.model.model3dDesc'), points: "0-15" },
+    { criterion: t('rocketScience2026.criteria.model.docs'), desc: t('rocketScience2026.criteria.model.docsDesc'), points: "0-10" },
+    { criterion: t('rocketScience2026.criteria.model.dimensions'), desc: t('rocketScience2026.criteria.model.dimensionsDesc'), points: "0-10" },
+    { criterion: t('rocketScience2026.criteria.model.trajectory'), desc: t('rocketScience2026.criteria.model.trajectoryDesc'), points: "0-20" },
+    { criterion: t('rocketScience2026.criteria.model.parachute'), desc: t('rocketScience2026.criteria.model.parachuteDesc'), points: "0-15" },
+    { criterion: t('rocketScience2026.criteria.model.eco'), desc: t('rocketScience2026.criteria.model.ecoDesc'), points: "0-15" }
   ];
 
   return (
