@@ -142,7 +142,7 @@ const SpaceAI2026 = () => {
               <Button 
                 size="xl" 
                 className="btn-cosmic group relative overflow-hidden"
-                onClick={() => navigate('/enroll/ai-challenge')}
+                onClick={() => navigate('/enroll/exploring-world-of-science')}
               >
                 <span className="relative z-10">Участвовать</span>
                 <Sparkles className="ml-2 w-5 h-5 relative z-10" />
@@ -381,7 +381,7 @@ const SpaceAI2026 = () => {
             <Button 
               size="xl" 
               className="btn-cosmic text-lg px-12 py-6"
-              onClick={() => navigate('/enroll/ai-challenge')}
+              onClick={() => navigate('/enroll/exploring-world-of-science')}
             >
               Зарегистрироваться сейчас
               <Rocket className="ml-2 w-6 h-6" />
