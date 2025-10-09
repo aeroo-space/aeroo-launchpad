@@ -204,7 +204,7 @@ const resources = {
           category: "Искусственный интеллект",
           description: "Разработайте AI-решения для космических задач и исследований",
           status: "Регистрация",
-          deadline: "15 декабря 2025",
+          deadline: "19 января 2026",
           ages: "14-18 лет"
         },
         rocketScience: {
@@ -212,7 +212,7 @@ const resources = {
           category: "Ракетостроение",
           description: "Создайте и запустите собственные ракеты, изучите основы аэродинамики",
           status: "Регистрация",
-          deadline: "20 ноября 2025",
+          deadline: "19 января 2026",
           ages: "14-18 лет"
         },
         driveCompetition: {
@@ -236,7 +236,7 @@ const resources = {
           category: "Научно-практический конкурс",
           description: "Исследуйте различные научные направления и реализуйте собственные исследовательские проекты",
           status: "Регистрация",
-          deadline: "15 ноября 2025",
+          deadline: "19 января 2026",
           ages: "14-18 лет"
         },
         enrollDialogTitle: "Регистрация на соревнование",
@@ -1280,7 +1280,7 @@ const resources = {
           category: "Artificial Intelligence",
           description: "Develop AI solutions for space tasks and research",
           status: "In Development",
-          deadline: "",
+          deadline: "January 19, 2026",
           ages: "14-18 years"
         },
         rocketScience: {
@@ -1288,7 +1288,7 @@ const resources = {
           category: "Rocket Engineering",
           description: "Build and launch your own rockets, learn the basics of aerodynamics",
           status: "Registration",
-          deadline: "November 20, 2025",
+          deadline: "January 19, 2026",
           ages: "14-18 years"
         },
         driveCompetition: {
@@ -1312,7 +1312,7 @@ const resources = {
           category: "Scientific-Practical Competition",
           description: "Explore various scientific directions and implement your own research projects",
           status: "Registration",
-          deadline: "November 15, 2025",
+          deadline: "January 19, 2026",
           ages: "14-18 years"
         },
         enrollDialogTitle: "Competition Registration",
@@ -2226,7 +2226,7 @@ const resources = {
           category: "Жасанды интеллект",
           description: "Ғарыштық тапсырмалар мен зерттеулер үшін AI шешімдерін әзірлеңіз",
           status: "Әзірленуде",
-          deadline: "",
+          deadline: "19 қаңтар 2026",
           ages: "14-18 жас"
         },
         rocketScience: {
@@ -2234,7 +2234,7 @@ const resources = {
           category: "Зымыран құрылысы",
           description: "Өз зымырандарыңызды жасаңыз және ұшырыңыз, аэродинамиканың негіздерін үйреніңіз",
           status: "Тіркелу",
-          deadline: "20 қараша 2025",
+          deadline: "19 қаңтар 2026",
           ages: "14-18 жас"
         },
         driveCompetition: {
@@ -2258,7 +2258,7 @@ const resources = {
           category: "Ғылыми-тәжірибелік конкурс",
           description: "Әртүрлі ғылыми бағыттарды зерттеңіз және өз зерттеу жобаларыңызды жүзеге асырыңыз",
           status: "Тіркелу",
-          deadline: "15 қараша 2025",
+          deadline: "19 қаңтар 2026",
           ages: "14-18 жас"
         },
         enrollDialogTitle: "Жарысқа тіркелу",
