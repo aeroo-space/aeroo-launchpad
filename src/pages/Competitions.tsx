@@ -194,7 +194,7 @@ const Competitions = () => {
                       </Button>
                     ) : competition.id === 'exploring-world-of-science' ? (
                       <Button asChild variant="outline" className="w-full">
-                        <Link to="/exploring-world-of-science">{t('competitions.details')}</Link>
+                        <Link to="/competitions/exploring-world-of-science">{t('competitions.details')}</Link>
                       </Button>
                     ) : (
                       <Button
