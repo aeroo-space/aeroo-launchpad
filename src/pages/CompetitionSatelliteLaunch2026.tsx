@@ -264,8 +264,19 @@ const CompetitionSatelliteLaunch2026 = () => {
                       <video
                         src="/videos/satellite-competition-2025.mp4"
                         controls
+                        autoPlay
+                        loop
+                        muted={false}
+                        playsInline
+                        controlsList="nodownload"
+                        disablePictureInPicture
                         className="h-full w-full object-cover object-center"
                         poster={satelliteCrew}
+                        ref={(video) => {
+                          if (video) {
+                            video.volume = 0.5;
+                          }
+                        }}
                       >
                         Ваш браузер не поддерживает воспроизведение видео.
                       </video>
