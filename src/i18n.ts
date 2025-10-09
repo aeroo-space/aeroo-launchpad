@@ -507,7 +507,8 @@ const resources = {
         },
         cta: {
           participate: "Принять участие",
-          readRegulation: "Прочитать Регламент"
+          readRegulation: "Прочитать Регламент",
+          regulationComingSoon: "Регламент скоро будет доступен"
         },
         about: {
           title: "О турнире",
@@ -1508,7 +1509,8 @@ const resources = {
         },
         cta: {
           participate: "Participate",
-          readRegulation: "Read Regulations"
+          readRegulation: "Read Regulations",
+          regulationComingSoon: "Regulations will be available soon"
         },
         about: {
           title: "About the Tournament",
@@ -2527,7 +2529,8 @@ const resources = {
         },
         cta: {
           participate: "Қатысу",
-          readRegulation: "Регламентті оқу"
+          readRegulation: "Регламентті оқу",
+          regulationComingSoon: "Регламент жақын арада қол жетімді болады"
         },
         about: {
           title: "Турнир туралы",

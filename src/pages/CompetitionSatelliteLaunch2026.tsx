@@ -224,16 +224,14 @@ const CompetitionSatelliteLaunch2026 = () => {
                 <Button variant="primary" size="lg" onClick={handleOpenEnroll} aria-label={t('satelliteLaunch2026.cta.participate')} data-testid="cta-top-apply">
                   {t('satelliteLaunch2026.cta.participate')}
                 </Button>
-                <Button asChild variant="outline" size="lg">
-                  <a
-                    href="https://docs.google.com/document/d/1KclwhBPXbtUXfjepxtpxADl9rwIr1KdOHrpDbRqsp_4/edit?usp=sharing"
-                    target="_blank"
-                    rel="noopener"
-                    aria-label={t('satelliteLaunch2026.cta.readRegulation')}
-                    data-testid="link-regulation"
-                  >
-                    {t('satelliteLaunch2026.cta.readRegulation')}
-                  </a>
+                <Button 
+                  variant="outline" 
+                  size="lg"
+                  onClick={() => toast.info(t('satelliteLaunch2026.cta.regulationComingSoon'))}
+                  aria-label={t('satelliteLaunch2026.cta.readRegulation')}
+                  data-testid="link-regulation"
+                >
+                  {t('satelliteLaunch2026.cta.readRegulation')}
                 </Button>
               </div>
             </div>
