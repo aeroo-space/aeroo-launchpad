@@ -35,6 +35,7 @@ import goalsLaunch from "@/assets/goals-launch.png";
 import goalsTeam2 from "@/assets/goals-team-2.png";
 import goalsSatellite from "@/assets/goals-satellite.png";
 import goalsCubesat from "@/assets/goals-cubesat.png";
+import goalsStratosphericBalloon from "@/assets/goals-stratospheric-balloon.png";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -296,26 +297,30 @@ const CompetitionSatelliteLaunch2026 = () => {
               технологиям через проектную и командную работу.
             </p>
             
-            {/* Images Grid - smaller size */}
-            <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-8">
+            {/* Images Grid with captions */}
+            <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6 mb-8">
               {[
-                { src: goalsTeam1, alt: "Команда участников AEROO на фоне стратостатов" },
-                { src: goalsLaunch, alt: "Участники наблюдают за запуском спутника" },
-                { src: goalsTeam2, alt: "Победители турнира с наградами" },
-                { src: goalsSatellite, alt: "Подготовка CubeSat к запуску" },
-                { src: goalsCubesat, alt: "Наноспутник готовый к запуску на стратостате" },
+                { src: goalsTeam1, alt: "Команда участников AEROO на фоне стратостатов", caption: "Команда участников AEROO на фоне стратостатов" },
+                { src: goalsLaunch, alt: "Участники наблюдают за запуском спутника", caption: "Участники наблюдают за запуском спутника" },
+                { src: goalsTeam2, alt: "Победители турнира с наградами", caption: "Победители турнира с наградами" },
+                { src: goalsSatellite, alt: "Подготовка CubeSat к запуску", caption: "Подготовка CubeSat к запуску" },
+                { src: goalsCubesat, alt: "Наноспутник готовый к запуску на стратостате", caption: "Наноспутник готовый к запуску на стратостате" },
+                { src: goalsStratosphericBalloon, alt: "Стратосферный аэростат в небе", caption: "Стратосферный аэростат в небе" },
               ].map((img, i) => (
-                <Card key={i} className="glass-card overflow-hidden">
+                <Card key={i} className="glass-card overflow-hidden group">
                   <CardContent className="p-0">
-                    <div className="aspect-[4/3] w-full bg-muted relative animate-fade-in hover-scale">
+                    <div className="aspect-[4/3] w-full bg-muted relative animate-fade-in overflow-hidden">
                       <img
                         src={img.src}
                         alt={img.alt}
                         loading="lazy"
                         decoding="async"
-                        className="h-full w-full object-cover object-center"
+                        className="h-full w-full object-cover object-center transition-transform duration-300 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+                    </div>
+                    <div className="p-4">
+                      <p className="text-sm text-muted-foreground text-center">{img.caption}</p>
                     </div>
                   </CardContent>
                 </Card>
