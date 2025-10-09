@@ -113,8 +113,10 @@ const SpaceAI2026 = () => {
               <span className="text-sm font-medium text-primary">AEROO Space AI Competition 2026</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-green-400 to-cyan-400 bg-clip-text text-transparent">
-              Создай свой SpaceTech стартап прямо сейчас!
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
+              <span className="inline-block bg-gradient-to-r from-primary via-green-400 to-cyan-400 bg-clip-text text-transparent">
+                Создай свой SpaceTech стартап прямо сейчас!
+              </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-4xl mx-auto">
@@ -161,8 +163,10 @@ const SpaceAI2026 = () => {
         {/* About Section */}
         <section id="about" ref={(el) => el && (revealRefs.current[0] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
-              О соревновании
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+              <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
+                О соревновании
+              </span>
             </h2>
             
             <div className="max-w-4xl mx-auto">
@@ -214,8 +218,10 @@ const SpaceAI2026 = () => {
         {/* Stages Section */}
         <section ref={(el) => el && (revealRefs.current[1] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
-              Этапы проведения
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+              <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
+                Этапы проведения
+              </span>
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto mb-12">
@@ -267,8 +273,10 @@ const SpaceAI2026 = () => {
         {/* Criteria Section */}
         <section ref={(el) => el && (revealRefs.current[2] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
-              Критерии оценки
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+              <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
+                Критерии оценки
+              </span>
             </h2>
 
             <div className="max-w-6xl mx-auto overflow-x-auto">
@@ -311,8 +319,10 @@ const SpaceAI2026 = () => {
         {/* Prizes Section */}
         <section ref={(el) => el && (revealRefs.current[3] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
-              Награды и призы
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+              <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
+                Награды и призы
+              </span>
             </h2>
 
             <div className="max-w-4xl mx-auto">
@@ -358,8 +368,10 @@ const SpaceAI2026 = () => {
         {/* Registration Section */}
         <section ref={(el) => el && (revealRefs.current[4] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
-              Регистрация
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
+                Регистрация
+              </span>
             </h2>
             
             <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
@@ -380,8 +392,10 @@ const SpaceAI2026 = () => {
         {/* Contacts Section */}
         <section ref={(el) => el && (revealRefs.current[5] = el)} className="py-20 relative opacity-0 translate-y-4 transition-all duration-700 bg-muted/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
-              Контакты и партнеры
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12">
+              <span className="inline-block bg-gradient-to-r from-primary to-cyan-400 bg-clip-text text-transparent">
+                Контакты и партнеры
+              </span>
             </h2>
 
             <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
