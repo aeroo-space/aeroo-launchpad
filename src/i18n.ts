@@ -6,6 +6,98 @@ const saved = typeof localStorage !== 'undefined' ? localStorage.getItem('lng') 
 const resources = {
   ru: {
     translation: {
+      home: {
+        metaTitle: 'AEROO — образовательная платформа',
+        hero: {
+          competitions: {
+            title: 'Международные соревнования по космическим технологиям',
+            desc: 'Участвуйте в захватывающих соревнованиях, проектируйте спутники, ракеты и создавайте будущее вместе с нами',
+            button: 'Узнать больше'
+          },
+          products: {
+            title: 'Образовательные наборы для изучения космоса',
+            desc: 'Профессиональные учебные комплекты для школ: ракеты, дроны, спутники и многое другое',
+            button: 'Смотреть продукты'
+          },
+          settlement: {
+            title: 'AEROO Space Settlement Competition 2025',
+            dates: 'Регистрация до 25 октября 2025 | Хакатон 28-29 октября',
+            registration: 'Республиканский онлайн-хакатон по проектированию космических поселений',
+            button: 'Принять участие'
+          }
+        },
+        features: {
+          title: 'Направления обучения',
+          subtitle: 'Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования',
+          items: {
+            0: {
+              title: 'Ракетостроение',
+              desc: 'Изучение аэродинамики, конструирование и запуск моделей ракет с твердотопливными двигателями'
+            },
+            1: {
+              title: 'БПЛА',
+              desc: 'Программирование дронов, FPV-пилотирование, аэросъёмка и автономные полёты'
+            },
+            2: {
+              title: 'Спутниковые технологии',
+              desc: 'Создание наноспутников, изучение бортовых систем и подготовка к запуску'
+            },
+            3: {
+              title: 'Искусственный интеллект',
+              desc: 'Разработка автономных алгоритмов для навигации и управления космическими миссиями'
+            },
+            4: {
+              title: 'Соревнования',
+              desc: 'Участие в международных конкурсах по аэрокосмическим технологиям'
+            },
+            5: {
+              title: 'Командная работа',
+              desc: 'Развитие навыков сотрудничества в многодисциплинарных проектах'
+            }
+          },
+          learnMore: 'Узнать больше',
+          cta: {
+            title: 'Готовы начать свой путь в космос?',
+            courses: 'Образовательные комплекты для школ',
+            competitions: 'Ближайшие соревнования'
+          }
+        },
+        testimonials: {
+          title: 'Отзывы о AEROO',
+          subtitle: 'Что говорят о нас директора школ, учителя, участники и победители соревнований',
+          types: {
+            director: 'Директор',
+            teacher: 'Учитель',
+            winner: 'Победитель',
+            participant: 'Участник'
+          },
+          items: {
+            0: {
+              text: 'AEROO помогает нашим ученикам развиваться в области инженерии и космических технологий. Их образовательные программы действительно вдохновляют детей!'
+            },
+            1: {
+              text: 'Учебные материалы и наборы от AEROO отлично структурированы и понятны. Ученики с удовольствием работают над проектами.'
+            },
+            2: {
+              text: 'Благодаря соревнованиям AEROO я смог реализовать свой проект по созданию модели ракеты. Это был незабываемый опыт!'
+            },
+            3: {
+              text: 'Участие в программах AEROO открыло для меня новые горизонты в области аэрокосмических технологий. Рекомендую всем!'
+            },
+            4: {
+              text: 'AEROO предоставляет уникальные возможности для практического обучения. Мои ученики в восторге от их методики!'
+            },
+            5: {
+              text: 'Сотрудничество с AEROO позволило нам создать современную лабораторию для изучения космических технологий в нашей школе.'
+            }
+          },
+          cta: {
+            text: 'Присоединяйтесь к тысячам довольных участников и педагогов',
+            competitions: 'Участвовать в соревнованиях',
+            products: 'Заказать наборы'
+          }
+        }
+      },
       nav: {
         competitions: 'Соревнования',
         community: 'Сообщество',
@@ -414,56 +506,6 @@ const resources = {
         ageRequired: 'Введите возраст',
         selectSource: 'Выберите'
       },
-      home: {
-        hero: {
-          products: {
-            title: 'Образовательные наборы AEROO',
-            desc: 'Практические наборы для изучения ракетостроения, спутниковых технологий и космических исследований',
-            button: 'Заказать наборы'
-          },
-          settlement: {
-            title: 'Space Settlement 2025',
-            dates: '25 октября 2025 — 15 января 2026',
-            registration: 'Регистрация открыта',
-            button: 'Участвовать'
-          },
-          competitions: {
-            title: 'Соревнования AEROO',
-            desc: 'Присоединяйтесь к инновационным соревнованиям по аэрокосмическим технологиям',
-            button: 'Все соревнования'
-          }
-        },
-        features: {
-          title: 'Направления обучения',
-          subtitle: 'Погрузитесь в мир аэрокосмических технологий через практические курсы и захватывающие соревнования',
-          items: {
-            0: {
-              title: 'Ракетостроение',
-              desc: 'Изучение аэродинамики, конструирование и запуск моделей ракет с твердотопливными двигателями'
-            },
-            1: {
-              title: 'БПЛА',
-              desc: 'Программирование дронов, FPV-пилотирование, аэросъёмка и автономные полёты'
-            },
-            2: {
-              title: 'Спутниковые технологии',
-              desc: 'Создание наноспутников, изучение бортовых систем и подготовка к запуску'
-            },
-            3: {
-              title: 'Искусственный интеллект',
-              desc: 'Разработка автономных алгоритмов для навигации и управления космическими миссиями'
-            },
-            4: {
-              title: 'Соревнования',
-              desc: 'Участие в международных конкурсах по аэрокосмическим технологиям'
-            },
-            5: {
-              title: 'Командная работа',
-              desc: 'Развитие навыков работы в команде через совместные проекты'
-            }
-          }
-        }
-      },
       ews: {
         seo: {
           title: 'Открываем Мир Науки — Международные соревнования по космическим исследованиям',
@@ -663,6 +705,98 @@ const resources = {
   },
   en: {
     translation: {
+      home: {
+        metaTitle: 'AEROO — Educational Platform',
+        hero: {
+          competitions: {
+            title: 'International Space Technology Competitions',
+            desc: 'Participate in exciting competitions, design satellites, rockets and create the future with us',
+            button: 'Learn More'
+          },
+          products: {
+            title: 'Educational Kits for Space Exploration',
+            desc: 'Professional learning kits for schools: rockets, drones, satellites and more',
+            button: 'View Products'
+          },
+          settlement: {
+            title: 'AEROO Space Settlement Competition 2025',
+            dates: 'Registration until October 25, 2025 | Hackathon October 28-29',
+            registration: 'National online hackathon on space settlement design',
+            button: 'Participate'
+          }
+        },
+        features: {
+          title: 'Learning Directions',
+          subtitle: 'Immerse yourself in the world of aerospace technologies through practical courses and exciting competitions',
+          items: {
+            0: {
+              title: 'Rocket Engineering',
+              desc: 'Study of aerodynamics, design and launch of rocket models with solid fuel engines'
+            },
+            1: {
+              title: 'UAV',
+              desc: 'Drone programming, FPV piloting, aerial photography and autonomous flights'
+            },
+            2: {
+              title: 'Satellite Technologies',
+              desc: 'Creation of nanosatellites, study of onboard systems and launch preparation'
+            },
+            3: {
+              title: 'Artificial Intelligence',
+              desc: 'Development of autonomous algorithms for navigation and control of space missions'
+            },
+            4: {
+              title: 'Competitions',
+              desc: 'Participation in international aerospace technology competitions'
+            },
+            5: {
+              title: 'Teamwork',
+              desc: 'Development of collaboration skills in multidisciplinary projects'
+            }
+          },
+          learnMore: 'Learn More',
+          cta: {
+            title: 'Ready to start your journey to space?',
+            courses: 'Educational Kits for Schools',
+            competitions: 'Upcoming Competitions'
+          }
+        },
+        testimonials: {
+          title: 'AEROO Reviews',
+          subtitle: 'What school directors, teachers, participants and competition winners say about us',
+          types: {
+            director: 'Director',
+            teacher: 'Teacher',
+            winner: 'Winner',
+            participant: 'Participant'
+          },
+          items: {
+            0: {
+              text: 'AEROO helps our students develop in engineering and space technologies. Their educational programs really inspire children!'
+            },
+            1: {
+              text: 'Educational materials and kits from AEROO are well-structured and clear. Students enjoy working on projects.'
+            },
+            2: {
+              text: 'Thanks to AEROO competitions, I was able to implement my rocket model project. It was an unforgettable experience!'
+            },
+            3: {
+              text: 'Participation in AEROO programs opened up new horizons for me in aerospace technologies. I recommend it to everyone!'
+            },
+            4: {
+              text: 'AEROO provides unique opportunities for practical learning. My students are thrilled with their methodology!'
+            },
+            5: {
+              text: 'Cooperation with AEROO allowed us to create a modern laboratory for studying space technologies at our school.'
+            }
+          },
+          cta: {
+            text: 'Join thousands of satisfied participants and educators',
+            competitions: 'Participate in Competitions',
+            products: 'Order Kits'
+          }
+        }
+      },
       nav: {
         competitions: 'Competitions',
         community: 'Community',
@@ -1143,6 +1277,98 @@ const resources = {
   },
   kz: {
     translation: {
+      home: {
+        metaTitle: 'AEROO — Білім беру платформасы',
+        hero: {
+          competitions: {
+            title: 'Ғарыштық технологиялар бойынша халықаралық жарыстар',
+            desc: 'Қызықты жарыстарға қатысыңыз, спутниктерді, зымырандарды жобалаңыз және бізбен бірге болашақты жасаңыз',
+            button: 'Толығырақ'
+          },
+          products: {
+            title: 'Ғарышты зерттеуге арналған білім беру жинақтары',
+            desc: 'Мектептерге арналған кәсіби оқу жинақтары: зымырандар, дрондар, спутниктер және т.б.',
+            button: 'Өнімдерді қарау'
+          },
+          settlement: {
+            title: 'AEROO Space Settlement Competition 2025',
+            dates: '25 қазанға дейін тіркелу | Хакатон 28-29 қазан',
+            registration: 'Ғарыштық қоныстарды жобалау бойынша республикалық онлайн-хакатон',
+            button: 'Қатысу'
+          }
+        },
+        features: {
+          title: 'Оқу бағыттары',
+          subtitle: 'Практикалық курстар мен қызықты жарыстар арқылы аэроғарыштық технологиялар әлеміне енің із',
+          items: {
+            0: {
+              title: 'Зымыран құрылысы',
+              desc: 'Аэродинамиканы зерттеу, қатты отын қозғалтқыштары бар зымыран үлгілерін жобалау және ұшыру'
+            },
+            1: {
+              title: 'БПЛА',
+              desc: 'Дрондарды бағдарламалау, FPV-ұшыру, аэротүсірім және автономды ұшулар'
+            },
+            2: {
+              title: 'Спутниктік технологиялар',
+              desc: 'Наноспутниктерді жасау, борттық жүйелерді зерттеу және ұшыруға дайындық'
+            },
+            3: {
+              title: 'Жасанды интеллект',
+              desc: 'Ғарыштық миссияларды басқару және навигация үшін автономды алгоритмдерді әзірлеу'
+            },
+            4: {
+              title: 'Жарыстар',
+              desc: 'Аэроғарыштық технологиялар бойынша халықаралық конкурстарға қатысу'
+            },
+            5: {
+              title: 'Командалық жұмыс',
+              desc: 'Көп пәнді жобаларда ынтымақтастық дағдыларын дамыту'
+            }
+          },
+          learnMore: 'Толығырақ білу',
+          cta: {
+            title: 'Ғарышқа саяхатты бастауға дайынсыз ба?',
+            courses: 'Мектептерге арналған білім беру жинақтары',
+            competitions: 'Жақын арадағы жарыстар'
+          }
+        },
+        testimonials: {
+          title: 'AEROO туралы пікірлер',
+          subtitle: 'Мектеп директорлары, мұғалімдер, қатысушылар және жарыс жеңімпаздары біз туралы не айтады',
+          types: {
+            director: 'Директор',
+            teacher: 'Мұғалім',
+            winner: 'Жеңімпаз',
+            participant: 'Қатысушы'
+          },
+          items: {
+            0: {
+              text: 'AEROO біздің оқушыларымызға инженерия және ғарыштық технологиялар саласында дамуға көмектеседі. Олардың білім беру бағдарламалары балаларды шынымен шабыттандырады!'
+            },
+            1: {
+              text: 'AEROO-дан оқу материалдары мен жинақтары жақсы құрылымдалған және түсінікті. Оқушылар жобалар үстінде жұмыс істегенді ұнатады.'
+            },
+            2: {
+              text: 'AEROO жарыстарының арқасында мен зымыран үлгісін жасау жобамды іске асыра алдым. Бұл ұмытылмас тәжірибе болды!'
+            },
+            3: {
+              text: 'AEROO бағдарламаларына қатысу маған аэроғарыштық технологиялар саласында жаңа көкжиектер ашты. Барлығына ұсынамын!'
+            },
+            4: {
+              text: 'AEROO практикалық оқытудың бірегей мүмкіндіктерін ұсынады. Менің оқушыларым олардың әдістемесінен қуанышта!'
+            },
+            5: {
+              text: 'AEROO-мен ынтымақтастық бізге мектебімізде ғарыштық технологияларды зерттеуге арналған заманауи зертхана құруға мүмкіндік берді.'
+            }
+          },
+          cta: {
+            text: 'Мыңдаған қанағаттанған қатысушылар мен педагогтарға қосылыңыз',
+            competitions: 'Жарыстарға қатысу',
+            products: 'Жинақтарға тапсырыс беру'
+          }
+        }
+      },
       nav: {
         competitions: 'Жарыстар',
         community: 'Қауымдастық',
