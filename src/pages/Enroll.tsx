@@ -62,7 +62,7 @@ export default function EnrollPage() {
 
   // Form state
   const [teamName, setTeamName] = useState("");
-  const [league, setLeague] = useState(""); // junior or senior
+  const [league, setLeague] = useState(""); // Competition category
   const [teamMemberCount, setTeamMemberCount] = useState<number | null>(null);
 
   // Captain info (pre-filled from profile)
@@ -396,7 +396,7 @@ export default function EnrollPage() {
     const validationErrors: string[] = [];
     
     if (!teamName.trim()) validationErrors.push("Название команды");
-    if (!league.trim()) validationErrors.push("Лига");
+    if (!league.trim()) validationErrors.push("Категория");
     if (teamMemberCount === null) validationErrors.push("Количество участников команды");
     
     // Captain validation
@@ -677,56 +677,77 @@ export default function EnrollPage() {
                 />
               </div>
 
-              {/* League Selection */}
+              {/* Category Selection */}
               <div className="space-y-2">
-                <Label htmlFor="league">Лига *</Label>
-                <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
-                  <label className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
-                    <input
-                      type="radio"
-                      name="league"
-                      value="junior"
-                      checked={league === "junior"}
-                      onChange={(e) => setLeague(e.target.value)}
-                      className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                      required
-                    />
-                    <span className="text-sm font-medium">{t('form.juniorLeague')}</span>
-                  </label>
-                  <label className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
-                    <input
-                      type="radio"
-                      name="league"
-                      value="senior"
-                      checked={league === "senior"}
-                      onChange={(e) => setLeague(e.target.value)}
-                      className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                    />
-                    <span className="text-sm font-medium">{t('form.seniorLeague')}</span>
-                  </label>
-                </div>
+                <Label htmlFor="league">Категория *</Label>
+                <Select 
+                  value={league} 
+                  onValueChange={(value) => {
+                    setLeague(value);
+                    // Auto-set team member count based on category
+                    if (value === "satellite-launch") {
+                      setTeamMemberCount(4);
+                    } else if (value === "space-ai") {
+                      setTeamMemberCount(null); // Allow user to select 1-4
+                    } else if (value === "rocket-science") {
+                      setTeamMemberCount(null); // Allow user to select 1-2
+                    }
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue placeholder="Выберите категорию" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="satellite-launch">Satellite Launch</SelectItem>
+                    <SelectItem value="space-ai">Space AI</SelectItem>
+                    <SelectItem value="rocket-science">Rocket Science</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               {/* Team Member Count Selection */}
               {captainFullName.trim() && captainIin.trim() && captainPhone.trim() && captainSchool.trim() && captainCity.trim() && captainGrade.trim() && captainAge.trim() && (
                 <div className="space-y-2">
                   <Label>{t('form.teamMemberCount')} *</Label>
-                  <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
-                    {[1, 2, 3, 4, 5].map((count) => (
-                      <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
-                        <input
-                          type="radio"
-                          name="teamMemberCount"
-                          value={count}
-                          checked={teamMemberCount === count}
-                          onChange={(e) => setTeamMemberCount(Number(e.target.value))}
-                          className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                          required
-                        />
-                        <span className="text-sm font-medium">{count} {t('form.participantCount')}{count > 1 ? (count < 5 ? t('form.participantCountPlural') : t('form.participantCountMany')) : ''}</span>
-                      </label>
-                    ))}
-                  </div>
+                  {league === "satellite-launch" ? (
+                    <div className="p-3 border border-input rounded-md bg-muted">
+                      <p className="text-sm font-medium">Фиксировано 4 участника для Satellite Launch</p>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
+                      {league === "space-ai" ? (
+                        [1, 2, 3, 4].map((count) => (
+                          <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
+                            <input
+                              type="radio"
+                              name="teamMemberCount"
+                              value={count}
+                              checked={teamMemberCount === count}
+                              onChange={(e) => setTeamMemberCount(Number(e.target.value))}
+                              className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                              required
+                            />
+                            <span className="text-sm font-medium">{count} {t('form.participantCount')}{count > 1 ? (count < 5 ? t('form.participantCountPlural') : t('form.participantCountMany')) : ''}</span>
+                          </label>
+                        ))
+                      ) : league === "rocket-science" ? (
+                        [1, 2].map((count) => (
+                          <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
+                            <input
+                              type="radio"
+                              name="teamMemberCount"
+                              value={count}
+                              checked={teamMemberCount === count}
+                              onChange={(e) => setTeamMemberCount(Number(e.target.value))}
+                              className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                              required
+                            />
+                            <span className="text-sm font-medium">{count} {t('form.participantCount')}{count > 1 ? t('form.participantCountPlural') : ''}</span>
+                          </label>
+                        ))
+                      ) : null}
+                    </div>
+                  )}
                 </div>
               )}
 
