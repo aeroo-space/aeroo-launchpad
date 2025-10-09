@@ -568,15 +568,15 @@ const CompetitionSatelliteLaunch2026 = () => {
         <AlertDialog open={dupOpen} onOpenChange={setDupOpen}>
           <AlertDialogContent className="animate-enter">
             <AlertDialogHeader>
-              <AlertDialogTitle className="text-center">Вы уже зарегистрированы</AlertDialogTitle>
+              <AlertDialogTitle className="text-center">{t('competitions.alreadyRegisteredTitle')}</AlertDialogTitle>
               <AlertDialogDescription className="text-center">
-                Вы уже зарегистрированы на «{dupName}». Запись доступна в личном кабинете на странице «Мои регистрации».
+                {t('competitions.alreadyRegisteredDesc', { competitionName: dupName })}
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter className="sm:justify-center">
-              <AlertDialogCancel>Закрыть</AlertDialogCancel>
+              <AlertDialogCancel>{t('competitions.close')}</AlertDialogCancel>
               <AlertDialogAction asChild>
-                <Link to="/dashboard">Перейти в личный кабинет</Link>
+                <Link to="/dashboard">{t('competitions.goToDashboard')}</Link>
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -608,67 +608,67 @@ const CompetitionSatelliteLaunch2026 = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('satelliteLaunch2026.faq.title')}</h2>
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="q1">
-                <AccordionTrigger>Кто может участвовать в соревновании?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q1.question')}</AccordionTrigger>
                 <AccordionContent>
-                  К участию допускаются команды ровно из 4 человек в возрасте от 14 до 19 лет включительно, из Казахстана или других стран. Участниками могут быть школьники, ученики на домашнем обучении или эквивалентных образовательных программ, если они соответствуют возрастным требованиям на даты проведения соревнования (с 1 ноября по 12 апреля).
+                  {t('satelliteLaunch2026.faq.q1.answer')}
                   <br />
-                  <span className="text-muted-foreground">Пример: Команда из четырёх 16-летних учеников 10 класса может участвовать.</span>
+                  <span className="text-muted-foreground">{t('satelliteLaunch2026.faq.q1.example')}</span>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q2">
-                <AccordionTrigger>Может ли участвовать человек младше 14 или старше 19 лет?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q2.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Нет, участники должны быть в возрасте от 14 до 19 лет по состоянию на 1 июля 2026 года. Более младшие или старшие не могут быть членами команд, но могут присутствовать как наблюдатели или наставники с одобрения Оргкомитета.
+                  {t('satelliteLaunch2026.faq.q2.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q3">
-                <AccordionTrigger>Обязательно ли быть школьником?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q3.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Нет, участниками могут быть школьники, ученики на домашнем обучении или в эквивалентных программах. Нет строгого требования по зачислению в школу — только возрастной критерий.
+                  {t('satelliteLaunch2026.faq.q3.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q4">
-                <AccordionTrigger>Могут ли участвовать международные команды?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q4.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Да, международные команды приветствуются. Пять международных команд выйдут в финал в Астане, с обеспечением проезда и проживания.
+                  {t('satelliteLaunch2026.faq.q4.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q5">
-                <AccordionTrigger>Нужен ли участникам опыт в инженерии?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q5.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Предыдущий опыт не требуется. Соревнование направлено на обучение, и участники получат ресурсы для развития навыков в проектировании наноспутников, программировании и инженерии.
+                  {t('satelliteLaunch2026.faq.q5.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q6">
-                <AccordionTrigger>Сколько человек должно быть в команде?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q6.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Ровно 4 участника. Команды с другим количеством участников (меньше или больше) не допускаются.
+                  {t('satelliteLaunch2026.faq.q6.answer')}
                   <br />
-                  <span className="text-muted-foreground">Пример: Команда из 3 или 5 человек зарегистрироваться не сможет.</span>
+                  <span className="text-muted-foreground">{t('satelliteLaunch2026.faq.q6.example')}</span>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q7">
-                <AccordionTrigger>Может ли один человек быть в нескольких командах?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q7.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Нет, каждый участник может быть только в одной команде.
+                  {t('satelliteLaunch2026.faq.q7.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q8">
-                <AccordionTrigger>Кто такой капитан команды и чем он занимается?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q8.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Капитан — это выбранный член команды, который общается с Оргкомитетом, отправляет материалы и координирует работу команды. Капитаном должен быть участник в возрасте 14–19 лет.
+                  {t('satelliteLaunch2026.faq.q8.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q9">
-                <AccordionTrigger>Могут ли родители или наставники быть членами команды?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q9.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Нет, членами команды могут быть только участники 14–19 лет. Наставники и родители могут помогать и направлять, но не входят в официальный состав команды.
+                  {t('satelliteLaunch2026.faq.q9.answer')}
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="q10">
-                <AccordionTrigger>Можно ли поменять участников команды после регистрации?</AccordionTrigger>
+                <AccordionTrigger>{t('satelliteLaunch2026.faq.q10.question')}</AccordionTrigger>
                 <AccordionContent>
-                  Изменения возможны до 1 января 2026 года. Пишите на <a href="mailto:info@aeroo.space" className="underline">info@aeroo.space</a>.
+                  {t('satelliteLaunch2026.faq.q10.answer')} <a href="mailto:info@aeroo.space" className="underline">info@aeroo.space</a>.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
