@@ -73,6 +73,16 @@ const resources = {
         openRegistration: 'Регистрация',
         pendingRegistration: 'Скоро',
         registrationClosed: 'Закрыто',
+        toastNotOpenTitle: 'Регистрация пока не открыта',
+        toastNotOpenDesc: 'Скоро выйдет информация — будьте в курсе событий.',
+        toastSoonTitle: 'Скоро выйдет информация',
+        toastSoonDesc: 'Будьте в курсе событий',
+        toastNeedConsentTitle: 'Требуется согласие',
+        toastNeedConsentDesc: 'Пожалуйста, подтвердите согласие с правилами',
+        toastEnrollError: 'Ошибка регистрации',
+        toastEnrollSuccessTitle: 'Заявка успешно подана!',
+        archiveToastTitle: 'Архив в разработке',
+        archiveToastDesc: 'Раздел архива скоро будет доступен',
         aerooFest: {
           title: "AEROO Fest 2026",
           category: "Всеказахстанский фестиваль",
@@ -137,6 +147,9 @@ const resources = {
           deadline: "15 ноября 2025",
           ages: "14-18 лет"
         }
+      },
+      cta: {
+        apply: 'Подать заявку'
       },
       spaceSettlement2025: {
         meta: {
@@ -724,6 +737,14 @@ const resources = {
           deadline: "",
           ages: "16-25 years"
         },
+        rocketScience: {
+          title: "Rocket Science 2026",
+          category: "Rocket Engineering",
+          description: "Build and launch your own rockets, learn the basics of aerodynamics",
+          status: "Registration",
+          deadline: "November 20, 2025",
+          ages: "12-18 years"
+        },
         driveCompetition: {
           title: "DRIVE Competition",
           category: "Engineering Solutions",
@@ -739,7 +760,18 @@ const resources = {
           status: "Coming Soon",
           deadline: "",
           ages: "12-18 years"
+        },
+        exploringWorldOfScience: {
+          title: "Exploring World of Science",
+          category: "Scientific-Practical Competition",
+          description: "Explore various scientific directions and implement your own research projects",
+          status: "Registration",
+          deadline: "November 15, 2025",
+          ages: "14-18 years"
         }
+      },
+      cta: {
+        apply: 'Apply'
       },
       spaceSettlement2025: {
         meta: {
@@ -1147,6 +1179,14 @@ const resources = {
           deadline: "",
           ages: "16-25 жас"
         },
+        rocketScience: {
+          title: "Rocket Science 2026",
+          category: "Зымыран құрылысы",
+          description: "Өз зымырандарыңызды жасаңыз және ұшырыңыз, аэродинамиканың негіздерін үйреніңіз",
+          status: "Тіркелу",
+          deadline: "20 қараша 2025",
+          ages: "12-18 жас"
+        },
         driveCompetition: {
           title: "DRIVE жарысы",
           category: "Инженерлік шешімдер",
@@ -1162,7 +1202,18 @@ const resources = {
           status: "Жақында",
           deadline: "",
           ages: "12-18 жас"
+        },
+        exploringWorldOfScience: {
+          title: "Ғылым әлемін ашу",
+          category: "Ғылыми-тәжірибелік конкурс",
+          description: "Әртүрлі ғылыми бағыттарды зерттеңіз және өз зерттеу жобаларыңызды жүзеге асырыңыз",
+          status: "Тіркелу",
+          deadline: "15 қараша 2025",
+          ages: "14-18 жас"
         }
+      },
+      cta: {
+        apply: 'Өтінім беру'
       },
       spaceSettlement2025: {
         meta: {
