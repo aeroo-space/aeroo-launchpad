@@ -188,39 +188,51 @@ const ExploringWorldOfScience = () => {
               </h2>
               
               <Card className="p-8 glass-card">
-                <div className="space-y-6">
-                  <p className="text-lg">
-                    Организаторы: РНПЦ «Дарын» (Минпросвещения РК) совместно с AEROO. Международный формат (RU/KZ/EN), очный финал в Астане.
-                  </p>
-                  
-                  <p className="text-lg">
-                    Миссия: вовлечь школьников в космическую науку через реальные инженерные задачи.
-                  </p>
-
-                  {/* Organizers Logos */}
-                  <div className="flex items-center justify-center gap-12 py-8 border-t border-b border-border">
-                    <div className="flex items-center gap-3">
+                <div className="space-y-8">
+                  {/* Organizers Section */}
+                  <div className="text-center">
+                    <h3 className="text-xl font-semibold mb-6">Организаторы</h3>
+                    
+                    <div className="flex items-center justify-center gap-12 mb-6">
                       <img src={logoDaryn} alt="РНПЦ Дарын" className="h-16 md:h-20 object-contain hover-scale" />
-                    </div>
-                    <div className="text-2xl font-bold text-muted-foreground">×</div>
-                    <div className="flex items-center gap-3">
+                      <div className="text-2xl font-bold text-muted-foreground">×</div>
                       <img src={logoAeroo} alt="AEROO" className="h-12 md:h-16 object-contain hover-scale" />
                     </div>
+                    
+                    <p className="text-lg text-muted-foreground">
+                      Организаторами являются РНПЦ «Дарын» и AEROO
+                    </p>
                   </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-4 mt-8">
-                    <div className="flex items-start gap-3">
-                      <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="font-semibold mb-1">Кто может участвовать</h3>
-                        <p className="text-muted-foreground">Школьники 14–18 лет (индивидуально/команда — зависит от секции)</p>
+
+                  <div className="border-t border-border pt-6">
+                    <p className="text-lg mb-6">
+                      Миссия: вовлечь школьников в космическую науку через реальные инженерные задачи.
+                    </p>
+
+                    {/* Features */}
+                    <div className="bg-primary/5 rounded-lg p-6 mb-6">
+                      <div className="flex items-center gap-3 justify-center">
+                        <Globe className="w-5 h-5 text-primary" />
+                        <p className="text-lg font-medium">
+                          Международный формат, очный финал в Астане
+                        </p>
                       </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <Gift className="w-6 h-6 text-success mt-1 flex-shrink-0" />
-                      <div>
-                        <h3 className="font-semibold mb-1">Стоимость участия</h3>
-                        <p className="text-muted-foreground">Бесплатно</p>
+                  
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="flex items-start gap-3">
+                        <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold mb-1">Кто может участвовать</h3>
+                          <p className="text-muted-foreground">Школьники 14–18 лет (индивидуально/команда — зависит от секции)</p>
+                        </div>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <Gift className="w-6 h-6 text-success mt-1 flex-shrink-0" />
+                        <div>
+                          <h3 className="font-semibold mb-1">Стоимость участия</h3>
+                          <p className="text-muted-foreground">Бесплатно</p>
+                        </div>
                       </div>
                     </div>
                   </div>
