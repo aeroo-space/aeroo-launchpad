@@ -489,15 +489,42 @@ const resources = {
           title: "Контакты"
         }
       },
-      satelliteLaunch2026: {
+       satelliteLaunch2026: {
+        seo: {
+          title: "AEROO Satellite Launch Competition 2026 — турнир наноспутников",
+          description: "Международный турнир по разработке и запуску наноспутников. Регистрация 1.11.2025–1.01.2026, финал 9–12.04.2026, Астана."
+        },
+        hero: {
+          title: "AEROO Satellite Launch Competition 2026",
+          subtitle: "Международный инженерный турнир по разработке и запуску наноспутников",
+          dates: "Регистрация: 1 ноября 2025 – 1 января 2026 | Финал: 9–12 апреля 2026, Астана"
+        },
+        cta: {
+          participate: "Принять участие",
+          readRegulation: "Прочитать Регламент"
+        },
+        about: {
+          title: "О турнире",
+          text1: "Казахстан — родина космодрома Байконур, с которого в 1957 году был запущен первый искусственный спутник Земли. Продолжая эту традицию, AEROO Satellite Launch Competition собирает команды молодых инженеров для проектирования, сборки и запуска наноспутников на стратосферу.",
+          text2: "Участники создают концепцию миссии, разрабатывают ПО, собирают и тестируют спутники, а затем запускают их в финале. Турнир развивает инженерное и критическое мышление, навыки командной работы и международного взаимодействия.",
+          videoNotSupported: "Ваш браузер не поддерживает воспроизведение видео."
+        },
+        aboutAeroo: {
+          title: "О AEROO",
+          text: "AEROO — организация, развивающая аэрокосмическое образование через инженерные соревнования и образовательные программы. Мы готовим новое поколение инженеров и учёных для космической отрасли."
+        },
+        goals: {
+          title: "Как было в прошлом году?",
+          text: "Цель турнира — вовлечь молодёжь в практическую инженерную деятельность и повысить интерес к космическим технологиям через проектную и командную работу."
+        },
         benefits: {
-          title: 'Преимущества участия',
-          certificates: 'Развитие технического мышления и прикладных инженерных навыков',
-          networking: 'Системное проектирование спутниковых миссий',
-          skills: '3D-моделирование, CAD и трассировка печатных плат (PCB)',
-          practice: 'Разработка и отладка ПО для микроконтроллеров, телеметрия и датчики',
-          opportunities: 'Подготовка презентаций и защита инженерных решений: командная работа',
-          media: 'Расширение знаний в аэрокосмике, обмен опытом и международная культура'
+          title: "Преимущества участия",
+          certificates: "Развитие технического мышления и прикладных инженерных навыков",
+          networking: "Системное проектирование спутниковых миссий",
+          skills: "3D-моделирование, CAD и трассировка печатных плат (PCB)",
+          practice: "Разработка и отладка ПО для микроконтроллеров, телеметрия и датчики",
+          opportunities: "Подготовка презентаций и защита инженерных решений: командная работа",
+          media: "Расширение знаний в аэрокосмике, обмен опытом и международная культура"
         }
       },
       common: {
@@ -1253,6 +1280,44 @@ const resources = {
         sending: "Sending...",
         privacyNote: "By submitting the form, you agree to the privacy policy."
       },
+      satelliteLaunch2026: {
+        seo: {
+          title: "AEROO Satellite Launch Competition 2026 — Nanosatellite Tournament",
+          description: "International tournament for developing and launching nanosatellites. Registration Nov 1, 2025 – Jan 1, 2026, final Apr 9-12, 2026, Astana."
+        },
+        hero: {
+          title: "AEROO Satellite Launch Competition 2026",
+          subtitle: "International engineering tournament for developing and launching nanosatellites",
+          dates: "Registration: November 1, 2025 – January 1, 2026 | Final: April 9–12, 2026, Astana"
+        },
+        cta: {
+          participate: "Participate",
+          readRegulation: "Read Regulations"
+        },
+        about: {
+          title: "About the Tournament",
+          text1: "Kazakhstan is the homeland of the Baikonur Cosmodrome, from which the first artificial satellite of Earth was launched in 1957. Continuing this tradition, AEROO Satellite Launch Competition brings together teams of young engineers to design, assemble, and launch nanosatellites into the stratosphere.",
+          text2: "Participants create mission concepts, develop software, assemble and test satellites, and then launch them at the final. The tournament develops engineering and critical thinking, teamwork skills, and international collaboration.",
+          videoNotSupported: "Your browser does not support video playback."
+        },
+        aboutAeroo: {
+          title: "About AEROO",
+          text: "AEROO is an organization that develops aerospace education through engineering competitions and educational programs. We prepare a new generation of engineers and scientists for the space industry."
+        },
+        goals: {
+          title: "How It Was Last Year?",
+          text: "The tournament's goal is to engage youth in practical engineering activities and increase interest in space technologies through project and team work."
+        },
+        benefits: {
+          title: "Participation Benefits",
+          certificates: "Development of technical thinking and applied engineering skills",
+          networking: "Systemic design of satellite missions",
+          skills: "3D modeling, CAD and printed circuit board (PCB) tracing",
+          practice: "Software development and debugging for microcontrollers, telemetry and sensors",
+          opportunities: "Preparation of presentations and defense of engineering solutions: teamwork",
+          media: "Expansion of knowledge in aerospace, experience exchange and international culture"
+        }
+      },
       spaceSettlement2025: {
         meta: {
           title: "AEROO Space Settlement Competition 2025 — Online Hackathon",
@@ -1539,17 +1604,6 @@ const resources = {
         yes: 'Yes',
         no: 'No',
         learnMore: 'Learn More'
-      },
-      satelliteLaunch2026: {
-        benefits: {
-          title: 'Participation Benefits',
-          certificates: 'Development of technical thinking and applied engineering skills',
-          networking: 'Systematic design of satellite missions',
-          skills: '3D modeling, CAD and printed circuit board (PCB) routing',
-          practice: 'Software development and debugging for microcontrollers, telemetry and sensors',
-          opportunities: 'Presentation preparation and defense of engineering solutions: teamwork',
-          media: 'Expanding knowledge in aerospace, exchange of experience and international culture'
-        }
       }
     }
   },
@@ -2035,6 +2089,44 @@ const resources = {
           title: "Байланыстар"
         }
       },
+      satelliteLaunch2026: {
+        seo: {
+          title: "AEROO Satellite Launch Competition 2026 — наноспутниктер турниры",
+          description: "Наноспутниктерді әзірлеу және ұшыру бойынша халықаралық турнир. Тіркелу 1.11.2025–1.01.2026, финал 9–12.04.2026, Астана."
+        },
+        hero: {
+          title: "AEROO Satellite Launch Competition 2026",
+          subtitle: "Наноспутниктерді әзірлеу және ұшыру бойынша халықаралық инженерлік турнир",
+          dates: "Тіркелу: 1 қараша 2025 – 1 қаңтар 2026 | Финал: 9–12 сәуір 2026, Астана"
+        },
+        cta: {
+          participate: "Қатысу",
+          readRegulation: "Регламентті оқу"
+        },
+        about: {
+          title: "Турнир туралы",
+          text1: "Қазақстан — Байқоңыр ғарыш айлағының отаны, одан 1957 жылы Жердің алғашқы жасанды серігі ұшырылды. Осы дәстүрді жалғастыра отырып, AEROO Satellite Launch Competition жас инженерлер командаларын наноспутниктерді жобалау, жинау және стратосфераға ұшыру үшін біріктіреді.",
+          text2: "Қатысушылар миссия концепциясын жасайды, БҚ әзірлейді, спутниктерді жинайды және сынайды, содан кейін оларды финалда ұшырады. Турнир инженерлік және сыни ойлауды, командалық жұмыс дағдыларын және халықаралық өзара әрекеттесуді дамытады.",
+          videoNotSupported: "Сіздің браузеріңіз бейне ойнатуды қолдамайды."
+        },
+        aboutAeroo: {
+          title: "AEROO туралы",
+          text: "AEROO — инженерлік жарыстар мен білім беру бағдарламалары арқылы ғарыштық білім беруді дамытатын ұйым. Біз ғарыштық өнеркәсіп үшін инженерлер мен ғалымдардың жаңа ұрпағын дайындаймыз."
+        },
+        goals: {
+          title: "Өткен жылы қалай болды?",
+          text: "Турнирдің мақсаты — жастарды практикалық инженерлік қызметке тарту және жоба және командалық жұмыс арқылы ғарыштық технологияларға қызығушылықты арттыру."
+        },
+        benefits: {
+          title: "Қатысудың артықшылықтары",
+          certificates: "Техникалық ойлау және қолданбалы инженерлік дағдыларды дамыту",
+          networking: "Спутниктік миссияларды жүйелі жобалау",
+          skills: "3D-модельдеу, CAD және басылған тізбектерді (PCB) трассировкалау",
+          practice: "Микроконтроллерлер үшін БҚ әзірлеу және жөндеу, телеметрия және датчиктер",
+          opportunities: "Презентацияларды дайындау және инженерлік шешімдерді қорғау: командалық жұмыс",
+          media: "Ғарыштық білімді кеңейту, тәжірибе алмасу және халықаралық мәдениет"
+        }
+      },
       contacts: {
         meta: {
           title: 'AEROO — Байланыс | Бізбен хабарласыңыз',
@@ -2246,17 +2338,6 @@ const resources = {
           desc: 'Тіркелу ашылғанда хабарлама аламын',
           placeholder: 'Email мекенжайыңыз',
           submit: 'Жазылу'
-        }
-      },
-      satelliteLaunch2026: {
-        benefits: {
-          title: 'Қатысудың артықшылықтары',
-          certificates: 'Техникалық ойлауды және қолданбалы инженерлік дағдыларды дамыту',
-          networking: 'Спутниктік миссияларды жүйелі жобалау',
-          skills: '3D-модельдеу, CAD және басылған тізбектерді трассировкалау (PCB)',
-          practice: 'Микроконтроллерлер үшін бағдарламалық қамтаманы әзірлеу және жөндеу, телеметрия және датчиктер',
-          opportunities: 'Презентацияларды дайындау және инженерлік шешімдерді қорғау: командалық жұмыс',
-          media: 'Аэроғарыштық білімді кеңейту, тәжірибе алмасу және халықаралық мәдениет'
         }
       }
     }

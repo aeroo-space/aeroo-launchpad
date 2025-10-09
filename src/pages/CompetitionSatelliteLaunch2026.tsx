@@ -57,9 +57,9 @@ const CompetitionSatelliteLaunch2026 = () => {
   const revealRefs = useRef<HTMLElement[]>([]);
 
   useEffect(() => {
-    document.title = "AEROO Satellite Launch Competition 2026 — турнир наноспутников";
+    document.title = t('satelliteLaunch2026.seo.title');
     const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute("content", "Международный турнир по разработке и запуску наноспутников. Регистрация 1.11.2025–1.01.2026, финал 9–12.04.2026, Астана.");
+    if (metaDesc) metaDesc.setAttribute("content", t('satelliteLaunch2026.seo.description'));
     // canonical
     let link = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
     if (!link) {
@@ -183,18 +183,18 @@ const CompetitionSatelliteLaunch2026 = () => {
             <BreadcrumbList>
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="/">Главная</Link>
+                  <Link to="/">{t('spaceSettlement2025.breadcrumbs.home')}</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
                 <BreadcrumbLink asChild>
-                  <Link to="/competitions">Соревнования</Link>
+                  <Link to="/competitions">{t('spaceSettlement2025.breadcrumbs.competitions')}</Link>
                 </BreadcrumbLink>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
-                <BreadcrumbPage>AEROO Satellite Launch Competition 2026</BreadcrumbPage>
+                <BreadcrumbPage>{t('satelliteLaunch2026.hero.title')}</BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>
@@ -245,16 +245,12 @@ const CompetitionSatelliteLaunch2026 = () => {
           <div className="container mx-auto px-4 py-16">
             <div className="grid md:grid-cols-2 gap-10 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">О турнире</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('satelliteLaunch2026.about.title')}</h2>
                 <p className="text-muted-foreground leading-relaxed mb-4">
-                  Казахстан — родина космодрома Байконур, с которого в 1957 году был запущен первый искусственный
-                  спутник Земли. Продолжая эту традицию, AEROO Satellite Launch Competition собирает команды молодых
-                  инженеров для проектирования, сборки и запуска наноспутников на стратосферу.
+                  {t('satelliteLaunch2026.about.text1')}
                 </p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Участники создают концепцию миссии, разрабатывают ПО, собирают и тестируют спутники, а затем
-                  запускают их в финале. Турнир развивает инженерное и критическое мышление, навыки командной работы и
-                  международного взаимодействия.
+                  {t('satelliteLaunch2026.about.text2')}
                 </p>
               </div>
               <div>
@@ -278,7 +274,7 @@ const CompetitionSatelliteLaunch2026 = () => {
                           }
                         }}
                       >
-                        Ваш браузер не поддерживает воспроизведение видео.
+                        {t('satelliteLaunch2026.about.videoNotSupported')}
                       </video>
                     </div>
                   </CardContent>
@@ -291,10 +287,9 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* About AEROO */}
         <section ref={(el) => el && (revealRefs.current[1] = el)} className="opacity-0 translate-y-4 transition-all duration-700" style={{ background: "var(--gradient-satellite-section)" }}>
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">О AEROO</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('satelliteLaunch2026.aboutAeroo.title')}</h2>
             <p className="text-muted-foreground max-w-3xl">
-              AEROO — организация, развивающая аэрокосмическое образование через инженерные соревнования и образовательные
-              программы. Мы готовим новое поколение инженеров и учёных для космической отрасли.
+              {t('satelliteLaunch2026.aboutAeroo.text')}
             </p>
           </div>
         </section>
@@ -302,10 +297,9 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Goals */}
         <section id="goals" ref={(el) => el && (revealRefs.current[2] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Как было в прошлом году?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('satelliteLaunch2026.goals.title')}</h2>
             <p className="text-muted-foreground mb-6 max-w-3xl">
-              Цель турнира — вовлечь молодёжь в практическую инженерную деятельность и повысить интерес к космическим
-              технологиям через проектную и командную работу.
+              {t('satelliteLaunch2026.goals.text')}
             </p>
             
             {/* Images Grid with captions */}
