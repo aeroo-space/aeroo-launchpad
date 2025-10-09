@@ -206,7 +206,7 @@ const ExploringWorldOfScience = () => {
 
                   <div className="border-t border-border pt-6">
                     <p className="text-lg mb-6">
-                      Миссия: вовлечь школьников в космическую науку через реальные инженерные задачи.
+                      Наша миссия - вовлечь молодежь в космическую науку через реальные инженерные соревнования.
                     </p>
 
                     {/* Features */}
