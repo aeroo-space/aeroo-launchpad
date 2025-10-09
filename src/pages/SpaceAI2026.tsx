@@ -114,7 +114,7 @@ const SpaceAI2026 = () => {
             </div>
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 pb-2">
-              <span className="inline-block bg-gradient-to-r from-primary via-green-400 to-cyan-400 bg-clip-text text-transparent pb-1">
+              <span className="inline-block bg-gradient-to-r from-primary via-green-400 to-cyan-400 bg-clip-text text-transparent px-1 py-2">
                 Создай свой SpaceTech стартап прямо сейчас!
               </span>
             </h1>
