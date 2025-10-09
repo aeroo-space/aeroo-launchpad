@@ -209,30 +209,30 @@ const CompetitionSatelliteLaunch2026 = () => {
           <div className="container mx-auto px-4 py-24 md:py-36 relative z-10">
             <div className="max-w-3xl">
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4 text-foreground">
-                AEROO Satellite Launch Competition 2026
+                {t('satelliteLaunch2026.hero.title')}
               </h1>
               <p className="text-lg md:text-2xl text-muted-foreground mb-6">
-                Международный инженерный турнир по разработке и запуску наноспутников
+                {t('satelliteLaunch2026.hero.subtitle')}
               </p>
               <div className="flex items-center gap-3 text-muted-foreground mb-8">
                 <CalendarDays className="w-5 h-5" />
                 <span>
-                  Регистрация: 1 ноября 2025 – 1 января 2026 | Финал: 9–12 апреля 2026, Астана
+                  {t('satelliteLaunch2026.hero.dates')}
                 </span>
               </div>
               <div className="flex flex-col sm:flex-row gap-3">
-                <Button variant="primary" size="lg" onClick={handleOpenEnroll} aria-label="Принять участие — регистрация на AEROO Satellite Launch 2026" data-testid="cta-top-apply">
-                  Принять участие
+                <Button variant="primary" size="lg" onClick={handleOpenEnroll} aria-label={t('satelliteLaunch2026.cta.participate')} data-testid="cta-top-apply">
+                  {t('satelliteLaunch2026.cta.participate')}
                 </Button>
                 <Button asChild variant="outline" size="lg">
                   <a
                     href="https://docs.google.com/document/d/1KclwhBPXbtUXfjepxtpxADl9rwIr1KdOHrpDbRqsp_4/edit?usp=sharing"
                     target="_blank"
                     rel="noopener"
-                    aria-label="Прочитать Регламент — откроется в новой вкладке"
+                    aria-label={t('satelliteLaunch2026.cta.readRegulation')}
                     data-testid="link-regulation"
                   >
-                    Прочитать Регламент
+                    {t('satelliteLaunch2026.cta.readRegulation')}
                   </a>
                 </Button>
               </div>
