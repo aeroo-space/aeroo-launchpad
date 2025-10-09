@@ -205,7 +205,7 @@ const resources = {
           description: "Разработайте AI-решения для космических задач и исследований",
           status: "Регистрация",
           deadline: "15 декабря 2025",
-          ages: "16-25 лет"
+          ages: "14-18 лет"
         },
         rocketScience: {
           title: "Rocket Science 2026",
@@ -213,7 +213,7 @@ const resources = {
           description: "Создайте и запустите собственные ракеты, изучите основы аэродинамики",
           status: "Регистрация",
           deadline: "20 ноября 2025",
-          ages: "12-18 лет"
+          ages: "14-18 лет"
         },
         driveCompetition: {
           title: "DRIVE Competition",
@@ -1281,7 +1281,7 @@ const resources = {
           description: "Develop AI solutions for space tasks and research",
           status: "In Development",
           deadline: "",
-          ages: "16-25 years"
+          ages: "14-18 years"
         },
         rocketScience: {
           title: "Rocket Science 2026",
@@ -1289,7 +1289,7 @@ const resources = {
           description: "Build and launch your own rockets, learn the basics of aerodynamics",
           status: "Registration",
           deadline: "November 20, 2025",
-          ages: "12-18 years"
+          ages: "14-18 years"
         },
         driveCompetition: {
           title: "DRIVE Competition",
@@ -2227,7 +2227,7 @@ const resources = {
           description: "Ғарыштық тапсырмалар мен зерттеулер үшін AI шешімдерін әзірлеңіз",
           status: "Әзірленуде",
           deadline: "",
-          ages: "16-25 жас"
+          ages: "14-18 жас"
         },
         rocketScience: {
           title: "Rocket Science 2026",
@@ -2235,7 +2235,7 @@ const resources = {
           description: "Өз зымырандарыңызды жасаңыз және ұшырыңыз, аэродинамиканың негіздерін үйреніңіз",
           status: "Тіркелу",
           deadline: "20 қараша 2025",
-          ages: "12-18 жас"
+          ages: "14-18 жас"
         },
         driveCompetition: {
           title: "DRIVE жарысы",
