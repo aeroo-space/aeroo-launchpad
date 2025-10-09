@@ -101,9 +101,17 @@ const resources = {
           title: "Space AI 2026",
           category: "Искусственный интеллект",
           description: "Разработайте AI-решения для космических задач и исследований",
-          status: "В разработке",
-          deadline: "",
+          status: "Регистрация",
+          deadline: "15 декабря 2025",
           ages: "16-25 лет"
+        },
+        rocketScience: {
+          title: "Rocket Science 2026",
+          category: "Ракетостроение",
+          description: "Создайте и запустите собственные ракеты, изучите основы аэродинамики",
+          status: "Регистрация",
+          deadline: "20 ноября 2025",
+          ages: "12-18 лет"
         },
         driveCompetition: {
           title: "DRIVE Competition",

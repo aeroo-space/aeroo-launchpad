@@ -22,6 +22,8 @@ import Dashboard from "./pages/Dashboard";
 import CompetitionSatelliteLaunch2026 from "./pages/CompetitionSatelliteLaunch2026";
 import CompetitionSpaceSettlement2025 from "./pages/CompetitionSpaceSettlement2025";
 import ExploringWorldOfScience from "./pages/ExploringWorldOfScience";
+import RocketScience2026 from "./pages/RocketScience2026";
+import SpaceAI2026 from "./pages/SpaceAI2026";
 import EnrollPage from "./pages/Enroll";
 import ProductRequestsPage from "./pages/ProductRequests";
 import RocketScienceKit from "./pages/RocketScienceKit";
@@ -64,6 +66,8 @@ const App = () => (
               <Route path="/competitions/satellite-launch-2026" element={<CompetitionSatelliteLaunch2026 />} />
               <Route path="/competitions/space-settlement-2025" element={<CompetitionSpaceSettlement2025 />} />
               <Route path="/competitions/exploring-world-of-science" element={<ExploringWorldOfScience />} />
+              <Route path="/competitions/rocket-science-2026" element={<RocketScience2026 />} />
+              <Route path="/competitions/space-ai-2026" element={<SpaceAI2026 />} />
               <Route path="/enroll/:competitionId" element={
                 <ProtectedRoute>
                   <EnrollPage />

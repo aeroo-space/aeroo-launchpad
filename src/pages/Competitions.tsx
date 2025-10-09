@@ -196,6 +196,14 @@ const Competitions = () => {
                       <Button asChild variant="outline" className="w-full">
                         <Link to="/competitions/exploring-world-of-science">{t('competitions.details')}</Link>
                       </Button>
+                    ) : competition.id === 'rocket-science' ? (
+                      <Button asChild variant="outline" className="w-full">
+                        <Link to="/competitions/rocket-science-2026">{t('competitions.details')}</Link>
+                      </Button>
+                    ) : competition.id === 'ai-challenge' ? (
+                      <Button asChild variant="outline" className="w-full">
+                        <Link to="/competitions/space-ai-2026">{t('competitions.details')}</Link>
+                      </Button>
                     ) : (
                       <Button
                         variant="outline"
@@ -205,7 +213,7 @@ const Competitions = () => {
                         {t('competitions.details')}
                       </Button>
                     )}
-                    {(competition.id === 'space-settlement' || competition.id === 'satellite-launch' || competition.id === 'ai-challenge' || competition.id === 'exploring-world-of-science' || competition.status === 'Регистрация') && (
+                    {(competition.id === 'space-settlement' || competition.id === 'satellite-launch' || competition.id === 'ai-challenge' || competition.id === 'exploring-world-of-science' || competition.id === 'rocket-science' || competition.status === 'Регистрация') && (
                       <Button asChild className="w-full btn-cosmic">
                         <Link to={`/enroll/${competition.id}`}>{t('competitions.participate')}</Link>
                       </Button>
