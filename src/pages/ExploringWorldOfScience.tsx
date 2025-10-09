@@ -27,6 +27,8 @@ import {
   Sparkles,
   ExternalLink
 } from 'lucide-react';
+import logoDaryn from '@/assets/logo-daryn.png';
+import logoAeroo from '@/assets/logo-aeroo.png';
 
 const ExploringWorldOfScience = () => {
   const { t, i18n } = useTranslation();
@@ -182,27 +184,43 @@ const ExploringWorldOfScience = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto fade-in">
               <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">
-                {t('ews.about.title')}
+                О соревновании
               </h2>
               
               <Card className="p-8 glass-card">
-                <div className="space-y-6 text-lg">
-                  <p>{t('ews.about.intro')}</p>
-                  <p>{t('ews.about.mission')}</p>
+                <div className="space-y-6">
+                  <p className="text-lg">
+                    Организаторы: РНПЦ «Дарын» (Минпросвещения РК) совместно с AEROO. Международный формат (RU/KZ/EN), очный финал в Астане.
+                  </p>
+                  
+                  <p className="text-lg">
+                    Миссия: вовлечь школьников в космическую науку через реальные инженерные задачи.
+                  </p>
+
+                  {/* Organizers Logos */}
+                  <div className="flex items-center justify-center gap-12 py-8 border-t border-b border-border">
+                    <div className="flex items-center gap-3">
+                      <img src={logoDaryn} alt="РНПЦ Дарын" className="h-16 md:h-20 object-contain hover-scale" />
+                    </div>
+                    <div className="text-2xl font-bold text-muted-foreground">×</div>
+                    <div className="flex items-center gap-3">
+                      <img src={logoAeroo} alt="AEROO" className="h-12 md:h-16 object-contain hover-scale" />
+                    </div>
+                  </div>
                   
                   <div className="grid md:grid-cols-2 gap-4 mt-8">
                     <div className="flex items-start gap-3">
-                      <Users className="w-6 h-6 text-primary mt-1" />
+                      <Users className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
                       <div>
-                        <h3 className="font-semibold mb-1">{t('ews.about.who.title')}</h3>
-                        <p className="text-muted-foreground">{t('ews.about.who.text')}</p>
+                        <h3 className="font-semibold mb-1">Кто может участвовать</h3>
+                        <p className="text-muted-foreground">Школьники 14–18 лет (индивидуально/команда — зависит от секции)</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Gift className="w-6 h-6 text-success mt-1" />
+                      <Gift className="w-6 h-6 text-success mt-1 flex-shrink-0" />
                       <div>
-                        <h3 className="font-semibold mb-1">{t('ews.about.cost.title')}</h3>
-                        <p className="text-muted-foreground">{t('ews.about.cost.text')}</p>
+                        <h3 className="font-semibold mb-1">Стоимость участия</h3>
+                        <p className="text-muted-foreground">Бесплатно</p>
                       </div>
                     </div>
                   </div>
