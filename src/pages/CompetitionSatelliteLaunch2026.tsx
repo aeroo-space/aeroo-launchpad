@@ -30,6 +30,11 @@ import {
 import satelliteCrew from "@/assets/satellite-crew-edited.jpg";
 import workshopImage1 from "@/assets/satellite-workshop-1.jpeg";
 import workshopImage2 from "@/assets/satellite-workshop-2.jpeg";
+import goalsTeam1 from "@/assets/goals-team-1.png";
+import goalsLaunch from "@/assets/goals-launch.png";
+import goalsTeam2 from "@/assets/goals-team-2.png";
+import goalsSatellite from "@/assets/goals-satellite.png";
+import goalsCubesat from "@/assets/goals-cubesat.png";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -290,6 +295,33 @@ const CompetitionSatelliteLaunch2026 = () => {
               Цель турнира — вовлечь молодёжь в практическую инженерную деятельность и повысить интерес к космическим
               технологиям через проектную и командную работу.
             </p>
+            
+            {/* Images Grid - smaller size */}
+            <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 mb-8">
+              {[
+                { src: goalsTeam1, alt: "Команда участников AEROO на фоне стратостатов" },
+                { src: goalsLaunch, alt: "Участники наблюдают за запуском спутника" },
+                { src: goalsTeam2, alt: "Победители турнира с наградами" },
+                { src: goalsSatellite, alt: "Подготовка CubeSat к запуску" },
+                { src: goalsCubesat, alt: "Наноспутник готовый к запуску на стратостате" },
+              ].map((img, i) => (
+                <Card key={i} className="glass-card overflow-hidden">
+                  <CardContent className="p-0">
+                    <div className="aspect-[4/3] w-full bg-muted relative animate-fade-in hover-scale">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full object-cover object-center"
+                      />
+                      <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
               {[
                 { icon: Cpu, text: "Развитие технического мышления и прикладных инженерных навыков" },
