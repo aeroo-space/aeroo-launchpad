@@ -397,7 +397,11 @@ const resources = {
         teamTitle: "Наша команда",
         teamMembers: {
           mirasName: "Мирас Нусупов",
-          ryspayName: "Рыспай Алихан"
+          miraRole: "CEO",
+          mirasBio: "Эксперт в области STEAM-образования и разработки образовательных продуктов",
+          ryspayName: "Рыспай Алихан",
+          ryspayRole: "COO",
+          ryspayBio: "6 лет в области STEAM-образования, ex CTO FIRST Robotics"
         },
         partnersTitle: "Наши партнёры",
         becomePartner: "Стать партнёром",
@@ -408,6 +412,7 @@ const resources = {
         formPhone: "Телефон",
         formMessage: "Сообщение",
         sendMessage: "Отправить",
+        sending: "Отправляем...",
         privacyNote: "Отправляя форму, вы соглашаетесь с политикой конфиденциальности."
       },
       spaceSettlement2025: {
@@ -1228,7 +1233,11 @@ const resources = {
         teamTitle: "Our Team",
         teamMembers: {
           mirasName: "Miras Nussupov",
-          ryspayName: "Ryspay Alikhan"
+          miraRole: "CEO",
+          mirasBio: "Expert in STEAM education and educational product development",
+          ryspayName: "Ryspay Alikhan",
+          ryspayRole: "COO",
+          ryspayBio: "6 years in STEAM education, ex CTO FIRST Robotics"
         },
         partnersTitle: "Our Partners",
         becomePartner: "Become a Partner",
@@ -1239,6 +1248,7 @@ const resources = {
         formPhone: "Phone",
         formMessage: "Message",
         sendMessage: "Send",
+        sending: "Sending...",
         privacyNote: "By submitting the form, you agree to the privacy policy."
       },
       spaceSettlement2025: {
@@ -1929,7 +1939,11 @@ const resources = {
         teamTitle: "Біздің команда",
         teamMembers: {
           mirasName: "Мирас Нусупов",
-          ryspayName: "Рыспай Әлихан"
+          miraRole: "Бас директор",
+          mirasBio: "STEAM-білім беру және білім беру өнімдерін әзірлеу саласындағы сарапшы",
+          ryspayName: "Рыспай Әлихан",
+          ryspayRole: "Операциялық директор",
+          ryspayBio: "STEAM-білім беруде 6 жыл, бұрынғы FIRST Robotics CTO"
         },
         partnersTitle: "Біздің серіктестер",
         becomePartner: "Серіктес болу",
@@ -1940,6 +1954,7 @@ const resources = {
         formPhone: "Телефон",
         formMessage: "Хабарлама",
         sendMessage: "Жіберу",
+        sending: "Жіберілуде...",
         privacyNote: "Форманы жібере отырып, сіз құпиялылық саясатымен келісесіз."
       },
       spaceSettlement2025: {

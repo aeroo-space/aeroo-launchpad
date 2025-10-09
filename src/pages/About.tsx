@@ -42,12 +42,16 @@ const About = () => {
   const team = [
     {
       nameKey: 'teamMembers.mirasName',
+      roleKey: 'teamMembers.miraRole',
+      bioKey: 'teamMembers.mirasBio',
       role: "CEO",
       bio: "Эксперт в области STEAM-образования и разработки образовательных продуктов",
       image: "/lovable-uploads/4545a519-7175-4528-aa72-a8ac5307ea4d.png"
     },
     {
       nameKey: 'teamMembers.ryspayName', 
+      roleKey: 'teamMembers.ryspayRole',
+      bioKey: 'teamMembers.ryspayBio',
       role: "COO",
       bio: "6 лет в области STEAM-образования, ex CTO FIRST Robotics",
       image: "/lovable-uploads/191e5103-1470-4cd9-b480-294ceb5290e1.png"
@@ -161,11 +165,13 @@ const About = () => {
                     {t(`about.${member.nameKey}`, { defaultValue: member.nameKey.includes('miras') ? 'Мирас Нусупов' : 'Рыспай Алихан' })}
                   </CardTitle>
                   <CardDescription className="font-medium text-primary/70">
-                    {member.role}
+                    {t(`about.${member.roleKey}`, { defaultValue: member.role })}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground leading-relaxed">{member.bio}</p>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t(`about.${member.bioKey}`, { defaultValue: member.bio })}
+                  </p>
                 </CardContent>
               </Card>
             ))}
@@ -267,7 +273,7 @@ const About = () => {
                 <textarea name="message" className="w-full p-3 rounded-lg border border-border bg-background h-32" />
               </div>
               <Button className="w-full btn-cosmic" type="submit" disabled={submitting}>
-                {submitting ? 'Отправляем...' : t('about.sendMessage', { defaultValue: 'Отправить' })}
+                {submitting ? t('about.sending', { defaultValue: 'Отправляем...' }) : t('about.sendMessage', { defaultValue: 'Отправить' })}
               </Button>
               <p className="text-center text-sm text-muted-foreground">
                 {t('about.privacyNote', { defaultValue: 'Отправляя форму, вы соглашаетесь с политикой конфиденциальности.' })}
