@@ -998,6 +998,17 @@ const resources = {
         yes: 'Yes',
         no: 'No',
         learnMore: 'Learn More'
+      },
+      satelliteLaunch2026: {
+        benefits: {
+          title: 'Participation Benefits',
+          certificates: 'Certificates, prizes and recognition of winners',
+          networking: 'Networking with participants and experts',
+          skills: 'Boost engineering skills and portfolio',
+          practice: 'Hands-on experience with real AEROO CubeSat Kit equipment',
+          opportunities: 'Chance for internships and partnerships',
+          media: 'Media attention and team promotion'
+        }
       }
     }
   },
@@ -1409,6 +1420,17 @@ const resources = {
           desc: 'Тіркелу ашылғанда хабарлама аламын',
           placeholder: 'Email мекенжайыңыз',
           submit: 'Жазылу'
+        }
+      },
+      satelliteLaunch2026: {
+        benefits: {
+          title: 'Қатысудың артықшылықтары',
+          certificates: 'Сертификаттар, сыйлықтар және жеңімпаздарды тану',
+          networking: 'Қатысушылар мен сарапшылармен байланыс',
+          skills: 'Инженерлік дағдыларды дамыту және портфолио',
+          practice: 'AEROO CubeSat Kit нақты жабдығымен тәжірибе',
+          opportunities: 'Тағылымдама және серіктестік мүмкіндіктері',
+          media: 'Медиа назары және команданы алға жылжыту'
         }
       }
     }

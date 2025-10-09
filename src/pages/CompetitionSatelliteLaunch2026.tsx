@@ -28,6 +28,8 @@ import {
 } from "lucide-react";
 
 import satelliteCrew from "@/assets/satellite-crew-edited.jpg";
+import workshopImage1 from "@/assets/satellite-workshop-1.jpeg";
+import workshopImage2 from "@/assets/satellite-workshop-2.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -369,20 +371,54 @@ const CompetitionSatelliteLaunch2026 = () => {
         {/* Criteria */}
         <section id="criteria" ref={(el) => el && (revealRefs.current[4] = el)} className="opacity-0 translate-y-4 transition-all duration-700">
           <div className="container mx-auto px-4 py-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Преимущества участия</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8">{t('satelliteLaunch2026.benefits.title')}</h2>
+            
+            {/* Images Grid */}
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <Card className="glass-card overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="aspect-[4/3] w-full bg-muted relative animate-fade-in hover-scale">
+                    <img
+                      src={workshopImage1}
+                      alt="Участники AEROO создают и программируют электронные компоненты спутников"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-center"
+                    />
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                  </div>
+                </CardContent>
+              </Card>
+              <Card className="glass-card overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="aspect-[4/3] w-full bg-muted relative animate-fade-in hover-scale">
+                    <img
+                      src={workshopImage2}
+                      alt="Практическая работа участников с паяльником и электроникой"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-center"
+                    />
+                    <div className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/40 via-transparent to-transparent" />
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Benefits Grid */}
             <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
               {[
-                { icon: Award, text: "Сертификаты, призы и признание победителей" },
-                { icon: Users, text: "Нетворкинг с участниками и экспертами" },
-                { icon: Cpu, text: "Прокачка инженерных навыков и портфолио" },
-                { icon: Wrench, text: "Практика с реальным оборудованием AEROO CubeSat Kit" },
-                { icon: TrendingUp, text: "Шанс на стажировки и партнёрства" },
-                { icon: MessageCircle, text: "Медийное внимание и продвижение команды" },
+                { icon: Award, key: "certificates" },
+                { icon: Users, key: "networking" },
+                { icon: Cpu, key: "skills" },
+                { icon: Wrench, key: "practice" },
+                { icon: TrendingUp, key: "opportunities" },
+                { icon: MessageCircle, key: "media" },
               ].map((c, i) => (
                 <Card key={i} className="glass-card">
                   <CardContent className="p-6 flex items-start gap-4">
                     <c.icon className="w-6 h-6 text-primary" />
-                    <p className="text-sm text-muted-foreground">{c.text}</p>
+                    <p className="text-sm text-muted-foreground">{t(`satelliteLaunch2026.benefits.${c.key}`)}</p>
                   </CardContent>
                 </Card>
               ))}
