@@ -166,41 +166,12 @@ const ExploringWorldOfScience = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              {ctaState === 'active' ? (
-                <Button 
-                  size="xl" 
-                  className="btn-cosmic"
-                  onClick={() => window.open('https://aeroo.space', '_blank')}
-                >
-                  {t('ews.cta.register')}
-                  <ExternalLink className="ml-2 w-5 h-5" />
-                </Button>
-              ) : ctaState === 'before' ? (
-                <Button 
-                  size="xl" 
-                  className="btn-cosmic"
-                  onClick={() => setShowEmailDialog(true)}
-                >
-                  {t('ews.cta.soon')}
-                  <Mail className="ml-2 w-5 h-5" />
-                </Button>
-              ) : (
-                <Button 
-                  size="xl" 
-                  disabled
-                  className="opacity-50"
-                >
-                  {t('ews.cta.closed')}
-                </Button>
-              )}
-              
               <Button 
                 size="xl" 
-                variant="outline"
-                onClick={() => window.open('https://aeroo.space/login', '_blank')}
+                className="btn-cosmic"
+                onClick={() => navigate('/enroll/exploring-world-of-science')}
               >
-                {t('ews.cta.login')}
-                <ExternalLink className="ml-2 w-5 h-5" />
+                {t('ews.cta.register')}
               </Button>
             </div>
           </div>
@@ -359,23 +330,12 @@ const ExploringWorldOfScience = () => {
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center fade-in">
-              {ctaState === 'active' && (
-                <Button 
-                  size="lg" 
-                  className="btn-cosmic"
-                  onClick={() => window.open('https://aeroo.space', '_blank')}
-                >
-                  {t('ews.cta.register')}
-                  <ExternalLink className="ml-2" />
-                </Button>
-              )}
               <Button 
                 size="lg" 
-                variant="outline"
-                onClick={() => window.open('https://aeroo.space/login', '_blank')}
+                className="btn-cosmic"
+                onClick={() => navigate('/enroll/exploring-world-of-science')}
               >
-                {t('ews.cta.login')}
-                <ExternalLink className="ml-2" />
+                {t('ews.cta.register')}
               </Button>
             </div>
           </div>
