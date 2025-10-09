@@ -127,7 +127,7 @@ const ExploringWorldOfScience = () => {
               <span className="text-sm font-medium">{t('ews.hero.badge')}</span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-foreground drop-shadow-[0_2px_10px_rgba(0,0,0,0.3)]">
               {t('ews.hero.title')}
             </h1>
             
