@@ -147,70 +147,70 @@ export default function EnrollSpaceSettlementPage() {
 
     const validationErrors: string[] = [];
     
-    if (!teamName.trim()) validationErrors.push("Название команды");
-    if (!league.trim()) validationErrors.push("Лига (Младшая/Старшая)");
-    if (teamMemberCount === null) validationErrors.push("Количество участников команды");
-    if (!captainFullName.trim()) validationErrors.push("ФИО капитана");
-    if (!captainIin.trim()) validationErrors.push("ИИН капитана");
+    if (!teamName.trim()) validationErrors.push(t('spaceSettlement.teamName'));
+    if (!league.trim()) validationErrors.push(t('spaceSettlement.league'));
+    if (teamMemberCount === null) validationErrors.push(t('spaceSettlement.teamMemberCount'));
+    if (!captainFullName.trim()) validationErrors.push(t('spaceSettlement.fullName'));
+    if (!captainIin.trim()) validationErrors.push(t('spaceSettlement.iin'));
     else if (captainIin.length !== 12 || !/^\d{12}$/.test(captainIin)) {
-      validationErrors.push("ИИН капитана должен содержать 12 цифр");
+      validationErrors.push(t('spaceSettlement.iinCaptainMust12'));
     }
-    if (!captainPhone.trim()) validationErrors.push("Телефон капитана");
-    if (!captainSchool.trim()) validationErrors.push("Школа капитана");
-    if (!captainCity.trim()) validationErrors.push("Город капитана");
-    if (!captainGrade.trim()) validationErrors.push("Класс капитана");
+    if (!captainPhone.trim()) validationErrors.push(t('spaceSettlement.phone'));
+    if (!captainSchool.trim()) validationErrors.push(t('spaceSettlement.school'));
+    if (!captainCity.trim()) validationErrors.push(t('spaceSettlement.city'));
+    if (!captainGrade.trim()) validationErrors.push(t('spaceSettlement.grade'));
 
     // Validate participants based on team member count
     if (teamMemberCount && teamMemberCount >= 2) {
-      if (!participant1FullName.trim()) validationErrors.push("ФИО участника 1");
-      if (!participant1Iin.trim()) validationErrors.push("ИИН участника 1");
+      if (!participant1FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 2`);
+      if (!participant1Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 2`);
       else if (participant1Iin.length !== 12 || !/^\d{12}$/.test(participant1Iin)) {
-        validationErrors.push("ИИН участника 1 должен содержать 12 цифр");
+        validationErrors.push(t('spaceSettlement.iinParticipant1Must12'));
       }
-      if (!participant1Phone.trim()) validationErrors.push("Телефон участника 1");
-      if (!participant1School.trim()) validationErrors.push("Школа участника 1");
-      if (!participant1City.trim()) validationErrors.push("Город участника 1");
-      if (!participant1Grade.trim()) validationErrors.push("Класс участника 1");
+      if (!participant1Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 2`);
+      if (!participant1School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 2`);
+      if (!participant1City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 2`);
+      if (!participant1Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 2`);
     }
 
     if (teamMemberCount && teamMemberCount >= 3) {
-      if (!participant2FullName.trim()) validationErrors.push("ФИО участника 2");
-      if (!participant2Iin.trim()) validationErrors.push("ИИН участника 2");
+      if (!participant2FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 3`);
+      if (!participant2Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 3`);
       else if (participant2Iin.length !== 12 || !/^\d{12}$/.test(participant2Iin)) {
-        validationErrors.push("ИИН участника 2 должен содержать 12 цифр");
+        validationErrors.push(t('spaceSettlement.iinParticipant2Must12'));
       }
-      if (!participant2Phone.trim()) validationErrors.push("Телефон участника 2");
-      if (!participant2School.trim()) validationErrors.push("Школа участника 2");
-      if (!participant2City.trim()) validationErrors.push("Город участника 2");
-      if (!participant2Grade.trim()) validationErrors.push("Класс участника 2");
+      if (!participant2Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 3`);
+      if (!participant2School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 3`);
+      if (!participant2City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 3`);
+      if (!participant2Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 3`);
     }
 
     if (teamMemberCount && teamMemberCount >= 4) {
-      if (!participant3FullName.trim()) validationErrors.push("ФИО участника 3");
-      if (!participant3Iin.trim()) validationErrors.push("ИИН участника 3");
+      if (!participant3FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 4`);
+      if (!participant3Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 4`);
       else if (participant3Iin.length !== 12 || !/^\d{12}$/.test(participant3Iin)) {
-        validationErrors.push("ИИН участника 3 должен содержать 12 цифр");
+        validationErrors.push(t('spaceSettlement.iinParticipant3Must12'));
       }
-      if (!participant3Phone.trim()) validationErrors.push("Телефон участника 3");
-      if (!participant3School.trim()) validationErrors.push("Школа участника 3");
-      if (!participant3City.trim()) validationErrors.push("Город участника 3");
-      if (!participant3Grade.trim()) validationErrors.push("Класс участника 3");
+      if (!participant3Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 4`);
+      if (!participant3School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 4`);
+      if (!participant3City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 4`);
+      if (!participant3Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 4`);
     }
 
     if (teamMemberCount && teamMemberCount >= 5) {
-      if (!participant4FullName.trim()) validationErrors.push("ФИО участника 4");
-      if (!participant4Iin.trim()) validationErrors.push("ИИН участника 4");
+      if (!participant4FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 5`);
+      if (!participant4Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 5`);
       else if (participant4Iin.length !== 12 || !/^\d{12}$/.test(participant4Iin)) {
-        validationErrors.push("ИИН участника 4 должен содержать 12 цифр");
+        validationErrors.push(t('spaceSettlement.iinParticipant4Must12'));
       }
-      if (!participant4Phone.trim()) validationErrors.push("Телефон участника 4");
-      if (!participant4School.trim()) validationErrors.push("Школа участника 4");
-      if (!participant4City.trim()) validationErrors.push("Город участника 4");
-      if (!participant4Grade.trim()) validationErrors.push("Класс участника 4");
+      if (!participant4Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 5`);
+      if (!participant4School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 5`);
+      if (!participant4City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 5`);
+      if (!participant4Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 5`);
     }
 
     if (validationErrors.length > 0) {
-      toast.error("Заполните все обязательные поля", {
+      toast.error(t('spaceSettlement.fillAllFields'), {
         description: validationErrors.join(", ")
       });
       return;
@@ -283,8 +283,8 @@ export default function EnrollSpaceSettlementPage() {
 
       if (error) {
         if (error.code === '23505') {
-          toast.error("Вы уже зарегистрированы на это соревнование", {
-            description: "Вы можете просмотреть свою заявку в личном кабинете или изменить её."
+          toast.error(t('spaceSettlement.alreadyRegistered'), {
+            description: t('spaceSettlement.alreadyRegisteredDesc')
           });
           navigate("/dashboard");
           return;
@@ -292,14 +292,14 @@ export default function EnrollSpaceSettlementPage() {
         throw error;
       }
 
-      toast.success("Заявка успешно отправлена!", {
-        description: "Мы свяжемся с вами в ближайшее время."
+      toast.success(t('spaceSettlement.submissionSuccess'), {
+        description: t('spaceSettlement.submissionSuccessDesc')
       });
       
       navigate("/dashboard");
     } catch (error: any) {
       console.error("Submission error:", error);
-      toast.error("Ошибка при отправке заявки", {
+      toast.error(t('spaceSettlement.submissionError'), {
         description: error.message
       });
     } finally {
@@ -333,8 +333,8 @@ export default function EnrollSpaceSettlementPage() {
             <div className="flex items-center gap-3 mb-4">
               <CalendarDays className="h-8 w-8 text-primary" />
               <div>
-                <h1 className="text-3xl font-bold">Space Settlement 2025</h1>
-                <p className="text-muted-foreground">Заполните форму для регистрации на соревнование</p>
+                <h1 className="text-3xl font-bold">{t('spaceSettlement.title')}</h1>
+                <p className="text-muted-foreground">{t('spaceSettlement.subtitle')}</p>
               </div>
             </div>
           </div>
@@ -345,26 +345,26 @@ export default function EnrollSpaceSettlementPage() {
               <CardContent className="p-6 space-y-6">
                 {/* Team Name */}
                 <div className="space-y-2">
-                  <Label htmlFor="teamName">Название команды *</Label>
+                  <Label htmlFor="teamName">{t('spaceSettlement.teamName')} *</Label>
                   <Input
                     id="teamName"
                     value={teamName}
                     onChange={(e) => setTeamName(e.target.value)}
-                    placeholder="Введите название команды"
+                    placeholder={t('spaceSettlement.teamNamePlaceholder')}
                     required
                   />
                 </div>
 
                 {/* League Selection */}
                 <div className="space-y-2">
-                  <Label>Лига *</Label>
+                  <Label>{t('spaceSettlement.league')} *</Label>
                   <Select value={league} onValueChange={setLeague} required>
                     <SelectTrigger>
-                      <SelectValue placeholder="Выберите лигу" />
+                      <SelectValue placeholder={t('spaceSettlement.leagueSelect')} />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="junior">Младшая лига</SelectItem>
-                      <SelectItem value="senior">Старшая лига</SelectItem>
+                      <SelectItem value="junior">{t('spaceSettlement.juniorLeague')}</SelectItem>
+                      <SelectItem value="senior">{t('spaceSettlement.seniorLeague')}</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -372,7 +372,7 @@ export default function EnrollSpaceSettlementPage() {
                 {/* Team Member Count - Radio Buttons */}
                 {captainFullName.trim() && captainIin.trim() && captainPhone.trim() && captainSchool.trim() && captainCity.trim() && captainGrade.trim() && (
                   <div className="space-y-2">
-                    <Label>Количество участников команды *</Label>
+                    <Label>{t('spaceSettlement.teamMemberCount')} *</Label>
                     <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
                       {[1, 2, 3, 4, 5].map((count) => (
                         <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
@@ -385,7 +385,7 @@ export default function EnrollSpaceSettlementPage() {
                             className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
                             required
                           />
-                          <span className="text-sm font-medium">{count} {count === 1 ? 'участник' : count < 5 ? 'участника' : 'участников'}</span>
+                          <span className="text-sm font-medium">{count} {count === 1 ? t('spaceSettlement.participant') : count < 5 ? t('spaceSettlement.participants2to4') : t('spaceSettlement.participants5')}</span>
                         </label>
                       ))}
                     </div>
@@ -395,90 +395,90 @@ export default function EnrollSpaceSettlementPage() {
                 {/* Captain Info */}
                 <div className="bg-muted rounded-lg p-4 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Участник 1 (Капитан) *</h3>
+                    <h3 className="text-lg font-semibold">{t('spaceSettlement.participant1Captain')} *</h3>
                     <Button variant="outline" size="sm" asChild>
                       <Link to="/dashboard">
-                        Редактировать в профиле
+                        {t('spaceSettlement.editProfile')}
                       </Link>
                     </Button>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="captain-name">ФИО *</Label>
+                      <Label htmlFor="captain-name">{t('spaceSettlement.fullName')} *</Label>
                       <Input
                         id="captain-name"
                         value={captainFullName}
-                        placeholder="Иванов Иван Иванович"
+                        placeholder={t('spaceSettlement.fullNamePlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="captain-iin">ИИН *</Label>
+                      <Label htmlFor="captain-iin">{t('spaceSettlement.iin')} *</Label>
                       <Input
                         id="captain-iin"
                         value={captainIin}
-                        placeholder="000000000000"
+                        placeholder={t('spaceSettlement.iinPlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="captain-phone">Телефон *</Label>
+                      <Label htmlFor="captain-phone">{t('spaceSettlement.phone')} *</Label>
                       <Input
                         id="captain-phone"
                         value={captainPhone}
-                        placeholder="+7 777 777 77 77"
+                        placeholder={t('spaceSettlement.phonePlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="captain-school">Школа *</Label>
+                      <Label htmlFor="captain-school">{t('spaceSettlement.school')} *</Label>
                       <Input
                         id="captain-school"
                         value={captainSchool}
-                        placeholder="Номер школы или название"
+                        placeholder={t('spaceSettlement.schoolPlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="captain-city">Город *</Label>
+                      <Label htmlFor="captain-city">{t('spaceSettlement.city')} *</Label>
                       <Input
                         id="captain-city"
                         value={captainCity}
-                        placeholder="Алматы"
+                        placeholder={t('spaceSettlement.cityPlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="captain-grade">Класс *</Label>
+                      <Label htmlFor="captain-grade">{t('spaceSettlement.grade')} *</Label>
                       <Input
                         id="captain-grade"
                         value={captainGrade}
-                        placeholder="9"
+                        placeholder={t('spaceSettlement.gradePlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="captain-email">Email *</Label>
+                      <Label htmlFor="captain-email">{t('spaceSettlement.email')} *</Label>
                       <Input
                         id="captain-email"
                         value={captainEmail}
-                        placeholder="example@email.com"
+                        placeholder={t('spaceSettlement.emailPlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="captain-telegram">Telegram *</Label>
+                      <Label htmlFor="captain-telegram">{t('spaceSettlement.telegram')} *</Label>
                       <Input
                         id="captain-telegram"
                         value={captainTelegram}
-                        placeholder="@username"
+                        placeholder={t('spaceSettlement.telegramPlaceholder')}
                         readOnly
                         className="bg-muted-foreground/10"
                       />
@@ -489,12 +489,12 @@ export default function EnrollSpaceSettlementPage() {
                 {/* Additional Participants */}
                 {teamMemberCount && teamMemberCount > 1 && (
                   <div className="space-y-4">
-                    <h3 className="text-lg font-semibold mt-6">Дополнительные участники (необязательно)</h3>
+                    <h3 className="text-lg font-semibold mt-6">{t('spaceSettlement.additionalParticipants')}</h3>
 
                     {/* Participant 2 */}
                     {teamMemberCount >= 2 && (
                       <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                        <h4 className="font-medium">Участник 2</h4>
+                        <h4 className="font-medium">{t('spaceSettlement.participant2')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label>ФИО</Label>
@@ -559,7 +559,7 @@ export default function EnrollSpaceSettlementPage() {
                     {/* Participant 3 */}
                     {teamMemberCount >= 3 && (
                       <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                        <h4 className="font-medium">Участник 3</h4>
+                        <h4 className="font-medium">{t('spaceSettlement.participant3')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label>ФИО</Label>
@@ -624,7 +624,7 @@ export default function EnrollSpaceSettlementPage() {
                     {/* Participant 4 */}
                     {teamMemberCount >= 4 && (
                       <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                        <h4 className="font-medium">Участник 4</h4>
+                        <h4 className="font-medium">{t('spaceSettlement.participant4')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label>ФИО</Label>
@@ -689,7 +689,7 @@ export default function EnrollSpaceSettlementPage() {
                     {/* Participant 5 */}
                     {teamMemberCount >= 5 && (
                       <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                        <h4 className="font-medium">Участник 5</h4>
+                        <h4 className="font-medium">{t('spaceSettlement.participant5')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
                             <Label>ФИО</Label>
@@ -757,23 +757,23 @@ export default function EnrollSpaceSettlementPage() {
                   <h3 className="text-lg font-semibold mt-6">Дополнительная информация</h3>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="source">Откуда вы узнали о соревновании?</Label>
+                    <Label htmlFor="source">{t('spaceSettlement.source')}</Label>
                     <Textarea
                       id="source"
                       value={source}
                       onChange={(e) => setSource(e.target.value)}
-                      placeholder="Instagram, друзья, школа и т.д."
+                      placeholder={t('spaceSettlement.sourcePlaceholder')}
                       rows={2}
                     />
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="questions">Есть ли у вас вопросы?</Label>
+                    <Label htmlFor="questions">{t('spaceSettlement.questions')}</Label>
                     <Textarea
                       id="questions"
                       value={questions}
                       onChange={(e) => setQuestions(e.target.value)}
-                      placeholder="Задайте ваши вопросы здесь"
+                      placeholder={t('spaceSettlement.questionsPlaceholder')}
                       rows={3}
                     />
                   </div>
@@ -789,15 +789,15 @@ export default function EnrollSpaceSettlementPage() {
                     required
                   />
                   <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
-                    Я согласен(на) с{" "}
+                    {t('spaceSettlement.consentText')}{" "}
                     <Link to="/terms" className="text-primary underline" target="_blank">
-                      условиями участия
+                      {t('spaceSettlement.termsLink')}
                     </Link>{" "}
-                    и{" "}
+                    {t('spaceSettlement.and')}{" "}
                     <Link to="/privacy" className="text-primary underline" target="_blank">
-                      политикой конфиденциальности
+                      {t('spaceSettlement.privacyLink')}
                     </Link>
-                    . Я подтверждаю, что вся предоставленная информация является точной и полной.
+                    {t('spaceSettlement.consentConfirm')}
                   </Label>
                 </div>
 
@@ -809,10 +809,10 @@ export default function EnrollSpaceSettlementPage() {
                     onClick={() => navigate(-1)}
                     disabled={submitting}
                   >
-                    Отмена
+                    {t('spaceSettlement.cancel')}
                   </Button>
                   <Button type="submit" disabled={submitting}>
-                    {submitting ? "Отправка..." : "Отправить заявку"}
+                    {submitting ? t('spaceSettlement.submitting') : t('spaceSettlement.submit')}
                   </Button>
                 </div>
               </CardContent>
