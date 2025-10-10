@@ -232,7 +232,7 @@ const Competitions = () => {
                     {t(exploringComp.title)}
                   </CardTitle>
                   <CardDescription className="text-sm font-medium text-primary/70">
-                    {t(exploringComp.category)}
+                    {t('competitions.exploringEvent', { defaultValue: 'Международное соревнование 9-12 апреля 2026 года в Астане' })}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
