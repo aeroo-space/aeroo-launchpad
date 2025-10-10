@@ -298,7 +298,7 @@ const Competitions = () => {
                                   <Link to="/competitions/rocket-science-2026">{t('competitions.details')}</Link>
                                 </Button>
                               ) : null}
-                              <Button asChild size="sm" className="w-full btn-cosmic text-xs">
+                              <Button asChild size="sm" className="w-full btn-cosmic opacity-80 hover:opacity-100 transition-opacity text-xs">
                                 <Link to={`/enroll/${subComp.id}`}>{t('competitions.participate')}</Link>
                               </Button>
                             </div>
