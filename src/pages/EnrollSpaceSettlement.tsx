@@ -319,29 +319,36 @@ export default function EnrollSpaceSettlementPage() {
       <Navigation />
       <main className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
+          {/* Header */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold mb-2">Space Settlement 2025</h1>
-            <p className="text-muted-foreground">Заполните форму для регистрации на соревнование</p>
+            <div className="flex items-center gap-3 mb-4">
+              <CalendarDays className="h-8 w-8 text-primary" />
+              <div>
+                <h1 className="text-3xl font-bold">Space Settlement 2025</h1>
+                <p className="text-muted-foreground">Заполните форму для регистрации на соревнование</p>
+              </div>
+            </div>
           </div>
 
-          <form onSubmit={onSubmit} className="space-y-8">
-            {/* Team Info */}
+          {/* Form */}
+          <form onSubmit={onSubmit} className="space-y-6">
             <Card>
-              <CardContent className="p-6 space-y-4">
-                <h2 className="text-xl font-semibold">Информация о команде</h2>
-                
-                <div>
+              <CardContent className="p-6 space-y-6">
+                {/* Team Name */}
+                <div className="space-y-2">
                   <Label htmlFor="teamName">Название команды *</Label>
                   <Input
                     id="teamName"
                     value={teamName}
                     onChange={(e) => setTeamName(e.target.value)}
+                    placeholder="Введите название команды"
                     required
                   />
                 </div>
 
-                <div>
-                  <Label htmlFor="league">Лига *</Label>
+                {/* League Selection */}
+                <div className="space-y-2">
+                  <Label>Лига *</Label>
                   <Select value={league} onValueChange={setLeague} required>
                     <SelectTrigger>
                       <SelectValue placeholder="Выберите лигу" />
@@ -353,32 +360,122 @@ export default function EnrollSpaceSettlementPage() {
                   </Select>
                 </div>
 
-                <div>
-                  <Label htmlFor="teamMemberCount">Количество участников команды *</Label>
-                  <Select 
-                    value={teamMemberCount?.toString() || ""} 
-                    onValueChange={(value) => setTeamMemberCount(parseInt(value))} 
-                    required
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Выберите количество участников" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="1">1 участник (только капитан)</SelectItem>
-                      <SelectItem value="2">2 участника</SelectItem>
-                      <SelectItem value="3">3 участника</SelectItem>
-                      <SelectItem value="4">4 участника</SelectItem>
-                      <SelectItem value="5">5 участников</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </CardContent>
-            </Card>
+                {/* Team Member Count - Radio Buttons */}
+                {captainFullName.trim() && captainIin.trim() && captainPhone.trim() && captainSchool.trim() && captainCity.trim() && captainGrade.trim() && (
+                  <div className="space-y-2">
+                    <Label>Количество участников команды *</Label>
+                    <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
+                      {[1, 2, 3, 4, 5].map((count) => (
+                        <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
+                          <input
+                            type="radio"
+                            name="teamMemberCount"
+                            value={count}
+                            checked={teamMemberCount === count}
+                            onChange={(e) => setTeamMemberCount(Number(e.target.value))}
+                            className="w-4 h-4 text-primary border-2 border-muted-foreground focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            required
+                          />
+                          <span className="text-sm font-medium">{count} {count === 1 ? 'участник' : count < 5 ? 'участника' : 'участников'}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                )}
 
-            {/* Captain Info */}
-            <Card>
-              <CardContent className="p-6 space-y-4">
-                <h2 className="text-xl font-semibold">Информация о капитане</h2>
+                {/* Captain Info */}
+                <div className="bg-muted rounded-lg p-4 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold">Участник 1 (Капитан) *</h3>
+                    <Button variant="outline" size="sm" asChild>
+                      <Link to="/dashboard">
+                        Редактировать в профиле
+                      </Link>
+                    </Button>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-name">ФИО *</Label>
+                      <Input
+                        id="captain-name"
+                        value={captainFullName}
+                        placeholder="Иванов Иван Иванович"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-iin">ИИН *</Label>
+                      <Input
+                        id="captain-iin"
+                        value={captainIin}
+                        placeholder="000000000000"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-phone">Телефон *</Label>
+                      <Input
+                        id="captain-phone"
+                        value={captainPhone}
+                        placeholder="+7 777 777 77 77"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-school">Школа *</Label>
+                      <Input
+                        id="captain-school"
+                        value={captainSchool}
+                        placeholder="Номер школы или название"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-city">Город *</Label>
+                      <Input
+                        id="captain-city"
+                        value={captainCity}
+                        placeholder="Алматы"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-grade">Класс *</Label>
+                      <Input
+                        id="captain-grade"
+                        value={captainGrade}
+                        placeholder="9"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-email">Email *</Label>
+                      <Input
+                        id="captain-email"
+                        value={captainEmail}
+                        placeholder="example@email.com"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Label htmlFor="captain-telegram">Telegram *</Label>
+                      <Input
+                        id="captain-telegram"
+                        value={captainTelegram}
+                        placeholder="@username"
+                        readOnly
+                        className="bg-muted-foreground/10"
+                      />
+                    </div>
+                  </div>
+                </div>
                 
                 <div>
                   <Label htmlFor="captainFullName">ФИО капитана *</Label>
