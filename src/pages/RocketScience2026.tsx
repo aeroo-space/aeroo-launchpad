@@ -117,8 +117,8 @@ const RocketScience2026 = () => {
   return (
     <>
       <Helmet>
-        <title>AEROO Rocket Science Competition 2026 | Проектирование и запуск ракет</title>
-        <meta name="description" content="Присоединяйся к соревнованию по ракетостроению! Для школьников 14-18 лет. Водяные и модельные ракеты." />
+        <title>{t('rocketScience2026.metaTitle')}</title>
+        <meta name="description" content={t('rocketScience2026.metaDescription')} />
         <link rel="canonical" href="https://aeroo.space/competitions/rocket-science-2026" />
       </Helmet>
 
@@ -140,26 +140,26 @@ const RocketScience2026 = () => {
 
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 via-red-500 to-orange-400 bg-clip-text text-transparent px-1 py-2">
-                Проектируй, собирай и запускай ракеты в небо!
+                {t('rocketScience2026.hero.subtitle')}
               </span>
             </h1>
             
             <p className="text-xl md:text-2xl text-white/80 mb-8 max-w-4xl mx-auto">
-              Для школьников 14-18 лет. Два направления: водяные и модельные ракеты. Выиграй призы, гранты и сертификаты!
+              {t('rocketScience2026.hero.description')}
             </p>
 
             <div className="flex flex-wrap justify-center gap-6 mb-12">
               <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/20 backdrop-blur-sm">
                 <Target className="w-5 h-5 text-orange-500" />
-                <span className="font-medium text-white">Развитие инженерных навыков</span>
+                <span className="font-medium text-white">{t('rocketScience2026.hero.skills')}</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/20 backdrop-blur-sm">
                 <Users className="w-5 h-5 text-orange-500" />
-                <span className="font-medium text-white">Командная работа</span>
+                <span className="font-medium text-white">{t('rocketScience2026.hero.teamwork')}</span>
               </div>
               <div className="flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/20 backdrop-blur-sm">
                 <Leaf className="w-5 h-5 text-orange-500" />
-                <span className="font-medium text-white">Экологическая миссия</span>
+                <span className="font-medium text-white">{t('rocketScience2026.hero.ecoMission')}</span>
               </div>
             </div>
 
@@ -169,7 +169,7 @@ const RocketScience2026 = () => {
                 className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-orbitron"
                 onClick={() => navigate('/enroll/exploring-world-of-science')}
               >
-                <span className="relative z-10">Участвовать</span>
+                <span className="relative z-10">{t('rocketScience2026.hero.participate')}</span>
                 <Flame className="ml-2 w-5 h-5 relative z-10" />
               </Button>
               
@@ -179,7 +179,7 @@ const RocketScience2026 = () => {
                 className="border-orange-500/30 hover:bg-orange-500/10 text-white font-orbitron"
                 onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                Узнать больше
+                {t('rocketScience2026.hero.learnMore')}
               </Button>
             </div>
           </div>
@@ -190,30 +190,30 @@ const RocketScience2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
-                О соревновании
+                {t('rocketScience2026.about.title')}
               </span>
             </h2>
             
             <div className="max-w-4xl mx-auto">
               <Card className="p-8 bg-white/5 backdrop-blur-sm border-orange-500/20">
                 <p className="text-lg mb-6 leading-relaxed text-white/90">
-                  Секция AEROO Rocket Science Competition — инженерное соревнование по проектированию, сборке и запуску ракет. Два направления: Водяные ракеты (14-15 лет, до 2 участников) — устойчивый полет на воде и воздухе; Модельные ракеты (15-18 лет, до 2 участников) — с двигателями 2.5H*c, парашютом и экологической миссией (разбрасывание семян). Фокус на аэродинамике, безопасности и инновациях.
+                  {t('rocketScience2026.about.description')}
                 </p>
 
                 <div className="grid md:grid-cols-2 gap-6 mb-6">
                   <div className="flex items-start gap-3 p-4 bg-orange-500/5 rounded-lg border border-orange-500/20">
                     <Users className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1 text-white font-orbitron">Участники</h3>
-                      <p className="text-white/70">Команды до 2 человек. Один участник — одна секция</p>
+                      <h3 className="font-semibold mb-1 text-white font-orbitron">{t('rocketScience2026.about.participants')}</h3>
+                      <p className="text-white/70">{t('rocketScience2026.about.participantsDesc')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-3 p-4 bg-orange-500/5 rounded-lg border border-orange-500/20">
                     <Trophy className="w-6 h-6 text-orange-500 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold mb-1 text-white font-orbitron">Призовой фонд</h3>
-                      <p className="text-white/70">До 1 000 000 тенге + гранты</p>
+                      <h3 className="font-semibold mb-1 text-white font-orbitron">{t('rocketScience2026.about.prizes')}</h3>
+                      <p className="text-white/70">{t('rocketScience2026.about.prizesDesc')}</p>
                     </div>
                   </div>
                 </div>
@@ -221,13 +221,13 @@ const RocketScience2026 = () => {
                 <div className="space-y-3">
                   <h3 className="font-semibold text-xl mb-3 flex items-center gap-2 font-orbitron text-white">
                     <Zap className="w-5 h-5 text-orange-500" />
-                    Цели и задачи
+                    {t('rocketScience2026.about.goals')}
                   </h3>
                   {[
-                    "Развитие интереса к космонавтике и ракетостроению",
-                    "Практические навыки проектирования и конструирования",
-                    "Командная работа и инженерное мышление",
-                    "Популяризация экологических инициатив через космическую науку"
+                    t('rocketScience2026.about.goal1'),
+                    t('rocketScience2026.about.goal2'),
+                    t('rocketScience2026.about.goal3'),
+                    t('rocketScience2026.about.goal4')
                   ].map((goal, idx) => (
                     <div key={idx} className="flex items-start gap-3">
                       <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
@@ -245,7 +245,7 @@ const RocketScience2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
-                Направления
+                {t('rocketScience2026.tracks.title')}
               </span>
             </h2>
 
@@ -270,7 +270,7 @@ const RocketScience2026 = () => {
                     <p className="text-white/90 mb-4">{track.description}</p>
                     
                     <div className="space-y-2">
-                      <h4 className="font-semibold text-white font-orbitron">Требования:</h4>
+                      <h4 className="font-semibold text-white font-orbitron">{t('rocketScience2026.tracks.requirements')}</h4>
                       {track.requirements.map((req, reqIdx) => (
                         <div key={reqIdx} className="flex items-start gap-2">
                           <CheckCircle2 className="w-4 h-4 text-orange-500 mt-1 flex-shrink-0" />
@@ -290,46 +290,46 @@ const RocketScience2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
-                Этапы проведения
+                {t('rocketScience2026.timeline.title')}
               </span>
             </h2>
 
             <div className="max-w-4xl mx-auto mb-12">
               <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
-                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">I этап (онлайн)</h3>
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">{t('rocketScience2026.timeline.stage1Title')}</h3>
                 <ul className="space-y-2 text-white/90">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                    <span>Видео сборки/макета вашей ракеты</span>
+                    <span>{t('rocketScience2026.timeline.stage1Item1')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                    <span>Публикация в Instagram с хэштегами #exploring_world_of_science_2026 #aeroo_rocket_science_2026</span>
+                    <span>{t('rocketScience2026.timeline.stage1Item2')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-orange-500 mt-0.5 flex-shrink-0" />
-                    <span>Отметка @aeroo.space @rspc_daryn</span>
+                    <span>{t('rocketScience2026.timeline.stage1Item3')}</span>
                   </li>
                 </ul>
               </Card>
 
               <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20 mt-6">
-                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">II этап (финал в Астане)</h3>
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">{t('rocketScience2026.timeline.stage2Title')}</h3>
                 <div className="space-y-4 text-white/90">
                   <div>
-                    <h4 className="font-semibold mb-2 text-white">Водяные ракеты:</h4>
+                    <h4 className="font-semibold mb-2 text-white">{t('rocketScience2026.timeline.waterTitle')}</h4>
                     <ul className="space-y-1 ml-4">
-                      <li>• 60 минут на сборку</li>
-                      <li>• 3 попытки запуска</li>
-                      <li>• Оценка дальности, точности и стабильности</li>
+                      <li>• {t('rocketScience2026.timeline.waterItem1')}</li>
+                      <li>• {t('rocketScience2026.timeline.waterItem2')}</li>
+                      <li>• {t('rocketScience2026.timeline.waterItem3')}</li>
                     </ul>
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2 text-white">Модельные ракеты:</h4>
+                    <h4 className="font-semibold mb-2 text-white">{t('rocketScience2026.timeline.modelTitle')}</h4>
                     <ul className="space-y-1 ml-4">
-                      <li>• Запуск с оценкой траектории</li>
-                      <li>• Проверка работы парашюта</li>
-                      <li>• Оценка высева семян (экологическая миссия)</li>
+                      <li>• {t('rocketScience2026.timeline.modelItem1')}</li>
+                      <li>• {t('rocketScience2026.timeline.modelItem2')}</li>
+                      <li>• {t('rocketScience2026.timeline.modelItem3')}</li>
                     </ul>
                   </div>
                 </div>
@@ -338,7 +338,7 @@ const RocketScience2026 = () => {
 
             {/* Timeline dates */}
             <div className="max-w-4xl mx-auto">
-              <h3 className="text-2xl font-bold text-center mb-8 text-white font-orbitron">Ключевые даты</h3>
+              <h3 className="text-2xl font-bold text-center mb-8 text-white font-orbitron">{t('rocketScience2026.timeline.keyDates')}</h3>
               <div className="space-y-4">
                 {timeline.map((item, idx) => (
                   <div key={idx} className="flex items-start gap-4 p-4 bg-white/5 backdrop-blur-sm rounded-lg border border-orange-500/20">
@@ -359,20 +359,20 @@ const RocketScience2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
-                Критерии оценки
+                {t('rocketScience2026.criteria.title')}
               </span>
             </h2>
 
             <div className="max-w-4xl mx-auto space-y-8">
               <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
-                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Водяные ракеты (I этап - онлайн)</h3>
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">{t('rocketScience2026.criteria.waterOnlineTitle')}</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full table-auto text-left">
                     <thead>
                       <tr className="text-white/70">
-                        <th className="py-2 px-3 font-semibold">Критерий</th>
-                        <th className="py-2 px-3 font-semibold">Описание</th>
-                        <th className="py-2 px-3 font-semibold">Баллы</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.criterion')}</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.description')}</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.points')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -389,7 +389,7 @@ const RocketScience2026 = () => {
               </Card>
 
               <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
-                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Водяные ракеты (II этап - финал)</h3>
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">{t('rocketScience2026.criteria.waterFinalTitle')}</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full table-auto text-left">
                     <thead>
@@ -413,7 +413,7 @@ const RocketScience2026 = () => {
               </Card>
 
               <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
-                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Модельные ракеты</h3>
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">{t('rocketScience2026.criteria.modelTitle')}</h3>
                 <div className="overflow-x-auto">
                   <table className="w-full table-auto text-left">
                     <thead>
@@ -444,28 +444,28 @@ const RocketScience2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
-                Награды и призы
+                {t('rocketScience2026.prizes.title')}
               </span>
             </h2>
 
             <div className="max-w-4xl mx-auto">
               <Card className="p-8 bg-white/5 backdrop-blur-sm border-orange-500/20 text-center">
                 <p className="text-lg mb-6 leading-relaxed text-white/90">
-                  Победители: медали, дипломы, призы (гаджеты, оборудование), образовательные гранты от АУЭС им. Гумарбека Даукеева. Все финалисты — сертификаты. Общий призовой фонд до 1 000 000 тенге.
+                  {t('rocketScience2026.prizes.description')}
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="flex flex-col items-center">
                     <Award className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
-                    <span className="text-white font-semibold">Медали и дипломы</span>
+                    <span className="text-white font-semibold">{t('rocketScience2026.prizes.medals')}</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <Sparkles className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
-                    <span className="text-white font-semibold">Гаджеты и оборудование</span>
+                    <span className="text-white font-semibold">{t('rocketScience2026.prizes.gadgets')}</span>
                   </div>
                   <div className="flex flex-col items-center">
                     <Trophy className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
-                    <span className="text-white font-semibold">Образовательные гранты</span>
+                    <span className="text-white font-semibold">{t('rocketScience2026.prizes.grants')}</span>
                   </div>
                 </div>
               </Card>
@@ -478,21 +478,21 @@ const RocketScience2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
-                Регистрация
+                {t('rocketScience2026.registration.title')}
               </span>
             </h2>
 
             <div className="max-w-4xl mx-auto">
               <Card className="p-8 bg-white/5 backdrop-blur-sm border-orange-500/20 text-center">
                 <p className="text-lg mb-6 leading-relaxed text-white/90">
-                  Регистрируйся на платформе AEROO. Участие бесплатное!
+                  {t('rocketScience2026.registration.description')}
                 </p>
                 <Button 
                   size="xl" 
                   className="bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-orbitron animate-pulse"
                   onClick={() => navigate('/enroll/exploring-world-of-science')}
                 >
-                  <span className="relative z-10">Зарегистрироваться сейчас</span>
+                  <span className="relative z-10">{t('rocketScience2026.registration.button')}</span>
                   <Flame className="ml-2 w-5 h-5 relative z-10" />
                 </Button>
               </Card>
@@ -505,13 +505,13 @@ const RocketScience2026 = () => {
           <div className="container mx-auto px-4">
             <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 font-orbitron pb-2">
               <span className="inline-block bg-gradient-to-r from-orange-500 to-red-500 bg-clip-text text-transparent px-1 py-2">
-                Контакты и партнеры
+                {t('rocketScience2026.contacts.title')}
               </span>
             </h2>
 
             <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
               <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
-                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Контактная информация</h3>
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">{t('rocketScience2026.contacts.info')}</h3>
                 <ul className="space-y-2 text-white/90">
                   <li className="flex items-center gap-2">
                     <Phone className="w-5 h-5 text-orange-500 flex-shrink-0" />
@@ -533,7 +533,7 @@ const RocketScience2026 = () => {
               </Card>
 
               <Card className="p-6 bg-white/5 backdrop-blur-sm border-orange-500/20">
-                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">Наши партнеры</h3>
+                <h3 className="text-xl font-bold mb-4 text-white font-orbitron">{t('rocketScience2026.contacts.partners')}</h3>
                 <ul className="space-y-2 text-white/90">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="w-5 h-5 text-orange-500 flex-shrink-0" />

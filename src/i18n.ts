@@ -1230,6 +1230,141 @@ const resources = {
         phone: 'Телефон',
         telegram: 'Telegram',
         location: 'Местоположение'
+      },
+      rocketScience2026: {
+        metaTitle: 'AEROO Rocket Science Competition 2026 | Проектирование и запуск ракет',
+        metaDescription: 'Присоединяйся к соревнованию по ракетостроению! Для школьников 14-18 лет. Водяные и модельные ракеты.',
+        hero: {
+          subtitle: 'Проектируй, собирай и запускай ракеты в небо!',
+          description: 'Для школьников 14-18 лет. Два направления: водяные и модельные ракеты. Выиграй призы, гранты и сертификаты!',
+          skills: 'Развитие инженерных навыков',
+          teamwork: 'Командная работа',
+          ecoMission: 'Экологическая миссия',
+          participate: 'Участвовать',
+          learnMore: 'Узнать больше'
+        },
+        about: {
+          title: 'О соревновании',
+          description: 'Секция AEROO Rocket Science Competition — инженерное соревнование по проектированию, сборке и запуску ракет. Два направления: Водяные ракеты (14-15 лет, до 2 участников) — устойчивый полет на воде и воздухе; Модельные ракеты (15-18 лет, до 2 участников) — с двигателями 2.5H*c, парашютом и экологической миссией (разбрасывание семян). Фокус на аэродинамике, безопасности и инновациях.',
+          participants: 'Участники',
+          participantsDesc: 'Команды до 2 человек. Один участник — одна секция',
+          prizes: 'Призовой фонд',
+          prizesDesc: 'До 1 000 000 тенге + гранты',
+          goals: 'Цели и задачи',
+          goal1: 'Развитие интереса к космонавтике и ракетостроению',
+          goal2: 'Практические навыки проектирования и конструирования',
+          goal3: 'Командная работа и инженерное мышление',
+          goal4: 'Популяризация экологических инициатив через космическую науку'
+        },
+        tracks: {
+          title: 'Направления',
+          requirements: 'Требования:',
+          water: {
+            title: 'Водяные ракеты',
+            age: '14-15 лет',
+            team: 'До 2 человек',
+            description: 'Проектируй и запускай ракеты на воде и сжатом воздухе',
+            req1: 'Устойчивый и безопасный полет',
+            req2: 'Использование воды и воздуха',
+            req3: 'Творческий подход к дизайну',
+            req4: 'Соблюдение требований безопасности'
+          },
+          model: {
+            title: 'Модельные ракеты',
+            age: '15-18 лет',
+            team: 'До 2 человек',
+            description: 'Спроектируй модельную ракету с двигателем и системой спасения',
+            req1: 'Двигатель 2.5H*c',
+            req2: 'Работающая парашютная система',
+            req3: 'Экологическая миссия (высев семян)',
+            req4: 'Стабильная траектория полета'
+          }
+        },
+        timeline: {
+          title: 'Этапы проведения',
+          keyDates: 'Ключевые даты',
+          stage1Title: 'I этап (онлайн)',
+          stage1Item1: 'Видео сборки/макета вашей ракеты',
+          stage1Item2: 'Публикация в Instagram с хэштегами #exploring_world_of_science_2026 #aeroo_rocket_science_2026',
+          stage1Item3: 'Отметка @aeroo.space @rspc_daryn',
+          stage2Title: 'II этап (финал в Астане)',
+          waterTitle: 'Водяные ракеты:',
+          waterItem1: '60 минут на сборку',
+          waterItem2: '3 попытки запуска',
+          waterItem3: 'Оценка дальности, точности и стабильности',
+          modelTitle: 'Модельные ракеты:',
+          modelItem1: 'Запуск с оценкой траектории',
+          modelItem2: 'Проверка работы парашюта',
+          modelItem3: 'Оценка высева семян (экологическая миссия)',
+          registration: 'Регистрация',
+          registrationDate: 'До 19 января 2026',
+          stage1: 'I Этап (онлайн)',
+          stage1Date: '19 января – 10 марта',
+          results: 'Результаты I этапа',
+          resultsDate: '11 марта',
+          final: 'Финал (Астана)',
+          finalDate: '9-12 апреля 2026'
+        },
+        criteria: {
+          title: 'Критерии оценки',
+          criterion: 'Критерий',
+          description: 'Описание',
+          points: 'Баллы',
+          waterOnlineTitle: 'Водяные ракеты (I этап - онлайн)',
+          waterFinalTitle: 'Водяные ракеты (II этап - финал)',
+          modelTitle: 'Модельные ракеты',
+          waterOnline: {
+            idea: 'Оригинальность идеи',
+            ideaDesc: 'Креативность и уникальность концепции',
+            assembly: 'Сборка',
+            assemblyDesc: 'Качество изготовления и прочность конструкции',
+            design: 'Дизайн',
+            designDesc: 'Визуальная привлекательность и аэродинамика',
+            safety: 'Безопасность',
+            safetyDesc: 'Соблюдение мер предосторожности при сборке и запуске'
+          },
+          waterFinal: {
+            distance: 'Дальность полета',
+            distanceDesc: 'Максимальная достигнутая дистанция',
+            accuracy: 'Точность попадания',
+            accuracyDesc: 'Близость к целевой точке',
+            stability: 'Стабильность траектории',
+            stabilityDesc: 'Плавность и предсказуемость полета'
+          },
+          model: {
+            accuracy: 'Точность попадания',
+            accuracyDesc: 'Близость приземления к целевой точке',
+            model3d: '3D-модель',
+            model3dDesc: 'Качество и детализация 3D-модели',
+            docs: 'Документация',
+            docsDesc: 'Полнота технической документации',
+            dimensions: 'Размеры',
+            dimensionsDesc: 'Соответствие заданным параметрам',
+            trajectory: 'Траектория',
+            trajectoryDesc: 'Стабильность и высота полета',
+            parachute: 'Парашют',
+            parachuteDesc: 'Правильность работы системы спасения',
+            eco: 'Экологическая миссия',
+            ecoDesc: 'Успешность высева семян'
+          }
+        },
+        prizes: {
+          title: 'Награды и призы',
+          description: 'Победители: медали, дипломы, призы (гаджеты, оборудование), образовательные гранты от АУЭС им. Гумарбека Даукеева. Все финалисты — сертификаты. Общий призовой фонд до 1 000 000 тенге.',
+          medals: 'Медали и дипломы',
+          gadgets: 'Гаджеты и оборудование',
+          grants: 'Образовательные гранты'
+        },
+        registration: {
+          title: 'Регистрация',
+          description: 'Регистрируйся на платформе AEROO. Участие бесплатное!',
+          button: 'Зарегистрироваться сейчас'
+        },
+        contacts: {
+          title: 'Контакты и партнеры',
+          info: 'Контактная информация',
+          partners: 'Наши партнеры'
+        }
       }
     }
   },
@@ -2370,6 +2505,141 @@ const resources = {
           deleteRequestTitle: 'Delete request?',
           deleteRequestDesc: 'This action cannot be undone. The request will be completely deleted from the system.'
         }
+      },
+      rocketScience2026: {
+        metaTitle: 'AEROO Rocket Science Competition 2026 | Rocket Design and Launch',
+        metaDescription: 'Join the rocket science competition! For students aged 14-18. Water and model rockets.',
+        hero: {
+          subtitle: 'Design, build and launch rockets into the sky!',
+          description: 'For students aged 14-18. Two tracks: water and model rockets. Win prizes, grants and certificates!',
+          skills: 'Developing engineering skills',
+          teamwork: 'Teamwork',
+          ecoMission: 'Ecological mission',
+          participate: 'Participate',
+          learnMore: 'Learn more'
+        },
+        about: {
+          title: 'About the competition',
+          description: 'AEROO Rocket Science Competition is an engineering competition for designing, building and launching rockets. Two tracks: Water rockets (14-15 years, up to 2 participants) — stable flight on water and air; Model rockets (15-18 years, up to 2 participants) — with 2.5H*c engines, parachute and ecological mission (seed spreading). Focus on aerodynamics, safety and innovation.',
+          participants: 'Participants',
+          participantsDesc: 'Teams of up to 2 people. One participant — one track',
+          prizes: 'Prize fund',
+          prizesDesc: 'Up to 1,000,000 tenge + grants',
+          goals: 'Goals and objectives',
+          goal1: 'Develop interest in astronautics and rocket science',
+          goal2: 'Practical design and construction skills',
+          goal3: 'Teamwork and engineering mindset',
+          goal4: 'Promoting environmental initiatives through space science'
+        },
+        tracks: {
+          title: 'Tracks',
+          requirements: 'Requirements:',
+          water: {
+            title: 'Water Rockets',
+            age: '14-15 years',
+            team: 'Up to 2 people',
+            description: 'Design and launch rockets using water and compressed air',
+            req1: 'Stable and safe flight',
+            req2: 'Using water and air',
+            req3: 'Creative approach to design',
+            req4: 'Safety compliance'
+          },
+          model: {
+            title: 'Model Rockets',
+            age: '15-18 years',
+            team: 'Up to 2 people',
+            description: 'Design a model rocket with engine and recovery system',
+            req1: '2.5H*c engine',
+            req2: 'Working parachute system',
+            req3: 'Ecological mission (seed dispersal)',
+            req4: 'Stable flight trajectory'
+          }
+        },
+        timeline: {
+          title: 'Stages',
+          keyDates: 'Key dates',
+          stage1Title: 'Stage I (online)',
+          stage1Item1: 'Video of assembly/model of your rocket',
+          stage1Item2: 'Post on Instagram with hashtags #exploring_world_of_science_2026 #aeroo_rocket_science_2026',
+          stage1Item3: 'Tag @aeroo.space @rspc_daryn',
+          stage2Title: 'Stage II (final in Astana)',
+          waterTitle: 'Water rockets:',
+          waterItem1: '60 minutes for assembly',
+          waterItem2: '3 launch attempts',
+          waterItem3: 'Evaluation of distance, accuracy and stability',
+          modelTitle: 'Model rockets:',
+          modelItem1: 'Launch with trajectory evaluation',
+          modelItem2: 'Parachute operation check',
+          modelItem3: 'Seed dispersal evaluation (ecological mission)',
+          registration: 'Registration',
+          registrationDate: 'Until January 19, 2026',
+          stage1: 'Stage I (online)',
+          stage1Date: 'January 19 – March 10',
+          results: 'Stage I results',
+          resultsDate: 'March 11',
+          final: 'Final (Astana)',
+          finalDate: 'April 9-12, 2026'
+        },
+        criteria: {
+          title: 'Evaluation criteria',
+          criterion: 'Criterion',
+          description: 'Description',
+          points: 'Points',
+          waterOnlineTitle: 'Water rockets (Stage I - online)',
+          waterFinalTitle: 'Water rockets (Stage II - final)',
+          modelTitle: 'Model rockets',
+          waterOnline: {
+            idea: 'Originality of idea',
+            ideaDesc: 'Creativity and uniqueness of concept',
+            assembly: 'Assembly',
+            assemblyDesc: 'Manufacturing quality and structural strength',
+            design: 'Design',
+            designDesc: 'Visual appeal and aerodynamics',
+            safety: 'Safety',
+            safetyDesc: 'Compliance with safety measures during assembly and launch'
+          },
+          waterFinal: {
+            distance: 'Flight distance',
+            distanceDesc: 'Maximum distance achieved',
+            accuracy: 'Accuracy',
+            accuracyDesc: 'Proximity to target point',
+            stability: 'Trajectory stability',
+            stabilityDesc: 'Smoothness and predictability of flight'
+          },
+          model: {
+            accuracy: 'Landing accuracy',
+            accuracyDesc: 'Proximity of landing to target point',
+            model3d: '3D model',
+            model3dDesc: 'Quality and detail of 3D model',
+            docs: 'Documentation',
+            docsDesc: 'Completeness of technical documentation',
+            dimensions: 'Dimensions',
+            dimensionsDesc: 'Compliance with specified parameters',
+            trajectory: 'Trajectory',
+            trajectoryDesc: 'Stability and altitude of flight',
+            parachute: 'Parachute',
+            parachuteDesc: 'Proper operation of recovery system',
+            eco: 'Ecological mission',
+            ecoDesc: 'Success of seed dispersal'
+          }
+        },
+        prizes: {
+          title: 'Awards and prizes',
+          description: 'Winners: medals, diplomas, prizes (gadgets, equipment), educational grants from AUES named after Gumarbek Daukeyev. All finalists — certificates. Total prize fund up to 1,000,000 tenge.',
+          medals: 'Medals and diplomas',
+          gadgets: 'Gadgets and equipment',
+          grants: 'Educational grants'
+        },
+        registration: {
+          title: 'Registration',
+          description: 'Register on the AEROO platform. Participation is free!',
+          button: 'Register now'
+        },
+        contacts: {
+          title: 'Contacts and partners',
+          info: 'Contact information',
+          partners: 'Our partners'
+        }
       }
     }
   },
@@ -3506,6 +3776,141 @@ const resources = {
           desc: 'Тіркелу ашылғанда хабарлама аламын',
           placeholder: 'Email мекенжайыңыз',
           submit: 'Жазылу'
+        }
+      },
+      rocketScience2026: {
+        metaTitle: 'AEROO Rocket Science Competition 2026 | Зымырандарды жобалау және ұшыру',
+        metaDescription: 'Зымыран ғылымы жарысына қосылыңыз! 14-18 жас аралығындағы оқушыларға. Су және модельдік зымырандар.',
+        hero: {
+          subtitle: 'Зымырандарды жобалаңыз, жинаңыз және аспанға ұшырыңыз!',
+          description: '14-18 жас аралығындағы оқушыларға. Екі бағыт: су және модельдік зымырандар. Сыйлықтар, гранттар және сертификаттар ұтып алыңыз!',
+          skills: 'Инженерлік дағдыларды дамыту',
+          teamwork: 'Командалық жұмыс',
+          ecoMission: 'Экологиялық миссия',
+          participate: 'Қатысу',
+          learnMore: 'Толығырақ'
+        },
+        about: {
+          title: 'Жарыс туралы',
+          description: 'AEROO Rocket Science Competition секциясы — зымырандарды жобалау, жинау және ұшыру бойынша инженерлік жарыс. Екі бағыт: Су зымырандары (14-15 жас, 2 қатысушыға дейін) — су және ауада тұрақты ұшу; Модельдік зымырандар (15-18 жас, 2 қатысушыға дейін) — 2.5H*c қозғалтқыштары, парашют және экологиялық миссиясы бар (тұқым шашу). Аэродинамика, қауіпсіздік және инновацияларға назар аударылады.',
+          participants: 'Қатысушылар',
+          participantsDesc: '2 адамға дейін команда. Бір қатысушы — бір секция',
+          prizes: 'Сыйлық қоры',
+          prizesDesc: '1 000 000 теңгеге дейін + гранттар',
+          goals: 'Мақсаттар мен міндеттер',
+          goal1: 'Ғарышнаутика мен зымыран құрылысына қызығушылықты дамыту',
+          goal2: 'Жобалау және құрастырудың практикалық дағдылары',
+          goal3: 'Командалық жұмыс және инженерлік ойлау',
+          goal4: 'Ғарыш ғылымы арқылы экологиялық бастамаларды насихаттау'
+        },
+        tracks: {
+          title: 'Бағыттар',
+          requirements: 'Талаптар:',
+          water: {
+            title: 'Су зымырандары',
+            age: '14-15 жас',
+            team: '2 адамға дейін',
+            description: 'Су және қысылған ауаны пайдаланып зымырандарды жобалаңыз және ұшырыңыз',
+            req1: 'Тұрақты және қауіпсіз ұшу',
+            req2: 'Су мен ауаны пайдалану',
+            req3: 'Дизайнға шығармашылық көзқарас',
+            req4: 'Қауіпсіздік талаптарын сақтау'
+          },
+          model: {
+            title: 'Модельдік зымырандар',
+            age: '15-18 жас',
+            team: '2 адамға дейін',
+            description: 'Қозғалтқышы және құтқару жүйесі бар модельдік зымыранды жобалаңыз',
+            req1: '2.5H*c қозғалтқышы',
+            req2: 'Жұмыс істейтін парашют жүйесі',
+            req3: 'Экологиялық миссия (тұқым шашу)',
+            req4: 'Тұрақты ұшу траекториясы'
+          }
+        },
+        timeline: {
+          title: 'Өткізу кезеңдері',
+          keyDates: 'Негізгі күндер',
+          stage1Title: 'I кезең (онлайн)',
+          stage1Item1: 'Зымыраныңызды жинау/макетінің видеосы',
+          stage1Item2: 'Instagram-да #exploring_world_of_science_2026 #aeroo_rocket_science_2026 хэштегтерімен жариялау',
+          stage1Item3: '@aeroo.space @rspc_daryn белгілеу',
+          stage2Title: 'II кезең (финал Астанада)',
+          waterTitle: 'Су зымырандары:',
+          waterItem1: 'Жинауға 60 минут',
+          waterItem2: 'Ұшыруға 3 әрекет',
+          waterItem3: 'Қашықтық, дәлдік және тұрақтылықты бағалау',
+          modelTitle: 'Модельдік зымырандар:',
+          modelItem1: 'Траекторияны бағалаумен ұшыру',
+          modelItem2: 'Парашюттің жұмысын тексеру',
+          modelItem3: 'Тұқым шашуды бағалау (экологиялық миссия)',
+          registration: 'Тіркелу',
+          registrationDate: '19 қаңтарға дейін 2026',
+          stage1: 'I кезең (онлайн)',
+          stage1Date: '19 қаңтар – 10 наурыз',
+          results: 'I кезеңнің нәтижелері',
+          resultsDate: '11 наурыз',
+          final: 'Финал (Астана)',
+          finalDate: '9-12 сәуір 2026'
+        },
+        criteria: {
+          title: 'Бағалау критерийлері',
+          criterion: 'Критерий',
+          description: 'Сипаттама',
+          points: 'Ұпай',
+          waterOnlineTitle: 'Су зымырандары (I кезең - онлайн)',
+          waterFinalTitle: 'Су зымырандары (II кезең - финал)',
+          modelTitle: 'Модельдік зымырандар',
+          waterOnline: {
+            idea: 'Идеяның түпнұсқалығы',
+            ideaDesc: 'Концепцияның шығармашылығы және ерекшелігі',
+            assembly: 'Жинау',
+            assemblyDesc: 'Өндіріс сапасы және конструкция беріктігі',
+            design: 'Дизайн',
+            designDesc: 'Визуалды тартымдылық және аэродинамика',
+            safety: 'Қауіпсіздік',
+            safetyDesc: 'Жинау және ұшыру кезіндегі қауіпсіздік шараларын сақтау'
+          },
+          waterFinal: {
+            distance: 'Ұшу қашықтығы',
+            distanceDesc: 'Қол жеткізілген максималды қашықтық',
+            accuracy: 'Дәлдік',
+            accuracyDesc: 'Мақсатты нүктеге жақындық',
+            stability: 'Траектория тұрақтылығы',
+            stabilityDesc: 'Ұшудың тегістігі және болжамдылығы'
+          },
+          model: {
+            accuracy: 'Қону дәлдігі',
+            accuracyDesc: 'Мақсатты нүктеге қонудың жақындығы',
+            model3d: '3D модель',
+            model3dDesc: '3D модельдің сапасы және детализациясы',
+            docs: 'Құжаттама',
+            docsDesc: 'Техникалық құжаттаманың толықтығы',
+            dimensions: 'Өлшемдер',
+            dimensionsDesc: 'Белгіленген параметрлерге сәйкестік',
+            trajectory: 'Траектория',
+            trajectoryDesc: 'Ұшудың тұрақтылығы және биіктігі',
+            parachute: 'Парашют',
+            parachuteDesc: 'Құтқару жүйесінің дұрыс жұмысы',
+            eco: 'Экологиялық миссия',
+            ecoDesc: 'Тұқым шашудың табыстылығы'
+          }
+        },
+        prizes: {
+          title: 'Марапаттар мен сыйлықтар',
+          description: 'Жеңімпаздар: медальдар, дипломдар, сыйлықтар (гаджеттер, жабдық), Гумарбек Даукеев атындағы АЭӨУ-ден білім беру гранттары. Барлық финалисттер — сертификаттар. Жалпы сыйлық қоры 1 000 000 теңгеге дейін.',
+          medals: 'Медальдар мен дипломдар',
+          gadgets: 'Гаджеттер мен жабдық',
+          grants: 'Білім беру гранттары'
+        },
+        registration: {
+          title: 'Тіркелу',
+          description: 'AEROO платформасында тіркеліңіз. Қатысу тегін!',
+          button: 'Қазір тіркелу'
+        },
+        contacts: {
+          title: 'Байланыстар мен серіктестер',
+          info: 'Байланыс ақпараты',
+          partners: 'Біздің серіктестер'
         }
       }
     }
