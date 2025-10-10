@@ -248,7 +248,7 @@ const Competitions = () => {
 
                   {/* Sub-competitions Grid */}
                   <div className="mb-4">
-                    <h3 className="text-lg font-semibold mb-3">{t('competitions.chooseCategory', { defaultValue: 'Выбери категорию' })}</h3>
+                    <h3 className="text-lg font-semibold mb-3 text-center text-primary">{t('competitions.chooseCategory', { defaultValue: 'Выбери категорию' })}</h3>
                   </div>
                   <div className="grid md:grid-cols-3 gap-4 mb-6">
                     {subCompetitions.map((subComp) => {
