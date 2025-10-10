@@ -69,14 +69,14 @@ const App = () => (
               <Route path="/competitions/exploring-world-of-science" element={<ExploringWorldOfScience />} />
               <Route path="/competitions/rocket-science-2026" element={<RocketScience2026 />} />
               <Route path="/competitions/space-ai-2026" element={<SpaceAI2026 />} />
+              <Route path="/enroll/space-settlement" element={
+                <ProtectedRoute>
+                  <EnrollSpaceSettlement />
+                </ProtectedRoute>
+              } />
               <Route path="/enroll/:competitionId" element={
                 <ProtectedRoute>
                   <EnrollPage />
-                </ProtectedRoute>
-              } />
-              <Route path="/enroll-space-settlement" element={
-                <ProtectedRoute>
-                  <EnrollSpaceSettlement />
                 </ProtectedRoute>
               } />
               <Route path="/product-requests" element={
