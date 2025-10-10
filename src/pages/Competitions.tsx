@@ -148,81 +148,187 @@ const Competitions = () => {
         </div>
 
         {/* Competitions Grid */}
-        <div id="competitions-list" className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-          {competitions.map((competition) => {
-            const Icon = competition.icon;
+        <div id="competitions-list" className="space-y-6 mb-16">
+          {/* Exploring World of Science - Wide Card with Sub-cards */}
+          {(() => {
+            const exploringComp = competitions.find(c => c.id === 'exploring-world-of-science');
+            const subCompetitions = [
+              competitions.find(c => c.id === 'satellite-launch'),
+              competitions.find(c => c.id === 'ai-challenge'),
+              competitions.find(c => c.id === 'rocket-science'),
+            ].filter(Boolean);
+            
+            if (!exploringComp) return null;
+            const Icon = exploringComp.icon;
+            
             return (
-              <Card key={competition.id} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
+              <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
                     <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
-                    <Badge className={`${getStatusColor(t(competition.status))} text-white`}>
-                      {t(competition.status)}
+                    <Badge className={`${getStatusColor(t(exploringComp.status))} text-white`}>
+                      {t(exploringComp.status)}
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
-                    {t(competition.title)}
+                  <CardTitle className="text-2xl group-hover:text-primary transition-colors">
+                    {t(exploringComp.title)}
                   </CardTitle>
                   <CardDescription className="text-sm font-medium text-primary/70">
-                    {t(competition.category)}
+                    {t(exploringComp.category)}
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground mb-4 leading-relaxed">
-                    {t(competition.description)}
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {t(exploringComp.description)}
                   </p>
 
                   <div className="space-y-2 mb-6">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">{t('competitions.age')}</span>
-                      <span className="font-medium">{t(competition.ages)}</span>
+                      <span className="font-medium">{t(exploringComp.ages)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">{t('competitions.deadline')}</span>
-                      <span className="font-medium">{t(competition.deadline)}</span>
+                      <span className="font-medium">{t(exploringComp.deadline)}</span>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 gap-3">
-                    {competition.id === 'satellite-launch' ? (
-                      <Button asChild variant="outline" className="w-full">
-                        <Link to="/competitions/satellite-launch-2026">{t('competitions.details')}</Link>
-                      </Button>
-                    ) : competition.id === 'space-settlement' ? (
-                      <Button asChild variant="outline" className="w-full">
-                        <Link to="/competitions/space-settlement-2025">{t('competitions.details')}</Link>
-                      </Button>
-                    ) : competition.id === 'exploring-world-of-science' ? (
-                      <Button asChild variant="outline" className="w-full">
-                        <Link to="/competitions/exploring-world-of-science">{t('competitions.details')}</Link>
-                      </Button>
-                    ) : competition.id === 'rocket-science' ? (
-                      <Button asChild variant="outline" className="w-full">
-                        <Link to="/competitions/rocket-science-2026">{t('competitions.details')}</Link>
-                      </Button>
-                    ) : competition.id === 'ai-challenge' ? (
-                      <Button asChild variant="outline" className="w-full">
-                        <Link to="/competitions/space-ai-2026">{t('competitions.details')}</Link>
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="outline"
-                        className="w-full"
-                        onClick={() => toast(t('competitions.toastSoonTitle', { defaultValue: "Скоро выйдет информация" }), { description: t('competitions.toastSoonDesc', { defaultValue: "Будьте в курсе событий" }) })}
-                      >
-                        {t('competitions.details')}
-                      </Button>
-                    )}
-                    {(competition.id === 'space-settlement' || competition.id === 'satellite-launch' || competition.id === 'ai-challenge' || competition.id === 'exploring-world-of-science' || competition.id === 'rocket-science' || competition.status === 'Регистрация') && (
-                      <Button asChild className="w-full btn-cosmic">
-                        <Link to={`/enroll/${competition.id}`}>{t('competitions.participate')}</Link>
-                      </Button>
-                    )}
+                  {/* Sub-competitions Grid */}
+                  <div className="grid md:grid-cols-3 gap-4 mb-6">
+                    {subCompetitions.map((subComp) => {
+                      if (!subComp) return null;
+                      const SubIcon = subComp.icon;
+                      return (
+                        <Card key={subComp.id} className="border border-primary/20 hover:border-primary/40 transition-all">
+                          <CardHeader className="p-4">
+                            <div className="flex items-center gap-2 mb-2">
+                              <SubIcon className="h-5 w-5 text-primary" />
+                              <Badge className={`${getStatusColor(t(subComp.status))} text-white text-xs`}>
+                                {t(subComp.status)}
+                              </Badge>
+                            </div>
+                            <CardTitle className="text-sm">
+                              {t(subComp.title)}
+                            </CardTitle>
+                            <CardDescription className="text-xs">
+                              {t(subComp.category)}
+                            </CardDescription>
+                          </CardHeader>
+                          <CardContent className="p-4 pt-0">
+                            <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
+                              {t(subComp.description)}
+                            </p>
+                            <div className="space-y-1 mb-3 text-xs">
+                              <div className="flex justify-between">
+                                <span className="text-muted-foreground">{t('competitions.age')}</span>
+                                <span className="font-medium">{t(subComp.ages)}</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span className="text-muted-foreground">{t('competitions.deadline')}</span>
+                                <span className="font-medium">{t(subComp.deadline)}</span>
+                              </div>
+                            </div>
+                            <div className="space-y-2">
+                              {subComp.id === 'satellite-launch' ? (
+                                <Button asChild variant="outline" size="sm" className="w-full text-xs">
+                                  <Link to="/competitions/satellite-launch-2026">{t('competitions.details')}</Link>
+                                </Button>
+                              ) : subComp.id === 'ai-challenge' ? (
+                                <Button asChild variant="outline" size="sm" className="w-full text-xs">
+                                  <Link to="/competitions/space-ai-2026">{t('competitions.details')}</Link>
+                                </Button>
+                              ) : subComp.id === 'rocket-science' ? (
+                                <Button asChild variant="outline" size="sm" className="w-full text-xs">
+                                  <Link to="/competitions/rocket-science-2026">{t('competitions.details')}</Link>
+                                </Button>
+                              ) : null}
+                              <Button asChild size="sm" className="w-full btn-cosmic text-xs">
+                                <Link to={`/enroll/${subComp.id}`}>{t('competitions.participate')}</Link>
+                              </Button>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      );
+                    })}
+                  </div>
+
+                  {/* Main competition buttons */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button asChild variant="outline" className="w-full">
+                      <Link to="/competitions/exploring-world-of-science">{t('competitions.details')}</Link>
+                    </Button>
+                    <Button asChild className="w-full btn-cosmic">
+                      <Link to={`/enroll/${exploringComp.id}`}>{t('competitions.participate')}</Link>
+                    </Button>
                   </div>
                 </CardContent>
               </Card>
             );
-          })}
+          })()}
+
+          {/* Regular Competitions Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {competitions
+              .filter(c => !['exploring-world-of-science', 'satellite-launch', 'ai-challenge', 'rocket-science'].includes(c.id))
+              .map((competition) => {
+                const Icon = competition.icon;
+                return (
+                  <Card key={competition.id} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
+                    <CardHeader>
+                      <div className="flex items-center justify-between mb-4">
+                        <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
+                        <Badge className={`${getStatusColor(t(competition.status))} text-white`}>
+                          {t(competition.status)}
+                        </Badge>
+                      </div>
+                      <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                        {t(competition.title)}
+                      </CardTitle>
+                      <CardDescription className="text-sm font-medium text-primary/70">
+                        {t(competition.category)}
+                      </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground mb-4 leading-relaxed">
+                        {t(competition.description)}
+                      </p>
+
+                      <div className="space-y-2 mb-6">
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">{t('competitions.age')}</span>
+                          <span className="font-medium">{t(competition.ages)}</span>
+                        </div>
+                        <div className="flex justify-between text-sm">
+                          <span className="text-muted-foreground">{t('competitions.deadline')}</span>
+                          <span className="font-medium">{t(competition.deadline)}</span>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 gap-3">
+                        {competition.id === 'space-settlement' ? (
+                          <Button asChild variant="outline" className="w-full">
+                            <Link to="/competitions/space-settlement-2025">{t('competitions.details')}</Link>
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="outline"
+                            className="w-full"
+                            onClick={() => toast(t('competitions.toastSoonTitle', { defaultValue: "Скоро выйдет информация" }), { description: t('competitions.toastSoonDesc', { defaultValue: "Будьте в курсе событий" }) })}
+                          >
+                            {t('competitions.details')}
+                          </Button>
+                        )}
+                        {(competition.id === 'space-settlement' || competition.status === 'Регистрация') && (
+                          <Button asChild className="w-full btn-cosmic">
+                            <Link to={`/enroll/${competition.id}`}>{t('competitions.participate')}</Link>
+                          </Button>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                );
+              })}
+          </div>
         </div>
 
         {/* Archive Section */}
