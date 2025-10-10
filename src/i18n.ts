@@ -943,7 +943,8 @@ const resources = {
         alreadyRegisteredDesc: 'Вы можете просмотреть свою заявку в личном кабинете или изменить её.',
         submissionError: 'Ошибка при отправке заявки',
         submissionSuccess: 'Заявка успешно отправлена!',
-        submissionSuccessDesc: 'Мы свяжемся с вами в ближайшее время.'
+        submissionSuccessDesc: 'Мы свяжемся с вами в ближайшее время.',
+        additionalInfo: 'Дополнительная информация'
       },
       ews: {
         seo: {
@@ -2150,7 +2151,8 @@ const resources = {
         alreadyRegisteredDesc: 'You can view your application in your personal account or edit it.',
         submissionError: 'Error submitting application',
         submissionSuccess: 'Application submitted successfully!',
-        submissionSuccessDesc: 'We will contact you soon.'
+        submissionSuccessDesc: 'We will contact you soon.',
+        additionalInfo: 'Additional Information'
       }
     }
   },
@@ -2971,7 +2973,8 @@ const resources = {
         alreadyRegisteredDesc: 'Өтінімді жеке кабинетте көре аласыз немесе өзгерте аласыз.',
         submissionError: 'Өтінім жіберу қатесі',
         submissionSuccess: 'Өтінім сәтті жіберілді!',
-        submissionSuccessDesc: 'Біз сізбен жақын арада байланысамыз.'
+        submissionSuccessDesc: 'Біз сізбен жақын арада байланысамыз.',
+        additionalInfo: 'Қосымша ақпарат'
       },
       ews: {
         seo: {

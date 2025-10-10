@@ -497,59 +497,59 @@ export default function EnrollSpaceSettlementPage() {
                         <h4 className="font-medium">{t('spaceSettlement.participant2')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label>ФИО</Label>
+                            <Label>{t('spaceSettlement.fullName')}</Label>
                             <Input
                               value={participant1FullName}
                               onChange={(e) => setParticipant1FullName(e.target.value)}
-                              placeholder="Иванов Иван Иванович"
+                              placeholder={t('spaceSettlement.fullNamePlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>ИИН</Label>
+                            <Label>{t('spaceSettlement.iin')}</Label>
                             <Input
                               value={participant1Iin}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant1Iin(digitsOnly);
                               }}
-                              placeholder="000000000000"
+                              placeholder={t('spaceSettlement.iinPlaceholder')}
                               maxLength={12}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Телефон *</Label>
+                            <Label>{t('spaceSettlement.phone')} *</Label>
                             <Input
                               value={participant1Phone}
                               onChange={(e) => handlePhoneChange(e.target.value, setParticipant1Phone)}
-                              placeholder="+7 777 777 77 77"
+                              placeholder={t('spaceSettlement.phonePlaceholder')}
                               required={teamMemberCount >= 2}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Школа</Label>
+                            <Label>{t('spaceSettlement.school')}</Label>
                             <Input
                               value={participant1School}
                               onChange={(e) => setParticipant1School(e.target.value)}
-                              placeholder="Номер школы или название"
+                              placeholder={t('spaceSettlement.schoolPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Город</Label>
+                            <Label>{t('spaceSettlement.city')}</Label>
                             <Input
                               value={participant1City}
                               onChange={(e) => setParticipant1City(e.target.value)}
-                              placeholder="Алматы"
+                              placeholder={t('spaceSettlement.cityPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Класс</Label>
+                            <Label>{t('spaceSettlement.grade')}</Label>
                             <Input
                               value={participant1Grade}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant1Grade(digitsOnly);
                               }}
-                              placeholder="9"
+                              placeholder={t('spaceSettlement.gradePlaceholder')}
                             />
                           </div>
                         </div>
@@ -562,59 +562,59 @@ export default function EnrollSpaceSettlementPage() {
                         <h4 className="font-medium">{t('spaceSettlement.participant3')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label>ФИО</Label>
+                            <Label>{t('spaceSettlement.fullName')}</Label>
                             <Input
                               value={participant2FullName}
                               onChange={(e) => setParticipant2FullName(e.target.value)}
-                              placeholder="Иванов Иван Иванович"
+                              placeholder={t('spaceSettlement.fullNamePlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>ИИН</Label>
+                            <Label>{t('spaceSettlement.iin')}</Label>
                             <Input
                               value={participant2Iin}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant2Iin(digitsOnly);
                               }}
-                              placeholder="000000000000"
+                              placeholder={t('spaceSettlement.iinPlaceholder')}
                               maxLength={12}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Телефон *</Label>
+                            <Label>{t('spaceSettlement.phone')} *</Label>
                             <Input
                               value={participant2Phone}
                               onChange={(e) => handlePhoneChange(e.target.value, setParticipant2Phone)}
-                              placeholder="+7 777 777 77 77"
+                              placeholder={t('spaceSettlement.phonePlaceholder')}
                               required={teamMemberCount >= 3}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Школа</Label>
+                            <Label>{t('spaceSettlement.school')}</Label>
                             <Input
                               value={participant2School}
                               onChange={(e) => setParticipant2School(e.target.value)}
-                              placeholder="Номер школы или название"
+                              placeholder={t('spaceSettlement.schoolPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Город</Label>
+                            <Label>{t('spaceSettlement.city')}</Label>
                             <Input
                               value={participant2City}
                               onChange={(e) => setParticipant2City(e.target.value)}
-                              placeholder="Алматы"
+                              placeholder={t('spaceSettlement.cityPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Класс</Label>
+                            <Label>{t('spaceSettlement.grade')}</Label>
                             <Input
                               value={participant2Grade}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant2Grade(digitsOnly);
                               }}
-                              placeholder="9"
+                              placeholder={t('spaceSettlement.gradePlaceholder')}
                             />
                           </div>
                         </div>
@@ -627,59 +627,59 @@ export default function EnrollSpaceSettlementPage() {
                         <h4 className="font-medium">{t('spaceSettlement.participant4')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label>ФИО</Label>
+                            <Label>{t('spaceSettlement.fullName')}</Label>
                             <Input
                               value={participant3FullName}
                               onChange={(e) => setParticipant3FullName(e.target.value)}
-                              placeholder="Иванов Иван Иванович"
+                              placeholder={t('spaceSettlement.fullNamePlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>ИИН</Label>
+                            <Label>{t('spaceSettlement.iin')}</Label>
                             <Input
                               value={participant3Iin}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant3Iin(digitsOnly);
                               }}
-                              placeholder="000000000000"
+                              placeholder={t('spaceSettlement.iinPlaceholder')}
                               maxLength={12}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Телефон *</Label>
+                            <Label>{t('spaceSettlement.phone')} *</Label>
                             <Input
                               value={participant3Phone}
                               onChange={(e) => handlePhoneChange(e.target.value, setParticipant3Phone)}
-                              placeholder="+7 777 777 77 77"
+                              placeholder={t('spaceSettlement.phonePlaceholder')}
                               required={teamMemberCount >= 4}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Школа</Label>
+                            <Label>{t('spaceSettlement.school')}</Label>
                             <Input
                               value={participant3School}
                               onChange={(e) => setParticipant3School(e.target.value)}
-                              placeholder="Номер школы или название"
+                              placeholder={t('spaceSettlement.schoolPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Город</Label>
+                            <Label>{t('spaceSettlement.city')}</Label>
                             <Input
                               value={participant3City}
                               onChange={(e) => setParticipant3City(e.target.value)}
-                              placeholder="Алматы"
+                              placeholder={t('spaceSettlement.cityPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Класс</Label>
+                            <Label>{t('spaceSettlement.grade')}</Label>
                             <Input
                               value={participant3Grade}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant3Grade(digitsOnly);
                               }}
-                              placeholder="9"
+                              placeholder={t('spaceSettlement.gradePlaceholder')}
                             />
                           </div>
                         </div>
@@ -692,58 +692,58 @@ export default function EnrollSpaceSettlementPage() {
                         <h4 className="font-medium">{t('spaceSettlement.participant5')}</h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           <div className="space-y-2">
-                            <Label>ФИО</Label>
+                            <Label>{t('spaceSettlement.fullName')}</Label>
                             <Input
                               value={participant4FullName}
                               onChange={(e) => setParticipant4FullName(e.target.value)}
-                              placeholder="Иванов Иван Иванович"
+                              placeholder={t('spaceSettlement.fullNamePlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>ИИН</Label>
+                            <Label>{t('spaceSettlement.iin')}</Label>
                             <Input
                               value={participant4Iin}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant4Iin(digitsOnly);
                               }}
-                              placeholder="000000000000"
+                              placeholder={t('spaceSettlement.iinPlaceholder')}
                               maxLength={12}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Телефон</Label>
+                            <Label>{t('spaceSettlement.phone')}</Label>
                             <Input
                               value={participant4Phone}
                               onChange={(e) => handlePhoneChange(e.target.value, setParticipant4Phone)}
-                              placeholder="+7 777 777 77 77"
+                              placeholder={t('spaceSettlement.phonePlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Школа</Label>
+                            <Label>{t('spaceSettlement.school')}</Label>
                             <Input
                               value={participant4School}
                               onChange={(e) => setParticipant4School(e.target.value)}
-                              placeholder="Номер школы или название"
+                              placeholder={t('spaceSettlement.schoolPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Город</Label>
+                            <Label>{t('spaceSettlement.city')}</Label>
                             <Input
                               value={participant4City}
                               onChange={(e) => setParticipant4City(e.target.value)}
-                              placeholder="Алматы"
+                              placeholder={t('spaceSettlement.cityPlaceholder')}
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label>Класс</Label>
+                            <Label>{t('spaceSettlement.grade')}</Label>
                             <Input
                               value={participant4Grade}
                               onChange={(e) => {
                                 const digitsOnly = e.target.value.replace(/\D/g, '');
                                 setParticipant4Grade(digitsOnly);
                               }}
-                              placeholder="9"
+                              placeholder={t('spaceSettlement.gradePlaceholder')}
                             />
                           </div>
                         </div>
@@ -754,7 +754,7 @@ export default function EnrollSpaceSettlementPage() {
 
                 {/* Additional Information */}
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold mt-6">Дополнительная информация</h3>
+                  <h3 className="text-lg font-semibold mt-6">{t('spaceSettlement.additionalInfo')}</h3>
                   
                   <div className="space-y-2">
                     <Label htmlFor="source">{t('spaceSettlement.source')}</Label>
