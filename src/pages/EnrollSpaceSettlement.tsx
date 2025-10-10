@@ -476,421 +476,338 @@ export default function EnrollSpaceSettlementPage() {
                     </div>
                   </div>
                 </div>
-                
-                <div>
-                  <Label htmlFor="captainFullName">ФИО капитана *</Label>
-                  <Input
-                    id="captainFullName"
-                    value={captainFullName}
-                    onChange={(e) => setCaptainFullName(e.target.value)}
-                    required
-                  />
-                </div>
 
-                <div>
-                  <Label htmlFor="captainIin">ИИН капитана *</Label>
-                  <Input
-                    id="captainIin"
-                    value={captainIin}
-                    onChange={(e) => setCaptainIin(e.target.value.replace(/\D/g, '').slice(0, 12))}
-                    maxLength={12}
-                    required
-                  />
-                </div>
+                {/* Additional Participants */}
+                {teamMemberCount && teamMemberCount > 1 && (
+                  <div className="space-y-4">
+                    <h3 className="text-lg font-semibold mt-6">Дополнительные участники (необязательно)</h3>
 
-                <div>
-                  <Label htmlFor="captainPhone">Телефон капитана *</Label>
-                  <Input
-                    id="captainPhone"
-                    value={captainPhone}
-                    onChange={(e) => handlePhoneChange(e.target.value, setCaptainPhone)}
-                    required
-                  />
-                </div>
+                    {/* Participant 2 */}
+                    {teamMemberCount >= 2 && (
+                      <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                        <h4 className="font-medium">Участник 2</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label>ФИО</Label>
+                            <Input
+                              value={participant1FullName}
+                              onChange={(e) => setParticipant1FullName(e.target.value)}
+                              placeholder="Иванов Иван Иванович"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>ИИН</Label>
+                            <Input
+                              value={participant1Iin}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant1Iin(digitsOnly);
+                              }}
+                              placeholder="000000000000"
+                              maxLength={12}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Телефон *</Label>
+                            <Input
+                              value={participant1Phone}
+                              onChange={(e) => handlePhoneChange(e.target.value, setParticipant1Phone)}
+                              placeholder="+7 777 777 77 77"
+                              required={teamMemberCount >= 2}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Школа</Label>
+                            <Input
+                              value={participant1School}
+                              onChange={(e) => setParticipant1School(e.target.value)}
+                              placeholder="Номер школы или название"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Город</Label>
+                            <Input
+                              value={participant1City}
+                              onChange={(e) => setParticipant1City(e.target.value)}
+                              placeholder="Алматы"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Класс</Label>
+                            <Input
+                              value={participant1Grade}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant1Grade(digitsOnly);
+                              }}
+                              placeholder="9"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
-                <div>
-                  <Label htmlFor="captainSchool">Школа капитана *</Label>
-                  <Input
-                    id="captainSchool"
-                    value={captainSchool}
-                    onChange={(e) => setCaptainSchool(e.target.value)}
-                    required
-                  />
-                </div>
+                    {/* Participant 3 */}
+                    {teamMemberCount >= 3 && (
+                      <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                        <h4 className="font-medium">Участник 3</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label>ФИО</Label>
+                            <Input
+                              value={participant2FullName}
+                              onChange={(e) => setParticipant2FullName(e.target.value)}
+                              placeholder="Иванов Иван Иванович"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>ИИН</Label>
+                            <Input
+                              value={participant2Iin}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant2Iin(digitsOnly);
+                              }}
+                              placeholder="000000000000"
+                              maxLength={12}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Телефон *</Label>
+                            <Input
+                              value={participant2Phone}
+                              onChange={(e) => handlePhoneChange(e.target.value, setParticipant2Phone)}
+                              placeholder="+7 777 777 77 77"
+                              required={teamMemberCount >= 3}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Школа</Label>
+                            <Input
+                              value={participant2School}
+                              onChange={(e) => setParticipant2School(e.target.value)}
+                              placeholder="Номер школы или название"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Город</Label>
+                            <Input
+                              value={participant2City}
+                              onChange={(e) => setParticipant2City(e.target.value)}
+                              placeholder="Алматы"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Класс</Label>
+                            <Input
+                              value={participant2Grade}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant2Grade(digitsOnly);
+                              }}
+                              placeholder="9"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
-                <div>
-                  <Label htmlFor="captainCity">Город капитана *</Label>
-                  <Input
-                    id="captainCity"
-                    value={captainCity}
-                    onChange={(e) => setCaptainCity(e.target.value)}
-                    required
-                  />
-                </div>
+                    {/* Participant 4 */}
+                    {teamMemberCount >= 4 && (
+                      <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                        <h4 className="font-medium">Участник 4</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label>ФИО</Label>
+                            <Input
+                              value={participant3FullName}
+                              onChange={(e) => setParticipant3FullName(e.target.value)}
+                              placeholder="Иванов Иван Иванович"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>ИИН</Label>
+                            <Input
+                              value={participant3Iin}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant3Iin(digitsOnly);
+                              }}
+                              placeholder="000000000000"
+                              maxLength={12}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Телефон *</Label>
+                            <Input
+                              value={participant3Phone}
+                              onChange={(e) => handlePhoneChange(e.target.value, setParticipant3Phone)}
+                              placeholder="+7 777 777 77 77"
+                              required={teamMemberCount >= 4}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Школа</Label>
+                            <Input
+                              value={participant3School}
+                              onChange={(e) => setParticipant3School(e.target.value)}
+                              placeholder="Номер школы или название"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Город</Label>
+                            <Input
+                              value={participant3City}
+                              onChange={(e) => setParticipant3City(e.target.value)}
+                              placeholder="Алматы"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Класс</Label>
+                            <Input
+                              value={participant3Grade}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant3Grade(digitsOnly);
+                              }}
+                              placeholder="9"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
-                <div>
-                  <Label htmlFor="captainGrade">Класс капитана *</Label>
-                  <Input
-                    id="captainGrade"
-                    value={captainGrade}
-                    onChange={(e) => setCaptainGrade(e.target.value)}
-                    required
-                  />
-                </div>
+                    {/* Participant 5 */}
+                    {teamMemberCount >= 5 && (
+                      <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
+                        <h4 className="font-medium">Участник 5</h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="space-y-2">
+                            <Label>ФИО</Label>
+                            <Input
+                              value={participant4FullName}
+                              onChange={(e) => setParticipant4FullName(e.target.value)}
+                              placeholder="Иванов Иван Иванович"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>ИИН</Label>
+                            <Input
+                              value={participant4Iin}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant4Iin(digitsOnly);
+                              }}
+                              placeholder="000000000000"
+                              maxLength={12}
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Телефон</Label>
+                            <Input
+                              value={participant4Phone}
+                              onChange={(e) => handlePhoneChange(e.target.value, setParticipant4Phone)}
+                              placeholder="+7 777 777 77 77"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Школа</Label>
+                            <Input
+                              value={participant4School}
+                              onChange={(e) => setParticipant4School(e.target.value)}
+                              placeholder="Номер школы или название"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Город</Label>
+                            <Input
+                              value={participant4City}
+                              onChange={(e) => setParticipant4City(e.target.value)}
+                              placeholder="Алматы"
+                            />
+                          </div>
+                          <div className="space-y-2">
+                            <Label>Класс</Label>
+                            <Input
+                              value={participant4Grade}
+                              onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(/\D/g, '');
+                                setParticipant4Grade(digitsOnly);
+                              }}
+                              placeholder="9"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
 
-                <div>
-                  <Label htmlFor="captainEmail">Email капитана *</Label>
-                  <Input
-                    id="captainEmail"
-                    type="email"
-                    value={captainEmail}
-                    onChange={(e) => setCaptainEmail(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div>
-                  <Label htmlFor="captainTelegram">Telegram капитана</Label>
-                  <Input
-                    id="captainTelegram"
-                    value={captainTelegram}
-                    onChange={(e) => handleTelegramChange(e.target.value, setCaptainTelegram)}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Participant 1 */}
-            {teamMemberCount && teamMemberCount >= 2 && (
-              <Card>
-                <CardContent className="p-6 space-y-4">
-                  <h2 className="text-xl font-semibold">Участник 1</h2>
+                {/* Additional Information */}
+                <div className="space-y-4">
+                  <h3 className="text-lg font-semibold mt-6">Дополнительная информация</h3>
                   
-                  <div>
-                    <Label htmlFor="participant1FullName">ФИО участника 1 *</Label>
-                    <Input
-                      id="participant1FullName"
-                      value={participant1FullName}
-                      onChange={(e) => setParticipant1FullName(e.target.value)}
-                      required
+                  <div className="space-y-2">
+                    <Label htmlFor="source">Откуда вы узнали о соревновании?</Label>
+                    <Textarea
+                      id="source"
+                      value={source}
+                      onChange={(e) => setSource(e.target.value)}
+                      placeholder="Instagram, друзья, школа и т.д."
+                      rows={2}
                     />
                   </div>
 
-                  <div>
-                    <Label htmlFor="participant1Iin">ИИН участника 1 *</Label>
-                    <Input
-                      id="participant1Iin"
-                      value={participant1Iin}
-                      onChange={(e) => setParticipant1Iin(e.target.value.replace(/\D/g, '').slice(0, 12))}
-                      maxLength={12}
-                      required
+                  <div className="space-y-2">
+                    <Label htmlFor="questions">Есть ли у вас вопросы?</Label>
+                    <Textarea
+                      id="questions"
+                      value={questions}
+                      onChange={(e) => setQuestions(e.target.value)}
+                      placeholder="Задайте ваши вопросы здесь"
+                      rows={3}
                     />
                   </div>
-
-                  <div>
-                    <Label htmlFor="participant1Phone">Телефон участника 1 *</Label>
-                    <Input
-                      id="participant1Phone"
-                      value={participant1Phone}
-                      onChange={(e) => handlePhoneChange(e.target.value, setParticipant1Phone)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant1School">Школа участника 1 *</Label>
-                    <Input
-                      id="participant1School"
-                      value={participant1School}
-                      onChange={(e) => setParticipant1School(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant1City">Город участника 1 *</Label>
-                    <Input
-                      id="participant1City"
-                      value={participant1City}
-                      onChange={(e) => setParticipant1City(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant1Grade">Класс участника 1 *</Label>
-                    <Input
-                      id="participant1Grade"
-                      value={participant1Grade}
-                      onChange={(e) => setParticipant1Grade(e.target.value)}
-                      required
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Participant 2 */}
-            {teamMemberCount && teamMemberCount >= 3 && (
-              <Card>
-                <CardContent className="p-6 space-y-4">
-                  <h2 className="text-xl font-semibold">Участник 2</h2>
-                  
-                  <div>
-                    <Label htmlFor="participant2FullName">ФИО участника 2 *</Label>
-                    <Input
-                      id="participant2FullName"
-                      value={participant2FullName}
-                      onChange={(e) => setParticipant2FullName(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant2Iin">ИИН участника 2 *</Label>
-                    <Input
-                      id="participant2Iin"
-                      value={participant2Iin}
-                      onChange={(e) => setParticipant2Iin(e.target.value.replace(/\D/g, '').slice(0, 12))}
-                      maxLength={12}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant2Phone">Телефон участника 2 *</Label>
-                    <Input
-                      id="participant2Phone"
-                      value={participant2Phone}
-                      onChange={(e) => handlePhoneChange(e.target.value, setParticipant2Phone)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant2School">Школа участника 2 *</Label>
-                    <Input
-                      id="participant2School"
-                      value={participant2School}
-                      onChange={(e) => setParticipant2School(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant2City">Город участника 2 *</Label>
-                    <Input
-                      id="participant2City"
-                      value={participant2City}
-                      onChange={(e) => setParticipant2City(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant2Grade">Класс участника 2 *</Label>
-                    <Input
-                      id="participant2Grade"
-                      value={participant2Grade}
-                      onChange={(e) => setParticipant2Grade(e.target.value)}
-                      required
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Participant 3 */}
-            {teamMemberCount && teamMemberCount >= 4 && (
-              <Card>
-                <CardContent className="p-6 space-y-4">
-                  <h2 className="text-xl font-semibold">Участник 3</h2>
-                  
-                  <div>
-                    <Label htmlFor="participant3FullName">ФИО участника 3 *</Label>
-                    <Input
-                      id="participant3FullName"
-                      value={participant3FullName}
-                      onChange={(e) => setParticipant3FullName(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant3Iin">ИИН участника 3 *</Label>
-                    <Input
-                      id="participant3Iin"
-                      value={participant3Iin}
-                      onChange={(e) => setParticipant3Iin(e.target.value.replace(/\D/g, '').slice(0, 12))}
-                      maxLength={12}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant3Phone">Телефон участника 3 *</Label>
-                    <Input
-                      id="participant3Phone"
-                      value={participant3Phone}
-                      onChange={(e) => handlePhoneChange(e.target.value, setParticipant3Phone)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant3School">Школа участника 3 *</Label>
-                    <Input
-                      id="participant3School"
-                      value={participant3School}
-                      onChange={(e) => setParticipant3School(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant3City">Город участника 3 *</Label>
-                    <Input
-                      id="participant3City"
-                      value={participant3City}
-                      onChange={(e) => setParticipant3City(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant3Grade">Класс участника 3 *</Label>
-                    <Input
-                      id="participant3Grade"
-                      value={participant3Grade}
-                      onChange={(e) => setParticipant3Grade(e.target.value)}
-                      required
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Participant 4 */}
-            {teamMemberCount && teamMemberCount >= 5 && (
-              <Card>
-                <CardContent className="p-6 space-y-4">
-                  <h2 className="text-xl font-semibold">Участник 4</h2>
-                  
-                  <div>
-                    <Label htmlFor="participant4FullName">ФИО участника 4 *</Label>
-                    <Input
-                      id="participant4FullName"
-                      value={participant4FullName}
-                      onChange={(e) => setParticipant4FullName(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant4Iin">ИИН участника 4 *</Label>
-                    <Input
-                      id="participant4Iin"
-                      value={participant4Iin}
-                      onChange={(e) => setParticipant4Iin(e.target.value.replace(/\D/g, '').slice(0, 12))}
-                      maxLength={12}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant4Phone">Телефон участника 4 *</Label>
-                    <Input
-                      id="participant4Phone"
-                      value={participant4Phone}
-                      onChange={(e) => handlePhoneChange(e.target.value, setParticipant4Phone)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant4School">Школа участника 4 *</Label>
-                    <Input
-                      id="participant4School"
-                      value={participant4School}
-                      onChange={(e) => setParticipant4School(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant4City">Город участника 4 *</Label>
-                    <Input
-                      id="participant4City"
-                      value={participant4City}
-                      onChange={(e) => setParticipant4City(e.target.value)}
-                      required
-                    />
-                  </div>
-
-                  <div>
-                    <Label htmlFor="participant4Grade">Класс участника 4 *</Label>
-                    <Input
-                      id="participant4Grade"
-                      value={participant4Grade}
-                      onChange={(e) => setParticipant4Grade(e.target.value)}
-                      required
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            )}
-
-            {/* Additional Info */}
-            <Card>
-              <CardContent className="p-6 space-y-4">
-                <h2 className="text-xl font-semibold">Дополнительная информация</h2>
-                
-                <div>
-                  <Label htmlFor="source">Откуда вы узнали о соревновании?</Label>
-                  <Input
-                    id="source"
-                    value={source}
-                    onChange={(e) => setSource(e.target.value)}
-                  />
                 </div>
 
-                <div>
-                  <Label htmlFor="questions">Вопросы или комментарии</Label>
-                  <Textarea
-                    id="questions"
-                    value={questions}
-                    onChange={(e) => setQuestions(e.target.value)}
-                    rows={4}
-                  />
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Consent */}
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-start gap-3">
+                {/* Consent */}
+                <div className="flex items-start space-x-3 p-4 border border-border rounded-lg bg-muted/50">
                   <Checkbox
                     id="consent"
                     checked={consent}
                     onCheckedChange={(checked) => setConsent(checked as boolean)}
+                    className="mt-1"
+                    required
                   />
                   <Label htmlFor="consent" className="text-sm leading-relaxed cursor-pointer">
-                    Я согласен на обработку персональных данных и подтверждаю правильность введенной информации *
+                    Я согласен(на) с{" "}
+                    <Link to="/terms" className="text-primary underline" target="_blank">
+                      условиями участия
+                    </Link>{" "}
+                    и{" "}
+                    <Link to="/privacy" className="text-primary underline" target="_blank">
+                      политикой конфиденциальности
+                    </Link>
+                    . Я подтверждаю, что вся предоставленная информация является точной и полной.
                   </Label>
+                </div>
+
+                {/* Submit Button */}
+                <div className="flex justify-end gap-4">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => navigate(-1)}
+                    disabled={submitting}
+                  >
+                    Отмена
+                  </Button>
+                  <Button type="submit" disabled={submitting}>
+                    {submitting ? "Отправка..." : "Отправить заявку"}
+                  </Button>
                 </div>
               </CardContent>
             </Card>
-
-            {/* Submit */}
-            <div className="flex gap-4">
-              <Button type="submit" size="lg" disabled={submitting}>
-                {submitting ? "Отправка..." : "Отправить заявку"}
-              </Button>
-              <Button type="button" variant="outline" size="lg" onClick={() => navigate("/competitions")}>
-                Отмена
-              </Button>
-            </div>
           </form>
         </div>
       </main>
