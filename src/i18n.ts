@@ -191,7 +191,7 @@ const resources = {
           title: "Satellite Launch 2026",
           category: "Космическое соревнование",
           description: "Международное соревнование по запуску спутников с возможностью реального запуска проектов",
-          status: "Скоро",
+          status: "Регистрация",
           deadline: "",
           ages: "14-18 лет"
         },
@@ -1419,7 +1419,7 @@ const resources = {
           title: "Satellite Launch 2026",
           category: "Space Competition",
           description: "International satellite launch competition with real launch opportunities",
-          status: "Coming Soon",
+          status: "Registration",
           deadline: "",
           ages: "14-18 years"
         },
@@ -1435,7 +1435,7 @@ const resources = {
           title: "Space AI 2026",
           category: "Artificial Intelligence",
           description: "Create an AI startup for space tasks and research",
-          status: "In Development",
+          status: "Registration",
           deadline: "January 19, 2026",
           ages: "14-18 years"
         },
@@ -2555,7 +2555,7 @@ const resources = {
           title: "Satellite Launch 2026",
           category: "Ғарыш жарысы",
           description: "Нақты ұшыру мүмкіндіктері бар серіктерді ұшыру бойынша халықаралық жарыс",
-          status: "Жақында",
+          status: "Тіркелу",
           deadline: "",
           ages: "14-18 жас"
         },
@@ -2571,7 +2571,7 @@ const resources = {
           title: "Space AI 2026",
           category: "Жасанды интеллект",
           description: "Ғарыштық тапсырмалар мен зерттеулер үшін AI стартап жасаңыз",
-          status: "Әзірленуде",
+          status: "Тіркелу",
           deadline: "19 қаңтар 2026",
           ages: "14-18 жас"
         },
