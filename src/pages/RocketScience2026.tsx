@@ -394,9 +394,9 @@ const RocketScience2026 = () => {
                   <table className="w-full table-auto text-left">
                     <thead>
                       <tr className="text-white/70">
-                        <th className="py-2 px-3 font-semibold">Критерий</th>
-                        <th className="py-2 px-3 font-semibold">Описание</th>
-                        <th className="py-2 px-3 font-semibold">Баллы</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.criterion')}</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.description')}</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.points')}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -418,9 +418,9 @@ const RocketScience2026 = () => {
                   <table className="w-full table-auto text-left">
                     <thead>
                       <tr className="text-white/70">
-                        <th className="py-2 px-3 font-semibold">Критерий</th>
-                        <th className="py-2 px-3 font-semibold">Описание</th>
-                        <th className="py-2 px-3 font-semibold">Баллы</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.criterion')}</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.description')}</th>
+                        <th className="py-2 px-3 font-semibold">{t('rocketScience2026.criteria.points')}</th>
                       </tr>
                     </thead>
                     <tbody>
