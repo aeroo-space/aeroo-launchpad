@@ -206,7 +206,7 @@ const resources = {
         aiChallenge: {
           title: "Space AI 2026",
           category: "Искусственный интеллект",
-          description: "Разработайте AI-решения для космических задач и исследований",
+          description: "Создай AI стартап для космических задач и исследований",
           status: "Регистрация",
           deadline: "19 января 2026",
           ages: "14-18 лет"
@@ -1434,7 +1434,7 @@ const resources = {
         aiChallenge: {
           title: "Space AI 2026",
           category: "Artificial Intelligence",
-          description: "Develop AI solutions for space tasks and research",
+          description: "Create an AI startup for space tasks and research",
           status: "In Development",
           deadline: "January 19, 2026",
           ages: "14-18 years"
@@ -2570,7 +2570,7 @@ const resources = {
         aiChallenge: {
           title: "Space AI 2026",
           category: "Жасанды интеллект",
-          description: "Ғарыштық тапсырмалар мен зерттеулер үшін AI шешімдерін әзірлеңіз",
+          description: "Ғарыштық тапсырмалар мен зерттеулер үшін AI стартап жасаңыз",
           status: "Әзірленуде",
           deadline: "19 қаңтар 2026",
           ages: "14-18 жас"
