@@ -126,7 +126,7 @@ export default function CompetitionSpaceSettlement2025() {
 
   const applyBtn = (
     <Button size="lg" variant="primary" asChild aria-label={t('spaceSettlement2025.hero.participate')}>
-      <Link to="/enroll/space-settlement">{t('spaceSettlement2025.hero.participate')}</Link>
+      <Link to="/enroll-space-settlement">{t('spaceSettlement2025.hero.participate')}</Link>
     </Button>
   );
 

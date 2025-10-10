@@ -25,6 +25,7 @@ import ExploringWorldOfScience from "./pages/ExploringWorldOfScience";
 import RocketScience2026 from "./pages/RocketScience2026";
 import SpaceAI2026 from "./pages/SpaceAI2026";
 import EnrollPage from "./pages/Enroll";
+import EnrollSpaceSettlement from "./pages/EnrollSpaceSettlement";
 import ProductRequestsPage from "./pages/ProductRequests";
 import RocketScienceKit from "./pages/RocketScienceKit";
 import { AuthProvider } from "@/contexts/AuthProvider";
@@ -71,6 +72,11 @@ const App = () => (
               <Route path="/enroll/:competitionId" element={
                 <ProtectedRoute>
                   <EnrollPage />
+                </ProtectedRoute>
+              } />
+              <Route path="/enroll-space-settlement" element={
+                <ProtectedRoute>
+                  <EnrollSpaceSettlement />
                 </ProtectedRoute>
               } />
               <Route path="/product-requests" element={
