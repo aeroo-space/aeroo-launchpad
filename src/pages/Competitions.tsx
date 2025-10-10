@@ -218,10 +218,15 @@ const Competitions = () => {
               <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
-                    <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
-                    <Badge className={`${getStatusColor(t(exploringComp.status))} text-white`}>
-                      {t(exploringComp.status)}
-                    </Badge>
+                    <div className="flex items-center gap-3">
+                      <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
+                      <Badge className={`${getStatusColor(t(exploringComp.status))} text-white`}>
+                        {t(exploringComp.status)}
+                      </Badge>
+                    </div>
+                    <Button asChild variant="outline" size="sm">
+                      <Link to="/competitions/exploring-world-of-science">{t('competitions.details')}</Link>
+                    </Button>
                   </div>
                   <CardTitle className="text-2xl group-hover:text-primary transition-colors">
                     {t(exploringComp.title)}
@@ -308,12 +313,6 @@ const Competitions = () => {
                     })}
                   </div>
 
-                  {/* Main competition buttons */}
-                  <div className="flex justify-end">
-                    <Button asChild className="btn-cosmic">
-                      <Link to="/competitions/exploring-world-of-science">{t('competitions.exploreScience', { defaultValue: 'Открываем Мир Науки' })}</Link>
-                    </Button>
-                  </div>
                 </CardContent>
               </Card>
             );
