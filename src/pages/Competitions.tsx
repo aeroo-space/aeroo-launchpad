@@ -309,12 +309,9 @@ const Competitions = () => {
                   </div>
 
                   {/* Main competition buttons */}
-                  <div className="flex gap-3 justify-center">
-                    <Button asChild variant="outline" className="w-40">
-                      <Link to="/competitions/exploring-world-of-science">{t('competitions.details')}</Link>
-                    </Button>
-                    <Button asChild className="w-40 btn-cosmic">
-                      <Link to={`/enroll/${exploringComp.id}`}>{t('competitions.participate')}</Link>
+                  <div className="flex justify-end">
+                    <Button asChild className="btn-cosmic">
+                      <Link to="/competitions/exploring-world-of-science">{t('competitions.exploreScience', { defaultValue: 'Открываем Мир Науки' })}</Link>
                     </Button>
                   </div>
                 </CardContent>
