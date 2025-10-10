@@ -272,7 +272,10 @@ const Competitions = () => {
                               {t(subComp.title)}
                             </CardTitle>
                             <CardDescription className="text-xs">
-                              {t(subComp.category)}
+                              {subComp.id === 'satellite-launch' 
+                                ? t('competitions.satelliteLaunchSubtitle', { defaultValue: 'Запусти спутник на 20 000 метров' })
+                                : t(subComp.category)
+                              }
                             </CardDescription>
                           </CardHeader>
                           <CardContent className="p-4 pt-0">
