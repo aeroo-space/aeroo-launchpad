@@ -322,7 +322,7 @@ const Competitions = () => {
           {/* Regular Competitions Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {competitions
-              .filter(c => !['exploring-world-of-science', 'satellite-launch', 'ai-challenge', 'rocket-science'].includes(c.id))
+              .filter(c => !['space-settlement', 'exploring-world-of-science', 'satellite-launch', 'ai-challenge', 'rocket-science'].includes(c.id))
               .map((competition) => {
                 const Icon = competition.icon;
                 return (
