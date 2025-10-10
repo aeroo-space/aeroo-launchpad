@@ -281,7 +281,16 @@ export default function EnrollSpaceSettlementPage() {
         .select()
         .single();
 
-      if (error) throw error;
+      if (error) {
+        if (error.code === '23505') {
+          toast.error("Вы уже зарегистрированы на это соревнование", {
+            description: "Вы можете просмотреть свою заявку в личном кабинете или изменить её."
+          });
+          navigate("/dashboard");
+          return;
+        }
+        throw error;
+      }
 
       toast.success("Заявка успешно отправлена!", {
         description: "Мы свяжемся с вами в ближайшее время."
