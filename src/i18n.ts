@@ -946,6 +946,70 @@ const resources = {
         submissionSuccessDesc: 'Мы свяжемся с вами в ближайшее время.',
         additionalInfo: 'Дополнительная информация'
       },
+      dashboardExtra: {
+        labels: {
+          team: 'Команда',
+          email: 'Email',
+          telegram: 'Telegram',
+          captain: 'Капитан',
+          participant2: 'Участник 2',
+          participant3: 'Участник 3',
+          participant4: 'Участник 4',
+          participant5: 'Участник 5',
+          mentor: 'Ментор'
+        },
+        actions: {
+          edit: 'Редактировать',
+          delete: 'Удалить',
+          cancel: 'Отмена',
+          confirmDelete: 'Удалить'
+        },
+        confirm: {
+          title: 'Удалить регистрацию?',
+          desc: 'Это действие необратимо. Ваша запись в соревнование будет удалена.'
+        },
+        toasts: {
+          deleteSuccess: 'Регистрация удалена',
+          deleteError: 'Не удалось удалить',
+          requestDeleteSuccess: 'Заявка удалена',
+          requestDeleteError: 'Не удалось удалить заявку'
+        },
+        admin: {
+          enrollmentsTitle: 'Участники Space Settlement Competition 2025',
+          downloadList: 'Скачать список',
+          totalTeams: 'Всего зарегистрировано команд',
+          noParticipants: 'Участников пока нет',
+          teamNoName: 'Команда без названия',
+          activeTeam: 'Активная команда',
+          captain: 'Капитан',
+          league: 'Лига',
+          contactInfo: 'Контактная информация',
+          phone: 'Телефон',
+          age: 'Возраст',
+          years: 'лет',
+          teamComposition: 'Состав команды',
+          noParticipantsSpecified: 'Участники не указаны',
+          additionalInfo: 'Дополнительная информация',
+          city: 'Город',
+          studyPlace: 'Учебное заведение',
+          mentor: 'Наставник',
+          mentorPhone: 'Телефон наставника',
+          source: 'Источник',
+          notSpecified: 'Не указан',
+          teamQuestions: 'Вопросы от команды',
+          productRequests: 'Заявки на связь',
+          noRequests: 'Заявок пока нет',
+          organization: 'Организация',
+          pending: 'Ожидает',
+          completed: 'Завершено',
+          product: 'Продукт',
+          partnership: 'Партнерство',
+          comment: 'Комментарий',
+          deleteRequest: 'Удалить заявку',
+          deleteRequestTitle: 'Удалить заявку?',
+          deleteRequestDesc: 'Это действие необратимо. Заявка будет полностью удалена из системы.'
+        }
+      },
       ews: {
         seo: {
           title: 'Открываем Мир Науки — Международные соревнования по космическим исследованиям',
@@ -2153,6 +2217,70 @@ const resources = {
         submissionSuccess: 'Application submitted successfully!',
         submissionSuccessDesc: 'We will contact you soon.',
         additionalInfo: 'Additional Information'
+      },
+      dashboardExtra: {
+        labels: {
+          team: 'Team',
+          email: 'Email',
+          telegram: 'Telegram',
+          captain: 'Captain',
+          participant2: 'Participant 2',
+          participant3: 'Participant 3',
+          participant4: 'Participant 4',
+          participant5: 'Participant 5',
+          mentor: 'Mentor'
+        },
+        actions: {
+          edit: 'Edit',
+          delete: 'Delete',
+          cancel: 'Cancel',
+          confirmDelete: 'Delete'
+        },
+        confirm: {
+          title: 'Delete registration?',
+          desc: 'This action cannot be undone. Your competition entry will be deleted.'
+        },
+        toasts: {
+          deleteSuccess: 'Registration deleted',
+          deleteError: 'Failed to delete',
+          requestDeleteSuccess: 'Request deleted',
+          requestDeleteError: 'Failed to delete request'
+        },
+        admin: {
+          enrollmentsTitle: 'Space Settlement Competition 2025 Participants',
+          downloadList: 'Download list',
+          totalTeams: 'Total registered teams',
+          noParticipants: 'No participants yet',
+          teamNoName: 'Team without name',
+          activeTeam: 'Active team',
+          captain: 'Captain',
+          league: 'League',
+          contactInfo: 'Contact Information',
+          phone: 'Phone',
+          age: 'Age',
+          years: 'years',
+          teamComposition: 'Team Composition',
+          noParticipantsSpecified: 'Participants not specified',
+          additionalInfo: 'Additional Information',
+          city: 'City',
+          studyPlace: 'Educational Institution',
+          mentor: 'Mentor',
+          mentorPhone: 'Mentor phone',
+          source: 'Source',
+          notSpecified: 'Not specified',
+          teamQuestions: 'Team questions',
+          productRequests: 'Contact Requests',
+          noRequests: 'No requests yet',
+          organization: 'Organization',
+          pending: 'Pending',
+          completed: 'Completed',
+          product: 'Product',
+          partnership: 'Partnership',
+          comment: 'Comment',
+          deleteRequest: 'Delete request',
+          deleteRequestTitle: 'Delete request?',
+          deleteRequestDesc: 'This action cannot be undone. The request will be completely deleted from the system.'
+        }
       }
     }
   },
@@ -2975,6 +3103,70 @@ const resources = {
         submissionSuccess: 'Өтінім сәтті жіберілді!',
         submissionSuccessDesc: 'Біз сізбен жақын арада байланысамыз.',
         additionalInfo: 'Қосымша ақпарат'
+      },
+      dashboardExtra: {
+        labels: {
+          team: 'Команда',
+          email: 'Email',
+          telegram: 'Telegram',
+          captain: 'Капитан',
+          participant2: 'Қатысушы 2',
+          participant3: 'Қатысушы 3',
+          participant4: 'Қатысушы 4',
+          participant5: 'Қатысушы 5',
+          mentor: 'Ментор'
+        },
+        actions: {
+          edit: 'Өңдеу',
+          delete: 'Жою',
+          cancel: 'Болдырмау',
+          confirmDelete: 'Жою'
+        },
+        confirm: {
+          title: 'Тіркеуді жою керек пе?',
+          desc: 'Бұл әрекет қайтарылмайды. Жарысқа тіркелген жазбаңыз жойылады.'
+        },
+        toasts: {
+          deleteSuccess: 'Тіркеу жойылды',
+          deleteError: 'Жою мүмкін болмады',
+          requestDeleteSuccess: 'Өтінім жойылды',
+          requestDeleteError: 'Өтінімді жою мүмкін болмады'
+        },
+        admin: {
+          enrollmentsTitle: 'Space Settlement Competition 2025 қатысушылары',
+          downloadList: 'Тізімді жүктеу',
+          totalTeams: 'Барлығы тіркелген командалар',
+          noParticipants: 'Қатысушылар әлі жоқ',
+          teamNoName: 'Атаусыз команда',
+          activeTeam: 'Белсенді команда',
+          captain: 'Капитан',
+          league: 'Лига',
+          contactInfo: 'Байланыс ақпараты',
+          phone: 'Телефон',
+          age: 'Жасы',
+          years: 'жас',
+          teamComposition: 'Команда құрамы',
+          noParticipantsSpecified: 'Қатысушылар көрсетілмеген',
+          additionalInfo: 'Қосымша ақпарат',
+          city: 'Қала',
+          studyPlace: 'Оқу орны',
+          mentor: 'Ментор',
+          mentorPhone: 'Ментор телефоны',
+          source: 'Қайнар көзі',
+          notSpecified: 'Көрсетілмеген',
+          teamQuestions: 'Команданың сұрақтары',
+          productRequests: 'Байланысу өтінімдері',
+          noRequests: 'Өтінімдер әлі жоқ',
+          organization: 'Ұйым',
+          pending: 'Күтуде',
+          completed: 'Аяқталды',
+          product: 'Өнім',
+          partnership: 'Серіктестік',
+          comment: 'Түсініктеме',
+          deleteRequest: 'Өтінімді жою',
+          deleteRequestTitle: 'Өтінімді жою керек пе?',
+          deleteRequestDesc: 'Бұл әрекет қайтарылмайды. Өтінім жүйеден толықтай жойылады.'
+        }
       },
       ews: {
         seo: {

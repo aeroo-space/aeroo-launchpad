@@ -156,9 +156,9 @@ const Dashboard = () => {
       const { error } = await supabase.from("product_requests").delete().eq("id", id);
       if (error) throw error;
       setProductRequests((prev) => prev.filter((x) => x.id !== id));
-      toast.success('Заявка удалена');
+      toast.success(t('dashboardExtra.toasts.requestDeleteSuccess', { defaultValue: 'Заявка удалена' }));
     } catch (err: any) {
-      toast.error('Не удалось удалить заявку', { description: err.message });
+      toast.error(t('dashboardExtra.toasts.requestDeleteError', { defaultValue: 'Не удалось удалить заявку' }), { description: err.message });
     }
   };
   
@@ -588,11 +588,11 @@ const Dashboard = () => {
                           </div>
                           <div className="mt-2 text-sm">
                             <div>{t('dashboardExtra.labels.captain', { defaultValue: 'Капитан' })}: {e.captain_full_name || "—"}</div>
-                            <div>Участник 2: {e.participant1_full_name || "—"}</div>
-                            <div>Участник 3: {e.participant2_full_name || "—"}</div>
-                            <div>Участник 4: {e.participant3_full_name || "—"}</div>
-                            <div>Участник 5: {e.participant4_full_name || "—"}</div>
-                            {e.mentor_full_name && <div className="mt-1 pt-1 border-t">Ментор: {e.mentor_full_name}</div>}
+                            <div>{t('dashboardExtra.labels.participant2', { defaultValue: 'Участник 2' })}: {e.participant1_full_name || "—"}</div>
+                            <div>{t('dashboardExtra.labels.participant3', { defaultValue: 'Участник 3' })}: {e.participant2_full_name || "—"}</div>
+                            <div>{t('dashboardExtra.labels.participant4', { defaultValue: 'Участник 4' })}: {e.participant3_full_name || "—"}</div>
+                            <div>{t('dashboardExtra.labels.participant5', { defaultValue: 'Участник 5' })}: {e.participant4_full_name || "—"}</div>
+                            {e.mentor_full_name && <div className="mt-1 pt-1 border-t">{t('dashboardExtra.labels.mentor', { defaultValue: 'Ментор' })}: {e.mentor_full_name}</div>}
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
@@ -635,7 +635,7 @@ const Dashboard = () => {
             <Card>
               <CardHeader>
                 <div className="flex justify-between items-center">
-                  <CardTitle>Участники Space Settlement Competition 2025</CardTitle>
+                  <CardTitle>{t('dashboardExtra.admin.enrollmentsTitle', { defaultValue: 'Участники Space Settlement Competition 2025' })}</CardTitle>
                   <Button 
                     onClick={downloadEnrollments}
                     variant="outline"
@@ -643,11 +643,11 @@ const Dashboard = () => {
                     className="flex items-center gap-2"
                   >
                     <Download className="h-4 w-4" />
-                    Скачать список
+                    {t('dashboardExtra.admin.downloadList', { defaultValue: 'Скачать список' })}
                   </Button>
                 </div>
                 <p className="text-sm text-muted-foreground">
-                  Всего зарегистрировано команд: {adminEnrollments.length}
+                  {t('dashboardExtra.admin.totalTeams', { defaultValue: 'Всего зарегистрировано команд' })}: {adminEnrollments.length}
                 </p>
               </CardHeader>
               <CardContent>
@@ -656,7 +656,7 @@ const Dashboard = () => {
                     <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mb-4">
                       <Download className="h-8 w-8 text-muted-foreground" />
                     </div>
-                    <p className="text-muted-foreground">Участников пока нет</p>
+                    <p className="text-muted-foreground">{t('dashboardExtra.admin.noParticipants', { defaultValue: 'Участников пока нет' })}</p>
                   </div>
                 ) : (
                   <div className="space-y-6">
@@ -666,24 +666,24 @@ const Dashboard = () => {
                           <div className="space-y-2">
                             <div className="flex items-center gap-3">
                               <h4 className="text-lg font-semibold text-primary">
-                                {enrollment.team_name || "Команда без названия"}
+                                {enrollment.team_name || t('dashboardExtra.admin.teamNoName', { defaultValue: 'Команда без названия' })}
                               </h4>
                               <div className={`inline-flex px-3 py-1 rounded-full text-xs font-medium ${
                                 enrollment.status === 'active' 
                                   ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' 
                                   : 'bg-gray-100 text-gray-700 border border-gray-200'
                               }`}>
-                                {enrollment.status === 'active' ? 'Активная команда' : enrollment.status}
+                                {enrollment.status === 'active' ? t('dashboardExtra.admin.activeTeam', { defaultValue: 'Активная команда' }) : enrollment.status}
                               </div>
                             </div>
                             <div className="flex items-center gap-4 text-sm">
                               <span className="flex items-center gap-1">
                                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                                <span className="font-medium">Капитан:</span> {enrollment.captain_full_name}
+                                <span className="font-medium">{t('dashboardExtra.admin.captain', { defaultValue: 'Капитан' })}:</span> {enrollment.captain_full_name}
                               </span>
                               <span className="flex items-center gap-1">
                                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                <span className="font-medium">Лига:</span> {enrollment.league}
+                                <span className="font-medium">{t('dashboardExtra.admin.league', { defaultValue: 'Лига' })}:</span> {enrollment.league}
                               </span>
                             </div>
                           </div>
@@ -701,7 +701,7 @@ const Dashboard = () => {
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                           {/* Contact Info */}
                           <div className="space-y-3">
-                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Контактная информация</h5>
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{t('dashboardExtra.admin.contactInfo', { defaultValue: 'Контактная информация' })}</h5>
                             <div className="space-y-2 text-sm">
                               <div className="flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
@@ -710,7 +710,7 @@ const Dashboard = () => {
                               </div>
                               <div className="flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 bg-green-400 rounded-full"></span>
-                                <span className="text-muted-foreground">Телефон:</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.phone', { defaultValue: 'Телефон' })}:</span>
                                 <span>{enrollment.captain_phone}</span>
                               </div>
                               {enrollment.telegram && (
@@ -722,15 +722,15 @@ const Dashboard = () => {
                               )}
                               <div className="flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
-                                <span className="text-muted-foreground">Возраст:</span>
-                                <span>{enrollment.captain_age} лет</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.age', { defaultValue: 'Возраст' })}:</span>
+                                <span>{enrollment.captain_age} {t('dashboardExtra.admin.years', { defaultValue: 'лет' })}</span>
                               </div>
                             </div>
                           </div>
 
                           {/* Team Members */}
                           <div className="space-y-3">
-                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Состав команды</h5>
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{t('dashboardExtra.admin.teamComposition', { defaultValue: 'Состав команды' })}</h5>
                             <div className="space-y-2">
                               {[
                                 enrollment.participant1_full_name,
@@ -751,36 +751,36 @@ const Dashboard = () => {
                                 enrollment.participant3_full_name,
                                 enrollment.participant4_full_name
                               ].filter(Boolean).length && (
-                                <p className="text-sm text-muted-foreground italic">Участники не указаны</p>
+                                <p className="text-sm text-muted-foreground italic">{t('dashboardExtra.admin.noParticipantsSpecified', { defaultValue: 'Участники не указаны' })}</p>
                               )}
                             </div>
                           </div>
 
                           {/* Additional Info */}
                           <div className="space-y-3">
-                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">Дополнительная информация</h5>
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{t('dashboardExtra.admin.additionalInfo', { defaultValue: 'Дополнительная информация' })}</h5>
                             <div className="space-y-2 text-sm">
                               <div>
-                                <span className="text-muted-foreground">Город:</span>
-                                <span className="ml-2">{enrollment.city || "Не указан"}</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.city', { defaultValue: 'Город' })}:</span>
+                                <span className="ml-2">{enrollment.city || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указан' })}</span>
                               </div>
                               <div>
-                                <span className="text-muted-foreground">Учебное заведение:</span>
-                                <span className="ml-2">{enrollment.study_place || "Не указано"}</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.studyPlace', { defaultValue: 'Учебное заведение' })}:</span>
+                                <span className="ml-2">{enrollment.study_place || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указано' })}</span>
                               </div>
                               <div>
-                                <span className="text-muted-foreground">Наставник:</span>
-                                <span className="ml-2">{enrollment.mentor_full_name || "Не указан"}</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.mentor', { defaultValue: 'Наставник' })}:</span>
+                                <span className="ml-2">{enrollment.mentor_full_name || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указан' })}</span>
                               </div>
                               {enrollment.mentor_phone && (
                                 <div>
-                                  <span className="text-muted-foreground">Телефон наставника:</span>
+                                  <span className="text-muted-foreground">{t('dashboardExtra.admin.mentorPhone', { defaultValue: 'Телефон наставника' })}:</span>
                                   <span className="ml-2">{enrollment.mentor_phone}</span>
                                 </div>
                               )}
                               <div>
-                                <span className="text-muted-foreground">Источник:</span>
-                                <span className="ml-2">{enrollment.source || "Не указан"}</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.source', { defaultValue: 'Источник' })}:</span>
+                                <span className="ml-2">{enrollment.source || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указан' })}</span>
                               </div>
                             </div>
                           </div>
@@ -788,7 +788,7 @@ const Dashboard = () => {
 
                         {enrollment.questions && (
                           <div className="pt-4 border-t">
-                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide mb-2">Вопросы от команды</h5>
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide mb-2">{t('dashboardExtra.admin.teamQuestions', { defaultValue: 'Вопросы от команды' })}</h5>
                             <div className="bg-muted/50 p-4 rounded-lg">
                               <p className="text-sm leading-relaxed">{enrollment.questions}</p>
                             </div>
@@ -806,11 +806,11 @@ const Dashboard = () => {
           {isAdmin && (
             <Card>
               <CardHeader>
-                <CardTitle>Заявки на связь</CardTitle>
+                <CardTitle>{t('dashboardExtra.admin.productRequests', { defaultValue: 'Заявки на связь' })}</CardTitle>
               </CardHeader>
               <CardContent>
                 {productRequests.length === 0 ? (
-                  <p className="text-muted-foreground">Заявок пока нет</p>
+                  <p className="text-muted-foreground">{t('dashboardExtra.admin.noRequests', { defaultValue: 'Заявок пока нет' })}</p>
                 ) : (
                   <div className="space-y-4">
                     {productRequests.map((request) => (
@@ -820,10 +820,10 @@ const Dashboard = () => {
                             <h4 className="font-medium">{request.name}</h4>
                             <p className="text-sm text-muted-foreground">{request.email}</p>
                             {request.phone && (
-                              <p className="text-sm text-muted-foreground">Телефон: {request.phone}</p>
+                              <p className="text-sm text-muted-foreground">{t('dashboardExtra.admin.phone', { defaultValue: 'Телефон' })}: {request.phone}</p>
                             )}
                             {request.organization && (
-                              <p className="text-sm text-muted-foreground">Организация: {request.organization}</p>
+                              <p className="text-sm text-muted-foreground">{t('dashboardExtra.admin.organization', { defaultValue: 'Организация' })}: {request.organization}</p>
                             )}
                           </div>
                           <div className="text-right text-sm text-muted-foreground">
@@ -833,18 +833,18 @@ const Dashboard = () => {
                               request.status === 'completed' ? 'bg-green-100 text-green-800' :
                               'bg-gray-100 text-gray-800'
                             }`}>
-                              {request.status === 'pending' ? 'Ожидает' : 
-                               request.status === 'completed' ? 'Завершено' : request.status}
+                              {request.status === 'pending' ? t('dashboardExtra.admin.pending', { defaultValue: 'Ожидает' }) : 
+                               request.status === 'completed' ? t('dashboardExtra.admin.completed', { defaultValue: 'Завершено' }) : request.status}
                             </div>
                           </div>
                         </div>
                         <div>
                           <p className="text-sm font-medium mb-1">
-                            Продукт: {request.product_id === 'partnership' ? 'Партнерство' : request.product_id}
+                            {t('dashboardExtra.admin.product', { defaultValue: 'Продукт' })}: {request.product_id === 'partnership' ? t('dashboardExtra.admin.partnership', { defaultValue: 'Партнерство' }) : request.product_id}
                           </p>
                           {request.comment && (
                             <div>
-                              <p className="text-sm font-medium mb-1">Комментарий:</p>
+                              <p className="text-sm font-medium mb-1">{t('dashboardExtra.admin.comment', { defaultValue: 'Комментарий' })}:</p>
                               <p className="text-sm bg-muted p-2 rounded">{request.comment}</p>
                             </div>
                           )}
@@ -853,20 +853,20 @@ const Dashboard = () => {
                           <AlertDialog>
                             <AlertDialogTrigger asChild>
                               <Button variant="destructive" size="sm">
-                                Удалить заявку
+                                {t('dashboardExtra.admin.deleteRequest', { defaultValue: 'Удалить заявку' })}
                               </Button>
                             </AlertDialogTrigger>
                             <AlertDialogContent>
                               <AlertDialogHeader>
-                                <AlertDialogTitle>Удалить заявку?</AlertDialogTitle>
+                                <AlertDialogTitle>{t('dashboardExtra.admin.deleteRequestTitle', { defaultValue: 'Удалить заявку?' })}</AlertDialogTitle>
                                 <AlertDialogDescription>
-                                  Это действие необратимо. Заявка будет полностью удалена из системы.
+                                  {t('dashboardExtra.admin.deleteRequestDesc', { defaultValue: 'Это действие необратимо. Заявка будет полностью удалена из системы.' })}
                                 </AlertDialogDescription>
                               </AlertDialogHeader>
                               <AlertDialogFooter>
-                                <AlertDialogCancel>Отмена</AlertDialogCancel>
+                                <AlertDialogCancel>{t('common.cancel', { defaultValue: 'Отмена' })}</AlertDialogCancel>
                                 <AlertDialogAction onClick={() => handleDeleteProductRequest(request.id)}>
-                                  Удалить
+                                  {t('dashboardExtra.actions.delete', { defaultValue: 'Удалить' })}
                                 </AlertDialogAction>
                               </AlertDialogFooter>
                             </AlertDialogContent>
