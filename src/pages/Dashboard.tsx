@@ -563,13 +563,13 @@ const Dashboard = () => {
 
           <Card>
             <CardHeader>
-              <CardTitle>{t('dashboard.myEnrollments', { defaultValue: 'Мои участия в соревнованиях' })}</CardTitle>
+              <CardTitle>{t('dashboard.myCompetitions', { defaultValue: 'Мои участия в соревнованиях' })}</CardTitle>
             </CardHeader>
             <CardContent>
               {loading ? (
                 <p className="text-muted-foreground">{t('dashboard.loading', { defaultValue: 'Загрузка...' })}</p>
               ) : enrollments.length === 0 ? (
-                <p className="text-muted-foreground">{t('dashboard.empty', { defaultValue: 'Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.' })}</p>
+                <p className="text-muted-foreground">{t('dashboard.noEnrollments', { defaultValue: 'Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.' })}</p>
               ) : (
                 <ul className="divide-y divide-border">
                   {enrollments.map((e) => (
