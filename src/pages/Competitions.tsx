@@ -224,7 +224,7 @@ const Competitions = () => {
                         {t(exploringComp.status)}
                       </Badge>
                     </div>
-                    <Button asChild variant="outline" size="sm">
+                    <Button asChild variant="default" size="lg" className="btn-cosmic">
                       <Link to="/competitions/exploring-world-of-science">{t('competitions.details')}</Link>
                     </Button>
                   </div>
