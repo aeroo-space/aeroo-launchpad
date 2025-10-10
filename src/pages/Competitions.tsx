@@ -149,6 +149,57 @@ const Competitions = () => {
 
         {/* Competitions Grid */}
         <div id="competitions-list" className="space-y-6 mb-16">
+          {/* Space Settlement 2025 - First Row */}
+          {(() => {
+            const spaceSettlement = competitions.find(c => c.id === 'space-settlement');
+            if (!spaceSettlement) return null;
+            const Icon = spaceSettlement.icon;
+            
+            return (
+              <Card className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-4">
+                    <Icon className="h-8 w-8 text-primary group-hover:glow-primary transition-all" />
+                    <Badge className={`${getStatusColor(t(spaceSettlement.status))} text-white`}>
+                      {t(spaceSettlement.status)}
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-xl group-hover:text-primary transition-colors">
+                    {t(spaceSettlement.title)}
+                  </CardTitle>
+                  <CardDescription className="text-sm font-medium text-primary/70">
+                    {t(spaceSettlement.category)}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground mb-4 leading-relaxed">
+                    {t(spaceSettlement.description)}
+                  </p>
+
+                  <div className="space-y-2 mb-6">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">{t('competitions.age')}</span>
+                      <span className="font-medium">{t(spaceSettlement.ages)}</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">{t('competitions.deadline')}</span>
+                      <span className="font-medium">{t(spaceSettlement.deadline)}</span>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button asChild variant="outline" className="w-full">
+                      <Link to="/competitions/space-settlement-2025">{t('competitions.details')}</Link>
+                    </Button>
+                    <Button asChild className="w-full btn-cosmic">
+                      <Link to={`/enroll/${spaceSettlement.id}`}>{t('competitions.participate')}</Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })()}
+
           {/* Exploring World of Science - Wide Card with Sub-cards */}
           {(() => {
             const exploringComp = competitions.find(c => c.id === 'exploring-world-of-science');
