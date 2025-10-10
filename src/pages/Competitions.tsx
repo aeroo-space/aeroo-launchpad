@@ -236,11 +236,11 @@ const Competitions = () => {
                   </p>
 
                   <div className="space-y-2 mb-6">
-                    <div className="flex justify-between text-sm">
+                    <div className="flex gap-2 text-sm">
                       <span className="text-muted-foreground">{t('competitions.age')}</span>
                       <span className="font-medium">{t(exploringComp.ages)}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div className="flex gap-2 text-sm">
                       <span className="text-muted-foreground">{t('competitions.deadline')}</span>
                       <span className="font-medium">{t(exploringComp.deadline)}</span>
                     </div>
