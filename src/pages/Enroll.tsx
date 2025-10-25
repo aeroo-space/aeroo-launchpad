@@ -832,8 +832,6 @@ export default function EnrollPage() {
               {/* Additional Participants (Optional) */}
               {teamMemberCount > 1 && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">{t('spaceSettlement.additionalParticipants')}</h3>
-
                   {/* Participant 2 */}
                   {teamMemberCount >= 2 && (
                     <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
@@ -896,7 +894,7 @@ export default function EnrollPage() {
                   {/* Participant 3 */}
                   {teamMemberCount >= 3 && (
                     <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">{t('form.participant2')}</h4>
+                  <h4 className="font-medium">{t('form.participant3')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>

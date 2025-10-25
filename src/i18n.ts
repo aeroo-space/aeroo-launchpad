@@ -907,7 +907,8 @@ const resources = {
         loginRequired: 'Требуется авторизация',
         loginDescription: 'Для регистрации необходимо войти в систему',
         loginButton: 'Войти',
-        categoryLabel: 'Категория соревнования'
+        categoryLabel: 'Категория соревнования',
+        fixedParticipants: 'Фиксированное количество: 4 участника для Satellite Launch'
       },
       spaceSettlement: {
         title: 'Space Settlement 2025',
