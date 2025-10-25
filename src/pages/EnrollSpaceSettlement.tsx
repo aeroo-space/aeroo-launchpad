@@ -9,7 +9,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthProvider";
 import { useProfile } from "@/hooks/useProfile";
 import { supabase } from "@/integrations/supabase/client";
@@ -135,13 +135,13 @@ export default function EnrollSpaceSettlementPage() {
       document.head.appendChild(m);
       return m;
     })();
-    metaDesc.content = "Подача заявки на участие: Space Settlement 2025. Заполните форму команды.";
+    metaDesc.content = t('spaceSettlement.subtitle');
   }, [t]);
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!consent) {
-      toast(t('form.toastConsentRequired'), { description: t('form.toastConsentDescription') });
+      toast.error(t('form.toastConsentRequired'), { description: t('form.toastConsentDescription') });
       return;
     }
 
