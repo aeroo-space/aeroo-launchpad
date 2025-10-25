@@ -272,7 +272,7 @@ const ExploringWorldOfScience = () => {
                   <div className="grid md:grid-cols-3 gap-4">
                     {/* Kazakh - First, Blue */}
                     <a
-                      href="/documents/rules-exploring-world-of-science-kk.pdf"
+                      href="https://drive.google.com/file/d/1uq2kaYiK2Th1cfQvJcTcITumVT273JHU/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group"
@@ -293,7 +293,7 @@ const ExploringWorldOfScience = () => {
 
                     {/* Russian - Middle, Gray */}
                     <a
-                      href="/documents/rules-exploring-world-of-science-ru.pdf"
+                      href="https://drive.google.com/file/d/1W9UXLpv3srm7oQ3g5wrCm6JJLDbYteTW/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group"
@@ -314,7 +314,7 @@ const ExploringWorldOfScience = () => {
 
                     {/* English - Last, Green */}
                     <a
-                      href="/documents/rules-exploring-world-of-science-en.pdf"
+                      href="https://drive.google.com/file/d/1uufuZOL8oHCYs3ZsFHqEolwb8Cw73lvS/view?usp=sharing"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="group"
