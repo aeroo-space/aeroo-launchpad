@@ -109,22 +109,22 @@ const Products = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 text-foreground">
             {t('products.hero.title', { defaultValue: 'Продукты AEROO' })}
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('products.hero.subtitle', { defaultValue: 'Образовательные комплекты для изучения аэрокосмических технологий. От простых моделей ракет до сложных наноспутников.' })}
           </p>
         </div>
 
         {/* Advantages Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('products.advantages.title', { defaultValue: 'Преимущества наших наборов' })}</h2>
+        <div className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{t('products.advantages.title', { defaultValue: 'Преимущества наших наборов' })}</h2>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {advantages.map((advantage, index) => {
               const Icon = advantage.icon;
               return (
@@ -132,8 +132,8 @@ const Products = () => {
                   <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/30 transition-colors">
                     <Icon className="h-10 w-10 text-primary group-hover:glow-primary transition-all" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-4">{t(`products.advantages.items.${index}.title`, { defaultValue: advantage.title })}</h3>
-                  <p className="text-muted-foreground leading-relaxed">{t(`products.advantages.items.${index}.desc`, { defaultValue: advantage.description })}</p>
+                  <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">{t(`products.advantages.items.${index}.title`, { defaultValue: advantage.title })}</h3>
+                  <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">{t(`products.advantages.items.${index}.desc`, { defaultValue: advantage.description })}</p>
                 </div>
               );
             })}
@@ -141,10 +141,10 @@ const Products = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('products.grid.title', { defaultValue: 'Наши продукты' })}</h2>
+        <div className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{t('products.grid.title', { defaultValue: 'Наши продукты' })}</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {products.map((product) => {
               const Icon = product.icon;
               return (
@@ -216,9 +216,9 @@ const Products = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-muted/30 rounded-2xl p-8 text-center">
+        <div className="bg-muted/30 rounded-2xl p-4 sm:p-6 md:p-8 text-center">
           <h2 className="text-3xl font-bold mb-4">{t('products.help.title', { defaultValue: 'Нужна консультация?' })}</h2>
-          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto">
             {t('products.help.desc', { defaultValue: 'Наши эксперты помогут выбрать подходящий набор для вашего уровня подготовки и образовательных целей. Свяжитесь с нами для персональной консультации.' })}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

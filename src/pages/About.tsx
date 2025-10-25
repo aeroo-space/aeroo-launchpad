@@ -66,26 +66,26 @@ const About = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <div className="relative mb-8">
-            <Rocket className="h-20 w-20 text-primary mx-auto glow-primary animate-pulse" />
+        <div className="text-center mb-12 sm:mb-16">
+          <div className="relative mb-6 sm:mb-8">
+            <Rocket className="h-16 w-16 sm:h-20 sm:w-20 text-primary mx-auto glow-primary animate-pulse" />
             <div className="absolute inset-0 animate-spin-slow">
-              <Rocket className="h-20 w-20 text-primary-glow opacity-30 mx-auto" />
+              <Rocket className="h-16 w-16 sm:h-20 sm:w-20 text-primary-glow opacity-30 mx-auto" />
             </div>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-primary">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 text-primary">
             {t('about.heroTitle', { defaultValue: 'О AEROO' })}
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('about.heroSubtitle', { defaultValue: 'Мы вдохновляем и обучаем новое поколение создателей, развивая навыки, командную работу и системное мышление в области аэрокосмических технологий.' })}
           </p>
         </div>
 
         {/* Mission & Values */}
-        <div className="grid md:grid-cols-2 gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 mb-12 sm:mb-20">
           <Card className="border-2 hover:border-primary/50 transition-all">
             <CardHeader>
               <Target className="h-12 w-12 text-primary mb-4" />
@@ -127,10 +127,10 @@ const About = () => {
         </div>
 
         {/* Achievements */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('about.achievementsTitle', { defaultValue: 'Наши достижения' })}</h2>
+        <div className="mb-12 sm:mb-20">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{t('about.achievementsTitle', { defaultValue: 'Наши достижения' })}</h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {achievements.map((achievement, index) => {
               const Icon = achievement.icon;
               return (
@@ -138,8 +138,8 @@ const About = () => {
                   <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/30 transition-colors">
                     <Icon className="h-10 w-10 text-primary group-hover:glow-primary transition-all" />
                   </div>
-                  <div className="text-3xl font-bold text-primary mb-2">{achievement.number}</div>
-                  <div className="text-muted-foreground">{t(`about.achievements.${achievement.labelKey}`, { defaultValue: achievement.text })}</div>
+                  <div className="text-2xl sm:text-3xl font-bold text-primary mb-2">{achievement.number}</div>
+                  <div className="text-sm sm:text-base text-muted-foreground">{t(`about.achievements.${achievement.labelKey}`, { defaultValue: achievement.text })}</div>
                 </div>
               );
             })}
@@ -147,10 +147,10 @@ const About = () => {
         </div>
 
         {/* Team */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('about.teamTitle', { defaultValue: 'Наша команда' })}</h2>
+        <div className="mb-12 sm:mb-20">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{t('about.teamTitle', { defaultValue: 'Наша команда' })}</h2>
           
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
             {team.map((member, index) => (
               <Card key={index} className="group hover:shadow-xl transition-all duration-300 border-2 hover:border-primary/50">
                 <CardHeader>
@@ -179,10 +179,10 @@ const About = () => {
         </div>
 
         {/* Partners */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('about.partnersTitle', { defaultValue: 'Наши партнёры' })}</h2>
+        <div className="mb-12 sm:mb-20">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{t('about.partnersTitle', { defaultValue: 'Наши партнёры' })}</h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             {partners.map((partner, index) => (
               <div key={index} className="bg-muted/30 rounded-lg p-4 text-center hover:bg-muted/50 transition-colors">
                 <div className="text-sm font-medium text-muted-foreground">{partner}</div>
@@ -207,8 +207,8 @@ const About = () => {
         </div>
 
         {/* Lead Capture */}
-        <div className="bg-muted/30 rounded-2xl p-8">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('about.leadTitle', { defaultValue: 'Свяжитесь с нами' })}</h2>
+        <div className="bg-muted/30 rounded-2xl p-4 sm:p-6 md:p-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{t('about.leadTitle', { defaultValue: 'Свяжитесь с нами' })}</h2>
 
           <div className="max-w-2xl mx-auto">
             <form

@@ -17,9 +17,9 @@ const Community = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <main className="container mx-auto px-4 py-12">
-        <header className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
+        <header className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             {t('community.hero.title', { defaultValue: 'Сообщество AEROO' })}
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -27,7 +27,7 @@ const Community = () => {
           </p>
         </header>
 
-        <section className="grid md:grid-cols-3 gap-6 mb-10">
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-10">
           <div className="glass-card rounded-xl p-6">
             <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4">
               <Users className="w-6 h-6 text-primary" />

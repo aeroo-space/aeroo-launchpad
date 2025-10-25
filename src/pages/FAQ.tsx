@@ -14,14 +14,14 @@ const FAQ = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-12">
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('faq.title', { defaultValue: 'Частые вопросы' })}</h1>
+      <main className="container mx-auto px-4 py-8 sm:py-12">
+        <header className="mb-6 sm:mb-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('faq.title', { defaultValue: 'Частые вопросы' })}</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {t('faq.subtitle', { defaultValue: 'Ответы на популярные вопросы о платформах, наборах и соревнованиях AEROO.' })}
           </p>
         </header>
-        <section className="max-w-3xl mx-auto space-y-6">
+        <section className="max-w-3xl mx-auto space-y-4 sm:space-y-6">
           <article>
             <h2 className="text-xl font-semibold">{t('faq.q1', { defaultValue: 'Как записаться на соревнование?' })}</h2>
             <p className="text-muted-foreground">{t('faq.a1', { defaultValue: 'Выберите соревнование на странице “Соревнования” и нажмите “Участвовать”. Далее следуйте инструкции.' })}</p>

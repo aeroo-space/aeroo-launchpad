@@ -75,22 +75,22 @@ const Courses = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
             {t('courses.hero.title', { defaultValue: 'Курсы AEROO' })}
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('courses.hero.subtitle', { defaultValue: 'Изучайте аэрокосмические технологии с нуля. Практические курсы от экспертов индустрии с реальными проектами и персональным наставничеством.' })}
           </p>
         </div>
 
         {/* Course Selection */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center mb-12">{t('courses.selectDirection', { defaultValue: 'Выберите направление' })}</h2>
+        <div className="mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12">{t('courses.selectDirection', { defaultValue: 'Выберите направление' })}</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {courses.map((course) => {
               const Icon = course.icon;
               return (
@@ -150,10 +150,10 @@ const Courses = () => {
         </div>
 
         {/* Learning Process */}
-        <div className="bg-muted/30 rounded-2xl p-8 mb-16">
-          <h2 className="text-3xl font-bold text-center mb-8">{t('courses.how.title', { defaultValue: 'Как проходит обучение' })}</h2>
+        <div className="bg-muted/30 rounded-2xl p-4 sm:p-6 md:p-8 mb-12 sm:mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">{t('courses.how.title', { defaultValue: 'Как проходит обучение' })}</h2>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center">
               <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-primary">1</span>
@@ -190,7 +190,7 @@ const Courses = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold mb-4">{t('courses.cta.title', { defaultValue: 'Готовы начать обучение?' })}</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold mb-4">{t('courses.cta.title', { defaultValue: 'Готовы начать обучение?' })}</h2>
           <p className="text-muted-foreground mb-8">
             {t('courses.cta.desc', { defaultValue: 'Присоединяйтесь к сообществу будущих инженеров и исследователей космоса' })}
           </p>

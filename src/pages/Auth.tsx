@@ -238,9 +238,9 @@ const Auth = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
         <h1 className="sr-only">{t('auth.heading', { defaultValue: 'Аутентификация AEROO' })}</h1>
-        <div className="max-w-md mx-auto rounded-2xl border border-border/60 p-6 bg-card shadow-sm">
+        <div className="max-w-md mx-auto rounded-2xl border border-border/60 p-4 sm:p-6 bg-card shadow-sm">
           <div className="flex justify-center mb-6">
             <div className="inline-flex rounded-lg bg-muted p-1">
               <button
@@ -258,7 +258,7 @@ const Auth = () => {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
             <div className="space-y-2">
               <Label htmlFor="email">{t('form.emailBasic', { defaultValue: 'Email' })}</Label>
               <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />

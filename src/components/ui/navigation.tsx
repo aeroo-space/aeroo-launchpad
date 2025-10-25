@@ -135,10 +135,10 @@ export function Navigation() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="fixed inset-x-0 top-16 lg:top-20 z-[100] lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50 shadow-lg min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)]"
+          <div className="fixed inset-x-0 top-16 lg:top-20 z-[100] lg:hidden bg-background/95 backdrop-blur-md border-t border-border/50 shadow-lg max-h-[calc(100vh-4rem)] lg:max-h-[calc(100vh-5rem)] overflow-y-auto"
             onClick={() => setIsMenuOpen(false)}
           >
-            <div className="px-4 py-4 space-y-2 overflow-y-auto bg-background/95 backdrop-blur-md h-full min-h-[calc(100vh-4rem)] lg:min-h-[calc(100vh-5rem)]"
+            <div className="px-4 py-4 space-y-2"
               onClick={(e) => e.stopPropagation()}
             >
               {NAVIGATION_ITEMS.map((item) => {

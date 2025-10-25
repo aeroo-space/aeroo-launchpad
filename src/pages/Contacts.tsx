@@ -57,9 +57,9 @@ const Contacts = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-12">
-        <header className="mb-8 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('contacts.title', { defaultValue: 'Контакты AEROO' })}</h1>
+      <main className="container mx-auto px-4 py-8 sm:py-12">
+        <header className="mb-6 sm:mb-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">{t('contacts.title', { defaultValue: 'Контакты AEROO' })}</h1>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             {t('contacts.subtitle', { defaultValue: 'Мы на связи: выберите удобный способ и свяжитесь с нашей командой.' })}
           </p>

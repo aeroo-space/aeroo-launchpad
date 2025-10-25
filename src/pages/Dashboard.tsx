@@ -310,10 +310,10 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-      <main className="container mx-auto px-4 py-12">
-        <header className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold">{t('dashboard.title', { defaultValue: 'Личный кабинет' })}</h1>
-          <Button variant="outline" onClick={signOut}>{t('dashboard.logout', { defaultValue: 'Выйти' })}</Button>
+      <main className="container mx-auto px-4 py-8 sm:py-12">
+        <header className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold">{t('dashboard.title', { defaultValue: 'Личный кабинет' })}</h1>
+          <Button variant="outline" size="sm" onClick={signOut}>{t('dashboard.logout', { defaultValue: 'Выйти' })}</Button>
         </header>
 
         <section className="grid gap-6">

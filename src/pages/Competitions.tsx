@@ -131,16 +131,16 @@ const Competitions = () => {
     <div className="min-h-screen bg-background">
       <Navigation />
 
-      <main className="container mx-auto px-4 py-12">
+      <main className="container mx-auto px-4 py-8 sm:py-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 text-foreground">
+        <div className="text-center mb-12 sm:mb-16">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 sm:mb-6 text-foreground">
             {t('competitions.title')}
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto">
             {t('competitions.subtitle')}
           </p>
-          <div className="mt-6 flex justify-center">
+          <div className="mt-4 sm:mt-6 flex justify-center">
             <Button asChild className="btn-cosmic">
               <a href="#competitions-list">{t('cta.apply', { defaultValue: 'Подать заявку' })}</a>
             </Button>
@@ -251,11 +251,11 @@ const Competitions = () => {
                     </div>
                   </div>
 
-                  {/* Sub-competitions Grid */}
+          {/* Sub-competitions Grid */}
                   <div className="mb-4">
                     <h3 className="text-lg font-semibold mb-3 text-center text-primary">{t('competitions.chooseCategory', { defaultValue: 'Выбери категорию' })}</h3>
                   </div>
-                  <div className="grid md:grid-cols-3 gap-4 mb-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-6">
                     {subCompetitions.map((subComp) => {
                       if (!subComp) return null;
                       const SubIcon = subComp.icon;
