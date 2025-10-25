@@ -940,7 +940,7 @@ const resources = {
         emailPlaceholder: 'example@email.com',
         telegram: 'Telegram',
         telegramPlaceholder: '@username',
-        additionalParticipants: 'Дополнительные участники (необязательно)',
+        additionalParticipants: 'Дополнительные участники',
         participant2: 'Участник 2',
         participant3: 'Участник 3',
         participant4: 'Участник 4',
