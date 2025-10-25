@@ -906,7 +906,8 @@ const resources = {
         selectSource: 'Выберите',
         loginRequired: 'Требуется авторизация',
         loginDescription: 'Для регистрации необходимо войти в систему',
-        loginButton: 'Войти'
+        loginButton: 'Войти',
+        categoryLabel: 'Категория соревнования'
       },
       spaceSettlement: {
         title: 'Space Settlement 2025',
