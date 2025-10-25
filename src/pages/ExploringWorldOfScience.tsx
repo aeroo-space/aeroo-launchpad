@@ -270,50 +270,53 @@ const ExploringWorldOfScience = () => {
                   </div>
 
                   <div className="grid md:grid-cols-3 gap-4">
-                    {/* Russian */}
-                    <a
-                      href="/documents/rules-exploring-world-of-science-ru.pdf"
-                      download
-                      className="group"
-                    >
-                      <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20 hover:border-primary/40">
-                        <div className="flex flex-col items-center text-center gap-3">
-                          <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
-                            <FileDown className="w-6 h-6 text-primary" />
-                          </div>
-                          <div>
-                            <h3 className="font-bold text-lg mb-1">Русский</h3>
-                            <p className="text-sm text-muted-foreground">Правила соревнования</p>
-                          </div>
-                          <Badge variant="outline" className="mt-2">PDF</Badge>
-                        </div>
-                      </Card>
-                    </a>
-
-                    {/* Kazakh */}
+                    {/* Kazakh - First, Blue */}
                     <a
                       href="/documents/rules-exploring-world-of-science-kk.pdf"
-                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group"
                     >
-                      <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-accent/5 to-accent/10 border-2 border-accent/20 hover:border-accent/40">
+                      <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-blue-500/5 to-blue-600/10 border-2 border-blue-500/30 hover:border-blue-500/50">
                         <div className="flex flex-col items-center text-center gap-3">
-                          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
-                            <FileDown className="w-6 h-6 text-accent" />
+                          <div className="w-12 h-12 rounded-full bg-blue-500/20 flex items-center justify-center group-hover:bg-blue-500/30 transition-colors">
+                            <FileDown className="w-6 h-6 text-blue-500" />
                           </div>
                           <div>
-                            <h3 className="font-bold text-lg mb-1">Қазақша</h3>
+                            <h3 className="font-bold text-lg mb-1 text-blue-500">Қазақша</h3>
                             <p className="text-sm text-muted-foreground">Жарыс ережелері</p>
                           </div>
-                          <Badge variant="outline" className="mt-2">PDF</Badge>
+                          <Badge variant="outline" className="mt-2 border-blue-500/50 text-blue-500">PDF</Badge>
                         </div>
                       </Card>
                     </a>
 
-                    {/* English */}
+                    {/* Russian - Middle, Gray */}
+                    <a
+                      href="/documents/rules-exploring-world-of-science-ru.pdf"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group"
+                    >
+                      <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-muted/50 to-muted/30 border-2 border-muted-foreground/20 hover:border-muted-foreground/40">
+                        <div className="flex flex-col items-center text-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-muted-foreground/10 flex items-center justify-center group-hover:bg-muted-foreground/20 transition-colors">
+                            <FileDown className="w-6 h-6 text-muted-foreground" />
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg mb-1 text-muted-foreground">Русский</h3>
+                            <p className="text-sm text-muted-foreground">Правила соревнования</p>
+                          </div>
+                          <Badge variant="outline" className="mt-2 border-muted-foreground/50">PDF</Badge>
+                        </div>
+                      </Card>
+                    </a>
+
+                    {/* English - Last, Green */}
                     <a
                       href="/documents/rules-exploring-world-of-science-en.pdf"
-                      download
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="group"
                     >
                       <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-success/5 to-success/10 border-2 border-success/20 hover:border-success/40">
@@ -322,10 +325,10 @@ const ExploringWorldOfScience = () => {
                             <FileDown className="w-6 h-6 text-success" />
                           </div>
                           <div>
-                            <h3 className="font-bold text-lg mb-1">English</h3>
+                            <h3 className="font-bold text-lg mb-1 text-success">English</h3>
                             <p className="text-sm text-muted-foreground">Competition Rules</p>
                           </div>
-                          <Badge variant="outline" className="mt-2">PDF</Badge>
+                          <Badge variant="outline" className="mt-2 border-success/50 text-success">PDF</Badge>
                         </div>
                       </Card>
                     </a>
