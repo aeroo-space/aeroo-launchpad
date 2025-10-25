@@ -307,7 +307,7 @@ const Competitions = () => {
                                 </Button>
                               ) : null}
                               <Button asChild size="sm" className="w-full btn-cosmic opacity-80 hover:opacity-100 transition-opacity text-xs">
-                                <Link to={`/enroll/${subComp.id}`}>{t('competitions.participate')}</Link>
+                                <Link to="/enroll/exploring-world-of-science">{t('competitions.participate')}</Link>
                               </Button>
                             </div>
                           </CardContent>
