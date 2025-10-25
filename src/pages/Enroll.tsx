@@ -17,6 +17,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { competitions } from "@/data/competitions";
 import { CalendarDays } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { safeParseEnrollment } from "@/lib/enrollmentValidation";
 
 export default function EnrollPage() {
   const { competitionId } = useParams<{ competitionId: string }>();
@@ -375,128 +376,93 @@ export default function EnrollPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!competitionId) return;
-    if (!consent) {
-      toast(t('form.toastConsentRequired'), { description: t('form.toastConsentDescription') });
-      return;
-    }
-
-    // Validation functions
-    const validateName = (name: string, fieldName: string) => {
-      if (!name.trim()) return `${fieldName} ${t('form.required')}`;
-      if (/\d/.test(name)) return `${fieldName} ${t('form.noDigits')}`;
-      return null;
+    
+    // Build validation data structure
+    const validationData: any = {
+      teamName,
+      league,
+      captainFullName,
+      captainIin,
+      captainPhone,
+      captainEmail,
+      captainSchool,
+      captainCity,
+      captainGrade,
+      captainAge: captainAge || undefined,
+      captainTelegram: captainTelegram || undefined,
+      source: source || undefined,
+      questions: questions || undefined,
+      consent
     };
 
-    const validateCity = (city: string, fieldName: string) => {
-      if (!city.trim()) return `${fieldName} ${t('form.required')}`;
-      if (/\d/.test(city)) return `${fieldName} ${t('form.noDigits')}`;
-      return null;
-    };
-
-    const validatePhone = (phone: string, fieldName: string) => {
-      if (!phone.trim()) return `${fieldName} ${t('form.required')}`;
-      const phoneRegex = /^\+7 \d{3} \d{3} \d{2} \d{2}$/;
-      if (!phoneRegex.test(phone)) return `${fieldName} ${t('form.phoneFormat')}`;
-      return null;
-    };
-
-    // Check required fields and create specific error messages
-    const validationErrors: string[] = [];
-    
-    if (!teamName.trim()) validationErrors.push(t('form.teamNameLabel'));
-    if (!league.trim()) validationErrors.push(t('form.leagueLabel'));
-    if (teamMemberCount === null) validationErrors.push(t('form.teamMemberCount'));
-    
-    // Captain validation
-    const captainNameError = validateName(captainFullName, t('form.fullName'));
-    if (captainNameError) validationErrors.push(captainNameError);
-    
-    if (!captainIin.trim()) validationErrors.push(t('form.iin'));
-    else if (captainIin.length !== 12 || !/^\d{12}$/.test(captainIin)) {
-      validationErrors.push(t('form.required'));
-    }
-    
-    const captainPhoneError = validatePhone(captainPhone, t('form.phone'));
-    if (captainPhoneError) validationErrors.push(captainPhoneError);
-    
-    if (!captainSchool.trim()) validationErrors.push(t('form.school'));
-    
-    const captainCityError = validateCity(captainCity, t('form.city'));
-    if (captainCityError) validationErrors.push(captainCityError);
-    
-    if (!captainGrade.trim()) validationErrors.push(t('form.grade'));
-    if (!captainAge.trim()) validationErrors.push(t('form.captainAge'));
-
-    // Validate additional team members based on count
-    if (teamMemberCount && teamMemberCount > 1) {
-      const participant1NameError = validateName(participant1FullName, `${t('form.fullName')} 1`);
-      if (participant1NameError) validationErrors.push(participant1NameError);
-      
-      if (!participant1Iin.trim()) validationErrors.push(`${t('form.iin')} 1`);
-      else if (participant1Iin.length !== 12 || !/^\d{12}$/.test(participant1Iin)) {
-        validationErrors.push(t('form.required'));
-      }
-      
-      const participant1PhoneError = validatePhone(participant1Phone, `${t('form.phone')} 1`);
-      if (participant1PhoneError) validationErrors.push(participant1PhoneError);
-      
-      if (!participant1School.trim()) validationErrors.push(`${t('form.school')} 1`);
-      
-      const participant1CityError = validateCity(participant1City, `${t('form.city')} 1`);
-      if (participant1CityError) validationErrors.push(participant1CityError);
-      
-      if (!participant1Grade.trim()) validationErrors.push(`${t('form.grade')} 1`);
+    // Add participants based on team size
+    if (teamMemberCount && teamMemberCount >= 2) {
+      validationData.participant1 = {
+        fullName: participant1FullName,
+        iin: participant1Iin,
+        phone: participant1Phone,
+        school: participant1School,
+        city: participant1City,
+        grade: participant1Grade
+      };
     }
 
-    if (teamMemberCount && teamMemberCount > 2) {
-      const participant2NameError = validateName(participant2FullName, `${t('form.fullName')} 2`);
-      if (participant2NameError) validationErrors.push(participant2NameError);
-      
-      if (!participant2Iin.trim()) validationErrors.push(`${t('form.iin')} 2`);
-      else if (participant2Iin.length !== 12 || !/^\d{12}$/.test(participant2Iin)) {
-        validationErrors.push(t('form.required'));
-      }
-      
-      const participant2PhoneError = validatePhone(participant2Phone, `${t('form.phone')} 2`);
-      if (participant2PhoneError) validationErrors.push(participant2PhoneError);
-      
-      if (!participant2School.trim()) validationErrors.push(`${t('form.school')} 2`);
-      
-      const participant2CityError = validateCity(participant2City, `${t('form.city')} 2`);
-      if (participant2CityError) validationErrors.push(participant2CityError);
-      
-      if (!participant2Grade.trim()) validationErrors.push(`${t('form.grade')} 2`);
+    if (teamMemberCount && teamMemberCount >= 3) {
+      validationData.participant2 = {
+        fullName: participant2FullName,
+        iin: participant2Iin,
+        phone: participant2Phone,
+        school: participant2School,
+        city: participant2City,
+        grade: participant2Grade
+      };
     }
 
-    if (teamMemberCount && teamMemberCount > 3) {
-      const participant3NameError = validateName(participant3FullName, `${t('form.fullName')} 3`);
-      if (participant3NameError) validationErrors.push(participant3NameError);
-      
-      if (!participant3Iin.trim()) validationErrors.push(`${t('form.iin')} 3`);
-      else if (participant3Iin.length !== 12 || !/^\d{12}$/.test(participant3Iin)) {
-        validationErrors.push(t('form.required'));
-      }
-      
-      const participant3PhoneError = validatePhone(participant3Phone, `${t('form.phone')} 3`);
-      if (participant3PhoneError) validationErrors.push(participant3PhoneError);
-      
-      if (!participant3School.trim()) validationErrors.push(`${t('form.school')} 3`);
-      
-      const participant3CityError = validateCity(participant3City, `${t('form.city')} 3`);
-      if (participant3CityError) validationErrors.push(participant3CityError);
-      
-      if (!participant3Grade.trim()) validationErrors.push(`${t('form.grade')} 3`);
+    if (teamMemberCount && teamMemberCount >= 4) {
+      validationData.participant3 = {
+        fullName: participant3FullName,
+        iin: participant3Iin,
+        phone: participant3Phone,
+        school: participant3School,
+        city: participant3City,
+        grade: participant3Grade
+      };
     }
 
-    // Mentor validation if mentor info is provided
+    if (teamMemberCount && teamMemberCount >= 5) {
+      validationData.participant4 = {
+        fullName: participant4FullName,
+        iin: participant4Iin,
+        phone: participant4Phone,
+        school: participant4School,
+        city: participant4City,
+        grade: participant4Grade
+      };
+    }
+
+    // Add mentor if provided
     if (mentorFullName.trim()) {
-      const mentorPhoneError = validatePhone(mentorPhone, t('form.phone'));
-      if (mentorPhoneError) validationErrors.push(mentorPhoneError);
+      validationData.mentor = {
+        fullName: mentorFullName,
+        iin: mentorIin || undefined,
+        phone: mentorPhone || undefined,
+        school: mentorSchool || undefined,
+        city: mentorCity || undefined,
+        telegram: mentorTelegram || undefined
+      };
     }
 
-    if (validationErrors.length > 0) {
-      const errorMessage = `Ошибки валидации: ${validationErrors.join("; ")}`;
-      toast.error(errorMessage);
+    // Validate using Zod schema
+    const validation = safeParseEnrollment(validationData);
+    
+    if (!validation.success) {
+      const errors = validation.error.errors.map(err => {
+        const field = err.path.join('.');
+        return `${field}: ${err.message}`;
+      });
+      toast.error("Ошибки валидации", {
+        description: errors.slice(0, 3).join("\n") + (errors.length > 3 ? `\n... и еще ${errors.length - 3}` : "")
+      });
       return;
     }
 

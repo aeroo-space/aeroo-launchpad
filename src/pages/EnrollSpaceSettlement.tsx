@@ -15,6 +15,7 @@ import { useProfile } from "@/hooks/useProfile";
 import { supabase } from "@/integrations/supabase/client";
 import { CalendarDays } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { safeParseEnrollment } from "@/lib/enrollmentValidation";
 
 export default function EnrollSpaceSettlementPage() {
   const navigate = useNavigate();
@@ -140,78 +141,80 @@ export default function EnrollSpaceSettlementPage() {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consent) {
-      toast.error(t('form.toastConsentRequired'), { description: t('form.toastConsentDescription') });
-      return;
-    }
-
-    const validationErrors: string[] = [];
     
-    if (!teamName.trim()) validationErrors.push(t('spaceSettlement.teamName'));
-    if (!league.trim()) validationErrors.push(t('spaceSettlement.league'));
-    if (teamMemberCount === null) validationErrors.push(t('spaceSettlement.teamMemberCount'));
-    if (!captainFullName.trim()) validationErrors.push(t('spaceSettlement.fullName'));
-    if (!captainIin.trim()) validationErrors.push(t('spaceSettlement.iin'));
-    else if (captainIin.length !== 12 || !/^\d{12}$/.test(captainIin)) {
-      validationErrors.push(t('spaceSettlement.iinCaptainMust12'));
-    }
-    if (!captainPhone.trim()) validationErrors.push(t('spaceSettlement.phone'));
-    if (!captainSchool.trim()) validationErrors.push(t('spaceSettlement.school'));
-    if (!captainCity.trim()) validationErrors.push(t('spaceSettlement.city'));
-    if (!captainGrade.trim()) validationErrors.push(t('spaceSettlement.grade'));
+    // Build validation data structure
+    const validationData: any = {
+      teamName,
+      league,
+      captainFullName,
+      captainIin,
+      captainPhone,
+      captainEmail,
+      captainSchool,
+      captainCity,
+      captainGrade,
+      captainAge: undefined, // Space Settlement doesn't use age
+      captainTelegram: captainTelegram || undefined,
+      source: source || undefined,
+      questions: questions || undefined,
+      consent
+    };
 
-    // Validate participants based on team member count
+    // Add participants based on team size
     if (teamMemberCount && teamMemberCount >= 2) {
-      if (!participant1FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 2`);
-      if (!participant1Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 2`);
-      else if (participant1Iin.length !== 12 || !/^\d{12}$/.test(participant1Iin)) {
-        validationErrors.push(t('spaceSettlement.iinParticipant1Must12'));
-      }
-      if (!participant1Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 2`);
-      if (!participant1School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 2`);
-      if (!participant1City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 2`);
-      if (!participant1Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 2`);
+      validationData.participant1 = {
+        fullName: participant1FullName,
+        iin: participant1Iin,
+        phone: participant1Phone,
+        school: participant1School,
+        city: participant1City,
+        grade: participant1Grade
+      };
     }
 
     if (teamMemberCount && teamMemberCount >= 3) {
-      if (!participant2FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 3`);
-      if (!participant2Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 3`);
-      else if (participant2Iin.length !== 12 || !/^\d{12}$/.test(participant2Iin)) {
-        validationErrors.push(t('spaceSettlement.iinParticipant2Must12'));
-      }
-      if (!participant2Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 3`);
-      if (!participant2School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 3`);
-      if (!participant2City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 3`);
-      if (!participant2Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 3`);
+      validationData.participant2 = {
+        fullName: participant2FullName,
+        iin: participant2Iin,
+        phone: participant2Phone,
+        school: participant2School,
+        city: participant2City,
+        grade: participant2Grade
+      };
     }
 
     if (teamMemberCount && teamMemberCount >= 4) {
-      if (!participant3FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 4`);
-      if (!participant3Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 4`);
-      else if (participant3Iin.length !== 12 || !/^\d{12}$/.test(participant3Iin)) {
-        validationErrors.push(t('spaceSettlement.iinParticipant3Must12'));
-      }
-      if (!participant3Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 4`);
-      if (!participant3School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 4`);
-      if (!participant3City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 4`);
-      if (!participant3Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 4`);
+      validationData.participant3 = {
+        fullName: participant3FullName,
+        iin: participant3Iin,
+        phone: participant3Phone,
+        school: participant3School,
+        city: participant3City,
+        grade: participant3Grade
+      };
     }
 
     if (teamMemberCount && teamMemberCount >= 5) {
-      if (!participant4FullName.trim()) validationErrors.push(`${t('spaceSettlement.fullName')} 5`);
-      if (!participant4Iin.trim()) validationErrors.push(`${t('spaceSettlement.iin')} 5`);
-      else if (participant4Iin.length !== 12 || !/^\d{12}$/.test(participant4Iin)) {
-        validationErrors.push(t('spaceSettlement.iinParticipant4Must12'));
-      }
-      if (!participant4Phone.trim()) validationErrors.push(`${t('spaceSettlement.phone')} 5`);
-      if (!participant4School.trim()) validationErrors.push(`${t('spaceSettlement.school')} 5`);
-      if (!participant4City.trim()) validationErrors.push(`${t('spaceSettlement.city')} 5`);
-      if (!participant4Grade.trim()) validationErrors.push(`${t('spaceSettlement.grade')} 5`);
+      validationData.participant4 = {
+        fullName: participant4FullName,
+        iin: participant4Iin,
+        phone: participant4Phone,
+        school: participant4School,
+        city: participant4City,
+        grade: participant4Grade
+      };
     }
 
-    if (validationErrors.length > 0) {
-      toast.error(t('spaceSettlement.fillAllFields'), {
-        description: validationErrors.join(", ")
+    // Validate using Zod schema
+    const validation = safeParseEnrollment(validationData);
+    
+    if (!validation.success) {
+      const errors = validation.error.errors.map(err => {
+        const field = err.path.join('.');
+        return `${field}: ${err.message}`;
+      });
+      toast.error("Ошибки валидации", {
+        description: errors.slice(0, 3).join("\n") + (errors.length > 3 ? `\n... и еще ${errors.length - 3}` : "")
       });
       return;
     }
