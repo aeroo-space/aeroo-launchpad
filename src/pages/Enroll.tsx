@@ -687,7 +687,7 @@ export default function EnrollPage() {
 
               {/* Category Selection */}
               <div className="space-y-2">
-                <Label htmlFor="league">Категория *</Label>
+                <Label htmlFor="league">{t('form.categoryLabel')} *</Label>
                 <Select 
                   value={league} 
                   onValueChange={(value) => {
@@ -719,7 +719,7 @@ export default function EnrollPage() {
                   <Label>{t('form.teamMemberCount')} *</Label>
                   {league === "satellite-launch" ? (
                     <div className="p-3 border border-input rounded-md bg-muted">
-                      <p className="text-sm font-medium">Фиксировано 4 участника для Satellite Launch</p>
+                      <p className="text-sm font-medium">{t('form.fixedParticipants')}</p>
                     </div>
                   ) : (
                     <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
