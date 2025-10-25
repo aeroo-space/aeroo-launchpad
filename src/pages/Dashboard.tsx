@@ -14,6 +14,7 @@ import type { Tables } from "@/integrations/supabase/types";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
 
 import { Pencil, Download } from "lucide-react";
 import { 
@@ -48,6 +49,8 @@ const Dashboard = () => {
   const [fieldValue, setFieldValue] = useState("");
   const [fieldSubmitting, setFieldSubmitting] = useState(false);
   const [adminEnrollments, setAdminEnrollments] = useState<Enrollment[]>([]);
+  const [editingEnrollment, setEditingEnrollment] = useState<Enrollment | null>(null);
+  const [editDialogOpen, setEditDialogOpen] = useState(false);
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -234,6 +237,16 @@ const Dashboard = () => {
     } finally {
       setFieldSubmitting(false);
     }
+  };
+
+  const handleEditEnrollment = (enrollment: Enrollment) => {
+    setEditingEnrollment(enrollment);
+    setEditDialogOpen(true);
+  };
+
+  const handleEnrollmentUpdated = (updated: Enrollment) => {
+    setEnrollments(prev => prev.map(e => e.id === updated.id ? updated : e));
+    toast.success(t('dashboard.enrollmentUpdated', { defaultValue: 'Заявка обновлена' }));
   };
 
   const downloadEnrollments = () => {
@@ -602,7 +615,11 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <Button variant="outline" size="sm" onClick={() => navigate(`/enroll/space-settlement?edit=${e.id}`)}>
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          onClick={() => handleEditEnrollment(e)}
+                        >
                           {t('dashboardExtra.actions.edit', { defaultValue: 'Редактировать' })}
                         </Button>
                         <AlertDialog>
@@ -906,6 +923,16 @@ const Dashboard = () => {
             </form>
           </DialogContent>
         </Dialog>
+
+        {/* Edit Enrollment Dialog */}
+        {editingEnrollment && (
+          <EditEnrollmentDialog
+            enrollment={editingEnrollment}
+            open={editDialogOpen}
+            onOpenChange={setEditDialogOpen}
+            onUpdated={handleEnrollmentUpdated}
+          />
+        )}
       </main>
       <Footer />
     </div>
