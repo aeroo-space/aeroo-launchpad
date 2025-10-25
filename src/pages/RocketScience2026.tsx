@@ -127,7 +127,9 @@ const RocketScience2026 = () => {
         {/* Animated starfield background */}
         <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.05),transparent_50%)] pointer-events-none" />
         
-        <Navigation />
+        <div className="sticky top-0 z-50 bg-[#000033]/95 backdrop-blur-md border-b border-white/10">
+          <Navigation />
+        </div>
 
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
