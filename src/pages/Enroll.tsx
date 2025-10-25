@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "@/components/ui/alert-dialog";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthProvider";
 import { useProfile } from "@/hooks/useProfile";
 import { supabase } from "@/integrations/supabase/client";
@@ -57,8 +57,8 @@ export default function EnrollPage() {
       return m;
     })();
     metaDesc.content = competition
-      ? `Подача заявки на участие: ${competition.title}. Заполните форму команды и подтвердите согласие.`
-      : "Подача заявки на участие в соревнованиях AEROO.";
+      ? `${t('form.metaDescription')} ${competition.title}.`
+      : t('form.metaDescriptionGeneral');
     let link = document.querySelector("link[rel='canonical']") as HTMLLinkElement | null;
     if (!link) {
       link = document.createElement("link");
@@ -403,94 +403,94 @@ export default function EnrollPage() {
     // Check required fields and create specific error messages
     const validationErrors: string[] = [];
     
-    if (!teamName.trim()) validationErrors.push("Название команды");
-    if (!league.trim()) validationErrors.push("Категория");
-    if (teamMemberCount === null) validationErrors.push("Количество участников команды");
+    if (!teamName.trim()) validationErrors.push(t('form.teamNameLabel'));
+    if (!league.trim()) validationErrors.push(t('form.leagueLabel'));
+    if (teamMemberCount === null) validationErrors.push(t('form.teamMemberCount'));
     
     // Captain validation
-    const captainNameError = validateName(captainFullName, "ФИО капитана");
+    const captainNameError = validateName(captainFullName, t('form.fullName'));
     if (captainNameError) validationErrors.push(captainNameError);
     
-    if (!captainIin.trim()) validationErrors.push("ИИН капитана");
+    if (!captainIin.trim()) validationErrors.push(t('form.iin'));
     else if (captainIin.length !== 12 || !/^\d{12}$/.test(captainIin)) {
-      validationErrors.push("ИИН капитана должен содержать 12 цифр");
+      validationErrors.push(t('form.required'));
     }
     
-    const captainPhoneError = validatePhone(captainPhone, "Телефон капитана");
+    const captainPhoneError = validatePhone(captainPhone, t('form.phone'));
     if (captainPhoneError) validationErrors.push(captainPhoneError);
     
-    if (!captainSchool.trim()) validationErrors.push("Учебное заведение капитана");
+    if (!captainSchool.trim()) validationErrors.push(t('form.school'));
     
-    const captainCityError = validateCity(captainCity, "Город капитана");
+    const captainCityError = validateCity(captainCity, t('form.city'));
     if (captainCityError) validationErrors.push(captainCityError);
     
-    if (!captainGrade.trim()) validationErrors.push("Класс капитана");
-    if (!captainAge.trim()) validationErrors.push("Возраст капитана");
+    if (!captainGrade.trim()) validationErrors.push(t('form.grade'));
+    if (!captainAge.trim()) validationErrors.push(t('form.captainAge'));
 
     // Validate additional team members based on count
     if (teamMemberCount && teamMemberCount > 1) {
-      const participant1NameError = validateName(participant1FullName, "ФИО участника 1");
+      const participant1NameError = validateName(participant1FullName, `${t('form.fullName')} 1`);
       if (participant1NameError) validationErrors.push(participant1NameError);
       
-      if (!participant1Iin.trim()) validationErrors.push("ИИН участника 1");
+      if (!participant1Iin.trim()) validationErrors.push(`${t('form.iin')} 1`);
       else if (participant1Iin.length !== 12 || !/^\d{12}$/.test(participant1Iin)) {
-        validationErrors.push("ИИН участника 1 должен содержать 12 цифр");
+        validationErrors.push(t('form.required'));
       }
       
-      const participant1PhoneError = validatePhone(participant1Phone, "Телефон участника 1");
+      const participant1PhoneError = validatePhone(participant1Phone, `${t('form.phone')} 1`);
       if (participant1PhoneError) validationErrors.push(participant1PhoneError);
       
-      if (!participant1School.trim()) validationErrors.push("Учебное заведение участника 1");
+      if (!participant1School.trim()) validationErrors.push(`${t('form.school')} 1`);
       
-      const participant1CityError = validateCity(participant1City, "Город участника 1");
+      const participant1CityError = validateCity(participant1City, `${t('form.city')} 1`);
       if (participant1CityError) validationErrors.push(participant1CityError);
       
-      if (!participant1Grade.trim()) validationErrors.push("Класс участника 1");
+      if (!participant1Grade.trim()) validationErrors.push(`${t('form.grade')} 1`);
     }
 
     if (teamMemberCount && teamMemberCount > 2) {
-      const participant2NameError = validateName(participant2FullName, "ФИО участника 2");
+      const participant2NameError = validateName(participant2FullName, `${t('form.fullName')} 2`);
       if (participant2NameError) validationErrors.push(participant2NameError);
       
-      if (!participant2Iin.trim()) validationErrors.push("ИИН участника 2");
+      if (!participant2Iin.trim()) validationErrors.push(`${t('form.iin')} 2`);
       else if (participant2Iin.length !== 12 || !/^\d{12}$/.test(participant2Iin)) {
-        validationErrors.push("ИИН участника 2 должен содержать 12 цифр");
+        validationErrors.push(t('form.required'));
       }
       
-      const participant2PhoneError = validatePhone(participant2Phone, "Телефон участника 2");
+      const participant2PhoneError = validatePhone(participant2Phone, `${t('form.phone')} 2`);
       if (participant2PhoneError) validationErrors.push(participant2PhoneError);
       
-      if (!participant2School.trim()) validationErrors.push("Учебное заведение участника 2");
+      if (!participant2School.trim()) validationErrors.push(`${t('form.school')} 2`);
       
-      const participant2CityError = validateCity(participant2City, "Город участника 2");
+      const participant2CityError = validateCity(participant2City, `${t('form.city')} 2`);
       if (participant2CityError) validationErrors.push(participant2CityError);
       
-      if (!participant2Grade.trim()) validationErrors.push("Класс участника 2");
+      if (!participant2Grade.trim()) validationErrors.push(`${t('form.grade')} 2`);
     }
 
     if (teamMemberCount && teamMemberCount > 3) {
-      const participant3NameError = validateName(participant3FullName, "ФИО участника 3");
+      const participant3NameError = validateName(participant3FullName, `${t('form.fullName')} 3`);
       if (participant3NameError) validationErrors.push(participant3NameError);
       
-      if (!participant3Iin.trim()) validationErrors.push("ИИН участника 3");
+      if (!participant3Iin.trim()) validationErrors.push(`${t('form.iin')} 3`);
       else if (participant3Iin.length !== 12 || !/^\d{12}$/.test(participant3Iin)) {
-        validationErrors.push("ИИН участника 3 должен содержать 12 цифр");
+        validationErrors.push(t('form.required'));
       }
       
-      const participant3PhoneError = validatePhone(participant3Phone, "Телефон участника 3");
+      const participant3PhoneError = validatePhone(participant3Phone, `${t('form.phone')} 3`);
       if (participant3PhoneError) validationErrors.push(participant3PhoneError);
       
-      if (!participant3School.trim()) validationErrors.push("Учебное заведение участника 3");
+      if (!participant3School.trim()) validationErrors.push(`${t('form.school')} 3`);
       
-      const participant3CityError = validateCity(participant3City, "Город участника 3");
+      const participant3CityError = validateCity(participant3City, `${t('form.city')} 3`);
       if (participant3CityError) validationErrors.push(participant3CityError);
       
-      if (!participant3Grade.trim()) validationErrors.push("Класс участника 3");
+      if (!participant3Grade.trim()) validationErrors.push(`${t('form.grade')} 3`);
     }
 
     // Mentor validation if mentor info is provided
     if (mentorFullName.trim()) {
-      const mentorPhoneError = validatePhone(mentorPhone, "Телефон ментора");
+      const mentorPhoneError = validatePhone(mentorPhone, t('form.phone'));
       if (mentorPhoneError) validationErrors.push(mentorPhoneError);
     }
 
@@ -615,11 +615,11 @@ export default function EnrollPage() {
       } catch (emailError) {
         console.error('Failed to send confirmation email:', emailError);
         // Show a warning but don't block the success flow
-        toast.warning("Регистрация успешна, но не удалось отправить email-подтверждение");
+        toast.warning(t('form.toastSubmitError'));
       }
     }
 
-    toast.success((isEditMode || editEnrollmentId) ? "Заявка успешно обновлена" : t('form.toastSubmitSuccess'));
+    toast.success((isEditMode || editEnrollmentId) ? t('form.toastSubmitSuccess') : t('form.toastSubmitSuccess'));
     navigate("/dashboard");
   };
 
@@ -703,7 +703,7 @@ export default function EnrollPage() {
                   }}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Выберите категорию" />
+                    <SelectValue placeholder={t('form.selectCompetition')} />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="satellite-launch">Satellite Launch</SelectItem>
@@ -866,12 +866,12 @@ export default function EnrollPage() {
               {/* Additional Participants (Optional) */}
               {teamMemberCount > 1 && (
                 <div className="space-y-4">
-                  <h3 className="text-lg font-semibold">Дополнительные участники (необязательно)</h3>
+                  <h3 className="text-lg font-semibold">{t('form.participant2Title')}</h3>
 
                   {/* Participant 2 */}
                   {teamMemberCount >= 2 && (
                     <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">Участник 2</h4>
+                  <h4 className="font-medium">{t('form.participant2')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>
@@ -930,7 +930,7 @@ export default function EnrollPage() {
                   {/* Participant 3 */}
                   {teamMemberCount >= 3 && (
                     <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">Участник 3</h4>
+                  <h4 className="font-medium">{t('form.participant3Title')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>
@@ -989,7 +989,7 @@ export default function EnrollPage() {
                   {/* Participant 4 */}
                   {teamMemberCount >= 4 && (
                     <div className="bg-muted rounded-lg p-4 space-y-4 shadow-sm">
-                  <h4 className="font-medium">Участник 4</h4>
+                  <h4 className="font-medium">{t('form.participant4Title')}</h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <Label>{t('form.fullName')}</Label>
@@ -1205,7 +1205,7 @@ export default function EnrollPage() {
                   !source || !consent
                 }
               >
-                {submitting ? t('form.sending') : (isEditMode ? "Обновить заявку" : t('form.submit'))}
+                {submitting ? t('form.sending') : (isEditMode ? t('form.editApplication') : t('form.submit'))}
               </Button>
             </form>
           )}
