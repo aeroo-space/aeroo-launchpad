@@ -1070,6 +1070,12 @@ const resources = {
             text: 'Бесплатно'
           }
         },
+        rules: {
+          badge: 'Официальные правила',
+          title: 'Правила соревнования',
+          subtitle: 'Ознакомьтесь с полными правилами соревнования на вашем языке',
+          description: 'Загрузите официальные правила соревнования в удобном формате PDF'
+        },
         tracks: {
           title: 'Категории соревнований',
           subtitle: 'Выберите направление по душе',
@@ -2142,6 +2148,12 @@ const resources = {
             title: 'Participation Cost',
             text: 'Free'
           }
+        },
+        rules: {
+          badge: 'Official Rules',
+          title: 'Competition Rules',
+          subtitle: 'Review the complete competition rules in your language',
+          description: 'Download the official competition rules in convenient PDF format'
         },
         tracks: {
           title: 'Competition Categories',
@@ -3811,6 +3823,12 @@ const resources = {
             title: 'Қатысу құны',
             text: 'Тегін'
           }
+        },
+        rules: {
+          badge: 'Ресми ережелер',
+          title: 'Жарыс ережелері',
+          subtitle: 'Жарыстың толық ережелерімен сіздің тіліңізде танысыңыз',
+          description: 'Жарыстың ресми ережелерін ыңғайлы PDF форматында жүктеп алыңыз'
         },
         tracks: {
           title: 'Жарыс санаттары',

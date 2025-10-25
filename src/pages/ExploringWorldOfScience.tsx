@@ -25,7 +25,8 @@ import {
   Clock,
   Target,
   Sparkles,
-  ExternalLink
+  ExternalLink,
+  FileDown
 } from 'lucide-react';
 import logoDaryn from '@/assets/logo-daryn.png';
 import logoAeroo from '@/assets/logo-aeroo.png';
@@ -235,6 +236,99 @@ const ExploringWorldOfScience = () => {
                         </div>
                       </div>
                     </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Competition Rules Section */}
+        <section className="py-20 relative bg-gradient-to-br from-primary/10 via-background to-accent/10">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto fade-in">
+              <div className="text-center mb-12">
+                <div className="inline-flex items-center gap-2 mb-4 px-4 py-2 bg-primary/20 rounded-full border border-primary/30">
+                  <FileDown className="w-5 h-5 text-primary" />
+                  <span className="text-sm font-medium text-primary">{t('ews.rules.badge')}</span>
+                </div>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                  {t('ews.rules.title')}
+                </h2>
+                <p className="text-lg text-muted-foreground">
+                  {t('ews.rules.subtitle')}
+                </p>
+              </div>
+
+              <Card className="p-8 glass-card border-2 border-primary/20 shadow-2xl">
+                <div className="space-y-6">
+                  <div className="text-center mb-8">
+                    <Award className="w-16 h-16 mx-auto mb-4 text-primary" />
+                    <p className="text-lg font-medium">
+                      {t('ews.rules.description')}
+                    </p>
+                  </div>
+
+                  <div className="grid md:grid-cols-3 gap-4">
+                    {/* Russian */}
+                    <a
+                      href="/documents/rules-exploring-world-of-science-ru.pdf"
+                      download
+                      className="group"
+                    >
+                      <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-primary/5 to-primary/10 border-2 border-primary/20 hover:border-primary/40">
+                        <div className="flex flex-col items-center text-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center group-hover:bg-primary/30 transition-colors">
+                            <FileDown className="w-6 h-6 text-primary" />
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg mb-1">Русский</h3>
+                            <p className="text-sm text-muted-foreground">Правила соревнования</p>
+                          </div>
+                          <Badge variant="outline" className="mt-2">PDF</Badge>
+                        </div>
+                      </Card>
+                    </a>
+
+                    {/* Kazakh */}
+                    <a
+                      href="/documents/rules-exploring-world-of-science-kk.pdf"
+                      download
+                      className="group"
+                    >
+                      <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-accent/5 to-accent/10 border-2 border-accent/20 hover:border-accent/40">
+                        <div className="flex flex-col items-center text-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center group-hover:bg-accent/30 transition-colors">
+                            <FileDown className="w-6 h-6 text-accent" />
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg mb-1">Қазақша</h3>
+                            <p className="text-sm text-muted-foreground">Жарыс ережелері</p>
+                          </div>
+                          <Badge variant="outline" className="mt-2">PDF</Badge>
+                        </div>
+                      </Card>
+                    </a>
+
+                    {/* English */}
+                    <a
+                      href="/documents/rules-exploring-world-of-science-en.pdf"
+                      download
+                      className="group"
+                    >
+                      <Card className="p-6 hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer bg-gradient-to-br from-success/5 to-success/10 border-2 border-success/20 hover:border-success/40">
+                        <div className="flex flex-col items-center text-center gap-3">
+                          <div className="w-12 h-12 rounded-full bg-success/20 flex items-center justify-center group-hover:bg-success/30 transition-colors">
+                            <FileDown className="w-6 h-6 text-success" />
+                          </div>
+                          <div>
+                            <h3 className="font-bold text-lg mb-1">English</h3>
+                            <p className="text-sm text-muted-foreground">Competition Rules</p>
+                          </div>
+                          <Badge variant="outline" className="mt-2">PDF</Badge>
+                        </div>
+                      </Card>
+                    </a>
                   </div>
                 </div>
               </Card>
