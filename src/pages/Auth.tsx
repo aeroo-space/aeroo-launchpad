@@ -148,39 +148,18 @@ const Auth = () => {
           return;
         }
         
-        // Normalize phone and telegram for validation
+        // Normalize phone for validation
         const phoneDigits = phone.replace(/\D/g, '');
-        const telegramUsername = telegram.slice(1); // Remove '@' for length check
         
-        console.log('Validation check:', {
-          fullName: fullName.trim(),
-          fullNameValid: fullName.trim().length > 0,
-          iin: iin,
-          iinValid: iin.length === 12,
-          phoneDigits: phoneDigits,
-          phoneValid: phoneDigits.length === 11,
-          telegramUsername: telegramUsername,
-          telegramValid: telegramUsername.length > 0,
-          school: school.trim(),
-          schoolValid: school.trim().length > 0,
-          city: city.trim(),
-          cityValid: city.trim().length > 0,
-          grade: grade,
-          gradeValid: grade.length > 0,
-          age: age,
-          ageValid: age.length > 0
-        });
-        
-        // Validate all profile fields for signup
+        // Validate all profile fields for signup (telegram is optional)
         if (!fullName.trim() || 
             iin.length !== 12 || 
             phoneDigits.length !== 11 || 
-            telegramUsername.length === 0 || 
             !school.trim() || 
             !city.trim() || 
             !grade || 
             !age) {
-          alert("Пожалуйста, заполните все поля");
+          alert("Пожалуйста, заполните все обязательные поля");
           return;
         }
         
@@ -189,7 +168,7 @@ const Auth = () => {
           full_name: fullName.trim(),
           iin: iin,
           phone: phone,
-          telegram: telegram,
+          telegram: telegram === '@' || telegram.trim() === '' ? null : telegram,
           school: school.trim(),
           city: city.trim(),
           grade: grade,
@@ -345,13 +324,12 @@ const Auth = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="telegram">{t('form.telegram', { defaultValue: 'Telegram' })} *</Label>
+                  <Label htmlFor="telegram">{t('form.telegram', { defaultValue: 'Telegram' })}</Label>
                   <Input
                     id="telegram"
                     value={telegram}
                     onChange={handleTelegramChange}
-                    placeholder={t('form.telegramPlaceholder', { defaultValue: '@username' })}
-                    required
+                    placeholder={t('form.telegramPlaceholder', { defaultValue: '@username (необязательно)' })}
                   />
                 </div>
                 <div className="space-y-2">

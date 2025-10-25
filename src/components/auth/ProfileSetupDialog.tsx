@@ -88,7 +88,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             full_name: fullName,
             iin,
             phone,
-            telegram,
+            telegram: telegram === '@' || telegram.trim() === '' ? null : telegram,
             school,
             city,
             grade: parseInt(grade) || 1,
@@ -109,7 +109,7 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
     }
   };
 
-  const isValid = fullName && iin.length === 12 && phone.length === 17 && telegram.length > 1 && school && city && grade;
+  const isValid = fullName && iin.length === 12 && phone.length === 17 && school && city && grade;
 
   return (
     <Dialog open={open} onOpenChange={() => {}}>
@@ -160,13 +160,12 @@ export function ProfileSetupDialog({ user, open, onComplete }: ProfileSetupDialo
             />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="telegram">{t('profileSetup.telegram')} *</Label>
+            <Label htmlFor="telegram">{t('profileSetup.telegram')}</Label>
             <Input
               id="telegram"
               value={telegram}
               onChange={handleTelegramChange}
               placeholder={t('profileSetup.telegramPlaceholder')}
-              required
             />
           </div>
           <div className="space-y-2">
