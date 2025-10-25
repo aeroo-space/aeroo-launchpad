@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthProvider";
-import { toast } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 export type ProductOption = { id: string; title: string };
 
@@ -58,7 +58,7 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
 
       if (error) throw error;
 
-      toast("Заявка отправлена!", { 
+      toast.success("Заявка отправлена!", { 
         description: "Мы свяжемся с вами в ближайшее время" 
       });
       
@@ -67,7 +67,7 @@ export function ProductRequestModal({ open, onOpenChange, products, selectedProd
       reset();
     } catch (error) {
       console.error("Error submitting request:", error);
-      toast("Ошибка отправки", { 
+      toast.error("Ошибка отправки", { 
         description: "Попробуйте снова или свяжитесь с нами напрямую" 
       });
     } finally {
