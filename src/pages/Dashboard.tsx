@@ -614,40 +614,43 @@ const Dashboard = () => {
                           </span>
                         </div>
                       </div>
-                      <div className="flex gap-2">
+                      <div className="space-y-3">
                         {e.competition_id === "space-settlement" && (
                           <Button 
                             variant="default" 
-                            size="sm" 
+                            size="lg" 
                             onClick={() => navigate('/hackathon-task')}
+                            className="w-full text-base font-semibold"
                           >
                             {t('dashboardExtra.actions.hackathonTask', { defaultValue: 'Задача Хакатона' })}
                           </Button>
                         )}
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
-                          onClick={() => handleEditEnrollment(e)}
-                        >
-                          {t('dashboardExtra.actions.edit', { defaultValue: 'Редактировать' })}
-                        </Button>
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button variant="destructive" size="sm">{t('dashboardExtra.actions.delete', { defaultValue: 'Удалить' })}</Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle>{t('dashboardExtra.confirm.title', { defaultValue: 'Удалить регистрацию?' })}</AlertDialogTitle>
-                              <AlertDialogDescription>
-                                {t('dashboardExtra.confirm.desc', { defaultValue: 'Это действие необратимо. Ваша запись в соревнование будет удалена.' })}
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <AlertDialogCancel>{t('dashboardExtra.actions.cancel', { defaultValue: 'Отмена' })}</AlertDialogCancel>
-                              <AlertDialogAction onClick={() => handleDelete(e.id)}>{t('dashboardExtra.actions.confirmDelete', { defaultValue: 'Удалить' })}</AlertDialogAction>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
+                        <div className="flex gap-2">
+                          <Button 
+                            variant="outline" 
+                            size="sm" 
+                            onClick={() => handleEditEnrollment(e)}
+                          >
+                            {t('dashboardExtra.actions.edit', { defaultValue: 'Редактировать' })}
+                          </Button>
+                          <AlertDialog>
+                            <AlertDialogTrigger asChild>
+                              <Button variant="destructive" size="sm">{t('dashboardExtra.actions.delete', { defaultValue: 'Удалить' })}</Button>
+                            </AlertDialogTrigger>
+                            <AlertDialogContent>
+                              <AlertDialogHeader>
+                                <AlertDialogTitle>{t('dashboardExtra.confirm.title', { defaultValue: 'Удалить регистрацию?' })}</AlertDialogTitle>
+                                <AlertDialogDescription>
+                                  {t('dashboardExtra.confirm.desc', { defaultValue: 'Это действие необратимо. Ваша запись в соревнование будет удалена.' })}
+                                </AlertDialogDescription>
+                              </AlertDialogHeader>
+                              <AlertDialogFooter>
+                                <AlertDialogCancel>{t('dashboardExtra.actions.cancel', { defaultValue: 'Отмена' })}</AlertDialogCancel>
+                                <AlertDialogAction onClick={() => handleDelete(e.id)}>{t('dashboardExtra.actions.confirmDelete', { defaultValue: 'Удалить' })}</AlertDialogAction>
+                              </AlertDialogFooter>
+                            </AlertDialogContent>
+                          </AlertDialog>
+                        </div>
                       </div>
                     </li>
                   ))}
@@ -748,36 +751,45 @@ const Dashboard = () => {
                               )}
                               <div className="flex items-center gap-2">
                                 <span className="w-1.5 h-1.5 bg-orange-400 rounded-full"></span>
-                                <span className="text-muted-foreground">{t('dashboardExtra.admin.age', { defaultValue: 'Возраст' })}:</span>
-                                <span>{enrollment.captain_age} {t('dashboardExtra.admin.years', { defaultValue: 'лет' })}</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.city', { defaultValue: 'Город' })}:</span>
+                                <span>{enrollment.city}</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <span className="w-1.5 h-1.5 bg-pink-400 rounded-full"></span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.studyPlace', { defaultValue: 'Место обучения' })}:</span>
+                                <span>{enrollment.study_place}</span>
                               </div>
                             </div>
                           </div>
 
                           {/* Team Members */}
                           <div className="space-y-3">
-                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{t('dashboardExtra.admin.teamComposition', { defaultValue: 'Состав команды' })}</h5>
-                            <div className="space-y-2">
+                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{t('dashboardExtra.admin.teamMembers', { defaultValue: 'Состав команды' })}</h5>
+                            <div className="space-y-2 text-sm">
+                              <div className="flex items-start gap-2">
+                                <span className="text-blue-500 font-bold text-xs mt-0.5">1</span>
+                                <div>
+                                  <div className="font-medium">{enrollment.captain_full_name}</div>
+                                  <div className="text-xs text-muted-foreground">{t('dashboardExtra.admin.captain', { defaultValue: 'Капитан' })} • {t('dashboardExtra.admin.age', { defaultValue: 'Возраст' })}: {enrollment.captain_age || 'N/A'}</div>
+                                </div>
+                              </div>
                               {[
                                 enrollment.participant1_full_name,
                                 enrollment.participant2_full_name,
                                 enrollment.participant3_full_name,
                                 enrollment.participant4_full_name
-                              ].filter(Boolean).map((participant, index) => (
-                                <div key={index} className="flex items-center gap-2 text-sm">
-                                  <span className="w-6 h-6 bg-primary/10 text-primary rounded-full flex items-center justify-center text-xs font-medium">
-                                    {index + 1}
-                                  </span>
-                                  <span>{participant}</span>
+                              ].map((name, idx) => name && (
+                                <div key={idx} className="flex items-start gap-2">
+                                  <span className="text-green-500 font-bold text-xs mt-0.5">{idx + 2}</span>
+                                  <div className="font-medium">{name}</div>
                                 </div>
                               ))}
-                              {![
-                                enrollment.participant1_full_name,
-                                enrollment.participant2_full_name,
-                                enrollment.participant3_full_name,
-                                enrollment.participant4_full_name
-                              ].filter(Boolean).length && (
-                                <p className="text-sm text-muted-foreground italic">{t('dashboardExtra.admin.noParticipantsSpecified', { defaultValue: 'Участники не указаны' })}</p>
+                              {enrollment.mentor_full_name && (
+                                <div className="pt-2 mt-2 border-t">
+                                  <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">{t('dashboardExtra.admin.mentor', { defaultValue: 'Ментор' })}</div>
+                                  <div className="font-medium">{enrollment.mentor_full_name}</div>
+                                  <div className="text-xs text-muted-foreground">{enrollment.mentor_phone}</div>
+                                </div>
                               )}
                             </div>
                           </div>
@@ -787,39 +799,18 @@ const Dashboard = () => {
                             <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{t('dashboardExtra.admin.additionalInfo', { defaultValue: 'Дополнительная информация' })}</h5>
                             <div className="space-y-2 text-sm">
                               <div>
-                                <span className="text-muted-foreground">{t('dashboardExtra.admin.city', { defaultValue: 'Город' })}:</span>
-                                <span className="ml-2">{enrollment.city || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указан' })}</span>
+                                <span className="text-muted-foreground">{t('dashboardExtra.admin.source', { defaultValue: 'Источник' })}:</span>
+                                <div className="font-medium">{enrollment.source || 'Не указано'}</div>
                               </div>
-                              <div>
-                                <span className="text-muted-foreground">{t('dashboardExtra.admin.studyPlace', { defaultValue: 'Учебное заведение' })}:</span>
-                                <span className="ml-2">{enrollment.study_place || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указано' })}</span>
-                              </div>
-                              <div>
-                                <span className="text-muted-foreground">{t('dashboardExtra.admin.mentor', { defaultValue: 'Наставник' })}:</span>
-                                <span className="ml-2">{enrollment.mentor_full_name || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указан' })}</span>
-                              </div>
-                              {enrollment.mentor_phone && (
+                              {enrollment.questions && (
                                 <div>
-                                  <span className="text-muted-foreground">{t('dashboardExtra.admin.mentorPhone', { defaultValue: 'Телефон наставника' })}:</span>
-                                  <span className="ml-2">{enrollment.mentor_phone}</span>
+                                  <span className="text-muted-foreground">{t('dashboardExtra.admin.questions', { defaultValue: 'Вопросы' })}:</span>
+                                  <div className="font-medium text-xs mt-1 p-2 bg-muted rounded">{enrollment.questions}</div>
                                 </div>
                               )}
-                              <div>
-                                <span className="text-muted-foreground">{t('dashboardExtra.admin.source', { defaultValue: 'Источник' })}:</span>
-                                <span className="ml-2">{enrollment.source || t('dashboardExtra.admin.notSpecified', { defaultValue: 'Не указан' })}</span>
-                              </div>
                             </div>
                           </div>
                         </div>
-
-                        {enrollment.questions && (
-                          <div className="pt-4 border-t">
-                            <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide mb-2">{t('dashboardExtra.admin.teamQuestions', { defaultValue: 'Вопросы от команды' })}</h5>
-                            <div className="bg-muted/50 p-4 rounded-lg">
-                              <p className="text-sm leading-relaxed">{enrollment.questions}</p>
-                            </div>
-                          </div>
-                        )}
                       </div>
                     ))}
                   </div>
@@ -829,79 +820,49 @@ const Dashboard = () => {
           )}
 
           {/* Admin Panel - Product Requests */}
-          {isAdmin && (
+          {isAdmin && productRequests.length > 0 && (
             <Card>
               <CardHeader>
-                <CardTitle>{t('dashboardExtra.admin.productRequests', { defaultValue: 'Заявки на связь' })}</CardTitle>
+                <CardTitle>{t('dashboardExtra.admin.productRequests', { defaultValue: 'Заявки на продукты' })}</CardTitle>
               </CardHeader>
               <CardContent>
-                {productRequests.length === 0 ? (
-                  <p className="text-muted-foreground">{t('dashboardExtra.admin.noRequests', { defaultValue: 'Заявок пока нет' })}</p>
-                ) : (
-                  <div className="space-y-4">
-                    {productRequests.map((request) => (
-                      <div key={request.id} className="border rounded-lg p-4 space-y-2">
-                        <div className="flex justify-between items-start">
-                          <div className="space-y-1">
-                            <h4 className="font-medium">{request.name}</h4>
-                            <p className="text-sm text-muted-foreground">{request.email}</p>
-                            {request.phone && (
-                              <p className="text-sm text-muted-foreground">{t('dashboardExtra.admin.phone', { defaultValue: 'Телефон' })}: {request.phone}</p>
-                            )}
-                            {request.organization && (
-                              <p className="text-sm text-muted-foreground">{t('dashboardExtra.admin.organization', { defaultValue: 'Организация' })}: {request.organization}</p>
-                            )}
-                          </div>
-                          <div className="text-right text-sm text-muted-foreground">
-                            <div>{new Date(request.created_at).toLocaleDateString('ru-RU')}</div>
-                            <div className={`inline-block px-2 py-1 rounded text-xs ${
-                              request.status === 'pending' ? 'bg-yellow-100 text-yellow-800' :
-                              request.status === 'completed' ? 'bg-green-100 text-green-800' :
-                              'bg-gray-100 text-gray-800'
-                            }`}>
-                              {request.status === 'pending' ? t('dashboardExtra.admin.pending', { defaultValue: 'Ожидает' }) : 
-                               request.status === 'completed' ? t('dashboardExtra.admin.completed', { defaultValue: 'Завершено' }) : request.status}
-                            </div>
-                          </div>
-                        </div>
+                <ul className="divide-y divide-border">
+                  {productRequests.map((req) => (
+                    <li key={req.id} className="py-4 flex flex-col gap-2">
+                      <div className="flex items-start justify-between">
                         <div>
-                          <p className="text-sm font-medium mb-1">
-                            {t('dashboardExtra.admin.product', { defaultValue: 'Продукт' })}: {request.product_id === 'partnership' ? t('dashboardExtra.admin.partnership', { defaultValue: 'Партнерство' }) : request.product_id}
-                          </p>
-                          {request.comment && (
-                            <div>
-                              <p className="text-sm font-medium mb-1">{t('dashboardExtra.admin.comment', { defaultValue: 'Комментарий' })}:</p>
-                              <p className="text-sm bg-muted p-2 rounded">{request.comment}</p>
+                          <div className="font-medium">{req.product_id}</div>
+                          <div className="text-sm text-muted-foreground">
+                            {req.name} ({req.email})
+                            {req.organization && ` - ${req.organization}`}
+                          </div>
+                          {req.comment && (
+                            <div className="text-sm text-muted-foreground mt-1">
+                              {t('dashboardExtra.labels.comment', { defaultValue: 'Комментарий' })}: {req.comment}
                             </div>
                           )}
                         </div>
-                        <div className="flex justify-end mt-3">
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                              <Button variant="destructive" size="sm">
-                                {t('dashboardExtra.admin.deleteRequest', { defaultValue: 'Удалить заявку' })}
-                              </Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>{t('dashboardExtra.admin.deleteRequestTitle', { defaultValue: 'Удалить заявку?' })}</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  {t('dashboardExtra.admin.deleteRequestDesc', { defaultValue: 'Это действие необратимо. Заявка будет полностью удалена из системы.' })}
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>{t('common.cancel', { defaultValue: 'Отмена' })}</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => handleDeleteProductRequest(request.id)}>
-                                  {t('dashboardExtra.actions.delete', { defaultValue: 'Удалить' })}
-                                </AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
-                        </div>
+                        <AlertDialog>
+                          <AlertDialogTrigger asChild>
+                            <Button variant="destructive" size="sm">{t('dashboardExtra.actions.delete', { defaultValue: 'Удалить' })}</Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle>{t('dashboardExtra.confirm.titleRequest', { defaultValue: 'Удалить заявку?' })}</AlertDialogTitle>
+                              <AlertDialogDescription>
+                                {t('dashboardExtra.confirm.descRequest', { defaultValue: 'Это действие необратимо. Заявка будет удалена.' })}
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <AlertDialogCancel>{t('dashboardExtra.actions.cancel', { defaultValue: 'Отмена' })}</AlertDialogCancel>
+                              <AlertDialogAction onClick={() => handleDeleteProductRequest(req.id)}>{t('dashboardExtra.actions.confirmDelete', { defaultValue: 'Удалить' })}</AlertDialogAction>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
                       </div>
-                    ))}
-                  </div>
-                )}
+                    </li>
+                  ))}
+                </ul>
               </CardContent>
             </Card>
           )}
