@@ -27,6 +27,12 @@ const HackathonTask = () => {
   const { t } = useTranslation();
   const { user } = useAuth();
   const [teamName, setTeamName] = useState("");
+  const [league, setLeague] = useState("");
+  const [captain, setCaptain] = useState("");
+  const [participant1, setParticipant1] = useState("");
+  const [participant2, setParticipant2] = useState("");
+  const [participant3, setParticipant3] = useState("");
+  const [participant4, setParticipant4] = useState("");
   const [submissionLink, setSubmissionLink] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -37,26 +43,32 @@ const HackathonTask = () => {
   const deadline = new Date("2025-10-29T23:59:00");
   useEffect(() => {
     document.title = "Hackathon Task — AEROO";
-    const fetchTeamName = async () => {
+    const fetchTeamData = async () => {
       if (!user) return;
       try {
         const { data, error } = await supabase
           .from("enrollments")
-          .select("team_name")
+          .select("team_name, league, captain_full_name, participant1_full_name, participant2_full_name, participant3_full_name, participant4_full_name")
           .eq("user_id", user.id)
           .eq("competition_id", "space-settlement")
           .maybeSingle();
         if (error) throw error;
         if (data) {
-          setTeamName(data.team_name);
+          setTeamName(data.team_name || "");
+          setLeague(data.league === "senior" ? "Старшая лига / Senior League" : "Младшая лига / Junior League");
+          setCaptain(data.captain_full_name || "");
+          setParticipant1(data.participant1_full_name || "");
+          setParticipant2(data.participant2_full_name || "");
+          setParticipant3(data.participant3_full_name || "");
+          setParticipant4(data.participant4_full_name || "");
         }
       } catch (error) {
-        console.error("Error fetching team name:", error);
+        console.error("Error fetching team data:", error);
       } finally {
         setLoading(false);
       }
     };
-    fetchTeamName();
+    fetchTeamData();
   }, [user]);
 
   // Countdown timer
@@ -393,6 +405,92 @@ const HackathonTask = () => {
                       disabled={loading}
                     />
                   </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="league" className="text-lg">
+                      Category
+                    </Label>
+                    <Input
+                      id="league"
+                      value={league}
+                      readOnly
+                      className="bg-muted"
+                      disabled={loading}
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="captain" className="text-lg">
+                      Captain
+                    </Label>
+                    <Input
+                      id="captain"
+                      value={captain}
+                      readOnly
+                      className="bg-muted"
+                      disabled={loading}
+                    />
+                  </div>
+
+                  {participant1 && (
+                    <div className="space-y-2">
+                      <Label htmlFor="participant1" className="text-lg">
+                        Participant 1
+                      </Label>
+                      <Input
+                        id="participant1"
+                        value={participant1}
+                        readOnly
+                        className="bg-muted"
+                        disabled={loading}
+                      />
+                    </div>
+                  )}
+
+                  {participant2 && (
+                    <div className="space-y-2">
+                      <Label htmlFor="participant2" className="text-lg">
+                        Participant 2
+                      </Label>
+                      <Input
+                        id="participant2"
+                        value={participant2}
+                        readOnly
+                        className="bg-muted"
+                        disabled={loading}
+                      />
+                    </div>
+                  )}
+
+                  {participant3 && (
+                    <div className="space-y-2">
+                      <Label htmlFor="participant3" className="text-lg">
+                        Participant 3
+                      </Label>
+                      <Input
+                        id="participant3"
+                        value={participant3}
+                        readOnly
+                        className="bg-muted"
+                        disabled={loading}
+                      />
+                    </div>
+                  )}
+
+                  {participant4 && (
+                    <div className="space-y-2">
+                      <Label htmlFor="participant4" className="text-lg">
+                        Participant 4
+                      </Label>
+                      <Input
+                        id="participant4"
+                        value={participant4}
+                        readOnly
+                        className="bg-muted"
+                        disabled={loading}
+                      />
+                    </div>
+                  )}
 
                   <div className="space-y-2">
                     <Label htmlFor="submissionLink" className="text-lg">
