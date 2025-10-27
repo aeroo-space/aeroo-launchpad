@@ -368,7 +368,7 @@ const HackathonTask = () => {
             <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5">
               <CardTitle className="text-2xl flex items-center gap-2">
                 <Rocket className="h-6 w-6 text-primary" />
-                Submit Your Work
+                Submit your project
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
