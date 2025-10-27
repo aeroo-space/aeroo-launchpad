@@ -9,24 +9,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import {
-  Rocket,
-  Users,
-  Globe2,
-  Cpu,
-  Heart,
-  TreePine,
-  Building2,
-  Recycle,
-  Box,
-  Zap,
-  AlertCircle,
-  Clock,
-} from "lucide-react";
-
+import { Rocket, Users, Globe2, Cpu, Heart, TreePine, Building2, Recycle, Box, Zap, AlertCircle, Clock } from "lucide-react";
 const HackathonTask = () => {
-  const { t } = useTranslation();
-  const { user } = useAuth();
+  const {
+    t
+  } = useTranslation();
+  const {
+    user
+  } = useAuth();
   const [teamName, setTeamName] = useState("");
   const [submissionLink, setSubmissionLink] = useState("");
   const [submitting, setSubmitting] = useState(false);
@@ -36,21 +26,15 @@ const HackathonTask = () => {
 
   // Deadline: October 29, 2025 at 23:59:00 (local time)
   const deadline = new Date("2025-10-29T23:59:00");
-
   useEffect(() => {
     document.title = "Hackathon Task — AEROO";
-
     const fetchTeamName = async () => {
       if (!user) return;
-
       try {
-        const { data, error } = await supabase
-          .from("enrollments")
-          .select("team_name")
-          .eq("user_id", user.id)
-          .eq("competition_id", "space-settlement")
-          .maybeSingle();
-
+        const {
+          data,
+          error
+        } = await supabase.from("enrollments").select("team_name").eq("user_id", user.id).eq("competition_id", "space-settlement").maybeSingle();
         if (error) throw error;
         if (data) {
           setTeamName(data.team_name);
@@ -61,7 +45,6 @@ const HackathonTask = () => {
         setLoading(false);
       }
     };
-
     fetchTeamName();
   }, [user]);
 
@@ -78,69 +61,53 @@ const HackathonTask = () => {
         setTimeLeft("Submission period has ended");
         return;
       }
-
       if (difference <= 0) {
         setTimeLeft("Deadline reached!");
         return;
       }
-
       const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
+      const hours = Math.floor(difference % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+      const minutes = Math.floor(difference % (1000 * 60 * 60) / (1000 * 60));
+      const seconds = Math.floor(difference % (1000 * 60) / 1000);
       setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
     };
-
     updateCountdown();
     const interval = setInterval(updateCountdown, 1000);
-
     return () => clearInterval(interval);
   }, [deadline]);
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (isDeadlinePassed) {
       toast.error("Submission period has ended");
       return;
     }
-
     if (!submissionLink.trim()) {
       toast.error("Please add a link to your work");
       return;
     }
-
     setSubmitting(true);
-
     try {
       // Update enrollment with submission link
-      const { error } = await supabase
-        .from("enrollments")
-        .update({
-          submission_link: submissionLink.trim(),
-          updated_at: new Date().toISOString(),
-        })
-        .eq("user_id", user!.id)
-        .eq("competition_id", "space-settlement");
-
+      const {
+        error
+      } = await supabase.from("enrollments").update({
+        submission_link: submissionLink.trim(),
+        updated_at: new Date().toISOString()
+      }).eq("user_id", user!.id).eq("competition_id", "space-settlement");
       if (error) throw error;
-
       toast.success("Work submitted successfully!", {
-        description: "Your submission link has been saved",
+        description: "Your submission link has been saved"
       });
     } catch (error: any) {
       console.error("Submission error:", error);
       toast.error("Submission error", {
-        description: error.message,
+        description: error.message
       });
     } finally {
       setSubmitting(false);
     }
   };
-
-  return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-b from-background via-background to-primary/5">
+  return <div className="min-h-screen flex flex-col bg-gradient-to-b from-background via-background to-primary/5">
       <Navigation />
 
       <main className="flex-grow container mx-auto px-4 py-12">
@@ -157,9 +124,7 @@ const HackathonTask = () => {
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
               AEROO Space Settlement Competition 2025 TASK
             </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              Fostering scientific thinking and stimulating interest in space through interdisciplinary challenges
-            </p>
+            
           </div>
 
           {/* Introduction */}
@@ -173,7 +138,7 @@ const HackathonTask = () => {
               </p>
               <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 <p className="font-semibold text-lg">
-                  <strong>Your Task:</strong> Write a scientific paper (no more than 15 pages, including all parts) in
+                   Write a scientific paper (no more than 15 pages, including all parts) in
                   PDF format describing a space colony you would design and build in the near future.
                 </p>
               </div>
@@ -350,13 +315,7 @@ const HackathonTask = () => {
                   <span className="text-primary font-bold mt-1">✓</span>
                   <span>All sources must be listed in a bibliography section</span>
                 </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-destructive font-bold mt-1">⚠</span>
-                  <span>
-                    <strong className="text-destructive">Plagiarism is strictly prohibited.</strong> The use of AI
-                    should be cited, or else the team will be disqualified.
-                  </span>
-                </li>
+                
               </ul>
             </CardContent>
           </Card>
@@ -398,41 +357,24 @@ const HackathonTask = () => {
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
-              {isDeadlinePassed ? (
-                <div className="flex items-center justify-center gap-3 p-8 bg-destructive/10 border border-destructive/20 rounded-lg">
+              {isDeadlinePassed ? <div className="flex items-center justify-center gap-3 p-8 bg-destructive/10 border border-destructive/20 rounded-lg">
                   <AlertCircle className="h-8 w-8 text-destructive" />
                   <p className="text-lg font-semibold text-destructive">
                     The submission period has ended. No further submissions are allowed.
                   </p>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                </div> : <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="space-y-2">
                     <Label htmlFor="teamName" className="text-lg">
                       Team Name
                     </Label>
-                    <Input
-                      id="teamName"
-                      value={teamName}
-                      readOnly
-                      className="bg-muted text-lg font-semibold"
-                      disabled={loading}
-                    />
+                    <Input id="teamName" value={teamName} readOnly className="bg-muted text-lg font-semibold" disabled={loading} />
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="submissionLink" className="text-lg">
                       Link to Your Work <span className="text-destructive">*</span>
                     </Label>
-                    <Input
-                      id="submissionLink"
-                      type="url"
-                      value={submissionLink}
-                      onChange={(e) => setSubmissionLink(e.target.value)}
-                      placeholder="https://your-file-hosting-service.com/..."
-                      required
-                      className="text-base"
-                    />
+                    <Input id="submissionLink" type="url" value={submissionLink} onChange={e => setSubmissionLink(e.target.value)} placeholder="https://your-file-hosting-service.com/..." required className="text-base" />
                     <div className="flex items-start gap-2 mt-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-md">
                       <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                       <p className="text-sm text-amber-700 dark:text-amber-400">
@@ -445,16 +387,13 @@ const HackathonTask = () => {
                   <Button type="submit" size="lg" className="w-full text-lg" disabled={submitting || loading}>
                     {submitting ? "Submitting..." : "Submit Work"}
                   </Button>
-                </form>
-              )}
+                </form>}
             </CardContent>
           </Card>
         </div>
       </main>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default HackathonTask;
