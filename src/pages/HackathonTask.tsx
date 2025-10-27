@@ -33,9 +33,12 @@ const HackathonTask = () => {
   const [loading, setLoading] = useState(true);
   const [timeLeft, setTimeLeft] = useState("");
   const [isDeadlinePassed, setIsDeadlinePassed] = useState(false);
+  const [showTaskDetails, setShowTaskDetails] = useState(false);
 
   // Deadline: October 29, 2025 at 23:59:00 (local time)
   const deadline = new Date("2025-10-29T23:59:00");
+  // Task details reveal time: October 28, 2025 at 11:59:00 (morning)
+  const taskRevealTime = new Date("2025-10-28T11:59:00");
   useEffect(() => {
     document.title = "Hackathon Task — AEROO";
     const fetchTeamData = async () => {
@@ -65,6 +68,10 @@ const HackathonTask = () => {
   useEffect(() => {
     const updateCountdown = () => {
       const now = new Date();
+      
+      // Check if task details should be shown
+      setShowTaskDetails(now >= taskRevealTime);
+      
       const difference = deadline.getTime() - now.getTime();
 
       // Check if submissions should be closed (after Oct 30, 00:05)
@@ -161,6 +168,7 @@ const HackathonTask = () => {
           </Card>
 
           {/* Requirements Grid */}
+          {showTaskDetails && (
           <div className="grid md:grid-cols-2 gap-6 mb-8">
             <Card className="border-primary/20">
               <CardHeader>
@@ -232,8 +240,10 @@ const HackathonTask = () => {
               </CardContent>
             </Card>
           </div>
+          )}
 
           {/* Key Rules */}
+          {showTaskDetails && (
           <Card className="mb-8 border-primary/20">
             <CardHeader>
               <CardTitle className="text-2xl">Key Project Rules</CardTitle>
@@ -299,8 +309,10 @@ const HackathonTask = () => {
               </ul>
             </CardContent>
           </Card>
+          )}
 
           {/* Documentation Requirements */}
+          {showTaskDetails && (
           <Card className="mb-8 border-primary/20">
             <CardHeader>
               <CardTitle className="text-2xl">Documentation Requirements</CardTitle>
@@ -333,6 +345,7 @@ const HackathonTask = () => {
               </ul>
             </CardContent>
           </Card>
+          )}
 
           {/* Critical Notice */}
           <Card className="mb-8 bg-destructive/10 border-destructive/50">
