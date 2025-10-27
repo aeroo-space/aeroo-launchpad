@@ -262,10 +262,7 @@ const HackathonTask = () => {
             </CardHeader>
             <CardContent>
               <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">✓</span>
-                  <span>Include diagrams or 3D models showing specific parts and modules of the colony</span>
-                </li>
+                
                 <li className="flex items-start gap-3">
                   <span className="text-primary font-bold mt-1">✓</span>
                   <span>All visual materials must have scientific or technical justification and citations</span>
