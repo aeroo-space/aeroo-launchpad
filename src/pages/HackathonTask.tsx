@@ -157,7 +157,7 @@ const HackathonTask = () => {
               </p>
               <div className="mt-6 p-4 bg-primary/10 rounded-lg border border-primary/20">
                 <p className="font-semibold text-lg">
-                  </strong> Write a scientific paper (no more than 15 pages, including all parts) in PDF format describing a space colony you would design and build in the near future.
+                  <strong>Your Task:</strong> Write a scientific paper (no more than 15 pages, including all parts) in PDF format describing a space colony you would design and build in the near future.
                 </p>
               </div>
             </CardContent>
