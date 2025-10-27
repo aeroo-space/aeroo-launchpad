@@ -33,22 +33,11 @@ const HackathonTask = () => {
   const [loading, setLoading] = useState(true);
   const [timeLeft, setTimeLeft] = useState("");
   const [isDeadlinePassed, setIsDeadlinePassed] = useState(false);
-  const [isPageAccessible, setIsPageAccessible] = useState(true);
 
   // Deadline: October 29, 2025 at 23:59:00 (local time)
   const deadline = new Date("2025-10-29T23:59:00");
-  const pageAccessDeadline = new Date("2025-10-29T23:59:00");
   useEffect(() => {
     document.title = "Hackathon Task — AEROO";
-    
-    // Check if page is still accessible
-    const now = new Date();
-    if (now > pageAccessDeadline) {
-      setIsPageAccessible(false);
-      setLoading(false);
-      return;
-    }
-    
     const fetchTeamData = async () => {
       if (!user) return;
       try {
@@ -133,32 +122,6 @@ const HackathonTask = () => {
       setSubmitting(false);
     }
   };
-  // If page is no longer accessible, show message
-  if (!isPageAccessible) {
-    return (
-      <div className="min-h-screen flex flex-col bg-gradient-to-b from-background via-background to-primary/5">
-        <Navigation />
-        <main className="flex-grow container mx-auto px-4 py-12">
-          <div className="max-w-3xl mx-auto">
-            <Card className="border-primary/20">
-              <CardContent className="p-12 text-center">
-                <Rocket className="h-16 w-16 mx-auto mb-6 text-primary opacity-50" />
-                <h1 className="text-3xl font-bold mb-4">Competition Has Ended</h1>
-                <p className="text-lg text-muted-foreground mb-6">
-                  The AEROO Space Settlement Competition 2025 has concluded on October 29, 2025 at 23:59.
-                </p>
-                <p className="text-muted-foreground">
-                  Thank you for your participation! Results will be announced soon.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </main>
-        <Footer />
-      </div>
-    );
-  }
-
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-b from-background via-background to-primary/5">
       <Navigation />
