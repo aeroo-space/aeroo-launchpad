@@ -62,6 +62,7 @@ export type Database = {
           source: string | null
           status: string
           study_place: string | null
+          submission_link: string | null
           team_name: string | null
           telegram: string | null
           updated_at: string
@@ -114,6 +115,7 @@ export type Database = {
           source?: string | null
           status?: string
           study_place?: string | null
+          submission_link?: string | null
           team_name?: string | null
           telegram?: string | null
           updated_at?: string
@@ -166,6 +168,7 @@ export type Database = {
           source?: string | null
           status?: string
           study_place?: string | null
+          submission_link?: string | null
           team_name?: string | null
           telegram?: string | null
           updated_at?: string
