@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { toast } from "sonner";
-import { Rocket, Users, Globe2, Cpu, Heart, TreePine, Building2, Recycle, Box, Zap, AlertCircle } from "lucide-react";
+import { Rocket, Users, Globe2, Cpu, Heart, TreePine, Building2, Recycle, Box, Zap, AlertCircle, Clock } from "lucide-react";
 
 const HackathonTask = () => {
   const { t } = useTranslation();
@@ -18,9 +18,14 @@ const HackathonTask = () => {
   const [submissionLink, setSubmissionLink] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [timeLeft, setTimeLeft] = useState("");
+  const [isDeadlinePassed, setIsDeadlinePassed] = useState(false);
+  
+  // Deadline: October 29, 2024 at 23:59:00 (local time)
+  const deadline = new Date("2024-10-29T23:59:00");
 
   useEffect(() => {
-    document.title = "Задача Хакатона — AEROO";
+    document.title = "Hackathon Task — AEROO";
     
     const fetchTeamName = async () => {
       if (!user) return;
@@ -46,12 +51,50 @@ const HackathonTask = () => {
     
     fetchTeamName();
   }, [user]);
+  
+  // Countdown timer
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date();
+      const difference = deadline.getTime() - now.getTime();
+      
+      // Check if submissions should be closed (after Oct 30, 00:05)
+      const closingTime = new Date("2024-10-30T00:05:00");
+      if (now >= closingTime) {
+        setIsDeadlinePassed(true);
+        setTimeLeft("Submission period has ended");
+        return;
+      }
+      
+      if (difference <= 0) {
+        setTimeLeft("Deadline reached!");
+        return;
+      }
+      
+      const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+      
+      setTimeLeft(`${days}d ${hours}h ${minutes}m ${seconds}s`);
+    };
+    
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    
+    return () => clearInterval(interval);
+  }, [deadline]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (isDeadlinePassed) {
+      toast.error("Submission period has ended");
+      return;
+    }
+    
     if (!submissionLink.trim()) {
-      toast.error("Пожалуйста, добавьте ссылку на вашу работу");
+      toast.error("Please add a link to your work");
       return;
     }
     
@@ -70,12 +113,12 @@ const HackathonTask = () => {
         
       if (error) throw error;
       
-      toast.success("Работа успешно отправлена!", {
-        description: "Ваша ссылка на работу сохранена"
+      toast.success("Work submitted successfully!", {
+        description: "Your submission link has been saved"
       });
     } catch (error: any) {
       console.error("Submission error:", error);
-      toast.error("Ошибка отправки", {
+      toast.error("Submission error", {
         description: error.message
       });
     } finally {
@@ -282,59 +325,79 @@ const HackathonTask = () => {
             </CardContent>
           </Card>
 
+          {/* Countdown Timer */}
+          <Card className="mb-8 border-primary/20 bg-gradient-to-r from-primary/10 via-primary/5 to-background">
+            <CardContent className="p-6">
+              <div className="flex items-center justify-center gap-4">
+                <Clock className="h-8 w-8 text-primary animate-pulse" />
+                <div className="text-center">
+                  <p className="text-sm text-muted-foreground mb-1">Submission Deadline: October 29, 2024 at 23:59</p>
+                  <p className="text-2xl font-bold text-primary">{timeLeft}</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           {/* Submission Form */}
-          <Card className="border-primary/20 shadow-xl">
+          <Card className={`border-primary/20 shadow-xl ${isDeadlinePassed ? 'opacity-60' : ''}`}>
             <CardHeader className="bg-gradient-to-r from-primary/10 to-primary/5">
               <CardTitle className="text-2xl flex items-center gap-2">
                 <Rocket className="h-6 w-6 text-primary" />
-                Отправка работы / Submit Your Work
+                Submit Your Work
               </CardTitle>
             </CardHeader>
             <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="space-y-2">
-                  <Label htmlFor="teamName" className="text-lg">Название команды / Team Name</Label>
-                  <Input
-                    id="teamName"
-                    value={teamName}
-                    readOnly
-                    className="bg-muted text-lg font-semibold"
-                    disabled={loading}
-                  />
+              {isDeadlinePassed ? (
+                <div className="flex items-center justify-center gap-3 p-8 bg-destructive/10 border border-destructive/20 rounded-lg">
+                  <AlertCircle className="h-8 w-8 text-destructive" />
+                  <p className="text-lg font-semibold text-destructive">
+                    The submission period has ended. No further submissions are allowed.
+                  </p>
                 </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="submissionLink" className="text-lg">
-                    Ссылка на работу / Link to Your Work <span className="text-destructive">*</span>
-                  </Label>
-                  <Input
-                    id="submissionLink"
-                    type="url"
-                    value={submissionLink}
-                    onChange={(e) => setSubmissionLink(e.target.value)}
-                    placeholder="https://drive.google.com/... или https://docs.google.com/..."
-                    required
-                    className="text-base"
-                  />
-                  <div className="flex items-start gap-2 mt-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-md">
-                    <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
-                    <p className="text-sm text-amber-700 dark:text-amber-400">
-                      <strong>Не забудьте открыть доступ к документу!</strong> Убедитесь, что ссылка имеет доступ "Просмотр для всех, у кого есть ссылка"
-                      <br />
-                      <strong>Don't forget to open access to the document!</strong> Make sure the link has "View access for anyone with the link"
-                    </p>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="teamName" className="text-lg">Team Name</Label>
+                    <Input
+                      id="teamName"
+                      value={teamName}
+                      readOnly
+                      className="bg-muted text-lg font-semibold"
+                      disabled={loading}
+                    />
                   </div>
-                </div>
 
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  className="w-full text-lg"
-                  disabled={submitting || loading}
-                >
-                  {submitting ? "Отправка..." : "Отправить работу / Submit Work"}
-                </Button>
-              </form>
+                  <div className="space-y-2">
+                    <Label htmlFor="submissionLink" className="text-lg">
+                      Link to Your Work <span className="text-destructive">*</span>
+                    </Label>
+                    <Input
+                      id="submissionLink"
+                      type="url"
+                      value={submissionLink}
+                      onChange={(e) => setSubmissionLink(e.target.value)}
+                      placeholder="https://your-file-hosting-service.com/..."
+                      required
+                      className="text-base"
+                    />
+                    <div className="flex items-start gap-2 mt-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-md">
+                      <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
+                      <p className="text-sm text-amber-700 dark:text-amber-400">
+                        <strong>Don't forget to open access to the document!</strong> Make sure the link has "View access for anyone with the link"
+                      </p>
+                    </div>
+                  </div>
+
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full text-lg"
+                    disabled={submitting || loading}
+                  >
+                    {submitting ? "Submitting..." : "Submit Work"}
+                  </Button>
+                </form>
+              )}
             </CardContent>
           </Card>
         </div>
