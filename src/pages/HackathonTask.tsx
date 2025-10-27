@@ -99,7 +99,7 @@ const HackathonTask = () => {
             </div>
             <Rocket className="h-16 w-16 mx-auto mb-4 text-primary animate-bounce" />
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
-              Main Task for the Aeroo Space Settlement Contest
+              AEROO Space Settlement Competition 2025 Main Task
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Fostering scientific thinking and stimulating interest in space through interdisciplinary challenges
@@ -305,7 +305,7 @@ const HackathonTask = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="submissionLink" className="text-lg">
-                    Ссылка на работу / Link to Your Work <span className="text-destructive">*</span>
+                    Link to Your Work <span className="text-destructive">*</span>
                   </Label>
                   <Input
                     id="submissionLink"
@@ -319,7 +319,6 @@ const HackathonTask = () => {
                   <div className="flex items-start gap-2 mt-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-md">
                     <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
                     <p className="text-sm text-amber-700 dark:text-amber-400">
-                      <strong>Не забудьте открыть доступ к документу!</strong> Убедитесь, что ссылка имеет доступ "Просмотр для всех, у кого есть ссылка"
                       <br />
                       <strong>Don't forget to open access to the document!</strong> Make sure the link has "View access for anyone with the link"
                     </p>
