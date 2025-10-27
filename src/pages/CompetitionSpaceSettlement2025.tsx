@@ -3,6 +3,8 @@ import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { useAuth } from "@/contexts/AuthProvider";
+import { supabase } from "@/integrations/supabase/client";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -52,12 +54,45 @@ const sections = [
 
 export default function CompetitionSpaceSettlement2025() {
   const { t, i18n } = useTranslation();
+  const { user } = useAuth();
   const revealRefs = useRef<HTMLElement[]>([]);
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isEnrolled, setIsEnrolled] = useState(false);
+  const [checkingEnrollment, setCheckingEnrollment] = useState(true);
+
+  // Check if user is enrolled
+  useEffect(() => {
+    const checkEnrollment = async () => {
+      if (!user) {
+        setIsEnrolled(false);
+        setCheckingEnrollment(false);
+        return;
+      }
+
+      try {
+        const { data, error } = await supabase
+          .from("enrollments")
+          .select("id")
+          .eq("user_id", user.id)
+          .eq("competition_id", "space-settlement")
+          .maybeSingle();
+
+        if (!error && data) {
+          setIsEnrolled(true);
+        }
+      } catch (err) {
+        console.error("Error checking enrollment:", err);
+      } finally {
+        setCheckingEnrollment(false);
+      }
+    };
+
+    checkEnrollment();
+  }, [user]);
 
   // Countdown timer
   useEffect(() => {
-    const deadline = new Date("2025-10-25T23:59:00+05:00"); // GMT+5
+    const deadline = new Date("2025-10-29T23:59:00+05:00"); // GMT+5
     
     const updateTimer = () => {
       const now = new Date();
@@ -124,7 +159,11 @@ export default function CompetitionSpaceSettlement2025() {
     localStorage.setItem('lng', lng);
   };
 
-  const applyBtn = (
+  const applyBtn = isEnrolled ? (
+    <Button size="lg" variant="primary" asChild aria-label={t('spaceSettlement2025.hero.hackathonTask', { defaultValue: 'Задача хакатона' })}>
+      <Link to="/hackathon-task">{t('spaceSettlement2025.hero.hackathonTask', { defaultValue: 'Задача хакатона' })}</Link>
+    </Button>
+  ) : (
     <Button size="lg" variant="primary" asChild aria-label={t('spaceSettlement2025.hero.participate')}>
       <Link to="/enroll/space-settlement">{t('spaceSettlement2025.hero.participate')}</Link>
     </Button>

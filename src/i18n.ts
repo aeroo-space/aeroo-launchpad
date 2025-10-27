@@ -437,11 +437,12 @@ const resources = {
           subtitle: "Республиканский онлайн-хакатон по проектированию космических поселений",
           dates: "Регистрация до 25.10.2025 | Хакатон 28-29 октября 2025",
           participate: "Принять участие",
+          hackathonTask: "Задача хакатона",
           learnMore: "Подробнее"
         },
         countdown: {
-          title: "До окончания регистрации",
-          deadline: "25 октября 2025, 23:59 GMT+5",
+          title: "До окончания соревнования",
+          deadline: "29 октября 2025, 23:59 GMT+5",
           days: "дней",
           hours: "часов",
           minutes: "минут",
@@ -2054,11 +2055,12 @@ const resources = {
           subtitle: "National Online Hackathon on Space Settlement Design",
           dates: "Registration until Oct 25, 2025 | Hackathon Oct 28-29, 2025",
           participate: "Participate",
+          hackathonTask: "Hackathon Task",
           learnMore: "Learn More"
         },
         countdown: {
-          title: "Until Registration Closes",
-          deadline: "October 25, 2025, 23:59 GMT+5",
+          title: "Until Competition Ends",
+          deadline: "October 29, 2025, 23:59 GMT+5",
           days: "days",
           hours: "hours",
           minutes: "minutes",
@@ -3245,11 +3247,12 @@ const resources = {
           subtitle: "Ғарыштық қоныстарды жобалау бойынша республикалық онлайн-хакатон",
           dates: "25.10.2025 дейін тіркелу | Хакатон 28-29 қазан 2025",
           participate: "Қатысу",
+          hackathonTask: "Хакатон тапсырмасы",
           learnMore: "Толығырақ"
         },
         countdown: {
-          title: "Тіркелу аяқталғанша",
-          deadline: "25 қазан 2025, 23:59 GMT+5",
+          title: "Жарыс аяқталғанша",
+          deadline: "29 қазан 2025, 23:59 GMT+5",
           days: "күн",
           hours: "сағат",
           minutes: "минут",
