@@ -18,7 +18,7 @@ export const competitions: Competition[] = [
     category: "competitions.spaceSettlement.category",
     description: "competitions.spaceSettlement.description",
     icon: Building,
-    status: "competitions.statusRegistration", 
+    status: "competitions.statusActive", 
     deadline: "competitions.spaceSettlement.deadline",
     ages: "competitions.spaceSettlement.ages",
   },
