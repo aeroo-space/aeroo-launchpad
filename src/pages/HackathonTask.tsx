@@ -155,7 +155,7 @@ const HackathonTask = () => {
             </div>
             <Rocket className="h-16 w-16 mx-auto mb-4 text-primary animate-bounce" />
             <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-primary via-primary/80 to-primary bg-clip-text text-transparent">
-              Main Task for the Aeroo Space Settlement Contest
+              AEROO Space Settlement Competition 2025 TASK
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
               Fostering scientific thinking and stimulating interest in space through interdisciplinary challenges
@@ -369,10 +369,7 @@ const HackathonTask = () => {
                 <div>
                   <p className="text-lg font-bold text-destructive mb-2">IMPORTANT NOTICE</p>
                   <p className="text-foreground">
-                    <strong>
-                      PLAGIARISM IS STRICTLY PROHIBITED. THE USE OF AI MUST BE CITED, OTHERWISE THE TEAM WILL BE
-                      DISQUALIFIED.
-                    </strong>
+                    <strong>ACCOMPLISHING THE MAIN PART IS OBLIGATORY. WITHOUT IT WORK WON'T BE EVALUATED.</strong>
                   </p>
                 </div>
               </div>
