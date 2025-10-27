@@ -615,6 +615,15 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <div className="flex gap-2">
+                        {e.competition_id === "space-settlement" && (
+                          <Button 
+                            variant="default" 
+                            size="sm" 
+                            onClick={() => navigate('/hackathon-task')}
+                          >
+                            {t('dashboardExtra.actions.hackathonTask', { defaultValue: 'Задача Хакатона' })}
+                          </Button>
+                        )}
                         <Button 
                           variant="outline" 
                           size="sm" 

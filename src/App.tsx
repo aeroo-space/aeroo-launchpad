@@ -28,10 +28,12 @@ import EnrollPage from "./pages/Enroll";
 import EnrollSpaceSettlement from "./pages/EnrollSpaceSettlement";
 import ProductRequestsPage from "./pages/ProductRequests";
 import RocketScienceKit from "./pages/RocketScienceKit";
+import HackathonTask from "./pages/HackathonTask";
 import { AuthProvider } from "@/contexts/AuthProvider";
 import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { ThemeProvider } from "@/components/theme-provider";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
+import SpaceSettlementProtectedRoute from "@/components/common/SpaceSettlementProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -85,6 +87,11 @@ const App = () => (
                 </ProtectedRoute>
               } />
               <Route path="/products/rocket-science-kit" element={<RocketScienceKit />} />
+              <Route path="/hackathon-task" element={
+                <SpaceSettlementProtectedRoute>
+                  <HackathonTask />
+                </SpaceSettlementProtectedRoute>
+              } />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>

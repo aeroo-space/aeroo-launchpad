@@ -988,7 +988,8 @@ const resources = {
           edit: 'Редактировать',
           delete: 'Удалить',
           cancel: 'Отмена',
-          confirmDelete: 'Удалить'
+          confirmDelete: 'Удалить',
+          hackathonTask: 'Задача Хакатона'
         },
         confirm: {
           title: 'Удалить регистрацию?',
@@ -2564,7 +2565,8 @@ const resources = {
           edit: 'Edit',
           delete: 'Delete',
           cancel: 'Cancel',
-          confirmDelete: 'Delete'
+          confirmDelete: 'Delete',
+          hackathonTask: 'Hackathon Task'
         },
         confirm: {
           title: 'Delete registration?',
@@ -3742,7 +3744,8 @@ const resources = {
           edit: 'Өңдеу',
           delete: 'Жою',
           cancel: 'Болдырмау',
-          confirmDelete: 'Жою'
+          confirmDelete: 'Жою',
+          hackathonTask: 'Хакатон тапсырмасы'
         },
         confirm: {
           title: 'Тіркеуді жою керек пе?',
