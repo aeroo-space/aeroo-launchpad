@@ -21,8 +21,8 @@ const HackathonTask = () => {
   const [timeLeft, setTimeLeft] = useState("");
   const [isDeadlinePassed, setIsDeadlinePassed] = useState(false);
   
-  // Deadline: October 29, 2024 at 23:59:00 (local time)
-  const deadline = new Date("2024-10-29T23:59:00");
+  // Deadline: October 29, 2025 at 23:59:00 (local time)
+  const deadline = new Date("2025-10-29T23:59:00");
 
   useEffect(() => {
     document.title = "Hackathon Task — AEROO";
@@ -59,7 +59,7 @@ const HackathonTask = () => {
       const difference = deadline.getTime() - now.getTime();
       
       // Check if submissions should be closed (after Oct 30, 00:05)
-      const closingTime = new Date("2024-10-30T00:05:00");
+      const closingTime = new Date("2025-10-30T00:05:00");
       if (now >= closingTime) {
         setIsDeadlinePassed(true);
         setTimeLeft("Submission period has ended");
@@ -331,7 +331,7 @@ const HackathonTask = () => {
               <div className="flex items-center justify-center gap-4">
                 <Clock className="h-8 w-8 text-primary animate-pulse" />
                 <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-1">Submission Deadline: October 29, 2024 at 23:59</p>
+                  <p className="text-sm text-muted-foreground mb-1">Submission Deadline: October 29, 2025 at 23:59</p>
                   <p className="text-2xl font-bold text-primary">{timeLeft}</p>
                 </div>
               </div>
