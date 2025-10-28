@@ -605,6 +605,7 @@ const Dashboard = () => {
                             <div>{t('dashboardExtra.labels.participant3', { defaultValue: 'Участник 3' })}: {e.participant2_full_name || "—"}</div>
                             <div>{t('dashboardExtra.labels.participant4', { defaultValue: 'Участник 4' })}: {e.participant3_full_name || "—"}</div>
                             <div>{t('dashboardExtra.labels.participant5', { defaultValue: 'Участник 5' })}: {e.participant4_full_name || "—"}</div>
+                            {(e as any).participant5_full_name && <div>{t('dashboardExtra.labels.participant6', { defaultValue: 'Участник 6' })}: {(e as any).participant5_full_name}</div>}
                             {e.mentor_full_name && <div className="mt-1 pt-1 border-t">{t('dashboardExtra.labels.mentor', { defaultValue: 'Ментор' })}: {e.mentor_full_name}</div>}
                           </div>
                         </div>
@@ -777,7 +778,8 @@ const Dashboard = () => {
                                 enrollment.participant1_full_name,
                                 enrollment.participant2_full_name,
                                 enrollment.participant3_full_name,
-                                enrollment.participant4_full_name
+                                enrollment.participant4_full_name,
+                                (enrollment as any).participant5_full_name
                               ].map((name, idx) => name && (
                                 <div key={idx} className="flex items-start gap-2">
                                   <span className="text-green-500 font-bold text-xs mt-0.5">{idx + 2}</span>

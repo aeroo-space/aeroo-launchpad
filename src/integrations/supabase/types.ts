@@ -58,6 +58,12 @@ export type Database = {
           participant4_iin: string | null
           participant4_phone: string | null
           participant4_school: string | null
+          participant5_city: string | null
+          participant5_full_name: string | null
+          participant5_grade: string | null
+          participant5_iin: string | null
+          participant5_phone: string | null
+          participant5_school: string | null
           questions: string | null
           source: string | null
           status: string
@@ -111,6 +117,12 @@ export type Database = {
           participant4_iin?: string | null
           participant4_phone?: string | null
           participant4_school?: string | null
+          participant5_city?: string | null
+          participant5_full_name?: string | null
+          participant5_grade?: string | null
+          participant5_iin?: string | null
+          participant5_phone?: string | null
+          participant5_school?: string | null
           questions?: string | null
           source?: string | null
           status?: string
@@ -164,6 +176,12 @@ export type Database = {
           participant4_iin?: string | null
           participant4_phone?: string | null
           participant4_school?: string | null
+          participant5_city?: string | null
+          participant5_full_name?: string | null
+          participant5_grade?: string | null
+          participant5_iin?: string | null
+          participant5_phone?: string | null
+          participant5_school?: string | null
           questions?: string | null
           source?: string | null
           status?: string

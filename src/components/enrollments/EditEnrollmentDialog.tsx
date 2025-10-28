@@ -27,8 +27,11 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
   }, [enrollment.competition_id]);
 
   const [saving, setSaving] = useState(false);
+  const maxParticipants = enrollment.competition_id === "space-settlement" ? 5 : 4;
+  
   const [teamMemberCount, setTeamMemberCount] = useState<number>(() => {
     // Determine initial team member count based on existing data
+    if (enrollment.participant4_full_name) return 5;
     if (enrollment.participant3_full_name) return 4;
     if (enrollment.participant2_full_name) return 3;
     if (enrollment.participant1_full_name) return 2;
@@ -64,13 +67,20 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
     participant3_school: enrollment.participant3_school ?? "",
     participant3_city: enrollment.participant3_city ?? "",
     participant3_grade: enrollment.participant3_grade ?? "",
+    participant4_full_name: enrollment.participant4_full_name ?? "",
+    participant4_iin: enrollment.participant4_iin ?? "",
+    participant4_phone: enrollment.participant4_phone ?? "",
+    participant4_school: enrollment.participant4_school ?? "",
+    participant4_city: enrollment.participant4_city ?? "",
+    participant4_grade: enrollment.participant4_grade ?? "",
     source: enrollment.source ?? "",
     consent: Boolean(enrollment.consent),
   });
 
   useEffect(() => {
     // Sync when enrollment changes
-    const newTeamMemberCount = enrollment.participant3_full_name ? 4 : 
+    const newTeamMemberCount = enrollment.participant4_full_name ? 5 :
+                              enrollment.participant3_full_name ? 4 : 
                               enrollment.participant2_full_name ? 3 : 
                               enrollment.participant1_full_name ? 2 : 1;
     setTeamMemberCount(newTeamMemberCount);
@@ -104,6 +114,12 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
       participant3_school: enrollment.participant3_school ?? "",
       participant3_city: enrollment.participant3_city ?? "",
       participant3_grade: enrollment.participant3_grade ?? "",
+      participant4_full_name: enrollment.participant4_full_name ?? "",
+      participant4_iin: enrollment.participant4_iin ?? "",
+      participant4_phone: enrollment.participant4_phone ?? "",
+      participant4_school: enrollment.participant4_school ?? "",
+      participant4_city: enrollment.participant4_city ?? "",
+      participant4_grade: enrollment.participant4_grade ?? "",
       source: enrollment.source ?? "",
       consent: Boolean(enrollment.consent),
     });
@@ -227,6 +243,26 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
       if (!form.participant3_grade.trim()) validationErrors.push("Класс участника 3");
     }
 
+    if (teamMemberCount >= 5) {
+      const p4NameError = validateName(form.participant4_full_name, "ФИО участника 4");
+      if (p4NameError) validationErrors.push(p4NameError);
+      
+      if (!form.participant4_iin.trim()) validationErrors.push("ИИН участника 4");
+      else if (form.participant4_iin.length !== 12 || !/^\d{12}$/.test(form.participant4_iin)) {
+        validationErrors.push("ИИН участника 4 должен содержать 12 цифр");
+      }
+      
+      const p4PhoneError = validatePhone(form.participant4_phone, "Телефон участника 4");
+      if (p4PhoneError) validationErrors.push(p4PhoneError);
+      
+      if (!form.participant4_school.trim()) validationErrors.push("Учебное заведение участника 4");
+      
+      const p4CityError = validateCity(form.participant4_city, "Город участника 4");
+      if (p4CityError) validationErrors.push(p4CityError);
+      
+      if (!form.participant4_grade.trim()) validationErrors.push("Класс участника 4");
+    }
+
     if (validationErrors.length > 0) {
       toast.error(`Ошибки валидации: ${validationErrors.join("; ")}`);
       return;
@@ -264,6 +300,12 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
           participant3_school: teamMemberCount >= 4 ? form.participant3_school : null,
           participant3_city: teamMemberCount >= 4 ? form.participant3_city : null,
           participant3_grade: teamMemberCount >= 4 ? form.participant3_grade : null,
+          participant4_full_name: teamMemberCount >= 5 ? form.participant4_full_name : null,
+          participant4_iin: teamMemberCount >= 5 ? form.participant4_iin : null,
+          participant4_phone: teamMemberCount >= 5 ? form.participant4_phone : null,
+          participant4_school: teamMemberCount >= 5 ? form.participant4_school : null,
+          participant4_city: teamMemberCount >= 5 ? form.participant4_city : null,
+          participant4_grade: teamMemberCount >= 5 ? form.participant4_grade : null,
           source: form.source,
           consent: form.consent,
         })
@@ -286,7 +328,7 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-2xl">
+      <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle>Редактировать заявку — {compTitle}</DialogTitle>
         </DialogHeader>
@@ -295,7 +337,7 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
           <div className="space-y-2">
             <Label>Количество участников команды *</Label>
             <div className="flex flex-col sm:flex-row gap-3 p-3 border border-input rounded-md bg-background">
-              {[1, 2, 3, 4].map((count) => (
+              {Array.from({ length: maxParticipants }, (_, i) => i + 1).map((count) => (
                 <label key={count} className="flex items-center space-x-3 cursor-pointer hover:bg-muted/50 p-2 rounded transition-colors">
                   <input
                     type="radio"
@@ -449,6 +491,37 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
                   <div>
                     <Label htmlFor="participant3_grade">Класс *</Label>
                     <Input id="participant3_grade" name="participant3_grade" value={form.participant3_grade} onChange={onChange} required />
+                  </div>
+                </div>
+              )}
+
+              {/* Participant 4 */}
+              {teamMemberCount >= 5 && (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg">
+                  <h4 className="col-span-full font-medium">Участник 4 *</h4>
+                  <div>
+                    <Label htmlFor="participant4_full_name">ФИО *</Label>
+                    <Input id="participant4_full_name" name="participant4_full_name" value={form.participant4_full_name} onChange={onChange} required />
+                  </div>
+                  <div>
+                    <Label htmlFor="participant4_iin">ИИН *</Label>
+                    <Input id="participant4_iin" name="participant4_iin" value={form.participant4_iin} onChange={onChange} maxLength={12} required />
+                  </div>
+                  <div>
+                    <Label htmlFor="participant4_phone">Телефон *</Label>
+                    <Input id="participant4_phone" name="participant4_phone" value={form.participant4_phone} onChange={onChange} placeholder="+7 777 777 77 77" required />
+                  </div>
+                  <div>
+                    <Label htmlFor="participant4_school">Учебное заведение *</Label>
+                    <Input id="participant4_school" name="participant4_school" value={form.participant4_school} onChange={onChange} required />
+                  </div>
+                  <div>
+                    <Label htmlFor="participant4_city">Город *</Label>
+                    <Input id="participant4_city" name="participant4_city" value={form.participant4_city} onChange={onChange} required />
+                  </div>
+                  <div>
+                    <Label htmlFor="participant4_grade">Класс *</Label>
+                    <Input id="participant4_grade" name="participant4_grade" value={form.participant4_grade} onChange={onChange} required />
                   </div>
                 </div>
               )}
