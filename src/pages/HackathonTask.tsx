@@ -68,10 +68,10 @@ const HackathonTask = () => {
   useEffect(() => {
     const updateCountdown = () => {
       const now = new Date();
-      
+
       // Check if task details should be shown
       setShowTaskDetails(now >= taskRevealTime);
-      
+
       const difference = deadline.getTime() - now.getTime();
 
       // Check if submissions should be closed (after Oct 30, 00:05)
@@ -169,195 +169,200 @@ const HackathonTask = () => {
 
           {/* Requirements Grid */}
           {showTaskDetails && (
-          <div className="grid md:grid-cols-2 gap-6 mb-8">
-            <Card className="border-primary/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Users className="h-5 w-5 text-primary" />
-                  Colony Specifications
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <Box className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Size & Shape:</strong> Detailed design of your colony
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Users className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Population:</strong> Between 100,000 and 300,000 people
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Globe2 className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Location:</strong> Within the Kuiper Belt
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Cpu className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Technologies:</strong> Innovations with scientific evidence
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+            <div className="grid md:grid-cols-2 gap-6 mb-8">
+              <Card className="border-primary/20">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Users className="h-5 w-5 text-primary" />
+                    Colony Specifications
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-start gap-2">
+                    <Box className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Size & Shape:</strong> Detailed design of your colony
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Users className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Population:</strong> Between 100,000 and 300,000 people
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Globe2 className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Location:</strong> Within the Kuiper Belt
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Cpu className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Technologies:</strong> Innovations with scientific evidence
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
 
-            <Card className="border-primary/20">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-2">
-                  <Heart className="h-5 w-5 text-primary" />
-                  Life Support Systems
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
-                <div className="flex items-start gap-2">
-                  <Heart className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Life Support:</strong> Air, water, and necessities systems
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <TreePine className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Biodiversity:</strong> At least 7 plant species required
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Zap className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Artificial Gravity:</strong> Within 20% of Earth's gravity
-                  </p>
-                </div>
-                <div className="flex items-start gap-2">
-                  <Building2 className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
-                  <p>
-                    <strong>Modules:</strong> Residential, power, integration systems
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+              <Card className="border-primary/20">
+                <CardHeader>
+                  <CardTitle className="flex items-center gap-2">
+                    <Heart className="h-5 w-5 text-primary" />
+                    Life Support Systems
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-start gap-2">
+                    <Heart className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Life Support:</strong> Air, water, and necessities systems
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <TreePine className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Biodiversity:</strong> At least 7 plant species required
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Zap className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Artificial Gravity:</strong> Within 20% of Earth's gravity
+                    </p>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Building2 className="h-4 w-4 mt-1 text-primary flex-shrink-0" />
+                    <p>
+                      <strong>Modules:</strong> Residential, power, integration systems
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           )}
 
           {/* Key Rules */}
           {showTaskDetails && (
-          <Card className="mb-8 border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Key Project Rules</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>
-                    The colony must operate for at least <strong>80 Earth years</strong>
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>Cannot be located on any celestial body (stars, planets, moons, asteroids, comets)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>Must have an elliptical or circular orbit (eccentricity &lt; 1)</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>
-                    Resource extraction from nearby celestial bodies is allowed (describe travel, extraction, and
-                    transportation)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>
-                    <strong>No budget limitations</strong>
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>Do not describe construction - assume the colony is already built and operational</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>
-                    The colony must be <strong>autonomous</strong> (no support from Earth or other colonies)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>Population growth must occur independently within the colony</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>
-                    Each inhabitant must have personal space, belongings, work, freedom of movement, cultural life, and
-                    development opportunities
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">➢</span>
-                  <span>A person born in the colony must be able to live and grow entirely within its system</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <Recycle className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
-                  <span>Environmental impact assessment with waste reduction measures required</span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+            <Card className="mb-8 border-primary/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">Key Project Rules</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>
+                      The colony must operate for at least <strong>80 Earth years</strong>
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>Cannot be located on any celestial body (stars, planets, moons, asteroids, comets)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>Must have an elliptical or circular orbit (eccentricity &lt; 1)</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>
+                      Resource extraction from nearby celestial bodies is allowed (describe travel, extraction, and
+                      transportation)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>
+                      <strong>No budget limitations</strong>
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>Do not describe construction - assume the colony is already built and operational</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>
+                      The colony must be <strong>autonomous</strong> (no support from Earth or other colonies)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>Population growth must occur independently within the colony</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>
+                      Each inhabitant must have personal space, belongings, work, freedom of movement, cultural life,
+                      and development opportunities
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">➢</span>
+                    <span>A person born in the colony must be able to live and grow entirely within its system</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <Recycle className="h-4 w-4 text-primary mt-1 flex-shrink-0" />
+                    <span>Environmental impact assessment with waste reduction measures required</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
           )}
 
           {/* Documentation Requirements */}
           {showTaskDetails && (
-          <Card className="mb-8 border-primary/20">
-            <CardHeader>
-              <CardTitle className="text-2xl">Documentation Requirements</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-3">
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">✓</span>
-                  <span>Include diagrams or 3D models showing specific parts and modules of the colony</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">✓</span>
-                  <span>All visual materials must have scientific or technical justification and citations</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">✓</span>
-                  <span>
-                    All technologies and innovations must have scientific evidence or hypotheses supported by reputable
-                    sources (NASA, Roscosmos, ESA, etc.)
-                  </span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">✓</span>
-                  <span>Paper must include: title page, abstract, table of contents, and team member section</span>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="text-primary font-bold mt-1">✓</span>
-                  <span>All sources must be listed in a bibliography section</span>
-                </li>
-              </ul>
-            </CardContent>
-          </Card>
+            <Card className="mb-8 border-primary/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">Documentation Requirements</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">✓</span>
+                    <span>Include diagrams or 3D models showing specific parts and modules of the colony</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">✓</span>
+                    <span>All visual materials must have scientific or technical justification and citations</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">✓</span>
+                    <span>
+                      All technologies and innovations must have scientific evidence or hypotheses supported by
+                      reputable sources (NASA, Roscosmos, ESA, etc.)
+                    </span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">✓</span>
+                    <span>Paper must include: title page, abstract, table of contents, and team member section</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-primary font-bold mt-1">✓</span>
+                    <span>All sources must be listed in a bibliography section</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
           )}
 
           {/* Mentor and Judging Guidelines */}
           <Card className="mb-8 border-primary/20">
             <CardContent className="p-6 space-y-4">
               <p className="text-foreground">
-                Mentors may assist the student by presenting relevant resources, discussing core concepts and suggesting minor edits, but the work itself must be entirely student produced.
+                Mentors may assist the student by presenting relevant resources, discussing core concepts and suggesting
+                minor edits, but the work itself must be entirely student produced.
               </p>
               <p className="text-foreground">
-                All entries that are not excluded for plagiarism will be judged by one or more judges on their merits. All decisions by the judges are final. The judges' decisions cannot be challenged in any way by any contestant. By submitting your entry, you agree that you cannot and will not contest the judges' decisions in any way.
+                All entries that are not excluded for plagiarism will be judged by one or more judges on their merits.
+                All decisions by the judges are final. The judges' decisions cannot be challenged in any way by any
+                contestant. By submitting your entry, you agree that you cannot and will not contest the judges'
+                decisions in any way.
               </p>
               <p className="text-foreground">
-                Judge scoring criteria and comments are strictly confidential and will not be distributed to contestants.
+                Judge scoring criteria and comments are strictly confidential and will not be distributed to
+                contestants.
               </p>
             </CardContent>
           </Card>
@@ -385,7 +390,7 @@ const HackathonTask = () => {
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
                 <Box className="h-6 w-6 text-primary" />
-                Longread Evaluation Criteria
+                Longread
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
@@ -393,35 +398,48 @@ const HackathonTask = () => {
                 <p className="text-lg font-semibold text-primary">
                   Your scientific paper will be evaluated based on the following criteria:
                 </p>
-                
+
                 <div className="space-y-3 pl-4">
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Scientific Validity:</strong> Use of credible sources and scientific data</span>
+                    <span>
+                      <strong>Scientific Validity:</strong> Use of credible sources and scientific data
+                    </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Technical Detail:</strong> Comprehensive description of colony systems and technologies</span>
+                    <span>
+                      <strong>Technical Detail:</strong> Comprehensive description of colony systems and technologies
+                    </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Innovation:</strong> Creativity and originality of proposed solutions</span>
+                    <span>
+                      <strong>Innovation:</strong> Creativity and originality of proposed solutions
+                    </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Requirement Compliance:</strong> Fulfillment of all specified task conditions</span>
+                    <span>
+                      <strong>Requirement Compliance:</strong> Fulfillment of all specified task conditions
+                    </span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Presentation Quality:</strong> Structure, visualization, and readability of the work</span>
+                    <span>
+                      <strong>Presentation Quality:</strong> Structure, visualization, and readability of the work
+                    </span>
                   </div>
                 </div>
 
                 <div className="mt-6 p-4 bg-background/80 rounded-lg border border-primary/20">
-                  <p className="text-sm text-muted-foreground mb-2">💡 <strong>Tip:</strong></p>
+                  <p className="text-sm text-muted-foreground mb-2">
+                    💡 <strong>Tip:</strong>
+                  </p>
                   <p className="text-sm">
-                    Pay special attention to terminology and scientific concepts. Proper use of specialized terms 
-                    and their precise understanding will significantly enhance the quality of your work and make a positive impression on the judges.
+                    Pay special attention to terminology and scientific concepts. Proper use of specialized terms and
+                    their precise understanding will significantly enhance the quality of your work and make a positive
+                    impression on the judges.
                   </p>
                 </div>
 
@@ -429,7 +447,12 @@ const HackathonTask = () => {
                   <Button
                     size="lg"
                     className="bg-primary hover:bg-primary/90"
-                    onClick={() => window.open("https://docs.google.com/document/d/1TGw5ctbNHReXOUzeeIHk6XQJzpGcaoST_hgB0RBntEE/edit?usp=sharing", "_blank")}
+                    onClick={() =>
+                      window.open(
+                        "https://docs.google.com/document/d/1TGw5ctbNHReXOUzeeIHk6XQJzpGcaoST_hgB0RBntEE/edit?usp=sharing",
+                        "_blank",
+                      )
+                    }
                   >
                     <Globe2 className="mr-2 h-5 w-5" />
                     Study Terminology
@@ -487,13 +510,7 @@ const HackathonTask = () => {
                     <Label htmlFor="league" className="text-lg">
                       Category
                     </Label>
-                    <Input
-                      id="league"
-                      value={league}
-                      readOnly
-                      className="bg-muted"
-                      disabled={loading}
-                    />
+                    <Input id="league" value={league} readOnly className="bg-muted" disabled={loading} />
                   </div>
 
                   <div className="space-y-2">
