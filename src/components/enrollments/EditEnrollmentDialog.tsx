@@ -405,7 +405,7 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
               {/* Participant 1 */}
               {teamMemberCount >= 2 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg">
-                  <h4 className="col-span-full font-medium">Участник 1 *</h4>
+                  <h4 className="col-span-full font-medium">Участник 2 *</h4>
                   <div>
                     <Label htmlFor="participant1_full_name">ФИО *</Label>
                     <Input id="participant1_full_name" name="participant1_full_name" value={form.participant1_full_name} onChange={onChange} required />
@@ -436,7 +436,7 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
               {/* Participant 2 */}
               {teamMemberCount >= 3 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg">
-                  <h4 className="col-span-full font-medium">Участник 2 *</h4>
+                  <h4 className="col-span-full font-medium">Участник 3 *</h4>
                   <div>
                     <Label htmlFor="participant2_full_name">ФИО *</Label>
                     <Input id="participant2_full_name" name="participant2_full_name" value={form.participant2_full_name} onChange={onChange} required />
@@ -467,7 +467,7 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
               {/* Participant 3 */}
               {teamMemberCount >= 4 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg">
-                  <h4 className="col-span-full font-medium">Участник 3 *</h4>
+                  <h4 className="col-span-full font-medium">Участник 4 *</h4>
                   <div>
                     <Label htmlFor="participant3_full_name">ФИО *</Label>
                     <Input id="participant3_full_name" name="participant3_full_name" value={form.participant3_full_name} onChange={onChange} required />
@@ -498,7 +498,7 @@ const EditEnrollmentDialog = ({ enrollment, open, onOpenChange, onUpdated }: Pro
               {/* Participant 4 */}
               {teamMemberCount >= 5 && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-4 border rounded-lg">
-                  <h4 className="col-span-full font-medium">Участник 4 *</h4>
+                  <h4 className="col-span-full font-medium">Участник 5 *</h4>
                   <div>
                     <Label htmlFor="participant4_full_name">ФИО *</Label>
                     <Input id="participant4_full_name" name="participant4_full_name" value={form.participant4_full_name} onChange={onChange} required />
