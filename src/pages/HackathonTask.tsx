@@ -385,43 +385,43 @@ const HackathonTask = () => {
             <CardHeader>
               <CardTitle className="text-2xl flex items-center gap-2">
                 <Box className="h-6 w-6 text-primary" />
-                Критерии оценки лонгрида
+                Longread Evaluation Criteria
               </CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="space-y-4">
                 <p className="text-lg font-semibold text-primary">
-                  Ваша научная работа будет оцениваться по следующим критериям:
+                  Your scientific paper will be evaluated based on the following criteria:
                 </p>
                 
                 <div className="space-y-3 pl-4">
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Научная обоснованность:</strong> Использование достоверных источников и научных данных</span>
+                    <span><strong>Scientific Validity:</strong> Use of credible sources and scientific data</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Техническая детализация:</strong> Подробное описание систем и технологий колонии</span>
+                    <span><strong>Technical Detail:</strong> Comprehensive description of colony systems and technologies</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Инновационность:</strong> Креативность и оригинальность предложенных решений</span>
+                    <span><strong>Innovation:</strong> Creativity and originality of proposed solutions</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Соответствие требованиям:</strong> Выполнение всех указанных условий задания</span>
+                    <span><strong>Requirement Compliance:</strong> Fulfillment of all specified task conditions</span>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="text-primary font-bold mt-1">•</span>
-                    <span><strong>Качество оформления:</strong> Структурированность, визуализация и читаемость работы</span>
+                    <span><strong>Presentation Quality:</strong> Structure, visualization, and readability of the work</span>
                   </div>
                 </div>
 
                 <div className="mt-6 p-4 bg-background/80 rounded-lg border border-primary/20">
-                  <p className="text-sm text-muted-foreground mb-2">💡 <strong>Совет:</strong></p>
+                  <p className="text-sm text-muted-foreground mb-2">💡 <strong>Tip:</strong></p>
                   <p className="text-sm">
-                    Уделите особое внимание терминологии и научным понятиям. Правильное использование специализированных терминов 
-                    и их точное понимание значительно повысит качество вашей работы и произведет положительное впечатление на судей.
+                    Pay special attention to terminology and scientific concepts. Proper use of specialized terms 
+                    and their precise understanding will significantly enhance the quality of your work and make a positive impression on the judges.
                   </p>
                 </div>
 
@@ -432,7 +432,7 @@ const HackathonTask = () => {
                     onClick={() => window.open("https://docs.google.com/document/d/1TGw5ctbNHReXOUzeeIHk6XQJzpGcaoST_hgB0RBntEE/edit?usp=sharing", "_blank")}
                   >
                     <Globe2 className="mr-2 h-5 w-5" />
-                    Изучить терминологию
+                    Study Terminology
                   </Button>
                 </div>
               </div>
