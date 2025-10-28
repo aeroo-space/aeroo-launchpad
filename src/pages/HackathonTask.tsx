@@ -347,6 +347,21 @@ const HackathonTask = () => {
           </Card>
           )}
 
+          {/* Mentor and Judging Guidelines */}
+          <Card className="mb-8 border-primary/20">
+            <CardContent className="p-6 space-y-4">
+              <p className="text-foreground">
+                Mentors may assist the student by presenting relevant resources, discussing core concepts and suggesting minor edits, but the work itself must be entirely student produced.
+              </p>
+              <p className="text-foreground">
+                All entries that are not excluded for plagiarism will be judged by one or more judges on their merits. All decisions by the judges are final. The judges' decisions cannot be challenged in any way by any contestant. By submitting your entry, you agree that you cannot and will not contest the judges' decisions in any way.
+              </p>
+              <p className="text-foreground">
+                Judge scoring criteria and comments are strictly confidential and will not be distributed to contestants.
+              </p>
+            </CardContent>
+          </Card>
+
           {/* Critical Notice */}
           <Card className="mb-8 bg-destructive/10 border-destructive/50">
             <CardContent className="p-6">
