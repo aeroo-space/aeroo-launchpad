@@ -21,7 +21,7 @@ const resources = {
           },
           exploringScience: {
             title: "Exploring the World of Science",
-            desc: "Международная олимпиада по естественным наукам для школьников 5-11 классов",
+            desc: "International Scientific Competition in Space Research for students aged 14–18",
             button: "Принять участие",
           },
         },
@@ -1427,7 +1427,7 @@ const resources = {
           },
           exploringScience: {
             title: "Exploring the World of Science",
-            desc: "International Olympiad in Natural Sciences for 5-11 grade students",
+            desc: "International Scientific Competition in Space Research for students aged 14–18",
             button: "Participate",
           },
         },
@@ -2834,7 +2834,7 @@ const resources = {
           },
           exploringScience: {
             title: "Exploring the World of Science",
-            desc: "5-11 сынып оқушыларына арналған жаратылыстану ғылымдары бойынша халықаралық олимпиада",
+            desc: "International Scientific Competition in Space Research for students aged 14–18",
             button: "Қатысу",
           },
         },

@@ -90,8 +90,8 @@ export const HeroCarousel: React.FC = () => {
             <CarouselItem>
               <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
                 <img
-                  src="/lovable-uploads/dd996c85-9a8a-4c91-8a78-bd8d17208f0d.png"
-                  alt="Exploring the World of Science — фоновое изображение"
+                  src="/lovable-uploads/c7d720b3-94b2-4030-9cee-6d6ff7de5556.png"
+                  alt="Exploring the World of Science — научные исследования в космосе"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="lazy"
                 />
