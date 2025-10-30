@@ -204,6 +204,9 @@ export type Database = {
           question3: string
           question4: string
           question5: string
+          question6: string | null
+          question7: string | null
+          question8: string | null
           updated_at: string
           user_id: string
         }
@@ -216,6 +219,9 @@ export type Database = {
           question3: string
           question4: string
           question5: string
+          question6?: string | null
+          question7?: string | null
+          question8?: string | null
           updated_at?: string
           user_id: string
         }
@@ -228,6 +234,9 @@ export type Database = {
           question3?: string
           question4?: string
           question5?: string
+          question6?: string | null
+          question7?: string | null
+          question8?: string | null
           updated_at?: string
           user_id?: string
         }

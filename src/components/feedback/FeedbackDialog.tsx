@@ -25,6 +25,9 @@ export const FeedbackDialog = ({ open, onOpenChange, enrollmentId, userId }: Fee
     question3: "",
     question4: "",
     question5: "",
+    question6: "",
+    question7: "",
+    question8: "",
   });
 
   const questions = [
@@ -33,6 +36,9 @@ export const FeedbackDialog = ({ open, onOpenChange, enrollmentId, userId }: Fee
     t('feedback.question3', { defaultValue: 'Какой момент запомнился тебе больше всего во время хакатона?' }),
     t('feedback.question4', { defaultValue: 'Если бы ты мог(ла) описать AEROO Space Settlement Competition 2025 одним словом — каким бы оно было?' }),
     t('feedback.question5', { defaultValue: 'Что, по твоему мнению, можно улучшить со стороны организаторов (платформа, обучающие материалы, правила, категории и т.д.)?' }),
+    t('feedback.question6', { defaultValue: 'Опишите ваш проект одним предложением — что вы создали и почему это важно?' }),
+    t('feedback.question7', { defaultValue: 'Какой совет вы бы дали команде, которая участвует в AEROO в следующем году?' }),
+    t('feedback.question8', { defaultValue: 'Какие технологии или инструменты вы использовали в проекте? (например: Blender, Python, ChatGPT, Unity)' }),
   ];
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -75,6 +81,9 @@ export const FeedbackDialog = ({ open, onOpenChange, enrollmentId, userId }: Fee
         question3: "",
         question4: "",
         question5: "",
+        question6: "",
+        question7: "",
+        question8: "",
       });
       setSuccess(false);
     }
