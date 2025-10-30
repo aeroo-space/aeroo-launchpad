@@ -15,6 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
+import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
+import { Badge } from "@/components/ui/badge";
 
 import { Pencil, Download } from "lucide-react";
 import { 
@@ -51,6 +53,9 @@ const Dashboard = () => {
   const [adminEnrollments, setAdminEnrollments] = useState<Enrollment[]>([]);
   const [editingEnrollment, setEditingEnrollment] = useState<Enrollment | null>(null);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
+  const [feedbackDialogOpen, setFeedbackDialogOpen] = useState(false);
+  const [selectedEnrollmentForFeedback, setSelectedEnrollmentForFeedback] = useState<{ id: string; userId: string } | null>(null);
+  const [feedbackStatus, setFeedbackStatus] = useState<Record<string, boolean>>({});
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -67,6 +72,19 @@ const Dashboard = () => {
     
     if (!enrollmentError && enrollmentData) {
       setEnrollments(enrollmentData as Enrollment[]);
+      
+      // Check feedback status for each enrollment
+      const feedbackStatuses: Record<string, boolean> = {};
+      for (const enrollment of enrollmentData) {
+        const { data: feedbackData } = await supabase
+          .from("feedback")
+          .select("id")
+          .eq("enrollment_id", enrollment.id)
+          .maybeSingle();
+        
+        feedbackStatuses[enrollment.id] = !!feedbackData;
+      }
+      setFeedbackStatus(feedbackStatuses);
     }
   };
 
@@ -616,6 +634,13 @@ const Dashboard = () => {
                         </div>
                       </div>
                       <div className="space-y-3">
+                        {e.competition_id === "space-settlement" && e.submission_link && (
+                          <div className="flex items-center gap-2 p-3 bg-primary/10 border border-primary/20 rounded-lg">
+                            <Badge variant="default" className="text-sm">
+                              {t('feedback.participantBadge', { defaultValue: '🏆 Участник AEROO Space Settlement Competition 2025' })}
+                            </Badge>
+                          </div>
+                        )}
                         {e.competition_id === "space-settlement" && (
                           <Button 
                             variant="default" 
@@ -625,6 +650,24 @@ const Dashboard = () => {
                           >
                             {t('dashboardExtra.actions.hackathonTask', { defaultValue: 'Задача Хакатона' })}
                           </Button>
+                        )}
+                        {e.competition_id === "space-settlement" && e.submission_link && !feedbackStatus[e.id] && (
+                          <Button 
+                            variant="outline" 
+                            size="lg" 
+                            onClick={() => {
+                              setSelectedEnrollmentForFeedback({ id: e.id, userId: e.user_id });
+                              setFeedbackDialogOpen(true);
+                            }}
+                            className="w-full text-base font-semibold"
+                          >
+                            {t('feedback.giveFeedback', { defaultValue: '💬 Оставить обратную связь' })}
+                          </Button>
+                        )}
+                        {e.competition_id === "space-settlement" && e.submission_link && feedbackStatus[e.id] && (
+                          <div className="text-center text-sm text-muted-foreground p-3 bg-muted/50 rounded-lg">
+                            {t('feedback.alreadySubmitted', { defaultValue: '✅ Спасибо! Ваш отзыв уже получен' })}
+                          </div>
                         )}
                         <div className="flex gap-2">
                           <Button 
@@ -903,6 +946,22 @@ const Dashboard = () => {
             open={editDialogOpen}
             onOpenChange={setEditDialogOpen}
             onUpdated={handleEnrollmentUpdated}
+          />
+        )}
+
+        {/* Feedback Dialog */}
+        {selectedEnrollmentForFeedback && (
+          <FeedbackDialog
+            open={feedbackDialogOpen}
+            onOpenChange={(open) => {
+              setFeedbackDialogOpen(open);
+              if (!open) {
+                setSelectedEnrollmentForFeedback(null);
+                loadEnrollments(); // Reload to update feedback status
+              }
+            }}
+            enrollmentId={selectedEnrollmentForFeedback.id}
+            userId={selectedEnrollmentForFeedback.userId}
           />
         )}
       </main>

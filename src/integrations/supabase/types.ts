@@ -194,6 +194,45 @@ export type Database = {
         }
         Relationships: []
       }
+      feedback: {
+        Row: {
+          created_at: string
+          enrollment_id: string
+          id: string
+          question1: string
+          question2: string
+          question3: string
+          question4: string
+          question5: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          enrollment_id: string
+          id?: string
+          question1: string
+          question2: string
+          question3: string
+          question4: string
+          question5: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          enrollment_id?: string
+          id?: string
+          question1?: string
+          question2?: string
+          question3?: string
+          question4?: string
+          question5?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       product_requests: {
         Row: {
           comment: string | null
