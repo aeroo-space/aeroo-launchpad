@@ -86,12 +86,12 @@ export const HeroCarousel: React.FC = () => {
               </div>
             </CarouselItem>
 
-            {/* Slide 4: Ближайшее соревнование */}
+            {/* Slide 4: Exploring the World of Science */}
             <CarouselItem>
               <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
                 <img
                   src="/lovable-uploads/dd996c85-9a8a-4c91-8a78-bd8d17208f0d.png"
-                  alt="AEROO Space Settlement Competition 2026 — фоновое изображение"
+                  alt="Exploring the World of Science — фоновое изображение"
                   className="absolute inset-0 -z-10 h-full w-full object-cover"
                   loading="lazy"
                 />
@@ -99,16 +99,13 @@ export const HeroCarousel: React.FC = () => {
                 <div className="container mx-auto px-6 md:px-8">
                   <div className="max-w-3xl py-16 md:py-24 animate-enter">
                     <h2 className="text-3xl md:text-5xl font-semibold tracking-tight text-foreground mb-4">
-                      {t('home.hero.settlement.title')}
+                      {t('home.hero.exploringScience.title')}
                     </h2>
-                    <p className="text-base md:text-lg text-foreground/90 mb-6">
-                      {t('home.hero.settlement.dates')}
-                    </p>
                     <p className="text-base md:text-lg text-foreground/90 mb-8">
-                      {t('home.hero.settlement.registration')}
+                      {t('home.hero.exploringScience.desc')}
                     </p>
                     <Button asChild size="xl" variant="primary">
-                      <Link to="/competitions">{t('home.hero.settlement.button')}</Link>
+                      <Link to="/competitions/exploring-world-of-science">{t('home.hero.exploringScience.button')}</Link>
                     </Button>
                   </div>
                 </div>

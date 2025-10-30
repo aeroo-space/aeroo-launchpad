@@ -19,10 +19,9 @@ const resources = {
             desc: "Профессиональные учебные комплекты для школ: ракеты, дроны, спутники и многое другое",
             button: "Смотреть продукты",
           },
-          settlement: {
-            title: "AEROO Space Settlement Competition 2025",
-            dates: "Регистрация до 25 октября 2025 | Хакатон 28-29 октября",
-            registration: "Республиканский онлайн-хакатон по проектированию космических поселений",
+          exploringScience: {
+            title: "Exploring the World of Science",
+            desc: "Международная олимпиада по естественным наукам для школьников 5-11 классов",
             button: "Принять участие",
           },
         },
@@ -1426,10 +1425,9 @@ const resources = {
             desc: "Professional learning kits for schools: rockets, drones, satellites and more",
             button: "View Products",
           },
-          settlement: {
-            title: "AEROO Space Settlement Competition 2025",
-            dates: "Registration until October 25, 2025 | Hackathon October 28-29",
-            registration: "National online hackathon on space settlement design",
+          exploringScience: {
+            title: "Exploring the World of Science",
+            desc: "International Olympiad in Natural Sciences for 5-11 grade students",
             button: "Participate",
           },
         },
@@ -2834,10 +2832,9 @@ const resources = {
             desc: "Мектептерге арналған кәсіби оқу жинақтары: зымырандар, дрондар, спутниктер және т.б.",
             button: "Өнімдерді қарау",
           },
-          settlement: {
-            title: "AEROO Space Settlement Competition 2025",
-            dates: "25 қазанға дейін тіркелу | Хакатон 28-29 қазан",
-            registration: "Ғарыштық қоныстарды жобалау бойынша республикалық онлайн-хакатон",
+          exploringScience: {
+            title: "Exploring the World of Science",
+            desc: "5-11 сынып оқушыларына арналған жаратылыстану ғылымдары бойынша халықаралық олимпиада",
             button: "Қатысу",
           },
         },
