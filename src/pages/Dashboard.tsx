@@ -641,16 +641,6 @@ const Dashboard = () => {
                             </Badge>
                           </div>
                         )}
-                        {e.competition_id === "space-settlement" && (
-                          <Button 
-                            variant="default" 
-                            size="lg" 
-                            onClick={() => navigate('/hackathon-task')}
-                            className="w-full text-base font-semibold"
-                          >
-                            {t('dashboardExtra.actions.hackathonTask', { defaultValue: 'Задача Хакатона' })}
-                          </Button>
-                        )}
                         {e.competition_id === "space-settlement" && e.submission_link && !feedbackStatus[e.id] && (
                           <Button 
                             variant="outline" 
@@ -669,32 +659,6 @@ const Dashboard = () => {
                             {t('feedback.alreadySubmitted', { defaultValue: '✅ Спасибо! Ваш отзыв уже получен' })}
                           </div>
                         )}
-                        <div className="flex gap-2">
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
-                            onClick={() => handleEditEnrollment(e)}
-                          >
-                            {t('dashboardExtra.actions.edit', { defaultValue: 'Редактировать' })}
-                          </Button>
-                          <AlertDialog>
-                            <AlertDialogTrigger asChild>
-                              <Button variant="destructive" size="sm">{t('dashboardExtra.actions.delete', { defaultValue: 'Удалить' })}</Button>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader>
-                                <AlertDialogTitle>{t('dashboardExtra.confirm.title', { defaultValue: 'Удалить регистрацию?' })}</AlertDialogTitle>
-                                <AlertDialogDescription>
-                                  {t('dashboardExtra.confirm.desc', { defaultValue: 'Это действие необратимо. Ваша запись в соревнование будет удалена.' })}
-                                </AlertDialogDescription>
-                              </AlertDialogHeader>
-                              <AlertDialogFooter>
-                                <AlertDialogCancel>{t('dashboardExtra.actions.cancel', { defaultValue: 'Отмена' })}</AlertDialogCancel>
-                                <AlertDialogAction onClick={() => handleDelete(e.id)}>{t('dashboardExtra.actions.confirmDelete', { defaultValue: 'Удалить' })}</AlertDialogAction>
-                              </AlertDialogFooter>
-                            </AlertDialogContent>
-                          </AlertDialog>
-                        </div>
                       </div>
                     </li>
                   ))}
