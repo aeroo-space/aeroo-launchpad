@@ -32,9 +32,11 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending team invite:", { inviteId, teamName, competitionId, inviteeEmail });
 
-    // Use the production domain or preview URL
-    const baseUrl = 'https://pigoiwdkwdrrodftbkkm.aeroo.space';
+    // Use the configured app URL from environment variable
+    const baseUrl = Deno.env.get("APP_URL") || 'https://pigoiwdkwdrrodftbkkm.aeroo.space';
     const inviteUrl = `${baseUrl}/auth?invite=${token}`;
+    
+    console.log("Invite URL:", inviteUrl);
 
     const emailResponse = await resend.emails.send({
       from: "AEROO <noreply@aeroo.space>",
