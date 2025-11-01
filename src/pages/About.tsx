@@ -90,7 +90,7 @@ const About = () => {
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16">
           <div className="relative mb-6 sm:mb-8">
-            <Rocket className="h-16 w-16 sm:h-20 sm:w-20 text-primary mx-auto glow-primary animate-pulse" fill="currentColor" strokeWidth={1} />
+            <Rocket className="h-16 w-16 sm:h-20 sm:w-20 text-primary mx-auto animate-pulse" fill="currentColor" strokeWidth={1} />
             <div className="absolute inset-0 animate-spin-slow">
               <Rocket className="h-16 w-16 sm:h-20 sm:w-20 text-primary-glow opacity-30 mx-auto" fill="currentColor" strokeWidth={1} />
             </div>
