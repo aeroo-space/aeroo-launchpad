@@ -17,6 +17,7 @@ import { CalendarDays, Users } from "lucide-react";
 import { TeamInviteManager } from "@/components/invites/TeamInviteManager";
 import { TeamMembersDisplay } from "@/components/team/TeamMembersDisplay";
 import { useTranslation } from "react-i18next";
+import { useTeamMembers } from "@/hooks/useTeamMembers";
 
 export default function EnrollExploringWorldOfSciencePage() {
   const navigate = useNavigate();
@@ -39,6 +40,9 @@ export default function EnrollExploringWorldOfSciencePage() {
   // Captain info from profile
   const captainFullName = profile?.full_name || "";
   const captainEmail = user?.email || "";
+  
+  // Get team members count
+  const { members } = useTeamMembers(existingEnrollment?.id);
 
   useEffect(() => {
     document.title = `${t('form.applicationTitle')} — Открываем Мир Науки`;
@@ -366,7 +370,7 @@ export default function EnrollExploringWorldOfSciencePage() {
                   competitionId="exploring-world-of-science"
                   teamName={teamName}
                   maxTeamSize={getMaxTeamSize()}
-                  currentTeamSize={1}
+                  currentTeamSize={members.filter(m => m.status === 'active').length}
                 />
               )}
             </div>
