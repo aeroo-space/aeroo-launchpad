@@ -835,6 +835,10 @@ const resources = {
         changePassword: "Сменить пароль",
         myCompetitions: "Мои участия в соревнованиях",
         noEnrollments: "Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.",
+        deleteEnrollment: "Удалить",
+        deleteEnrollmentTitle: "Удалить регистрацию?",
+        deleteEnrollmentDesc: "Вы уверены, что хотите удалить свою регистрацию на это соревнование? Это действие нельзя отменить.",
+        invites: "Приглашения в команды",
       },
       profile: {
         title: "Профиль",
@@ -2469,6 +2473,10 @@ const resources = {
         changePassword: "Change Password",
         myCompetitions: "My Competition Participations",
         noEnrollments: 'No registrations yet. Go to the "Competitions" page to register.',
+        deleteEnrollment: "Delete",
+        deleteEnrollmentTitle: "Delete registration?",
+        deleteEnrollmentDesc: "Are you sure you want to delete your registration for this competition? This action cannot be undone.",
+        invites: "Team Invitations",
       },
       form: {
         applicationTitle: "Registration Application",
@@ -3775,6 +3783,10 @@ const resources = {
         changePassword: "Құпия сөзді өзгерту",
         myCompetitions: "Менің байқауларға қатысуларым",
         noEnrollments: "Әзірге тіркеулер жоқ. Тіркелу үшін «Байқаулар» бетіне өтіңіз.",
+        deleteEnrollment: "Жою",
+        deleteEnrollmentTitle: "Тіркелуді жою керек пе?",
+        deleteEnrollmentDesc: "Осы жарысқа тіркелуді жойғыңыз келетініне сенімдісіз бе? Бұл әрекетті кері қайтару мүмкін емес.",
+        invites: "Команда шақырулары",
       },
       form: {
         applicationTitle: "Қатысуға өтінім",

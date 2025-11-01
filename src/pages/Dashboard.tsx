@@ -662,13 +662,51 @@ const Dashboard = () => {
                                                compStatus.includes('Аяқталды');
                             
                             return (
-                              <span className={`text-xs px-2 py-1 rounded uppercase tracking-wide ${
-                                isCompleted 
-                                  ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
-                                  : 'bg-muted text-muted-foreground'
-                              }`}>
-                                {isCompleted ? compStatus : (e.status || "active")}
-                              </span>
+                              <>
+                                <span className={`text-xs px-2 py-1 rounded uppercase tracking-wide ${
+                                  isCompleted 
+                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
+                                    : 'bg-muted text-muted-foreground'
+                                }`}>
+                                  {isCompleted ? compStatus : (e.status || "active")}
+                                </span>
+                                {!isCompleted && (
+                                  <AlertDialog>
+                                    <AlertDialogTrigger asChild>
+                                      <Button 
+                                        variant="ghost" 
+                                        size="sm" 
+                                        className="text-red-500 hover:text-red-600 hover:bg-red-500/10"
+                                      >
+                                        {t('dashboard.deleteEnrollment', { defaultValue: 'Удалить' })}
+                                      </Button>
+                                    </AlertDialogTrigger>
+                                    <AlertDialogContent>
+                                      <AlertDialogHeader>
+                                        <AlertDialogTitle>
+                                          {t('dashboard.deleteEnrollmentTitle', { defaultValue: 'Удалить регистрацию?' })}
+                                        </AlertDialogTitle>
+                                        <AlertDialogDescription>
+                                          {t('dashboard.deleteEnrollmentDesc', { 
+                                            defaultValue: 'Вы уверены, что хотите удалить свою регистрацию на это соревнование? Это действие нельзя отменить.' 
+                                          })}
+                                        </AlertDialogDescription>
+                                      </AlertDialogHeader>
+                                      <AlertDialogFooter>
+                                        <AlertDialogCancel>
+                                          {t('common.cancel', { defaultValue: 'Отмена' })}
+                                        </AlertDialogCancel>
+                                        <AlertDialogAction
+                                          onClick={() => handleDelete(e.id)}
+                                          className="bg-red-500 hover:bg-red-600"
+                                        >
+                                          {t('common.delete', { defaultValue: 'Удалить' })}
+                                        </AlertDialogAction>
+                                      </AlertDialogFooter>
+                                    </AlertDialogContent>
+                                  </AlertDialog>
+                                )}
+                              </>
                             );
                           })()}
                         </div>
