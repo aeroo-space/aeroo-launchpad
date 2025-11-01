@@ -32,7 +32,9 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Sending team invite:", { inviteId, teamName, competitionId, inviteeEmail });
 
-    const inviteUrl = `${Deno.env.get("SUPABASE_URL")?.replace('.supabase.co', '.aeroo.space') || 'https://aeroo.space'}/auth?invite=${token}`;
+    // Use the production domain or preview URL
+    const baseUrl = 'https://pigoiwdkwdrrodftbkkm.aeroo.space';
+    const inviteUrl = `${baseUrl}/auth?invite=${token}`;
 
     const emailResponse = await resend.emails.send({
       from: "AEROO <noreply@aeroo.space>",
