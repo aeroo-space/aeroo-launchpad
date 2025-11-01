@@ -28,6 +28,69 @@ export type Database = {
           email: string | null
           id: string
           league: string | null
+          questions: string | null
+          source: string | null
+          status: string
+          study_place: string | null
+          submission_link: string | null
+          team_name: string | null
+          telegram: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          captain_age?: number | null
+          captain_full_name?: string | null
+          captain_grade?: string | null
+          captain_iin?: string | null
+          captain_phone?: string | null
+          city?: string | null
+          competition_id: string
+          consent?: boolean
+          created_at?: string
+          email?: string | null
+          id?: string
+          league?: string | null
+          questions?: string | null
+          source?: string | null
+          status?: string
+          study_place?: string | null
+          submission_link?: string | null
+          team_name?: string | null
+          telegram?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          captain_age?: number | null
+          captain_full_name?: string | null
+          captain_grade?: string | null
+          captain_iin?: string | null
+          captain_phone?: string | null
+          city?: string | null
+          competition_id?: string
+          consent?: boolean
+          created_at?: string
+          email?: string | null
+          id?: string
+          league?: string | null
+          questions?: string | null
+          source?: string | null
+          status?: string
+          study_place?: string | null
+          submission_link?: string | null
+          team_name?: string | null
+          telegram?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      enrollments_archive: {
+        Row: {
+          archived_at: string | null
+          competition_id: string | null
+          id: string | null
           mentor_city: string | null
           mentor_full_name: string | null
           mentor_iin: string | null
@@ -64,29 +127,12 @@ export type Database = {
           participant5_iin: string | null
           participant5_phone: string | null
           participant5_school: string | null
-          questions: string | null
-          source: string | null
-          status: string
-          study_place: string | null
-          submission_link: string | null
-          team_name: string | null
-          telegram: string | null
-          updated_at: string
-          user_id: string
+          team_id: string | null
         }
         Insert: {
-          captain_age?: number | null
-          captain_full_name?: string | null
-          captain_grade?: string | null
-          captain_iin?: string | null
-          captain_phone?: string | null
-          city?: string | null
-          competition_id: string
-          consent?: boolean
-          created_at?: string
-          email?: string | null
-          id?: string
-          league?: string | null
+          archived_at?: string | null
+          competition_id?: string | null
+          id?: string | null
           mentor_city?: string | null
           mentor_full_name?: string | null
           mentor_iin?: string | null
@@ -123,29 +169,12 @@ export type Database = {
           participant5_iin?: string | null
           participant5_phone?: string | null
           participant5_school?: string | null
-          questions?: string | null
-          source?: string | null
-          status?: string
-          study_place?: string | null
-          submission_link?: string | null
-          team_name?: string | null
-          telegram?: string | null
-          updated_at?: string
-          user_id: string
+          team_id?: string | null
         }
         Update: {
-          captain_age?: number | null
-          captain_full_name?: string | null
-          captain_grade?: string | null
-          captain_iin?: string | null
-          captain_phone?: string | null
-          city?: string | null
-          competition_id?: string
-          consent?: boolean
-          created_at?: string
-          email?: string | null
-          id?: string
-          league?: string | null
+          archived_at?: string | null
+          competition_id?: string | null
+          id?: string | null
           mentor_city?: string | null
           mentor_full_name?: string | null
           mentor_iin?: string | null
@@ -182,15 +211,7 @@ export type Database = {
           participant5_iin?: string | null
           participant5_phone?: string | null
           participant5_school?: string | null
-          questions?: string | null
-          source?: string | null
-          status?: string
-          study_place?: string | null
-          submission_link?: string | null
-          team_name?: string | null
-          telegram?: string | null
-          updated_at?: string
-          user_id?: string
+          team_id?: string | null
         }
         Relationships: []
       }
@@ -378,6 +399,47 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      team_members: {
+        Row: {
+          created_at: string
+          id: string
+          joined_at: string | null
+          role: string
+          status: string
+          team_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          joined_at?: string | null
+          role?: string
+          status?: string
+          team_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          joined_at?: string | null
+          role?: string
+          status?: string
+          team_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "team_members_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "enrollments"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
