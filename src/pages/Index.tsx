@@ -20,7 +20,7 @@ const Index = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="STEM, CubeSat, Спутники, космическое образование, соревнования по космосу, Ракетостроение, STEM платформа, STEM соревнования, Образовательные наборы, STEM наборы, AEROO" />
+        <meta name="keywords" content="AEROO, aeroo kz, Aeroo, Aeroo соревнования, аэро соревнования, Aeroo жарыс, STEM, CubeSat, Спутники, космическое образование, соревнования по космосу, Ракетостроение, STEM платформа, STEM соревнования, Образовательные наборы, STEM наборы" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />

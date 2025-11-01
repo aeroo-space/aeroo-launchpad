@@ -111,7 +111,7 @@ const Products = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="STEM наборы, образовательные наборы, CubeSat Kit, Rocket Science Kit, CanSat, конструкторы, спутники, ракеты, космическое образование, AEROO" />
+        <meta name="keywords" content="AEROO, aeroo kz, Aeroo, Aeroo соревнования, аэро соревнования, Aeroo жарыс, STEM наборы, образовательные наборы, CubeSat Kit, Rocket Science Kit, CanSat, конструкторы, спутники, ракеты, космическое образование" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />

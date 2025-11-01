@@ -16,7 +16,7 @@ const Support = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="техподдержка AEROO, помощь, STEM наборы, соревнования, CubeSat, поддержка клиентов, контакты" />
+        <meta name="keywords" content="AEROO, aeroo kz, Aeroo, Aeroo соревнования, аэро соревнования, Aeroo жарыс, техподдержка AEROO, помощь, STEM наборы, соревнования, CubeSat, поддержка клиентов, контакты" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />

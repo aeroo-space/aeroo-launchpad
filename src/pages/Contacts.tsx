@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { useTranslation } from "react-i18next";
@@ -7,55 +7,49 @@ import { Mail, Phone, Instagram, Send, MessageCircle, MapPin } from "lucide-reac
 const Contacts = () => {
   const { t } = useTranslation();
 
-  useEffect(() => {
-    const title = t('contacts.metaTitle', { defaultValue: 'Контакты — AEROO' });
-    const desc = t('contacts.metaDesc', { defaultValue: 'Свяжитесь с AEROO: email, телефон, Instagram, Telegram и WhatsApp.' });
-    document.title = title;
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', desc);
-    else {
-      const m = document.createElement('meta');
-      m.name = 'description';
-      m.content = desc;
-      document.head.appendChild(m);
-    }
-    // Canonical
-    let link = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
-    if (!link) {
-      link = document.createElement('link');
-      link.rel = 'canonical';
-      document.head.appendChild(link);
-    }
-    link.href = window.location.origin + '/contacts';
-
-    // Structured data
-    const scriptId = 'ld-json-contacts';
-    let script = document.getElementById(scriptId) as HTMLScriptElement | null;
-    const ld = {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'AEROO',
-      url: window.location.origin,
-      contactPoint: [
-        {
-          '@type': 'ContactPoint',
-          contactType: 'customer support',
-          email: 'info@aeroo.space',
-          telephone: '+7 775 163 97 90'
-        }
-      ]
-    };
-    if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.type = 'application/ld+json';
-      document.head.appendChild(script);
-    }
-    script.text = JSON.stringify(ld);
-  }, [t]);
+  const pageTitle = t('contacts.metaTitle', { defaultValue: 'Контакты — AEROO' });
+  const pageDescription = t('contacts.metaDesc', { defaultValue: 'Свяжитесь с AEROO: email, телефон, Instagram, Telegram и WhatsApp.' });
+  const pageUrl = `${window.location.origin}/contacts`;
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="AEROO, aeroo kz, Aeroo, Aeroo соревнования, аэро соревнования, Aeroo жарыс, контакты AEROO, связаться, STEM платформа, космическое образование, техподдержка" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={pageUrl} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        
+        <link rel="canonical" href={pageUrl} />
+        
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Organization',
+            name: 'AEROO',
+            url: window.location.origin,
+            contactPoint: [
+              {
+                '@type': 'ContactPoint',
+                contactType: 'customer support',
+                email: 'info@aeroo.space',
+                telephone: '+7 775 163 97 90'
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
+      
       <Navigation />
       <main className="container mx-auto px-4 py-8 sm:py-12">
         <header className="mb-6 sm:mb-8 text-center">

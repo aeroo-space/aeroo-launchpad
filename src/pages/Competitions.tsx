@@ -137,7 +137,7 @@ const Competitions = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="STEM соревнования, соревнования по космосу, CubeSat, спутники, ракетостроение, Space AI, космическое образование, международные соревнования, AEROO" />
+        <meta name="keywords" content="AEROO, aeroo kz, Aeroo, Aeroo соревнования, аэро соревнования, Aeroo жарыс, STEM соревнования, соревнования по космосу, CubeSat, спутники, ракетостроение, Space AI, космическое образование, международные соревнования" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />

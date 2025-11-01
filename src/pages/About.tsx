@@ -67,7 +67,7 @@ const About = () => {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDescription} />
-        <meta name="keywords" content="STEM образование, космические технологии, CubeSat, команда AEROO, партнеры, миссия, спутники, ракетостроение, образовательная платформа" />
+        <meta name="keywords" content="AEROO, aeroo kz, Aeroo, Aeroo соревнования, аэро соревнования, Aeroo жарыс, STEM образование, космические технологии, CubeSat, команда AEROO, партнеры, миссия, спутники, ракетостроение, образовательная платформа" />
         
         {/* Open Graph */}
         <meta property="og:type" content="website" />
