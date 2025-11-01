@@ -178,7 +178,7 @@ export function useTeamInvites(teamId?: string) {
         }
       }
 
-      // Update invite status
+      // CRITICAL: Update invite status FIRST
       const { error: inviteError } = await supabase
         .from("invites")
         .update({
@@ -188,9 +188,12 @@ export function useTeamInvites(teamId?: string) {
         })
         .eq("id", inviteId);
 
-      if (inviteError) throw inviteError;
+      if (inviteError) {
+        console.error("Error updating invite:", inviteError);
+        throw inviteError;
+      }
 
-      // If accepted, create team_member entry
+      // THEN create team_member entry (after status is updated)
       if (accept) {
         const { error: memberError } = await supabase
           .from("team_members")
@@ -202,7 +205,13 @@ export function useTeamInvites(teamId?: string) {
             joined_at: new Date().toISOString()
           });
 
-        if (memberError) throw memberError;
+        if (memberError) {
+          console.error("Error creating team member:", memberError);
+          toast.error("Ошибка добавления в команду", { 
+            description: memberError.message 
+          });
+          throw memberError;
+        }
       }
 
       toast(accept ? "Приглашение принято! Вы теперь член команды." : "Приглашение отклонено");
@@ -210,7 +219,9 @@ export function useTeamInvites(teamId?: string) {
       return { data: true };
     } catch (error: any) {
       console.error("Error responding to invite:", error);
-      toast("Ошибка обработки приглашения");
+      toast.error("Ошибка обработки приглашения", { 
+        description: error.message 
+      });
       return { error: error.message };
     }
   };
