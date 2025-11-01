@@ -106,6 +106,7 @@ export function TeamInviteManager({
 
         <p className="text-sm text-muted-foreground">
           Доступно мест: {spotsLeft} из {maxTeamSize}
+          {spotsLeft === 0 && " (команда укомплектована)"}
         </p>
       </Card>
 

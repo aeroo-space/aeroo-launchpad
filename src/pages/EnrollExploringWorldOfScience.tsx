@@ -226,6 +226,18 @@ export default function EnrollExploringWorldOfSciencePage() {
     return 4;
   };
 
+  const getMinTeamSize = () => {
+    if (track === "aslc") return 4; // ASLC requires exactly 4
+    return 1; // Others have no minimum
+  };
+
+  const getTeamSizeDescription = () => {
+    if (track === "aslc") return "Ровно 4 участника (включая капитана)";
+    if (track === "space_ai") return "До 4 участников (включая капитана)";
+    if (track === "rocket_science") return "До 2 участников (включая капитана)";
+    return "";
+  };
+
   // If user is already a team member (not captain), show message
   if (teamMembership && !existingEnrollment) {
     return (
@@ -348,16 +360,40 @@ export default function EnrollExploringWorldOfSciencePage() {
                     <div className="flex items-center gap-2">
                       <Users className="w-5 h-5 text-success" />
                       <h3 className="text-lg font-semibold">Состав команды</h3>
+                      <span className="text-sm text-muted-foreground">
+                        ({members.filter(m => m.status === 'active').length}/{getMaxTeamSize()})
+                      </span>
                     </div>
                     <Button 
                       variant="default"
                       size="sm"
                       onClick={() => setShowInviteForm(!showInviteForm)}
+                      disabled={members.filter(m => m.status === 'active').length >= getMaxTeamSize()}
                     >
                       <Users className="w-4 h-4 mr-2" />
                       {showInviteForm ? "Скрыть форму" : "Добавить участников"}
                     </Button>
                   </div>
+                  
+                  {/* Team validation warning for ASLC */}
+                  {track === "aslc" && members.filter(m => m.status === 'active').length !== 4 && (
+                    <div className="mb-4 p-3 rounded-lg bg-warning/10 border border-warning/30">
+                      <p className="text-sm text-warning-foreground">
+                        ⚠️ Для участия в категории ASLC требуется ровно 4 участника (включая капитана). 
+                        Ваша заявка будет действительной только когда в команде будет 4 участника.
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Team validation success for ASLC */}
+                  {track === "aslc" && members.filter(m => m.status === 'active').length === 4 && (
+                    <div className="mb-4 p-3 rounded-lg bg-success/10 border border-success/30">
+                      <p className="text-sm text-success-foreground">
+                        ✅ Состав команды укомплектован! Ваша заявка действительна.
+                      </p>
+                    </div>
+                  )}
+
                   <div className="space-y-3">
                     <TeamMembersDisplay teamId={existingEnrollment.id} canManage={true} />
                   </div>
@@ -366,13 +402,23 @@ export default function EnrollExploringWorldOfSciencePage() {
 
               {/* Invite Form - shown on button click */}
               {showInviteForm && (
-                <TeamInviteManager
-                  teamId={existingEnrollment.id}
-                  competitionId="exploring-world-of-science"
-                  teamName={teamName}
-                  maxTeamSize={getMaxTeamSize()}
-                  currentTeamSize={members.filter(m => m.status === 'active').length}
-                />
+                <Card>
+                  <CardContent className="p-6">
+                    <h3 className="text-lg font-semibold mb-4">Приглашение участников</h3>
+                    <div className="mb-4 p-3 rounded-lg bg-muted">
+                      <p className="text-sm text-muted-foreground">
+                        {getTeamSizeDescription()}
+                      </p>
+                    </div>
+                    <TeamInviteManager
+                      teamId={existingEnrollment.id}
+                      competitionId="exploring-world-of-science"
+                      teamName={teamName}
+                      maxTeamSize={getMaxTeamSize()}
+                      currentTeamSize={members.filter(m => m.status === 'active').length}
+                    />
+                  </CardContent>
+                </Card>
               )}
             </div>
           ) : (
