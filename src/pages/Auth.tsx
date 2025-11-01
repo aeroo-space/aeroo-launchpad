@@ -36,6 +36,9 @@ const Auth = () => {
   const [newPwd, setNewPwd] = useState("");
   const [newPwd2, setNewPwd2] = useState("");
   const [resetSubmitting, setResetSubmitting] = useState(false);
+  const [inviteToken, setInviteToken] = useState<string | null>(null);
+  const [inviteInfo, setInviteInfo] = useState<any>(null);
+  const [processingInvite, setProcessingInvite] = useState(false);
 
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^а-яёА-ЯЁa-zA-Z\s]/g, '');
@@ -110,11 +113,19 @@ const Auth = () => {
     const urlParams = new URLSearchParams(window.location.search);
     const token = urlParams.get('token');
     const type = urlParams.get('type');
+    const invite = urlParams.get('invite');
     
     if (token && type === 'recovery') {
       setShowResetPwd(true);
       // Очищаем URL от параметров
       window.history.replaceState({}, document.title, window.location.pathname);
+    }
+
+    // Обработка приглашения
+    if (invite) {
+      setInviteToken(invite);
+      fetchInviteInfo(invite);
+      // Не очищаем URL до тех пор, пока не обработаем приглашение
     }
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event) => {
@@ -126,6 +137,124 @@ const Auth = () => {
       subscription.unsubscribe();
     };
   }, []);
+
+  const fetchInviteInfo = async (token: string) => {
+    try {
+      const { data, error } = await supabase
+        .from("invites")
+        .select(`
+          id,
+          team_id,
+          competition_id,
+          status,
+          expires_at,
+          team:enrollments(team_name)
+        `)
+        .eq("token", token)
+        .eq("status", "pending")
+        .maybeSingle();
+
+      if (error) throw error;
+
+      if (!data) {
+        toast.error("Приглашение не найдено или уже использовано");
+        setInviteToken(null);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+
+      // Проверяем срок действия
+      if (new Date(data.expires_at) < new Date()) {
+        toast.error("Приглашение истекло");
+        setInviteToken(null);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+
+      setInviteInfo(data);
+      toast.info(`Вы приглашены в команду "${data.team?.team_name}"`, {
+        description: "Войдите или зарегистрируйтесь, чтобы принять приглашение"
+      });
+    } catch (error: any) {
+      console.error("Error fetching invite:", error);
+      toast.error("Ошибка загрузки приглашения");
+      setInviteToken(null);
+    }
+  };
+
+  // Обработка приглашения после входа
+  useEffect(() => {
+    if (user && inviteToken && inviteInfo && !processingInvite) {
+      handleAcceptInvite();
+    }
+  }, [user, inviteToken, inviteInfo]);
+
+  const handleAcceptInvite = async () => {
+    if (!user || !inviteInfo || processingInvite) return;
+
+    setProcessingInvite(true);
+    try {
+      // Проверяем, не состоит ли пользователь уже в другой команде
+      const { data: existingTeam } = await supabase
+        .from("team_members")
+        .select(`
+          id,
+          team:enrollments!inner(competition_id)
+        `)
+        .eq("user_id", user.id)
+        .eq("status", "active")
+        .eq("enrollments.competition_id", inviteInfo.competition_id)
+        .maybeSingle();
+
+      if (existingTeam) {
+        toast.error("Вы уже состоите в команде для этого соревнования");
+        setInviteToken(null);
+        setInviteInfo(null);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        return;
+      }
+
+      // Обновляем статус приглашения
+      const { error: inviteError } = await supabase
+        .from("invites")
+        .update({
+          status: 'accepted',
+          accepted_by: user.id,
+          updated_at: new Date().toISOString()
+        })
+        .eq("id", inviteInfo.id);
+
+      if (inviteError) throw inviteError;
+
+      // Создаём запись в team_members
+      const { error: memberError } = await supabase
+        .from("team_members")
+        .insert({
+          team_id: inviteInfo.team_id,
+          user_id: user.id,
+          role: 'member',
+          status: 'active',
+          joined_at: new Date().toISOString()
+        });
+
+      if (memberError) throw memberError;
+
+      toast.success(`Вы успешно присоединились к команде "${inviteInfo.team?.team_name}"!`);
+      
+      // Очищаем состояние и URL
+      setInviteToken(null);
+      setInviteInfo(null);
+      window.history.replaceState({}, document.title, window.location.pathname);
+      
+      // Перенаправляем на дашборд
+      navigate("/dashboard");
+    } catch (error: any) {
+      console.error("Error accepting invite:", error);
+      toast.error("Ошибка принятия приглашения", { description: error.message });
+    } finally {
+      setProcessingInvite(false);
+    }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -241,6 +370,19 @@ const Auth = () => {
       <main className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
         <h1 className="sr-only">{t('auth.heading', { defaultValue: 'Аутентификация AEROO' })}</h1>
         <div className="max-w-md mx-auto rounded-2xl border border-border/60 p-4 sm:p-6 bg-card shadow-sm">
+          {inviteInfo && (
+            <div className="mb-6 p-4 rounded-lg bg-primary/10 border border-primary/30">
+              <p className="text-sm font-medium text-primary mb-1">
+                🎉 Приглашение в команду
+              </p>
+              <p className="text-sm">
+                Команда: <strong>{inviteInfo.team?.team_name}</strong>
+              </p>
+              <p className="text-xs text-muted-foreground mt-2">
+                Войдите или зарегистрируйтесь, чтобы принять приглашение
+              </p>
+            </div>
+          )}
           <div className="flex justify-center mb-6">
             <div className="inline-flex rounded-lg bg-muted p-1">
               <button
