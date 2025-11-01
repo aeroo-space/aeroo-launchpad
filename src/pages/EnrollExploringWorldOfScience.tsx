@@ -338,19 +338,37 @@ export default function EnrollExploringWorldOfSciencePage() {
           {/* Team Management - Only shown after team is created */}
           {existingEnrollment && (
             <div className="mt-6 space-y-6">
-              <Card>
+              {/* Invite Instructions */}
+              <Card className="border-2 border-primary/30 bg-primary/5">
                 <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Users className="w-5 h-5 text-primary" />
-                    <h3 className="text-lg font-semibold">Управление командой</h3>
+                  <div className="flex items-start gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
+                      <Users className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold mb-2">
+                        Шаг 2: Добавьте участников команды
+                      </h3>
+                      <p className="text-sm text-muted-foreground">
+                        Отправьте email-приглашения участникам вашей команды. 
+                        Каждый участник получит ссылку для регистрации и автоматически присоединится к команде.
+                      </p>
+                    </div>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Пригласите участников команды по email. Они получат приглашение и смогут присоединиться после регистрации.
-                  </p>
-                  <TeamMembersDisplay teamId={existingEnrollment.id} canManage={true} />
+                  
+                  <div className="bg-background/50 rounded-lg p-4 space-y-2 text-sm">
+                    <p className="font-medium">💡 Как это работает:</p>
+                    <ol className="list-decimal list-inside space-y-1 text-muted-foreground ml-2">
+                      <li>Введите email участника и нажмите "Отправить"</li>
+                      <li>Участник получит приглашение на почту</li>
+                      <li>После регистрации он автоматически станет членом команды</li>
+                      <li>Вы увидите статус каждого приглашения ниже</li>
+                    </ol>
+                  </div>
                 </CardContent>
               </Card>
 
+              {/* Send Invites Section */}
               <TeamInviteManager
                 teamId={existingEnrollment.id}
                 competitionId="exploring-world-of-science"
@@ -358,7 +376,31 @@ export default function EnrollExploringWorldOfSciencePage() {
                 maxTeamSize={getMaxTeamSize()}
                 currentTeamSize={1}
               />
+
+              {/* Team Members List */}
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Users className="w-5 h-5 text-success" />
+                    <h3 className="text-lg font-semibold">Состав команды</h3>
+                  </div>
+                  <TeamMembersDisplay teamId={existingEnrollment.id} canManage={true} />
+                </CardContent>
+              </Card>
             </div>
+          )}
+
+          {/* Instructions for users who haven't created team yet */}
+          {!existingEnrollment && (
+            <Card className="mt-6 border-2 border-dashed border-muted-foreground/30">
+              <CardContent className="p-6 text-center">
+                <Users className="w-12 h-12 mx-auto mb-3 text-muted-foreground" />
+                <h3 className="font-semibold mb-2">Сначала создайте команду</h3>
+                <p className="text-sm text-muted-foreground">
+                  После создания команды здесь появится форма для приглашения участников по email
+                </p>
+              </CardContent>
+            </Card>
           )}
         </div>
       </main>
