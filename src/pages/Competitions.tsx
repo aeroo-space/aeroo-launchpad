@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
@@ -127,8 +128,32 @@ const Competitions = () => {
     setConsent(false);
   };
 
+  const pageTitle = t('competitions.metaTitle', { defaultValue: 'STEM соревнования по космосу | CubeSat, Спутники, Ракетостроение' });
+  const pageDescription = t('competitions.metaDesc', { defaultValue: 'Международные STEM соревнования AEROO: запуск спутников CubeSat, ракетостроение, Space AI. Космическое образование для школьников и студентов.' });
+  const pageUrl = `${window.location.origin}/competitions`;
+  
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="STEM соревнования, соревнования по космосу, CubeSat, спутники, ракетостроение, Space AI, космическое образование, международные соревнования, AEROO" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={`${window.location.origin}/lovable-uploads/dd996c85-9a8a-4c91-8a78-bd8d17208f0d.png`} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        
+        <link rel="canonical" href={pageUrl} />
+      </Helmet>
+      
       <Navigation />
 
       <main className="container mx-auto px-4 py-8 sm:py-12">

@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -57,13 +58,32 @@ const About = () => {
       image: "/lovable-uploads/191e5103-1470-4cd9-b480-294ceb5290e1.png"
     }
   ];
-  useEffect(() => {
-    document.title = t('about.metaTitle', { defaultValue: 'О AEROO — миссия и команда' });
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', t('about.metaDesc', { defaultValue: 'Образовательная экосистема AEROO: миссия, ценности, команда и партнёры' }));
-  }, [t]);
+  const pageTitle = t('about.metaTitle', { defaultValue: 'О AEROO — миссия, команда | STEM космическое образование' });
+  const pageDescription = t('about.metaDesc', { defaultValue: 'STEM образовательная экосистема AEROO: миссия развития космического образования, ценности, команда экспертов и партнёры в области спутниковых технологий и ракетостроения' });
+  const pageUrl = `${window.location.origin}/about`;
+  
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="STEM образование, космические технологии, CubeSat, команда AEROO, партнеры, миссия, спутники, ракетостроение, образовательная платформа" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={`${window.location.origin}/lovable-uploads/4545a519-7175-4528-aa72-a8ac5307ea4d.png`} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        
+        <link rel="canonical" href={pageUrl} />
+      </Helmet>
+      
       <Navigation />
       
       <main className="container mx-auto px-4 py-8 sm:py-12">

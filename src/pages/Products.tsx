@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Navigation } from "@/components/ui/navigation";
 import { Footer } from "@/components/sections/footer";
 import { Button } from "@/components/ui/button";
@@ -82,9 +83,9 @@ const Products = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.title = (t('products.metaTitle', { defaultValue: 'Продукты AEROO — наборы и конструкторы' }));
-  }, [t]);
+  const pageTitle = t('products.metaTitle', { defaultValue: 'STEM наборы AEROO | CubeSat, Ракеты, Образовательные конструкторы' });
+  const pageDescription = t('products.metaDesc', { defaultValue: 'Образовательные STEM наборы AEROO: CubeSat Kit, Rocket Science Kit, CanSat. Конструкторы для изучения спутников, ракет и космических технологий.' });
+  const pageUrl = `${window.location.origin}/products`;
 
   const handleOpenRequest = (id: string) => {
     setSelectedProductId(id);
@@ -107,6 +108,26 @@ const Products = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+        <meta name="keywords" content="STEM наборы, образовательные наборы, CubeSat Kit, Rocket Science Kit, CanSat, конструкторы, спутники, ракеты, космическое образование, AEROO" />
+        
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={`${window.location.origin}/assets/goals-cubesat.png`} />
+        
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        
+        <link rel="canonical" href={pageUrl} />
+      </Helmet>
+      
       <Navigation />
       
       <main className="container mx-auto px-4 py-8 sm:py-12">
