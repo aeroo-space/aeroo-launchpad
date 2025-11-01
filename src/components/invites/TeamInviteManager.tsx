@@ -109,54 +109,71 @@ export function TeamInviteManager({
         </p>
       </Card>
 
-      <Card className="p-4">
-        <h3 className="text-lg font-semibold mb-4">Приглашения</h3>
+      {/* Only show pending invites */}
+      {(() => {
+        const pendingInvites = invites.filter(inv => inv.status === 'pending');
         
-        {loading ? (
-          <p className="text-sm text-muted-foreground">Загрузка...</p>
-        ) : invites.length === 0 ? (
-          <p className="text-sm text-muted-foreground">Приглашений пока нет</p>
-        ) : (
-          <div className="space-y-3">
-            {invites.map((invite) => (
-              <div key={invite.id} className="flex items-center justify-between p-3 border rounded-lg">
-                <div className="flex-1">
-                  <p className="font-medium">{invite.invitee_email}</p>
-                  <p className="text-xs text-muted-foreground">
-                    Отправлено {formatDistanceToNow(new Date(invite.created_at), { 
-                      addSuffix: true, 
-                      locale: ru 
-                    })}
-                  </p>
-                </div>
-                
-                <div className="flex items-center gap-2">
-                  {getStatusBadge(invite.status, invite.expires_at)}
+        if (pendingInvites.length === 0) return null;
+        
+        return (
+          <Card className="p-4">
+            <h3 className="text-lg font-semibold mb-4">Отправленные приглашения</h3>
+            
+            {loading ? (
+              <p className="text-sm text-muted-foreground">Загрузка...</p>
+            ) : (
+              <div className="space-y-3">
+                {pendingInvites.map((invite) => {
+                  const isExpired = new Date(invite.expires_at) < new Date();
                   
-                  {invite.status === 'pending' && new Date(invite.expires_at) > new Date() && (
-                    <>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        onClick={() => resendInvite(invite.id)}
-                      >
-                        <RefreshCw className="w-3 h-3" />
-                      </Button>
-                      <Button
-                        size="sm"
-                        variant="destructive"
-                        onClick={() => revokeInvite(invite.id)}
-                      >
-                        <X className="w-3 h-3" />
-                      </Button>
-                    </>
-                  )}
-                </div>
+                  return (
+                    <div key={invite.id} className="flex items-center justify-between p-3 border rounded-lg">
+                      <div className="flex-1">
+                        <p className="font-medium">{invite.invitee_email}</p>
+                        <p className="text-xs text-muted-foreground">
+                          Отправлено {formatDistanceToNow(new Date(invite.created_at), { 
+                            addSuffix: true, 
+                            locale: ru 
+                          })}
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-center gap-2">
+                        {isExpired ? (
+                          <Badge variant="secondary"><Clock className="w-3 h-3 mr-1" />Истек</Badge>
+                        ) : (
+                          <Badge variant="outline"><Clock className="w-3 h-3 mr-1" />Ожидание</Badge>
+                        )}
+                        
+                        {!isExpired && (
+                          <>
+                            <Button
+                              size="sm"
+                              variant="outline"
+                              onClick={() => resendInvite(invite.id)}
+                              title="Отправить повторно"
+                            >
+                              <RefreshCw className="w-3 h-3" />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="destructive"
+                              onClick={() => revokeInvite(invite.id)}
+                              title="Отозвать"
+                            >
+                              <X className="w-3 h-3" />
+                            </Button>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            ))}
-          </div>
-        )}
-      </Card>
+            )}
+          </Card>
+        );
+      })()}
     </div>
   );
 }

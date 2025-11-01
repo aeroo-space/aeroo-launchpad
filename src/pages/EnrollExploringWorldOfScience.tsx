@@ -34,6 +34,7 @@ export default function EnrollExploringWorldOfSciencePage() {
   const [submitting, setSubmitting] = useState(false);
   const [existingEnrollment, setExistingEnrollment] = useState<any>(null);
   const [teamMembership, setTeamMembership] = useState<any>(null);
+  const [showInviteForm, setShowInviteForm] = useState(false);
 
   // Captain info from profile
   const captainFullName = profile?.full_name || "";
@@ -278,7 +279,7 @@ export default function EnrollExploringWorldOfSciencePage() {
               {/* Team Info Card */}
               <Card>
                 <CardContent className="p-6 space-y-4">
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between mb-4">
                     <h3 className="text-lg font-semibold">Информация о команде</h3>
                     <div className="px-3 py-1 rounded-full bg-success/10 text-success text-sm font-medium">
                       Зарегистрирована
@@ -340,6 +341,38 @@ export default function EnrollExploringWorldOfSciencePage() {
                   </div>
                 </CardContent>
               </Card>
+
+              {/* Team Members List */}
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-2">
+                      <Users className="w-5 h-5 text-success" />
+                      <h3 className="text-lg font-semibold">Состав команды</h3>
+                    </div>
+                    <Button 
+                      variant="default"
+                      size="sm"
+                      onClick={() => setShowInviteForm(!showInviteForm)}
+                    >
+                      <Users className="w-4 h-4 mr-2" />
+                      {showInviteForm ? "Скрыть форму" : "Добавить участников"}
+                    </Button>
+                  </div>
+                  <TeamMembersDisplay teamId={existingEnrollment.id} canManage={true} />
+                </CardContent>
+              </Card>
+
+              {/* Invite Form - shown on button click */}
+              {showInviteForm && (
+                <TeamInviteManager
+                  teamId={existingEnrollment.id}
+                  competitionId="exploring-world-of-science"
+                  teamName={teamName}
+                  maxTeamSize={getMaxTeamSize()}
+                  currentTeamSize={1}
+                />
+              )}
             </div>
           ) : (
             /* Registration Form - Only for new teams */
@@ -469,56 +502,8 @@ export default function EnrollExploringWorldOfSciencePage() {
 
           {/* Team Management - Only shown after team is created */}
           {existingEnrollment && (
-            <div className="mt-6 space-y-6">
-              {/* Invite Instructions */}
-              <Card className="border-2 border-primary/30 bg-primary/5">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0">
-                      <Users className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-lg font-semibold mb-2">
-                        Добавление участников команды
-                      </h3>
-                      <p className="text-sm text-muted-foreground">
-                        Отправьте email-приглашения участникам вашей команды. 
-                        Каждый участник получит ссылку для регистрации и автоматически присоединится к команде.
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="bg-background/50 rounded-lg p-4 space-y-2 text-sm">
-                    <p className="font-medium">💡 Как это работает:</p>
-                    <ol className="list-decimal list-inside space-y-1 text-muted-foreground ml-2">
-                      <li>Введите email участника и нажмите "Отправить"</li>
-                      <li>Участник получит приглашение на почту</li>
-                      <li>После регистрации он автоматически станет членом команды</li>
-                      <li>Вы увидите статус каждого приглашения ниже</li>
-                    </ol>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Send Invites Section */}
-              <TeamInviteManager
-                teamId={existingEnrollment.id}
-                competitionId="exploring-world-of-science"
-                teamName={teamName}
-                maxTeamSize={getMaxTeamSize()}
-                currentTeamSize={1}
-              />
-
-              {/* Team Members List */}
-              <Card>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Users className="w-5 h-5 text-success" />
-                    <h3 className="text-lg font-semibold">Состав команды</h3>
-                  </div>
-                  <TeamMembersDisplay teamId={existingEnrollment.id} canManage={true} />
-                </CardContent>
-              </Card>
+            <div className="mt-6">
+              {/* Intentionally empty - team management is above */}
             </div>
           )}
         </div>
