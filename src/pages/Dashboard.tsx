@@ -17,6 +17,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog";
 import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
 import { Badge } from "@/components/ui/badge";
+import { InvitesList } from "@/components/invites/InvitesList";
 
 import { Pencil, Download } from "lucide-react";
 import { 
@@ -664,6 +665,16 @@ const Dashboard = () => {
                   ))}
                 </ul>
               )}
+            </CardContent>
+          </Card>
+
+          {/* Team Invites Section */}
+          <Card>
+            <CardHeader>
+              <CardTitle>{t('dashboard.invites', { defaultValue: 'Приглашения в команды' })}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <InvitesList />
             </CardContent>
           </Card>
 

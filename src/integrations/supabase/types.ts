@@ -242,6 +242,56 @@ export type Database = {
         }
         Relationships: []
       }
+      invites: {
+        Row: {
+          accepted_by: string | null
+          competition_id: string
+          created_at: string
+          created_by: string
+          expires_at: string
+          id: string
+          invitee_email: string
+          status: string
+          team_id: string
+          token: string
+          updated_at: string
+        }
+        Insert: {
+          accepted_by?: string | null
+          competition_id: string
+          created_at?: string
+          created_by: string
+          expires_at: string
+          id?: string
+          invitee_email: string
+          status?: string
+          team_id: string
+          token: string
+          updated_at?: string
+        }
+        Update: {
+          accepted_by?: string | null
+          competition_id?: string
+          created_at?: string
+          created_by?: string
+          expires_at?: string
+          id?: string
+          invitee_email?: string
+          status?: string
+          team_id?: string
+          token?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invites_team_id_fkey"
+            columns: ["team_id"]
+            isOneToOne: false
+            referencedRelation: "enrollments"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       product_requests: {
         Row: {
           comment: string | null
@@ -358,6 +408,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_team_membership: {
+        Args: { _competition_id: string; _user_id: string }
+        Returns: string
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

@@ -34,6 +34,7 @@ import { ScrollToTop } from "@/components/common/ScrollToTop";
 import { ThemeProvider } from "@/components/theme-provider";
 import ProtectedRoute from "@/components/common/ProtectedRoute";
 import SpaceSettlementProtectedRoute from "@/components/common/SpaceSettlementProtectedRoute";
+import { InviteNotificationBanner } from "@/components/invites/InviteNotificationBanner";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +47,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <InviteNotificationBanner />
             <ScrollToTop />
             <Routes>
               <Route path="/" element={<Index />} />
