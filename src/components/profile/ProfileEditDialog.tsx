@@ -15,7 +15,10 @@ type Profile = Tables<"profiles">;
 const profileSchema = z.object({
   full_name: z.string().trim().max(200, "Full name must be less than 200 characters").optional().or(z.literal("")),
   iin: z.string().trim().regex(/^[0-9]{12}$/, "IIN must be exactly 12 digits").optional().or(z.literal("")),
-  phone: z.string().trim().regex(/^\+7 \d{3} \d{3} \d{2} \d{2}$/, "Phone must be in format +7 XXX XXX XX XX").optional().or(z.literal("")),
+  phone: z.string().trim()
+    .refine((val) => val === "" || val === "+7" || /^\+7 \d{3} \d{3} \d{2} \d{2}$/.test(val), 
+      "Phone must be in format +7 XXX XXX XX XX")
+    .optional(),
   telegram: z.string().trim().regex(/^@[a-zA-Z0-9_]{5,32}$/, "Telegram must start with @ and be 5-32 characters").optional().or(z.literal("")),
   school: z.string().trim().max(200, "School name must be less than 200 characters").optional().or(z.literal("")),
   city: z.string().trim().max(200, "City name must be less than 200 characters").optional().or(z.literal("")),
@@ -50,13 +53,49 @@ export const ProfileEditDialog = ({ open, onOpenChange, profile, onProfileUpdate
     setFormData({
       full_name: profile.full_name || "",
       iin: profile.iin || "",
-      phone: profile.phone || "",
+      phone: profile.phone || "+7 ",
       telegram: profile.telegram || "",
       school: profile.school || "",
       city: profile.city || "",
       grade: profile.grade?.toString() || "",
     });
   }, [profile]);
+
+  const formatPhoneNumber = (value: string) => {
+    // Remove all non-digit characters except +
+    const digits = value.replace(/[^\d+]/g, '');
+    
+    // Always start with +7
+    if (!digits.startsWith('+7')) {
+      return '+7 ';
+    }
+    
+    // Extract only the digits after +7
+    const phoneDigits = digits.slice(2);
+    
+    // Format: +7 XXX XXX XX XX
+    let formatted = '+7';
+    
+    if (phoneDigits.length > 0) {
+      formatted += ' ' + phoneDigits.slice(0, 3);
+    }
+    if (phoneDigits.length > 3) {
+      formatted += ' ' + phoneDigits.slice(3, 6);
+    }
+    if (phoneDigits.length > 6) {
+      formatted += ' ' + phoneDigits.slice(6, 8);
+    }
+    if (phoneDigits.length > 8) {
+      formatted += ' ' + phoneDigits.slice(8, 10);
+    }
+    
+    return formatted;
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setFormData({ ...formData, phone: formatted });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +117,7 @@ export const ProfileEditDialog = ({ open, onOpenChange, profile, onProfileUpdate
       const updateData = {
         full_name: formData.full_name.trim() || null,
         iin: formData.iin.trim() || null,
-        phone: formData.phone.trim() || null,
+        phone: formData.phone.trim() === '+7' || formData.phone.trim() === '' ? null : formData.phone.trim(),
         telegram: formData.telegram.trim() || null,
         school: formData.school.trim() || null,
         city: formData.city.trim() || null,
@@ -145,9 +184,15 @@ export const ProfileEditDialog = ({ open, onOpenChange, profile, onProfileUpdate
               <Label htmlFor="phone">{t('dashboard.phone', { defaultValue: 'Телефон' })}</Label>
               <Input
                 id="phone"
-                value={formData.phone}
-                onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                placeholder={t('profile.phonePlaceholder', { defaultValue: '+7 (xxx) xxx-xx-xx' })}
+                value={formData.phone || '+7 '}
+                onChange={handlePhoneChange}
+                onFocus={(e) => {
+                  if (!e.target.value || e.target.value.trim() === '') {
+                    setFormData({ ...formData, phone: '+7 ' });
+                  }
+                }}
+                placeholder="+7 XXX XXX XX XX"
+                maxLength={16}
               />
             </div>
 
