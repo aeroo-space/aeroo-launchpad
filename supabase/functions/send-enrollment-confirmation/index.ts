@@ -27,12 +27,9 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    console.log("=== Send Enrollment Confirmation Function Started ===");
-    console.log("Request method:", req.method);
-    console.log("Request headers:", Object.fromEntries(req.headers.entries()));
+    console.log("Send Enrollment Confirmation - Processing request");
 
     const requestBody = await req.json();
-    console.log("Request body received:", requestBody);
 
     const { 
       captainEmail, 
@@ -42,12 +39,7 @@ const handler = async (req: Request): Promise<Response> => {
       participants 
     }: EnrollmentConfirmationRequest = requestBody;
 
-    console.log("=== Email Configuration ===");
-    console.log("Recipient:", captainEmail);
-    console.log("Captain name:", captainName);
-    console.log("Team name:", teamName);
-    console.log("Competition:", competitionTitle);
-    console.log("Participants count:", participants?.length || 0);
+    console.log("Email preparation - Competition:", competitionTitle, "| Participants count:", participants?.length || 0);
 
     // Check if RESEND_API_KEY is available
     const apiKey = Deno.env.get("RESEND_API_KEY");
@@ -55,7 +47,7 @@ const handler = async (req: Request): Promise<Response> => {
       console.error("RESEND_API_KEY environment variable is not set");
       throw new Error("Email service not configured - missing API key");
     }
-    console.log("RESEND_API_KEY is configured:", apiKey ? "Yes" : "No");
+    console.log("RESEND_API_KEY is configured");
 
     // Generate participant list HTML
     const participantsList = participants
@@ -127,8 +119,7 @@ const handler = async (req: Request): Promise<Response> => {
         </div>
       `;
     
-    console.log("=== Email Send Attempt ===");
-    console.log("Sending email to:", recipientEmail);
+    console.log("Attempting to send enrollment confirmation email");
     
     const emailResponse = await resend.emails.send({
       from: "AEROO <onboarding@resend.dev>",
@@ -137,9 +128,7 @@ const handler = async (req: Request): Promise<Response> => {
       html: emailHtml,
     });
 
-    console.log("=== Email Response ===");
-    console.log("Email sent successfully:", emailResponse);
-    console.log("Email ID:", emailResponse.data?.id || "No ID returned");
+    console.log("Email sent successfully | Email ID:", emailResponse.data?.id || "No ID returned");
 
     return new Response(JSON.stringify(emailResponse), {
       status: 200,
@@ -149,17 +138,11 @@ const handler = async (req: Request): Promise<Response> => {
       },
     });
   } catch (error: any) {
-    console.error("=== ERROR in send-enrollment-confirmation function ===");
-    console.error("Error type:", typeof error);
-    console.error("Error message:", error.message);
-    console.error("Error stack:", error.stack);
-    console.error("Full error object:", error);
+    console.error("ERROR in send-enrollment-confirmation:", error.message);
     
     return new Response(
       JSON.stringify({ 
-        error: error.message,
-        type: typeof error,
-        stack: error.stack 
+        error: error.message
       }),
       {
         status: 500,

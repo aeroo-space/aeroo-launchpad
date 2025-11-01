@@ -2,6 +2,12 @@ import { useEffect, useState, useCallback } from "react";
 import { useAuth } from "@/contexts/AuthProvider";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "@/components/ui/sonner";
+import { z } from "zod";
+
+const inviteEmailSchema = z.string()
+  .email("Invalid email format")
+  .max(255, "Email must be less than 255 characters")
+  .trim();
 
 export interface TeamInvite {
   id: string;
@@ -103,18 +109,34 @@ export function useTeamInvites(teamId?: string) {
     if (!user) return { error: "Not authenticated" };
 
     try {
+      // Validate email format and length
+      const validatedEmail = inviteEmailSchema.parse(inviteeEmail);
+
+      // Check for existing pending invite to prevent duplicates
+      const { data: existingInvite } = await supabase
+        .from("invites")
+        .select("id")
+        .eq("team_id", teamId)
+        .eq("invitee_email", validatedEmail)
+        .eq("status", "pending")
+        .maybeSingle();
+
+      if (existingInvite) {
+        toast.error("An invitation has already been sent to this email");
+        return { error: "Duplicate invitation" };
+      }
       // Generate secure token
       const token = crypto.randomUUID() + '-' + Date.now();
       const expiresAt = new Date();
       expiresAt.setHours(expiresAt.getHours() + 72);
 
-      // Create invite
+      // Create invite with validated email
       const { data: invite, error: insertError } = await supabase
         .from("invites")
         .insert({
           competition_id: competitionId,
           team_id: teamId,
-          invitee_email: inviteeEmail,
+          invitee_email: validatedEmail,
           token,
           expires_at: expiresAt.toISOString(),
           created_by: user.id,
@@ -125,13 +147,13 @@ export function useTeamInvites(teamId?: string) {
 
       if (insertError) throw insertError;
 
-      // Send email
+      // Send email with validated email
       const { error: emailError } = await supabase.functions.invoke('send-team-invite', {
         body: {
           inviteId: invite.id,
           teamName,
           competitionId,
-          inviteeEmail,
+          inviteeEmail: validatedEmail,
           token
         }
       });
@@ -147,6 +169,10 @@ export function useTeamInvites(teamId?: string) {
       return { data: invite };
     } catch (error: any) {
       console.error("Error creating invite:", error);
+      if (error instanceof z.ZodError) {
+        toast.error("Invalid email format");
+        return { error: error.errors[0].message };
+      }
       toast("Ошибка создания приглашения");
       return { error: error.message };
     }

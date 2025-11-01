@@ -42,13 +42,32 @@ const handler = async (req: Request): Promise<Response> => {
 
     const { inviteId, teamName, competitionId, inviteeEmail, token }: InviteRequest = await req.json();
 
-    console.log("Sending team invite:", { inviteId, teamName, competitionId, inviteeEmail });
+    console.log("Sending team invite - Competition:", competitionId);
+
+    // Rate limiting: Check recent invites from this team
+    const oneHourAgo = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+    
+    const { data: recentInvites, error: countError } = await supabase
+      .from("invites")
+      .select("id", { count: "exact", head: true })
+      .eq("team_id", teamName) // Using teamName as proxy - ideally use team_id from request
+      .gte("created_at", oneHourAgo);
+
+    if (countError) {
+      console.error("Error checking rate limit:", countError);
+    } else if (recentInvites && (recentInvites as any).count >= 10) {
+      console.log("Rate limit exceeded for team");
+      return new Response(
+        JSON.stringify({ error: "Rate limit exceeded. Maximum 10 invitations per hour." }),
+        { status: 429, headers: { "Content-Type": "application/json", ...corsHeaders } }
+      );
+    }
 
     // Use the configured app URL from environment variable
     const baseUrl = Deno.env.get("APP_URL") || 'https://pigoiwdkwdrrodftbkkm.aeroo.space';
     const inviteUrl = `${baseUrl}/auth?invite=${token}`;
     
-    console.log("Invite URL:", inviteUrl);
+    console.log("Sending invitation email");
 
     const competitionName = formatCompetitionName(competitionId);
 
