@@ -40,12 +40,12 @@ export function TeamInviteManager({
       return;
     }
 
-    // Check team size limit
-    const pendingAndAccepted = invites.filter(
-      inv => inv.status === 'pending' || inv.status === 'accepted'
+    // Check team size limit - only count pending invites since accepted ones are already in team
+    const pendingInvites = invites.filter(
+      inv => inv.status === 'pending'
     ).length;
     
-    if (currentTeamSize + pendingAndAccepted >= maxTeamSize) {
+    if (currentTeamSize + pendingInvites >= maxTeamSize) {
       return;
     }
 
@@ -76,10 +76,11 @@ export function TeamInviteManager({
     }
   };
 
-  const pendingAndAccepted = invites.filter(
-    inv => inv.status === 'pending' || inv.status === 'accepted'
+  // Only count pending invites - accepted ones are already team members
+  const pendingInvites = invites.filter(
+    inv => inv.status === 'pending'
   ).length;
-  const spotsLeft = maxTeamSize - currentTeamSize - pendingAndAccepted;
+  const spotsLeft = maxTeamSize - currentTeamSize - pendingInvites;
 
   return (
     <div className="space-y-4">
