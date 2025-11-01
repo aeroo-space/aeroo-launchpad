@@ -17,6 +17,18 @@ interface InviteRequest {
   token: string;
 }
 
+// Function to format competition ID to readable name
+const formatCompetitionName = (competitionId: string): string => {
+  const competitionNames: Record<string, string> = {
+    'exploring-world-of-science': 'Exploring the World of Science',
+    'space-settlement': 'Space Settlement Competition',
+    'space-settlement-2025': 'Space Settlement Competition 2025',
+    'satellite-launch-2026': 'Satellite Launch Competition 2026',
+  };
+  
+  return competitionNames[competitionId] || competitionId;
+};
+
 const handler = async (req: Request): Promise<Response> => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -38,30 +50,32 @@ const handler = async (req: Request): Promise<Response> => {
     
     console.log("Invite URL:", inviteUrl);
 
+    const competitionName = formatCompetitionName(competitionId);
+
     const emailResponse = await resend.emails.send({
       from: "AEROO <noreply@aeroo.space>",
       to: [inviteeEmail],
-      subject: `Приглашение в команду ${teamName} - ${competitionId}`,
+      subject: `Team Invitation: ${teamName} - ${competitionName}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h1 style="color: #333;">Приглашение в команду</h1>
-          <p>Вы приглашены присоединиться к команде <strong>${teamName}</strong> для участия в соревновании <strong>${competitionId}</strong>!</p>
+          <h1 style="color: #333;">Team Invitation</h1>
+          <p>You are invited to join team <strong>${teamName}</strong> to participate in <strong>${competitionName}</strong>!</p>
           
           <div style="margin: 30px 0;">
             <a href="${inviteUrl}" 
                style="background-color: #4F46E5; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; display: inline-block;">
-              Принять приглашение
+              Accept Invitation
             </a>
           </div>
           
           <p style="color: #666; font-size: 14px;">
-            Это приглашение действительно в течение 72 часов.<br>
-            Если у вас уже есть аккаунт, войдите, чтобы принять приглашение.<br>
-            Если вы новый пользователь, зарегистрируйтесь, и вы автоматически присоединитесь к команде.
+            This invitation is valid for 72 hours.<br>
+            If you already have an account, sign in to accept the invitation.<br>
+            If you are a new user, register and you will automatically join the team.
           </p>
           
           <p style="color: #999; font-size: 12px; margin-top: 30px;">
-            Если вы не ожидали это приглашение, просто проигнорируйте это письмо.
+            If you were not expecting this invitation, simply ignore this email.
           </p>
         </div>
       `,
