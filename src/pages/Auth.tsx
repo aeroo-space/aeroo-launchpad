@@ -38,7 +38,6 @@ const Auth = () => {
   const [resetSubmitting, setResetSubmitting] = useState(false);
   const [inviteToken, setInviteToken] = useState<string | null>(null);
   const [inviteInfo, setInviteInfo] = useState<any>(null);
-  const [processingInvite, setProcessingInvite] = useState(false);
 
   const handleFullNameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replace(/[^а-яёА-ЯЁa-zA-Z\s]/g, '');
@@ -173,7 +172,7 @@ const Auth = () => {
 
       setInviteInfo(data);
       toast.info(`Вы приглашены в команду "${data.team?.team_name}"`, {
-        description: "Войдите или зарегистрируйтесь, чтобы принять приглашение"
+        description: "Войдите или зарегистрируйтесь для продолжения"
       });
     } catch (error: any) {
       console.error("Error fetching invite:", error);
@@ -182,79 +181,15 @@ const Auth = () => {
     }
   };
 
-  // Обработка приглашения после входа
+  // После входа/регистрации сохраняем информацию о приглашении
   useEffect(() => {
-    if (user && inviteToken && inviteInfo && !processingInvite) {
-      handleAcceptInvite();
+    if (user && inviteToken) {
+      // Сохраняем токен приглашения в localStorage для показа в Dashboard
+      localStorage.setItem('pending_invite', inviteToken);
+      // Перенаправляем на Dashboard
+      navigate("/dashboard", { replace: true });
     }
-  }, [user, inviteToken, inviteInfo]);
-
-  const handleAcceptInvite = async () => {
-    if (!user || !inviteInfo || processingInvite) return;
-
-    setProcessingInvite(true);
-    try {
-      // Проверяем, не состоит ли пользователь уже в другой команде
-      const { data: existingTeam } = await supabase
-        .from("team_members")
-        .select(`
-          id,
-          team:enrollments!inner(competition_id)
-        `)
-        .eq("user_id", user.id)
-        .eq("status", "active")
-        .eq("enrollments.competition_id", inviteInfo.competition_id)
-        .maybeSingle();
-
-      if (existingTeam) {
-        toast.error("Вы уже состоите в команде для этого соревнования");
-        setInviteToken(null);
-        setInviteInfo(null);
-        window.history.replaceState({}, document.title, window.location.pathname);
-        return;
-      }
-
-      // Обновляем статус приглашения
-      const { error: inviteError } = await supabase
-        .from("invites")
-        .update({
-          status: 'accepted',
-          accepted_by: user.id,
-          updated_at: new Date().toISOString()
-        })
-        .eq("id", inviteInfo.id);
-
-      if (inviteError) throw inviteError;
-
-      // Создаём запись в team_members
-      const { error: memberError } = await supabase
-        .from("team_members")
-        .insert({
-          team_id: inviteInfo.team_id,
-          user_id: user.id,
-          role: 'member',
-          status: 'active',
-          joined_at: new Date().toISOString()
-        });
-
-      if (memberError) throw memberError;
-
-      toast.success(`Вы успешно присоединились к команде "${inviteInfo.team?.team_name}"!`);
-      
-      // Очищаем состояние и URL
-      setInviteToken(null);
-      setInviteInfo(null);
-      window.history.replaceState({}, document.title, window.location.pathname);
-      
-      // Перенаправляем на дашборд
-      navigate("/dashboard");
-    } catch (error: any) {
-      console.error("Error accepting invite:", error);
-      toast.error("Ошибка принятия приглашения", { description: error.message });
-    } finally {
-      setProcessingInvite(false);
-    }
-  };
+  }, [user, inviteToken, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -379,7 +314,7 @@ const Auth = () => {
                 Команда: <strong>{inviteInfo.team?.team_name}</strong>
               </p>
               <p className="text-xs text-muted-foreground mt-2">
-                Войдите или зарегистрируйтесь, чтобы принять приглашение
+                Войдите или зарегистрируйтесь, чтобы увидеть приглашение в личном кабинете
               </p>
             </div>
           )}

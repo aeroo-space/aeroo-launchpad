@@ -59,6 +59,29 @@ const Dashboard = () => {
   const [feedbackDialogOpen, setFeedbackDialogOpen] = useState(false);
   const [selectedEnrollmentForFeedback, setSelectedEnrollmentForFeedback] = useState<{ id: string; userId: string } | null>(null);
   const [feedbackStatus, setFeedbackStatus] = useState<Record<string, boolean>>({});
+  
+  // Проверяем наличие приглашения из ссылки
+  useEffect(() => {
+    const pendingInvite = localStorage.getItem('pending_invite');
+    if (pendingInvite && user) {
+      // Показываем уведомление
+      toast.info("У вас есть новое приглашение в команду", {
+        description: "Прокрутите вниз до раздела 'Приглашения в команды'"
+      });
+      
+      // Очищаем localStorage
+      localStorage.removeItem('pending_invite');
+      
+      // Опционально: прокручиваем к разделу с приглашениями
+      setTimeout(() => {
+        const invitesSection = document.querySelector('[data-section="invites"]');
+        if (invitesSection) {
+          invitesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 1000);
+    }
+  }, [user]);
+
   useEffect(() => {
     document.title = t('dashboard.title', { defaultValue: 'Личный кабинет — AEROO' });
   }, [t]);
@@ -671,7 +694,7 @@ const Dashboard = () => {
           </Card>
 
           {/* Team Invites Section */}
-          <Card>
+          <Card data-section="invites">
             <CardHeader>
               <CardTitle>{t('dashboard.invites', { defaultValue: 'Приглашения в команды' })}</CardTitle>
             </CardHeader>
