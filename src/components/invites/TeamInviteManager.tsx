@@ -6,7 +6,8 @@ import { Badge } from "@/components/ui/badge";
 import { useTeamInvites } from "@/hooks/useTeamInvites";
 import { Mail, RefreshCw, X, Clock, CheckCircle, XCircle } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
-import { ru } from "date-fns/locale";
+import { ru, kk, enUS } from "date-fns/locale";
+import { useTranslation } from "react-i18next";
 
 interface TeamInviteManagerProps {
   teamId: string;
@@ -26,6 +27,16 @@ export function TeamInviteManager({
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { invites, loading, createInvite, revokeInvite, resendInvite } = useTeamInvites(teamId);
+  const { t, i18n } = useTranslation();
+
+  // Get locale for date-fns based on current language
+  const getDateLocale = () => {
+    switch (i18n.language) {
+      case 'kk': return kk;
+      case 'en': return enUS;
+      default: return ru;
+    }
+  };
 
   const handleSendInvite = async () => {
     if (!email.trim()) return;
@@ -59,18 +70,18 @@ export function TeamInviteManager({
     const isExpired = new Date(expiresAt) < new Date();
     
     if (isExpired && status === 'pending') {
-      return <Badge variant="secondary"><Clock className="w-3 h-3 mr-1" />Истек</Badge>;
+      return <Badge variant="secondary"><Clock className="w-3 h-3 mr-1" />{t('teamManagement.expired')}</Badge>;
     }
     
     switch (status) {
       case 'pending':
-        return <Badge variant="outline"><Clock className="w-3 h-3 mr-1" />Ожидание</Badge>;
+        return <Badge variant="outline"><Clock className="w-3 h-3 mr-1" />{t('teamManagement.pending')}</Badge>;
       case 'accepted':
-        return <Badge variant="default" className="bg-green-500"><CheckCircle className="w-3 h-3 mr-1" />Принято</Badge>;
+        return <Badge variant="default" className="bg-green-500"><CheckCircle className="w-3 h-3 mr-1" />{t('teamManagement.accepted')}</Badge>;
       case 'declined':
-        return <Badge variant="destructive"><XCircle className="w-3 h-3 mr-1" />Отклонено</Badge>;
+        return <Badge variant="destructive"><XCircle className="w-3 h-3 mr-1" />{t('teamManagement.declined')}</Badge>;
       case 'revoked':
-        return <Badge variant="secondary"><X className="w-3 h-3 mr-1" />Отозвано</Badge>;
+        return <Badge variant="secondary"><X className="w-3 h-3 mr-1" />{t('teamManagement.revoked')}</Badge>;
       default:
         return <Badge variant="secondary">{status}</Badge>;
     }
@@ -85,7 +96,7 @@ export function TeamInviteManager({
   return (
     <div className="space-y-4">
       <Card className="p-4">
-        <h3 className="text-lg font-semibold mb-4">Пригласить участников</h3>
+        <h3 className="text-lg font-semibold mb-4">{t('teamManagement.inviteMembers')}</h3>
         
         <div className="flex gap-2 mb-4">
           <Input
@@ -101,13 +112,13 @@ export function TeamInviteManager({
             disabled={isSubmitting || !email || spotsLeft <= 0}
           >
             <Mail className="w-4 h-4 mr-2" />
-            Отправить
+            {t('teamManagement.send')}
           </Button>
         </div>
 
         <p className="text-sm text-muted-foreground">
-          Доступно мест: {spotsLeft} из {maxTeamSize}
-          {spotsLeft === 0 && " (команда укомплектована)"}
+          {t('teamManagement.spotsLeft')}: {spotsLeft} {t('teamManagement.of')} {maxTeamSize}
+          {spotsLeft === 0 && ` (${t('teamManagement.teamComplete')})`}
         </p>
       </Card>
 
@@ -119,10 +130,10 @@ export function TeamInviteManager({
         
         return (
           <Card className="p-4">
-            <h3 className="text-lg font-semibold mb-4">Отправленные приглашения</h3>
+            <h3 className="text-lg font-semibold mb-4">{t('teamManagement.sentInvites')}</h3>
             
             {loading ? (
-              <p className="text-sm text-muted-foreground">Загрузка...</p>
+              <p className="text-sm text-muted-foreground">{t('teamManagement.loading')}</p>
             ) : (
               <div className="space-y-3">
                 {pendingInvites.map((invite) => {
@@ -133,18 +144,18 @@ export function TeamInviteManager({
                       <div className="flex-1">
                         <p className="font-medium">{invite.invitee_email}</p>
                         <p className="text-xs text-muted-foreground">
-                          Отправлено {formatDistanceToNow(new Date(invite.created_at), { 
+                          {t('teamManagement.sentAgo')} {formatDistanceToNow(new Date(invite.created_at), { 
                             addSuffix: true, 
-                            locale: ru 
+                            locale: getDateLocale()
                           })}
                         </p>
                       </div>
                       
                       <div className="flex items-center gap-2">
                         {isExpired ? (
-                          <Badge variant="secondary"><Clock className="w-3 h-3 mr-1" />Истек</Badge>
+                          <Badge variant="secondary"><Clock className="w-3 h-3 mr-1" />{t('teamManagement.expired')}</Badge>
                         ) : (
-                          <Badge variant="outline"><Clock className="w-3 h-3 mr-1" />Ожидание</Badge>
+                          <Badge variant="outline"><Clock className="w-3 h-3 mr-1" />{t('teamManagement.pending')}</Badge>
                         )}
                         
                         {!isExpired && (
@@ -153,7 +164,7 @@ export function TeamInviteManager({
                               size="sm"
                               variant="outline"
                               onClick={() => resendInvite(invite.id)}
-                              title="Отправить повторно"
+                              title={t('teamManagement.resend')}
                             >
                               <RefreshCw className="w-3 h-3" />
                             </Button>
@@ -161,7 +172,7 @@ export function TeamInviteManager({
                               size="sm"
                               variant="destructive"
                               onClick={() => revokeInvite(invite.id)}
-                              title="Отозвать"
+                              title={t('teamManagement.revoke')}
                             >
                               <X className="w-3 h-3" />
                             </Button>
