@@ -35,42 +35,57 @@ export function useTeamMembers(teamId?: string) {
 
     try {
       setLoading(true);
-      const { data, error } = await supabase
+      
+      // Fetch team members
+      const { data: teamMembersData, error: membersError } = await supabase
         .from("team_members")
-        .select(`
-          *,
-          profile:profiles!user_id(
-            full_name,
-            phone,
-            school,
-            city,
-            grade
-          )
-        `)
+        .select("*")
         .eq("team_id", teamId)
         .order("role", { ascending: false }) // Captain first
         .order("joined_at", { ascending: true });
 
-      if (error) throw error;
+      if (membersError) throw membersError;
 
-      // Get user emails from auth.users via team enrollment
+      if (!teamMembersData || teamMembersData.length === 0) {
+        setMembers([]);
+        setLoading(false);
+        return;
+      }
+
+      // Fetch profiles for all user_ids
+      const userIds = teamMembersData.map(m => m.user_id);
+      const { data: profilesData, error: profilesError } = await supabase
+        .from("profiles")
+        .select("full_name, phone, school, city, grade, id")
+        .in("id", userIds);
+
+      if (profilesError) {
+        console.error("Error fetching profiles:", profilesError);
+      }
+
+      // Get captain email from enrollment
       const { data: enrollment } = await supabase
         .from("enrollments")
-        .select("email")
+        .select("email, user_id")
         .eq("id", teamId)
         .single();
 
-      const membersWithEmail = (data || []).map((member: any) => ({
-        ...member,
-        profile: {
-          ...member.profile,
-          email: member.role === 'captain' ? enrollment?.email : member.profile?.email
-        }
-      }));
+      // Combine team members with their profiles
+      const membersWithProfiles = teamMembersData.map(member => {
+        const profile = profilesData?.find(p => p.id === member.user_id);
+        return {
+          ...member,
+          profile: profile ? {
+            ...profile,
+            email: member.user_id === enrollment?.user_id ? enrollment?.email : ''
+          } : null
+        };
+      });
 
-      setMembers(membersWithEmail as TeamMember[]);
+      setMembers(membersWithProfiles as TeamMember[]);
     } catch (error) {
       console.error("Error fetching team members:", error);
+      setMembers([]);
     } finally {
       setLoading(false);
     }
