@@ -1,5 +1,6 @@
 import React from "react";
 import { useTeamInvites } from "@/hooks/useTeamInvites";
+import { useAuth } from "@/contexts/AuthProvider";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -9,12 +10,18 @@ import { ru } from "date-fns/locale";
 
 export function InvitesList() {
   const { invites, loading, respondToInvite } = useTeamInvites();
+  const { user } = useAuth();
+
+  // Filter to show only invites sent TO the user, not created BY the user
+  const userInvites = invites.filter(invite => 
+    invite.invitee_email === user?.email && invite.created_by !== user?.id
+  );
 
   if (loading) {
     return <p className="text-sm text-muted-foreground">Загрузка приглашений...</p>;
   }
 
-  if (invites.length === 0) {
+  if (userInvites.length === 0) {
     return <p className="text-sm text-muted-foreground">У вас пока нет приглашений</p>;
   }
 
@@ -38,7 +45,7 @@ export function InvitesList() {
   return (
     <div className="space-y-4">
       <h3 className="text-lg font-semibold">Мои приглашения</h3>
-      {invites.map((invite) => {
+      {userInvites.map((invite) => {
         const isExpired = new Date(invite.expires_at) < new Date();
         const canRespond = invite.status === 'pending' && !isExpired;
 
