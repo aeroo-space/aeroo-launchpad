@@ -654,9 +654,23 @@ const Dashboard = () => {
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs px-2 py-1 rounded bg-muted text-muted-foreground uppercase tracking-wide">
-                            {e.status || "active"}
-                          </span>
+                          {(() => {
+                            const comp = competitions.find(c => c.id === e.competition_id);
+                            const compStatus = comp ? t(comp.status) : '';
+                            const isCompleted = compStatus.includes('Завершено') || 
+                                               compStatus.includes('Completed') || 
+                                               compStatus.includes('Аяқталды');
+                            
+                            return (
+                              <span className={`text-xs px-2 py-1 rounded uppercase tracking-wide ${
+                                isCompleted 
+                                  ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
+                                  : 'bg-muted text-muted-foreground'
+                              }`}>
+                                {isCompleted ? compStatus : (e.status || "active")}
+                              </span>
+                            );
+                          })()}
                         </div>
                       </div>
                       <div className="space-y-3">
