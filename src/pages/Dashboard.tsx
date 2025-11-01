@@ -18,7 +18,6 @@ import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog"
 import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
 import { Badge } from "@/components/ui/badge";
 import { InvitesList } from "@/components/invites/InvitesList";
-import { InviteNotificationBanner } from "@/components/invites/InviteNotificationBanner";
 import { TeamMembersDisplay } from "@/components/team/TeamMembersDisplay";
 import { TeamInviteManager } from "@/components/invites/TeamInviteManager";
 
@@ -354,9 +353,6 @@ const Dashboard = () => {
           <h1 className="text-2xl sm:text-3xl font-bold">{t('dashboard.title', { defaultValue: 'Личный кабинет' })}</h1>
           <Button variant="outline" size="sm" onClick={signOut}>{t('dashboard.logout', { defaultValue: 'Выйти' })}</Button>
         </header>
-
-        {/* Notification Banner for Pending Invites */}
-        <InviteNotificationBanner />
 
         <section className="grid gap-6">
           <Card>
