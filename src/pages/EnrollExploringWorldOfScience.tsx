@@ -272,148 +272,200 @@ export default function EnrollExploringWorldOfSciencePage() {
             </div>
           </div>
 
-          {/* Captain Success Message */}
-          {existingEnrollment && (
-            <Card className="mb-6 border-2 border-success/30 bg-success/5">
-              <CardContent className="p-6">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-success/20 flex items-center justify-center">
-                    <Users className="w-5 h-5 text-success" />
+          {/* If team exists - show team management view */}
+          {existingEnrollment ? (
+            <div className="space-y-6">
+              {/* Team Info Card */}
+              <Card>
+                <CardContent className="p-6 space-y-4">
+                  <div className="flex items-center justify-between">
+                    <h3 className="text-lg font-semibold">Информация о команде</h3>
+                    <div className="px-3 py-1 rounded-full bg-success/10 text-success text-sm font-medium">
+                      Зарегистрирована
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold">Команда создана!</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Вы можете редактировать информацию или добавить участников
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          )}
 
-          {/* Form */}
-          <form onSubmit={onSubmit} className="space-y-6">
-            <Card>
-              <CardContent className="p-6 space-y-6">
-                {/* Team Name */}
-                <div className="space-y-2">
-                  <Label htmlFor="teamName">Название команды *</Label>
-                  <Input
-                    id="teamName"
-                    value={teamName}
-                    onChange={(e) => setTeamName(e.target.value)}
-                    placeholder="Введите название команды"
-                    required
-                  />
-                </div>
-
-                {/* Track Selection */}
-                <div className="space-y-2">
-                  <Label>Выбор категории *</Label>
-                  <Select value={track} onValueChange={setTrack} required>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Выберите категорию" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="aslc">
-                        <div className="flex items-center gap-2">
-                          🛰️ ASLC - Запуск спутников
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="space_ai">
-                        <div className="flex items-center gap-2">
-                          🤖 Space AI - Космический ИИ
-                        </div>
-                      </SelectItem>
-                      <SelectItem value="rocket_science">
-                        <div className="flex items-center gap-2">
-                          🚀 Rocket Science - Ракетостроение
-                        </div>
-                      </SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <p className="text-xs text-muted-foreground">
-                    {track === "aslc" && "Ровно 4 участника (включая капитана) • 7-11 класс"}
-                    {track === "space_ai" && "До 4 участников (включая капитана) • 7-11 класс"}
-                    {track === "rocket_science" && "До 2 участников (включая капитана) • 7-11 класс"}
-                  </p>
-                </div>
-
-                {/* Rocket Science Subtrack */}
-                {track === "rocket_science" && (
+                  {/* Editable Team Name */}
                   <div className="space-y-2">
-                    <Label>Категория ракет *</Label>
-                    <Select value={subtrack} onValueChange={setSubtrack} required>
+                    <Label htmlFor="teamName">Название команды</Label>
+                    <div className="flex gap-2">
+                      <Input
+                        id="teamName"
+                        value={teamName}
+                        onChange={(e) => setTeamName(e.target.value)}
+                        placeholder="Введите название команды"
+                      />
+                      <Button 
+                        onClick={async () => {
+                          if (!teamName.trim()) {
+                            toast.error("Введите название команды");
+                            return;
+                          }
+                          try {
+                            const { error } = await supabase
+                              .from("enrollments")
+                              .update({ team_name: teamName.trim() })
+                              .eq("id", existingEnrollment.id);
+                            
+                            if (error) throw error;
+                            toast.success("Название обновлено");
+                          } catch (error: any) {
+                            toast.error("Ошибка обновления", { description: error.message });
+                          }
+                        }}
+                        variant="outline"
+                      >
+                        Сохранить
+                      </Button>
+                    </div>
+                  </div>
+
+                  {/* Read-only info */}
+                  <div className="space-y-3 pt-4 border-t">
+                    <div>
+                      <Label className="text-muted-foreground">Категория</Label>
+                      <p className="text-sm font-medium mt-1">
+                        {existingEnrollment.league === "aslc" && "🛰️ ASLC - Запуск спутников"}
+                        {existingEnrollment.league === "space_ai" && "🤖 Space AI - Космический ИИ"}
+                        {existingEnrollment.league === "rocket_science_water" && "🚀 Rocket Science - Водяные ракеты"}
+                        {existingEnrollment.league === "rocket_science_model" && "🚀 Rocket Science - Модельные ракеты"}
+                      </p>
+                    </div>
+
+                    <div>
+                      <Label className="text-muted-foreground">Капитан</Label>
+                      <p className="text-sm font-medium mt-1">{captainFullName}</p>
+                      <p className="text-xs text-muted-foreground">{captainEmail}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          ) : (
+            /* Registration Form - Only for new teams */
+            <form onSubmit={onSubmit} className="space-y-6">
+              <Card>
+                <CardContent className="p-6 space-y-6">
+                  {/* Team Name */}
+                  <div className="space-y-2">
+                    <Label htmlFor="teamName">Название команды *</Label>
+                    <Input
+                      id="teamName"
+                      value={teamName}
+                      onChange={(e) => setTeamName(e.target.value)}
+                      placeholder="Введите название команды"
+                      required
+                    />
+                  </div>
+
+                  {/* Track Selection */}
+                  <div className="space-y-2">
+                    <Label>Выбор категории *</Label>
+                    <Select value={track} onValueChange={setTrack} required>
                       <SelectTrigger>
                         <SelectValue placeholder="Выберите категорию" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="water">💧 Водяные ракеты</SelectItem>
-                        <SelectItem value="model">🎯 Модельные ракеты</SelectItem>
+                        <SelectItem value="aslc">
+                          <div className="flex items-center gap-2">
+                            🛰️ ASLC - Запуск спутников
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="space_ai">
+                          <div className="flex items-center gap-2">
+                            🤖 Space AI - Космический ИИ
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="rocket_science">
+                          <div className="flex items-center gap-2">
+                            🚀 Rocket Science - Ракетостроение
+                          </div>
+                        </SelectItem>
                       </SelectContent>
                     </Select>
+                    <p className="text-xs text-muted-foreground">
+                      {track === "aslc" && "Ровно 4 участника (включая капитана) • 7-11 класс"}
+                      {track === "space_ai" && "До 4 участников (включая капитана) • 7-11 класс"}
+                      {track === "rocket_science" && "До 2 участников (включая капитана) • 7-11 класс"}
+                    </p>
                   </div>
-                )}
 
-                {/* Captain Info */}
-                <div className="bg-muted rounded-lg p-4 space-y-2">
-                  <h3 className="font-semibold flex items-center gap-2">
-                    <Users className="w-4 h-4" />
-                    Капитан команды
-                  </h3>
-                  <p className="text-sm">{captainFullName}</p>
-                  <p className="text-sm text-muted-foreground">{captainEmail}</p>
-                  <Button variant="outline" size="sm" asChild>
-                    <Link to="/dashboard">Редактировать профиль</Link>
+                  {/* Rocket Science Subtrack */}
+                  {track === "rocket_science" && (
+                    <div className="space-y-2">
+                      <Label>Категория ракет *</Label>
+                      <Select value={subtrack} onValueChange={setSubtrack} required>
+                        <SelectTrigger>
+                          <SelectValue placeholder="Выберите категорию" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="water">💧 Водяные ракеты</SelectItem>
+                          <SelectItem value="model">🎯 Модельные ракеты</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                  )}
+
+                  {/* Captain Info */}
+                  <div className="bg-muted rounded-lg p-4 space-y-2">
+                    <h3 className="font-semibold flex items-center gap-2">
+                      <Users className="w-4 h-4" />
+                      Капитан команды
+                    </h3>
+                    <p className="text-sm">{captainFullName}</p>
+                    <p className="text-sm text-muted-foreground">{captainEmail}</p>
+                    <Button variant="outline" size="sm" asChild>
+                      <Link to="/dashboard">Редактировать профиль</Link>
+                    </Button>
+                  </div>
+
+                  {/* Source */}
+                  <div className="space-y-2">
+                    <Label htmlFor="source">Откуда узнали о мероприятии?</Label>
+                    <Input
+                      id="source"
+                      value={source}
+                      onChange={(e) => setSource(e.target.value)}
+                      placeholder="Instagram, школа, друзья..."
+                    />
+                  </div>
+
+                  {/* Questions */}
+                  <div className="space-y-2">
+                    <Label htmlFor="questions">Вопросы или комментарии</Label>
+                    <Textarea
+                      id="questions"
+                      value={questions}
+                      onChange={(e) => setQuestions(e.target.value)}
+                      rows={3}
+                      placeholder="Есть вопросы? Напишите здесь..."
+                    />
+                  </div>
+
+                  {/* Consent */}
+                  <div className="flex items-center space-x-2">
+                    <Checkbox
+                      id="consent"
+                      checked={consent}
+                      onCheckedChange={(checked) => setConsent(checked as boolean)}
+                      required
+                    />
+                    <Label htmlFor="consent" className="text-sm">
+                      Я согласен с{" "}
+                      <Link to="/terms" className="text-primary hover:underline">
+                        условиями участия
+                      </Link>{" "}
+                      и обработкой персональных данных *
+                    </Label>
+                  </div>
+
+                  <Button type="submit" className="w-full" disabled={submitting}>
+                    Создать команду
                   </Button>
-                </div>
-
-                {/* Source */}
-                <div className="space-y-2">
-                  <Label htmlFor="source">Откуда узнали о мероприятии?</Label>
-                  <Input
-                    id="source"
-                    value={source}
-                    onChange={(e) => setSource(e.target.value)}
-                    placeholder="Instagram, школа, друзья..."
-                  />
-                </div>
-
-                {/* Questions */}
-                <div className="space-y-2">
-                  <Label htmlFor="questions">Вопросы или комментарии</Label>
-                  <Textarea
-                    id="questions"
-                    value={questions}
-                    onChange={(e) => setQuestions(e.target.value)}
-                    rows={3}
-                    placeholder="Есть вопросы? Напишите здесь..."
-                  />
-                </div>
-
-                {/* Consent */}
-                <div className="flex items-center space-x-2">
-                  <Checkbox
-                    id="consent"
-                    checked={consent}
-                    onCheckedChange={(checked) => setConsent(checked as boolean)}
-                    required
-                  />
-                  <Label htmlFor="consent" className="text-sm">
-                    Я согласен с{" "}
-                    <Link to="/terms" className="text-primary hover:underline">
-                      условиями участия
-                    </Link>{" "}
-                    и обработкой персональных данных *
-                  </Label>
-                </div>
-
-                <Button type="submit" className="w-full" disabled={submitting}>
-                  {existingEnrollment ? "Обновить заявку" : "Создать команду"}
-                </Button>
-              </CardContent>
-            </Card>
-          </form>
+                </CardContent>
+              </Card>
+            </form>
+          )}
 
           {/* Team Management - Only shown after team is created */}
           {existingEnrollment && (
@@ -427,7 +479,7 @@ export default function EnrollExploringWorldOfSciencePage() {
                     </div>
                     <div>
                       <h3 className="text-lg font-semibold mb-2">
-                        Шаг 2: Добавьте участников команды
+                        Добавление участников команды
                       </h3>
                       <p className="text-sm text-muted-foreground">
                         Отправьте email-приглашения участникам вашей команды. 
@@ -468,19 +520,6 @@ export default function EnrollExploringWorldOfSciencePage() {
                 </CardContent>
               </Card>
             </div>
-          )}
-
-          {/* Instructions for users who haven't created team yet */}
-          {!existingEnrollment && (
-            <Card className="mt-6 border-2 border-dashed border-muted-foreground/30">
-              <CardContent className="p-6 text-center">
-                <Users className="w-12 h-12 mx-auto mb-3 text-muted-foreground" />
-                <h3 className="font-semibold mb-2">Сначала создайте команду</h3>
-                <p className="text-sm text-muted-foreground">
-                  После создания команды здесь появится форма для приглашения участников по email
-                </p>
-              </CardContent>
-            </Card>
           )}
         </div>
       </main>
