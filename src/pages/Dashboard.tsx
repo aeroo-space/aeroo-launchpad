@@ -688,6 +688,9 @@ const Dashboard = () => {
                               {comp ? t(comp.title) : e.competition_id}
                             </div>
                             <div className="text-sm text-muted-foreground">{t('dashboardExtra.labels.team', { defaultValue: 'Команда' })}: {e.team_name || "—"}</div>
+                            {e.league && (
+                              <div className="text-sm text-muted-foreground">{t('dashboardExtra.labels.category', { defaultValue: 'Категория' })}: {e.league}</div>
+                            )}
                             <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
                               <div>{t('dashboardExtra.labels.email', { defaultValue: 'Email' })}: {e.email || "—"}</div>
                               <div>{t('dashboardExtra.labels.telegram', { defaultValue: 'Telegram' })}: {e.telegram || "—"}</div>
