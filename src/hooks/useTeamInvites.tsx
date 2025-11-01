@@ -156,7 +156,30 @@ export function useTeamInvites(teamId?: string) {
     if (!user) return { error: "Not authenticated" };
 
     try {
-      const { error } = await supabase
+      const invite = invites.find(i => i.id === inviteId);
+      if (!invite) return { error: "Invite not found" };
+
+      // Check if user is already in another team for this competition
+      if (accept) {
+        const { data: existingTeam } = await supabase
+          .from("team_members")
+          .select(`
+            id,
+            team:enrollments!inner(competition_id)
+          `)
+          .eq("user_id", user.id)
+          .eq("status", "active")
+          .eq("enrollments.competition_id", invite.competition_id)
+          .maybeSingle();
+
+        if (existingTeam) {
+          toast.error("Вы уже состоите в команде для этого соревнования");
+          return { error: "Already in team" };
+        }
+      }
+
+      // Update invite status
+      const { error: inviteError } = await supabase
         .from("invites")
         .update({
           status: accept ? 'accepted' : 'declined',
@@ -165,9 +188,24 @@ export function useTeamInvites(teamId?: string) {
         })
         .eq("id", inviteId);
 
-      if (error) throw error;
+      if (inviteError) throw inviteError;
 
-      toast(accept ? "Приглашение принято!" : "Приглашение отклонено");
+      // If accepted, create team_member entry
+      if (accept) {
+        const { error: memberError } = await supabase
+          .from("team_members")
+          .insert({
+            team_id: invite.team_id,
+            user_id: user.id,
+            role: 'member',
+            status: 'active',
+            joined_at: new Date().toISOString()
+          });
+
+        if (memberError) throw memberError;
+      }
+
+      toast(accept ? "Приглашение принято! Вы теперь член команды." : "Приглашение отклонено");
       await fetchInvites();
       return { data: true };
     } catch (error: any) {

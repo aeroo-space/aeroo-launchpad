@@ -18,6 +18,8 @@ import EditEnrollmentDialog from "@/components/enrollments/EditEnrollmentDialog"
 import { FeedbackDialog } from "@/components/feedback/FeedbackDialog";
 import { Badge } from "@/components/ui/badge";
 import { InvitesList } from "@/components/invites/InvitesList";
+import { TeamMembersDisplay } from "@/components/team/TeamMembersDisplay";
+import { TeamInviteManager } from "@/components/invites/TeamInviteManager";
 
 import { Pencil, Download } from "lucide-react";
 import { 
@@ -301,12 +303,6 @@ const Dashboard = () => {
         enrollment.captain_age || 'Не указано',
         `"${enrollment.city || 'Не указано'}"`,
         `"${enrollment.study_place || 'Не указано'}"`,
-        `"${enrollment.participant1_full_name || 'Не указано'}"`,
-        `"${enrollment.participant2_full_name || 'Не указано'}"`,
-        `"${enrollment.participant3_full_name || 'Не указано'}"`,
-        `"${enrollment.participant4_full_name || 'Не указано'}"`,
-        `"${enrollment.mentor_full_name || 'Не указано'}"`,
-        `"${enrollment.mentor_phone || 'Не указано'}"`,
         `"${enrollment.source || 'Не указано'}"`,
         `"${enrollment.status === 'active' ? 'Активный' : enrollment.status}"`
       ].join(','))
@@ -620,12 +616,18 @@ const Dashboard = () => {
                           </div>
                           <div className="mt-2 text-sm">
                             <div>{t('dashboardExtra.labels.captain', { defaultValue: 'Капитан' })}: {e.captain_full_name || "—"}</div>
-                            <div>{t('dashboardExtra.labels.participant2', { defaultValue: 'Участник 2' })}: {e.participant1_full_name || "—"}</div>
-                            <div>{t('dashboardExtra.labels.participant3', { defaultValue: 'Участник 3' })}: {e.participant2_full_name || "—"}</div>
-                            <div>{t('dashboardExtra.labels.participant4', { defaultValue: 'Участник 4' })}: {e.participant3_full_name || "—"}</div>
-                            <div>{t('dashboardExtra.labels.participant5', { defaultValue: 'Участник 5' })}: {e.participant4_full_name || "—"}</div>
-                            {(e as any).participant5_full_name && <div>{t('dashboardExtra.labels.participant6', { defaultValue: 'Участник 6' })}: {(e as any).participant5_full_name}</div>}
-                            {e.mentor_full_name && <div className="mt-1 pt-1 border-t">{t('dashboardExtra.labels.mentor', { defaultValue: 'Ментор' })}: {e.mentor_full_name}</div>}
+                          </div>
+                          <div className="mt-4">
+                            <TeamMembersDisplay teamId={e.id} canManage={false} />
+                          </div>
+                          <div className="mt-4">
+                            <TeamInviteManager
+                              teamId={e.id}
+                              competitionId={e.competition_id}
+                              teamName={e.team_name || ""}
+                              maxTeamSize={6}
+                              currentTeamSize={1}
+                            />
                           </div>
                         </div>
                         <div className="flex items-center gap-2">
@@ -784,34 +786,7 @@ const Dashboard = () => {
                           {/* Team Members */}
                           <div className="space-y-3">
                             <h5 className="font-medium text-sm text-muted-foreground uppercase tracking-wide">{t('dashboardExtra.admin.teamMembers', { defaultValue: 'Состав команды' })}</h5>
-                            <div className="space-y-2 text-sm">
-                              <div className="flex items-start gap-2">
-                                <span className="text-blue-500 font-bold text-xs mt-0.5">1</span>
-                                <div>
-                                  <div className="font-medium">{enrollment.captain_full_name}</div>
-                                  <div className="text-xs text-muted-foreground">{t('dashboardExtra.admin.captain', { defaultValue: 'Капитан' })} • {t('dashboardExtra.admin.age', { defaultValue: 'Возраст' })}: {enrollment.captain_age || 'N/A'}</div>
-                                </div>
-                              </div>
-                              {[
-                                enrollment.participant1_full_name,
-                                enrollment.participant2_full_name,
-                                enrollment.participant3_full_name,
-                                enrollment.participant4_full_name,
-                                (enrollment as any).participant5_full_name
-                              ].map((name, idx) => name && (
-                                <div key={idx} className="flex items-start gap-2">
-                                  <span className="text-green-500 font-bold text-xs mt-0.5">{idx + 2}</span>
-                                  <div className="font-medium">{name}</div>
-                                </div>
-                              ))}
-                              {enrollment.mentor_full_name && (
-                                <div className="pt-2 mt-2 border-t">
-                                  <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">{t('dashboardExtra.admin.mentor', { defaultValue: 'Ментор' })}</div>
-                                  <div className="font-medium">{enrollment.mentor_full_name}</div>
-                                  <div className="text-xs text-muted-foreground">{enrollment.mentor_phone}</div>
-                                </div>
-                              )}
-                            </div>
+                            <TeamMembersDisplay teamId={enrollment.id} canManage={false} />
                           </div>
 
                           {/* Additional Info */}
