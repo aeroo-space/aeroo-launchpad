@@ -189,10 +189,10 @@ export default function EnrollExploringWorldOfSciencePage() {
 
   // Team size limits by track
   const getMaxTeamSize = () => {
-    if (track === "aslc") return 6;
-    if (track === "space_ai") return 3;
-    if (track === "rocket_science") return 4;
-    return 6;
+    if (track === "aslc") return 4;
+    if (track === "space_ai") return 4;
+    if (track === "rocket_science") return 2;
+    return 4;
   };
 
   return (
@@ -229,10 +229,10 @@ export default function EnrollExploringWorldOfSciencePage() {
 
                 {/* Track Selection */}
                 <div className="space-y-2">
-                  <Label>Трек соревнования *</Label>
+                  <Label>Выбор категории *</Label>
                   <Select value={track} onValueChange={setTrack} required>
                     <SelectTrigger>
-                      <SelectValue placeholder="Выберите трек" />
+                      <SelectValue placeholder="Выберите категорию" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="aslc">
@@ -253,9 +253,9 @@ export default function EnrollExploringWorldOfSciencePage() {
                     </SelectContent>
                   </Select>
                   <p className="text-xs text-muted-foreground">
-                    {track === "aslc" && "Команда до 6 человек • 7-11 класс"}
-                    {track === "space_ai" && "Команда до 3 человек • 7-11 класс"}
-                    {track === "rocket_science" && "Команда до 4 человек • 7-11 класс"}
+                    {track === "aslc" && "Ровно 4 участника (включая капитана) • 7-11 класс"}
+                    {track === "space_ai" && "До 4 участников (включая капитана) • 7-11 класс"}
+                    {track === "rocket_science" && "До 2 участников (включая капитана) • 7-11 класс"}
                   </p>
                 </div>
 
