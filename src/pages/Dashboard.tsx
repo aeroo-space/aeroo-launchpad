@@ -623,123 +623,140 @@ const Dashboard = () => {
                 <p className="text-muted-foreground">{t('dashboard.noEnrollments', { defaultValue: 'Пока нет записей. Перейдите на страницу «Соревнования», чтобы записаться.' })}</p>
               ) : (
                 <ul className="divide-y divide-border">
-                  {enrollments.map((e) => (
-                    <li key={e.id} className="py-4 flex flex-col gap-3">
-                      <div className="flex items-start justify-between">
-                        <div>
-                          <div className="font-medium">
-                            {competitions.find(c => c.id === e.competition_id) 
-                              ? t(competitions.find(c => c.id === e.competition_id)!.title)
-                              : e.competition_id}
+                  {enrollments.map((e) => {
+                    const isSpaceSettlement = e.competition_id === "space-settlement";
+                    const comp = competitions.find(c => c.id === e.competition_id);
+                    const compStatus = comp ? t(comp.status) : '';
+                    const isCompleted = compStatus.includes('Завершено') || 
+                                       compStatus.includes('Completed') || 
+                                       compStatus.includes('Аяқталды');
+                    
+                    // Simplified view for completed Space Settlement Competition
+                    if (isSpaceSettlement && isCompleted) {
+                      return (
+                        <li key={e.id} className="py-4 flex flex-col gap-3">
+                          <div className="flex items-start justify-between">
+                            <div>
+                              <div className="font-medium">
+                                {comp ? t(comp.title) : e.competition_id}
+                              </div>
+                              <div className="text-sm text-muted-foreground">
+                                {t('dashboardExtra.labels.team', { defaultValue: 'Команда' })}: {e.team_name || "—"}
+                              </div>
+                            </div>
+                            <span className="text-xs px-2 py-1 rounded uppercase tracking-wide bg-red-500/20 text-red-400 border border-red-500/30">
+                              {compStatus}
+                            </span>
                           </div>
-                          <div className="text-sm text-muted-foreground">{t('dashboardExtra.labels.team', { defaultValue: 'Команда' })}: {e.team_name || "—"}</div>
-                          <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
-                            <div>{t('dashboardExtra.labels.email', { defaultValue: 'Email' })}: {e.email || "—"}</div>
-                            <div>{t('dashboardExtra.labels.telegram', { defaultValue: 'Telegram' })}: {e.telegram || "—"}</div>
+                          <div className="space-y-3">
+                            {e.submission_link && (
+                              <div className="flex items-center gap-2 p-3 bg-primary/10 border border-primary/20 rounded-lg">
+                                <Badge variant="default" className="text-sm">
+                                  {t('feedback.participantBadge', { defaultValue: '🏆 Участник AEROO Space Settlement Competition 2025' })}
+                                </Badge>
+                              </div>
+                            )}
+                            {e.submission_link && !feedbackStatus[e.id] && (
+                              <Button 
+                                variant="outline" 
+                                size="lg" 
+                                onClick={() => {
+                                  setSelectedEnrollmentForFeedback({ id: e.id, userId: e.user_id });
+                                  setFeedbackDialogOpen(true);
+                                }}
+                                className="w-full text-base font-semibold"
+                              >
+                                {t('feedback.giveFeedback', { defaultValue: '💬 Оставить обратную связь' })}
+                              </Button>
+                            )}
+                            {e.submission_link && feedbackStatus[e.id] && (
+                              <div className="text-center text-sm text-muted-foreground p-3 bg-muted/50 rounded-lg">
+                                {t('feedback.alreadySubmitted', { defaultValue: '✅ Спасибо! Ваш отзыв уже получен' })}
+                              </div>
+                            )}
                           </div>
-                          <div className="mt-2 text-sm">
-                            <div>{t('dashboardExtra.labels.captain', { defaultValue: 'Капитан' })}: {e.captain_full_name || "—"}</div>
+                        </li>
+                      );
+                    }
+                    
+                    // Full view for other competitions or active competitions
+                    return (
+                      <li key={e.id} className="py-4 flex flex-col gap-3">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <div className="font-medium">
+                              {comp ? t(comp.title) : e.competition_id}
+                            </div>
+                            <div className="text-sm text-muted-foreground">{t('dashboardExtra.labels.team', { defaultValue: 'Команда' })}: {e.team_name || "—"}</div>
+                            <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">
+                              <div>{t('dashboardExtra.labels.email', { defaultValue: 'Email' })}: {e.email || "—"}</div>
+                              <div>{t('dashboardExtra.labels.telegram', { defaultValue: 'Telegram' })}: {e.telegram || "—"}</div>
+                            </div>
+                            <div className="mt-2 text-sm">
+                              <div>{t('dashboardExtra.labels.captain', { defaultValue: 'Капитан' })}: {e.captain_full_name || "—"}</div>
+                            </div>
+                            <div className="mt-4">
+                              <TeamMembersDisplay teamId={e.id} canManage={false} />
+                            </div>
+                            <div className="mt-4">
+                              <TeamInviteManager
+                                teamId={e.id}
+                                competitionId={e.competition_id}
+                                teamName={e.team_name || ""}
+                                maxTeamSize={6}
+                                currentTeamSize={1}
+                              />
+                            </div>
                           </div>
-                          <div className="mt-4">
-                            <TeamMembersDisplay teamId={e.id} canManage={false} />
-                          </div>
-                          <div className="mt-4">
-                            <TeamInviteManager
-                              teamId={e.id}
-                              competitionId={e.competition_id}
-                              teamName={e.team_name || ""}
-                              maxTeamSize={6}
-                              currentTeamSize={1}
-                            />
+                          <div className="flex items-center gap-2">
+                            <span className={`text-xs px-2 py-1 rounded uppercase tracking-wide ${
+                              isCompleted 
+                                ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
+                                : 'bg-muted text-muted-foreground'
+                            }`}>
+                              {isCompleted ? compStatus : (e.status || "active")}
+                            </span>
+                            {!isCompleted && (
+                              <AlertDialog>
+                                <AlertDialogTrigger asChild>
+                                  <Button 
+                                    variant="ghost" 
+                                    size="sm" 
+                                    className="text-red-500 hover:text-red-600 hover:bg-red-500/10"
+                                  >
+                                    {t('dashboard.deleteEnrollment', { defaultValue: 'Удалить' })}
+                                  </Button>
+                                </AlertDialogTrigger>
+                                <AlertDialogContent>
+                                  <AlertDialogHeader>
+                                    <AlertDialogTitle>
+                                      {t('dashboard.deleteEnrollmentTitle', { defaultValue: 'Удалить регистрацию?' })}
+                                    </AlertDialogTitle>
+                                    <AlertDialogDescription>
+                                      {t('dashboard.deleteEnrollmentDesc', { 
+                                        defaultValue: 'Вы уверены, что хотите удалить свою регистрацию на это соревнование? Это действие нельзя отменить.' 
+                                      })}
+                                    </AlertDialogDescription>
+                                  </AlertDialogHeader>
+                                  <AlertDialogFooter>
+                                    <AlertDialogCancel>
+                                      {t('common.cancel', { defaultValue: 'Отмена' })}
+                                    </AlertDialogCancel>
+                                    <AlertDialogAction
+                                      onClick={() => handleDelete(e.id)}
+                                      className="bg-red-500 hover:bg-red-600"
+                                    >
+                                      {t('common.delete', { defaultValue: 'Удалить' })}
+                                    </AlertDialogAction>
+                                  </AlertDialogFooter>
+                                </AlertDialogContent>
+                              </AlertDialog>
+                            )}
                           </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          {(() => {
-                            const comp = competitions.find(c => c.id === e.competition_id);
-                            const compStatus = comp ? t(comp.status) : '';
-                            const isCompleted = compStatus.includes('Завершено') || 
-                                               compStatus.includes('Completed') || 
-                                               compStatus.includes('Аяқталды');
-                            
-                            return (
-                              <>
-                                <span className={`text-xs px-2 py-1 rounded uppercase tracking-wide ${
-                                  isCompleted 
-                                    ? 'bg-red-500/20 text-red-400 border border-red-500/30' 
-                                    : 'bg-muted text-muted-foreground'
-                                }`}>
-                                  {isCompleted ? compStatus : (e.status || "active")}
-                                </span>
-                                {!isCompleted && (
-                                  <AlertDialog>
-                                    <AlertDialogTrigger asChild>
-                                      <Button 
-                                        variant="ghost" 
-                                        size="sm" 
-                                        className="text-red-500 hover:text-red-600 hover:bg-red-500/10"
-                                      >
-                                        {t('dashboard.deleteEnrollment', { defaultValue: 'Удалить' })}
-                                      </Button>
-                                    </AlertDialogTrigger>
-                                    <AlertDialogContent>
-                                      <AlertDialogHeader>
-                                        <AlertDialogTitle>
-                                          {t('dashboard.deleteEnrollmentTitle', { defaultValue: 'Удалить регистрацию?' })}
-                                        </AlertDialogTitle>
-                                        <AlertDialogDescription>
-                                          {t('dashboard.deleteEnrollmentDesc', { 
-                                            defaultValue: 'Вы уверены, что хотите удалить свою регистрацию на это соревнование? Это действие нельзя отменить.' 
-                                          })}
-                                        </AlertDialogDescription>
-                                      </AlertDialogHeader>
-                                      <AlertDialogFooter>
-                                        <AlertDialogCancel>
-                                          {t('common.cancel', { defaultValue: 'Отмена' })}
-                                        </AlertDialogCancel>
-                                        <AlertDialogAction
-                                          onClick={() => handleDelete(e.id)}
-                                          className="bg-red-500 hover:bg-red-600"
-                                        >
-                                          {t('common.delete', { defaultValue: 'Удалить' })}
-                                        </AlertDialogAction>
-                                      </AlertDialogFooter>
-                                    </AlertDialogContent>
-                                  </AlertDialog>
-                                )}
-                              </>
-                            );
-                          })()}
-                        </div>
-                      </div>
-                      <div className="space-y-3">
-                        {e.competition_id === "space-settlement" && e.submission_link && (
-                          <div className="flex items-center gap-2 p-3 bg-primary/10 border border-primary/20 rounded-lg">
-                            <Badge variant="default" className="text-sm">
-                              {t('feedback.participantBadge', { defaultValue: '🏆 Участник AEROO Space Settlement Competition 2025' })}
-                            </Badge>
-                          </div>
-                        )}
-                        {e.competition_id === "space-settlement" && e.submission_link && !feedbackStatus[e.id] && (
-                          <Button 
-                            variant="outline" 
-                            size="lg" 
-                            onClick={() => {
-                              setSelectedEnrollmentForFeedback({ id: e.id, userId: e.user_id });
-                              setFeedbackDialogOpen(true);
-                            }}
-                            className="w-full text-base font-semibold"
-                          >
-                            {t('feedback.giveFeedback', { defaultValue: '💬 Оставить обратную связь' })}
-                          </Button>
-                        )}
-                        {e.competition_id === "space-settlement" && e.submission_link && feedbackStatus[e.id] && (
-                          <div className="text-center text-sm text-muted-foreground p-3 bg-muted/50 rounded-lg">
-                            {t('feedback.alreadySubmitted', { defaultValue: '✅ Спасибо! Ваш отзыв уже получен' })}
-                          </div>
-                        )}
-                      </div>
-                    </li>
-                  ))}
+                      </li>
+                    );
+                  })}
                 </ul>
               )}
             </CardContent>
