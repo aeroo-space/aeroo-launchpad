@@ -109,20 +109,20 @@ export default function EnrollExploringWorldOfSciencePage() {
     e.preventDefault();
 
     if (!profile?.is_complete) {
-      toast.error("Заполните профиль", {
-        description: "Пожалуйста, заполните свой профиль перед регистрацией"
+      toast.error(t('enrollExploringWorldOfScience.formFillProfile'), {
+        description: t('enrollExploringWorldOfScience.formFillProfileDesc')
       });
       navigate("/dashboard");
       return;
     }
 
     if (!track) {
-      toast.error("Выберите трек соревнования");
+      toast.error(t('enrollExploringWorldOfScience.formSelectTrack'));
       return;
     }
 
     if (track === "rocket_science" && !subtrack) {
-      toast.error("Выберите категорию ракет");
+      toast.error(t('enrollExploringWorldOfScience.formSelectRocketCategory'));
       return;
     }
 
@@ -157,7 +157,7 @@ export default function EnrollExploringWorldOfSciencePage() {
           .eq("id", existingEnrollment.id);
 
         if (error) throw error;
-        toast.success("Заявка обновлена!");
+        toast.success(t('enrollExploringWorldOfScience.formApplicationUpdated'));
       } else {
         // Create new
         const { data, error } = await supabase
@@ -168,7 +168,7 @@ export default function EnrollExploringWorldOfSciencePage() {
 
         if (error) {
           if (error.code === '23505') {
-            toast.error("Вы уже зарегистрированы на это соревнование");
+            toast.error(t('enrollExploringWorldOfScience.formAlreadyRegistered'));
             navigate("/dashboard");
             return;
           }
@@ -188,13 +188,13 @@ export default function EnrollExploringWorldOfSciencePage() {
           });
 
         setExistingEnrollment(data);
-        toast.success("Команда создана!", {
-          description: "Теперь пригласите участников по email"
+        toast.success(t('enrollExploringWorldOfScience.formTeamCreated'), {
+          description: t('enrollExploringWorldOfScience.formNowInvite')
         });
       }
     } catch (error: any) {
       console.error("Submission error:", error);
-      toast.error("Ошибка регистрации", { description: error.message });
+      toast.error(t('enrollExploringWorldOfScience.formRegistrationError'), { description: error.message });
     } finally {
       setSubmitting(false);
     }
@@ -232,9 +232,9 @@ export default function EnrollExploringWorldOfSciencePage() {
   };
 
   const getTeamSizeDescription = () => {
-    if (track === "aslc") return "Ровно 4 участника (включая капитана)";
-    if (track === "space_ai") return "До 4 участников (включая капитана)";
-    if (track === "rocket_science") return "До 2 участников (включая капитана)";
+    if (track === "aslc") return t('enrollExploringWorldOfScience.formAslcDesc');
+    if (track === "space_ai") return t('enrollExploringWorldOfScience.formSpaceAiDesc');
+    if (track === "rocket_science") return t('enrollExploringWorldOfScience.formRocketScienceDesc');
     return "";
   };
 
@@ -250,18 +250,18 @@ export default function EnrollExploringWorldOfSciencePage() {
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-success/20 flex items-center justify-center">
                   <Users className="w-8 h-8 text-success" />
                 </div>
-                <h2 className="text-2xl font-bold mb-3">Вы уже в команде!</h2>
+                <h2 className="text-2xl font-bold mb-3">{t('enrollExploringWorldOfScience.alreadyInTeam')}</h2>
                 <p className="text-muted-foreground mb-2">
-                  Команда: <span className="font-semibold">{teamMembership.enrollments?.team_name}</span>
+                  {t('enrollExploringWorldOfScience.teamLabel')}: <span className="font-semibold">{teamMembership.enrollments?.team_name}</span>
                 </p>
                 <p className="text-muted-foreground mb-6">
-                  Трек: <span className="font-semibold">{teamMembership.enrollments?.league}</span>
+                  {t('enrollExploringWorldOfScience.trackLabel')}: <span className="font-semibold">{teamMembership.enrollments?.league}</span>
                 </p>
                 <p className="text-sm text-muted-foreground mb-6">
-                  Вы являетесь участником команды. Для просмотра информации о команде и составе участников перейдите в личный кабинет.
+                  {t('enrollExploringWorldOfScience.memberInfo')}
                 </p>
                 <Button asChild>
-                  <Link to="/dashboard">Перейти в личный кабинет</Link>
+                  <Link to="/dashboard">{t('enrollExploringWorldOfScience.goToDashboard')}</Link>
                 </Button>
               </CardContent>
             </Card>
@@ -283,9 +283,9 @@ export default function EnrollExploringWorldOfSciencePage() {
               <CalendarDays className="h-8 w-8 text-primary" />
               <div>
                 <h1 className="text-3xl font-bold">
-                  {existingEnrollment ? "Управление командой" : "Создание команды"}
+                  {existingEnrollment ? t('enrollExploringWorldOfScience.teamManagement') : t('enrollExploringWorldOfScience.teamCreation')}
                 </h1>
-                <p className="text-muted-foreground">Открываем Мир Науки 2026</p>
+                <p className="text-muted-foreground">{t('enrollExploringWorldOfScience.title')}</p>
               </div>
             </div>
 
@@ -297,8 +297,8 @@ export default function EnrollExploringWorldOfSciencePage() {
                     1
                   </div>
                   <div>
-                    <p className="font-semibold">Создайте команду</p>
-                    <p className="text-xs text-muted-foreground">Заполните информацию о команде</p>
+                    <p className="font-semibold">{t('enrollExploringWorldOfScience.step1.title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.step1.desc')}</p>
                   </div>
                 </div>
                 <div className="h-px flex-1 bg-border" />
@@ -307,8 +307,8 @@ export default function EnrollExploringWorldOfSciencePage() {
                     2
                   </div>
                   <div>
-                    <p className="font-semibold">Пригласите участников</p>
-                    <p className="text-xs text-muted-foreground">После создания команды</p>
+                    <p className="font-semibold">{t('enrollExploringWorldOfScience.step2.title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.step2.desc')}</p>
                   </div>
                 </div>
               </div>
@@ -319,8 +319,8 @@ export default function EnrollExploringWorldOfSciencePage() {
                     ✓
                   </div>
                   <div>
-                    <p className="font-semibold">Команда создана</p>
-                    <p className="text-xs text-muted-foreground">Информация о команде</p>
+                    <p className="font-semibold">{t('enrollExploringWorldOfScience.stepCompleted')}</p>
+                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.stepCompletedDesc')}</p>
                   </div>
                 </div>
                 <div className="h-px flex-1 bg-border" />
@@ -329,8 +329,8 @@ export default function EnrollExploringWorldOfSciencePage() {
                     2
                   </div>
                   <div>
-                    <p className="font-semibold">Управление участниками</p>
-                    <p className="text-xs text-muted-foreground">Приглашайте участников в команду</p>
+                    <p className="font-semibold">{t('enrollExploringWorldOfScience.stepManageMembers')}</p>
+                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.stepManageMembersDesc')}</p>
                   </div>
                 </div>
               </div>
@@ -348,14 +348,13 @@ export default function EnrollExploringWorldOfSciencePage() {
                       <Users className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-2">Этап 2: Приглашение участников</h3>
+                      <h3 className="font-semibold text-lg mb-2">{t('enrollExploringWorldOfScience.stage2.title')}</h3>
                       <p className="text-sm text-muted-foreground mb-3">
-                        Ваша команда создана! Теперь пригласите участников по email. 
-                        Они получат письмо с приглашением и смогут присоединиться к вашей команде.
+                        {t('enrollExploringWorldOfScience.stage2.description')}
                       </p>
                       <div className="text-sm space-y-1">
-                        <p>📧 Отправьте приглашение по email участникам</p>
-                        <p>✅ Участники должны зарегистрироваться на платформе</p>
+                        <p>{t('enrollExploringWorldOfScience.stage2.point1')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage2.point2')}</p>
                         <p>🎯 {getTeamSizeDescription()}</p>
                       </div>
                     </div>
@@ -367,26 +366,26 @@ export default function EnrollExploringWorldOfSciencePage() {
               <Card>
                 <CardContent className="p-6 space-y-4">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold">Информация о команде</h3>
+                    <h3 className="text-lg font-semibold">{t('enrollExploringWorldOfScience.teamInfo')}</h3>
                     <div className="px-3 py-1 rounded-full bg-success/10 text-success text-sm font-medium">
-                      Зарегистрирована
+                      {t('enrollExploringWorldOfScience.registered')}
                     </div>
                   </div>
 
                   {/* Editable Team Name */}
                   <div className="space-y-2">
-                    <Label htmlFor="teamName">Название команды</Label>
+                    <Label htmlFor="teamName">{t('enrollExploringWorldOfScience.teamName')}</Label>
                     <div className="flex gap-2">
                       <Input
                         id="teamName"
                         value={teamName}
                         onChange={(e) => setTeamName(e.target.value)}
-                        placeholder="Введите название команды"
+                        placeholder={t('enrollExploringWorldOfScience.teamNamePlaceholder')}
                       />
                       <Button 
                         onClick={async () => {
                           if (!teamName.trim()) {
-                            toast.error("Введите название команды");
+                            toast.error(t('enrollExploringWorldOfScience.enterTeamName'));
                             return;
                           }
                           try {
@@ -396,14 +395,14 @@ export default function EnrollExploringWorldOfSciencePage() {
                               .eq("id", existingEnrollment.id);
                             
                             if (error) throw error;
-                            toast.success("Название обновлено");
+                            toast.success(t('enrollExploringWorldOfScience.updateSuccess'));
                           } catch (error: any) {
-                            toast.error("Ошибка обновления", { description: error.message });
+                            toast.error(t('enrollExploringWorldOfScience.updateError'), { description: error.message });
                           }
                         }}
                         variant="outline"
                       >
-                        Сохранить
+                        {t('enrollExploringWorldOfScience.saveButton')}
                       </Button>
                     </div>
                   </div>
@@ -411,12 +410,12 @@ export default function EnrollExploringWorldOfSciencePage() {
                   {/* Read-only info */}
                   <div className="space-y-3 pt-4 border-t">
                     <div>
-                      <Label className="text-muted-foreground">Категория</Label>
+                      <Label className="text-muted-foreground">{t('enrollExploringWorldOfScience.category')}</Label>
                       <p className="text-sm font-medium mt-1">
-                        {existingEnrollment.league === "aslc" && "🛰️ ASLC - Запуск спутников"}
-                        {existingEnrollment.league === "space_ai" && "🤖 Space AI - Космический ИИ"}
-                        {existingEnrollment.league === "rocket_science_water" && "🚀 Rocket Science - Водяные ракеты"}
-                        {existingEnrollment.league === "rocket_science_model" && "🚀 Rocket Science - Модельные ракеты"}
+                        {existingEnrollment.league === "aslc" && t('enrollExploringWorldOfScience.categories.aslc')}
+                        {existingEnrollment.league === "space_ai" && t('enrollExploringWorldOfScience.categories.spaceAi')}
+                        {existingEnrollment.league === "rocket_science_water" && t('enrollExploringWorldOfScience.categories.rocketScienceWater')}
+                        {existingEnrollment.league === "rocket_science_model" && t('enrollExploringWorldOfScience.categories.rocketScienceModel')}
                       </p>
                     </div>
                   </div>
@@ -429,7 +428,7 @@ export default function EnrollExploringWorldOfSciencePage() {
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
                       <Users className="w-5 h-5 text-primary" />
-                      <h3 className="text-lg font-semibold">Состав команды</h3>
+                      <h3 className="text-lg font-semibold">{t('enrollExploringWorldOfScience.teamComposition')}</h3>
                       <span className="text-sm text-muted-foreground">
                         ({members.filter(m => m.status === 'active').length}/{getMaxTeamSize()})
                       </span>
@@ -441,7 +440,7 @@ export default function EnrollExploringWorldOfSciencePage() {
                       disabled={members.filter(m => m.status === 'active').length >= getMaxTeamSize()}
                     >
                       <Mail className="w-4 h-4 mr-2" />
-                      {showInviteForm ? "Скрыть форму приглашений" : "Пригласить по email"}
+                      {showInviteForm ? t('enrollExploringWorldOfScience.hideInviteForm') : t('enrollExploringWorldOfScience.inviteByEmail')}
                     </Button>
                   </div>
                   
@@ -449,8 +448,7 @@ export default function EnrollExploringWorldOfSciencePage() {
                   {track === "aslc" && members.filter(m => m.status === 'active').length !== 4 && (
                     <div className="mb-4 p-3 rounded-lg bg-warning/10 border border-warning/30">
                       <p className="text-sm text-warning-foreground">
-                        ⚠️ Для участия в категории ASLC требуется ровно 4 участника (включая капитана). 
-                        Ваша заявка будет действительной только когда в команде будет 4 участника.
+                        {t('enrollExploringWorldOfScience.aslcWarning')}
                       </p>
                     </div>
                   )}
@@ -459,7 +457,7 @@ export default function EnrollExploringWorldOfSciencePage() {
                   {track === "aslc" && members.filter(m => m.status === 'active').length === 4 && (
                     <div className="mb-4 p-3 rounded-lg bg-success/10 border border-success/30">
                       <p className="text-sm text-success-foreground">
-                        ✅ Состав команды укомплектован! Ваша заявка действительна.
+                        {t('enrollExploringWorldOfScience.aslcSuccess')}
                       </p>
                     </div>
                   )}
@@ -476,16 +474,16 @@ export default function EnrollExploringWorldOfSciencePage() {
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-4">
                       <Mail className="w-5 h-5 text-primary" />
-                      <h3 className="text-lg font-semibold">Отправить приглашения</h3>
+                      <h3 className="text-lg font-semibold">{t('enrollExploringWorldOfScience.sendInvites')}</h3>
                     </div>
                     
                     <div className="mb-4 p-4 rounded-lg bg-muted border">
-                      <p className="text-sm font-medium mb-2">Как это работает:</p>
+                      <p className="text-sm font-medium mb-2">{t('enrollExploringWorldOfScience.howItWorks')}</p>
                       <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
-                        <li>Введите email участника в поле ниже</li>
-                        <li>Участник получит письмо с приглашением</li>
-                        <li>Участник должен зарегистрироваться на платформе (если еще не зарегистрирован)</li>
-                        <li>После регистрации участник автоматически присоединится к команде</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step1')}</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step2')}</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step3')}</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step4')}</li>
                       </ol>
                       <p className="text-sm font-medium mt-3 text-primary">
                         {getTeamSizeDescription()}
@@ -514,15 +512,14 @@ export default function EnrollExploringWorldOfSciencePage() {
                       <CalendarDays className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-2">Этап 1: Создание команды</h3>
+                      <h3 className="font-semibold text-lg mb-2">{t('enrollExploringWorldOfScience.stage1.title')}</h3>
                       <p className="text-sm text-muted-foreground mb-3">
-                        Сначала создайте команду и укажите основную информацию. 
-                        После создания команды вы сможете пригласить участников по email.
+                        {t('enrollExploringWorldOfScience.stage1.description')}
                       </p>
                       <div className="text-sm space-y-1">
-                        <p>👤 Вы автоматически станете капитаном команды</p>
-                        <p>📧 После создания вы сможете отправить приглашения участникам</p>
-                        <p>⚡ Процесс занимает 2 минуты</p>
+                        <p>{t('enrollExploringWorldOfScience.stage1.point1')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage1.point2')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage1.point3')}</p>
                       </div>
                     </div>
                   </div>
@@ -533,59 +530,59 @@ export default function EnrollExploringWorldOfSciencePage() {
                 <CardContent className="p-6 space-y-6">
                   {/* Team Name */}
                   <div className="space-y-2">
-                    <Label htmlFor="teamName">Название команды *</Label>
+                    <Label htmlFor="teamName">{t('enrollExploringWorldOfScience.formTeamNameLabel')}</Label>
                     <Input
                       id="teamName"
                       value={teamName}
                       onChange={(e) => setTeamName(e.target.value)}
-                      placeholder="Введите название команды"
+                      placeholder={t('enrollExploringWorldOfScience.teamNamePlaceholder')}
                       required
                     />
                   </div>
 
                   {/* Track Selection */}
                   <div className="space-y-2">
-                    <Label>Выбор категории *</Label>
+                    <Label>{t('enrollExploringWorldOfScience.formCategoryLabel')}</Label>
                     <Select value={track} onValueChange={setTrack} required>
                       <SelectTrigger>
-                        <SelectValue placeholder="Выберите категорию" />
+                        <SelectValue placeholder={t('enrollExploringWorldOfScience.formCategoryPlaceholder')} />
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="aslc">
                           <div className="flex items-center gap-2">
-                            🛰️ ASLC - Запуск спутников
+                            {t('enrollExploringWorldOfScience.categories.aslc')}
                           </div>
                         </SelectItem>
                         <SelectItem value="space_ai">
                           <div className="flex items-center gap-2">
-                            🤖 Space AI - Космический ИИ
+                            {t('enrollExploringWorldOfScience.categories.spaceAi')}
                           </div>
                         </SelectItem>
                         <SelectItem value="rocket_science">
                           <div className="flex items-center gap-2">
-                            🚀 Rocket Science - Ракетостроение
+                            🚀 Rocket Science
                           </div>
                         </SelectItem>
                       </SelectContent>
                     </Select>
                     <p className="text-xs text-muted-foreground">
-                      {track === "aslc" && "Ровно 4 участника (включая капитана) • 7-11 класс"}
-                      {track === "space_ai" && "До 4 участников (включая капитана) • 7-11 класс"}
-                      {track === "rocket_science" && "До 2 участников (включая капитана) • 7-11 класс"}
+                      {track === "aslc" && t('enrollExploringWorldOfScience.formAslcDesc')}
+                      {track === "space_ai" && t('enrollExploringWorldOfScience.formSpaceAiDesc')}
+                      {track === "rocket_science" && t('enrollExploringWorldOfScience.formRocketScienceDesc')}
                     </p>
                   </div>
 
                   {/* Rocket Science Subtrack */}
                   {track === "rocket_science" && (
                     <div className="space-y-2">
-                      <Label>Категория ракет *</Label>
+                      <Label>{t('enrollExploringWorldOfScience.formRocketCategoryLabel')}</Label>
                       <Select value={subtrack} onValueChange={setSubtrack} required>
                         <SelectTrigger>
-                          <SelectValue placeholder="Выберите категорию" />
+                          <SelectValue placeholder={t('enrollExploringWorldOfScience.formCategoryPlaceholder')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="water">💧 Водяные ракеты</SelectItem>
-                          <SelectItem value="model">🎯 Модельные ракеты</SelectItem>
+                          <SelectItem value="water">{t('enrollExploringWorldOfScience.formWaterRockets')}</SelectItem>
+                          <SelectItem value="model">{t('enrollExploringWorldOfScience.formModelRockets')}</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -595,35 +592,35 @@ export default function EnrollExploringWorldOfSciencePage() {
                   <div className="bg-muted rounded-lg p-4 space-y-2">
                     <h3 className="font-semibold flex items-center gap-2">
                       <Users className="w-4 h-4" />
-                      Капитан команды
+                      {t('enrollExploringWorldOfScience.formCaptainTitle')}
                     </h3>
                     <p className="text-sm">{captainFullName}</p>
                     <p className="text-sm text-muted-foreground">{captainEmail}</p>
                     <Button variant="outline" size="sm" asChild>
-                      <Link to="/dashboard">Редактировать профиль</Link>
+                      <Link to="/dashboard">{t('enrollExploringWorldOfScience.formEditProfile')}</Link>
                     </Button>
                   </div>
 
                   {/* Source */}
                   <div className="space-y-2">
-                    <Label htmlFor="source">Откуда узнали о мероприятии?</Label>
+                    <Label htmlFor="source">{t('enrollExploringWorldOfScience.formSourceLabel')}</Label>
                     <Input
                       id="source"
                       value={source}
                       onChange={(e) => setSource(e.target.value)}
-                      placeholder="Instagram, школа, друзья..."
+                      placeholder={t('enrollExploringWorldOfScience.formSourcePlaceholder')}
                     />
                   </div>
 
                   {/* Questions */}
                   <div className="space-y-2">
-                    <Label htmlFor="questions">Вопросы или комментарии</Label>
+                    <Label htmlFor="questions">{t('enrollExploringWorldOfScience.formQuestionsLabel')}</Label>
                     <Textarea
                       id="questions"
                       value={questions}
                       onChange={(e) => setQuestions(e.target.value)}
                       rows={3}
-                      placeholder="Есть вопросы? Напишите здесь..."
+                      placeholder={t('enrollExploringWorldOfScience.formQuestionsPlaceholder')}
                     />
                   </div>
 
@@ -636,11 +633,11 @@ export default function EnrollExploringWorldOfSciencePage() {
                       required
                     />
                     <Label htmlFor="consent" className="text-sm">
-                      Я согласен с{" "}
+                      {t('enrollExploringWorldOfScience.formConsentLabel').split('*')[0]}{" "}
                       <Link to="/terms" className="text-primary hover:underline">
-                        условиями участия
+                        {t('enrollExploringWorldOfScience.formTermsLink')}
                       </Link>{" "}
-                      и обработкой персональных данных *
+                      *
                     </Label>
                   </div>
 
@@ -651,10 +648,10 @@ export default function EnrollExploringWorldOfSciencePage() {
                       size="lg"
                       disabled={submitting || !consent}
                     >
-                      {submitting ? "Создание команды..." : "Создать команду →"}
+                      {submitting ? t('enrollExploringWorldOfScience.formSubmitting') : t('enrollExploringWorldOfScience.formSubmitButton')}
                     </Button>
                     <p className="text-xs text-center text-muted-foreground mt-2">
-                      После создания команды вы сможете пригласить участников
+                      {t('enrollExploringWorldOfScience.formAfterCreation')}
                     </p>
                   </div>
                 </CardContent>
