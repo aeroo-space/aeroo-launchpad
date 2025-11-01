@@ -26,6 +26,7 @@ import RocketScience2026 from "./pages/RocketScience2026";
 import SpaceAI2026 from "./pages/SpaceAI2026";
 import EnrollPage from "./pages/Enroll";
 import EnrollSpaceSettlement from "./pages/EnrollSpaceSettlement";
+import EnrollExploringWorldOfScience from "./pages/EnrollExploringWorldOfScience";
 import ProductRequestsPage from "./pages/ProductRequests";
 import RocketScienceKit from "./pages/RocketScienceKit";
 import HackathonTask from "./pages/HackathonTask";
@@ -76,6 +77,11 @@ const App = () => (
               <Route path="/enroll/space-settlement" element={
                 <ProtectedRoute>
                   <EnrollSpaceSettlement />
+                </ProtectedRoute>
+              } />
+              <Route path="/enroll/exploring-world-of-science" element={
+                <ProtectedRoute>
+                  <EnrollExploringWorldOfScience />
                 </ProtectedRoute>
               } />
               <Route path="/enroll/:competitionId" element={
