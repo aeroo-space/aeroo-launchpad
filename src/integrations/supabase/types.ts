@@ -474,6 +474,7 @@ export type Database = {
         Args: { _competition_id: string; _user_id: string }
         Returns: string
       }
+      get_current_user_email: { Args: never; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
