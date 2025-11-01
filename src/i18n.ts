@@ -1148,7 +1148,7 @@ const resources = {
           details: "Подробнее",
           stages_title: "Этапы",
           aslc: {
-            name: "AEROO Satellite Launch Competition (ASLC)",
+            name: "AEROO Satellite Launch Competition",
             summary: "Запуск спутников на высоту 20 000 метров",
             age: "14–18",
             team: "4 участника",
@@ -2257,7 +2257,7 @@ const resources = {
           details: "Learn More",
           stages_title: "Stages",
           aslc: {
-            name: "AEROO Satellite Launch Competition (ASLC)",
+            name: "AEROO Satellite Launch Competition",
             summary:
               "Design and build a nanosatellite based on AEROO CubeSat Kit, final launch from stratospheric balloon.",
             age: "14–18",
@@ -4022,7 +4022,7 @@ const resources = {
           details: "Толығырақ",
           stages_title: "Кезеңдер",
           aslc: {
-            name: "AEROO Satellite Launch Competition (ASLC)",
+            name: "AEROO Satellite Launch Competition",
             summary: "AEROO CubeSat Kit негізінде наноспутникті жобалау және жинау, стратостатпен соңғы ұшыру.",
             age: "14-18",
             team: "4 қатысушы",
