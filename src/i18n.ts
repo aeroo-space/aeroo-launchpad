@@ -2544,6 +2544,8 @@ const resources = {
         formAfterCreation: "After creating the team, you can invite participants",
       },
       contacts: {
+        meta: {
+          title: "AEROO — Contacts | Get in touch with us",
           description:
             "AEROO contact information. Phone, Telegram, address in Almaty. We are always ready to answer your questions.",
         },
