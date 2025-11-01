@@ -332,12 +332,6 @@ export default function EnrollExploringWorldOfSciencePage() {
                         {existingEnrollment.league === "rocket_science_model" && "🚀 Rocket Science - Модельные ракеты"}
                       </p>
                     </div>
-
-                    <div>
-                      <Label className="text-muted-foreground">Капитан</Label>
-                      <p className="text-sm font-medium mt-1">{captainFullName}</p>
-                      <p className="text-xs text-muted-foreground">{captainEmail}</p>
-                    </div>
                   </div>
                 </CardContent>
               </Card>
@@ -359,7 +353,9 @@ export default function EnrollExploringWorldOfSciencePage() {
                       {showInviteForm ? "Скрыть форму" : "Добавить участников"}
                     </Button>
                   </div>
-                  <TeamMembersDisplay teamId={existingEnrollment.id} canManage={true} />
+                  <div className="space-y-3">
+                    <TeamMembersDisplay teamId={existingEnrollment.id} canManage={true} />
+                  </div>
                 </CardContent>
               </Card>
 
