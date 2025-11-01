@@ -6,6 +6,7 @@ export interface TeamMember {
   id: string;
   team_id: string;
   user_id: string;
+  competition_id: string;
   role: 'captain' | 'member';
   status: 'pending' | 'active' | 'removed';
   joined_at: string | null;

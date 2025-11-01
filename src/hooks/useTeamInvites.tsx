@@ -200,6 +200,7 @@ export function useTeamInvites(teamId?: string) {
           .insert({
             team_id: invite.team_id,
             user_id: user.id,
+            competition_id: invite.competition_id,
             role: 'member',
             status: 'active',
             joined_at: new Date().toISOString()

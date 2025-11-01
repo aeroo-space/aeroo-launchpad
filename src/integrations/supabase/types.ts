@@ -402,6 +402,7 @@ export type Database = {
       }
       team_members: {
         Row: {
+          competition_id: string | null
           created_at: string
           id: string
           joined_at: string | null
@@ -412,6 +413,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          competition_id?: string | null
           created_at?: string
           id?: string
           joined_at?: string | null
@@ -422,6 +424,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          competition_id?: string | null
           created_at?: string
           id?: string
           joined_at?: string | null

@@ -181,6 +181,7 @@ export default function EnrollExploringWorldOfSciencePage() {
           .insert({
             team_id: data.id,
             user_id: user!.id,
+            competition_id: "exploring-world-of-science",
             role: 'captain',
             status: 'active',
             joined_at: new Date().toISOString()
