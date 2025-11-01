@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthProvider";
 import { useProfile } from "@/hooks/useProfile";
 import { supabase } from "@/integrations/supabase/client";
-import { CalendarDays, Users } from "lucide-react";
+import { CalendarDays, Users, Mail } from "lucide-react";
 import { TeamInviteManager } from "@/components/invites/TeamInviteManager";
 import { TeamMembersDisplay } from "@/components/team/TeamMembersDisplay";
 import { useTranslation } from "react-i18next";
@@ -283,16 +283,86 @@ export default function EnrollExploringWorldOfSciencePage() {
               <CalendarDays className="h-8 w-8 text-primary" />
               <div>
                 <h1 className="text-3xl font-bold">
-                  {existingEnrollment ? "Управление командой" : "Регистрация команды"}
+                  {existingEnrollment ? "Управление командой" : "Создание команды"}
                 </h1>
                 <p className="text-muted-foreground">Открываем Мир Науки 2026</p>
               </div>
             </div>
+
+            {/* Step Indicator */}
+            {!existingEnrollment ? (
+              <div className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 border">
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                    1
+                  </div>
+                  <div>
+                    <p className="font-semibold">Создайте команду</p>
+                    <p className="text-xs text-muted-foreground">Заполните информацию о команде</p>
+                  </div>
+                </div>
+                <div className="h-px flex-1 bg-border" />
+                <div className="flex items-center gap-2 opacity-50">
+                  <div className="w-8 h-8 rounded-full bg-muted border-2 flex items-center justify-center font-bold">
+                    2
+                  </div>
+                  <div>
+                    <p className="font-semibold">Пригласите участников</p>
+                    <p className="text-xs text-muted-foreground">После создания команды</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="flex items-center gap-4 p-4 rounded-lg bg-muted/50 border">
+                <div className="flex items-center gap-2 opacity-50">
+                  <div className="w-8 h-8 rounded-full bg-success text-success-foreground flex items-center justify-center font-bold">
+                    ✓
+                  </div>
+                  <div>
+                    <p className="font-semibold">Команда создана</p>
+                    <p className="text-xs text-muted-foreground">Информация о команде</p>
+                  </div>
+                </div>
+                <div className="h-px flex-1 bg-border" />
+                <div className="flex items-center gap-2">
+                  <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                    2
+                  </div>
+                  <div>
+                    <p className="font-semibold">Управление участниками</p>
+                    <p className="text-xs text-muted-foreground">Приглашайте участников в команду</p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* If team exists - show team management view */}
           {existingEnrollment ? (
             <div className="space-y-6">
+              {/* Instructions Card */}
+              <Card className="border-primary/20 bg-primary/5">
+                <CardContent className="p-6">
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <Users className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg mb-2">Этап 2: Приглашение участников</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Ваша команда создана! Теперь пригласите участников по email. 
+                        Они получат письмо с приглашением и смогут присоединиться к вашей команде.
+                      </p>
+                      <div className="text-sm space-y-1">
+                        <p>📧 Отправьте приглашение по email участникам</p>
+                        <p>✅ Участники должны зарегистрироваться на платформе</p>
+                        <p>🎯 {getTeamSizeDescription()}</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Team Info Card */}
               <Card>
                 <CardContent className="p-6 space-y-4">
@@ -358,7 +428,7 @@ export default function EnrollExploringWorldOfSciencePage() {
                 <CardContent className="p-6">
                   <div className="flex items-center justify-between mb-4">
                     <div className="flex items-center gap-2">
-                      <Users className="w-5 h-5 text-success" />
+                      <Users className="w-5 h-5 text-primary" />
                       <h3 className="text-lg font-semibold">Состав команды</h3>
                       <span className="text-sm text-muted-foreground">
                         ({members.filter(m => m.status === 'active').length}/{getMaxTeamSize()})
@@ -370,8 +440,8 @@ export default function EnrollExploringWorldOfSciencePage() {
                       onClick={() => setShowInviteForm(!showInviteForm)}
                       disabled={members.filter(m => m.status === 'active').length >= getMaxTeamSize()}
                     >
-                      <Users className="w-4 h-4 mr-2" />
-                      {showInviteForm ? "Скрыть форму" : "Добавить участников"}
+                      <Mail className="w-4 h-4 mr-2" />
+                      {showInviteForm ? "Скрыть форму приглашений" : "Пригласить по email"}
                     </Button>
                   </div>
                   
@@ -402,14 +472,26 @@ export default function EnrollExploringWorldOfSciencePage() {
 
               {/* Invite Form - shown on button click */}
               {showInviteForm && (
-                <Card>
+                <Card className="border-primary/30">
                   <CardContent className="p-6">
-                    <h3 className="text-lg font-semibold mb-4">Приглашение участников</h3>
-                    <div className="mb-4 p-3 rounded-lg bg-muted">
-                      <p className="text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2 mb-4">
+                      <Mail className="w-5 h-5 text-primary" />
+                      <h3 className="text-lg font-semibold">Отправить приглашения</h3>
+                    </div>
+                    
+                    <div className="mb-4 p-4 rounded-lg bg-muted border">
+                      <p className="text-sm font-medium mb-2">Как это работает:</p>
+                      <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
+                        <li>Введите email участника в поле ниже</li>
+                        <li>Участник получит письмо с приглашением</li>
+                        <li>Участник должен зарегистрироваться на платформе (если еще не зарегистрирован)</li>
+                        <li>После регистрации участник автоматически присоединится к команде</li>
+                      </ol>
+                      <p className="text-sm font-medium mt-3 text-primary">
                         {getTeamSizeDescription()}
                       </p>
                     </div>
+                    
                     <TeamInviteManager
                       teamId={existingEnrollment.id}
                       competitionId="exploring-world-of-science"
@@ -424,6 +506,29 @@ export default function EnrollExploringWorldOfSciencePage() {
           ) : (
             /* Registration Form - Only for new teams */
             <form onSubmit={onSubmit} className="space-y-6">
+              {/* Instructions */}
+              <Card className="border-primary/20 bg-primary/5">
+                <CardContent className="p-6">
+                  <div className="flex gap-4">
+                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      <CalendarDays className="w-6 h-6 text-primary" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-lg mb-2">Этап 1: Создание команды</h3>
+                      <p className="text-sm text-muted-foreground mb-3">
+                        Сначала создайте команду и укажите основную информацию. 
+                        После создания команды вы сможете пригласить участников по email.
+                      </p>
+                      <div className="text-sm space-y-1">
+                        <p>👤 Вы автоматически станете капитаном команды</p>
+                        <p>📧 После создания вы сможете отправить приглашения участникам</p>
+                        <p>⚡ Процесс занимает 2 минуты</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
               <Card>
                 <CardContent className="p-6 space-y-6">
                   {/* Team Name */}
@@ -539,9 +644,19 @@ export default function EnrollExploringWorldOfSciencePage() {
                     </Label>
                   </div>
 
-                  <Button type="submit" className="w-full" disabled={submitting}>
-                    Создать команду
-                  </Button>
+                  <div className="pt-4">
+                    <Button 
+                      type="submit" 
+                      className="w-full" 
+                      size="lg"
+                      disabled={submitting || !consent}
+                    >
+                      {submitting ? "Создание команды..." : "Создать команду →"}
+                    </Button>
+                    <p className="text-xs text-center text-muted-foreground mt-2">
+                      После создания команды вы сможете пригласить участников
+                    </p>
+                  </div>
                 </CardContent>
               </Card>
             </form>
