@@ -118,7 +118,9 @@ export const EnrollmentItem: React.FC<EnrollmentItemProps> = ({
           </div>
           {enrollment.league && (
             <div className="text-sm text-muted-foreground">
-              {t('dashboardExtra.labels.category', { defaultValue: 'Категория' })}: {enrollment.league}
+              {t('dashboardExtra.labels.category', { defaultValue: 'Категория' })}: {
+                t(`dashboardExtra.categories.${enrollment.league}`, { defaultValue: enrollment.league })
+              }
             </div>
           )}
           <div className="mt-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-1 text-sm">

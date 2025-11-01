@@ -1016,6 +1016,7 @@ const resources = {
       dashboardExtra: {
         labels: {
           team: "Команда",
+          category: "Категория",
           email: "Email",
           telegram: "Telegram",
           captain: "Капитан",
@@ -1024,6 +1025,14 @@ const resources = {
           participant4: "Участник 4",
           participant5: "Участник 5",
           mentor: "Ментор",
+        },
+        categories: {
+          space_ai: "AEROO Space AI",
+          rocket_science: "AEROO Rocket Science",
+          aslc: "AEROO Satellite Launch",
+        },
+        invites: {
+          noInvites: "У вас пока нет приглашений",
         },
         actions: {
           edit: "Редактировать",
@@ -2865,6 +2874,7 @@ const resources = {
       dashboardExtra: {
         labels: {
           team: "Team",
+          category: "Category",
           email: "Email",
           telegram: "Telegram",
           captain: "Captain",
@@ -2873,6 +2883,14 @@ const resources = {
           participant4: "Participant 4",
           participant5: "Participant 5",
           mentor: "Mentor",
+        },
+        categories: {
+          space_ai: "AEROO Space AI",
+          rocket_science: "AEROO Rocket Science",
+          aslc: "AEROO Satellite Launch",
+        },
+        invites: {
+          noInvites: "You have no invitations yet",
         },
         actions: {
           edit: "Edit",
@@ -4113,6 +4131,7 @@ const resources = {
       dashboardExtra: {
         labels: {
           team: "Команда",
+          category: "Санат",
           email: "Email",
           telegram: "Telegram",
           captain: "Капитан",
@@ -4121,6 +4140,14 @@ const resources = {
           participant4: "Қатысушы 4",
           participant5: "Қатысушы 5",
           mentor: "Ментор",
+        },
+        categories: {
+          space_ai: "AEROO Space AI",
+          rocket_science: "AEROO Rocket Science",
+          aslc: "AEROO Satellite Launch",
+        },
+        invites: {
+          noInvites: "Сізде әлі шақырулар жоқ",
         },
         actions: {
           edit: "Өңдеу",

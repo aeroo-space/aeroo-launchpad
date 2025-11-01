@@ -7,10 +7,12 @@ import { Badge } from "@/components/ui/badge";
 import { CheckCircle, XCircle, Clock } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 import { ru } from "date-fns/locale";
+import { useTranslation } from "react-i18next";
 
 export function InvitesList() {
   const { invites, loading, respondToInvite } = useTeamInvites();
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   // Filter to show only invites sent TO the user, not created BY the user
   const userInvites = invites.filter(invite => 
@@ -18,11 +20,11 @@ export function InvitesList() {
   );
 
   if (loading) {
-    return <p className="text-sm text-muted-foreground">Загрузка приглашений...</p>;
+    return <p className="text-sm text-muted-foreground">{t('common.loading', { defaultValue: 'Загрузка...' })}</p>;
   }
 
   if (userInvites.length === 0) {
-    return <p className="text-sm text-muted-foreground">У вас пока нет приглашений</p>;
+    return <p className="text-sm text-muted-foreground">{t('dashboardExtra.invites.noInvites', { defaultValue: 'У вас пока нет приглашений' })}</p>;
   }
 
   const getStatusBadge = (status: string) => {
