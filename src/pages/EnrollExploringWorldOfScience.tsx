@@ -33,6 +33,7 @@ export default function EnrollExploringWorldOfSciencePage() {
   const [consent, setConsent] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [existingEnrollment, setExistingEnrollment] = useState<any>(null);
+  const [teamMembership, setTeamMembership] = useState<any>(null);
 
   // Captain info from profile
   const captainFullName = profile?.full_name || "";
@@ -49,12 +50,13 @@ export default function EnrollExploringWorldOfSciencePage() {
     metaDesc.content = "Регистрация на международный конкурс Открываем Мир Науки 2026";
   }, [t]);
 
-  // Check for existing enrollment
+  // Check for existing enrollment and team membership
   useEffect(() => {
     const checkExisting = async () => {
       if (!user) return;
 
-      const { data } = await supabase
+      // Check if user is a captain (has enrollment)
+      const { data: enrollmentData } = await supabase
         .from("enrollments")
         .select("*")
         .eq("user_id", user.id)
@@ -62,13 +64,36 @@ export default function EnrollExploringWorldOfSciencePage() {
         .eq("status", "active")
         .maybeSingle();
 
-      if (data) {
-        setExistingEnrollment(data);
-        setTeamName(data.team_name || "");
-        setTrack(data.league || "");
-        setSource(data.source || "");
-        setQuestions(data.questions || "");
-        setConsent(data.consent || false);
+      if (enrollmentData) {
+        setExistingEnrollment(enrollmentData);
+        setTeamName(enrollmentData.team_name || "");
+        setTrack(enrollmentData.league || "");
+        setSource(enrollmentData.source || "");
+        setQuestions(enrollmentData.questions || "");
+        setConsent(enrollmentData.consent || false);
+        return;
+      }
+
+      // Check if user is a team member (invited participant)
+      const { data: memberData } = await supabase
+        .from("team_members")
+        .select(`
+          *,
+          enrollments!inner (
+            id,
+            team_name,
+            competition_id,
+            league
+          )
+        `)
+        .eq("user_id", user.id)
+        .eq("status", "active")
+        .eq("enrollments.competition_id", "exploring-world-of-science")
+        .eq("enrollments.status", "active")
+        .maybeSingle();
+
+      if (memberData) {
+        setTeamMembership(memberData);
       }
     };
 
@@ -195,6 +220,40 @@ export default function EnrollExploringWorldOfSciencePage() {
     return 4;
   };
 
+  // If user is already a team member (not captain), show message
+  if (teamMembership && !existingEnrollment) {
+    return (
+      <div className="min-h-screen bg-background">
+        <Navigation />
+        <main className="container mx-auto px-4 py-8">
+          <div className="max-w-3xl mx-auto">
+            <Card className="border-2 border-success/30 bg-success/5">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-success/20 flex items-center justify-center">
+                  <Users className="w-8 h-8 text-success" />
+                </div>
+                <h2 className="text-2xl font-bold mb-3">Вы уже в команде!</h2>
+                <p className="text-muted-foreground mb-2">
+                  Команда: <span className="font-semibold">{teamMembership.enrollments?.team_name}</span>
+                </p>
+                <p className="text-muted-foreground mb-6">
+                  Трек: <span className="font-semibold">{teamMembership.enrollments?.league}</span>
+                </p>
+                <p className="text-sm text-muted-foreground mb-6">
+                  Вы являетесь участником команды. Для просмотра информации о команде и составе участников перейдите в личный кабинет.
+                </p>
+                <Button asChild>
+                  <Link to="/dashboard">Перейти в личный кабинет</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -205,11 +264,32 @@ export default function EnrollExploringWorldOfSciencePage() {
             <div className="flex items-center gap-3 mb-4">
               <CalendarDays className="h-8 w-8 text-primary" />
               <div>
-                <h1 className="text-3xl font-bold">Регистрация команды</h1>
+                <h1 className="text-3xl font-bold">
+                  {existingEnrollment ? "Управление командой" : "Регистрация команды"}
+                </h1>
                 <p className="text-muted-foreground">Открываем Мир Науки 2026</p>
               </div>
             </div>
           </div>
+
+          {/* Captain Success Message */}
+          {existingEnrollment && (
+            <Card className="mb-6 border-2 border-success/30 bg-success/5">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-success/20 flex items-center justify-center">
+                    <Users className="w-5 h-5 text-success" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold">Команда создана!</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Вы можете редактировать информацию или добавить участников
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
 
           {/* Form */}
           <form onSubmit={onSubmit} className="space-y-6">
