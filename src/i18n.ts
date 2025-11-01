@@ -1149,7 +1149,7 @@ const resources = {
           stages_title: "Этапы",
           aslc: {
             name: "AEROO Satellite Launch Competition (ASLC)",
-            summary: "Запуск спутников на 20 000 метров",
+            summary: "Запуск спутников на высоту 20 000 метров",
             age: "14–18",
             team: "4 участника",
             stages: ["Онлайн: концепт миссии", "Онлайн: инженерный проект", "Очный финал: сборка и запуск"],
@@ -1163,7 +1163,7 @@ const resources = {
           },
           rocket_science: {
             name: "AEROO Rocket Science Competition",
-            summary: "Водяные ракеты и модельные ракеты",
+            summary: "Проектирование и запуск модельных и водяных ракет",
             age: "14–18",
             team: "до 2 участников",
             stages: ["Онлайн этап", "Очный финал"],
