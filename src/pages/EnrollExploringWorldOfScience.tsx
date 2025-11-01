@@ -297,8 +297,8 @@ export default function EnrollExploringWorldOfSciencePage() {
                     1
                   </div>
                   <div>
-                    <p className="font-semibold">{t('enrollExploringWorldOfScience.step1.title')}</p>
-                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.step1.desc')}</p>
+                    <p className="font-semibold">{t('enrollExploringWorldOfScience.step1Title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.step1Desc')}</p>
                   </div>
                 </div>
                 <div className="h-px flex-1 bg-border" />
@@ -307,8 +307,8 @@ export default function EnrollExploringWorldOfSciencePage() {
                     2
                   </div>
                   <div>
-                    <p className="font-semibold">{t('enrollExploringWorldOfScience.step2.title')}</p>
-                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.step2.desc')}</p>
+                    <p className="font-semibold">{t('enrollExploringWorldOfScience.step2Title')}</p>
+                    <p className="text-xs text-muted-foreground">{t('enrollExploringWorldOfScience.step2Desc')}</p>
                   </div>
                 </div>
               </div>
@@ -348,13 +348,13 @@ export default function EnrollExploringWorldOfSciencePage() {
                       <Users className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-2">{t('enrollExploringWorldOfScience.stage2.title')}</h3>
+                      <h3 className="font-semibold text-lg mb-2">{t('enrollExploringWorldOfScience.stage2Title')}</h3>
                       <p className="text-sm text-muted-foreground mb-3">
-                        {t('enrollExploringWorldOfScience.stage2.description')}
+                        {t('enrollExploringWorldOfScience.stage2Description')}
                       </p>
                       <div className="text-sm space-y-1">
-                        <p>{t('enrollExploringWorldOfScience.stage2.point1')}</p>
-                        <p>{t('enrollExploringWorldOfScience.stage2.point2')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage2Point1')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage2Point2')}</p>
                         <p>🎯 {getTeamSizeDescription()}</p>
                       </div>
                     </div>
@@ -412,10 +412,10 @@ export default function EnrollExploringWorldOfSciencePage() {
                     <div>
                       <Label className="text-muted-foreground">{t('enrollExploringWorldOfScience.category')}</Label>
                       <p className="text-sm font-medium mt-1">
-                        {existingEnrollment.league === "aslc" && t('enrollExploringWorldOfScience.categories.aslc')}
-                        {existingEnrollment.league === "space_ai" && t('enrollExploringWorldOfScience.categories.spaceAi')}
-                        {existingEnrollment.league === "rocket_science_water" && t('enrollExploringWorldOfScience.categories.rocketScienceWater')}
-                        {existingEnrollment.league === "rocket_science_model" && t('enrollExploringWorldOfScience.categories.rocketScienceModel')}
+                        {existingEnrollment.league === "aslc" && t('enrollExploringWorldOfScience.aslcCategory')}
+                        {existingEnrollment.league === "space_ai" && t('enrollExploringWorldOfScience.spaceAiCategory')}
+                        {existingEnrollment.league === "rocket_science_water" && t('enrollExploringWorldOfScience.rocketScienceWaterCategory')}
+                        {existingEnrollment.league === "rocket_science_model" && t('enrollExploringWorldOfScience.rocketScienceModelCategory')}
                       </p>
                     </div>
                   </div>
@@ -480,10 +480,10 @@ export default function EnrollExploringWorldOfSciencePage() {
                     <div className="mb-4 p-4 rounded-lg bg-muted border">
                       <p className="text-sm font-medium mb-2">{t('enrollExploringWorldOfScience.howItWorks')}</p>
                       <ol className="text-sm text-muted-foreground space-y-1 list-decimal list-inside">
-                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step1')}</li>
-                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step2')}</li>
-                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step3')}</li>
-                        <li>{t('enrollExploringWorldOfScience.howItWorksSteps.step4')}</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksStep1')}</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksStep2')}</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksStep3')}</li>
+                        <li>{t('enrollExploringWorldOfScience.howItWorksStep4')}</li>
                       </ol>
                       <p className="text-sm font-medium mt-3 text-primary">
                         {getTeamSizeDescription()}
@@ -512,14 +512,14 @@ export default function EnrollExploringWorldOfSciencePage() {
                       <CalendarDays className="w-6 h-6 text-primary" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-2">{t('enrollExploringWorldOfScience.stage1.title')}</h3>
+                      <h3 className="font-semibold text-lg mb-2">{t('enrollExploringWorldOfScience.stage1Title')}</h3>
                       <p className="text-sm text-muted-foreground mb-3">
-                        {t('enrollExploringWorldOfScience.stage1.description')}
+                        {t('enrollExploringWorldOfScience.stage1Description')}
                       </p>
                       <div className="text-sm space-y-1">
-                        <p>{t('enrollExploringWorldOfScience.stage1.point1')}</p>
-                        <p>{t('enrollExploringWorldOfScience.stage1.point2')}</p>
-                        <p>{t('enrollExploringWorldOfScience.stage1.point3')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage1Point1')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage1Point2')}</p>
+                        <p>{t('enrollExploringWorldOfScience.stage1Point3')}</p>
                       </div>
                     </div>
                   </div>
@@ -550,12 +550,12 @@ export default function EnrollExploringWorldOfSciencePage() {
                       <SelectContent>
                         <SelectItem value="aslc">
                           <div className="flex items-center gap-2">
-                            {t('enrollExploringWorldOfScience.categories.aslc')}
+                            {t('enrollExploringWorldOfScience.aslcCategory')}
                           </div>
                         </SelectItem>
                         <SelectItem value="space_ai">
                           <div className="flex items-center gap-2">
-                            {t('enrollExploringWorldOfScience.categories.spaceAi')}
+                            {t('enrollExploringWorldOfScience.spaceAiCategory')}
                           </div>
                         </SelectItem>
                         <SelectItem value="rocket_science">
