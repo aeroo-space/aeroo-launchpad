@@ -345,7 +345,10 @@ const Competitions = () => {
                             {t('competitions.details')}
                           </Button>
                         )}
-                        {(competition.id === 'space-settlement' || competition.status === 'Регистрация') && (
+                        {!t(competition.status).includes('Завершено') && 
+                         !t(competition.status).includes('Completed') && 
+                         !t(competition.status).includes('Аяқталды') && 
+                         (competition.status === 'Регистрация' || competition.id === 'space-settlement') && (
                           <Button asChild className="w-full btn-cosmic">
                             <Link to={`/enroll/${competition.id}`}>{t('competitions.participate')}</Link>
                           </Button>

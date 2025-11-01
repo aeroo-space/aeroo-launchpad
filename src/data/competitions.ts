@@ -6,7 +6,7 @@ export type Competition = {
   category: string;
   description: string;
   icon: any;
-  status: "Активно" | "Регистрация" | "Скоро" | string;
+  status: "Активно" | "Регистрация" | "Скоро" | "Завершено" | string;
   deadline: string;
   ages: string;
 };
@@ -18,7 +18,7 @@ export const competitions: Competition[] = [
     category: "competitions.spaceSettlement.category",
     description: "competitions.spaceSettlement.description",
     icon: Building,
-    status: "competitions.statusActive", 
+    status: "competitions.statusCompleted", 
     deadline: "competitions.spaceSettlement.deadline",
     ages: "competitions.spaceSettlement.ages",
   },
@@ -103,6 +103,9 @@ export const getStatusColor = (status: string) => {
   }
   if (status.includes("Soon") || status.includes("Скоро") || status.includes("Жақында") || status.includes("Coming Soon")) {
     return "bg-orange-500";
+  }
+  if (status.includes("Completed") || status.includes("Завершено") || status.includes("Аяқталды")) {
+    return "bg-red-500";
   }
   if (status.includes("Development") || status.includes("разработке") || status.includes("Әзірлен") || status.includes("In Development")) {
     return "bg-gray-500";

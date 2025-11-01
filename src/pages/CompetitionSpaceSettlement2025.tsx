@@ -159,14 +159,17 @@ export default function CompetitionSpaceSettlement2025() {
     localStorage.setItem('lng', lng);
   };
 
-  const applyBtn = isEnrolled ? (
-    <Button size="lg" variant="primary" asChild aria-label={t('spaceSettlement2025.hero.hackathonTask', { defaultValue: 'Задача хакатона' })}>
-      <Link to="/hackathon-task">{t('spaceSettlement2025.hero.hackathonTask', { defaultValue: 'Задача хакатона' })}</Link>
-    </Button>
-  ) : (
-    <Button size="lg" variant="primary" asChild aria-label={t('spaceSettlement2025.hero.participate')}>
-      <Link to="/enroll/space-settlement">{t('spaceSettlement2025.hero.participate')}</Link>
-    </Button>
+  const applyBtn = (
+    <div className="flex flex-col gap-3 items-center">
+      <div className="px-6 py-3 rounded-lg bg-red-500/20 border border-red-500/30">
+        <p className="text-lg font-medium text-red-400">
+          {t('spaceSettlement2025.hero.competitionEnded', { defaultValue: 'Соревнование завершено' })}
+        </p>
+      </div>
+      <p className="text-sm text-muted-foreground">
+        {t('spaceSettlement2025.hero.thankYou', { defaultValue: 'Спасибо всем участникам!' })}
+      </p>
+    </div>
   );
 
   return (
