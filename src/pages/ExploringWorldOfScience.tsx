@@ -83,8 +83,8 @@ const ExploringWorldOfScience = () => {
     // Navigate to specific competition pages
     const trackPages: Record<string, string> = {
       'aslc': '/competitions/satellite-launch-2026',
-      'space_ai': '/competitions/exploring-world-of-science', // placeholder
-      'rocket_science': '/competitions/exploring-world-of-science' // placeholder
+      'space_ai': '/competitions/space-ai-2026',
+      'rocket_science': '/competitions/rocket-science-2026'
     };
     
     if (trackPages[trackId]) {
