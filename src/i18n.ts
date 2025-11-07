@@ -134,6 +134,69 @@ const resources = {
           note: "Откроется в новом окне Telegram",
         },
       },
+      careers: {
+        metaTitle: "Карьера в AEROO — Присоединяйтесь к нашей команде",
+        metaDescription: "Ищете работу в инновационной аэрокосмической компании? Присоединяйтесь к команде AEROO. Открытые вакансии для инженеров и менеджеров.",
+        hero: {
+          title: "Карьера в AEROO",
+          subtitle: "Присоединяйтесь к нашей инновационной команде и помогайте формировать будущее аэрокосмического образования",
+        },
+        join: {
+          title: "Хотите работать с нами?",
+          description: "Если вы хотите работать в нашей инновационной компании и развивать аэрокосмические технологии, отправьте свое резюме на нашу электронную почту.",
+          button: "Отправить резюме",
+        },
+        positions: {
+          title: "Открытые позиции",
+          0: {
+            title: "Hardware Engineer",
+            description: "Разработка и тестирование аэрокосмических систем",
+            requirements: {
+              0: "Опыт работы с микроконтроллерами",
+              1: "Знание схемотехники",
+              2: "Опыт проектирования PCB",
+            },
+          },
+          1: {
+            title: "Software Engineer",
+            description: "Разработка программного обеспечения для образовательной платформы",
+            requirements: {
+              0: "React/TypeScript",
+              1: "Python/C++",
+              2: "Опыт работы с API",
+            },
+          },
+          2: {
+            title: "Project Manager",
+            description: "Управление проектами и координация команды",
+            requirements: {
+              0: "Опыт управления проектами",
+              1: "Знание Agile/Scrum",
+              2: "Коммуникативные навыки",
+            },
+          },
+        },
+        requirements: "Требования:",
+        culture: {
+          title: "Почему AEROO?",
+          innovation: {
+            title: "Инновации",
+            text: "Работайте с передовыми технологиями в области аэрокосмоса и образования",
+          },
+          impact: {
+            title: "Влияние",
+            text: "Помогайте формировать будущее поколение инженеров и исследователей",
+          },
+          growth: {
+            title: "Развитие",
+            text: "Непрерывное обучение и профессиональный рост в динамичной среде",
+          },
+          team: {
+            title: "Команда",
+            text: "Работайте с passionate командой профессионалов из разных областей",
+          },
+        },
+      },
       news: {
         title: "СМИ о нас",
         instagramCta: "Для получения последних новостей подписывайтесь на наш Instagram:",
@@ -1716,6 +1779,69 @@ const resources = {
           note: "Opens in Telegram window",
         },
       },
+      careers: {
+        metaTitle: "Careers at AEROO — Join Our Team",
+        metaDescription: "Looking for a job in an innovative aerospace company? Join the AEROO team. Open positions for engineers and managers.",
+        hero: {
+          title: "Careers at AEROO",
+          subtitle: "Join our innovative team and help shape the future of aerospace education",
+        },
+        join: {
+          title: "Want to work with us?",
+          description: "If you want to work in our innovative company and develop aerospace technologies, send your resume to our email.",
+          button: "Send Resume",
+        },
+        positions: {
+          title: "Open Positions",
+          0: {
+            title: "Hardware Engineer",
+            description: "Development and testing of aerospace systems",
+            requirements: {
+              0: "Experience with microcontrollers",
+              1: "Knowledge of circuit design",
+              2: "PCB design experience",
+            },
+          },
+          1: {
+            title: "Software Engineer",
+            description: "Software development for educational platform",
+            requirements: {
+              0: "React/TypeScript",
+              1: "Python/C++",
+              2: "Experience with APIs",
+            },
+          },
+          2: {
+            title: "Project Manager",
+            description: "Project management and team coordination",
+            requirements: {
+              0: "Project management experience",
+              1: "Knowledge of Agile/Scrum",
+              2: "Communication skills",
+            },
+          },
+        },
+        requirements: "Requirements:",
+        culture: {
+          title: "Why AEROO?",
+          innovation: {
+            title: "Innovation",
+            text: "Work with cutting-edge technologies in aerospace and education",
+          },
+          impact: {
+            title: "Impact",
+            text: "Help shape the future generation of engineers and researchers",
+          },
+          growth: {
+            title: "Growth",
+            text: "Continuous learning and professional development in a dynamic environment",
+          },
+          team: {
+            title: "Team",
+            text: "Work with a passionate team of professionals from various fields",
+          },
+        },
+      },
       news: {
         title: "News About Us",
         instagramCta: "For the latest news, follow us on Instagram:",
@@ -3294,6 +3420,69 @@ const resources = {
         cta: {
           button: "Қауымдастыққа кіру",
           note: "Telegram терезесінде ашылады",
+        },
+      },
+      careers: {
+        metaTitle: "AEROO-да мансап — Командамызға қосылыңыз",
+        metaDescription: "Инновациялық аэроғарыштық компанияда жұмыс іздеп жүрсіз бе? AEROO командасына қосылыңыз. Инженерлер мен менеджерлерге арналған ашық вакансиялар.",
+        hero: {
+          title: "AEROO-да мансап",
+          subtitle: "Біздің инновациялық командаға қосылыңыз және аэроғарыштық білім берудің болашағын қалыптастыруға көмектесіңіз",
+        },
+        join: {
+          title: "Бізбен жұмыс істегіңіз келе ме?",
+          description: "Егер сіз біздің инновациялық компанияда жұмыс істегіңіз және аэроғарыштық технологияларды дамытқыңыз келсе, резюмеңізді біздің электрондық поштаға жіберіңіз.",
+          button: "Резюме жіберу",
+        },
+        positions: {
+          title: "Ашық лауазымдар",
+          0: {
+            title: "Hardware Engineer",
+            description: "Аэроғарыштық жүйелерді әзірлеу және тестілеу",
+            requirements: {
+              0: "Микроконтроллерлермен жұмыс тәжірибесі",
+              1: "Схемотехниканы білу",
+              2: "PCB жобалау тәжірибесі",
+            },
+          },
+          1: {
+            title: "Software Engineer",
+            description: "Білім беру платформасына арналған бағдарламалық қамтамасыз етуді әзірлеу",
+            requirements: {
+              0: "React/TypeScript",
+              1: "Python/C++",
+              2: "API-мен жұмыс тәжірибесі",
+            },
+          },
+          2: {
+            title: "Project Manager",
+            description: "Жобаларды басқару және команданы үйлестіру",
+            requirements: {
+              0: "Жобаларды басқару тәжірибесі",
+              1: "Agile/Scrum білімі",
+              2: "Коммуникация дағдылары",
+            },
+          },
+        },
+        requirements: "Талаптар:",
+        culture: {
+          title: "Неліктен AEROO?",
+          innovation: {
+            title: "Инновациялар",
+            text: "Аэроғарыш және білім беру саласындағы озық технологиялармен жұмыс істеңіз",
+          },
+          impact: {
+            title: "Әсер",
+            text: "Инженерлер мен зерттеушілердің болашақ ұрпағын қалыптастыруға көмектесіңіз",
+          },
+          growth: {
+            title: "Даму",
+            text: "Динамикалық ортада үздіксіз оқыту және кәсіби өсу",
+          },
+          team: {
+            title: "Команда",
+            text: "Әртүрлі салалардан келген кәсіпқой профессионалдардың құмарлы командасымен жұмыс істеңіз",
+          },
         },
       },
       news: {
