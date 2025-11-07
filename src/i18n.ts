@@ -686,13 +686,13 @@ const resources = {
         seo: {
           title: "AEROO Space AI Competition 2026 | Космические проекты с ИИ",
           description:
-            "Присоединяйся к соревнованию по разработке AI-проектов для космоса! Для школьников 14-18 лет. Призовой фонд до 1 000 000 тенге.",
+            "Присоединяйся к соревнованию по разработке AI-проектов для космоса! Для школьников 14-18 лет. Призы и гранты на обучение.",
         },
         hero: {
           badge: "AEROO Space AI Competition 2026",
           title: "Создай свой SpaceTech стартап прямо сейчас!",
           subtitle:
-            "Для школьников 14-18 лет. Создай MVP с искусственным интеллектом, представь бизнес-модель и выиграй призы до 1 000 000 тенге!",
+            "Для школьников 14-18 лет. Создай MVP с искусственным интеллектом, представь бизнес-модель и выиграй призы и гранты на обучение!",
           aiSkills: "Развитие навыков ИИ",
           internationalExp: "Международный опыт",
           grants: "Гранты на обучение",
@@ -705,8 +705,8 @@ const resources = {
             "Секция AEROO Space AI Competition — это проектное соревнование, где команды (до 4 человек) создают инновационные космические решения с использованием ИИ (например, анализ спутниковых снимков, автоматизация запусков). Фокус на коммерциализации — представь свой проект как стартап!",
           participants: "Участники",
           participantsInfo: "Школьники 14-18 лет, команды до 4 человек",
-          prizeFund: "Призовой фонд",
-          prizeFundInfo: "До 1 000 000 тенге + гранты",
+          prizeFund: "Награды",
+          prizeFundInfo: "Призы и гранты на обучение",
           goalsTitle: "Цели и задачи",
           goal1: "Вовлечение молодежи в космическую науку через ИИ",
           goal2: "Развитие практических навыков программирования и машинного обучения",
@@ -756,7 +756,7 @@ const resources = {
         prizes: {
           title: "Награды и призы",
           cash: "Денежные призы",
-          cashDesc: "До 1 000 000 тенге для победителей",
+          cashDesc: "Призы для победителей",
           eduGrants: "Образовательные гранты",
           eduGrantsDesc: "Гранты от АУЭС им. Гумарбека Даукеева",
           gadgets: "Гаджеты и техника",
@@ -2161,13 +2161,13 @@ const resources = {
         seo: {
           title: "AEROO Space AI Competition 2026 | Space Projects with AI",
           description:
-            "Join the competition for developing AI projects for space! For students aged 14-18. Prize fund up to 1,000,000 tenge.",
+            "Join the competition for developing AI projects for space! For students aged 14-18. Prizes and educational grants.",
         },
         hero: {
           badge: "AEROO Space AI Competition 2026",
           title: "Create Your SpaceTech Startup Right Now!",
           subtitle:
-            "For students aged 14-18. Create an MVP with artificial intelligence, present a business model, and win prizes up to 1,000,000 tenge!",
+            "For students aged 14-18. Create an MVP with artificial intelligence, present a business model, and win prizes and educational grants!",
           aiSkills: "AI Skills Development",
           internationalExp: "International Experience",
           grants: "Educational Grants",
@@ -2180,8 +2180,8 @@ const resources = {
             "AEROO Space AI Competition is a project-based competition where teams (up to 4 people) create innovative space solutions using AI (e.g., satellite imagery analysis, launch automation). Focus on commercialization — present your project as a startup!",
           participants: "Participants",
           participantsInfo: "Students aged 14-18, teams up to 4 people",
-          prizeFund: "Prize Fund",
-          prizeFundInfo: "Up to 1,000,000 tenge + grants",
+          prizeFund: "Awards",
+          prizeFundInfo: "Prizes and educational grants",
           goalsTitle: "Goals and Objectives",
           goal1: "Engaging youth in space science through AI",
           goal2: "Developing practical programming and machine learning skills",
@@ -2231,7 +2231,7 @@ const resources = {
         prizes: {
           title: "Awards and Prizes",
           cash: "Cash Prizes",
-          cashDesc: "Up to 1,000,000 tenge for winners",
+          cashDesc: "Prizes for winners",
           eduGrants: "Educational Grants",
           eduGrantsDesc: "Grants from AUES named after Gumarbek Daukeev",
           gadgets: "Gadgets and Equipment",
@@ -3856,13 +3856,13 @@ const resources = {
         seo: {
           title: "AEROO Space AI Competition 2026 | AI арқылы ғарыштық жобалар",
           description:
-            "Ғарышқа арналған AI жобаларын әзірлеу бойынша жарысқа қосыл! 14-18 жас аралығындағы оқушыларға. Жүлде қоры 1 000 000 теңгеге дейін.",
+            "Ғарышқа арналған AI жобаларын әзірлеу бойынша жарысқа қосыл! 14-18 жас аралығындағы оқушыларға. Сыйлықтар және оқуға гранттар.",
         },
         hero: {
           badge: "AEROO Space AI Competition 2026",
           title: "Өз SpaceTech стартапыңды дәл қазір жаса!",
           subtitle:
-            "14-18 жас аралығындағы оқушыларға. Жасанды интеллектпен MVP жаса, бизнес-модельді көрсет және 1 000 000 теңгеге дейін жүлдеге ие бол!",
+            "14-18 жас аралығындағы оқушыларға. Жасанды интеллектпен MVP жаса, бизнес-модельді көрсет және сыйлықтар мен оқуға гранттарға ие бол!",
           aiSkills: "AI дағдыларын дамыту",
           internationalExp: "Халықаралық тәжірибе",
           grants: "Оқуға гранттар",
@@ -3875,8 +3875,8 @@ const resources = {
             "AEROO Space AI Competition - бұл командалар (4 адамға дейін) AI қолданып инновациялық ғарыштық шешімдерді жасайтын жобалық жарыс (мысалы, спутниктік суреттерді талдау, ұшыруды автоматтандыру). Коммерцияландыруға назар аудару - жобаңызды стартап ретінде көрсет!",
           participants: "Қатысушылар",
           participantsInfo: "14-18 жас аралығындағы оқушылар, 4 адамға дейін командалар",
-          prizeFund: "Жүлде қоры",
-          prizeFundInfo: "1 000 000 теңгеге дейін + гранттар",
+          prizeFund: "Марапаттар",
+          prizeFundInfo: "Сыйлықтар және оқуға гранттар",
           goalsTitle: "Мақсаттар мен міндеттер",
           goal1: "Жастарды AI арқылы ғарыш ғылымына тарту",
           goal2: "Программалау және машиналық оқытудың практикалық дағдыларын дамыту",
@@ -3926,7 +3926,7 @@ const resources = {
         prizes: {
           title: "Марапаттар мен сыйлықтар",
           cash: "Ақшалай сыйлықтар",
-          cashDesc: "Жеңімпаздарға 1 000 000 теңгеге дейін",
+          cashDesc: "Жеңімпаздарға сыйлықтар",
           eduGrants: "Білім беру гранттары",
           eduGrantsDesc: "Г. Даукеев атындағы АУЭС гранттары",
           gadgets: "Гаджеттер және техника",
