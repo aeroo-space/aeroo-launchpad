@@ -546,24 +546,8 @@ const RocketScience2026 = () => {
 
             <div className="max-w-4xl mx-auto">
               <Card className="p-8 bg-white/5 backdrop-blur-sm border-orange-500/20 text-center">
-                <p className="text-lg mb-6 leading-relaxed text-white/90">
-                  {t('rocketScience2026.prizes.description')}
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="flex flex-col items-center">
-                    <Award className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
-                    <span className="text-white font-semibold">{t('rocketScience2026.prizes.medals')}</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <Sparkles className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
-                    <span className="text-white font-semibold">{t('rocketScience2026.prizes.gadgets')}</span>
-                  </div>
-                  <div className="flex flex-col items-center">
-                    <Trophy className="w-12 h-12 text-orange-500 mb-2 animate-pulse" />
-                    <span className="text-white font-semibold">{t('rocketScience2026.prizes.grants')}</span>
-                  </div>
-                </div>
+                <Trophy className="w-16 h-16 text-orange-500 mx-auto mb-4" />
+                <p className="text-xl font-medium text-white">{t('rocketScience2026.prizes.winnersText')}</p>
               </Card>
             </div>
           </div>

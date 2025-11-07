@@ -1545,6 +1545,7 @@ const resources = {
           medals: "Медали и дипломы",
           gadgets: "Гаджеты и оборудование",
           grants: "Образовательные гранты",
+          winnersText: "Призы победителям",
         },
         registration: {
           title: "Регистрация",
@@ -3099,6 +3100,7 @@ const resources = {
           medals: "Medals and diplomas",
           gadgets: "Gadgets and equipment",
           grants: "Educational grants",
+          winnersText: "Prizes for Winners",
         },
         registration: {
           title: "Registration",
@@ -4654,6 +4656,7 @@ const resources = {
           medals: "Медальдар мен дипломдар",
           gadgets: "Гаджеттер мен жабдық",
           grants: "Білім беру гранттары",
+          winnersText: "Жеңімпаздарға сыйлықтар",
         },
         registration: {
           title: "Тіркелу",
