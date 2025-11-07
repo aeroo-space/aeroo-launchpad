@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       enrollments: {
         Row: {
+          award_place: string | null
           captain_age: number | null
           captain_full_name: string | null
           captain_grade: string | null
@@ -39,6 +40,7 @@ export type Database = {
           user_id: string
         }
         Insert: {
+          award_place?: string | null
           captain_age?: number | null
           captain_full_name?: string | null
           captain_grade?: string | null
@@ -62,6 +64,7 @@ export type Database = {
           user_id: string
         }
         Update: {
+          award_place?: string | null
           captain_age?: number | null
           captain_full_name?: string | null
           captain_grade?: string | null

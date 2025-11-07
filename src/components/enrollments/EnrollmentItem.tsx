@@ -62,6 +62,11 @@ export const EnrollmentItem: React.FC<EnrollmentItemProps> = ({
 
   // Simplified view for completed Space Settlement Competition
   if (isSpaceSettlement && isCompleted) {
+    // Determine badge text based on award_place
+    const badgeText = enrollment.award_place 
+      ? t('feedback.awardBadge', { place: enrollment.award_place })
+      : t('feedback.participantBadge', { defaultValue: '🏆 Участник AEROO Space Settlement Competition 2025' });
+
     return (
       <li className="py-4 flex flex-col gap-3">
         <div className="flex items-start justify-between">
@@ -80,8 +85,8 @@ export const EnrollmentItem: React.FC<EnrollmentItemProps> = ({
         <div className="space-y-3">
           {enrollment.submission_link && (
             <div className="flex items-center gap-2 p-3 bg-primary/10 border border-primary/20 rounded-lg">
-              <Badge variant="default" className="text-sm">
-                {t('feedback.participantBadge', { defaultValue: '🏆 Участник AEROO Space Settlement Competition 2025' })}
+              <Badge variant="default" className="text-sm whitespace-normal text-left">
+                {badgeText}
               </Badge>
             </div>
           )}

@@ -1089,6 +1089,7 @@ const resources = {
       },
       feedback: {
         participantBadge: "🏆 Участник AEROO Space Settlement Competition 2025",
+        awardBadge: "🏆 {{place}} — AEROO Space Settlement Competition 2025",
         giveFeedback: "💬 Оставить обратную связь",
         alreadySubmitted: "✅ Спасибо! Ваш отзыв уже получен",
         title: "Обратная связь",
@@ -2947,6 +2948,7 @@ const resources = {
       },
       feedback: {
         participantBadge: "🏆 AEROO Space Settlement Competition 2025 Participant",
+        awardBadge: "🏆 {{place}} — AEROO Space Settlement Competition 2025",
         giveFeedback: "💬 Give Feedback",
         alreadySubmitted: "✅ Thank you! Your feedback has been received",
         title: "Feedback",
@@ -4204,6 +4206,7 @@ const resources = {
       },
       feedback: {
         participantBadge: "🏆 AEROO Space Settlement Competition 2025 қатысушысы",
+        awardBadge: "🏆 {{place}} — AEROO Space Settlement Competition 2025",
         giveFeedback: "💬 Пікір қалдыру",
         alreadySubmitted: "✅ Рақмет! Сіздің пікіріңіз қабылданды",
         title: "Пікір",
