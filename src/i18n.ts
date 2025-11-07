@@ -763,6 +763,7 @@ const resources = {
           gadgetsDesc: "Современные устройства для призеров",
           certificates: "Сертификаты",
           certificatesDesc: "Все финалисты получают сертификаты участия",
+          winnersText: "Призы победителям",
         },
         registration: {
           title: "Регистрация",
@@ -2236,6 +2237,7 @@ const resources = {
           gadgetsDesc: "Modern devices for prize winners",
           certificates: "Certificates",
           certificatesDesc: "All finalists receive participation certificates",
+          winnersText: "Prizes for Winners",
         },
         registration: {
           title: "Registration",
@@ -3929,6 +3931,7 @@ const resources = {
           gadgetsDesc: "Жүлдегерлерге заманауи құрылғылар",
           certificates: "Сертификаттар",
           certificatesDesc: "Барлық финалистер қатысу сертификаттарын алады",
+          winnersText: "Жеңімпаздарға сыйлықтар",
         },
         registration: {
           title: "Тіркелу",

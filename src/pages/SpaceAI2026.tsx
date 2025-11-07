@@ -422,40 +422,9 @@ const SpaceAI2026 = () => {
             </h2>
 
             <div className="max-w-4xl mx-auto">
-              <Card className="p-8 bg-gradient-to-br from-primary/10 to-cyan-500/10 backdrop-blur-sm border-primary/30">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="flex items-start gap-3">
-                    <Trophy className="w-8 h-8 text-primary flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.cash')}</h3>
-                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.cashDesc')}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Award className="w-8 h-8 text-primary flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.eduGrants')}</h3>
-                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.eduGrantsDesc')}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <Zap className="w-8 h-8 text-primary flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.gadgets')}</h3>
-                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.gadgetsDesc')}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-3">
-                    <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" />
-                    <div>
-                      <h3 className="font-bold text-lg mb-2">{t('spaceAI2026.prizes.certificates')}</h3>
-                      <p className="text-muted-foreground">{t('spaceAI2026.prizes.certificatesDesc')}</p>
-                    </div>
-                  </div>
-                </div>
+              <Card className="p-8 bg-gradient-to-br from-primary/10 to-cyan-500/10 backdrop-blur-sm border-primary/30 text-center">
+                <Trophy className="w-16 h-16 text-primary mx-auto mb-4" />
+                <p className="text-xl font-medium">{t('spaceAI2026.prizes.winnersText')}</p>
               </Card>
             </div>
           </div>
