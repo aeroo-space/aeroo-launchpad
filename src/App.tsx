@@ -13,7 +13,6 @@ import NotFound from "./pages/NotFound";
 import Careers from "./pages/Careers";
 import Community from "./pages/Community";
 import Support from "./pages/Support";
-import FAQ from "./pages/FAQ";
 import Contacts from "./pages/Contacts";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
@@ -60,7 +59,6 @@ const App = () => (
               <Route path="/support" element={<Support />} />
             <Route path="/careers" element={<Careers />} />
             <Route path="/contacts" element={<Contacts />} />
-              <Route path="/faq" element={<FAQ />} />
               <Route path="/privacy" element={<Privacy />} />
               <Route path="/terms" element={<Terms />} />
               <Route path="/auth" element={<Auth />} />

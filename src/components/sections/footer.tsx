@@ -43,9 +43,6 @@ const FOOTER_LINKS = [{
     name: "Контакты",
     href: "/contacts"
   }, {
-    name: "FAQ",
-    href: "/faq"
-  }, {
     name: "Техподдержка",
     href: "/support"
   }, {
