@@ -108,6 +108,32 @@ const resources = {
         dashboard: "Личный кабинет",
         login: "Войти",
       },
+      community: {
+        metaTitle: "Сообщество AEROO — общение и поддержка",
+        metaDesc: "Пространство AEROO: вопросы, помощь, анонсы и нетворкинг",
+        hero: {
+          title: "Сообщество AEROO",
+          subtitle: "Пространство для учеников, студентов, наставников и инженеров, которым интересны ракеты, дроны, спутники и ИИ. Делитесь опытом, задавайте вопросы и участвуйте в проектах AEROO.",
+        },
+        cards: {
+          networking: {
+            title: "Знакомства и нетворкинг",
+            desc: "Находите команду для соревнований и проекты для портфолио.",
+          },
+          help: {
+            title: "Вопросы и помощь",
+            desc: "Получайте ответы от менторов и сообщества по наборам и технике.",
+          },
+          announcements: {
+            title: "Анонсы и активности",
+            desc: "Будьте в курсе курсов, соревнований и запусков AEROO.",
+          },
+        },
+        cta: {
+          button: "Перейти в сообщество",
+          note: "Откроется в новом окне Telegram",
+        },
+      },
       news: {
         title: "СМИ о нас",
         instagramCta: "Для получения последних новостей подписывайтесь на наш Instagram:",
@@ -1664,6 +1690,32 @@ const resources = {
         dashboard: "Dashboard",
         login: "Sign In",
       },
+      community: {
+        metaTitle: "AEROO Community — communication and support",
+        metaDesc: "AEROO space: questions, help, announcements and networking",
+        hero: {
+          title: "AEROO Community",
+          subtitle: "A space for students, mentors and engineers interested in rockets, drones, satellites and AI. Share experiences, ask questions and participate in AEROO projects.",
+        },
+        cards: {
+          networking: {
+            title: "Networking and connections",
+            desc: "Find a team for competitions and projects for your portfolio.",
+          },
+          help: {
+            title: "Questions and help",
+            desc: "Get answers from mentors and community about kits and equipment.",
+          },
+          announcements: {
+            title: "Announcements and activities",
+            desc: "Stay updated on AEROO courses, competitions and launches.",
+          },
+        },
+        cta: {
+          button: "Join the community",
+          note: "Opens in Telegram window",
+        },
+      },
       news: {
         title: "News About Us",
         instagramCta: "For the latest news, follow us on Instagram:",
@@ -3217,6 +3269,32 @@ const resources = {
         contacts: "Байланыс",
         dashboard: "Жеке кабинет",
         login: "Кіру",
+      },
+      community: {
+        metaTitle: "AEROO қауымдастығы — қарым-қатынас және қолдау",
+        metaDesc: "AEROO кеңістігі: сұрақтар, көмек, хабарландырулар және желілік байланыс",
+        hero: {
+          title: "AEROO қауымдастығы",
+          subtitle: "Зымырандар, дрондар, серіктер және ЖИ қызықтыратын оқушылар, студенттер, тренерлер және инженерлер үшін кеңістік. Тәжірибемен бөлісіңіз, сұрақтар қойыңыз және AEROO жобаларына қатысыңыз.",
+        },
+        cards: {
+          networking: {
+            title: "Танысу және желілік байланыс",
+            desc: "Жарыстарға команда және портфолиоға жобалар табыңыз.",
+          },
+          help: {
+            title: "Сұрақтар мен көмек",
+            desc: "Жинақтар мен техника бойынша менторлар мен қауымдастықтан жауап алыңыз.",
+          },
+          announcements: {
+            title: "Хабарландырулар мен белсенділіктер",
+            desc: "AEROO курстары, жарыстары мен іске қосулары туралы хабардар болыңыз.",
+          },
+        },
+        cta: {
+          button: "Қауымдастыққа кіру",
+          note: "Telegram терезесінде ашылады",
+        },
       },
       news: {
         title: "Біз туралы жаңалықтар",
