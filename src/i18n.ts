@@ -1438,8 +1438,8 @@ const resources = {
             "Секция AEROO Rocket Science Competition — инженерное соревнование по проектированию, сборке и запуску ракет. Два направления: Водяные ракеты (14-15 лет, до 2 участников) — устойчивый полет на воде и воздухе; Модельные ракеты (15-18 лет, до 2 участников) — с двигателями 2.5H*c, парашютом и экологической миссией (разбрасывание семян). Фокус на аэродинамике, безопасности и инновациях.",
           participants: "Участники",
           participantsDesc: "Команды до 2 человек. Один участник — одна секция",
-          prizes: "Призовой фонд",
-          prizesDesc: "До 1 000 000 тенге + гранты",
+          prizes: "Награды",
+          prizesDesc: "Призы и гранты на обучение",
           goals: "Цели и задачи",
           goal1: "Развитие интереса к космонавтике и ракетостроению",
           goal2: "Практические навыки проектирования и конструирования",
@@ -1541,7 +1541,7 @@ const resources = {
         prizes: {
           title: "Награды и призы",
           description:
-            "Победители: медали, дипломы, призы (гаджеты, оборудование), образовательные гранты от АУЭС им. Гумарбека Даукеева. Все финалисты — сертификаты. Общий призовой фонд до 1 000 000 тенге.",
+            "Победители: медали, дипломы, призы (гаджеты, оборудование), образовательные гранты от АУЭС им. Гумарбека Даукеева. Все финалисты — сертификаты.",
           medals: "Медали и дипломы",
           gadgets: "Гаджеты и оборудование",
           grants: "Образовательные гранты",
@@ -2993,8 +2993,8 @@ const resources = {
             "AEROO Rocket Science Competition is an engineering competition for designing, building and launching rockets. Two tracks: Water rockets (14-15 years, up to 2 participants) — stable flight on water and air; Model rockets (15-18 years, up to 2 participants) — with 2.5H*c engines, parachute and ecological mission (seed spreading). Focus on aerodynamics, safety and innovation.",
           participants: "Participants",
           participantsDesc: "Teams of up to 2 people. One participant — one track",
-          prizes: "Prize fund",
-          prizesDesc: "Up to 1,000,000 tenge + grants",
+          prizes: "Awards",
+          prizesDesc: "Prizes and educational grants",
           goals: "Goals and objectives",
           goal1: "Develop interest in astronautics and rocket science",
           goal2: "Practical design and construction skills",
@@ -3096,7 +3096,7 @@ const resources = {
         prizes: {
           title: "Awards and prizes",
           description:
-            "Winners: medals, diplomas, prizes (gadgets, equipment), educational grants from AUES named after Gumarbek Daukeyev. All finalists — certificates. Total prize fund up to 1,000,000 tenge.",
+            "Winners: medals, diplomas, prizes (gadgets, equipment), educational grants from AUES named after Gumarbek Daukeyev. All finalists — certificates.",
           medals: "Medals and diplomas",
           gadgets: "Gadgets and equipment",
           grants: "Educational grants",
@@ -4548,8 +4548,8 @@ const resources = {
             "AEROO Rocket Science Competition секциясы — зымырандарды жобалау, жинау және ұшыру бойынша инженерлік жарыс. Екі бағыт: Су зымырандары (14-15 жас, 2 қатысушыға дейін) — су және ауада тұрақты ұшу; Модельдік зымырандар (15-18 жас, 2 қатысушыға дейін) — 2.5H*c қозғалтқыштары, парашют және экологиялық миссиясы бар (тұқым шашу). Аэродинамика, қауіпсіздік және инновацияларға назар аударылады.",
           participants: "Қатысушылар",
           participantsDesc: "2 адамға дейін команда. Бір қатысушы — бір секция",
-          prizes: "Сыйлық қоры",
-          prizesDesc: "1 000 000 теңгеге дейін + гранттар",
+          prizes: "Марапаттар",
+          prizesDesc: "Сыйлықтар және оқуға гранттар",
           goals: "Мақсаттар мен міндеттер",
           goal1: "Ғарышнаутика мен зымыран құрылысына қызығушылықты дамыту",
           goal2: "Жобалау және құрастырудың практикалық дағдылары",
@@ -4652,7 +4652,7 @@ const resources = {
         prizes: {
           title: "Марапаттар мен сыйлықтар",
           description:
-            "Жеңімпаздар: медальдар, дипломдар, сыйлықтар (гаджеттер, жабдық), Гумарбек Даукеев атындағы АЭӨУ-ден білім беру гранттары. Барлық финалисттер — сертификаттар. Жалпы сыйлық қоры 1 000 000 теңгеге дейін.",
+            "Жеңімпаздар: медальдар, дипломдар, сыйлықтар (гаджеттер, жабдық), Гумарбек Даукеев атындағы АЭӨУ-ден білім беру гранттары. Барлық финалисттер — сертификаттар.",
           medals: "Медальдар мен дипломдар",
           gadgets: "Гаджеттер мен жабдық",
           grants: "Білім беру гранттары",
