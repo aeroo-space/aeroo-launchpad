@@ -19,7 +19,7 @@ const Community = () => {
 
       <main className="container mx-auto px-4 py-8 sm:py-12">
         <header className="text-center mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent py-2 leading-tight">
             {t('community.hero.title', { defaultValue: 'Сообщество AEROO' })}
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
