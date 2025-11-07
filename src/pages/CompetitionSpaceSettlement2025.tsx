@@ -24,7 +24,6 @@ import {
   Award,
   Send,
   Mail,
-  Clock,
   ExternalLink,
   Languages,
 } from "lucide-react";
@@ -56,7 +55,6 @@ export default function CompetitionSpaceSettlement2025() {
   const { t, i18n } = useTranslation();
   const { user } = useAuth();
   const revealRefs = useRef<HTMLElement[]>([]);
-  const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [isEnrolled, setIsEnrolled] = useState(false);
   const [checkingEnrollment, setCheckingEnrollment] = useState(true);
 
@@ -89,31 +87,6 @@ export default function CompetitionSpaceSettlement2025() {
 
     checkEnrollment();
   }, [user]);
-
-  // Countdown timer
-  useEffect(() => {
-    const deadline = new Date("2025-10-29T23:59:00+05:00"); // GMT+5
-    
-    const updateTimer = () => {
-      const now = new Date();
-      const diff = deadline.getTime() - now.getTime();
-      
-      if (diff > 0) {
-        setTimeLeft({
-          days: Math.floor(diff / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-          minutes: Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-          seconds: Math.floor((diff % (1000 * 60)) / 1000)
-        });
-      } else {
-        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-      }
-    };
-
-    updateTimer();
-    const interval = setInterval(updateTimer, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Basic SEO
   useEffect(() => {
@@ -230,31 +203,92 @@ export default function CompetitionSpaceSettlement2025() {
           </div>
         </section>
 
-        {/* Countdown Timer */}
-        <section className="bg-muted/30 py-12">
+        {/* Winners Section */}
+        <section className="bg-gradient-to-b from-muted/30 to-background py-16">
           <div className="container mx-auto px-4">
-            <div className="text-center">
-              <h2 className="text-2xl md:text-3xl font-bold mb-2 flex items-center justify-center gap-2">
-                <Clock className="w-6 h-6 text-primary" />
-                {t('spaceSettlement2025.countdown.title')}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-2 flex items-center justify-center gap-3">
+                <Award className="w-8 h-8 text-primary" />
+                {t('spaceSettlement2025.winners.title')}
               </h2>
-              <p className="text-muted-foreground mb-6">{t('spaceSettlement2025.countdown.deadline')}</p>
-              <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
-                {[
-                  { value: timeLeft.days, label: t('spaceSettlement2025.countdown.days') },
-                  { value: timeLeft.hours, label: t('spaceSettlement2025.countdown.hours') },
-                  { value: timeLeft.minutes, label: t('spaceSettlement2025.countdown.minutes') },
-                  { value: timeLeft.seconds, label: t('spaceSettlement2025.countdown.seconds') }
-                ].map((item, i) => (
-                  <div key={i} className="bg-background/80 backdrop-blur rounded-lg p-4 border">
-                    <div className="text-2xl md:text-3xl font-bold text-primary">{item.value.toString().padStart(2, '0')}</div>
-                    <div className="text-sm text-muted-foreground">{item.label}</div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Senior League */}
+              <Card className="glass-card overflow-hidden">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6 text-center text-primary">
+                    {t('spaceSettlement2025.winners.senior')}
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg border-2 border-primary/30">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
+                        1
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs font-semibold text-primary mb-1">{t('spaceSettlement2025.winners.place1')}</p>
+                        <p className="font-semibold text-foreground">Fearless Minds</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg border">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-muted-foreground/20 flex items-center justify-center text-foreground font-bold text-lg">
+                        2
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs font-semibold text-muted-foreground mb-1">{t('spaceSettlement2025.winners.place2')}</p>
+                        <p className="font-semibold text-foreground">404divas and Adilzhan and Azamat</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg border">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-muted-foreground/20 flex items-center justify-center text-foreground font-bold text-lg">
+                        3
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs font-semibold text-muted-foreground mb-1">{t('spaceSettlement2025.winners.place3')}</p>
+                        <p className="font-semibold text-foreground">Mausfisch Petroleum Corp</p>
+                      </div>
+                    </div>
                   </div>
-                ))}
-              </div>
-              <div className="mt-6">
-                {applyBtn}
-              </div>
+                </CardContent>
+              </Card>
+
+              {/* Junior League */}
+              <Card className="glass-card overflow-hidden">
+                <CardContent className="p-8">
+                  <h3 className="text-2xl font-bold mb-6 text-center text-primary">
+                    {t('spaceSettlement2025.winners.junior')}
+                  </h3>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3 p-4 bg-primary/10 rounded-lg border-2 border-primary/30">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-bold text-lg">
+                        1
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs font-semibold text-primary mb-1">{t('spaceSettlement2025.winners.place1')}</p>
+                        <p className="font-semibold text-foreground">Samruk</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg border">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-muted-foreground/20 flex items-center justify-center text-foreground font-bold text-lg">
+                        2
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs font-semibold text-muted-foreground mb-1">{t('spaceSettlement2025.winners.place2')}</p>
+                        <p className="font-semibold text-foreground">Icarus</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3 p-4 bg-muted rounded-lg border">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-muted-foreground/20 flex items-center justify-center text-foreground font-bold text-lg">
+                        3
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-xs font-semibold text-muted-foreground mb-1">{t('spaceSettlement2025.winners.place3')}</p>
+                        <p className="font-semibold text-foreground">Icarus Ascend</p>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>

@@ -451,13 +451,13 @@ const resources = {
           competitionEnded: "Соревнование завершено",
           thankYou: "Спасибо всем участникам!",
         },
-        countdown: {
-          title: "До окончания соревнования",
-          deadline: "29 октября 2025, 23:59 GMT+5",
-          days: "дней",
-          hours: "часов",
-          minutes: "минут",
-          seconds: "секунд",
+        winners: {
+          title: "WINNERS of AEROO Space Settlement Competition 2025",
+          senior: "SENIOR",
+          junior: "JUNIOR",
+          place1: "1 МЕСТО",
+          place2: "2 МЕСТО",
+          place3: "3 МЕСТО",
         },
         breadcrumbs: {
           home: "Главная",
@@ -2265,13 +2265,13 @@ const resources = {
           competitionEnded: "Competition Ended",
           thankYou: "Thank you to all participants!",
         },
-        countdown: {
-          title: "Until Competition Ends",
-          deadline: "October 29, 2025, 23:59 GMT+5",
-          days: "days",
-          hours: "hours",
-          minutes: "minutes",
-          seconds: "seconds",
+        winners: {
+          title: "WINNERS of AEROO Space Settlement Competition 2025",
+          senior: "SENIOR",
+          junior: "JUNIOR",
+          place1: "1 PLACE",
+          place2: "2 PLACE",
+          place3: "3 PLACE",
         },
         breadcrumbs: {
           home: "Home",
@@ -3616,13 +3616,13 @@ const resources = {
           competitionEnded: "Жарыс аяқталды",
           thankYou: "Барлық қатысушыларға рахмет!",
         },
-        countdown: {
-          title: "Жарыс аяқталғанша",
-          deadline: "29 қазан 2025, 23:59 GMT+5",
-          days: "күн",
-          hours: "сағат",
-          minutes: "минут",
-          seconds: "секунд",
+        winners: {
+          title: "WINNERS of AEROO Space Settlement Competition 2025",
+          senior: "SENIOR",
+          junior: "JUNIOR",
+          place1: "1 ОРЫН",
+          place2: "2 ОРЫН",
+          place3: "3 ОРЫН",
         },
         breadcrumbs: {
           home: "Басты бет",
