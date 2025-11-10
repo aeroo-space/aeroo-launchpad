@@ -156,7 +156,7 @@ const Auth = () => {
       if (error) throw error;
 
       if (!data) {
-        toast.error("Приглашение не найдено или уже использовано");
+        toast.error(t('auth.inviteNotFound', { defaultValue: 'Приглашение не найдено или уже использовано' }));
         setInviteToken(null);
         window.history.replaceState({}, document.title, window.location.pathname);
         return;
@@ -164,19 +164,19 @@ const Auth = () => {
 
       // Проверяем срок действия
       if (new Date(data.expires_at) < new Date()) {
-        toast.error("Приглашение истекло");
+        toast.error(t('auth.inviteExpired', { defaultValue: 'Приглашение истекло' }));
         setInviteToken(null);
         window.history.replaceState({}, document.title, window.location.pathname);
         return;
       }
 
       setInviteInfo(data);
-      toast.info(`Вы приглашены в команду "${data.team?.team_name}"`, {
-        description: "Войдите или зарегистрируйтесь для продолжения"
+      toast.info(t('auth.inviteTeamPrefix', { defaultValue: 'Вы приглашены в команду' }) + ` "${data.team?.team_name}"`, {
+        description: t('auth.inviteLoginPrompt', { defaultValue: 'Войдите или зарегистрируйтесь для продолжения' })
       });
     } catch (error: any) {
       console.error("Error fetching invite:", error);
-      toast.error("Ошибка загрузки приглашения");
+      toast.error(t('auth.inviteLoadError', { defaultValue: 'Ошибка загрузки приглашения' }));
       setInviteToken(null);
     }
   };
@@ -201,13 +201,13 @@ const Auth = () => {
         navigate(from, { replace: true });
       } else {
         if (password !== confirmPassword) {
-          toast.error("Пароли не совпадают");
+        toast.error(t('auth.passwordMismatch', { defaultValue: 'Пароли не совпадают' }));
           return;
         }
         const isValidPassword = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(password);
         if (!isValidPassword) {
-          toast.error("Пароль не соответствует требованиям", { 
-            description: "Минимум 8 символов, одна заглавная буква и один спецсимвол" 
+          toast.error(t('auth.passwordInvalid', { defaultValue: 'Пароль не соответствует требованиям' }), { 
+            description: t('auth.passwordInvalidDesc', { defaultValue: 'Минимум 8 символов, одна заглавная буква и один спецсимвол' })
           });
           return;
         }
@@ -223,7 +223,7 @@ const Auth = () => {
             !city.trim() || 
             !grade || 
             !age) {
-          alert("Пожалуйста, заполните все обязательные поля");
+          alert(t('auth.fillAllFields', { defaultValue: 'Пожалуйста, заполните все обязательные поля' }));
           return;
         }
         
@@ -254,7 +254,7 @@ const Auth = () => {
     e.preventDefault();
     const targetEmail = (forgotEmail || email).trim();
     if (!targetEmail) {
-      toast.error("Укажите email");
+      toast.error(t('auth.enterEmail', { defaultValue: 'Укажите email' }));
       return;
     }
     setSendingReset(true);
@@ -263,10 +263,10 @@ const Auth = () => {
         redirectTo: `${window.location.origin}/auth`,
       });
       if (error) throw error;
-      toast.success("Ссылка для восстановления отправлена");
+      toast.success(t('auth.resetLinkSent', { defaultValue: 'Ссылка для восстановления отправлена' }));
       setShowForgot(false);
     } catch (err: any) {
-      toast.error("Не удалось отправить письмо", { description: err.message });
+      toast.error(t('auth.sendEmailFailed', { defaultValue: 'Не удалось отправить письмо' }), { description: err.message });
     } finally {
       setSendingReset(false);
     }
@@ -275,25 +275,25 @@ const Auth = () => {
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     if (newPwd !== newPwd2) {
-      toast.error("Пароли не совпадают");
+      toast.error(t('auth.passwordMismatch', { defaultValue: 'Пароли не совпадают' }));
       return;
     }
     const valid = /^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}$/.test(newPwd);
     if (!valid) {
-      toast.error("Пароль не соответствует требованиям", { description: "Минимум 8 символов, одна заглавная буква и один спецсимвол" });
+      toast.error(t('auth.passwordInvalid', { defaultValue: 'Пароль не соответствует требованиям' }), { description: t('auth.passwordInvalidDesc', { defaultValue: 'Минимум 8 символов, одна заглавная буква и один спецсимвол' }) });
       return;
     }
     setResetSubmitting(true);
     try {
       const { error } = await supabase.auth.updateUser({ password: newPwd });
       if (error) throw error;
-      toast.success("Пароль обновлён");
+      toast.success(t('auth.passwordUpdated', { defaultValue: 'Пароль обновлён' }));
       setShowResetPwd(false);
       setMode("signin");
       setNewPwd("");
       setNewPwd2("");
     } catch (err: any) {
-      toast.error("Ошибка обновления пароля", { description: err.message });
+      toast.error(t('auth.passwordUpdateError', { defaultValue: 'Ошибка обновления пароля' }), { description: err.message });
     } finally {
       setResetSubmitting(false);
     }
@@ -308,13 +308,13 @@ const Auth = () => {
           {inviteInfo && (
             <div className="mb-6 p-4 rounded-lg bg-primary/10 border border-primary/30">
               <p className="text-sm font-medium text-primary mb-1">
-                🎉 Приглашение в команду
+                {t('auth.inviteTitle', { defaultValue: '🎉 Приглашение в команду' })}
               </p>
               <p className="text-sm">
-                Команда: <strong>{inviteInfo.team?.team_name}</strong>
+                {t('auth.inviteTeamLabel', { defaultValue: 'Команда:' })} <strong>{inviteInfo.team?.team_name}</strong>
               </p>
               <p className="text-xs text-muted-foreground mt-2">
-                Войдите или зарегистрируйтесь, чтобы увидеть приглашение в личном кабинете
+                {t('auth.inviteDescription', { defaultValue: 'Войдите или зарегистрируйтесь, чтобы увидеть приглашение в личном кабинете' })}
               </p>
             </div>
           )}
@@ -462,9 +462,9 @@ const Auth = () => {
       <Dialog open={showEmailCheck} onOpenChange={setShowEmailCheck}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>Проверьте почту</DialogTitle>
+            <DialogTitle>{t('auth.checkEmail', { defaultValue: 'Проверьте почту' })}</DialogTitle>
             <DialogDescription>
-              Мы отправили ссылку для подтверждения на ваш email. Перейдите по ссылке, чтобы активировать аккаунт.
+              {t('auth.checkEmailDesc', { defaultValue: 'Мы отправили ссылку для подтверждения на ваш email. Перейдите по ссылке, чтобы активировать аккаунт.' })}
             </DialogDescription>
           </DialogHeader>
           <div className="flex justify-end">
