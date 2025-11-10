@@ -52,7 +52,7 @@ const getMaxTeamSize = (competitionId: string, league?: string | null): number =
 };
 
 const Dashboard = () => {
-  const { user, signOut } = useAuth();
+  const { user, signOut, loading: authLoading } = useAuth();
   const { profile, loading: profileLoading, refetch: refetchProfile } = useProfile();
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -128,6 +128,9 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
+    // Ждем завершения загрузки авторизации
+    if (authLoading) return;
+    
     if (!user) {
       navigate("/auth", { replace: true });
       return;
@@ -165,7 +168,7 @@ const Dashboard = () => {
 
       setLoading(false);
     })();
-  }, [user, navigate]);
+  }, [user, navigate, authLoading]);
 
   // Set up real-time subscription for enrollments
   useEffect(() => {
